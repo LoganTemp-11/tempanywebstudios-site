@@ -91,7 +91,25 @@ em { font-style: italic; color: var(--lime); }
 .mini-eyebrow { color: var(--lime); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
 .browser-body h3 { font-size: 1.8rem; margin: 8px 0 12px; }
 .preview-notes { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin: 28px 0; font-size: 0.85rem; color: #4d5a53; }
-.location-strip { font-size: 0.78rem; letter-spacing: 0.08em; color: #8a9490; text-transform: uppercase; }
+.location-strip { font-size: 0.78rem; letter-spacing: 0.08em; color: #5f6b66; text-transform: uppercase; }
+
+/* Work / live concepts */
+.work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 40px; text-align: left; }
+.work-card {
+  border: 1px solid var(--line); border-radius: 10px; background: #fff;
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.work-meta { padding: 28px; display: flex; flex-direction: column; gap: 12px; height: 100%; }
+.work-tag {
+  text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.7rem;
+  font-weight: 700; color: var(--dark);
+}
+.work-card h3 { font-size: 1.5rem; margin: 0; }
+.work-card p { margin: 0; color: #5b6660; font-size: 0.95rem; }
+.work-points { list-style: none; padding: 0; margin: 4px 0 auto; display: flex; flex-direction: column; gap: 8px; }
+.work-points li { padding-left: 22px; position: relative; font-size: 0.88rem; }
+.work-points li::before { content: "✓"; position: absolute; left: 0; color: var(--dark); font-weight: 700; }
+.work-card .button { align-self: flex-start; margin-top: 16px; }
 
 /* Sections */
 .section { padding: 80px 5%; max-width: 1160px; margin: 0 auto; }
@@ -197,6 +215,6 @@ h2.light { color: #fff; }
   .site-nav.open { display: flex; }
   .menu-button { display: flex; flex-direction: column; gap: 5px; margin-left: auto; background: none; border: none; padding: 8px; cursor: pointer; }
   .menu-button span { width: 22px; height: 2px; background: #fff; display: block; }
-  .value-props, .portfolio-cards, .process-steps, .contact-grid, .split, .form-row { grid-template-columns: 1fr; }
+  .value-props, .portfolio-cards, .process-steps, .contact-grid, .split, .form-row, .work-grid { grid-template-columns: 1fr; }
   .stat-row { gap: 24px; flex-wrap: wrap; }
 }
