@@ -96,6 +96,7 @@ em { font-style: italic; color: var(--lime); }
 
 /* Work / live concepts */
 .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 40px; text-align: left; }
+.work-grid--single { grid-template-columns: minmax(0, 460px); justify-content: center; }
 .work-card {
   border: 1px solid var(--line); border-radius: 10px; background: #fff;
   overflow: hidden; display: flex; flex-direction: column;
