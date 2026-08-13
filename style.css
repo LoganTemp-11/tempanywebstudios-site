@@ -221,5 +221,6 @@ h2.light { color: #fff; }
 
 /* Sector demo sites inside Work */
 .work-sub { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
+.work-sub .work-grid { grid-template-columns: repeat(3, 1fr); }
 .work-sub-title { font-size: clamp(1.5rem, 3vw, 1.9rem); font-weight: 400; margin: 0 0 10px; color: var(--heading); }
 .work-sub .section-lead { margin-bottom: 8px; }

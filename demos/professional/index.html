@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ochil Ledger — Fixed-Fee Accountants, Tillicoultry | Demo Site</title>
+<meta name="description" content="Fixed monthly fees for sole traders, landlords and small limited companies across Clackmannanshire, Stirling and Fife. Making Tax Digital ready, Xero and FreeAgent certified, plain-English advice.">
+<meta name="theme-color" content="#F7F4ED">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "AccountingService"],
+  "name": "Ochil Ledger Accountancy",
+  "description": "Fixed-fee accountancy and bookkeeping for sole traders, landlords and small limited companies across Clackmannanshire, Stirling and Fife. Making Tax Digital ready, Xero and FreeAgent certified.",
+  "disambiguatingDescription": "Fictional practice created by Tempany Web Studios as a website design example.",
+  "url": "https://tempanywebstudios.co.uk/demos/professional/",
+  "telephone": "+4412595550142",
+  "email": "hello@ochilledger.co.uk",
+  "priceRange": "££",
+  "currenciesAccepted": "GBP",
+  "paymentAccepted": "Direct debit, bank transfer",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "14 Mill Brae",
+    "addressLocality": "Tillicoultry",
+    "addressRegion": "Clackmannanshire",
+    "postalCode": "FK13 6AA",
+    "addressCountry": "GB"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 56.1533,
+    "longitude": -3.7433
+  },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Clackmannanshire" },
+    { "@type": "AdministrativeArea", "name": "Stirlingshire" },
+    { "@type": "AdministrativeArea", "name": "Falkirk" },
+    { "@type": "AdministrativeArea", "name": "Fife" }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "09:00",
+      "closes": "15:00"
+    }
+  ],
+  "knowsAbout": [
+    "Self Assessment",
+    "Making Tax Digital for Income Tax",
+    "Corporation tax",
+    "VAT returns",
+    "Payroll",
+    "Property and rental income"
+  ]
+}
+</script>
+</head>
+<body id="top">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="demo-banner">
+  <div class="wrap demo-banner__inner">
+    <span class="demo-banner__tag">Demo site by Tempany Web Studios</span>
+    <span class="demo-banner__note">This is an example website, not a real business.</span>
+    <a class="demo-banner__link" href="https://tempanywebstudios.co.uk" rel="noopener">tempanywebstudios.co.uk</a>
+  </div>
+</div>
+
+<header class="site-header" id="site-header">
+  <div class="wrap site-header__inner">
+
+    <a class="wordmark" href="#top">
+      <svg class="wordmark__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect x="1.6" y="1.6" width="28.8" height="28.8" class="wm-frame"/>
+        <path d="M6 22.4 L12.4 13.6 L16.6 18.4 L21.6 9.6 L26 17" class="wm-ridge"/>
+        <line x1="6" y1="26" x2="26" y2="26" class="wm-rule"/>
+        <circle cx="21.6" cy="9.6" r="2.1" class="wm-dot"/>
+      </svg>
+      <span class="wordmark__text">
+        <span class="wordmark__name">Ochil Ledger</span>
+        <span class="wordmark__sub">Accountancy &amp; Bookkeeping</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="nav-toggle__text">Menu</span>
+      </button>
+      <ul class="nav-list" id="nav-menu">
+        <li><a href="#services">What we do</a></li>
+        <li><a href="#fees">Fees</a></li>
+        <li><a href="#process">How it works</a></li>
+        <li><a href="#dates">Key dates</a></li>
+        <li><a href="#area">Where we work</a></li>
+        <li><a href="#faq">Questions</a></li>
+        <li class="nav-list__cta"><a class="btn btn--sm" href="#enquiry">Get in touch</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero__inner">
+
+      <div class="hero__text">
+        <p class="eyebrow">Accountancy &amp; bookkeeping <span class="eyebrow__dot" aria-hidden="true">·</span> Tillicoultry, Clackmannanshire</p>
+        <h1 id="hero-title">Fixed monthly fees. Filed on time. Explained in plain English.</h1>
+        <p class="lead">We look after sole traders, landlords and small limited companies across the Hillfoots, Stirling and Fife. You will know what you owe, when it is due, and exactly what we charge — agreed before we start a thing.</p>
+        <div class="hero__actions">
+          <a class="btn" href="#enquiry">Arrange a free 30-minute chat</a>
+          <a class="btn btn--ghost" href="#fees">See the fee list</a>
+        </div>
+      </div>
+
+      <aside class="hero__panel" aria-label="At a glance">
+        <h2 class="panel__title">At a glance</h2>
+        <dl class="panel__list">
+          <div class="panel__row">
+            <dt>Fees from</dt>
+            <dd><span class="num">£45</span> a month, fixed for a year</dd>
+          </div>
+          <div class="panel__row">
+            <dt>Software</dt>
+            <dd>Xero and FreeAgent certified</dd>
+          </div>
+          <div class="panel__row">
+            <dt>Making Tax Digital</dt>
+            <dd>Set up and filing since April <span class="num">2026</span></dd>
+          </div>
+          <div class="panel__row">
+            <dt>Replies</dt>
+            <dd>Within one working day, from a person</dd>
+          </div>
+        </dl>
+      </aside>
+
+      <div class="hero__art" aria-hidden="true">
+        <svg viewBox="0 0 540 470" class="art-hero" focusable="false">
+          <!-- back sheet -->
+          <rect x="128" y="16" width="352" height="292" class="a-fill-2 a-line"/>
+          <!-- main ledger sheet -->
+          <rect x="36" y="56" width="364" height="356" class="a-fill a-strong"/>
+          <line x1="66" y1="100" x2="248" y2="100" class="a-strong a-w2"/>
+          <line x1="66" y1="120" x2="196" y2="120" class="a-line"/>
+          <line x1="66" y1="132" x2="162" y2="132" class="a-line"/>
+          <!-- ledger rules -->
+          <g class="a-faint">
+            <line x1="66" y1="170" x2="372" y2="170"/>
+            <line x1="66" y1="196" x2="372" y2="196"/>
+            <line x1="66" y1="222" x2="372" y2="222"/>
+            <line x1="66" y1="248" x2="372" y2="248"/>
+            <line x1="66" y1="274" x2="372" y2="274"/>
+            <line x1="66" y1="300" x2="372" y2="300"/>
+            <line x1="66" y1="326" x2="372" y2="326"/>
+          </g>
+          <!-- entry marks (left) -->
+          <g class="a-line">
+            <line x1="66" y1="162" x2="158" y2="162"/>
+            <line x1="66" y1="188" x2="136" y2="188"/>
+            <line x1="66" y1="214" x2="170" y2="214"/>
+            <line x1="66" y1="240" x2="128" y2="240"/>
+            <line x1="66" y1="266" x2="152" y2="266"/>
+            <line x1="66" y1="292" x2="142" y2="292"/>
+            <line x1="66" y1="318" x2="164" y2="318"/>
+          </g>
+          <!-- figures column (right, aligned) -->
+          <g class="a-strong">
+            <line x1="316" y1="162" x2="368" y2="162"/>
+            <line x1="326" y1="188" x2="368" y2="188"/>
+            <line x1="308" y1="214" x2="368" y2="214"/>
+            <line x1="330" y1="240" x2="368" y2="240"/>
+            <line x1="312" y1="266" x2="368" y2="266"/>
+            <line x1="322" y1="292" x2="368" y2="292"/>
+            <line x1="304" y1="318" x2="368" y2="318"/>
+          </g>
+          <line x1="292" y1="150" x2="292" y2="342" class="a-line"/>
+          <!-- double total rule -->
+          <line x1="292" y1="352" x2="372" y2="352" class="a-accent"/>
+          <line x1="292" y1="357" x2="372" y2="357" class="a-accent"/>
+          <!-- compositional arc -->
+          <path d="M424 34 A 78 78 0 0 1 502 112" class="a-accent a-soft"/>
+          <!-- front chart card -->
+          <rect x="248" y="252" width="256" height="196" class="a-fill a-strong"/>
+          <g class="a-faint">
+            <line x1="302" y1="286" x2="302" y2="416"/>
+            <line x1="342" y1="286" x2="342" y2="416"/>
+            <line x1="382" y1="286" x2="382" y2="416"/>
+            <line x1="422" y1="286" x2="422" y2="416"/>
+            <line x1="462" y1="286" x2="462" y2="416"/>
+          </g>
+          <line x1="272" y1="416" x2="482" y2="416" class="a-line"/>
+          <polyline points="272,402 302,402 302,380 342,380 342,356 382,356 382,330 422,330 422,304 466,304" class="a-accent a-w2 a-nofill"/>
+          <circle cx="466" cy="304" r="5.5" class="a-dot"/>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ PROOF STRIP ============ -->
+  <section class="strip" aria-label="The practice in numbers">
+    <div class="wrap strip__inner">
+      <div class="stat">
+        <p class="stat__num num">140</p>
+        <p class="stat__label">sole traders, landlords and companies on the books</p>
+      </div>
+      <div class="stat">
+        <p class="stat__num num">12</p>
+        <p class="stat__label">years in practice, all of them in the Hillfoots</p>
+      </div>
+      <div class="stat">
+        <p class="stat__num num">1</p>
+        <p class="stat__label">working day — the usual wait for a reply</p>
+      </div>
+      <div class="stat">
+        <p class="stat__num num">0</p>
+        <p class="stat__label">hourly rates, ever. You always know the number first</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 01 SERVICES ============ -->
+  <section class="section" id="services" aria-labelledby="services-title">
+    <div class="wrap section__inner">
+      <p class="section__index">
+        <span class="section__num num">01</span>
+        <span class="section__label">What we do</span>
+      </p>
+      <div class="section__body">
+        <h2 id="services-title" data-reveal>Three kinds of client. One way of working.</h2>
+        <p class="section__intro" data-reveal>Most people fit neatly into one of the groups below, and plenty of you are two at once — the joiner with a flat let out in Alloa, the consultant halfway through going limited. The fee covers whichever combination you turn out to be.</p>
+
+        <div class="services">
+
+          <article class="service" data-reveal>
+            <div class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" focusable="false">
+                <circle cx="24" cy="14" r="6.5" class="i-line"/>
+                <path d="M11.5 30c3-4 7.4-6 12.5-6s9.5 2 12.5 6" class="i-line i-nofill"/>
+                <line x1="6" y1="38" x2="42" y2="38" class="i-accent"/>
+                <line x1="14" y1="43" x2="34" y2="43" class="i-line"/>
+              </svg>
+            </div>
+            <h3>Sole traders &amp; partnerships</h3>
+            <p>Tradespeople, therapists, consultants, tutors, shopkeepers, drivers. We keep the bookkeeping straight, file the Self Assessment and tell you what to put aside each quarter — before HMRC asks for it.</p>
+            <ul class="ticks">
+              <li>Bookkeeping in Xero or FreeAgent, reviewed monthly</li>
+              <li>Self Assessment return and full tax computation</li>
+              <li>Quarterly Making Tax Digital updates and final declaration</li>
+              <li>VAT registration and returns when you cross the threshold</li>
+              <li>A set-aside figure every quarter, so January is dull</li>
+            </ul>
+          </article>
+
+          <article class="service" data-reveal>
+            <div class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" focusable="false">
+                <path d="M7 23 L20 12 L33 23" class="i-line i-nofill"/>
+                <path d="M11 23 V38 H29 V23" class="i-line i-nofill"/>
+                <path d="M27 20 L37 12 L44 18" class="i-accent i-nofill"/>
+                <path d="M41 21 V38 H29" class="i-line i-nofill"/>
+                <line x1="4" y1="43" x2="44" y2="43" class="i-line"/>
+              </svg>
+            </div>
+            <h3>Landlords</h3>
+            <p>One flat above a shop in Alva, or a small portfolio across the Wee County. Property income has its own traps — finance-cost relief, what counts as a repair, the 60-day capital gains window — and we handle them properly.</p>
+            <ul class="ticks">
+              <li>Rental accounts prepared property by property</li>
+              <li>Self Assessment covering property and any other income</li>
+              <li>Mortgage interest relief calculated the current way, not the old way</li>
+              <li>Capital gains reporting inside the 60-day deadline when you sell</li>
+              <li>A sensible opinion before you buy the next one</li>
+            </ul>
+          </article>
+
+          <article class="service" data-reveal>
+            <div class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" focusable="false">
+                <path d="M6 17 L24 7 L42 17" class="i-line i-nofill"/>
+                <line x1="6" y1="21" x2="42" y2="21" class="i-line"/>
+                <g class="i-line">
+                  <line x1="13" y1="21" x2="13" y2="37"/>
+                  <line x1="20.3" y1="21" x2="20.3" y2="37"/>
+                  <line x1="27.7" y1="21" x2="27.7" y2="37"/>
+                  <line x1="35" y1="21" x2="35" y2="37"/>
+                </g>
+                <line x1="6" y1="37" x2="42" y2="37" class="i-line"/>
+                <line x1="4" y1="43" x2="44" y2="43" class="i-accent"/>
+              </svg>
+            </div>
+            <h3>Small limited companies</h3>
+            <p>Directors of one- and two-person companies who want the filing dealt with quietly and the salary and dividend split done sensibly. Contractors, agencies, small builders, online shops, a couple of cafés.</p>
+            <ul class="ticks">
+              <li>Year-end accounts and filing at Companies House</li>
+              <li>Corporation tax return (CT600) and payment reminders</li>
+              <li>Director payroll with RTI submissions each month</li>
+              <li>Salary and dividend planning reviewed twice a year</li>
+              <li>Confirmation statement and registered office if you want it</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 FEES ============ -->
+  <section class="section section--alt" id="fees" aria-labelledby="fees-title">
+    <div class="wrap section__inner">
+      <p class="section__index">
+        <span class="section__num num">02</span>
+        <span class="section__label">What it costs</span>
+      </p>
+      <div class="section__body">
+        <h2 id="fees-title" data-reveal>The fee is the fee.</h2>
+        <p class="section__intro" data-reveal>No hourly rates, no clock started when you ring, no invoice landing after a five-minute question. You pay the same amount each month by direct debit and it covers everything listed against your plan. Fees exclude VAT at 20%.</p>
+
+        <div class="fees" data-reveal>
+          <table class="fee-table">
+            <caption>Monthly fees, from — Ochil Ledger, reviewed each April</caption>
+            <thead>
+              <tr>
+                <th scope="col">Plan</th>
+                <th scope="col" class="ta-r">Fee</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="fee-group"><th scope="colgroup" colspan="2">Sole traders &amp; partnerships</th></tr>
+              <tr>
+                <th scope="row">
+                  <span class="fee-name">Essentials</span>
+                  <span class="fee-desc">Your bookkeeping reviewed monthly, Self Assessment, quarterly MTD updates and final declaration, unlimited email questions.</span>
+                </th>
+                <td class="fee-price"><span class="fee-from">from</span><span class="fee-num num">£45</span><span class="fee-unit">per month</span></td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <span class="fee-name">Complete</span>
+                  <span class="fee-desc">Everything in Essentials, plus we do the bookkeeping itself, file your VAT returns and go through the figures with you each quarter.</span>
+                </th>
+                <td class="fee-price"><span class="fee-from">from</span><span class="fee-num num">£85</span><span class="fee-unit">per month</span></td>
+              </tr>
+
+              <tr class="fee-group"><th scope="colgroup" colspan="2">Landlords</th></tr>
+              <tr>
+                <th scope="row">
+                  <span class="fee-name">One to three properties</span>
+                  <span class="fee-desc">Rental accounts, Self Assessment, finance-cost relief handled correctly, and an annual review of how the portfolio is held.</span>
+                </th>
+                <td class="fee-price"><span class="fee-from">from</span><span class="fee-num num">£55</span><span class="fee-unit">per month</span></td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <span class="fee-name">Four or more</span>
+                  <span class="fee-desc">As above, prepared property by property, plus planning before you buy, refinance or sell — including the 60-day CGT report.</span>
+                </th>
+                <td class="fee-price"><span class="fee-from">from</span><span class="fee-num num">£95</span><span class="fee-unit">per month</span></td>
+              </tr>
+
+              <tr class="fee-group"><th scope="colgroup" colspan="2">Limited companies</th></tr>
+              <tr>
+                <th scope="row">
+                  <span class="fee-name">Director-run</span>
+                  <span class="fee-desc">Year-end accounts, CT600, Companies House filing, payroll for one or two directors, and one director's Self Assessment included.</span>
+                </th>
+                <td class="fee-price"><span class="fee-from">from</span><span class="fee-num num">£125</span><span class="fee-unit">per month</span></td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <span class="fee-name">With a small team</span>
+                  <span class="fee-desc">As above, plus payroll for up to five staff, quarterly VAT returns and management figures you can actually use.</span>
+                </th>
+                <td class="fee-price"><span class="fee-from">from</span><span class="fee-num num">£190</span><span class="fee-unit">per month</span></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr class="fee-group"><th scope="colgroup" colspan="2">Added when you need them</th></tr>
+              <tr>
+                <th scope="row">
+                  <span class="fee-name">Payroll</span>
+                  <span class="fee-desc">Standing charge, plus £4.50 per payslip each run. Auto-enrolment assessment included.</span>
+                </th>
+                <td class="fee-price"><span class="fee-num num">£15</span><span class="fee-unit">per month</span></td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <span class="fee-name">VAT returns</span>
+                  <span class="fee-desc">Quarterly returns filed straight from your bookkeeping under Making Tax Digital.</span>
+                </th>
+                <td class="fee-price"><span class="fee-num num">£30</span><span class="fee-unit">per month</span></td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <span class="fee-name">Second Self Assessment</span>
+                  <span class="fee-desc">For a spouse or business partner with straightforward affairs.</span>
+                </th>
+                <td class="fee-price"><span class="fee-num num">£15</span><span class="fee-unit">per month</span></td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <span class="fee-name">Company formation</span>
+                  <span class="fee-desc">Registration, share structure, first filings and PAYE scheme set up properly from day one.</span>
+                </th>
+                <td class="fee-price"><span class="fee-num num">£150</span><span class="fee-unit">one-off</span></td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  <span class="fee-name">Catching up</span>
+                  <span class="fee-desc">A year or more behind? Quoted as a one-off before we touch anything, so the monthly fee starts from a clean base.</span>
+                </th>
+                <td class="fee-price"><span class="fee-from">from</span><span class="fee-num num">£250</span><span class="fee-unit">one-off</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="fee-foot">Your fee is fixed for twelve months from the day you join and reviewed each April. If the work turns out to be bigger than we both thought — you register for VAT, take on staff, buy two more flats — we tell you before we start, not after we have finished.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 PROCESS ============ -->
+  <section class="section" id="process" aria-labelledby="process-title">
+    <div class="wrap section__inner">
+      <p class="section__index">
+        <span class="section__num num">03</span>
+        <span class="section__label">How it works</span>
+      </p>
+      <div class="section__body">
+        <h2 id="process-title" data-reveal>What happens when you get in touch</h2>
+        <p class="section__intro" data-reveal>Nobody enjoys ringing an accountant for the first time, so here is the whole thing, start to finish. There is no sales call at the end of it.</p>
+
+        <ol class="steps">
+          <li class="step" data-reveal>
+            <p class="step__num num">01</p>
+            <div class="step__body">
+              <h3>You send a note or ring the office</h3>
+              <p>A sentence about what you do and what is worrying you is plenty. If you would rather speak to someone straight away, the phone is answered here in Tillicoultry, not in a call centre.</p>
+            </div>
+          </li>
+          <li class="step" data-reveal>
+            <p class="step__num num">02</p>
+            <div class="step__body">
+              <h3>A free half-hour, no strings</h3>
+              <p>In the office, over the phone, or on a video call — whatever suits. We ask about your income, your records and your deadlines, and we will tell you honestly if you do not need an accountant yet.</p>
+            </div>
+          </li>
+          <li class="step" data-reveal>
+            <p class="step__num num">03</p>
+            <div class="step__body">
+              <h3>A written quote on one page</h3>
+              <p>What we will do, what it costs each month, what we need from you and by when. It arrives within two working days, it does not expire, and the number does not move once you have agreed it.</p>
+            </div>
+          </li>
+          <li class="step" data-reveal>
+            <p class="step__num num">04</p>
+            <div class="step__body">
+              <h3>We do the switching</h3>
+              <p>If you already have an accountant, you tell them you are moving and we do everything else — the professional clearance letter, collecting your records, the HMRC authorisations. Most switches are done inside a fortnight.</p>
+            </div>
+          </li>
+          <li class="step" data-reveal>
+            <p class="step__num num">05</p>
+            <div class="step__body">
+              <h3>Then it is quiet, which is the point</h3>
+              <p>Books reviewed every month, every deadline diarised the day you join, and a reminder in good time rather than a panic in late January. One accountant, the same one, who knows your business.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 WHY ============ -->
+  <section class="section section--alt" id="why" aria-labelledby="why-title">
+    <div class="wrap section__inner">
+      <p class="section__index">
+        <span class="section__num num">04</span>
+        <span class="section__label">Why people move</span>
+      </p>
+      <div class="section__body">
+        <h2 id="why-title" data-reveal>The four reasons we hear most</h2>
+
+        <div class="reasons">
+          <article class="reason" data-reveal>
+            <h3>You get a person, not a portal</h3>
+            <p>The same accountant every time, who remembers what you do and answers when you ring. No ticket numbers, no being handed to whoever is free, no waiting a week to be told something takes two minutes.</p>
+          </article>
+          <article class="reason" data-reveal>
+            <h3>Plain English, and in writing</h3>
+            <p>If a piece of advice cannot be explained in two paragraphs you would willingly read, we have not finished thinking about it. Everything we tell you on the phone gets confirmed by email, so you have it later.</p>
+          </article>
+          <article class="reason" data-reveal>
+            <h3>Deadlines are our job, not yours</h3>
+            <p>Every date that applies to you is diarised the day you join, with reminders that arrive early enough to be useful. In twelve years we have never filed a client's return late.</p>
+          </article>
+          <article class="reason" data-reveal>
+            <h3>We meet you where your records are</h3>
+            <p>Xero and FreeAgent certified, comfortable in QuickBooks and Sage, and entirely unbothered if right now it is a shoebox and a banking app. We will get you onto something better at your pace.</p>
+          </article>
+        </div>
+
+        <blockquote class="pull" data-reveal>
+          <p>We take on only as many clients as we can properly look after. At the moment that is around a hundred and forty — and when the list is full, we say so rather than quietly getting slower.</p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 KEY DATES ============ -->
+  <section class="section band band--ink" id="dates" aria-labelledby="dates-title">
+    <div class="wrap section__inner">
+      <p class="section__index">
+        <span class="section__num num">05</span>
+        <span class="section__label">Key dates</span>
+      </p>
+      <div class="section__body">
+        <h2 id="dates-title" data-reveal>Dates worth putting in your diary</h2>
+        <p class="section__intro" data-reveal>Correct as at August <span class="num">2026</span>. We diarise every one of these for clients and chase you well before they matter — but here they are anyway, because it is your money.</p>
+
+        <dl class="dates">
+          <div class="date-row" data-reveal>
+            <dt><span class="date-d num">5 Oct</span> <span class="date-y num">2026</span></dt>
+            <dd>
+              <h3>Tell HMRC you need to file</h3>
+              <p>Started working for yourself or let a property out for the first time during 2025/26? This is your deadline to register for Self Assessment. Miss it and the penalty is based on the tax you owe.</p>
+            </dd>
+          </div>
+          <div class="date-row" data-reveal>
+            <dt><span class="date-d num">31 Oct</span> <span class="date-y num">2026</span></dt>
+            <dd>
+              <h3>Paper tax returns due</h3>
+              <p>If you still file on paper for 2025/26, it must be with HMRC by this date. Filing online buys you three more months — and we file everything online.</p>
+            </dd>
+          </div>
+          <div class="date-row" data-reveal>
+            <dt><span class="date-d num">7 Nov</span> <span class="date-y num">2026</span></dt>
+            <dd>
+              <h3>MTD quarterly update</h3>
+              <p>Covering the quarter to 5 October, for sole traders and landlords with qualifying income over <span class="num">£50,000</span>. Straightforward if the bookkeeping is kept up. Painful if it is not.</p>
+            </dd>
+          </div>
+          <div class="date-row" data-reveal>
+            <dt><span class="date-d num">30 Dec</span> <span class="date-y num">2026</span></dt>
+            <dd>
+              <h3>The PAYE coding option</h3>
+              <p>File online by today and, if you owe under <span class="num">£3,000</span> and are employed or drawing a pension, the tax can be collected through next year's tax code instead of in one lump.</p>
+            </dd>
+          </div>
+          <div class="date-row date-row--flag" data-reveal>
+            <dt><span class="date-d num">31 Jan</span> <span class="date-y num">2027</span></dt>
+            <dd>
+              <h3>The big one</h3>
+              <p>Online return for 2025/26, the balancing payment for that year, and the first payment on account for 2026/27 — all due on the same day. This is the date people underestimate.</p>
+            </dd>
+          </div>
+          <div class="date-row" data-reveal>
+            <dt><span class="date-d num">6 Apr</span> <span class="date-y num">2027</span></dt>
+            <dd>
+              <h3>Making Tax Digital widens</h3>
+              <p>Sole traders and landlords with qualifying income over <span class="num">£30,000</span> join the quarterly regime. If that is likely to be you, the time to get the bookkeeping onto software is now, not next spring.</p>
+            </dd>
+          </div>
+        </dl>
+
+        <p class="dates__note" data-reveal><strong>Limited companies run to their own calendar.</strong> Accounts are due at Companies House within nine months of your year end, the corporation tax is payable nine months and a day after it, and the CT600 has twelve months. We work backwards from your year end and tell you when we need the records.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 AREA ============ -->
+  <section class="section" id="area" aria-labelledby="area-title">
+    <svg class="ridge" viewBox="0 0 1440 130" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMax meet">
+      <path d="M0 118 L150 66 L268 96 L392 40 L520 88 L660 30 L790 84 L930 52 L1070 100 L1200 58 L1320 92 L1440 62" class="r-far"/>
+      <path d="M0 128 L120 96 L250 118 L370 78 L512 116 L640 82 L768 120 L900 90 L1030 122 L1170 88 L1300 118 L1440 96" class="r-near"/>
+      <line x1="0" y1="129" x2="1440" y2="129" class="r-base"/>
+    </svg>
+    <div class="wrap section__inner">
+      <p class="section__index">
+        <span class="section__num num">06</span>
+        <span class="section__label">Where we work</span>
+      </p>
+      <div class="section__body">
+        <h2 id="area-title" data-reveal>On Mill Brae, under the Ochils</h2>
+
+        <div class="area">
+          <div class="area__text" data-reveal>
+            <p>The office is on Mill Brae in Tillicoultry, ten minutes from Alloa, twenty from Stirling and about the same from the M9. Most of the work now happens by email and video call, so where you are matters far less than it used to — a good third of our clients we see once a year at most.</p>
+            <p>But if you would rather sit down with a folder of paperwork, a pen and a decent coffee, the table is there and it usually helps. Evening appointments on Tuesdays and Thursdays if the day job makes daytime impossible.</p>
+
+            <div class="contact-card">
+              <h3>The office</h3>
+              <address>
+                14 Mill Brae<br>
+                Tillicoultry<br>
+                Clackmannanshire FK13 6AA
+              </address>
+              <dl class="contact-list">
+                <div><dt>Telephone</dt><dd><a href="tel:+4412595550142" class="num">01259 555 0142</a></dd></div>
+                <div><dt>Email</dt><dd><a href="mailto:hello@ochilledger.co.uk">hello@ochilledger.co.uk</a></dd></div>
+                <div><dt>Monday–Thursday</dt><dd class="num">9am – 5pm</dd></div>
+                <div><dt>Friday</dt><dd class="num">9am – 3pm</dd></div>
+                <div><dt>January</dt><dd>Saturday mornings, by appointment</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <div class="area__towns" data-reveal>
+            <h3>Towns we work in</h3>
+            <ul class="towns">
+              <li>Dollar</li>
+              <li>Tillicoultry</li>
+              <li>Alva</li>
+              <li>Menstrie</li>
+              <li>Muckhart</li>
+              <li>Alloa</li>
+              <li>Sauchie</li>
+              <li>Tullibody</li>
+              <li>Clackmannan</li>
+              <li>Stirling</li>
+              <li>Bridge of Allan</li>
+              <li>Dunblane</li>
+              <li>Falkirk</li>
+              <li>Kincardine</li>
+              <li>Culross</li>
+              <li>Dunfermline</li>
+            </ul>
+            <p class="towns__note">Not on the list? It is a list, not a boundary. Ask.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 FAQ ============ -->
+  <section class="section section--alt" id="faq" aria-labelledby="faq-title">
+    <div class="wrap section__inner">
+      <p class="section__index">
+        <span class="section__num num">07</span>
+        <span class="section__label">Questions</span>
+      </p>
+      <div class="section__body">
+        <h2 id="faq-title" data-reveal>Questions we are asked most</h2>
+
+        <div class="faq" data-reveal>
+
+          <details class="qa">
+            <summary><h3>I already have an accountant. Is switching a hassle?</h3></summary>
+            <div class="qa__body">
+              <p>Not for you. You tell them you are moving — a short email is fine, and we will draft it if you would rather not — and we do the rest. We write for professional clearance and ask for your records: the last set of accounts, trial balance, tax computations, capital allowances pool and payroll data. They are professionally obliged to hand those over.</p>
+              <p>It usually takes about a fortnight and there is nothing for you to chase. The tidiest moment to move is just after a set of accounts has been filed, but honestly, any time of year works — including January, when quite a lot of people decide.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><h3>My bookkeeping is a mess and I am behind. Will you take me on?</h3></summary>
+            <div class="qa__body">
+              <p>Yes, and you are far from the first. We will quote a one-off catch-up fee before we touch anything so you know the worst up front, get you current, then start the monthly fee from a clean base.</p>
+              <p>If there are late filing penalties already, they are almost always cheaper to face early than to hide from. We will tell you exactly where you stand, and where there is a reasonable excuse — illness, bereavement, a failed HMRC service — we will help you make the case.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><h3>Does Making Tax Digital for Income Tax apply to me?</h3></summary>
+            <div class="qa__body">
+              <p>If you are a sole trader or landlord with qualifying income over <span class="num">£50,000</span>, it started in April 2026: quarterly updates through software, then a final declaration after the year end. Over <span class="num">£30,000</span>, you join from April 2027. Below that, nothing changes for now.</p>
+              <p>Qualifying income is turnover and gross rents added together before expenses, which catches people out — a small trade plus one let property can cross the line on its own. If you are a client, we will tell you which side you are on and set the software up either way.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><h3>Do I have to pay for Xero or FreeAgent on top of your fee?</h3></summary>
+            <div class="qa__body">
+              <p>The subscription is billed by the software company, not by us, and for most sole traders it is somewhere around <span class="num">£16</span> a month. We can add it to your monthly fee at cost if you would rather have one bill.</p>
+              <p>Before you pay for anything, check your bank: FreeAgent comes free with some business accounts, and if that covers what you need we will happily set you up on it and say nothing more about Xero.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><h3>Are the fees really fixed, or is that the headline price?</h3></summary>
+            <div class="qa__body">
+              <p>Really fixed, for twelve months from the day you join. Ringing us does not cost anything. Emailing a question does not cost anything. A meeting does not cost anything.</p>
+              <p>The only thing that changes the number is the work genuinely changing — you register for VAT, take on your first employee, buy two more properties — and we would tell you what the new fee is before starting that work, not on the invoice afterwards.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><h3>Should I go limited?</h3></summary>
+            <div class="qa__body">
+              <p>Sometimes, and less often than the internet suggests. It is partly a sums question — the tax saving at your profit level after the extra accountancy, payroll and filing costs — and partly a question of whether you want the admin and the public record that comes with it.</p>
+              <p>We will model both, show you the take-home difference in pounds, and tell you plainly if the answer is that it is not worth it yet. That advice is part of the free half-hour, not a chargeable piece of work.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><h3>Do we have to meet in person?</h3></summary>
+            <div class="qa__body">
+              <p>Not at all. Plenty of clients we speak to twice a year on a video call and never actually see. Others come in with a folder every quarter and we go through it together. Both are completely fine, and it costs the same either way.</p>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 ENQUIRY ============ -->
+  <section class="section band band--ink" id="enquiry" aria-labelledby="enquiry-title">
+    <div class="wrap section__inner">
+      <p class="section__index">
+        <span class="section__num num">08</span>
+        <span class="section__label">Get in touch</span>
+      </p>
+      <div class="section__body">
+        <div class="enquiry">
+
+          <div class="enquiry__intro">
+            <h2 id="enquiry-title" data-reveal>Tell us where you are up to</h2>
+            <p data-reveal>Half an hour, free, no obligation and no follow-up sales call. If we are not the right practice for you, we will say so — and usually point you at someone who is.</p>
+            <ul class="enquiry__facts" data-reveal>
+              <li><span class="ef-k">Phone</span> <a href="tel:+4412595550142" class="num">01259 555 0142</a></li>
+              <li><span class="ef-k">Email</span> <a href="mailto:hello@ochilledger.co.uk">hello@ochilledger.co.uk</a></li>
+              <li><span class="ef-k">Post</span> 14 Mill Brae, Tillicoultry FK13 6AA</li>
+            </ul>
+          </div>
+
+          <form class="form" id="enquiry-form" novalidate data-reveal>
+            <p class="form__demo-note">
+              <strong>Demonstration form.</strong> This is an example website, so nothing you type here is sent, received or stored by anybody.
+            </p>
+
+            <div class="field">
+              <label for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="f-name" name="name" autocomplete="name" required>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="f-email" name="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone <span class="opt">(optional)</span></label>
+                <input type="tel" id="f-phone" name="phone" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-type">You are</label>
+              <select id="f-type" name="type">
+                <option value="sole-trader">A sole trader or self-employed</option>
+                <option value="landlord">A landlord</option>
+                <option value="company">A limited company director</option>
+                <option value="both">Both a landlord and self-employed</option>
+                <option value="starting">Thinking of starting something</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="f-current">At the moment</label>
+              <select id="f-current" name="current">
+                <option value="none">I have no accountant — this would be my first</option>
+                <option value="switching">I have one and I am thinking of moving</option>
+                <option value="second">I have one but I would like a second opinion</option>
+                <option value="diy">I do it all myself and would rather not</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="f-message">How can we help? <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="f-message" name="message" rows="5" required placeholder="A sentence or two is plenty — what you do, and what is on your mind."></textarea>
+            </div>
+
+            <div class="field field--check">
+              <input type="checkbox" id="f-guide" name="guide" value="yes">
+              <label for="f-guide">Send me the two-page summary of tax dates for 2026/27 as well.</label>
+            </div>
+
+            <p class="form__req-note"><span class="req" aria-hidden="true">*</span> Required fields.</p>
+
+            <div class="form__status" id="form-status" role="status" hidden></div>
+
+            <button class="btn btn--light" type="submit">Send enquiry</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer__inner">
+
+    <div class="footer__brand">
+      <a class="wordmark wordmark--footer" href="#top">
+        <svg class="wordmark__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <rect x="1.6" y="1.6" width="28.8" height="28.8" class="wm-frame"/>
+          <path d="M6 22.4 L12.4 13.6 L16.6 18.4 L21.6 9.6 L26 17" class="wm-ridge"/>
+          <line x1="6" y1="26" x2="26" y2="26" class="wm-rule"/>
+          <circle cx="21.6" cy="9.6" r="2.1" class="wm-dot"/>
+        </svg>
+        <span class="wordmark__text">
+          <span class="wordmark__name">Ochil Ledger</span>
+          <span class="wordmark__sub">Accountancy &amp; Bookkeeping</span>
+        </span>
+      </a>
+      <p class="footer__blurb">Fixed-fee accountancy and bookkeeping for sole traders, landlords and small limited companies across Clackmannanshire, Stirling, Falkirk and west Fife.</p>
+    </div>
+
+    <nav class="footer__nav" aria-label="Footer">
+      <h2 class="footer__h">Pages</h2>
+      <ul>
+        <li><a href="#services">What we do</a></li>
+        <li><a href="#fees">Fees</a></li>
+        <li><a href="#process">How it works</a></li>
+        <li><a href="#why">Why people move</a></li>
+        <li><a href="#dates">Key dates</a></li>
+        <li><a href="#area">Where we work</a></li>
+        <li><a href="#faq">Questions</a></li>
+        <li><a href="#enquiry">Get in touch</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer__contact">
+      <h2 class="footer__h">Office</h2>
+      <address>
+        14 Mill Brae<br>
+        Tillicoultry<br>
+        Clackmannanshire FK13 6AA
+      </address>
+      <p><a href="tel:+4412595550142" class="num">01259 555 0142</a></p>
+      <p><a href="mailto:hello@ochilledger.co.uk">hello@ochilledger.co.uk</a></p>
+      <p class="footer__hours num">Mon–Thu 9–5 · Fri 9–3</p>
+    </div>
+
+  </div>
+
+  <div class="wrap footer__base">
+    <p>Ochil Ledger is a <strong>fictional business</strong>. This page is a design example built by Tempany Web Studios to show how an accountancy practice's website could look. Fees, dates, telephone numbers and details are illustrative only.</p>
+    <p><a href="https://tempanywebstudios.co.uk" rel="noopener">Website design by Tempany Web Studios, Dollar →</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
