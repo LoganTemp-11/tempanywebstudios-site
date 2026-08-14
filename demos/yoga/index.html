@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stillwater Yoga — Demo Site by Tempany Web Studio</title>
+<meta name="description" content="Demonstration website for a fictional independent yoga studio, built by Tempany Web Studio.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 40 40" width="36" height="36">
+        <circle cx="20" cy="20" r="19" class="bm-ring"/>
+        <path d="M20 9c5 4.5 7.5 8 7.5 11.5A7.5 7.5 0 0 1 20 28a7.5 7.5 0 0 1-7.5-7.5C12.5 17 15 13.5 20 9z" class="bm-leaf"/>
+        <path d="M20 12v16" class="bm-vein"/>
+      </svg>
+    </span>
+    <span class="brand-text">Stillwater<span class="brand-sub">yoga</span></span>
+  </a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="nav" class="nav" aria-label="Main">
+    <a href="#classes">Classes</a>
+    <a href="#timetable">Timetable</a>
+    <a href="#prices">Prices</a>
+    <a href="#about">About</a>
+    <a class="nav-cta" href="#book">Book a class</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-copy" data-reveal>
+      <p class="eyebrow">Independent studio &middot; Alloa</p>
+      <h1>Come as you are.<br><em>Leave lighter.</em></h1>
+      <p class="lead">Small classes for every body and every level. No mirrors, no competition, and absolutely no pressure to touch your toes.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#book">Book your first class</a>
+        <a class="btn btn-ghost" href="#timetable">See the timetable</a>
+      </div>
+      <p class="hero-note">First class is £5 for anyone new. No membership, no commitment.</p>
+    </div>
+
+    <div class="hero-art" data-reveal>
+      <div class="breathe" aria-hidden="true">
+        <div class="breathe-glow"></div>
+        <div class="breathe-ring r3"></div>
+        <div class="breathe-ring r2"></div>
+        <div class="breathe-ring r1"></div>
+        <div class="breathe-core"></div>
+        <span class="breathe-label" id="breatheLabel">Breathe in</span>
+      </div>
+      <p class="breathe-caption">Follow along if you like. Four in, hold, six out.</p>
+    </div>
+  </section>
+
+  <!-- MARQUEE STRIP -->
+  <section class="strip" aria-label="At a glance">
+    <div class="strip-item"><strong>Max 12</strong><span>people per class</span></div>
+    <div class="strip-item"><strong>All levels</strong><span>beginners genuinely welcome</span></div>
+    <div class="strip-item"><strong>Mats provided</strong><span>just bring yourself</span></div>
+    <div class="strip-item"><strong>5 min walk</strong><span>from the town centre</span></div>
+  </section>
+
+  <!-- CLASSES -->
+  <section id="classes" class="section">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">What we run</p>
+      <h2>Four classes. Pick whichever suits the day you have had.</h2>
+      <p class="section-lead">Every class is drop-in friendly. If you are not sure where to start, come to Slow Flow and we will look after you.</p>
+    </div>
+
+    <div class="class-grid">
+      <article class="class-card" data-reveal>
+        <div class="class-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M8 32c6-10 12-14 16-14s10 4 16 14" class="ci"/><circle cx="24" cy="13" r="4" class="ci"/></svg>
+        </div>
+        <h3>Slow Flow</h3>
+        <p class="class-meta">60 min &middot; All levels</p>
+        <p>Gentle, unhurried movement linked to the breath. The one to come to first, and the one most people keep coming back to.</p>
+      </article>
+
+      <article class="class-card" data-reveal>
+        <div class="class-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M10 38V20l14-10 14 10v18" class="ci"/><path d="M19 38V27h10v11" class="ci"/></svg>
+        </div>
+        <h3>Vinyasa</h3>
+        <p class="class-meta">60 min &middot; Some experience</p>
+        <p>Warmer and faster, with a bit more strength work. You will sweat, but nobody is checking whether your pose is perfect.</p>
+      </article>
+
+      <article class="class-card" data-reveal>
+        <div class="class-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M24 40s-13-7.5-13-17a7.5 7.5 0 0 1 13-5 7.5 7.5 0 0 1 13 5c0 9.5-13 17-13 17z" class="ci"/></svg>
+        </div>
+        <h3>Restore</h3>
+        <p class="class-meta">75 min &middot; All levels</p>
+        <p>Long, supported holds with bolsters and blankets. Closer to a nap than a workout, and exactly what some weeks call for.</p>
+      </article>
+
+      <article class="class-card" data-reveal>
+        <div class="class-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="14" class="ci"/><path d="M24 16v8l6 4" class="ci"/></svg>
+        </div>
+        <h3>Lunch Express</h3>
+        <p class="class-meta">30 min &middot; All levels</p>
+        <p>A half hour reset in the middle of the working day. Come in what you are wearing, you will not be a sweaty mess afterwards.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- TIMETABLE -->
+  <section id="timetable" class="section section-alt">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">When we run</p>
+      <h2>This week at the studio.</h2>
+      <p class="section-lead">The timetable stays the same week to week. Term breaks and one-off workshops get posted on Instagram.</p>
+    </div>
+
+    <div class="table-wrap" data-reveal>
+      <table class="timetable">
+        <caption class="visually-hidden">Weekly class timetable</caption>
+        <thead>
+          <tr><th scope="col">Day</th><th scope="col">Time</th><th scope="col">Class</th><th scope="col">Spaces</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Monday</th><td>18:30</td><td>Slow Flow</td><td><span class="pill ok">4 left</span></td></tr>
+          <tr><th scope="row">Tuesday</th><td>12:30</td><td>Lunch Express</td><td><span class="pill ok">7 left</span></td></tr>
+          <tr><th scope="row">Tuesday</th><td>19:00</td><td>Vinyasa</td><td><span class="pill low">2 left</span></td></tr>
+          <tr><th scope="row">Wednesday</th><td>09:30</td><td>Slow Flow</td><td><span class="pill ok">6 left</span></td></tr>
+          <tr><th scope="row">Thursday</th><td>12:30</td><td>Lunch Express</td><td><span class="pill ok">9 left</span></td></tr>
+          <tr><th scope="row">Thursday</th><td>19:00</td><td>Restore</td><td><span class="pill full">Full</span></td></tr>
+          <tr><th scope="row">Saturday</th><td>10:00</td><td>Slow Flow</td><td><span class="pill ok">5 left</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note center">Spaces shown are an example of what a live booking system would display automatically.</p>
+  </section>
+
+  <!-- PRICES -->
+  <section id="prices" class="section">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">What it costs</p>
+      <h2>No membership. No contract. Pay for what you use.</h2>
+    </div>
+
+    <div class="price-grid">
+      <article class="price-card" data-reveal>
+        <h3>First class</h3>
+        <p class="price">£5</p>
+        <p class="price-sub">Anyone new to the studio</p>
+        <ul><li>Any class on the timetable</li><li>Mat and props provided</li><li>No sign-up needed</li></ul>
+      </article>
+
+      <article class="price-card featured" data-reveal>
+        <span class="badge">Most popular</span>
+        <h3>Five class pass</h3>
+        <p class="price">£45</p>
+        <p class="price-sub">£9 a class, valid 3 months</p>
+        <ul><li>Use across any classes</li><li>Share with a friend</li><li>No expiry pressure</li></ul>
+      </article>
+
+      <article class="price-card" data-reveal>
+        <h3>Drop in</h3>
+        <p class="price">£10</p>
+        <p class="price-sub">One class, whenever suits</p>
+        <ul><li>Book ahead or turn up</li><li>Mat and props provided</li><li>Pay on the day</li></ul>
+      </article>
+
+      <article class="price-card" data-reveal>
+        <h3>One to one</h3>
+        <p class="price">£40</p>
+        <p class="price-sub">60 minutes, just you</p>
+        <ul><li>Built around what you need</li><li>Injury and recovery friendly</li><li>Studio or your home</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section section-alt split">
+    <div class="split-copy" data-reveal>
+      <p class="eyebrow">Who is teaching</p>
+      <h2>Hi, I am Nia.</h2>
+      <p>I started practising after a back injury in my thirties, when I was told to "just rest" and it was not helping. Yoga gave me a way back that nothing else did.</p>
+      <p>I have been teaching for eight years now, and I still think the best class is the one where somebody walks in nervous and leaves having laughed at least once. Classes are capped at twelve so I actually know who is in the room.</p>
+      <blockquote class="quote">
+        <p>You do not need to be flexible. You do not need special clothes. You just need an hour.</p>
+      </blockquote>
+      <p class="cred">200hr Yoga Alliance certified &middot; Trauma-informed training &middot; Fully insured</p>
+    </div>
+    <div class="split-art" data-reveal aria-hidden="true">
+      <svg viewBox="0 0 400 460" class="art-figure">
+        <defs>
+          <linearGradient id="mat" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c98f6d"/><stop offset="100%" stop-color="#b87a56"/>
+          </linearGradient>
+        </defs>
+        <circle cx="200" cy="196" r="150" class="af-halo"/>
+        <circle cx="200" cy="196" r="112" class="af-halo2"/>
+        <ellipse cx="200" cy="392" rx="150" ry="20" fill="url(#mat)" opacity=".85"/>
+        <ellipse cx="200" cy="392" rx="150" ry="20" class="af-matline"/>
+        <!-- seated figure -->
+        <circle cx="200" cy="150" r="30" class="af-body"/>
+        <path d="M200 182c-30 0-52 26-56 60-2 18-2 30-2 42h116c0-12 0-24-2-42-4-34-26-60-56-60z" class="af-body"/>
+        <path d="M144 300c-24 6-40 26-44 52h60" class="af-body"/>
+        <path d="M256 300c24 6 40 26 44 52h-60" class="af-body"/>
+        <path d="M138 372h124c8 0 12-6 12-12H126c0 6 4 12 12 12z" class="af-body-dark"/>
+        <!-- leaves -->
+        <path d="M78 132c14-20 34-26 46-22 4 14-4 34-24 44-14 8-26 4-30-4-2-6 2-14 8-18z" class="af-leaf"/>
+        <path d="M322 132c-14-20-34-26-46-22-4 14 4 34 24 44 14 8 26 4 30-4 2-6-2-14-8-18z" class="af-leaf"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">What people say</p>
+      <h2>From the people on the mats.</h2>
+    </div>
+    <div class="quote-grid">
+      <blockquote class="quote-card" data-reveal>
+        <p>"I put off going for two years because I thought I would be the least bendy person there. I was, and it did not matter at all."</p>
+        <footer>Karen, Alloa</footer>
+      </blockquote>
+      <blockquote class="quote-card" data-reveal>
+        <p>"The lunch class has genuinely changed my working week. Half an hour and I go back to my desk a different person."</p>
+        <footer>Dev, Tullibody</footer>
+      </blockquote>
+      <blockquote class="quote-card" data-reveal>
+        <p>"Nia noticed my shoulder was bothering me before I said anything. That is the difference a small class makes."</p>
+        <footer>Marie, Sauchie</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="book" class="section booking">
+    <div class="booking-inner">
+      <div data-reveal>
+        <p class="eyebrow light">Booking</p>
+        <h2 class="light">Reserve a mat in about twenty seconds.</h2>
+        <p class="section-lead light">Pick a class, pay if you want to, and you are in. You will get a reminder the morning of the class, and you can cancel up to two hours before with no charge.</p>
+        <ul class="booking-list">
+          <li>Live spaces, so classes never get double booked</li>
+          <li>Card, Apple Pay or your class pass</li>
+          <li>Automatic reminders and cancellations</li>
+        </ul>
+      </div>
+
+      <div class="booking-widget" data-reveal>
+        <div class="bw-head">
+          <span class="bw-dot"></span><span class="bw-dot"></span><span class="bw-dot"></span>
+          <span class="bw-title">Book a class</span>
+        </div>
+        <div class="bw-body">
+          <label class="bw-field"><span>Class</span>
+            <select disabled><option>Slow Flow &mdash; Mon 18:30</option></select>
+          </label>
+          <label class="bw-field"><span>Name</span><input type="text" placeholder="Your name" disabled></label>
+          <label class="bw-field"><span>Email</span><input type="email" placeholder="you@example.com" disabled></label>
+          <button class="btn btn-primary bw-btn" type="button" disabled>Confirm my place</button>
+          <p class="bw-note">Demonstration only. A live site would connect this to a real booking system such as Fresha or Cal.com, so payments and reminders happen automatically.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Before you come</p>
+      <h2>The things everyone asks.</h2>
+    </div>
+    <div class="faq-list" data-reveal>
+      <details><summary>I have never done yoga before. Is that a problem?</summary>
+        <p>Not even slightly. Roughly a third of people in Slow Flow on any given week are in their first month. Come to that one and tell me at the door, and I will keep an eye on you.</p></details>
+      <details><summary>What do I need to bring?</summary>
+        <p>Yourself and something comfortable to move in. Mats, blocks, straps, bolsters and blankets are all here. Bring a bottle of water if you like.</p></details>
+      <details><summary>I am not flexible at all.</summary>
+        <p>That is a reason to come, not a reason to stay away. Flexibility is a result of practising, not a requirement for starting.</p></details>
+      <details><summary>I have an injury or a health condition.</summary>
+        <p>Tell me before class and I will give you alternatives as we go. If you are unsure whether it is suitable, send me a message and we will work it out.</p></details>
+      <details><summary>Can I just turn up?</summary>
+        <p>Yes, though classes cap at twelve and the evening ones do fill. Booking ahead saves a wasted trip.</p></details>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-alt contact">
+    <div class="contact-inner">
+      <div data-reveal>
+        <p class="eyebrow">Get in touch</p>
+        <h2>Not sure? Just ask.</h2>
+        <p class="section-lead">If you have a question you would rather ask a person than read on a website, send a message and I will get back to you.</p>
+        <div class="contact-facts">
+          <div><strong>Studio</strong><span>14 Mill Street, Alloa, FK10</span></div>
+          <div><strong>Email</strong><span>hello@stillwateryoga.example</span></div>
+          <div><strong>Phone</strong><span>01259 000 000</span></div>
+        </div>
+      </div>
+      <form class="contact-form" data-reveal novalidate>
+        <label><span>Name</span><input type="text" name="name" required></label>
+        <label><span>Email</span><input type="email" name="email" required></label>
+        <label><span>Message</span><textarea name="message" rows="4" required></textarea></label>
+        <button class="btn btn-primary" type="submit">Send message</button>
+        <p class="form-note" id="formNote" role="status">Demonstration form. Nothing is sent, stored or emailed anywhere.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-brand">Stillwater Yoga</p>
+    <p>Stillwater Yoga is a fictional business created for demonstration purposes. Demo site by <a href="https://tempanywebstudios.co.uk">Tempany Web Studio</a>. The address, phone number, prices and reviews shown are illustrative and not real.</p>
+    <a class="back-top" href="#top">Back to top</a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
