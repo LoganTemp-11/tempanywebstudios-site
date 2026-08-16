@@ -84,7 +84,19 @@ em { font-style: italic; color: var(--lime); }
   border: 1px solid var(--line); border-radius: 10px; background: #fff;
   overflow: hidden; display: flex; flex-direction: column;
 }
-.work-meta { padding: 28px; display: flex; flex-direction: column; gap: 12px; height: 100%; }
+.work-shot {
+  display: block; overflow: hidden; background: var(--cream);
+  border-bottom: 1px solid var(--line); aspect-ratio: 16 / 10;
+  flex: 0 0 auto;
+}
+.work-shot img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top center;
+  display: block; transition: transform 0.45s cubic-bezier(.22,.61,.36,1);
+}
+.work-card:hover .work-shot img { transform: scale(1.035); }
+.work-card { transition: transform 0.25s cubic-bezier(.22,.61,.36,1), box-shadow 0.25s cubic-bezier(.22,.61,.36,1); }
+.work-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(16,24,21,0.10); }
+.work-meta { padding: 26px 28px 28px; display: flex; flex-direction: column; gap: 12px; height: 100%; }
 .work-tag {
   text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.7rem;
   font-weight: 700; color: var(--dark);
