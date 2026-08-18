@@ -349,8 +349,19 @@ a { color: inherit; }
     repeating-linear-gradient(0deg, rgba(200,195,185,0.045) 0 1px, transparent 1px 78px);
   pointer-events: none;
 }
-.hero__layout { position: relative; display: grid; gap: clamp(2.25rem, 6vw, 3.25rem); }
-.hero__copy { position: relative; }
+/* the hero reads as one full-width "drawing sheet": a title-block header
+   (copy), the elevation banner, then a title-block footer strip (plaque) —
+   stacked, never a left-text / right-image split. */
+.hero__sheet {
+  position: relative;
+  border: 1px solid var(--rule);
+  background: var(--slate-850);
+}
+.hero__copy {
+  position: relative;
+  max-width: 44rem;
+  padding: clamp(1.75rem, 5vw, 3rem) clamp(1.25rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.25rem);
+}
 
 .hero h1 {
   font-size: var(--step-4);
@@ -390,25 +401,20 @@ a { color: inherit; }
 .cta-row .btn { flex: 1 1 auto; min-width: 15rem; }
 
 /* =========================================================
-   HERO — SITE PLAQUE (permit-board / info-plaque card)
+   HERO — SITE PLAQUE (title-block strip along the sheet's foot)
    ========================================================= */
 .site-plaque {
   position: relative;
-  align-self: start;
   width: 100%;
-  max-width: 25rem;
-  padding: 1.4rem 1.5rem 1.6rem;
-  background-color: var(--slate-850);
+  padding: 1.4rem clamp(1.25rem, 4vw, 3rem) 1.6rem;
+  background-color: var(--slate-800);
   background-image:
     radial-gradient(circle 4px at 14px 14px, var(--rule) 55%, transparent 58%),
     radial-gradient(circle 4px at calc(100% - 14px) 14px, var(--rule) 55%, transparent 58%),
     radial-gradient(circle 4px at 14px calc(100% - 14px), var(--rule) 55%, transparent 58%),
     radial-gradient(circle 4px at calc(100% - 14px) calc(100% - 14px), var(--rule) 55%, transparent 58%);
   background-repeat: no-repeat;
-  border: 1px solid var(--rule);
   border-top: 3px solid var(--amber);
-  box-shadow: 0 20px 38px -22px rgba(0, 0, 0, 0.85);
-  transform: rotate(-1.6deg);
 }
 .site-plaque__label {
   font-family: var(--font-mono);
@@ -474,7 +480,11 @@ a { color: inherit; }
   color: var(--bone-dim);
 }
 
-.hero__drawing { position: relative; }
+.hero__drawing {
+  position: relative;
+  border-top: 1px solid var(--rule);
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 1.75rem);
+}
 .drawing { width: 100%; height: auto; }
 .dw-hair, .dw-line, .dw-dim, .dw-note { fill: none; }
 .dw-hair { stroke: var(--rule); stroke-width: 1; vector-effect: non-scaling-stroke; }
@@ -1017,6 +1027,35 @@ a { color: inherit; }
 
 @media (min-width: 700px) {
   :root { --gutter: 2rem; }
+
+  /* site-plaque becomes a horizontal title-block strip once there is
+     room: label, stats and meta sit in one row along the sheet's foot. */
+  .site-plaque {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.5rem;
+  }
+  .site-plaque__label { flex: 0 0 auto; }
+  .site-plaque .hazard-rule {
+    flex: 0 0 auto;
+    width: 2px;
+    height: 2.75rem;
+    margin-block: 0;
+  }
+  .site-plaque__stats {
+    flex: 1 1 auto;
+    min-width: 16rem;
+    grid-template-columns: repeat(3, auto);
+    gap: 2rem;
+  }
+  .site-plaque__meta-list {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 1.75rem;
+  }
+  .site-plaque__meta { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
+
   .trust__list { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 2rem; }
   .services { grid-template-columns: repeat(2, 1fr); }
   .work { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
@@ -1070,23 +1109,6 @@ a { color: inherit; }
   }
   .nav-list a.is-current { color: var(--amber); }
   .nav-list__cta { margin: 0 0 0 0.75rem; }
-
-  .hero__layout {
-    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-    grid-template-areas:
-      "copy    drawing"
-      "plaque  drawing";
-    align-items: start;
-    column-gap: 3.5rem;
-    row-gap: 2.25rem;
-  }
-  .hero__copy { grid-area: copy; }
-  .site-plaque {
-    grid-area: plaque;
-    margin-top: 0.5rem;
-    margin-right: auto;
-  }
-  .hero__drawing { grid-area: drawing; align-self: center; }
 
   .trust__list { grid-template-columns: repeat(4, 1fr); }
   .trust__list li { font-size: 0.9rem; }

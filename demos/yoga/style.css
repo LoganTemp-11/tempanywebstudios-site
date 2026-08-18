@@ -115,6 +115,20 @@ p{margin:0 0 1em}
 .hero-copy{
   position:relative;z-index:1;max-width:640px;margin:0 auto;text-align:center;
 }
+/* Sand scrim: lifts the centred copy off the breathing backdrop so body text
+   always sits on a fully opaque ground, not a tinted blend of the two. The
+   box is sized off .hero-copy's own padding box (which already wraps every
+   line of text with room to spare) and expanded outward, so it is
+   guaranteed to sit fully behind all hero copy at any viewport width. The
+   blurred shadow feathers the edge into the ambient circle rather than
+   ending in a hard rectangle. Sits inside .hero-copy's stacking context, so
+   it covers the circle but stays behind every word. */
+.hero-copy::before{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  inset:-7% -9%;border-radius:32px;
+  background:#f7f3ec;
+  box-shadow:0 0 100px 60px #f7f3ec;
+}
 .hero .lead{font-size:1.16rem;max-width:44ch;color:var(--ink-2);margin-left:auto;margin-right:auto}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;justify-content:center}
 .hero-note{margin-top:20px;font-size:.88rem;color:var(--ink-3)}
@@ -142,9 +156,12 @@ p{margin:0 0 1em}
 }
 .hero-bg .breathe-core{opacity:.85}
 .breathe-label{
-  position:relative;z-index:2;font-family:var(--serif);font-style:italic;
-  font-size:clamp(1.1rem,1.6vw,1.4rem);color:#fff;letter-spacing:.01em;
-  text-shadow:0 1px 8px rgba(31,38,32,.4);
+  position:relative;z-index:2;display:inline-block;
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(1rem,1.4vw,1.2rem);color:#fff;letter-spacing:.01em;
+  background:var(--sage);padding:7px 22px;border-radius:100px;
+  margin:26px 0 0;
+  box-shadow:0 6px 18px rgba(79,99,71,.28);
 }
 .breathe-caption{font-size:.83rem;color:var(--ink-3);margin:10px 0 0;text-align:center}
 @keyframes breathe{

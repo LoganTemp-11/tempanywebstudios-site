@@ -116,7 +116,32 @@
 
   <!-- ───────────────── HERO ───────────────── -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="wrap hero__grid">
+    <div class="hero__backdrop" aria-hidden="true">
+      <svg class="hero__art" viewBox="0 0 1440 680" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <g class="hero__lines" fill="none" stroke-linecap="round">
+          <path d="M-100 70C140 14 300 144 560 78S900 -14 1080 64S1320 140 1560 72"/>
+          <path d="M-100 150C140 94 300 224 560 158S900 66 1080 144S1320 220 1560 152"/>
+          <path d="M-100 230C140 174 300 304 560 238S900 146 1080 224S1320 300 1560 232"/>
+          <path d="M-100 310C140 254 300 384 560 318S900 226 1080 304S1320 380 1560 312"/>
+          <path d="M-100 390C140 334 300 464 560 398S900 306 1080 384S1320 460 1560 392"/>
+          <path d="M-100 470C140 414 300 544 560 478S900 386 1080 464S1320 540 1560 472"/>
+          <path d="M-100 550C140 494 300 624 560 558S900 466 1080 544S1320 620 1560 552"/>
+          <path d="M-100 630C140 574 300 704 560 638S900 546 1080 624S1320 700 1560 632"/>
+        </g>
+        <path class="hero__lines-accent" d="M-100 430C140 374 300 504 560 438S900 346 1080 424S1320 500 1560 432" fill="none" stroke-linecap="round"/>
+        <g class="hero__focus">
+          <circle cx="1180" cy="440" r="54"/>
+          <circle cx="1180" cy="440" r="32"/>
+          <circle cx="1180" cy="440" r="8" class="hero__focus-dot"/>
+        </g>
+        <g class="hero__dots">
+          <circle cx="1140" cy="150" r="3.5"/><circle cx="1174" cy="128" r="3.5"/><circle cx="1208" cy="150" r="3.5"/>
+          <circle cx="1140" cy="184" r="3.5"/><circle cx="1174" cy="162" r="3.5"/><circle cx="1208" cy="184" r="3.5"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="wrap hero__content">
       <div class="hero__text">
         <p class="eyebrow"><span class="eyebrow__rule" aria-hidden="true"></span>HCPC-registered physiotherapy in Alloa</p>
         <h1 id="hero-title">Understand your pain.<br><em>Then get moving again.</em></h1>
@@ -128,48 +153,10 @@
         <p class="hero__micro">No GP referral needed &middot; Evening and Saturday appointments &middot; Most enquiries answered the same day</p>
       </div>
 
-      <div class="hero__art-wrap">
-        <svg class="hero__art" viewBox="0 0 420 520" role="img" aria-labelledby="heroArtTitle" focusable="false">
-          <title id="heroArtTitle">Abstract contour lines suggesting movement returning to the body</title>
-          <defs>
-            <linearGradient id="archFill" x1="0.1" y1="0" x2="0.8" y2="1">
-              <stop offset="0" class="grad-a"/>
-              <stop offset="1" class="grad-b"/>
-            </linearGradient>
-            <clipPath id="archClip">
-              <path d="M0 210C0 94 94 0 210 0s210 94 210 210v310H0Z"/>
-            </clipPath>
-          </defs>
-          <g clip-path="url(#archClip)">
-            <rect width="420" height="520" fill="url(#archFill)"/>
-            <g class="contours" fill="none" stroke-linecap="round">
-              <path d="M-60 210C40 150 130 262 230 206S400 128 480 178"/>
-              <path d="M-60 250C40 190 130 302 230 246S400 168 480 218"/>
-              <path d="M-60 290C40 230 130 342 230 286S400 208 480 258"/>
-              <path d="M-60 330C40 270 130 382 230 326S400 248 480 298"/>
-              <path d="M-60 370C40 310 130 422 230 366S400 288 480 338"/>
-              <path d="M-60 410C40 350 130 462 230 406S400 328 480 378"/>
-              <path d="M-60 450C40 390 130 502 230 446S400 368 480 418"/>
-            </g>
-            <path class="contour-accent" d="M-60 310C40 250 130 362 230 306S400 228 480 278" fill="none" stroke-linecap="round"/>
-            <g class="focus-point">
-              <circle cx="230" cy="306" r="42"/>
-              <circle cx="230" cy="306" r="26"/>
-              <circle cx="230" cy="306" r="7" class="focus-dot"/>
-            </g>
-            <g class="hero-dots">
-              <circle cx="86" cy="118" r="3"/><circle cx="120" cy="96" r="3"/><circle cx="154" cy="118" r="3"/>
-              <circle cx="86" cy="152" r="3"/><circle cx="120" cy="130" r="3"/><circle cx="154" cy="152" r="3"/>
-            </g>
-          </g>
-          <path class="arch-edge" d="M0 210C0 94 94 0 210 0s210 94 210 210v310H0Z" fill="none"/>
-        </svg>
-
-        <div class="hero__card">
-          <p class="hero__card-k">First appointment</p>
-          <p class="hero__card-v">50 minutes &middot; £58</p>
-          <p class="hero__card-s">Assessment, treatment and your plan — all in the one visit.</p>
-        </div>
+      <div class="hero__card">
+        <p class="hero__card-k">First appointment</p>
+        <p class="hero__card-v">50 minutes &middot; £58</p>
+        <p class="hero__card-s">Assessment, treatment and your plan — all in the one visit.</p>
       </div>
     </div>
 

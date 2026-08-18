@@ -490,13 +490,47 @@ section[id] { scroll-margin-top: calc(var(--head-h) + 1rem); }
 /* ---------- 5. HERO ---------- */
 .hero {
   position: relative;
+  isolation: isolate;
   padding-top: clamp(2.5rem, 7vw, 5rem);
   background:
-    radial-gradient(120% 90% at 88% 0%, var(--second-tint) 0%, transparent 58%),
+    radial-gradient(110% 85% at 78% 18%, var(--second-tint) 0%, transparent 60%),
     var(--bg);
   overflow: clip;
 }
-.hero__grid { display: grid; gap: clamp(2.5rem, 6vw, 3rem); }
+
+/* Full-bleed backdrop: the contour-line illustration spans the whole
+   hero as one continuous field behind the copy and the appointment
+   card, rather than sitting in its own column. Negative z-index (with
+   .hero isolated above) keeps it behind the in-flow content without
+   needing a clip-path "panel" to fake a split. */
+.hero__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.hero__art { width: 100%; height: 100%; display: block; }
+.hero__lines path { stroke: var(--art-line); stroke-width: 1.6; opacity: .26; }
+.hero__lines-accent { stroke: var(--art-accent); stroke-width: 2.4; opacity: .8; }
+.hero__focus circle { fill: none; stroke: var(--art-accent); stroke-width: 1.4; opacity: .4; }
+.hero__focus .hero__focus-dot { fill: var(--art-accent); stroke: none; opacity: .9; }
+.hero__dots circle { fill: var(--art-line); opacity: .4; }
+
+/* Soft glow so the headline keeps full contrast wherever the lines
+   pass behind it — a light-touch scrim, not a hard panel. */
+.hero__backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(58% 48% at 28% 30%, var(--bg) 0%, transparent 72%);
+  opacity: .75;
+}
+
+.hero__content {
+  position: relative;
+  padding-bottom: clamp(3rem, 8vw, 4rem);
+}
+.hero__text { max-width: 36rem; }
 
 .eyebrow {
   display: flex;
@@ -530,45 +564,6 @@ section[id] { scroll-margin-top: calc(var(--head-h) + 1rem); }
   max-width: 40ch;
 }
 
-.hero__art-wrap { position: relative; max-width: 26rem; width: 100%; margin-inline: auto; }
-
-/* Diagonal clip-path split: the visual zone sits on two soft, angled
-   panels behind the illustration. The back panel (paper-toned, matching
-   the site's card surface) peeks out from behind the front panel
-   (sage-tinted) along the slope, so the boundary between the text zone
-   and the visual zone reads as a gentle diagonal instead of a hard
-   vertical edge. Angle stays shallow (roughly 8-12°) to keep the calm,
-   reassuring tone of the rest of the page. */
-.hero__art-wrap::before,
-.hero__art-wrap::after {
-  content: "";
-  position: absolute;
-  border-radius: var(--radius-l);
-}
-.hero__art-wrap::before {
-  inset: -3% -5% -3% -5%;
-  background: var(--surface);
-  clip-path: polygon(0% 9%, 100% 0%, 100% 100%, 0% 100%);
-  z-index: 1;
-}
-.hero__art-wrap::after {
-  inset: 0% -3% 0% -3%;
-  background: linear-gradient(158deg, var(--bg-alt) 0%, var(--second-tint) 78%);
-  clip-path: polygon(0% 5%, 100% 0%, 100% 100%, 0% 100%);
-  z-index: 2;
-  filter: drop-shadow(var(--hero-diagonal-shadow));
-}
-
-.hero__art { width: 100%; height: auto; display: block; position: relative; z-index: 3; }
-.grad-a { stop-color: var(--art-1); }
-.grad-b { stop-color: var(--art-2); }
-.contours path { stroke: var(--art-line); stroke-width: 1.6; opacity: .42; }
-.contour-accent { stroke: var(--art-accent); stroke-width: 2.6; opacity: .95; }
-.focus-point circle { fill: none; stroke: var(--art-accent); stroke-width: 1.4; opacity: .55; }
-.focus-point .focus-dot { fill: var(--art-accent); stroke: none; opacity: 1; }
-.hero-dots circle { fill: var(--art-line); opacity: .5; }
-.arch-edge { stroke: var(--art-edge); stroke-width: 1.5; }
-
 .hero__card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -576,7 +571,7 @@ section[id] { scroll-margin-top: calc(var(--head-h) + 1rem); }
   padding: 1.1rem 1.25rem;
   box-shadow: var(--shadow-md);
   max-width: 17rem;
-  margin: -3.5rem auto 0;
+  margin-top: 2.5rem;
   position: relative;
   z-index: 4;
 }
@@ -629,30 +624,15 @@ section[id] { scroll-margin-top: calc(var(--head-h) + 1rem); }
 @media (min-width: 64em) { .trust__inner { grid-template-columns: repeat(4, 1fr); } }
 
 @media (min-width: 62em) {
-  .hero__grid {
-    grid-template-columns: 1.08fr .92fr;
-    align-items: center;
-    gap: clamp(2rem, 5vw, 4.5rem);
-  }
-  .hero__art-wrap { max-width: none; margin: 0; }
+  /* The card breaks free of document flow here and floats over the
+     backdrop just past where the copy ends — anchored to one corner
+     of the content block, not a matching column beside it. */
+  .hero__content { padding-bottom: 12rem; }
   .hero__card {
     position: absolute;
-    left: -2.5rem;
+    left: 28rem;
     bottom: 1.5rem;
-    margin: 0;
-  }
-
-  /* At the two-column breakpoint the diagonal faces the text column on
-     the left: a shallow slope (~10° off vertical) rather than a hard
-     grid-column edge, with the back panel bleeding out to the left so
-     the hero's own background colour shows through at the seam. */
-  .hero__art-wrap::before {
-    inset: -8% -10% -8% -22%;
-    clip-path: polygon(22% 0%, 100% 0%, 100% 100%, 0% 100%);
-  }
-  .hero__art-wrap::after {
-    inset: -4% -6% -4% -15%;
-    clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+    margin-top: 0;
   }
 }
 
@@ -1367,6 +1347,6 @@ section[id] { scroll-margin-top: calc(var(--head-h) + 1rem); }
 
 /* print */
 @media print {
-  .site-header, .demo-banner, .hero__art-wrap, .section--enquire, .theme-toggle { display: none; }
+  .site-header, .demo-banner, .hero__backdrop, .section--enquire, .theme-toggle { display: none; }
   body { background: #fff; color: #000; }
 }
