@@ -60,6 +60,7 @@
 
   --shadow-sm: 0 1px 2px rgba(30, 51, 43, .06), 0 4px 14px rgba(30, 51, 43, .05);
   --shadow-md: 0 2px 6px rgba(30, 51, 43, .07), 0 18px 44px rgba(30, 51, 43, .09);
+  --hero-diagonal-shadow: 0 20px 38px rgba(30, 51, 43, .16);
 
   --radius-s: 6px;
   --radius-m: 14px;
@@ -110,6 +111,7 @@
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 14px rgba(0, 0, 0, .25);
     --shadow-md: 0 2px 6px rgba(0, 0, 0, .35), 0 18px 44px rgba(0, 0, 0, .4);
+    --hero-diagonal-shadow: 0 20px 38px rgba(0, 0, 0, .45);
   }
 }
 
@@ -148,6 +150,7 @@
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 14px rgba(0, 0, 0, .25);
   --shadow-md: 0 2px 6px rgba(0, 0, 0, .35), 0 18px 44px rgba(0, 0, 0, .4);
+  --hero-diagonal-shadow: 0 20px 38px rgba(0, 0, 0, .45);
 }
 
 /* ---------- 2. BASE ---------- */
@@ -528,7 +531,35 @@ section[id] { scroll-margin-top: calc(var(--head-h) + 1rem); }
 }
 
 .hero__art-wrap { position: relative; max-width: 26rem; width: 100%; margin-inline: auto; }
-.hero__art { width: 100%; height: auto; display: block; }
+
+/* Diagonal clip-path split: the visual zone sits on two soft, angled
+   panels behind the illustration. The back panel (paper-toned, matching
+   the site's card surface) peeks out from behind the front panel
+   (sage-tinted) along the slope, so the boundary between the text zone
+   and the visual zone reads as a gentle diagonal instead of a hard
+   vertical edge. Angle stays shallow (roughly 8-12°) to keep the calm,
+   reassuring tone of the rest of the page. */
+.hero__art-wrap::before,
+.hero__art-wrap::after {
+  content: "";
+  position: absolute;
+  border-radius: var(--radius-l);
+}
+.hero__art-wrap::before {
+  inset: -3% -5% -3% -5%;
+  background: var(--surface);
+  clip-path: polygon(0% 9%, 100% 0%, 100% 100%, 0% 100%);
+  z-index: 1;
+}
+.hero__art-wrap::after {
+  inset: 0% -3% 0% -3%;
+  background: linear-gradient(158deg, var(--bg-alt) 0%, var(--second-tint) 78%);
+  clip-path: polygon(0% 5%, 100% 0%, 100% 100%, 0% 100%);
+  z-index: 2;
+  filter: drop-shadow(var(--hero-diagonal-shadow));
+}
+
+.hero__art { width: 100%; height: auto; display: block; position: relative; z-index: 3; }
 .grad-a { stop-color: var(--art-1); }
 .grad-b { stop-color: var(--art-2); }
 .contours path { stroke: var(--art-line); stroke-width: 1.6; opacity: .42; }
@@ -547,6 +578,7 @@ section[id] { scroll-margin-top: calc(var(--head-h) + 1rem); }
   max-width: 17rem;
   margin: -3.5rem auto 0;
   position: relative;
+  z-index: 4;
 }
 .hero__card-k {
   font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
@@ -608,6 +640,19 @@ section[id] { scroll-margin-top: calc(var(--head-h) + 1rem); }
     left: -2.5rem;
     bottom: 1.5rem;
     margin: 0;
+  }
+
+  /* At the two-column breakpoint the diagonal faces the text column on
+     the left: a shallow slope (~10° off vertical) rather than a hard
+     grid-column edge, with the back panel bleeding out to the left so
+     the hero's own background colour shows through at the seam. */
+  .hero__art-wrap::before {
+    inset: -8% -10% -8% -22%;
+    clip-path: polygon(22% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  .hero__art-wrap::after {
+    inset: -4% -6% -4% -15%;
+    clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
   }
 }
 

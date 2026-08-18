@@ -349,7 +349,8 @@ a { color: inherit; }
     repeating-linear-gradient(0deg, rgba(200,195,185,0.045) 0 1px, transparent 1px 78px);
   pointer-events: none;
 }
-.hero__grid { position: relative; display: grid; gap: clamp(2.75rem, 6vw, 4rem); }
+.hero__layout { position: relative; display: grid; gap: clamp(2.25rem, 6vw, 3.25rem); }
+.hero__copy { position: relative; }
 
 .hero h1 {
   font-size: var(--step-4);
@@ -358,6 +359,19 @@ a { color: inherit; }
   text-wrap: pretty;
 }
 .hero h1 .hl { color: var(--amber); }
+
+/* stamped/registration corner marks on the headline, stencil-plate feel */
+.hero__sign { position: relative; }
+.hero__sign::before,
+.hero__sign::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--rule);
+}
+.hero__sign::before { top: -14px; left: -18px; border-right: none; border-bottom: none; }
+.hero__sign::after { bottom: -14px; right: -18px; border-left: none; border-top: none; }
 
 .lede {
   margin-top: 1.6rem;
@@ -375,33 +389,89 @@ a { color: inherit; }
 }
 .cta-row .btn { flex: 1 1 auto; min-width: 15rem; }
 
-.hero__stats {
+/* =========================================================
+   HERO — SITE PLAQUE (permit-board / info-plaque card)
+   ========================================================= */
+.site-plaque {
+  position: relative;
+  align-self: start;
+  width: 100%;
+  max-width: 25rem;
+  padding: 1.4rem 1.5rem 1.6rem;
+  background-color: var(--slate-850);
+  background-image:
+    radial-gradient(circle 4px at 14px 14px, var(--rule) 55%, transparent 58%),
+    radial-gradient(circle 4px at calc(100% - 14px) 14px, var(--rule) 55%, transparent 58%),
+    radial-gradient(circle 4px at 14px calc(100% - 14px), var(--rule) 55%, transparent 58%),
+    radial-gradient(circle 4px at calc(100% - 14px) calc(100% - 14px), var(--rule) 55%, transparent 58%);
+  background-repeat: no-repeat;
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--amber);
+  box-shadow: 0 20px 38px -22px rgba(0, 0, 0, 0.85);
+  transform: rotate(-1.6deg);
+}
+.site-plaque__label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber-lift);
+}
+
+/* hazard-stripe divider rule, reused wherever the plaque needs a break */
+.hazard-rule {
+  height: 7px;
+  margin-block: 1.05rem;
+  background-image: repeating-linear-gradient(45deg, var(--amber) 0 9px, var(--ink) 9px 18px);
+}
+
+.site-plaque__stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.6rem;
-  margin-top: 2.75rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid var(--rule);
 }
 .stat__num {
   display: block;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(1.85rem, 6vw, 2.6rem);
-  letter-spacing: -0.05em;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 4vw, 1.7rem);
+  letter-spacing: -0.01em;
   color: var(--bone);
   line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
-.stat__unit { font-size: 0.5em; letter-spacing: 0; margin-left: 0.05em; }
+.stat__unit { font-size: 0.55em; letter-spacing: 0; margin-left: 0.05em; }
 .stat__label {
   display: block;
-  margin-top: 0.55rem;
+  margin-top: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.09em;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #A9A399;
-  line-height: 1.45;
+  line-height: 1.4;
+}
+
+.site-plaque__meta-list { display: grid; gap: 0.6rem; }
+.site-plaque__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.65rem;
+}
+.site-plaque__meta dt {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  flex: 0 0 auto;
+}
+.site-plaque__meta dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--bone-dim);
 }
 
 .hero__drawing { position: relative; }
@@ -1001,12 +1071,22 @@ a { color: inherit; }
   .nav-list a.is-current { color: var(--amber); }
   .nav-list__cta { margin: 0 0 0 0.75rem; }
 
-  .hero__grid {
+  .hero__layout {
     grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-    align-items: center;
-    gap: 3.5rem;
+    grid-template-areas:
+      "copy    drawing"
+      "plaque  drawing";
+    align-items: start;
+    column-gap: 3.5rem;
+    row-gap: 2.25rem;
   }
-  .hero__stats { max-width: 34rem; }
+  .hero__copy { grid-area: copy; }
+  .site-plaque {
+    grid-area: plaque;
+    margin-top: 0.5rem;
+    margin-right: auto;
+  }
+  .hero__drawing { grid-area: drawing; align-self: center; }
 
   .trust__list { grid-template-columns: repeat(4, 1fr); }
   .trust__list li { font-size: 0.9rem; }

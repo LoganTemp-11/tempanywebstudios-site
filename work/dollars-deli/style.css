@@ -99,6 +99,50 @@ a { color: inherit; }
 .hero.small .hero-inner { max-width: none; margin: 0 auto; }
 .hero .lead { font-size: 1.15rem; max-width: 520px; }
 
+/* Hero — shop awning band concept */
+/* Photo shows uncovered across the top of the hero; copy sits in a solid
+   band across the lower third, dressed up like a canvas shop awning with a
+   striped, pennant-edged valance where it meets the photo. */
+.hero-awning {
+  padding: 0;
+  min-height: clamp(520px, 76vw, 820px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-position: center top;
+}
+.hero-awning-band {
+  position: relative;
+  background: var(--wine);
+  color: var(--cream);
+  padding: clamp(24px, 3.5vw, 36px) 5% clamp(32px, 4.5vw, 44px);
+}
+/* Type is scaled down from the site-wide h1/lead sizes, and vertical rhythm
+   tightened, so the band reads as a lower-third strip rather than growing
+   tall enough to swallow the photo above it. */
+.hero-awning-band .eyebrow { margin-bottom: 0.4em; }
+.hero-awning-band h1 { font-size: clamp(2rem, 3.4vw, 3.1rem); margin-bottom: 0.3em; }
+.hero-awning-band .lead { font-size: 1.05rem; max-width: 560px; }
+/* Striped awning valance: sits flush on the band's top edge, cut into a
+   pennant/zigzag fringe so the photo peeks through between the points. */
+.hero-awning-band::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: clamp(20px, 4vw, 32px);
+  background: repeating-linear-gradient(45deg, var(--wine) 0 16px, var(--cream) 16px 18px);
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 90% 100%, 80% 40%, 70% 100%, 60% 40%, 50% 100%, 40% 40%, 30% 100%, 20% 40%, 10% 100%, 0 40%);
+}
+.hero-awning .hero-inner { max-width: 640px; }
+.hero-awning-band .eyebrow { color: var(--cream); opacity: 0.85; }
+.hero-awning-band .lead { color: rgba(248, 243, 232, 0.88); }
+.hero-awning-band .button { background: var(--cream); color: var(--wine); }
+.hero-awning-band .button:hover { background: #fff; color: var(--wine-dark); }
+.hero-awning-band .button-outline { background: transparent; color: var(--cream); border-color: var(--cream); }
+.hero-awning-band .button-outline:hover { background: var(--cream); color: var(--wine); }
+
 /* Strip */
 .strip {
   display: grid; grid-template-columns: repeat(3, 1fr);
