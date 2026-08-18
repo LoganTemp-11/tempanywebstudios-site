@@ -85,9 +85,13 @@ p { margin: 0 0 1em; }
 .wordmark__sub { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
 .nav { display: flex; align-items: center; margin-left: auto; }
 .nav-list { list-style: none; display: flex; align-items: center; gap: 26px; margin: 0; padding: 0; }
-.nav-list a { text-decoration: none; font-size: 0.92rem; color: var(--ink-2); }
-.nav-list a:hover { color: var(--accent); }
-.nav-list__cta a { color: inherit; }
+/* :not(.btn) on both rules below: .nav-list a (0,1,1) and .nav-list__cta a
+   (0,1,1) both outrank .btn (0,1,0) on specificity, so without the exclusion
+   either one wins and the header CTA resolves to body's muted grey text on
+   its dark fill — 2.07:1 contrast, well under the 4.5:1 minimum. */
+.nav-list a:not(.btn) { text-decoration: none; font-size: 0.92rem; color: var(--ink-2); }
+.nav-list a:not(.btn):hover { color: var(--accent); }
+.nav-list__cta a:not(.btn) { color: inherit; }
 .nav-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 12px; align-items: center; gap: 8px; cursor: pointer; font-family: var(--sans); font-size: 0.85rem; color: var(--ink); }
 .nav-toggle__bars { display: flex; flex-direction: column; gap: 3px; width: 18px; }
 .nav-toggle__bars span { display: block; height: 2px; background: var(--ink); }
