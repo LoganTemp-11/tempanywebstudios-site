@@ -45,14 +45,18 @@ a { color: inherit; }
   margin: 0 0 0.75em;
 }
 
-/* Header */
+/* Header — tint and blur on ::before so the header does not become the
+   containing block for the position:fixed mobile nav. */
 .site-header {
   position: sticky; top: 0; z-index: 20;
   display: flex; align-items: center; gap: 24px;
   padding: 16px 5%;
+  border-bottom: 1px solid var(--line);
+}
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
   background: rgba(248, 243, 232, 0.96);
   backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--line);
 }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
 .brand-mark {
@@ -223,7 +227,10 @@ a { color: inherit; }
 .footer-nav a { color: var(--cream); text-decoration: none; font-size: 0.85rem; }
 
 @media (max-width: 860px) {
-  .main-nav { position: fixed; top: 68px; left: 0; right: 0; background: var(--cream); flex-direction: column; padding: 20px 5%; display: none; border-bottom: 1px solid var(--line); }
+  /* absolute + top:100% anchors the dropdown to the header's own bottom edge, so it
+     stays correct whether or not the announcement bar has scrolled away. A fixed
+     position with a hard-coded top only lined up at one scroll position. */
+  .main-nav { position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); flex-direction: column; padding: 20px 5%; display: none; border-bottom: 1px solid var(--line); }
   .main-nav.open { display: flex; }
   .menu-toggle { display: inline-flex; margin-left: auto; background: none; border: 1px solid var(--line); padding: 8px 14px; font-family: var(--font-body); }
   .header-action { display: none; }

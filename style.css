@@ -36,11 +36,17 @@ em { font-style: italic; color: var(--lime); }
 .note.light { color: rgba(255,255,255,0.75); }
 .info-note { max-width: 520px; margin: 0 auto 32px; text-align: center; }
 
-/* Header */
+/* Header — the tint and blur sit on ::before, not on .site-header itself.
+   backdrop-filter makes an element the containing block for any
+   position:fixed descendant, which would trap the mobile nav inside the
+   header instead of letting it fill the viewport. */
 .site-header {
   position: sticky; top: 0; z-index: 30;
   display: flex; align-items: center; gap: 24px;
   padding: 16px 5%;
+}
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
   background: rgba(11, 24, 20, 0.9);
   backdrop-filter: blur(6px);
 }

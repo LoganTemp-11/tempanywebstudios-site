@@ -72,7 +72,10 @@ p { margin: 0 0 1em; }
 .demo-banner__link { margin-left: auto; text-decoration: underline; color: var(--gold); }
 
 /* Header */
-.site-header { position: sticky; top: 0; z-index: 40; background: rgba(247, 244, 237, 0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+/* Tint and blur on ::before so the header does not become the containing
+   block for the position:fixed mobile nav (which would trap it inside the header). */
+.site-header { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid var(--line); }
+.site-header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(247, 244, 237, 0.92); backdrop-filter: blur(8px); }
 .site-header__inner { display: flex; align-items: center; gap: 28px; padding: 14px 6%; }
 .wordmark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .wordmark__mark { width: 34px; height: 34px; flex: none; }
@@ -311,7 +314,10 @@ p { margin: 0 0 1em; }
   .enquiry { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
-  .nav-list { position: fixed; inset: 62px 0 0 0; background: var(--paper); flex-direction: column; align-items: flex-start; padding: 24px 6%; gap: 18px; display: none; border-top: 1px solid var(--line); overflow-y: auto; }
+  /* absolute + top:100% anchors the panel to the header's own bottom edge. The old
+     fixed inset:62px only lined up once the demo banner had scrolled away; at the
+     top of the page it sat underneath the header. */
+  .nav-list { position: absolute; top: 100%; left: 0; right: 0; max-height: calc(100vh - 100%); background: var(--paper); flex-direction: column; align-items: flex-start; padding: 24px 6%; gap: 18px; display: none; border-top: 1px solid var(--line); overflow-y: auto; }
   .nav-list.is-open { display: flex; }
   .nav-toggle { display: inline-flex; margin-left: auto; }
   .nav-list__cta { width: 100%; }

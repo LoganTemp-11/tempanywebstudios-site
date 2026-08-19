@@ -297,7 +297,11 @@
         <div><p class="eyebrow light">◷ Response time</p><span>Usually within one working day</span></div>
       </div>
 
-      <form class="contact-form" id="enquiry-form">
+      <!-- method/action are the no-JS fallback. script.js preventDefault()s and posts
+           JSON itself; without these, a JS failure would fall back to a GET submit and
+           put the enquirer's name, email and message into the URL and browser history. -->
+      <form class="contact-form" id="enquiry-form" method="post" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value="7148c950-d9f1-4d33-b78e-a411c89cb1e3">
         <div class="form-row">
           <label>Your name<input type="text" autocomplete="name" placeholder="Jane Smith" required name="name"></label>
           <label>Business name<input type="text" autocomplete="organization" placeholder="Smith &amp; Co." required name="business"></label>
