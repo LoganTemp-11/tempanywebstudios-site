@@ -37,7 +37,7 @@
 (function () {
   try {
     var saved = localStorage.getItem('tws-theme');
-    var theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var theme = saved || 'light';
     document.documentElement.dataset.theme = theme;
   } catch (e) { document.documentElement.dataset.theme = 'light'; }
 })();
@@ -101,9 +101,11 @@
       <div>Issued &mdash; the day you open this page</div>
     </div>
 
+    <p class="quote-subject">Re: <span class="quote-subject-accent">the website that earns the phone call.</span></p>
+
     <section class="opening">
       <p class="opening-greeting">Hello.</p>
-      <p class="opening-body">Most web design studios want a call before they'll give you a number. I think that's backwards. If a price isn't confident enough to put in writing, something's wrong with the price. So here's mine, before you've had to ask.</p>
+      <p class="opening-body">A site that just looks nice isn't doing its job. Most web design studios also want a call before they'll give you a number, and I think that's backwards too. If a price isn't confident enough to put in writing, something's wrong with the price. So here's the whole thing, built to get people to actually pick up the phone, before you've had to ask.</p>
     </section>
 
     <section class="clause">
@@ -196,7 +198,7 @@
       <div class="clause-num">09</div>
       <div class="clause-body">
         <h2>Attached: proof</h2>
-        <p>Five examples of the kind of site &pound;399 buys. Four are demos for trades I haven't worked with yet, so judge the craft, not the client list. One is a concept I built for a real shop in my village without being asked, not commissioned, not affiliated. The first paying client's site is already live &mdash; it joins this list, named and linked, as soon as they've said yes to being shown.</p>
+        <p>Four examples of the kind of site &pound;399 buys, built by me as demos for trades I haven't worked with yet, so judge the craft, not the client list. The first paying client's site is already live &mdash; it joins this list, named and linked, as soon as they've said yes to being shown.</p>
 
         <!-- Jennifer Ellis Yoga attachment — ready to go the moment she consents
              (see JENNIFER-WORK-CARD.md). Needs a thumbnail at
@@ -228,11 +230,6 @@
             <img src="/images/work/stillwater.jpg" alt="Stillwater Yoga demo homepage" width="900" height="563" loading="lazy" decoding="async">
             <span class="attachment-name">Stillwater Yoga <em>&middot; demo</em></span>
             <span class="attachment-desc">Yoga &amp; wellness studio. Timetable and packages built to get a first booking.</span>
-          </a>
-          <a class="attachment" href="/work/dollars-deli/">
-            <img src="/images/work/dollars-deli.jpg" alt="Dollar's Deli concept homepage" width="900" height="563" loading="lazy" decoding="async">
-            <span class="attachment-name">Dollar's Deli <em>&middot; unsolicited concept</em></span>
-            <span class="attachment-desc">Independent deli. Built without being asked, to show rather than tell.</span>
           </a>
         </div>
 
