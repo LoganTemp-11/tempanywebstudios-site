@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 <script src="script.js" defer></script>
 <script type="application/ld+json">
 {
@@ -133,47 +133,32 @@
 
 <main id="main">
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HERO — a real statement, not a marketing hero ============ -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap hero__inner">
 
-      <div class="hero__title-row">
-        <p class="eyebrow">Accountancy &amp; bookkeeping <span class="eyebrow__dot" aria-hidden="true">·</span> Tillicoultry, Clackmannanshire</p>
-        <h1 id="hero-title">Fixed monthly fees. Filed on time. Explained in plain English.</h1>
+      <div class="statement-head">
+        <span class="statement-mark">Ochil Ledger &mdash; Statement</span>
+        <span class="statement-place">Accountancy &amp; bookkeeping <span aria-hidden="true">&middot;</span> Tillicoultry, Clackmannanshire</span>
       </div>
 
-      <div class="hero__body">
+      <table class="statement-table">
+        <caption class="sr-only">At a glance</caption>
+        <tbody>
+          <tr><th scope="row">Fees from</th><td><span class="num">&pound;45</span> a month, fixed for a year</td></tr>
+          <tr><th scope="row">Software</th><td>Xero and FreeAgent certified</td></tr>
+          <tr><th scope="row">Making Tax Digital</th><td>Set up and filing since April <span class="num">2026</span></td></tr>
+          <tr><th scope="row">Replies</th><td>Within one working day, from a person</td></tr>
+        </tbody>
+      </table>
 
-        <div class="hero__text">
-          <p class="lead">We look after sole traders, landlords and small limited companies across the Hillfoots, Stirling and Fife. You will know what you owe, when it is due, and exactly what we charge — agreed before we start a thing.</p>
-          <div class="hero__actions">
-            <a class="btn" href="#enquiry">Arrange a free 30-minute chat</a>
-            <a class="btn btn--ghost" href="#fees">See the fee list</a>
-          </div>
+      <div class="statement-foot">
+        <h1 id="hero-title">Fixed monthly fees. Filed on time. Explained in plain English.</h1>
+        <p class="lead">We look after sole traders, landlords and small limited companies across the Hillfoots, Stirling and Fife. You will know what you owe, when it is due, and exactly what we charge, agreed before we start a thing.</p>
+        <div class="hero__actions">
+          <a class="btn" href="#enquiry">Arrange a free 30-minute chat</a>
+          <a class="btn btn--ghost" href="#fees">See the fee list</a>
         </div>
-
-        <aside class="hero__ledger" aria-label="At a glance">
-          <h2 class="ledger__title">At a glance</h2>
-          <dl class="ledger__entries">
-            <div class="ledger__row">
-              <dt><span class="ledger__no num" aria-hidden="true">01</span><span class="ledger__label">Fees from</span></dt>
-              <dd><span class="num">£45</span> a month, fixed for a year</dd>
-            </div>
-            <div class="ledger__row">
-              <dt><span class="ledger__no num" aria-hidden="true">02</span><span class="ledger__label">Software</span></dt>
-              <dd>Xero and FreeAgent certified</dd>
-            </div>
-            <div class="ledger__row">
-              <dt><span class="ledger__no num" aria-hidden="true">03</span><span class="ledger__label">Making Tax Digital</span></dt>
-              <dd>Set up and filing since April <span class="num">2026</span></dd>
-            </div>
-            <div class="ledger__row">
-              <dt><span class="ledger__no num" aria-hidden="true">04</span><span class="ledger__label">Replies</span></dt>
-              <dd>Within one working day, from a person</dd>
-            </div>
-          </dl>
-        </aside>
-
       </div>
 
     </div>
