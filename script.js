@@ -1,23 +1,5 @@
 /* Tempany Web Studios — homepage behaviour. */
 
-// Mobile menu
-const menuButton = document.querySelector('.menu-button');
-const siteNav = document.getElementById('site-navigation');
-if (menuButton && siteNav) {
-  menuButton.addEventListener('click', () => {
-    const open = siteNav.classList.toggle('open');
-    menuButton.setAttribute('aria-expanded', String(open));
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  siteNav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      siteNav.classList.remove('open');
-      menuButton.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
-  });
-}
-
 // Theme toggle. The initial theme is set inline in <head> before first paint.
 const themeToggle = document.querySelector('.theme-toggle');
 function syncThemeLabel() {
@@ -43,7 +25,7 @@ function openDetailsFromHash() {
 openDetailsFromHash();
 window.addEventListener('hashchange', openDetailsFromHash);
 
-// Enquiry form — posts JSON to Web3Forms without leaving the page.
+// Reply form — posts JSON to Web3Forms without leaving the page.
 // The form's method/action stay as a no-JS fallback.
 const form = document.getElementById('enquiry-form');
 const status = form ? form.querySelector('.form-status') : null;
@@ -57,13 +39,13 @@ if (form) {
 
     const payload = {
       access_key: String(data.get('access_key')),
-      subject: `Website enquiry from ${String(data.get('name') || 'the website')}`,
+      subject: `Reply to your quote from ${String(data.get('name') || 'a visitor')}`,
       from_name: 'Tempany Web Studios website',
       name: String(data.get('name') || ''),
       business: String(data.get('business') || ''),
       email: String(data.get('email') || ''),
-      website: String(data.get('website') || 'Not supplied'),
-      route: String(data.get('project') || 'Not selected'),
+      this_is_about: String(data.get('project') || 'Not selected'),
+      current_website: String(data.get('website') || 'Not supplied'),
       message: String(data.get('message') || ''),
     };
 
