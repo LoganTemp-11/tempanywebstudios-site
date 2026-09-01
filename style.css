@@ -80,6 +80,12 @@ h2{color:var(--ink);margin:0 0 .5em;font-weight:700;letter-spacing:-.01em;font-s
 .clause-last{border-bottom:1px solid var(--line);padding-bottom:34px}
 .clause-num{font-family:"Geist Mono",ui-monospace,monospace;font-size:.78rem;color:var(--accent);padding-top:.15em}
 .clause-body p{max-width:58ch}
+.exclusions{font-size:.88rem;color:var(--muted);margin:.9em 0 0}
+
+/* Questions */
+.qa-list{margin:0;display:flex;flex-direction:column;gap:20px}
+.qa-list dt{font-weight:600;color:var(--ink);margin:0 0 .35em;max-width:58ch}
+.qa-list dd{margin:0;max-width:58ch;color:var(--body)}
 
 /* Price clause */
 .price-line{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line-soft);padding:20px 22px;margin-bottom:12px}
@@ -94,8 +100,9 @@ h2{color:var(--ink);margin:0 0 .5em;font-weight:700;letter-spacing:-.01em;font-s
 .attachments{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;margin:22px 0 26px}
 .attachment{display:block;border:1px solid var(--line-soft);background:var(--card);text-decoration:none;color:var(--body)}
 .attachment img{aspect-ratio:900/563;object-fit:cover;object-position:top;border-bottom:1px solid var(--line-soft)}
-.attachment-name{display:block;padding:10px 12px;font-size:.82rem;color:var(--ink);font-weight:600}
+.attachment-name{display:block;padding:10px 12px 0;font-size:.82rem;color:var(--ink);font-weight:600}
 .attachment-name em{font-style:normal;font-weight:400;color:var(--muted)}
+.attachment-desc{display:block;padding:5px 12px 12px;font-size:.76rem;line-height:1.45;color:var(--muted)}
 .attachment:hover .attachment-name{color:var(--accent)}
 .ask-line{font-size:.95rem;color:var(--muted);max-width:58ch;margin:0}
 
