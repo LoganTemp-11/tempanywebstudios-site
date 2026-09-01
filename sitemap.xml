@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Only the homepage is listed. The demo and concept sites are deliberately
-     noindex: they are portfolio pieces reached from the Work section, and
-     indexing fictional businesses (or an unofficial concept for a real one)
-     risks confusing people searching for a genuine local trader. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://tempanywebstudios.co.uk/</loc>
-    <lastmod>2026-08-16</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://tempanywebstudios.co.uk/</loc></url>
 </urlset>

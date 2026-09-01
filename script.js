@@ -1,19 +1,40 @@
+/* Tempany Web Studios — homepage behaviour. */
+
+// Mobile menu
 const menuButton = document.querySelector('.menu-button');
 const siteNav = document.getElementById('site-navigation');
-
 if (menuButton && siteNav) {
   menuButton.addEventListener('click', () => {
     const open = siteNav.classList.toggle('open');
     menuButton.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
   });
   siteNav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       siteNav.classList.remove('open');
       menuButton.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
     });
   });
 }
 
+// Theme toggle. The initial theme is set inline in <head> before first paint.
+const themeToggle = document.querySelector('.theme-toggle');
+function syncThemeLabel() {
+  const label = document.querySelector('.theme-label');
+  if (label) label.textContent = document.documentElement.dataset.theme === 'dark' ? 'Dark' : 'Light';
+}
+syncThemeLabel();
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('tws-theme', next); } catch (e) {}
+    syncThemeLabel();
+  });
+}
+
+// Deep links to the legal accordions should open them.
 function openDetailsFromHash() {
   if (!window.location.hash) return;
   const el = document.getElementById(window.location.hash.slice(1));
@@ -22,55 +43,52 @@ function openDetailsFromHash() {
 openDetailsFromHash();
 window.addEventListener('hashchange', openDetailsFromHash);
 
-const WEB3FORMS_ACCESS_KEY = '7148c950-d9f1-4d33-b78e-a411c89cb1e3';
-
+// Enquiry form — posts JSON to Web3Forms without leaving the page.
+// The form's method/action stay as a no-JS fallback.
 const form = document.getElementById('enquiry-form');
 const status = form ? form.querySelector('.form-status') : null;
 
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     const data = new FormData(form);
-    const name = String(data.get('name') || '');
-    const business = String(data.get('business') || '');
-    const email = String(data.get('email') || '');
-    const website = String(data.get('website') || 'Not supplied');
-    const project = String(data.get('project') || 'Not selected');
-    const budget = String(data.get('budget') || 'Not selected');
-    const timeline = String(data.get('timeline') || 'Not selected');
-    const message = String(data.get('message') || '');
+    if (String(data.get('company_url') || '') !== '') return; // honeypot
+
+    const payload = {
+      access_key: String(data.get('access_key')),
+      subject: `Website enquiry from ${String(data.get('name') || 'the website')}`,
+      from_name: 'Tempany Web Studios website',
+      name: String(data.get('name') || ''),
+      business: String(data.get('business') || ''),
+      email: String(data.get('email') || ''),
+      website: String(data.get('website') || 'Not supplied'),
+      route: String(data.get('project') || 'Not selected'),
+      message: String(data.get('message') || ''),
+    };
 
     const submitButton = form.querySelector('.form-button');
     submitButton.disabled = true;
-    if (status) { status.textContent = ''; status.className = 'form-status'; }
+    if (status) { status.textContent = 'Sending…'; status.className = 'form-status'; }
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `New Tempany Web Studios enquiry — ${business}`,
-          from_name: 'Tempany Web Studios website',
-          replyto: email,
-          botcheck: !!String(data.get('company_url') || ''),
-          Name: name,
-          Business: business,
-          Email: email,
-          'Current website': website,
-          'Project type': project,
-          Budget: budget,
-          'Preferred timing': timeline,
-          'Project details': message,
-          'Submitted from': window.location.href,
-        }),
+        body: JSON.stringify(payload),
       });
-      const result = await res.json().catch(() => null);
-      if (!(res.ok && result?.success === true)) throw new Error('The enquiry could not be sent.');
-      form.reset();
-      if (status) { status.textContent = "Thanks — your enquiry has been sent. I'll reply within one working day."; status.className = 'form-status success'; }
-    } catch {
-      if (status) { status.textContent = 'Your enquiry did not send. Please try again, or use the email link if this keeps happening.'; status.className = 'form-status error'; }
+      const result = await res.json();
+      if (result.success) {
+        if (status) { status.textContent = 'Sent. You’ll get a straight answer within one working day.'; status.className = 'form-status is-ok'; }
+        form.reset();
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (err) {
+      if (status) {
+        status.textContent = 'That didn’t send — please email logan@tempanywebstudios.co.uk directly.';
+        status.className = 'form-status is-error';
+      }
     } finally {
       submitButton.disabled = false;
     }
