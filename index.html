@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&family=Newsreader:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=12">
+<link rel="stylesheet" href="style.css?v=13">
 <script>
 // Applied before first paint so the page never flashes the wrong theme.
 (function () {
@@ -87,8 +87,8 @@
     </span>
   </a>
   <div class="letterhead-right">
-    <button class="theme-toggle" type="button" aria-label="Switch colour theme"><span class="theme-dot" aria-hidden="true"></span><span class="theme-label">Light</span></button>
     <a class="reply-link" href="#reply"><span class="reply-link-full">Reply to this quote</span><span class="reply-link-short">Reply</span> &rarr;</a>
+    <button class="theme-toggle" type="button" aria-label="Switch colour theme"><span class="theme-dot" aria-hidden="true"></span><span class="theme-label">Light</span></button>
   </div>
 </header>
 
@@ -102,7 +102,6 @@
     <h1 class="quote-headline">Hand-built websites for small businesses that need enquiries, not a brochure.</h1>
 
     <section class="opening">
-      <p class="opening-greeting">Hello.</p>
       <p class="opening-body">A site that just looks nice isn't doing its job. Most web design studios also want a call before they'll give you a number, and I think that's backwards too. If a price isn't confident enough to put in writing, something's wrong with the price. So here's the whole thing, built to get people to actually pick up the phone, before you've had to ask.</p>
     </section>
 
@@ -123,7 +122,7 @@
       </div>
     </section>
 
-    <section class="clause">
+    <section id="price" class="clause">
       <div class="clause-num">03</div>
       <div class="clause-body">
         <h2>The price</h2>
@@ -210,22 +209,22 @@
 
         <div class="attachments">
           <a class="attachment" href="/demos/trades/">
-            <img src="/images/work/whinstone.jpg" alt="Whinstone Joinery demo homepage" width="900" height="563" loading="lazy" decoding="async">
+            <img src="/images/work/whinstone.jpg" srcset="/images/work/whinstone-640.jpg 640w, /images/work/whinstone.jpg 900w" sizes="(max-width:640px) 90vw, 285px" alt="Whinstone Joinery demo homepage" width="900" height="563" loading="lazy" decoding="async">
             <span class="attachment-name">Whinstone Joinery</span>
             <span class="attachment-desc">Joinery &amp; building. Proof of the work up front, then a fast route to a quote.</span>
           </a>
           <a class="attachment" href="/demos/clinic/">
-            <img src="/images/work/rowanbank.jpg" alt="Rowanbank Physiotherapy demo homepage" width="900" height="563" loading="lazy" decoding="async">
+            <img src="/images/work/rowanbank.jpg" srcset="/images/work/rowanbank-640.jpg 640w, /images/work/rowanbank.jpg 900w" sizes="(max-width:640px) 90vw, 285px" alt="Rowanbank Physiotherapy demo homepage" width="900" height="563" loading="lazy" decoding="async">
             <span class="attachment-name">Rowanbank Physiotherapy</span>
             <span class="attachment-desc">Physiotherapy clinic. Session pricing and what happens at a first visit.</span>
           </a>
           <a class="attachment" href="/demos/professional/">
-            <img src="/images/work/ochil.jpg" alt="Ochil Ledger accountancy demo homepage" width="900" height="563" loading="lazy" decoding="async">
+            <img src="/images/work/ochil.jpg" srcset="/images/work/ochil-640.jpg 640w, /images/work/ochil.jpg 900w" sizes="(max-width:640px) 90vw, 285px" alt="Ochil Ledger accountancy demo homepage" width="900" height="563" loading="lazy" decoding="async">
             <span class="attachment-name">Ochil Ledger</span>
             <span class="attachment-desc">Accountancy &amp; bookkeeping. A full fee table, no hidden numbers.</span>
           </a>
           <a class="attachment" href="/demos/yoga/">
-            <img src="/images/work/stillwater.jpg" alt="Stillwater Yoga demo homepage" width="900" height="563" loading="lazy" decoding="async">
+            <img src="/images/work/stillwater.jpg" srcset="/images/work/stillwater-640.jpg 640w, /images/work/stillwater.jpg 900w" sizes="(max-width:640px) 90vw, 285px" alt="Stillwater Yoga demo homepage" width="900" height="563" loading="lazy" decoding="async">
             <span class="attachment-name">Stillwater Yoga</span>
             <span class="attachment-desc">Yoga &amp; wellness studio. Timetable and packages built to get a first booking.</span>
           </a>
@@ -309,6 +308,10 @@
   <p class="copyright">&copy; 2026 Tempany Web Studios</p>
 </footer>
 
-<script src="script.js?v=11"></script>
+<div class="sticky-cta" id="stickyCta" hidden>
+  <a class="sticky-cta-link" href="#reply">Reply to this quote &rarr;</a>
+</div>
+
+<script src="script.js?v=12"></script>
 </body>
 </html>

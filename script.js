@@ -16,6 +16,27 @@ if (themeToggle) {
   });
 }
 
+// Sticky mobile reply bar. Shows once the price section has scrolled past
+// (so it appears after the reader has actually seen the number), hides again
+// once the real reply form is in view so it never sits duplicated on top of
+// it. Desktop never sees this at all — that's handled purely in CSS.
+// Plain scroll-position check rather than IntersectionObserver: exposed as
+// window.syncStickyCta so it's directly callable/testable, not dependent on
+// the browser's own observer scheduling.
+const stickyCta = document.getElementById('stickyCta');
+const priceSection = document.getElementById('price');
+const replySection = document.getElementById('reply');
+if (stickyCta && priceSection && replySection) {
+  window.syncStickyCta = function syncStickyCta() {
+    const pastPrice = priceSection.getBoundingClientRect().bottom < 0;
+    const replyRect = replySection.getBoundingClientRect();
+    const inReplyForm = replyRect.top < window.innerHeight && replyRect.bottom > 0;
+    stickyCta.hidden = !(pastPrice && !inReplyForm);
+  };
+  window.addEventListener('scroll', window.syncStickyCta, { passive: true });
+  window.syncStickyCta();
+}
+
 // Deep links to the legal accordions should open them.
 function openDetailsFromHash() {
   if (!window.location.hash) return;

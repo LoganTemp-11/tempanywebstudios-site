@@ -74,6 +74,13 @@ h2{color:var(--ink);margin:0 0 .5em;font-weight:700;letter-spacing:-.01em;font-s
 .reply-link{font-family:"Geist Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
 .reply-link-short{display:none}
 
+/* Mobile-only sticky CTA. Hidden on desktop entirely (the header's own
+   reply link is enough there); on mobile it's hidden by default via the
+   [hidden] attribute, which script.js toggles once the price section has
+   scrolled past and off again once the real reply form is in view, so it
+   never sits duplicated on top of the form itself. */
+.sticky-cta-link{display:flex;align-items:center;justify-content:center;min-height:52px;background:var(--ink);color:var(--btn-fg);font-family:"Geist Mono",ui-monospace,monospace;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+
 /* Document column */
 .quote{max-width:760px;margin:0 auto;padding:56px 32px 100px}
 
@@ -86,7 +93,6 @@ h2{color:var(--ink);margin:0 0 .5em;font-weight:700;letter-spacing:-.01em;font-s
 .quote-headline{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.22;margin:0 0 48px;max-width:24ch}
 
 .opening{margin-bottom:52px}
-.opening-greeting{font-size:1.5rem;color:var(--ink);font-weight:600;letter-spacing:-.015em;margin:0 0 .55em}
 .opening-body{font-size:1.1rem;max-width:56ch;margin:0}
 
 .clause{display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;padding:26px 0;border-top:1px solid var(--line)}
@@ -175,7 +181,10 @@ h2{color:var(--ink);margin:0 0 .5em;font-weight:700;letter-spacing:-.01em;font-s
   .form-row{grid-template-columns:1fr}
   .reply-link .reply-link-full{display:none}
   .reply-link .reply-link-short{display:inline}
+  .reply-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border:1px solid var(--accent);color:var(--accent)}
+  .theme-toggle{padding:0 10px;min-height:44px}
   .attachments{grid-template-columns:1fr}
+  .sticky-cta:not([hidden]){display:block;position:fixed;left:0;right:0;bottom:0;z-index:30}
   .footer-nav{margin-left:0}
   .price-line-figure{font-size:1.7rem}
 }
