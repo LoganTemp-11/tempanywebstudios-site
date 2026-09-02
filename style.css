@@ -135,6 +135,7 @@ h2{color:var(--ink);margin:0 0 .5em;font-weight:700;letter-spacing:-.01em;font-s
 .reply-block{background:var(--card);border:1px solid var(--line-soft);padding:36px 32px;scroll-margin-top:24px}
 .reply-block h2{font-size:1.4rem;margin-bottom:6px}
 .reply-lead{color:var(--muted);font-size:.92rem;margin-bottom:26px}
+.reply-lead a,.footer-meta a{display:inline-block;padding:12px 2px;margin:-12px -2px;line-height:20px}
 .reply-form label{display:block;margin-bottom:16px;font-family:"Geist Mono",ui-monospace,monospace;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .reply-form input,.reply-form select,.reply-form textarea{
   width:100%;margin-top:7px;padding:13px 14px;border:1px solid var(--line);
