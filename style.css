@@ -112,6 +112,10 @@ h2{color:var(--ink);margin:0 0 .5em;font-weight:700;letter-spacing:-.01em;font-s
 .price-line-figure{font-size:2.4rem;color:var(--btn-fg);letter-spacing:-.03em;font-weight:800}
 .price-note{font-size:.9rem;color:var(--muted);max-width:58ch}
 .audit-line{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:13px 22px;border:1px dashed var(--line)}
+/* Add-on prices (clause 07): quiet rows, so the £399 block stays the one loud thing. */
+.addon-line{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line-soft);padding:14px 22px;margin-bottom:10px}
+.addon-line-label{font-family:"Geist Mono",ui-monospace,monospace;font-size:.8rem;color:var(--body)}
+.addon-line-figure{font-size:1.25rem;color:var(--ink);letter-spacing:-.02em;font-weight:800;white-space:nowrap}
 .audit-figure{font-family:"Geist Mono",ui-monospace,monospace}
 .audit-figure strong{color:var(--ink)}
 
