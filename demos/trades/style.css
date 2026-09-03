@@ -1170,3 +1170,16 @@ a { color: inherit; }
 /* scroll offset for sticky header */
 :target { scroll-margin-top: 90px; }
 section[id] { scroll-margin-top: 82px; }
+
+/* Tap targets on phones (3 Sep 2026): inline phone, email and text links
+   sit in running copy at 18-31px tall. Invisible padding lifts each to 44px
+   without moving the text; the menu button gets a real minimum height. */
+@media (max-width: 720px) {
+  a[href^="tel:"], a[href^="mailto:"], p a, li a, td a, dd a, small a, address a, footer a {
+    display: inline-block; padding: 11px 0; margin: -11px 0; line-height: 22px;
+  }
+  .nav-toggle, .menu-toggle, .theme-toggle { min-height: 44px; min-width: 44px; }
+  header a, nav a, footer a, .hero a, .chips a, .tags a, .pills a { min-height: 44px; display: inline-flex; align-items: center; }
+  nav ul li a, footer li a { min-height: 44px !important; display: inline-flex !important; align-items: center; }
+  .demo-banner a, .demo-banner__link { min-height: 44px !important; display: inline-flex !important; align-items: center; margin: -10px 0 !important; }
+}
