@@ -188,7 +188,9 @@ h2{color:var(--ink);margin:0 0 .5em;font-weight:700;letter-spacing:-.01em;font-s
   .reply-link .reply-link-short{display:inline}
   .reply-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border:1px solid var(--accent);color:var(--accent)}
   .attachments{grid-template-columns:1fr}
-  .sticky-cta:not([hidden]){display:block;position:fixed;left:0;right:0;bottom:0;z-index:30}
+  .sticky-cta:not([hidden]){display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30}
+  .sticky-cta-link{flex:1 1 50%}
+  .sticky-cta-call{flex:0 0 42%;background:var(--card);color:var(--ink);border-top:1px solid var(--line)}
   .footer-nav{margin-left:0}
   .price-line-figure{font-size:1.7rem}
 }
