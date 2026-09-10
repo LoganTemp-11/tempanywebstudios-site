@@ -481,29 +481,12 @@
         <label class="tw-honeypot" aria-hidden="true">Leave this field empty<input type="text" tabindex="-1" autocomplete="off" name="company_url"></label>
         <button class="tw-submit" type="submit">Send your reply</button>
         <p class="tw-status" role="status"></p>
-        <p class="tw-fine">Your details are sent securely to Tempany Web Studios without leaving this page. <a href="#privacy">Read the privacy notice.</a></p>
+        <p class="tw-fine">Your details are sent securely to Tempany Web Studios without leaving this page. <a href="/privacy/">Read the privacy notice.</a></p>
       </form>
 
       <div class="tw-foot">
         <p>Logan Tempany trading as Tempany Web Studios &middot; Dollar, Scotland &middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a> &middot; <a href="tel:+447487536649">07487 536649</a></p>
-        <details id="privacy"><summary>Privacy notice</summary>
-          <p><strong>Last updated: 1 September 2026.</strong> Logan Tempany, trading as Tempany Web Studios in Dollar, Scotland, is responsible for the personal information collected through this website. Questions can be sent to <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a>.</p>
-          <p>The reply form collects your name, business name, email address, current website if supplied, what your enquiry is about, and the details you enter in your message. This information is used to review and reply to your enquiry, prepare a quotation and, if you choose to proceed, arrange and deliver the requested work. It is processed to take steps at your request before a possible contract, to manage genuine business enquiries, and to perform any agreement you enter into.</p>
-          <p>The form uses <a href="https://web3forms.com/privacy" target="_blank" rel="noreferrer">Web3Forms</a> to deliver submissions to the business inbox without opening your email app. Data is transmitted over HTTPS. Web3Forms states that submission data may be retained for a maximum of three years, or for a shorter period where the plan provides one or it is deleted earlier, and may be processed outside the UK under the safeguards described in its policy. Google processes the delivered email as the inbox provider.</p>
-          <p>Enquiries that do not become projects are normally deleted from the business inbox within 12 months. If work proceeds, relevant communications may be kept for longer where needed to deliver the project, maintain financial records, enforce an agreement or resolve a dispute. Information is not sold or used for unrelated marketing.</p>
-          <p>This website does not currently use advertising trackers or non-essential cookies. You may ask for access to your personal information, request correction or deletion where applicable, or restrict or object to certain processing. You may also make a data protection complaint using the process below.</p>
-        </details>
-        <details id="complaints"><summary>Complaints</summary>
-          <p>Tempany Web Studios will acknowledge your complaint within 30 days of receiving it. Appropriate steps will then be taken to investigate, you will be kept informed where necessary, and the outcome will be communicated without undue delay.</p>
-          <p>If you remain dissatisfied, you may complain to the UK supervisory authority, the <a href="https://ico.org.uk/make-a-complaint/data-protection-complaints/data-protection-complaints/" target="_blank" rel="noreferrer">Information Commissioner's Office</a>. You do not have to wait for this internal process if you prefer to contact the ICO directly.</p>
-        </details>
-        <details id="terms"><summary>Service terms</summary>
-          <p>Website information and prices are indicative until a written scope and fixed quotation are agreed. A complete website is &pound;399. The standard scope is up to five focused pages, mobile-first development, shaped website copy, an enquiry form, basic search setup, launch checks and two organised revision rounds.</p>
-          <p>A focused project will usually take 10 to 14 days after the deposit, agreed content and required account access have been received. This timing depends on prompt client feedback and is confirmed in writing before work begins.</p>
-          <p>Unless agreed otherwise in writing, &pound;200 is due before work begins and the remaining &pound;199 is due on final approval before launch or handover. Ownership of the final approved website and approved project content transfers after full payment. The client remains responsible for ensuring that supplied text, photographs, logos and other materials may lawfully be used.</p>
-          <p>Domain registration, hosting, paid licences and third-party services are separate and should be held in the client's own name. E-commerce, professional photography, full brand design and major scope changes are excluded unless specifically included in the quotation. Booking systems and card payment are quoted as separate lines.</p>
-          <p>Project-specific scope, revisions, responsibilities, cancellation, delays and post-launch support are confirmed in the written proposal or agreement before payment. That project agreement takes priority over this website summary.</p>
-        </details>
+        <p><a href="/privacy/">Privacy notice</a> &middot; <a href="/privacy/#complaints">Complaints</a> &middot; <a href="/terms/">Service terms</a> &middot; <a href="/privacy/#cookies">Cookies</a></p>
         <p style="margin-top:var(--sc-4)">The five sites above are demonstrations. The businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
       </div>
     </div>
@@ -546,14 +529,6 @@
     if (btn) { e.preventDefault(); pick(btn); }
   });
 
-  // Deep links to the legal accordions should open them.
-  function openDetailsFromHash() {
-    if (!location.hash) return;
-    var el = document.getElementById(location.hash.slice(1));
-    if (el && el.tagName === 'DETAILS') el.open = true;
-  }
-  openDetailsFromHash();
-  window.addEventListener('hashchange', openDetailsFromHash);
 
   // Posts JSON to Web3Forms without leaving the page. method/action stay as the no-JS fallback.
   form.addEventListener('submit', async function (e) {
