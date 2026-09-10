@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brackenwynd Hair Studio · Falkirk</title>
+<meta name="description" content="A working hair studio in Falkirk. Every look priced, every stylist named, and you book by pointing at the hair you want.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/demos/salon-v2/">
+<meta name="theme-color" content="#131518">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Brackenwynd Hair Studio">
+<meta property="og:title" content="Brackenwynd Hair Studio, Falkirk">
+<meta property="og:description" content="Every look priced, every stylist named. Book by pointing at the hair you want.">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23131518'/><path d='M9 8v16M23 8v16M9 15.2h14' stroke='%23D08A57' stroke-width='2.2' stroke-linecap='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scrollcraft.css">
+<style>
+  :root {
+    --sc-canvas:     #131518;
+    --sc-surface:    #1C1F23;
+    --sc-ink:        #F2F4F5;
+    --sc-ink-soft:   #98A2A9;
+    --sc-accent:     #D08A57;
+    --sc-accent-ink: #131518;
+    --sc-font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --sc-font-text:    "Geist", "Helvetica Neue", Arial, sans-serif;
+
+    --bw-glass: #232830;
+    --bw-line:  rgba(242,244,245,.14);
+    --bw-line-strong: rgba(242,244,245,.28);
+  }
+
+  /* ---------- index of objects: the nav jumps, it does not market ---------- */
+  .bw-index {
+    position: fixed; inset: auto 0 0 0; z-index: var(--sc-z-chrome);
+    display: flex; align-items: center; gap: var(--sc-4);
+    padding: var(--sc-3) var(--sc-gutter);
+    background: color-mix(in srgb, var(--sc-canvas) 88%, transparent);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid var(--bw-line);
+    font-family: var(--sc-font-text);
+    font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide);
+    text-transform: uppercase;
+  }
+  .bw-index__mark { font-family: var(--sc-font-display); font-weight: 700; letter-spacing: -.01em; text-transform: none; font-size: var(--sc-t-base); }
+  .bw-index__list { display: flex; gap: var(--sc-4); margin-left: auto; list-style: none; padding: 0; }
+  .bw-index a { color: var(--sc-ink-soft); text-decoration: none; }
+  .bw-index a:hover { color: var(--sc-ink); }
+  .bw-index__ask { color: var(--sc-accent-ink) !important; background: var(--sc-accent); padding: .55rem 1rem; border-radius: var(--sc-r-pill); font-weight: 500; }
+  @media (max-width: 720px) { .bw-index__list li:not(:last-child) { display: none; } }
+
+  /* ---------- the label schema. every object, no exceptions ---------- */
+  .bw-label { font-family: var(--sc-font-text); }
+  .bw-label__name { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-xl); line-height: 1.02; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-2); }
+  .bw-label__facts { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); letter-spacing: var(--sc-track-normal); margin: 0 0 var(--sc-2); font-variant-numeric: tabular-nums; }
+  .bw-label__who { color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0; }
+
+  /* ---------- the plate: holds its shape with or without a photograph ---------- */
+  .bw-plate {
+    position: relative; overflow: hidden; border-radius: var(--sc-r-md);
+    background:
+      linear-gradient(118deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 34%),
+      linear-gradient(200deg, #262C34 0%, #171A1F 58%, #101317 100%);
+    box-shadow: 0 24px 60px -28px var(--sc-shadow-color);
+  }
+  .bw-plate::after { content:""; position:absolute; inset:0; border:1px solid var(--bw-line); border-radius: inherit; pointer-events:none; }
+  .bw-plate img { display:block; width:100%; height:100%; object-fit: cover; }
+  .bw-plate--wide { aspect-ratio: 16/9; }
+  .bw-plate--tall { aspect-ratio: 4/5; }
+
+  /* ---------- act 1 ---------- */
+  .bw-open { display: grid; gap: var(--sc-7); align-items: end; padding: var(--sc-9) var(--sc-gutter) var(--sc-8); }
+  @media (min-width: 900px) { .bw-open { grid-template-columns: 1.45fr .85fr; padding-top: var(--sc-10); } }
+  .bw-open__where { color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0 0 var(--sc-3); }
+  .bw-open h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-3); text-wrap: balance; }
+  .bw-open p { color: var(--sc-ink-soft); max-width: 34ch; margin: 0; text-wrap: pretty; }
+
+  /* ---------- act 2: the rail is the spine ---------- */
+  .bw-rail { display: flex; gap: var(--sc-6); align-items: flex-end; padding-inline: var(--sc-gutter); }
+  .bw-rail__lead { flex: 0 0 min(30ch, 68vw); }
+  .bw-rail__lead h2 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-3); }
+  .bw-rail__lead p { color: var(--sc-ink-soft); margin: 0; }
+  .bw-object { flex: 0 0 min(34ch, 72vw); }
+  .bw-object .bw-plate { margin-bottom: var(--sc-4); }
+
+  /* the signature move lives on this button */
+  .bw-pick {
+    display: inline-flex; align-items: center; gap: .5rem;
+    margin-top: var(--sc-3); padding: .6rem 1rem;
+    background: transparent; color: var(--sc-ink);
+    border: 1px solid var(--bw-line-strong); border-radius: var(--sc-r-pill);
+    font: 500 var(--sc-t-xs)/1 var(--sc-font-text); letter-spacing: var(--sc-track-wide); text-transform: uppercase;
+    cursor: pointer; transition: background var(--sc-d-fast) var(--sc-ease-out), color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) { .bw-pick:hover { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); } }
+  .bw-pick:active { transform: translateY(1px); }
+  .bw-pick__dot { width: .42rem; height: .42rem; border-radius: 50%; background: var(--sc-accent); }
+  @media (pointer: coarse) { .bw-pick { min-height: 44px; } }
+
+  /* ---------- act 3: the chair ---------- */
+  .bw-chair { display: grid; gap: var(--sc-6); padding: var(--sc-section) var(--sc-gutter); }
+  @media (min-width: 860px) { .bw-chair { grid-template-columns: repeat(2, 1fr); gap: var(--sc-7) var(--sc-8); } }
+  .bw-chair > h2 { grid-column: 1 / -1; font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0; }
+  .bw-person { display: grid; grid-template-columns: 4.5rem 1fr; gap: var(--sc-4); align-items: start; }
+  .bw-person__mark { width: 4.5rem; height: 4.5rem; border-radius: 50%; display: grid; place-items: center; background: var(--bw-glass); border: 1px solid var(--bw-line); font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); color: var(--sc-ink-soft); }
+  .bw-person h3 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); margin: 0 0 .35rem; letter-spacing: var(--sc-track-snug); }
+  .bw-person p { margin: 0 0 var(--sc-2); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); max-width: 42ch; text-wrap: pretty; }
+  .bw-person .bw-label__who { color: var(--sc-ink-soft); }
+
+  /* ---------- act 4: the quiet hour. authored silence ---------- */
+  .bw-quiet { min-height: 62vh; display: grid; align-content: center; padding: var(--sc-section) var(--sc-gutter); }
+  .bw-quiet__inner { max-width: 46ch; padding-top: var(--sc-5); border-top: 1px solid var(--bw-line-strong); }
+  .bw-quiet__inner::before { content:""; display:block; width:2.5rem; height:2px; background: var(--sc-accent); margin: 0 0 var(--sc-5); transform: translateY(calc(-1 * var(--sc-5) - 1px)); }
+  .bw-quiet h2 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-xl); line-height: 1.06; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-4); text-wrap: balance; }
+  .bw-quiet p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-3); text-wrap: pretty; }
+
+  /* ---------- act 5: the inquiry plate, typeset as a label ---------- */
+  .bw-ask { width: min(58ch, 100%); margin-inline: auto; padding: var(--sc-gutter); }
+  .bw-ask h2 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-4); text-wrap: balance; }
+  .bw-chosen { border: 1px solid var(--bw-line); border-radius: var(--sc-r-md); background: var(--bw-glass); padding: var(--sc-4); margin-bottom: var(--sc-5); }
+  .bw-chosen[hidden] { display: none !important; }
+  .bw-chosen__eyebrow { color: var(--sc-accent); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0 0 var(--sc-2); }
+  .bw-field { display: block; margin-bottom: var(--sc-4); }
+  .bw-field > span { display: block; font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); margin-bottom: .5rem; }
+  .bw-field input, .bw-field select {
+    width: 100%; padding: .85rem 1rem; color: var(--sc-ink);
+    background: var(--sc-canvas); border: 1px solid var(--bw-line); border-radius: var(--sc-r-sm);
+    font: 400 var(--sc-t-base)/1.4 var(--sc-font-text);
+  }
+  .bw-field input:focus-visible, .bw-field select:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; border-color: var(--sc-accent); }
+  .bw-submit {
+    width: 100%; min-height: 52px; padding: 1rem 1.4rem;
+    background: var(--sc-accent); color: var(--sc-accent-ink); border: 0; border-radius: var(--sc-r-pill);
+    font: 600 var(--sc-t-base)/1 var(--sc-font-display); letter-spacing: var(--sc-track-snug); cursor: pointer;
+    transition: transform var(--sc-d-fast) var(--sc-ease-out), filter var(--sc-d-fast) var(--sc-ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) { .bw-submit:hover { filter: brightness(1.06); } }
+  .bw-submit:active { transform: translateY(1px); }
+  .bw-fine { color: var(--sc-ink-soft); font-size: var(--sc-t-xs); margin-top: var(--sc-4); text-wrap: pretty; }
+  .bw-done { border: 1px solid var(--sc-accent); border-radius: var(--sc-r-md); padding: var(--sc-5); }
+  .bw-done h3 { font-family: var(--sc-font-display); font-size: var(--sc-t-lg); margin: 0 0 var(--sc-2); }
+  .bw-done p { color: var(--sc-ink-soft); margin: 0; }
+
+  .bw-foot { padding: var(--sc-6) var(--sc-gutter) calc(var(--sc-9) + 3rem); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); border-top: 1px solid var(--bw-line); }
+  .bw-foot a { color: var(--sc-ink-soft); }
+  .bw-foot p { margin: 0 0 var(--sc-2); max-width: 62ch; }
+
+  @media (max-width: 700px) {
+    .bw-open h1, .bw-rail__lead h2, .bw-chair > h2, .bw-ask h2 { font-size: var(--sc-t-xl); }
+  }
+  @media (prefers-reduced-motion: reduce) { .bw-pick, .bw-submit { transition: none; } }
+</style>
+</head>
+<body>
+
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<nav class="bw-index" aria-label="The collection">
+  <a class="bw-index__mark" href="#top">Brackenwynd</a>
+  <ul class="bw-index__list">
+    <li><a href="#range">The range</a></li>
+    <li><a href="#chair">The chair</a></li>
+    <li><a href="#quiet">The quiet hour</a></li>
+    <li><a class="bw-index__ask" href="#ask">Ask</a></li>
+  </ul>
+</nav>
+
+<main id="top">
+
+  <!-- 1 · THE WORK. reveal + parallax. Object one, already labelled. -->
+  <section class="sc-section" data-sc-act="flow" data-sc-drift="#131518" aria-labelledby="obj-1">
+    <div class="bw-open">
+      <div data-sc-reveal="up" data-sc-reveal-at="0 0.5">
+        <div class="bw-plate bw-plate--wide" data-sc-parallax="0.06">
+          <img src="assets/01-hero.jpg" alt="Lived-in balayage, dark at the root and warming through the mid lengths, lit hard from one side." width="1800" height="1013" loading="eager" decoding="async">
+        </div>
+      </div>
+      <div class="bw-label" data-sc-in data-sc-stagger="60">
+        <p class="bw-open__where">9 Corbie Wynd, Falkirk</p>
+        <h1 id="obj-1" class="bw-label__name">Lived-in balayage</h1>
+        <p class="bw-label__facts">Colour &middot; 3 hr 15 &middot; from &pound;115</p>
+        <p class="bw-label__who">Rhona, Erin</p>
+        <p style="margin-top:1.25rem">Everything here is priced before you sit down, and the person who does it is named.</p>
+        <button class="bw-pick" type="button" data-pick data-service="Lived-in balayage" data-detail="Colour &middot; 3 hr 15 &middot; from &pound;115" data-who="Rhona">
+          <span class="bw-pick__dot" aria-hidden="true"></span> Book this
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · THE RANGE. pan. The grammar's spine. -->
+  <section id="range" data-sc-act="pan" data-sc-span="3.4" data-sc-drift="#171A1E" aria-labelledby="range-h">
+    <div data-sc-stage>
+      <div class="bw-rail" data-sc-pan="0.07">
+        <div class="bw-rail__lead">
+          <h2 id="range-h">The range</h2>
+          <p>Four of the things we are asked for most. Point at one and we will take it from there.</p>
+        </div>
+
+        <article class="bw-object">
+          <div class="bw-plate bw-plate--tall" data-sc-tilt="5">
+            <img src="assets/02-copper.jpg" alt="Copper red, deepest at the root, warming to burnished ginger through the mid lengths." width="1000" height="1250" loading="lazy" decoding="async">
+          </div>
+          <div class="bw-label">
+            <h3 class="bw-label__name">Copper, full head</h3>
+            <p class="bw-label__facts">Colour &middot; 3 hr &middot; from &pound;120</p>
+            <p class="bw-label__who">Erin</p>
+          </div>
+          <button class="bw-pick" type="button" data-pick data-service="Copper, full head" data-detail="Colour &middot; 3 hr &middot; from &pound;120" data-who="Erin">
+            <span class="bw-pick__dot" aria-hidden="true"></span> Book this
+          </button>
+        </article>
+
+        <article class="bw-object">
+          <div class="bw-plate bw-plate--tall" data-sc-tilt="5">
+            <img src="assets/03-bob.jpg" alt="A blunt bob cut to the jaw, dark and glass smooth, with one unbroken band of shine across it." width="1000" height="1250" loading="lazy" decoding="async">
+          </div>
+          <div class="bw-label">
+            <h3 class="bw-label__name">The blunt bob</h3>
+            <p class="bw-label__facts">Cut &middot; 1 hr 15 &middot; &pound;52</p>
+            <p class="bw-label__who">Sophie</p>
+          </div>
+          <button class="bw-pick" type="button" data-pick data-service="The blunt bob" data-detail="Cut &middot; 1 hr 15 &middot; &pound;52" data-who="Sophie">
+            <span class="bw-pick__dot" aria-hidden="true"></span> Book this
+          </button>
+        </article>
+
+        <article class="bw-object">
+          <div class="bw-plate bw-plate--tall" data-sc-tilt="5">
+            <img src="assets/04-cut.jpg" alt="A cut and blow dry finished with soft movement through the lengths." width="1000" height="1250" loading="lazy" decoding="async">
+          </div>
+          <div class="bw-label">
+            <h3 class="bw-label__name">Cut and blow dry</h3>
+            <p class="bw-label__facts">Cut &middot; 1 hr &middot; &pound;45</p>
+            <p class="bw-label__who">Rhona, Sophie</p>
+          </div>
+          <button class="bw-pick" type="button" data-pick data-service="Cut and blow dry" data-detail="Cut &middot; 1 hr &middot; &pound;45" data-who="Sophie">
+            <span class="bw-pick__dot" aria-hidden="true"></span> Book this
+          </button>
+        </article>
+
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · THE CHAIR. flow + in. The one act that reads like a document. -->
+  <section id="chair" class="sc-section" data-sc-act="flow" data-sc-drift="#131518" aria-labelledby="chair-h">
+    <div class="bw-chair" data-sc-in data-sc-stagger="70">
+      <h2 id="chair-h">The chair</h2>
+
+      <div class="bw-person">
+        <div class="bw-person__mark" aria-hidden="true">RB</div>
+        <div>
+          <h3>Rhona Baird</h3>
+          <p>Opened Brackenwynd in 2011 with two chairs and a second-hand backwash. If a colour has gone wrong somewhere else, this is the chair it gets fixed in.</p>
+          <p class="bw-label__who">Colour correction, blondes</p>
+        </div>
+      </div>
+
+      <div class="bw-person">
+        <div class="bw-person__mark" aria-hidden="true">EM</div>
+        <div>
+          <h3>Erin MacFarlane</h3>
+          <p>Does the balayage and the coppers. Will tell you honestly if the picture on your phone will not sit on your hair, which saves everyone an afternoon.</p>
+          <p class="bw-label__who">Balayage, curly hair</p>
+        </div>
+      </div>
+
+      <div class="bw-person">
+        <div class="bw-person__mark" aria-hidden="true">SL</div>
+        <div>
+          <h3>Sophie Lang</h3>
+          <p>Sharp cuts and anything that needs to hold a line. Also the one small children ask for, which tells you most of what you need to know.</p>
+          <p class="bw-label__who">Bobs, fringes, children</p>
+        </div>
+      </div>
+
+      <div class="bw-person">
+        <div class="bw-person__mark" aria-hidden="true">CD</div>
+        <div>
+          <h3>Callum Dewar</h3>
+          <p>Gents, skin fades and beards. Thursday is his late night, so the last chair goes at half seven.</p>
+          <p class="bw-label__who">Gents, barbering</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · THE QUIET HOUR. reveal. Authored silence: almost nothing moves here. -->
+  <section id="quiet" class="sc-section" data-sc-act="reveal" data-sc-drift="#1C1F23" aria-labelledby="quiet-h">
+    <div class="bw-quiet">
+      <div class="bw-quiet__inner" data-sc-reveal="up" data-sc-reveal-at="0.1 0.55">
+        <h2 id="quiet-h">You can ask for a quiet appointment.</h2>
+        <p>Tick the box and nobody will make conversation. No explaining why, no apologising for it, and it does not cost anything extra.</p>
+        <p>People ask us for this more than anything else on this page, and almost nobody asks out loud.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · THE ASK. pin + tilt. Inquiry plate typeset as a label. The peak. -->
+  <section id="ask" class="sc-section" data-sc-act="flow" data-sc-drift="#131518" aria-labelledby="ask-h">
+    <div>
+      <div class="bw-ask" data-sc-in data-sc-stagger="60">
+        <h2 id="ask-h">Ask for a time</h2>
+
+        <div class="bw-chosen" id="bwChosen" hidden>
+          <p class="bw-chosen__eyebrow">You picked</p>
+          <p class="bw-label__name" id="bwChosenName" style="font-size:var(--sc-t-lg)"></p>
+          <p class="bw-label__facts" id="bwChosenFacts"></p>
+          <p class="bw-label__who" id="bwChosenWho"></p>
+        </div>
+
+        <form id="bwForm" novalidate>
+          <label class="bw-field">
+            <span>What you are after</span>
+            <select name="service" id="bwService">
+              <option>Lived-in balayage</option>
+              <option>Copper, full head</option>
+              <option>The blunt bob</option>
+              <option selected>Cut and blow dry</option>
+                <option>Not sure yet</option>
+            </select>
+          </label>
+          <label class="bw-field">
+            <span>Your name</span>
+            <input name="name" id="bwName" type="text" autocomplete="name" required>
+          </label>
+          <label class="bw-field">
+            <span>Mobile</span>
+            <input name="phone" id="bwPhone" type="tel" autocomplete="tel" inputmode="tel" required>
+          </label>
+          <label class="bw-field" style="display:flex; gap:.75rem; align-items:center">
+            <input type="checkbox" name="quiet" id="bwQuiet" style="width:auto; min-width:20px; min-height:20px">
+            <span style="margin:0; text-transform:none; letter-spacing:normal; font-size:var(--sc-t-sm); color:var(--sc-ink)">Make it a quiet appointment</span>
+          </label>
+          <button class="bw-submit" type="submit">Send the request</button>
+          <p class="bw-fine">We text back the same day with two or three times. Nothing is booked until you reply.</p>
+        </form>
+
+        <div class="bw-done" id="bwDone" hidden>
+          <h3>That is with the salon.</h3>
+          <p id="bwDoneBody"></p>
+        </div>
+
+        <div class="bw-foot">
+          <p>Brackenwynd Hair Studio, 9 Corbie Wynd, Falkirk. <a href="tel:+441632960118">01632 960 118</a>. Closed Sunday and Monday, late until eight on Thursday.</p>
+          <p>This is a demonstration site built by <a href="https://tempanywebstudios.co.uk">Tempany Web Studios</a>. The salon, the people, the address and the phone number are invented. Nothing sent from this page reaches anyone.</p>
+          <p>Photographs by Lera Kogan, jagadshd and Dwi Agus Prasetiyo on <a href="https://unsplash.com">Unsplash</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="scrollcraft.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script>
+/* ---------------------------------------------------------------
+   Signature move: pick-to-book.
+   Tapping any object in the collection carries that object into the
+   inquiry plate. Bespoke to this page. The engine is untouched.
+   --------------------------------------------------------------- */
+(function () {
+  var chosen   = document.getElementById('bwChosen');
+  var cName    = document.getElementById('bwChosenName');
+  var cFacts   = document.getElementById('bwChosenFacts');
+  var cWho     = document.getElementById('bwChosenWho');
+  var service  = document.getElementById('bwService');
+  var form     = document.getElementById('bwForm');
+  var done     = document.getElementById('bwDone');
+  var doneBody = document.getElementById('bwDoneBody');
+  var nameEl   = document.getElementById('bwName');
+  var phoneEl  = document.getElementById('bwPhone');
+  var quietEl  = document.getElementById('bwQuiet');
+
+  function pick(btn) {
+    var svc    = btn.getAttribute('data-service') || '';
+    var detail = btn.getAttribute('data-detail')  || '';
+    var who    = btn.getAttribute('data-who')     || '';
+
+    cName.textContent  = svc;
+    cFacts.innerHTML   = detail;
+    cWho.textContent   = who ? 'With ' + who : '';
+    chosen.hidden = false;
+
+    for (var i = 0; i < service.options.length; i++) {
+      if (service.options[i].text === svc) { service.selectedIndex = i; break; }
+    }
+
+    document.getElementById('ask').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(function () { nameEl.focus({ preventScroll: true }); }, 420);
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('[data-pick]');
+    if (btn) { e.preventDefault(); pick(btn); }
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var n = (nameEl.value || '').trim();
+    var p = (phoneEl.value || '').replace(/[^\d+]/g, '');
+    if (n.length < 2) { nameEl.focus(); return; }
+    if (p.length < 10) { phoneEl.focus(); return; }
+    doneBody.textContent = n + ', we have your request for ' + service.value.toLowerCase()
+      + (quietEl.checked ? ', quiet appointment noted' : '')
+      + '. Someone will text ' + phoneEl.value.trim() + ' today with a couple of times.';
+    form.hidden = true;
+    chosen.hidden = true;
+    done.hidden = false;
+    done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
+</script>
+</body>
+</html>
