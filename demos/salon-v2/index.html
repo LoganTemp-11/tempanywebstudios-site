@@ -236,9 +236,10 @@
   .bw-lights:hover { color: var(--sc-ink); border-color: var(--bw-line-strong); }
   .bw-lights:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
   .bw-lights svg { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-  .bw-lights__sun { display: none; }
-  :root[data-theme="light"] .bw-lights__sun { display: block; }
-  :root[data-theme="light"] .bw-lights__moon { display: none; }
+  /* Written with the parent so they outrank the generic .bw-lights svg rule. */
+  .bw-lights .bw-lights__sun { display: none; }
+  :root[data-theme="light"] .bw-lights .bw-lights__sun { display: block; }
+  :root[data-theme="light"] .bw-lights .bw-lights__moon { display: none; }
   @media (pointer: coarse) { .bw-lights { width: 44px; height: 44px; } }
 
   /* ---------- the questions. extended label copy, sitting with the form
