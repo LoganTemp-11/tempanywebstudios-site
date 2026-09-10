@@ -124,6 +124,13 @@
   .tw-object .tw-plate { margin-bottom: var(--sc-4); }
   .tw-object .tw-label__name { font-size: var(--sc-t-lg); }
 
+  /* The one real client site in the rail. Flagged rather than restyled: the
+     point is that a visitor can tell at a glance which of these is somebody's
+     actual business, without the card shouting over the others. */
+  .tw-label__flag { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0 0 var(--sc-2); display: inline-flex; align-items: center; gap: .5em; color: var(--sc-ink); }
+  .tw-label__flag::before { content: ""; width: .5em; height: .5em; border-radius: 50%; background: currentColor; }
+  .tw-object--live .tw-plate { outline: 1px solid color-mix(in srgb, var(--sc-ink) 22%, transparent); outline-offset: 3px; }
+
   /* ---------- act 3: the quote, the one act that reads like a document ---------- */
   .tw-quote { max-width: var(--sc-maxw); margin-inline:auto; padding: var(--sc-section) var(--sc-gutter); display:grid; gap: var(--sc-6); }
   @media (min-width: 900px) { .tw-quote { grid-template-columns: repeat(2, 1fr); gap: var(--sc-7) var(--sc-8); } }
@@ -284,8 +291,19 @@
       <div class="tw-rail" data-sc-pan="0.07">
         <div class="tw-rail__lead">
           <h2 id="work-h">The work</h2>
-          <p>Five complete sites, one per trade, built as demonstrations so you can judge the craft before you commit anything. Shown on a phone, because that is where your customers are. Point at the one nearest your business.</p>
+          <p>The first one is a real client's site, live and taking her bookings. The other four are complete demonstrations, one per trade, so you can judge the craft before you commit anything. Shown on a phone, because that is where your customers are. Point at the one nearest your business.</p>
         </div>
+
+        <article class="tw-object tw-object--live">
+          <div class="tw-plate tw-plate--tall tw-plate--phone" data-sc-tilt="5">
+            <img src="/images/home/phone-jennifer.jpg" alt="Jennifer Ellis Yoga, a live client site, shown on a phone" width="780" height="1688" loading="lazy" decoding="async">
+          </div>
+          <p class="tw-label__flag">Live client site</p>
+          <h3 class="tw-label__name">Jennifer Ellis Yoga</h3>
+          <p class="tw-label__facts">Yoga &middot; Ayrshire and online &middot; she books and edits it herself</p>
+          <p class="tw-label__who">Real classes, real bookings, her own address</p>
+          <a class="tw-open" href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Open it</a><button class="tw-pick" type="button" data-pick data-service="A site like Jennifer's" data-detail="Classes &middot; bookings &middot; wellbeing" data-who="Start from this one"><span class="tw-pick__dot" aria-hidden="true"></span> Start from this</button>
+        </article>
 
         <article class="tw-object">
           <div class="tw-plate tw-plate--tall tw-plate--phone" data-sc-tilt="5">
@@ -327,15 +345,6 @@
           <a class="tw-open" href="/demos/professional/" target="_blank" rel="noopener noreferrer">Open it</a><button class="tw-pick" type="button" data-pick data-service="A site like Ochil Ledger" data-detail="Accountancy &middot; professional services" data-who="Start from this one"><span class="tw-pick__dot" aria-hidden="true"></span> Start from this</button>
         </article>
 
-        <article class="tw-object">
-          <div class="tw-plate tw-plate--tall tw-plate--phone" data-sc-tilt="5">
-            <img src="/images/home/phone-yoga.jpg" alt="Stillwater Yoga demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
-          </div>
-          <h3 class="tw-label__name">Stillwater Yoga</h3>
-          <p class="tw-label__facts">Studio &middot; timetable and packages</p>
-          <p class="tw-label__who">Built to get a first booking</p>
-          <a class="tw-open" href="/demos/yoga/" target="_blank" rel="noopener noreferrer">Open it</a><button class="tw-pick" type="button" data-pick data-service="A site like Stillwater" data-detail="Yoga &middot; fitness &middot; classes" data-who="Start from this one"><span class="tw-pick__dot" aria-hidden="true"></span> Start from this</button>
-        </article>
 
         <article class="tw-object">
           <div class="tw-plate tw-plate--tall" data-sc-tilt="5" style="display:grid;align-content:end;padding:var(--sc-5)">
@@ -487,7 +496,7 @@
       <div class="tw-foot">
         <p>Logan Tempany trading as Tempany Web Studios &middot; Dollar, Scotland &middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a> &middot; <a href="tel:+447487536649">07487 536649</a></p>
         <p><a href="/privacy/">Privacy notice</a> &middot; <a href="/privacy/#complaints">Complaints</a> &middot; <a href="/terms/">Service terms</a> &middot; <a href="/privacy/#cookies">Cookies</a></p>
-        <p style="margin-top:var(--sc-4)">The five sites above are demonstrations. The businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
+        <p style="margin-top:var(--sc-4)">Jennifer Ellis Yoga is a real client site, shown with her permission. The four demonstration sites are not: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
       </div>
     </div>
   </section>

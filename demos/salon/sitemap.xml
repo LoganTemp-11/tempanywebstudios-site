@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Demonstration sitemap. Like robots.txt, a sitemap is normally submitted from
+  the root of a domain; this copy is shipped so a client can see what they get.
+  Three URLs, because there are three real pages: the single-page main site,
+  the privacy policy and the terms.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tempanywebstudios.co.uk/demos/salon/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tempanywebstudios.co.uk/demos/salon/privacy.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://tempanywebstudios.co.uk/demos/salon/terms.html</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

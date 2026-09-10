@@ -1,0 +1,21 @@
+# robots.txt — Brackenwynd Hair Studio (demonstration site)
+#
+# This file is a demonstration artefact. A robots.txt only carries any weight
+# when it sits at the root of a domain (https://example.co.uk/robots.txt), and
+# this copy sits in a subfolder, so search engines will not read it here. It is
+# shipped so a client can see exactly what they get on their own domain, where
+# it would live at the root.
+#
+# Tempany Web Studios note: do NOT reference this file from the root
+# robots.txt. The demo is kept out of the index by the noindex meta tag on
+# every page, and a Disallow rule here would stop crawlers reading that tag.
+
+User-agent: *
+Allow: /
+
+# Nothing to hide on a salon site — every page is meant to be found.
+# On a live client site, add exclusions here for anything like:
+# Disallow: /thank-you/
+# Disallow: /admin/
+
+Sitemap: https://tempanywebstudios.co.uk/demos/salon/sitemap.xml

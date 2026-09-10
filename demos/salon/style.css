@@ -1,0 +1,919 @@
+/* Brackenwynd Hair Studio — demo site for Tempany Web Studios.
+   Mobile first: base rules are the phone, min-width queries add the desktop.
+
+   Colour rules that are not negotiable, taken from the contrast measurements:
+     · --brass (#9A7238) is 4.03:1 on bone. Hairlines, borders, icon strokes
+       and text at 24px+ only. Small brass text uses --brass-text.
+     · --ink-3 on --bone-3 is 4.47:1 and fails. Use --ink-2 on --bone-3.
+*/
+
+:root{
+  --bone:#FAF6F1;
+  --bone-2:#F1E8E1;
+  --bone-3:#E3D5CB;
+  --paper:#FFFFFF;
+
+  --plum:#3B2430;
+  --plum-2:#2A1922;
+  --plum-3:#5C4050;
+
+  --rose:#A8455C;
+  --rose-text:#93374E;
+  --rose-light:#E9A9B4;
+
+  --brass:#9A7238;
+  --brass-text:#7D5C24;
+  --brass-light:#DFBE8B;
+
+  --ink:#231620;
+  --ink-2:#4E3F49;
+  --ink-3:#6B5A65;
+
+  --ok:#2F6B45;
+  --ok-bg:#E6F0E9;
+  --line:rgba(35,22,32,.13);
+  --line-2:rgba(35,22,32,.07);
+
+  --display:"DM Serif Display","Hoefler Text",Georgia,"Times New Roman",serif;
+  --sans:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+
+  --wrap:1180px;
+  --header-h:62px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bone);color:var(--ink-2);
+  font-family:var(--sans);font-size:16.5px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-wrap:break-word;
+}
+svg{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit}
+
+/* Anchor targets must clear the sticky header, or every in-page jump lands
+   with its own heading hidden behind the header. */
+[id]{scroll-margin-top:calc(var(--header-h) + 14px)}
+/* ...and clear of whichever fixed bar is at the foot, so scrollIntoView and
+   the browser's own focus scrolling never park a control under it. */
+a,button,summary,input,textarea,select,.bw-time,.bw-day,.bw-opt{
+  scroll-margin-bottom:calc(var(--bottom-bar,0px) + 16px);
+  scroll-margin-top:calc(var(--header-h) + 14px);
+}
+
+.skip{position:absolute;left:-9999px;top:0;background:var(--plum);color:#fff;padding:12px 20px;z-index:100;border-radius:0 0 8px 0}
+.skip:focus{left:0}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
+/* ---------------- type ---------------- */
+h1,h2,h3,h4{color:var(--ink);margin:0 0 .45em;font-weight:600;letter-spacing:-.02em}
+h1{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(2.5rem,10.5vw,4.4rem);line-height:1.02;letter-spacing:-.02em;
+  margin-bottom:.3em;
+}
+h1 em{font-style:normal;color:var(--rose-text);display:inline-block}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(1.75rem,6vw,2.75rem);line-height:1.1;letter-spacing:-.015em}
+h3{font-size:1.14rem;line-height:1.28;font-weight:600}
+h4{font-size:1rem;font-weight:600}
+p{margin:0 0 1em}
+
+.eyebrow{
+  text-transform:uppercase;letter-spacing:.16em;font-size:.68rem;
+  font-weight:700;color:var(--rose-text);margin:0 0 .9em;
+}
+.eyebrow.light{color:var(--rose-light)}
+.note{font-size:.85rem;color:var(--ink-3)}
+.center{text-align:center;margin-left:auto;margin-right:auto;max-width:640px}
+.lead{font-size:1.08rem;color:var(--ink-2)}
+
+/* ---------------- header ---------------- */
+/* The tint and blur go on ::before, not on the header. A backdrop-filter on
+   the header itself makes it the containing block for the position:fixed
+   mobile nav and traps the nav inside a 62px strip. */
+.site-header{
+  position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:16px;
+  padding:11px 5%;min-height:var(--header-h);
+  border-bottom:1px solid var(--line-2);
+}
+.site-header::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:rgba(250,246,241,.92);backdrop-filter:blur(14px) saturate(1.25);
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;min-height:44px}
+.brand-mark{flex:none;width:36px;height:36px}
+.bm-plate{fill:var(--plum)}
+.bm-arc{fill:none;stroke:var(--brass);stroke-width:2.2;stroke-linecap:round}
+.bm-strand{fill:none;stroke:var(--bone);stroke-width:1.7;stroke-linecap:round}
+.brand-text{
+  font-family:var(--display);font-size:1.22rem;font-weight:400;
+  letter-spacing:-.01em;color:var(--ink);line-height:1.05;display:block;
+}
+.brand-sub{
+  display:block;font-family:var(--sans);font-size:.6rem;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--brass-text);margin-top:1px;
+}
+
+/* B1: always-visible header CTA. Short label on a phone, full label from
+   860px. aria-label keeps the accessible name complete either way. */
+.header-cta{
+  margin-left:auto;background:var(--plum);color:#fff;text-decoration:none;
+  border-radius:100px;padding:11px 16px;min-height:44px;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:.82rem;font-weight:600;white-space:nowrap;flex:none;
+}
+.header-cta:hover{background:var(--plum-2);color:#fff}
+.cta-long{display:none}
+.cta-short{display:inline}
+
+.menu-toggle{
+  margin-left:8px;background:none;border:1px solid var(--line);
+  border-radius:9px;padding:9px 11px;flex-direction:column;gap:4px;cursor:pointer;
+  min-width:44px;min-height:44px;align-items:center;justify-content:center;
+}
+.menu-toggle span{width:19px;height:2px;background:var(--ink);display:block;border-radius:2px}
+
+/* N3: with JS off the hamburger could never open anything, so it is only
+   shown once script.js has set .js on <html>. Without JS the links stay in
+   the flow as a wrapped row, which works with no script at all. */
+.nav{
+  margin-left:auto;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;
+}
+.js .nav{
+  position:fixed;inset:var(--header-h) 0 0 0;background:var(--bone);
+  flex-direction:column;align-items:stretch;padding:22px 6% 40px;gap:6px;
+  display:none;border-top:1px solid var(--line);overflow-y:auto;z-index:39;
+}
+.js .nav.open{display:flex}
+.menu-toggle{display:none}
+.js .menu-toggle{display:flex}
+.nav a{
+  text-decoration:none;font-size:1.05rem;font-weight:600;color:var(--ink-2);
+  padding:12px 0;min-height:44px;display:flex;align-items:center;
+  border-bottom:1px solid var(--line-2);
+}
+
+
+/* ---------------- buttons ---------------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.4em;
+  padding:14px 26px;min-height:48px;
+  font-weight:600;font-size:.95rem;letter-spacing:-.005em;text-align:center;
+  border:1px solid transparent;border-radius:100px;cursor:pointer;text-decoration:none;
+  transition:background .18s var(--ease),transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease);
+}
+.btn-primary{background:var(--plum);color:#fff;box-shadow:0 1px 2px rgba(35,22,32,.18)}
+.btn-primary:hover{background:var(--plum-2);color:#fff}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{background:var(--bone-2)}
+.btn-small{padding:11px 20px;min-height:44px;font-size:.88rem;background:var(--paper);color:var(--ink);border-color:var(--bone-3)}
+.btn-small:hover{background:var(--plum);color:#fff;border-color:var(--plum)}
+.btn-mock{background:var(--bone-2);color:var(--ink-2);border-color:var(--bone-3);width:100%;cursor:not-allowed}
+.btn:disabled{cursor:not-allowed}
+
+/* ---------------- hero ---------------- */
+.hero{
+  position:relative;overflow:hidden;isolation:isolate;
+  padding:clamp(44px,10vw,96px) 5% clamp(48px,8vw,88px);
+}
+.hero-art{
+  position:absolute;top:-14%;right:-38%;width:min(560px,105vw);z-index:0;
+  pointer-events:none;opacity:.75;
+}
+.ha-ring{fill:none;stroke:var(--bone-3);stroke-width:1}
+.ha-ring2{fill:var(--bone-2);opacity:.6}
+.ha-arc{fill:none;stroke:var(--brass);stroke-width:2;opacity:.55}
+.ha-arc2{fill:none;stroke:var(--rose);stroke-width:2;opacity:.32}
+.hero-copy{position:relative;z-index:1;max-width:640px;margin:0 auto}
+
+.next-strip{
+  background:var(--paper);border:1px solid var(--bone-3);border-radius:14px;
+  padding:14px 16px;margin:26px 0 24px;box-shadow:0 12px 30px rgba(59,36,48,.07);
+  border-top:3px solid var(--brass);
+}
+.next-strip__row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+.next-strip__label{
+  font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--rose-text);
+}
+.next-strip__value{font-weight:600;color:var(--ink);font-size:1.02rem}
+.next-strip__row--sub{
+  margin-top:10px;padding-top:10px;border-top:1px solid var(--line-2);
+  justify-content:space-between;
+}
+.next-strip__open{font-size:.85rem;color:var(--ink-2);font-weight:500}
+.next-strip__rating{display:flex;align-items:center;gap:7px}
+.stars{display:inline-flex;gap:1px}
+.stars svg{fill:var(--brass)}
+.rating-text{font-size:.8rem;color:var(--ink-3)}
+
+.hero-actions{display:flex;flex-direction:column;gap:11px;margin-top:8px}
+.hero-actions .btn{width:100%}
+.hero-note{margin-top:16px;font-size:.87rem;color:var(--ink-3)}
+
+/* B1: at 320x568 the "next available" panel pushed both hero buttons past
+   the fold, so the first screen had nothing to tap. Below 600px the actions
+   come first and the panel follows as supporting proof. Source order is
+   unchanged, so the reading order for a screen reader is untouched... which
+   is why the panel keeps its own order value rather than relying on DOM
+   position. */
+@media (max-width:599px){
+  .hero-copy{display:flex;flex-direction:column}
+  .hero-copy .eyebrow{order:1}
+  .hero-copy h1{order:2}
+  .hero-copy .lead{order:3}
+  .hero-actions{order:4;margin-top:4px}
+  .hero-note{order:5}
+  .next-strip{order:6;margin:22px 0 0}
+}
+
+/* ---------------- at a glance ---------------- */
+.strip{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  background:var(--plum);color:#fff;
+}
+.strip-item{
+  padding:18px 5%;text-align:center;display:flex;flex-direction:column;gap:2px;
+  border-right:1px solid rgba(255,255,255,.11);border-bottom:1px solid rgba(255,255,255,.11);
+}
+.strip-item:nth-child(2n){border-right:none}
+.strip-item:nth-last-child(-n+2){border-bottom:none}
+.strip-item strong{font-size:1.02rem;color:var(--brass-light);letter-spacing:-.01em;font-weight:600}
+.strip-item span{font-size:.79rem;color:rgba(255,255,255,.82)}
+
+/* ---------------- sections ---------------- */
+.section{padding:56px 5%;max-width:var(--wrap);margin:0 auto}
+.section-alt{background:var(--bone-2);max-width:none;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.section-alt>*{max-width:var(--wrap);margin-left:auto;margin-right:auto}
+.section-head{max-width:680px;margin-bottom:30px}
+.section-lead{font-size:1.02rem;max-width:60ch}
+.section-lead.light{color:rgba(255,255,255,.84)}
+h2.light{color:#fff}
+
+/* ---------------- prices ---------------- */
+.price-groups{display:flex;flex-direction:column;gap:14px}
+.price-group{
+  background:var(--paper);border:1px solid var(--bone-3);border-radius:14px;overflow:hidden;
+}
+.price-group>summary{
+  display:flex;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;
+  list-style:none;min-height:56px;font-weight:600;color:var(--ink);
+}
+.price-group>summary::-webkit-details-marker{display:none}
+.price-group>summary::after{
+  content:"";margin-left:auto;flex:none;width:9px;height:9px;
+  border-right:2px solid var(--brass);border-bottom:2px solid var(--brass);
+  transform:rotate(45deg);transition:transform .22s var(--ease);
+}
+.price-group[open]>summary::after{transform:rotate(-135deg)}
+.price-group[open]>summary{border-bottom:1px solid var(--line-2)}
+.pg-icon{flex:none;width:22px;height:22px;color:var(--brass)}
+.pg-icon svg{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.pg-name{font-size:1.02rem}
+.pg-count{font-size:.76rem;color:var(--ink-3);font-weight:500}
+.pg-body{padding:4px 18px 18px}
+.pg-blurb{font-size:.86rem;color:var(--ink-2);margin:12px 0 6px}
+
+.price-table{width:100%;border-collapse:collapse}
+.price-table thead th{
+  text-align:left;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;
+  font-weight:700;color:var(--brass-text);padding:10px 0 6px;border-bottom:1px solid var(--bone-3);
+}
+.price-table thead th:last-child,.price-table td.pt-price{text-align:right}
+.price-table tbody th{
+  text-align:left;font-weight:500;color:var(--ink);padding:11px 10px 11px 0;
+  border-bottom:1px solid var(--line-2);font-size:.94rem;
+}
+.price-table tbody td{
+  padding:11px 0;border-bottom:1px solid var(--line-2);font-size:.88rem;color:var(--ink-2);
+  white-space:nowrap;vertical-align:top;
+}
+.price-table tbody td+td{padding-left:12px}
+.price-table td.pt-price{font-weight:600;color:var(--ink);font-size:1rem}
+.price-table tbody tr:last-child th,.price-table tbody tr:last-child td{border-bottom:none}
+
+.price-foot{
+  margin-top:24px;padding:20px;background:var(--bone-2);border-radius:14px;
+  border-left:3px solid var(--brass);
+}
+.price-foot p{font-size:.9rem;color:var(--ink-2)}
+.price-foot p:last-child{margin-bottom:0}
+.price-foot strong{color:var(--ink)}
+
+/* ---------------- team ---------------- */
+.team-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.stylist{
+  background:var(--paper);border:1px solid var(--bone-3);border-radius:16px;padding:24px 22px;
+}
+.mono{display:block;width:76px;height:76px;margin-bottom:14px}
+.mono-disc{fill:var(--plum)}
+.mono-ring{fill:none;stroke:var(--brass);stroke-width:1.5}
+.mono-initial{
+  font-family:var(--display);font-size:42px;fill:var(--brass-light);
+  letter-spacing:0;
+}
+.stylist h3{margin-bottom:.15em}
+.stylist-role{
+  font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;font-weight:700;
+  color:var(--rose-text);margin:0 0 .9em;
+}
+.tags{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;padding:0}
+.tags li{
+  font-size:.76rem;background:var(--bone-2);color:var(--ink-2);
+  padding:5px 11px;border-radius:100px;border:1px solid var(--bone-3);
+}
+.stylist-bio{font-size:.93rem;margin-bottom:1.1em}
+
+/* ---------------- booking section ---------------- */
+.booking{background:var(--plum);max-width:none;color:rgba(255,255,255,.86)}
+.booking>*{max-width:var(--wrap);margin-left:auto;margin-right:auto}
+.booking-cards{display:flex;flex-direction:column;gap:18px}
+
+.book-card{background:var(--paper);border-radius:18px}
+/* NOT overflow:hidden — that makes this the scroll container for the sticky
+   progress row inside it, and the row silently stops sticking. */
+.book-card--slot{overflow:hidden}
+.book-card--live{
+  border-top:4px solid var(--brass);box-shadow:0 22px 50px rgba(0,0,0,.28);
+  border-radius:18px;
+}
+.book-card--live .book-card__head{border-radius:14px 14px 0 0}
+.card-badge{
+  display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;padding:5px 11px;border-radius:100px;margin:0 0 10px;
+}
+.card-badge--live{background:var(--ok-bg);color:var(--ok)}
+.card-badge--slot{background:var(--bone-3);color:var(--ink-2)}
+
+.book-card__head{padding:20px 20px 4px}
+.book-card__head h3{margin-bottom:.2em;font-size:1.2rem}
+.book-card__head p{font-size:.9rem;color:var(--ink-2);margin:0}
+
+.book-card--slot{border:1px solid var(--bone-3);background:var(--bone-2)}
+.book-card--slot>summary{
+  display:block;padding:18px 20px;cursor:pointer;list-style:none;min-height:56px;position:relative;
+}
+.book-card--slot>summary::-webkit-details-marker{display:none}
+.book-card--slot>summary::after{
+  content:"";position:absolute;right:20px;top:26px;width:9px;height:9px;
+  border-right:2px solid var(--plum-3);border-bottom:2px solid var(--plum-3);
+  transform:rotate(45deg);transition:transform .22s var(--ease);
+}
+.book-card--slot[open]>summary::after{transform:rotate(-135deg)}
+.book-card--slot>summary .card-badge{margin-bottom:8px}
+.bc-sum-title{display:block;font-weight:600;color:var(--ink);padding-right:24px}
+.bc-sum-sub{display:block;font-size:.83rem;color:var(--ink-2);margin-top:2px;padding-right:24px}
+.book-card__body{padding:0 20px 22px}
+.book-card__body h3{font-size:1.08rem}
+.book-card__body p{font-size:.9rem;color:var(--ink-2)}
+.mock{background:var(--paper);border:1px solid var(--bone-3);border-radius:12px;padding:14px;margin:14px 0}
+.mock-label{
+  font-size:.68rem!important;text-transform:uppercase;letter-spacing:.12em;font-weight:700;
+  color:var(--ink-3)!important;margin:0 0 10px;
+}
+.mock-field{margin-bottom:10px}
+.mock-field span{
+  display:block;font-size:.68rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--ink-3);margin-bottom:4px;
+}
+.mock-input{
+  border:1px solid var(--bone-3);border-radius:9px;padding:11px 12px;
+  background:var(--bone);color:var(--ink-2);font-size:.9rem;
+}
+
+/* Logan's script, deliberately in Tempany's own colours so it never reads
+   as part of the salon's site. */
+/* An aside addressed to the salon owner, deliberately quieter than the
+   salon's own copy so it never reads as a promise to her customers. */
+.booking-aside{
+  margin:20px 0 0;font-size:.85rem;color:rgba(255,255,255,.72);
+  border-top:1px solid rgba(255,255,255,.16);padding-top:16px;
+}
+.booking-aside span{
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  font-size:.66rem;color:var(--brass-light);margin-right:6px;
+}
+
+.tws-notes{
+  margin-top:16px;background:#163C31;border-radius:14px;border:1px solid #245646;
+}
+.tws-notes>summary{display:block;padding:16px 20px;cursor:pointer;list-style:none;min-height:56px;position:relative}
+.tws-notes>summary::-webkit-details-marker{display:none}
+.tws-notes>summary::after{
+  content:"";position:absolute;right:20px;top:24px;width:9px;height:9px;
+  border-right:2px solid #C6F24E;border-bottom:2px solid #C6F24E;
+  transform:rotate(45deg);transition:transform .22s var(--ease);
+}
+.tws-notes[open]>summary::after{transform:rotate(-135deg)}
+.tws-tag{
+  display:block;font-size:.64rem;text-transform:uppercase;letter-spacing:.18em;
+  font-weight:700;color:#C6F24E;margin-bottom:3px;
+}
+.tws-sum{display:block;font-weight:600;color:#fff;padding-right:24px}
+.tws-body{padding:0 20px 20px}
+.tws-body ul{margin:0;padding-left:18px}
+.tws-body li{color:rgba(255,255,255,.86);font-size:.92rem;margin-bottom:12px;line-height:1.55}
+.tws-body li:last-child{margin-bottom:0}
+.tws-body strong{color:#fff}
+
+/* ---------------- the request widget ---------------- */
+/* B4: the grid is thousands of pixels above the footer, so the footer's
+   reserve does nothing for it. The panel carries its own. */
+.bw{padding:0 16px calc(20px + var(--bottom-bar,0px))}
+/* M4: scrollIntoView parked this under the 67px sticky header after every
+   advance, so the step counter and the summary chips were invisible exactly
+   when they mattered most. */
+/* M4 + B4: pinned inside the card. The grid is too tall to fit under the
+   header and above the cookie bar on a small screen, so the scroll has to
+   favour the grid — and the progress row has to survive that, which it only
+   can by sticking. */
+.bw-top{
+  margin-bottom:12px;scroll-margin-top:calc(var(--header-h) + 14px);
+  position:sticky;top:var(--header-h);z-index:3;
+  background:var(--paper);padding:10px 0 8px;
+  box-shadow:0 6px 10px -8px rgba(35,22,32,.35);
+}
+.bw-top-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.bw-title{font-size:1rem;margin:0;font-family:var(--sans);font-weight:600}
+.bw-stepno{
+  margin:0;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--rose-text);white-space:nowrap;
+}
+/* NEW-2: the transition is visible rather than silent. The panel dims,
+   takes a progress cursor and is marked aria-busy; a refused tap pulses. */
+.bw-settling{
+  display:none;font-size:.68rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);white-space:nowrap;
+}
+.bw.is-settling .bw-settling{display:inline}
+.bw.is-settling .bw-stepno{display:none}
+.bw.is-settling .bw-panel{opacity:.55;cursor:progress;transition:opacity .12s var(--ease)}
+.bw.is-refused .bw-panel{animation:bw-nudge .32s var(--ease)}
+@keyframes bw-nudge{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-3px)}
+  75%{transform:translateX(3px)}
+}
+
+.bw-chips{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0;padding:0}
+.bw-chip{
+  background:var(--bone-2);border:1px solid var(--bone-3);color:var(--ink-2);
+  border-radius:100px;padding:6px 13px;font-size:.78rem;font-weight:500;cursor:pointer;
+  min-height:34px;display:inline-flex;align-items:center;gap:5px;
+}
+.bw-chip::after{content:"\2715";font-size:.68rem;color:var(--rose-text);opacity:.85}
+.bw-chip:hover{background:var(--bone-3);color:var(--ink)}
+
+.bw-step{border:0;margin:0;padding:0;min-width:0}
+.bw-legend{padding:0;margin:0 0 4px;width:100%}
+.bw-legend-text{
+  font-family:var(--display);font-size:1.5rem;color:var(--ink);line-height:1.15;
+  display:block;letter-spacing:-.01em;
+}
+.bw-note{font-size:.85rem;color:var(--ink-2);margin:0 0 14px}
+.bw-note-tight{margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bw-note-kept{
+  background:var(--ok-bg);color:var(--ok);border-radius:8px;padding:9px 12px;
+  font-weight:500;
+}
+.bw-note-kept .bw-linkish{color:var(--ok)}
+.bw-note-skin{
+  background:var(--bone-2);border-left:3px solid var(--brass);border-radius:0 8px 8px 0;
+  padding:11px 13px;
+}
+.bw-fineprint{font-size:.76rem;color:var(--ink-3);margin:12px 0 0;text-align:center}
+.bw-linkish{
+  background:none;border:0;padding:0;color:var(--rose-text);font-weight:600;
+  text-decoration:underline;cursor:pointer;font-size:inherit;
+}
+.bw-group{border-bottom:1px solid var(--line-2)}
+.bw-group>summary{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 2px;min-height:52px;cursor:pointer;list-style:none;
+}
+.bw-group>summary::-webkit-details-marker{display:none}
+.bw-group>summary::after{
+  content:"";flex:none;width:8px;height:8px;
+  border-right:2px solid var(--brass);border-bottom:2px solid var(--brass);
+  transform:rotate(45deg);transition:transform .2s var(--ease);
+}
+.bw-group[open]>summary::after{transform:rotate(-135deg)}
+.bw-cat{
+  font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:700;
+  color:var(--brass-text);margin:0;
+}
+.bw-cat-count{font-size:.76rem;color:var(--ink-3);margin-left:auto;margin-right:4px}
+.bw-list{display:flex;flex-direction:column;gap:8px;padding:2px 0 16px}
+
+.bw-opt{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);gap:1px 12px;align-items:center;
+  width:100%;text-align:left;background:var(--paper);border:1px solid var(--bone-3);
+  border-radius:11px;padding:11px 14px;min-height:56px;cursor:pointer;color:var(--ink);
+  transition:border-color .15s var(--ease),background .15s var(--ease);
+}
+.bw-opt:hover{border-color:var(--plum-3)}
+.bw-opt.is-on,.bw-opt.is-picked{background:var(--rose);border-color:var(--rose);color:#fff}
+.bw-opt.is-on .bw-opt-meta,.bw-opt.is-picked .bw-opt-meta{color:rgba(255,255,255,.88)}
+.bw-opt.is-on .bw-opt-price,.bw-opt.is-picked .bw-opt-price{color:#fff}
+.bw-opt-name{grid-column:1;grid-row:1;font-weight:600;font-size:.95rem;line-height:1.25;min-width:0;overflow-wrap:anywhere}
+/* "from £145" must be allowed to wrap between the two words at 200% text
+   zoom, or it pushes the whole page sideways. */
+.bw-opt-price{grid-column:2;grid-row:1;font-weight:600;font-size:.98rem;color:var(--ink);min-width:0;text-align:right}
+.bw-opt-meta{grid-column:1;grid-row:2;font-size:.79rem;color:var(--ink-3)}
+.bw-opt-person{grid-template-columns:auto 1fr}
+.bw-opt-person .bw-ico{grid-column:1;grid-row:1;display:flex;width:34px;height:34px}
+.bw-opt-person-text{grid-column:2;grid-row:1;display:flex;flex-direction:column;min-width:0}
+.bw-opt-person .bw-opt-name,.bw-opt-person .bw-opt-meta{grid-column:auto;grid-row:auto}
+.mono-any{color:var(--brass-light)}
+
+.bw-days{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.bw-day{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
+  background:var(--paper);border:1px solid var(--bone-3);border-radius:11px;
+  padding:8px 3px;min-height:72px;cursor:pointer;color:var(--ink);
+}
+.bw-day:hover:not(:disabled){border-color:var(--plum-3)}
+.bw-day-name{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3);font-weight:600}
+.bw-day-num{font-family:var(--display);font-size:1.35rem;line-height:1.1;color:var(--ink)}
+.bw-day-mon{font-size:.66rem;color:var(--ink-3);text-transform:uppercase;letter-spacing:.07em}
+.bw-day-tag{
+  font-size:.62rem;font-weight:700;margin-top:3px;color:var(--ink-2);
+  text-transform:uppercase;letter-spacing:.05em;
+}
+.bw-day-tag.is-low{color:var(--rose-text)}
+.bw-day.is-closed{background:var(--bone-2);border-color:var(--bone-3);cursor:not-allowed;opacity:1}
+.bw-day.is-closed .bw-day-num,.bw-day.is-closed .bw-day-name,.bw-day.is-closed .bw-day-mon{color:var(--ink-3)}
+.bw-day.is-closed .bw-day-num{text-decoration:line-through}
+.bw-day.is-on{background:var(--rose);border-color:var(--rose)}
+.bw-day.is-on .bw-day-num,.bw-day.is-on .bw-day-name,.bw-day.is-on .bw-day-mon,.bw-day.is-on .bw-day-tag{color:#fff}
+
+/* B4: four columns, not three. Sixteen slots in three columns is six rows,
+   which cannot fit between a 67px header and a 116px cookie bar on a 568px
+   screen at all. Four columns is four rows and does. At 320px each button is
+   still ~59x48, comfortably over the 44px minimum. */
+.bw-times{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.bw-time{
+  background:var(--paper);border:1px solid var(--bone-3);border-radius:10px;
+  min-height:48px;font-size:.92rem;font-weight:600;color:var(--ink);cursor:pointer;
+  padding:0 2px;
+}
+.bw-time:hover:not(:disabled){border-color:var(--plum-3)}
+.bw-time.is-on{background:var(--rose);border-color:var(--rose);color:#fff}
+/* Booked slots are struck through as well as greyed, so they are still
+   distinguishable in greyscale and to a colour-blind visitor. */
+.bw-time.is-taken{
+  background:var(--bone-2);border-color:var(--bone-3);color:var(--ink-2);
+  text-decoration:line-through;cursor:not-allowed;font-weight:500;
+}
+.bw-legend-key{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0 14px;font-size:.76rem;color:var(--ink-2)}
+.bw-key{display:inline-flex;align-items:center;gap:6px}
+.bw-key::before{content:"";width:14px;height:14px;border-radius:4px;border:1px solid var(--bone-3);flex:none}
+.bw-key-free::before{background:var(--paper)}
+.bw-key-taken::before{background:var(--bone-2)}
+.bw-key-taken{text-decoration:line-through}
+
+.bw-field{margin-bottom:14px}
+.bw-field label{
+  display:block;font-size:.75rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.09em;color:var(--ink-2);margin-bottom:5px;
+}
+.bw-req{font-weight:500;letter-spacing:.04em;text-transform:none;color:var(--ink-3)}
+.bw-hint{font-size:.78rem;color:var(--ink-3);margin:0 0 6px}
+.bw-field input,.bw-field textarea{
+  width:100%;padding:13px 14px;border:1px solid var(--bone-3);border-radius:10px;
+  font:inherit;font-size:16px;background:var(--bone);color:var(--ink);resize:vertical;
+  min-height:48px;
+}
+.bw-field input[aria-invalid="true"],.bw-field textarea[aria-invalid="true"]{
+  border-color:var(--rose-text);background:#FDF4F6;
+}
+.bw-err{font-size:.82rem;color:var(--rose-text);font-weight:600;margin:6px 0 0}
+.bw-submit{width:100%;margin-top:4px}
+.bw-back{
+  display:inline-flex;align-items:center;gap:6px;background:none;border:0;
+  color:var(--ink-2);font-size:.88rem;font-weight:600;cursor:pointer;
+  padding:12px 4px;margin-top:12px;min-height:44px;
+}
+.bw-back:hover{color:var(--ink);text-decoration:underline}
+.bw-back .bw-ico{display:flex}
+.bw-fallback{
+  background:var(--bone-2);border-left:3px solid var(--rose);padding:14px;
+  border-radius:0 8px 8px 0;font-size:.92rem;color:var(--ink-2);margin:0;
+}
+.bw-noscript{font-size:.92rem;color:var(--ink-2)}
+.bw-noscript ul{padding-left:18px;margin:0 0 1em}
+.bw-noscript li{margin-bottom:6px}
+
+/* confirmation */
+.bw-done{text-align:center}
+.bw-tick{display:flex;justify-content:center;margin-bottom:10px}
+.tick-ring{fill:none;stroke:var(--ok);stroke-width:2;opacity:.45}
+.tick-path{fill:none;stroke:var(--ok);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.bw-tick.is-anim .tick-path{stroke-dasharray:44;stroke-dashoffset:44;animation:tick .5s var(--ease) .1s forwards}
+@keyframes tick{to{stroke-dashoffset:0}}
+.bw-done-title{font-family:var(--display);font-size:1.5rem;font-weight:400;line-height:1.15;margin-bottom:.3em}
+.bw-done-sub{font-size:.9rem;color:var(--ink-2);max-width:44ch;margin:0 auto 18px}
+.bw-card{
+  background:var(--bone-2);border:1px solid var(--bone-3);border-radius:14px;
+  padding:16px 18px;text-align:left;
+}
+.bw-dl{display:grid;grid-template-columns:auto 1fr;gap:7px 16px;margin:0}
+.bw-dl dt{
+  font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--ink-2);padding-top:2px;
+}
+.bw-dl dd{margin:0;font-size:.94rem;color:var(--ink);font-weight:500;min-width:0;overflow-wrap:anywhere}
+.bw-dl dt{min-width:0;overflow-wrap:anywhere}
+.bw-ref{
+  margin:14px 0 0;padding-top:12px;border-top:1px solid var(--bone-3);
+  font-size:.95rem;color:var(--ink-2);
+}
+.bw-ref-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.bw-ref strong{font-family:var(--display);font-size:1.2rem;color:var(--ink);letter-spacing:.02em}
+.bw-done .bw-note{text-align:left;margin-top:14px}
+.bw-done-acts{display:flex;flex-direction:column;gap:9px;margin-top:16px}
+
+/* ---------------- reviews ---------------- */
+.quote-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.quote-card{
+  margin:0;background:var(--paper);border:1px solid var(--bone-3);border-radius:16px;
+  padding:22px;border-top:3px solid var(--rose);
+}
+.quote-card p{font-size:1rem;color:var(--ink);margin:0 0 12px;line-height:1.5}
+.quote-card footer{font-size:.82rem;color:var(--ink-3);font-weight:600}
+
+/* ---------------- about ---------------- */
+.split-copy p{font-size:1rem}
+.quote{margin:22px 0;padding:16px 20px;border-left:3px solid var(--brass);background:var(--paper);border-radius:0 12px 12px 0}
+.quote p{margin:0;font-family:var(--display);font-size:1.2rem;color:var(--ink);line-height:1.35}
+.cred{font-size:.83rem;color:var(--ink-3);margin:0}
+.split-art{margin-top:28px}
+.art-geo{width:100%;max-width:400px;margin:0 auto}
+.ag-block{fill:var(--plum);opacity:.9}
+.ag-disc{fill:var(--rose);opacity:.22}
+.ag-arc{fill:none;stroke:var(--brass);stroke-width:2.5}
+.ag-arc2{fill:none;stroke:var(--plum-3);stroke-width:2;opacity:.55}
+.ag-rule{stroke:var(--bone-3);stroke-width:2}
+.ag-dot{fill:var(--brass);opacity:.75}
+
+/* ---------------- FAQ ---------------- */
+.faq-list{max-width:780px}
+.faq-list details{
+  background:var(--paper);border:1px solid var(--bone-3);border-radius:13px;
+  padding:0 18px;margin-bottom:10px;
+}
+.faq-list summary{
+  cursor:pointer;padding:16px 0;font-weight:600;color:var(--ink);font-size:.99rem;
+  list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;
+  min-height:52px;
+}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::after{
+  content:"";width:9px;height:9px;flex:none;
+  border-right:2px solid var(--brass);border-bottom:2px solid var(--brass);
+  transform:rotate(45deg);transition:transform .22s var(--ease);
+}
+.faq-list details[open] summary::after{transform:rotate(-135deg)}
+.faq-list details p{margin:0 0 18px;font-size:.94rem}
+
+/* ---------------- contact ---------------- */
+.contact-facts{
+  display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin:22px 0;
+  padding-top:18px;border-top:1px solid var(--line);
+}
+.contact-facts dt{
+  font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--ink-2);padding-top:3px;
+}
+/* The email address is one long unbreakable token. At 200% text zoom it is
+   wider than the grid track and pushes the page sideways unless it is
+   allowed to break mid-word. */
+.contact-facts dd{margin:0;font-size:.95rem;color:var(--ink);min-width:0;overflow-wrap:anywhere}
+.contact-facts dt{min-width:0;overflow-wrap:anywhere}
+.hours{width:100%;border-collapse:collapse;margin-top:8px;max-width:420px}
+.hours caption{
+  text-align:left;font-size:.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.12em;color:var(--brass-text);padding-bottom:8px;
+}
+.hours th{text-align:left;font-weight:500;color:var(--ink-2);padding:9px 0;border-bottom:1px solid var(--line-2);font-size:.92rem}
+.hours td{text-align:right;padding:9px 0;border-bottom:1px solid var(--line-2);font-size:.92rem;color:var(--ink);font-weight:500}
+.hours tr:last-child th,.hours tr:last-child td{border-bottom:none}
+.hours-tag{
+  display:inline-block;font-size:.64rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;background:var(--ok-bg);color:var(--ok);
+  padding:2px 8px;border-radius:100px;margin-left:6px;
+}
+.contact-form{background:var(--paper);border:1px solid var(--bone-3);border-radius:16px;padding:22px;margin-top:28px}
+.contact-form h3{margin-bottom:.3em}
+.form-intro{font-size:.88rem;color:var(--ink-2)}
+.contact-form label{
+  display:block;font-size:.75rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.09em;color:var(--ink-2);margin-bottom:5px;
+}
+.contact-form input,.contact-form textarea{
+  width:100%;padding:13px 14px;border:1px solid var(--bone-3);border-radius:10px;
+  font:inherit;font-size:16px;background:var(--bone);color:var(--ink);resize:vertical;
+  margin-bottom:14px;min-height:48px;
+}
+.contact-form input[aria-invalid="true"],.contact-form textarea[aria-invalid="true"]{
+  border-color:var(--rose-text);background:#FDF4F6;
+}
+.contact-form .btn{width:100%}
+.form-note{font-size:.8rem;color:var(--ink-3);margin:12px 0 0;text-align:center}
+.form-note.is-error{color:var(--rose-text);font-weight:600}
+.form-note.is-ok{color:var(--ok);font-weight:600}
+
+/* ---------------- footer ---------------- */
+.site-footer{
+  background:var(--plum);color:rgba(255,255,255,.72);
+  padding:38px 5% calc(46px + var(--bottom-bar,0px));
+}
+.footer-inner{max-width:var(--wrap);margin:0 auto;text-align:center}
+.footer-brand{font-family:var(--display);font-size:1.3rem;color:#fff;margin:0 0 10px}
+.footer-disclosure{font-size:.82rem;max-width:660px;margin:0 auto 16px;line-height:1.6}
+.site-footer a{color:var(--brass-light)}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 20px}
+.footer-links a{
+  font-size:.85rem;text-decoration:none;color:rgba(255,255,255,.86);
+  min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;
+}
+.footer-links a:hover{color:#fff;text-decoration:underline}
+
+/* ---------------- cookie bar + sticky CTA ---------------- */
+/* B1/B4: a fixed bottom bar that simply floats over the page permanently
+   hides whatever is underneath it — at 375x667 that was the hero CTA and
+   seven of the sixteen time slots, with no way to scroll them clear.
+   script.js sets --bottom-bar to the live height of whichever bar is
+   showing, and the footer grows by exactly that much, so everything on the
+   page can always be scrolled out from under it. The reserve goes on the
+   footer rather than on <body> so the extra height is plum, not a bone
+   coloured strip under the footer. */
+
+.cookie-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:var(--plum);color:rgba(255,255,255,.9);
+  padding:11px 5% calc(11px + env(safe-area-inset-bottom));
+  border-top:2px solid var(--brass);
+  box-shadow:0 -8px 30px rgba(0,0,0,.22);
+}
+/* B4: every 10px of bar is 10px stolen from the time grid at 375x667, so
+   this is deliberately the smallest honest bar: two lines and one row of
+   buttons. */
+.cookie-text{font-size:.78rem;margin:0 0 8px;line-height:1.4;max-width:70ch}
+.cookie-bar a{color:var(--brass-light)}
+.cookie-actions{display:flex;gap:10px}
+/* Accept and Reject are the same button. Rejecting must be exactly as easy
+   as accepting — that is the ICO's position, not a stylistic choice. */
+.btn-cookie{
+  flex:1 1 0;background:var(--paper);color:var(--ink);border-color:var(--paper);
+  min-height:44px;padding:10px 18px;font-size:.88rem;
+}
+.btn-cookie:hover{background:var(--bone-2);border-color:var(--bone-2)}
+
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  padding:10px 5% calc(10px + env(safe-area-inset-bottom));
+  background:rgba(250,246,241,.95);backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);
+}
+.sticky-cta .btn{width:100%}
+.sticky-cta[hidden]{display:none}
+
+/* ---------------- reveal + motion ---------------- */
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+[data-reveal].in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  [data-reveal]{opacity:1;transform:none}
+  .bw-tick .tick-path{stroke-dashoffset:0;animation:none}
+  /* the dim still applies under reduced motion; only the nudge is dropped */
+  .bw.is-refused .bw-panel{animation:none}
+}
+:focus-visible{outline:2px solid var(--rose-text);outline-offset:3px;border-radius:4px}
+.booking :focus-visible,.strip :focus-visible,.site-footer :focus-visible,
+.cookie-bar :focus-visible,.tws-notes :focus-visible{outline-color:var(--brass-light)}
+
+/* ---------------- wider screens ---------------- */
+@media (min-width:600px){
+  .hero-actions{flex-direction:row}
+  .hero-actions .btn{width:auto}
+  .bw-times{grid-template-columns:repeat(5,1fr)}
+  .bw-days{grid-template-columns:repeat(6,1fr)}
+  .quote-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .strip{grid-template-columns:repeat(4,1fr)}
+  .strip-item{border-bottom:none}
+  .strip-item:nth-child(2n){border-right:1px solid rgba(255,255,255,.11)}
+  .strip-item:last-child{border-right:none}
+  .cookie-bar{display:flex;align-items:center;gap:20px}
+  .cookie-text{margin:0;flex:1 1 auto}
+  .cookie-actions{flex:none}
+  .btn-cookie{flex:0 0 auto}
+  .bw-done-acts{flex-direction:row;justify-content:center}
+  .bw{padding:0 22px calc(24px + var(--bottom-bar,0px))}
+  .book-card__head{padding:24px 24px 4px}
+}
+
+@media (min-width:860px){
+  .section{padding:88px 5%}
+  .section-head{margin-bottom:42px}
+  .menu-toggle,.js .menu-toggle{display:none}
+  .nav,.js .nav{
+    position:static;inset:auto;display:flex;flex-direction:row;align-items:center;
+    gap:26px;margin-left:auto;padding:0;background:none;border-top:0;width:auto;overflow:visible;
+  }
+  .nav a{font-size:.9rem;border-bottom:none;padding:0;min-height:0}
+  .nav a:hover{color:var(--rose-text)}
+  .header-cta{margin-left:26px;padding:11px 20px;font-size:.88rem}
+  .cta-long{display:inline}
+  .cta-short{display:none}
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .split-art{margin-top:0}
+  .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+  .contact-form{margin-top:0}
+  .team-grid{grid-template-columns:repeat(4,1fr)}
+  .quote-grid{grid-template-columns:repeat(4,1fr)}
+  .bw-times{grid-template-columns:repeat(6,1fr)}
+  .price-groups{display:grid;grid-template-columns:repeat(2,1fr);align-items:start;gap:16px}
+  .hero{padding-top:clamp(56px,7vw,96px)}
+  .hero-copy{margin:0}
+  .hero-art{right:-8%;top:-8%;width:min(620px,55vw);opacity:1}
+}
+
+@media (min-width:900px){
+  .booking-cards{display:grid;grid-template-columns:1.35fr 1fr;align-items:start;gap:22px}
+}
+
+/* A phone on its side has about 150px of usable height between the header
+   and the cookie bar. Eight columns turns four rows of times into two, which
+   fits. Must come after the min-width blocks or they win on source order —
+   which is exactly how it silently did nothing the first time. */
+@media (min-width:600px) and (max-height:520px){
+  .bw-times{grid-template-columns:repeat(8,1fr)}
+  .bw-top{padding:6px 0}
+  .bw-legend-text{font-size:1.2rem}
+  .bw-note-tight{margin-bottom:6px}
+}
+
+/* B1: at 320px the brand, the CTA and the hamburger have to share 288px of
+   usable header. Trimming the wordmark buys the ~20px that makes it fit. */
+/* No-JS fallback nav: a compact wrapped row rather than a full-screen panel. */
+html:not(.js) .nav a{font-size:.82rem;padding:8px 0;border-bottom:none}
+html:not(.js) .site-header{flex-wrap:wrap}
+
+@media (max-width:399px){
+  .site-header{gap:8px;padding:11px 4%}
+  .brand{gap:8px}
+  .brand-mark{width:30px;height:30px}
+  .brand-text{font-size:1.05rem}
+  .header-cta{padding:11px 13px;font-size:.78rem}
+  /* the eyebrow repeats what the at-a-glance strip says two screens down */
+  .hero .eyebrow{display:none}
+  .hero{padding-top:26px}
+  .hero .lead{font-size:1rem}
+}
+
+/* Tap targets on phones: inline links inside running copy sit at 18-31px
+   tall. Invisible padding lifts each to 44px without moving the text. */
+@media (max-width:720px){
+  a[href^="tel:"],a[href^="mailto:"],p a,li a,td a,dd a,small a,address a{
+    display:inline-block;padding:11px 0;margin:-11px 0;line-height:22px;
+  }
+  .menu-toggle{min-height:44px;min-width:44px}
+  .footer-links a,.nav a{min-height:44px;display:inline-flex;align-items:center}
+}
+
+/* ---------------- legal pages ---------------- */
+.legal-nav{margin-left:auto;display:flex;align-items:center}
+.legal-nav .nav-cta{
+  background:var(--plum);color:#fff;padding:11px 20px;border-radius:100px;
+  text-decoration:none;font-size:.88rem;font-weight:600;min-height:44px;
+  display:inline-flex;align-items:center;
+}
+.legal-nav .nav-cta:hover{background:var(--plum-2)}
+.legal{max-width:760px;margin:0 auto;padding:40px 5% 64px}
+.legal h1{font-size:clamp(2rem,8vw,3rem);margin-bottom:.15em}
+.legal h2{font-size:clamp(1.3rem,4.6vw,1.7rem);margin:2em 0 .5em}
+.legal h3{font-size:1.02rem;margin:1.5em 0 .4em}
+.legal p,.legal li{font-size:.98rem;color:var(--ink-2)}
+.legal ul{padding-left:20px;margin:0 0 1.2em}
+.legal li{margin-bottom:8px}
+.legal strong{color:var(--ink)}
+.legal a{color:var(--rose-text)}
+.legal-meta{font-size:.83rem;color:var(--ink-3);margin-bottom:1.6em}
+.legal-callout{
+  background:var(--bone-2);border-left:3px solid var(--brass);
+  border-radius:0 12px 12px 0;padding:16px 18px;margin-bottom:1.6em;
+}
+.legal-callout p{margin:0;font-size:.92rem}
+.legal-table{margin:1em 0 1.4em}
+.legal-table tbody td{white-space:normal}
+.legal-table tbody th{width:9em}
+.legal-back{margin-top:2.4em;padding-top:1.4em;border-top:1px solid var(--line)}
+.legal-back a{font-weight:600;text-decoration:none}
+.legal-back a:hover{text-decoration:underline}
