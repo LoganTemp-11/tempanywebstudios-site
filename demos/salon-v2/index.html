@@ -7,20 +7,41 @@
 <meta name="description" content="A working hair studio in Falkirk. Every look priced, every stylist named, and you book by pointing at the hair you want.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://tempanywebstudios.co.uk/demos/salon-v2/">
-<meta name="theme-color" content="#131518">
+<meta name="theme-color" content="#131518" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4F2EE" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Brackenwynd Hair Studio">
 <meta property="og:title" content="Brackenwynd Hair Studio, Falkirk">
 <meta property="og:description" content="Every look priced, every stylist named. Book by pointing at the hair you want.">
 <meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/demos/salon-v2/">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/demos/salon-v2/assets/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Brackenwynd Hair Studio, a demo site by Tempany Web Studios">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tempanywebstudios.co.uk/demos/salon-v2/assets/share.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23131518'/><path d='M9 8v16M23 8v16M9 15.2h14' stroke='%23D08A57' stroke-width='2.2' stroke-linecap='round'/></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo-600-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/geist-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="scrollcraft.css">
+<script>
+/* Resolve the theme before the first paint, or the page flashes the wrong
+   ground for a frame. Deliberately NOT prefers-color-scheme by default: this
+   page is a sales prop and Logan needs to know which version appears when he
+   hands over the phone. One line below flips it to follow the visitor's OS. */
+(function () {
+  var t = 'dark';
+  try { t = localStorage.getItem('bw-theme') || 'dark'; } catch (e) {}
+  /* follow the OS instead: t = localStorage.getItem('bw-theme') ||
+     (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'); */
+  document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+})();
+</script>
 <style>
   :root {
+    color-scheme: dark light;
     --sc-canvas:     #131518;
     --sc-surface:    #1C1F23;
     --sc-ink:        #F2F4F5;
@@ -33,11 +54,48 @@
     --bw-glass: #232830;
     --bw-line:  rgba(242,244,245,.14);
     --bw-line-strong: rgba(242,244,245,.28);
+    --bw-plate-a: rgba(255,255,255,.10);
+    --bw-plate-b: #262C34;
+    --bw-plate-c: #171A1F;
+    --bw-plate-d: #101317;
+    --bw-shade: .38;
+    --bw-plate-shadow: hsl(220 40% 2% / .55);
+    --bw-input: var(--sc-canvas);
+    --bw-input-line: var(--bw-line);
   }
+
+  /* Light is a real second palette, not an inversion. The accent takes a
+     second stop because copper at #D08A57 cannot clear 4.5:1 on a bone
+     ground. One hue, two lightnesses, keyed to the ground. */
+  :root[data-theme="light"] {
+    --sc-canvas:     #F4F2EE;
+    --sc-surface:    #EAE7E1;
+    --sc-ink:        #16181B;
+    --sc-ink-soft:   #5B6167;
+    --sc-accent:     #8A4A1E;
+    --sc-accent-ink: #FFFFFF;
+
+    --bw-glass: #E4E0D9;
+    --bw-line:  rgba(22,24,27,.16);
+    --bw-line-strong: rgba(22,24,27,.34);
+    --bw-plate-a: rgba(255,255,255,.55);
+    --bw-plate-b: #DAD6CE;
+    --bw-plate-c: #CFCAC1;
+    --bw-plate-d: #C4BFB5;
+    --bw-shade: .06;
+    --bw-plate-shadow: hsl(30 12% 32% / .30);
+    --bw-input: #FFFFFF;
+    --bw-input-line: rgba(22,24,27,.28);
+  }
+  /* color is inherited as a computed value, so restating the token is not
+     enough on its own. */
+  :root[data-theme="light"] body { color: var(--sc-ink); }
+  body { color: var(--sc-ink); background: var(--sc-canvas); }
 
   /* ---------- index of objects: the nav jumps, it does not market ---------- */
   .bw-index {
-    position: fixed; inset: auto 0 0 0; z-index: var(--sc-z-chrome);
+    position: fixed; inset: auto 0 var(--bw-consent-h, 0px) 0; z-index: var(--sc-z-chrome);
+    transition: bottom var(--sc-d-mid, .3s) var(--sc-ease-out);
     display: flex; align-items: center; gap: var(--sc-4);
     padding: var(--sc-3) var(--sc-gutter);
     background: color-mix(in srgb, var(--sc-canvas) 88%, transparent);
@@ -64,9 +122,9 @@
   .bw-plate {
     position: relative; overflow: hidden; border-radius: var(--sc-r-md);
     background:
-      linear-gradient(118deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 34%),
-      linear-gradient(200deg, #262C34 0%, #171A1F 58%, #101317 100%);
-    box-shadow: 0 24px 60px -28px var(--sc-shadow-color);
+      linear-gradient(118deg, var(--bw-plate-a) 0%, rgba(255,255,255,0) 34%),
+      linear-gradient(200deg, var(--bw-plate-b) 0%, var(--bw-plate-c) 58%, var(--bw-plate-d) 100%);
+    box-shadow: 0 24px 60px -28px var(--bw-plate-shadow);
   }
   .bw-plate::after { content:""; position:absolute; inset:0; border:1px solid var(--bw-line); border-radius: inherit; pointer-events:none; }
   .bw-plate img { display:block; width:100%; height:100%; object-fit: cover; }
@@ -129,7 +187,7 @@
   .bw-field > span { display: block; font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); margin-bottom: .5rem; }
   .bw-field input, .bw-field select {
     width: 100%; padding: .85rem 1rem; color: var(--sc-ink);
-    background: var(--sc-canvas); border: 1px solid var(--bw-line); border-radius: var(--sc-r-sm);
+    background: var(--bw-input); border: 1px solid var(--bw-input-line); border-radius: var(--sc-r-sm);
     font: 400 var(--sc-t-base)/1.4 var(--sc-font-text);
   }
   .bw-field input:focus-visible, .bw-field select:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; border-color: var(--sc-accent); }
@@ -154,19 +212,100 @@
     .bw-open h1, .bw-rail__lead h2, .bw-chair > h2, .bw-ask h2 { font-size: var(--sc-t-xl); }
   }
   @media (prefers-reduced-motion: reduce) { .bw-pick, .bw-submit { transition: none; } }
+
+  /* ---------- skip link ---------- */
+  .bw-skip {
+    position: fixed; top: .5rem; left: .5rem; z-index: 999;
+    padding: .7rem 1rem; border-radius: var(--sc-r-sm);
+    background: var(--sc-accent); color: var(--sc-accent-ink);
+    font: 600 var(--sc-t-sm)/1 var(--sc-font-text); text-decoration: none;
+    transform: translateY(-160%);
+  }
+  .bw-skip:focus-visible { transform: none; outline: 2px solid var(--sc-ink); outline-offset: 2px; }
+
+  /* ---------- the light switch. sits in the index, because in a gallery the
+       lighting is part of the room, not part of the marketing ---------- */
+  .bw-lights {
+    margin-left: auto; display: inline-grid; place-items: center;
+    width: 38px; height: 38px; padding: 0;
+    background: transparent; color: var(--sc-ink-soft);
+    border: 1px solid var(--bw-line); border-radius: 50%;
+    cursor: pointer; transition: color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .bw-index__list { margin-left: var(--sc-4); }
+  .bw-lights:hover { color: var(--sc-ink); border-color: var(--bw-line-strong); }
+  .bw-lights:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
+  .bw-lights svg { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .bw-lights__sun { display: none; }
+  :root[data-theme="light"] .bw-lights__sun { display: block; }
+  :root[data-theme="light"] .bw-lights__moon { display: none; }
+  @media (pointer: coarse) { .bw-lights { width: 44px; height: 44px; } }
+
+  /* ---------- the questions. extended label copy, sitting with the form
+       because that is where the doubt actually lives ---------- */
+  .bw-qa { margin-top: var(--sc-7); border-top: 1px solid var(--bw-line-strong); padding-top: var(--sc-5); }
+  .bw-qa > h3 { font-family: var(--sc-font-text); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); margin: 0 0 var(--sc-4); font-weight: 500; }
+  .bw-qa details { border-bottom: 1px solid var(--bw-line); }
+  .bw-qa summary {
+    list-style: none; cursor: pointer; padding: var(--sc-3) 2rem var(--sc-3) 0; position: relative;
+    font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-base); letter-spacing: var(--sc-track-snug);
+  }
+  .bw-qa summary::-webkit-details-marker { display: none; }
+  .bw-qa summary::after {
+    content: ""; position: absolute; right: .35rem; top: 50%; width: .55rem; height: .55rem;
+    border-right: 1.5px solid var(--sc-ink-soft); border-bottom: 1.5px solid var(--sc-ink-soft);
+    transform: translateY(-70%) rotate(45deg); transition: transform var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .bw-qa details[open] summary::after { transform: translateY(-20%) rotate(-135deg); }
+  .bw-qa summary:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 3px; border-radius: 3px; }
+  .bw-qa details p { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin: 0 0 var(--sc-3); max-width: 52ch; text-wrap: pretty; }
+  @media (pointer: coarse) { .bw-qa summary { min-height: 44px; display: flex; align-items: center; } }
+
+  /* ---------- consent. it asks about the one thing it would actually set ---------- */
+  .bw-consent {
+    position: fixed; inset: auto 0 0 0; z-index: calc(var(--sc-z-chrome) + 1);
+    display: flex; flex-wrap: wrap; align-items: center; gap: var(--sc-3) var(--sc-4);
+    padding: var(--sc-4) var(--sc-gutter);
+    background: var(--bw-glass); border-top: 1px solid var(--bw-line-strong);
+    font-size: var(--sc-t-sm);
+  }
+  .bw-consent[hidden] { display: none !important; }
+  .bw-consent p { margin: 0; flex: 1 1 26ch; color: var(--sc-ink); max-width: 62ch; text-wrap: pretty; }
+  .bw-consent a { color: var(--sc-accent); }
+  .bw-consent__acts { display: flex; gap: var(--sc-3); flex: 0 0 auto; }
+  /* Identical buttons on purpose. A reject that is quieter than the accept is
+     not a free choice, and the ICO has said so. */
+  .bw-consent button {
+    min-height: 44px; padding: .7rem 1.25rem; cursor: pointer;
+    background: transparent; color: var(--sc-ink);
+    border: 1px solid var(--bw-line-strong); border-radius: var(--sc-r-pill);
+    font: 500 var(--sc-t-sm)/1 var(--sc-font-text);
+  }
+  .bw-consent button:hover { border-color: var(--sc-accent); color: var(--sc-accent); }
+  .bw-consent button:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
+  @media (max-width: 560px) { .bw-consent__acts { width: 100%; } .bw-consent button { flex: 1; } }
+
+  @media (prefers-reduced-motion: reduce) { .bw-index, .bw-qa summary::after { transition: none; } }
 </style>
 </head>
 <body>
+
+<a class="bw-skip" href="#top">Skip to the collection</a>
 
 <span data-sc-progress></span>
 <div class="sc-grain" aria-hidden="true"></div>
 
 <nav class="bw-index" aria-label="The collection">
   <a class="bw-index__mark" href="#top">Brackenwynd</a>
+  <button class="bw-lights" id="bwLights" type="button" aria-pressed="false" aria-label="Turn the lights up">
+    <svg class="bw-lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="bw-lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+  </button>
   <ul class="bw-index__list">
     <li><a href="#range">The range</a></li>
     <li><a href="#chair">The chair</a></li>
     <li><a href="#quiet">The quiet hour</a></li>
+    <li><a href="#questions">Questions</a></li>
     <li><a class="bw-index__ask" href="#ask">Ask</a></li>
   </ul>
 </nav>
@@ -174,7 +313,7 @@
 <main id="top">
 
   <!-- 1 · THE WORK. reveal + parallax. Object one, already labelled. -->
-  <section class="sc-section" data-sc-act="flow" data-sc-drift="#131518" aria-labelledby="obj-1">
+  <section class="sc-section" data-sc-act="flow" data-bw-ground="0" aria-labelledby="obj-1">
     <div class="bw-open">
       <div>
         <div class="bw-plate bw-plate--wide" data-sc-parallax="0.06">
@@ -195,7 +334,7 @@
   </section>
 
   <!-- 2 · THE RANGE. pan. The grammar's spine. -->
-  <section id="range" data-sc-act="pan" data-sc-span="3.4" data-sc-drift="#171A1E" aria-labelledby="range-h">
+  <section id="range" data-sc-act="pan" data-sc-span="3.4" data-bw-ground="1" aria-labelledby="range-h">
     <div data-sc-stage>
       <div class="bw-rail" data-sc-pan="0.07">
         <div class="bw-rail__lead">
@@ -251,7 +390,7 @@
   </section>
 
   <!-- 3 · THE CHAIR. flow + in. The one act that reads like a document. -->
-  <section id="chair" class="sc-section" data-sc-act="flow" data-sc-drift="#131518" aria-labelledby="chair-h">
+  <section id="chair" class="sc-section" data-sc-act="flow" data-bw-ground="2" aria-labelledby="chair-h">
     <div class="bw-chair" data-sc-in data-sc-stagger="70">
       <h2 id="chair-h">The chair</h2>
 
@@ -294,7 +433,7 @@
   </section>
 
   <!-- 4 · THE QUIET HOUR. reveal. Authored silence: almost nothing moves here. -->
-  <section id="quiet" class="sc-section" data-sc-act="reveal" data-sc-drift="#1C1F23" aria-labelledby="quiet-h">
+  <section id="quiet" class="sc-section" data-sc-act="reveal" data-bw-ground="3" aria-labelledby="quiet-h">
     <div class="bw-quiet">
       <div class="bw-quiet__inner" data-sc-reveal="up" data-sc-reveal-at="0.1 0.55">
         <h2 id="quiet-h">You can ask for a quiet appointment.</h2>
@@ -305,7 +444,7 @@
   </section>
 
   <!-- 5 · THE ASK. pin + tilt. Inquiry plate typeset as a label. The peak. -->
-  <section id="ask" class="sc-section" data-sc-act="flow" data-sc-drift="#131518" aria-labelledby="ask-h">
+  <section id="ask" class="sc-section" data-sc-act="flow" data-bw-ground="4" aria-labelledby="ask-h">
     <div>
       <div class="bw-ask" data-sc-in data-sc-stagger="60">
         <h2 id="ask-h">Ask for a time</h2>
@@ -337,7 +476,7 @@
             <input name="phone" id="bwPhone" type="tel" autocomplete="tel" inputmode="tel" required>
           </label>
           <label class="bw-field" style="display:flex; gap:.75rem; align-items:center">
-            <input type="checkbox" name="quiet" id="bwQuiet" style="width:auto; min-width:20px; min-height:20px">
+            <input type="checkbox" name="quiet" id="bwQuiet" style="width:auto; min-width:20px; min-height:20px; accent-color:var(--sc-accent)">
             <span style="margin:0; text-transform:none; letter-spacing:normal; font-size:var(--sc-t-sm); color:var(--sc-ink)">Make it a quiet appointment</span>
           </label>
           <button class="bw-submit" type="submit">Send the request</button>
@@ -349,9 +488,47 @@
           <p id="bwDoneBody"></p>
         </div>
 
+
+        <section class="bw-qa" id="questions" aria-labelledby="qa-h">
+          <h3 id="qa-h">Before you send it</h3>
+
+          <details>
+            <summary>Do I need a skin test?</summary>
+            <p>If you have never had colour with us, yes, and it has to be at least 48 hours before the appointment. It takes five minutes, it is free, and you can walk in any time we are open.</p>
+            <p>You also need a fresh one if it has been over six months since your last colour with us, or if you have had a reaction to a hair product, a tattoo or henna since. This comes from the colour manufacturers and our insurers, so there is no version of it we can waive.</p>
+          </details>
+
+          <details>
+            <summary>Is this a booking?</summary>
+            <p>No. It tells us what you are after. We text back the same day with two or three times that work, and the appointment exists once you reply. If you have not heard from us by the end of the next working day, phone the salon rather than assume you are in the diary.</p>
+          </details>
+
+          <details>
+            <summary>What does a quiet appointment mean?</summary>
+            <p>Nobody makes conversation. You are not asked where you are going on holiday, you do not have to explain why, and it costs nothing extra. Tick the box and it is on the card before you walk in.</p>
+          </details>
+
+          <details>
+            <summary>Do you take a deposit?</summary>
+            <p>Only on colour over two hours, and it is &pound;20 that comes straight off the bill on the day. Cancel with more than 24 hours&rsquo; notice and it moves to the new appointment or comes back to you, whichever you prefer.</p>
+          </details>
+
+          <details>
+            <summary>Why do some prices say &ldquo;from&rdquo;?</summary>
+            <p>Because long or thick hair takes more time and more product. You get the actual number at the consultation, before anything starts. Never at the till afterwards.</p>
+          </details>
+
+          <details>
+            <summary>Can I bring my kids?</summary>
+            <p>Yes. There is room for a buggy at the front and a box of books under the waiting bench. Under-16s need a parent in the salon for the whole appointment, and we do not colour, bleach or perm anyone under 16.</p>
+            <p>First haircuts are 30 minutes, and you get the keepsake curl in an envelope.</p>
+          </details>
+        </section>
+
         <div class="bw-foot">
           <p>Brackenwynd Hair Studio, 9 Corbie Wynd, Falkirk. <a href="tel:+441632960118">01632 960 118</a>. Closed Sunday and Monday, late until eight on Thursday.</p>
           <p>This is a demonstration site built by <a href="https://tempanywebstudios.co.uk">Tempany Web Studios</a>. The salon, the people, the address and the phone number are invented. Nothing sent from this page reaches anyone.</p>
+          <p><a href="privacy.html">Privacy policy</a> &middot; <a href="terms.html">Terms and conditions</a> &middot; <a href="privacy.html#cookies">Cookie settings</a></p>
           <p>Photographs by Lera Kogan, jagadshd and Dwi Agus Prasetiyo on <a href="https://unsplash.com">Unsplash</a>.</p>
         </div>
       </div>
@@ -359,6 +536,23 @@
   </section>
 
 </main>
+
+
+<div class="bw-consent" id="bwConsent" role="region" aria-label="Cookie choice" hidden>
+  <p>This page keeps one thing in your browser: whether you had the lights up or down. Analytics is off until you say otherwise. <a href="privacy.html#cookies">How we use cookies</a></p>
+  <div class="bw-consent__acts">
+    <button type="button" data-consent="reject">Reject</button>
+    <button type="button" data-consent="accept">Accept</button>
+  </div>
+</div>
+
+<!-- Analytics. On a live client site, delete the comment markers below and put
+     the client's own domain in. Plausible is cookie-free and self-hosted in the
+     EU, which is why it is the default here. It is loaded only after a visitor
+     accepts, by the consent script at the foot of this page. This demonstration
+     fires no analytics request at all.
+<script defer data-domain="brackenwynd.co.uk" src="https://plausible.io/js/script.js"></script>
+-->
 
 <script src="scrollcraft.js"></script>
 <script>ScrollCraft.mount(document.body);</script>
@@ -417,6 +611,138 @@
     chosen.hidden = true;
     done.hidden = false;
     done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
+</script>
+
+<script>
+/* ---------------------------------------------------------------
+   The ground.
+   scroll-craft's own data-sc-drift writes --sc-canvas as an inline
+   style on <html>. Inline beats :root[data-theme="light"], the drift
+   list is parsed once at mount and is not reachable from outside, so
+   in light mode the first scroll would have repainted the page dark
+   and stayed that way. The drift therefore lives here, where both
+   palettes own it, and the engine keeps everything else.
+   --------------------------------------------------------------- */
+(function () {
+  var STOPS = {
+    dark:  ['#131518', '#171A1E', '#131518', '#1C1F23', '#131518'],
+    light: ['#F4F2EE', '#EFECE6', '#F4F2EE', '#E9E5DE', '#F4F2EE']
+  };
+  var docEl = document.documentElement;
+  var secs = Array.prototype.slice.call(document.querySelectorAll('[data-bw-ground]'));
+  if (!secs.length) return;
+
+  function rgb(h) { return [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)]; }
+  function mix(a, b, t) {
+    return 'rgb(' + Math.round(a[0]+(b[0]-a[0])*t) + ',' +
+                    Math.round(a[1]+(b[1]-a[1])*t) + ',' +
+                    Math.round(a[2]+(b[2]-a[2])*t) + ')';
+  }
+  function ease(t) { t = t < 0 ? 0 : t > 1 ? 1 : t; return t*t*(3-2*t); }
+
+  function paint() {
+    var list = STOPS[docEl.getAttribute('data-theme') === 'light' ? 'light' : 'dark'];
+    /* 42% of the viewport, not the top edge: the colour should turn when the
+       new act is what you are looking at, not when a sliver of it appears. */
+    var mark = innerHeight * 0.42, idx = 0, t = 1;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= mark && r.bottom > mark) {
+        idx = i;
+        t = ease((mark - r.top) / Math.max(r.height * 0.35, 1));
+        break;
+      }
+      if (r.bottom <= mark) { idx = i; t = 1; }
+    }
+    var cur = rgb(list[Math.min(idx, list.length - 1)]);
+    var prv = rgb(list[Math.max(idx - 1, 0)]);
+    docEl.style.setProperty('--sc-canvas', mix(prv, cur, t));
+  }
+
+  var queued = false;
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { paint(); queued = false; });
+  }
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule, { passive: true });
+  window.__bwGround = paint;
+  paint();
+})();
+
+/* ---------------------------------------------------------------
+   The lights.
+   --------------------------------------------------------------- */
+(function () {
+  var btn = document.getElementById('bwLights');
+  var docEl = document.documentElement;
+  var meta = document.querySelector('meta[name="theme-color"][media*="dark"]');
+  if (!btn) return;
+
+  function sync() {
+    var light = docEl.getAttribute('data-theme') === 'light';
+    btn.setAttribute('aria-pressed', light ? 'true' : 'false');
+    btn.setAttribute('aria-label', light ? 'Turn the lights down' : 'Turn the lights up');
+    if (window.__bwGround) window.__bwGround();
+    /* The paired theme-color metas answer prefers-color-scheme, not this
+       button, so the browser chrome would keep the OS colour after a manual
+       flip. Rewriting the media query is what makes the two agree. */
+    if (meta) meta.setAttribute('content', light ? '#F4F2EE' : '#131518');
+  }
+
+  btn.addEventListener('click', function () {
+    var light = docEl.getAttribute('data-theme') === 'light';
+    docEl.setAttribute('data-theme', light ? 'dark' : 'light');
+    try { localStorage.setItem('bw-theme', light ? 'dark' : 'light'); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+
+/* ---------------------------------------------------------------
+   Consent.
+   The bar is honest about its own scope: the only thing this page
+   stores without asking is the light switch, which is a functional
+   preference and does not need consent under PECR. Analytics does,
+   so that is what the two buttons actually govern.
+   --------------------------------------------------------------- */
+(function () {
+  var bar = document.getElementById('bwConsent');
+  var docEl = document.documentElement;
+  if (!bar) return;
+
+  function measure() {
+    docEl.style.setProperty('--bw-consent-h',
+      (bar.hidden ? 0 : Math.round(bar.getBoundingClientRect().height)) + 'px');
+  }
+
+  var stored = null;
+  try { stored = localStorage.getItem('bw-consent'); } catch (e) {}
+
+  if (!stored) {
+    bar.hidden = false;
+    requestAnimationFrame(measure);
+    addEventListener('resize', measure, { passive: true });
+  } else {
+    measure();
+  }
+
+  bar.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-consent]');
+    if (!b) return;
+    try { localStorage.setItem('bw-consent', b.getAttribute('data-consent')); } catch (e2) {}
+    bar.hidden = true;
+    measure();
+    /* On a live site the accept branch is where the analytics tag gets
+       injected. Nothing is injected here, because there is nothing to count. */
+  });
+
+  /* Reopening from the privacy page's cookie section. */
+  addEventListener('hashchange', function () {
+    if (location.hash === '#cookie-settings') { bar.hidden = false; measure(); }
   });
 })();
 </script>

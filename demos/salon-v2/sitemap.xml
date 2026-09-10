@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Demonstration sitemap. Like robots.txt, a sitemap is submitted from the root
+  of a domain; this copy ships so a client can see what they get. Four URLs,
+  because there are four real pages. The 404 is deliberately not listed: a page
+  that returns 404 has no business in a sitemap.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tempanywebstudios.co.uk/demos/salon-v2/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tempanywebstudios.co.uk/demos/salon-v2/privacy.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://tempanywebstudios.co.uk/demos/salon-v2/terms.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>
