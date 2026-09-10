@@ -243,9 +243,10 @@
   }
   .tw-lights:hover { color: var(--sc-ink); border-color: var(--tw-line-strong); }
   .tw-lights svg { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-  .tw-lights__sun { display: none; }
-  :root[data-theme="light"] .tw-lights__sun { display: block; }
-  :root[data-theme="light"] .tw-lights__moon { display: none; }
+  /* Written with the parent so they outrank the generic icon rule above. */
+  .tw-lights .tw-lights__sun { display: none; }
+  :root[data-theme="light"] .tw-lights .tw-lights__sun { display: block; }
+  :root[data-theme="light"] .tw-lights .tw-lights__moon { display: none; }
   @media (pointer: coarse) { .tw-lights { width: 44px; height: 44px; } }
   .tw-index__list { margin-left: var(--sc-4); }
 </style>
