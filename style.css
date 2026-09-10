@@ -127,6 +127,15 @@ h2{color:var(--ink);margin:0 0 .5em;font-weight:700;letter-spacing:-.01em;font-s
 .attachment-name em{font-style:normal;font-weight:400;color:var(--muted)}
 .attachment-desc{display:block;padding:5px 12px 12px;font-size:.76rem;line-height:1.45;color:var(--muted)}
 .attachment:hover .attachment-name{color:var(--accent)}
+/* The newest build leads, full width, so five cards do not leave an orphan on
+   the last row and the strongest thumbnail is the one you see first. */
+.attachment--lead{grid-column:1 / -1}
+.attachment--lead img{aspect-ratio:1440/560;object-position:center}
+@media (max-width:640px){.attachment--lead img{aspect-ratio:640/249}}
+.attachment--lead .attachment-name{padding-top:12px;font-size:.9rem}
+.attachment--lead .attachment-desc{max-width:62ch}
+.attachment-flag{display:inline-block;margin-left:.5em;padding:.15em .5em;border:1px solid var(--line);border-radius:999px;font-size:.66rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);vertical-align:.08em}
+
 .ask-line{font-size:.95rem;color:var(--muted);max-width:58ch;margin:0}
 
 /* Sign-off */

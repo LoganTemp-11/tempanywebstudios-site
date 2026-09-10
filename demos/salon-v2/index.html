@@ -133,7 +133,7 @@
 
   /* ---------- act 1 ---------- */
   .bw-open { display: grid; gap: var(--sc-7); align-items: end; padding: var(--sc-9) var(--sc-gutter) var(--sc-8); }
-  @media (min-width: 900px) { .bw-open { grid-template-columns: 1.45fr .85fr; padding-top: var(--sc-10); } }
+  @media (min-width: 900px) { .bw-open { grid-template-columns: 1.45fr .85fr; padding-top: var(--sc-9); } }
   .bw-open__where { color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0 0 var(--sc-3); }
   .bw-open h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-3); text-wrap: balance; }
   .bw-open p { color: var(--sc-ink-soft); max-width: 34ch; margin: 0; text-wrap: pretty; }
@@ -285,12 +285,32 @@
   .bw-consent button:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
   @media (max-width: 560px) { .bw-consent__acts { width: 100%; } .bw-consent button { flex: 1; } }
 
+  /* ---------- the demo strip. every other demo on the site carries one, and
+       without it a prospect who opens this from the work page has no route back
+       to Logan and no reason to think the salon is not real ---------- */
+  .bw-demo {
+    position: relative; z-index: 2;
+    background: var(--bw-glass); border-bottom: 1px solid var(--bw-line);
+    padding: .6rem var(--sc-gutter);
+    font-family: var(--sc-font-text); font-size: var(--sc-t-xs);
+    letter-spacing: var(--sc-track-wide); text-transform: uppercase;
+    color: var(--sc-ink-soft);
+  }
+  .bw-demo p { margin: 0; display: flex; flex-wrap: wrap; gap: .3rem .9rem; align-items: baseline; }
+  .bw-demo b { color: var(--sc-accent); font-weight: 500; white-space: nowrap; }
+  .bw-demo a { color: var(--sc-ink); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding-block: .15rem; }
+  .bw-demo a:hover { color: var(--sc-accent); }
+
   @media (prefers-reduced-motion: reduce) { .bw-index, .bw-qa summary::after { transition: none; } }
 </style>
 </head>
 <body>
 
 <a class="bw-skip" href="#top">Skip to the collection</a>
+
+<div class="bw-demo">
+  <p><b>Demo site by Tempany Web Studios</b> <span>This is an example website, not a real business.</span> <a href="https://tempanywebstudios.co.uk">tempanywebstudios.co.uk</a></p>
+</div>
 
 <span data-sc-progress></span>
 <div class="sc-grain" aria-hidden="true"></div>
@@ -528,7 +548,7 @@
         <div class="bw-foot">
           <p>Brackenwynd Hair Studio, 9 Corbie Wynd, Falkirk. <a href="tel:+441632960118">01632 960 118</a>. Closed Sunday and Monday, late until eight on Thursday.</p>
           <p>This is a demonstration site built by <a href="https://tempanywebstudios.co.uk">Tempany Web Studios</a>. The salon, the people, the address and the phone number are invented. Nothing sent from this page reaches anyone.</p>
-          <p><a href="privacy.html">Privacy policy</a> &middot; <a href="terms.html">Terms and conditions</a> &middot; <a href="privacy.html#cookies">Cookie settings</a></p>
+          <p><a href="privacy">Privacy policy</a> &middot; <a href="terms">Terms and conditions</a> &middot; <a href="privacy#cookies">Cookie settings</a></p>
           <p>Photographs by Lera Kogan, jagadshd and Dwi Agus Prasetiyo on <a href="https://unsplash.com">Unsplash</a>.</p>
         </div>
       </div>
@@ -539,7 +559,7 @@
 
 
 <div class="bw-consent" id="bwConsent" role="region" aria-label="Cookie choice" hidden>
-  <p>This page keeps one thing in your browser: whether you had the lights up or down. Analytics is off until you say otherwise. <a href="privacy.html#cookies">How we use cookies</a></p>
+  <p>This page keeps one thing in your browser: whether you had the lights up or down. Analytics is off until you say otherwise. <a href="privacy#cookies">How we use cookies</a></p>
   <div class="bw-consent__acts">
     <button type="button" data-consent="reject">Reject</button>
     <button type="button" data-consent="accept">Accept</button>
