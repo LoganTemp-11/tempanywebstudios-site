@@ -20,6 +20,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Newsreader:ital,wght@1,500&display=swap" rel="stylesheet">
+<script>
+/* Resolve the theme before the first paint so the page never flashes the
+   wrong ground. Dark by default, remembered per browser under the same key
+   the old homepage used, so anyone who chose light before still gets light. */
+(function () {
+  var t = 'dark';
+  try { t = localStorage.getItem('tws-theme') || 'dark'; } catch (e) {}
+  document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+})();
+</script>
 <link rel="stylesheet" href="/scrollcraft.css">
 <style>
   :root {
@@ -75,9 +85,9 @@
   .tw-plate {
     position: relative; overflow: hidden; border-radius: var(--sc-r-md);
     background:
-      linear-gradient(118deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,0) 34%),
-      linear-gradient(200deg, #2a251d 0%, #1b1813 58%, #13110d 100%);
-    box-shadow: 0 24px 60px -28px hsl(var(--sc-shadow-color) / .9);
+      linear-gradient(118deg, var(--tw-plate-a) 0%, rgba(255,255,255,0) 34%),
+      linear-gradient(200deg, var(--tw-plate-b) 0%, var(--tw-plate-c) 58%, var(--tw-plate-d) 100%);
+    box-shadow: 0 24px 60px -28px var(--tw-plate-shadow);
   }
   .tw-plate::after { content:""; position:absolute; inset:0; border:1px solid var(--tw-line); border-radius: inherit; pointer-events:none; }
   .tw-plate img { display:block; width:100%; height:100%; object-fit: cover; object-position: top; }
@@ -201,6 +211,43 @@
     .tw-figure { font-size: var(--sc-t-2xl); }
   }
   @media (prefers-reduced-motion: reduce) { .tw-pick, .tw-open, .tw-submit { transition: none; } }
+
+  /* Light is the brand's own paper and ink, not an inversion of the dark
+     set. The rust drops back to its print value because the brightened one
+     cannot clear 4.5:1 on paper. */
+  :root { color-scheme: dark light; --tw-plate-a: rgba(255,255,255,.08); --tw-plate-b: #2a251d; --tw-plate-c: #1b1813; --tw-plate-d: #13110d; --tw-plate-shadow: hsl(36 30% 3% / .9); }
+  :root[data-theme="light"] {
+    --sc-canvas:     #efe9dd;
+    --sc-surface:    #f7f3ea;
+    --sc-ink:        #191712;
+    --sc-ink-soft:   #61594c;
+    --sc-accent:     #a1462a;
+    --sc-accent-ink: #f7f3ea;
+    --sc-shadow-color: 36 20% 30%;
+    --tw-glass: #f7f3ea;
+    --tw-line:  rgba(25,23,18,.16);
+    --tw-line-strong: rgba(25,23,18,.34);
+    --tw-plate-a: rgba(255,255,255,.6); --tw-plate-b: #e3dccd; --tw-plate-c: #d9d1c0; --tw-plate-d: #cec5b2; --tw-plate-shadow: hsl(36 20% 30% / .35);
+  }
+  :root[data-theme="light"] body { color: var(--sc-ink); }
+  :root[data-theme="light"] .sc-grain { opacity: .03; }
+  :root[data-theme="light"] .tw-status.is-error { color: #a13333; }
+
+  /* ---------- the light switch, in the index ---------- */
+  .tw-lights {
+    margin-left: auto; display: inline-grid; place-items: center; flex: none;
+    width: 40px; height: 40px; padding: 0;
+    background: transparent; color: var(--sc-ink-soft);
+    border: 1px solid var(--tw-line); border-radius: 50%;
+    cursor: pointer; transition: color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .tw-lights:hover { color: var(--sc-ink); border-color: var(--tw-line-strong); }
+  .tw-lights svg { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .tw-lights__sun { display: none; }
+  :root[data-theme="light"] .tw-lights__sun { display: block; }
+  :root[data-theme="light"] .tw-lights__moon { display: none; }
+  @media (pointer: coarse) { .tw-lights { width: 44px; height: 44px; } }
+  .tw-index__list { margin-left: var(--sc-4); }
 </style>
 <style>
   .tw-page { width: min(64ch, 100%); margin-inline:auto; padding: var(--sc-9) var(--sc-gutter) calc(var(--sc-9) + 3rem); }
@@ -229,6 +276,10 @@
     </svg>
     <span>Tempany Web Studios</span>
   </a>
+  <button class="tw-lights" id="twLights" type="button" aria-pressed="false" aria-label="Turn the lights up">
+    <svg class="tw-lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="tw-lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+  </button>
   <ul class="tw-index__list">
     <li><a href="/#work">The work</a></li>
     <li><a href="/#quote">The quote</a></li>
@@ -246,11 +297,34 @@
           <p>Enquiries that do not become projects are normally deleted from the business inbox within 12 months. If work proceeds, relevant communications may be kept for longer where needed to deliver the project, maintain financial records, enforce an agreement or resolve a dispute. Information is not sold or used for unrelated marketing.</p>
           <p>This website does not currently use advertising trackers or non-essential cookies. You may ask for access to your personal information, request correction or deletion where applicable, or restrict or object to certain processing. You may also make a data protection complaint using the process below.</p>
     <h2 id="cookies">Cookies</h2>
-    <p>This website sets no cookies and stores nothing in your browser. Visits are counted with Cloudflare Web Analytics, which does not use cookies, does not fingerprint the device and does not follow you to other sites. That is why there is no cookie banner: there is nothing to consent to.</p>
+    <p>This website sets no cookies. It keeps one thing in your browser, whether you chose the light or the dark version, and only if you press the switch; nothing is stored until you do. Visits are counted with Cloudflare Web Analytics, which does not use cookies, does not fingerprint the device and does not follow you to other sites. That is why there is no cookie banner: a setting you chose yourself is not something to ask consent for, and there is nothing else.</p>
     <h2 id="complaints">Complaints</h2>
 <p>Tempany Web Studios will acknowledge your complaint within 30 days of receiving it. Appropriate steps will then be taken to investigate, you will be kept informed where necessary, and the outcome will be communicated without undue delay.</p>
           <p>If you remain dissatisfied, you may complain to the UK supervisory authority, the <a href="https://ico.org.uk/make-a-complaint/data-protection-complaints/data-protection-complaints/" target="_blank" rel="noreferrer">Information Commissioner's Office</a>. You do not have to wait for this internal process if you prefer to contact the ICO directly.</p>
   </div>
 </main>
+<script>
+/* The lights. */
+(function () {
+  var btn = document.getElementById('twLights');
+  var docEl = document.documentElement;
+  var meta = document.querySelector('meta[name="theme-color"]');
+  if (!btn) return;
+  function sync() {
+    var light = docEl.getAttribute('data-theme') === 'light';
+    btn.setAttribute('aria-pressed', light ? 'true' : 'false');
+    btn.setAttribute('aria-label', light ? 'Turn the lights down' : 'Turn the lights up');
+    if (meta) meta.setAttribute('content', light ? '#efe9dd' : '#141210');
+    if (window.__twGround) window.__twGround();
+  }
+  btn.addEventListener('click', function () {
+    var light = docEl.getAttribute('data-theme') === 'light';
+    docEl.setAttribute('data-theme', light ? 'dark' : 'light');
+    try { localStorage.setItem('tws-theme', light ? 'dark' : 'light'); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+</script>
 </body>
 </html>
