@@ -127,6 +127,7 @@
     box-shadow: 0 24px 60px -28px var(--bw-plate-shadow);
   }
   .bw-plate::after { content:""; position:absolute; inset:0; border:1px solid var(--bw-line); border-radius: inherit; pointer-events:none; }
+  .bw-plate picture { display: contents; }
   .bw-plate img { display:block; width:100%; height:100%; object-fit: cover; }
   .bw-plate--wide { aspect-ratio: 16/9; }
   .bw-plate--tall { aspect-ratio: 4/5; }
@@ -338,7 +339,10 @@
     <div class="bw-open">
       <div>
         <div class="bw-plate bw-plate--wide" data-sc-parallax="0.06">
-          <img src="assets/01-hero.jpg" alt="Lived-in balayage, dark at the root and warming through the mid lengths, lit hard from one side." width="1800" height="1013" loading="eager" decoding="async">
+          <picture>
+            <source type="image/webp" srcset="assets/01-hero-900.webp 900w, assets/01-hero.webp 1800w" sizes="(min-width: 900px) 54vw, 92vw">
+            <img src="assets/01-hero.jpg" srcset="assets/01-hero-900.jpg 900w, assets/01-hero.jpg 1800w" sizes="(min-width: 900px) 54vw, 92vw" alt="Lived-in balayage, dark at the root and warming through the mid lengths, lit hard from one side." width="1800" height="1013" loading="eager" decoding="async">
+          </picture>
         </div>
       </div>
       <div class="bw-label">
@@ -365,7 +369,10 @@
 
         <article class="bw-object">
           <div class="bw-plate bw-plate--tall" data-sc-tilt="5">
-            <img src="assets/02-copper.jpg" alt="Copper red, deepest at the root, warming to burnished ginger through the mid lengths." width="1000" height="1250" loading="lazy" decoding="async">
+            <picture>
+            <source type="image/webp" srcset="assets/02-copper-500.webp 500w, assets/02-copper.webp 1000w" sizes="(max-width: 720px) 72vw, 34ch">
+            <img src="assets/02-copper.jpg" srcset="assets/02-copper-500.jpg 500w, assets/02-copper.jpg 1000w" sizes="(max-width: 720px) 72vw, 34ch" alt="Copper red, deepest at the root, warming to burnished ginger through the mid lengths." width="1000" height="1250" loading="lazy" decoding="async">
+          </picture>
           </div>
           <div class="bw-label">
             <h3 class="bw-label__name">Copper, full head</h3>
@@ -379,7 +386,10 @@
 
         <article class="bw-object">
           <div class="bw-plate bw-plate--tall" data-sc-tilt="5">
-            <img src="assets/03-bob.jpg" alt="A blunt bob cut to the jaw, dark and glass smooth, with one unbroken band of shine across it." width="1000" height="1250" loading="lazy" decoding="async">
+            <picture>
+            <source type="image/webp" srcset="assets/03-bob-500.webp 500w, assets/03-bob.webp 1000w" sizes="(max-width: 720px) 72vw, 34ch">
+            <img src="assets/03-bob.jpg" srcset="assets/03-bob-500.jpg 500w, assets/03-bob.jpg 1000w" sizes="(max-width: 720px) 72vw, 34ch" alt="A blunt bob cut to the jaw, dark and glass smooth, with one unbroken band of shine across it." width="1000" height="1250" loading="lazy" decoding="async">
+          </picture>
           </div>
           <div class="bw-label">
             <h3 class="bw-label__name">The blunt bob</h3>
@@ -393,7 +403,10 @@
 
         <article class="bw-object">
           <div class="bw-plate bw-plate--tall" data-sc-tilt="5">
-            <img src="assets/04-cut.jpg" alt="A cut and blow dry finished with soft movement through the lengths." width="1000" height="1250" loading="lazy" decoding="async">
+            <picture>
+            <source type="image/webp" srcset="assets/04-cut-500.webp 500w, assets/04-cut.webp 1000w" sizes="(max-width: 720px) 72vw, 34ch">
+            <img src="assets/04-cut.jpg" srcset="assets/04-cut-500.jpg 500w, assets/04-cut.jpg 1000w" sizes="(max-width: 720px) 72vw, 34ch" alt="A cut and blow dry finished with soft movement through the lengths." width="1000" height="1250" loading="lazy" decoding="async">
+          </picture>
           </div>
           <div class="bw-label">
             <h3 class="bw-label__name">Cut and blow dry</h3>
