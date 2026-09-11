@@ -591,6 +591,20 @@
     var card = e.target.closest && e.target.closest('.tw-object, .tw-rail__lead');
     if (!card) return;
     var vw = innerWidth, vh = innerHeight;
+    var stage = rail.closest('[data-sc-stage], .sc-stage') || rail.parentElement;
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    // Under reduced motion the engine zeroes the rail transform and the stage
+    // becomes an ordinary horizontal scroller, so the card is reached by
+    // scrolling the stage sideways, not by moving the page to a pan position.
+    if (getComputedStyle(rail).transform === 'none' || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      root.style.scrollBehavior = 'auto';
+      try {
+        scrollTo(0, act.getBoundingClientRect().top + scrollY);
+        stage.scrollLeft = Math.max(0, card.offsetLeft + card.offsetWidth / 2 - vw / 2);
+      } finally { root.style.scrollBehavior = prev; }
+      return;
+    }
     var over = rail.scrollWidth - vw;
     if (over <= 0) return;
     var extra = over * (parseFloat(rail.getAttribute('data-sc-pan')) || 0);
@@ -603,8 +617,6 @@
     // Plain scrollTo with smooth scrolling switched off for the jump. The
     // {behavior:'instant'} form throws on browsers that predate that enum,
     // which is exactly the silent failure a keyboard-only audit found.
-    var root = document.documentElement;
-    var prev = root.style.scrollBehavior;
     root.style.scrollBehavior = 'auto';
     try { scrollTo(0, y); } finally { root.style.scrollBehavior = prev; }
     rail.style.transform = 'translate3d(' + want.toFixed(2) + 'px,0,0)';
