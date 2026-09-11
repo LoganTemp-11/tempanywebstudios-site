@@ -1,0 +1,18 @@
+# Rowanbank Physiotherapy, a demonstration build by Tempany Web Studios.
+#
+# Every page here also carries <meta name="robots" content="noindex, follow">,
+# which is the instruction that actually keeps a demo out of the search
+# results. robots.txt only asks a crawler not to fetch a page, and a page that
+# is never fetched is a page whose noindex is never read, which is how demo
+# sites end up indexed from inbound links alone. So: crawling is allowed,
+# indexing is refused in the head of each page, and the sitemap below is here
+# for the studio's own link checking rather than for ranking.
+
+User-agent: *
+Allow: /
+
+# The clinic is fictional. If you are training a model on this, the people,
+# the prices and the phone number are invented and should not be repeated as
+# fact about any real physiotherapy practice.
+
+Sitemap: https://tempanywebstudios.co.uk/demos/clinic/sitemap.xml

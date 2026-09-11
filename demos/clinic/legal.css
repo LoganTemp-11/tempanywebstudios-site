@@ -1,0 +1,142 @@
+/* Rowanbank, the pages nobody reads until they need them.
+   Same two palettes as the clinic surface, no engine, no scroll work. */
+
+:root {
+  color-scheme: light dark;
+  --canvas: #F5F7F6; --surface: #EAEFED; --panel: #FFFFFF;
+  --ink: #1B2B2A; --ink-soft: #495B59;
+  --accent: #17606B; --accent-ink: #FFFFFF;
+  --line: rgba(27,43,42,.16);
+  --line-strong: rgba(27,43,42,.32);
+
+  --display: "Fraunces", Georgia, serif;
+  --text: "Figtree", "Helvetica Neue", Arial, sans-serif;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+}
+:root[data-theme="dark"] {
+  --canvas: #0F1A18; --surface: #16231F; --panel: #16231F;
+  --ink: #E8EFEC; --ink-soft: #93A6A2;
+  --accent: #6FC3CF; --accent-ink: #0F1A18;
+  --line: rgba(232,239,236,.16);
+  --line-strong: rgba(232,239,236,.30);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0; background: var(--canvas); color: var(--ink);
+  font: 400 clamp(1rem, .96rem + .2vw, 1.0625rem)/1.65 var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+:root[data-theme="dark"] body { color: var(--ink); }
+::selection { background: var(--accent); color: var(--accent-ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+table, .nums { font-variant-numeric: tabular-nums; }
+
+.skip {
+  position: fixed; top: .5rem; left: .5rem; z-index: 99;
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: .7rem 1rem; border-radius: 6px;
+  background: var(--accent); color: var(--accent-ink);
+  font: 600 .9rem/1 var(--text); text-decoration: none; transform: translateY(-180%);
+}
+.skip:focus-visible { transform: none; outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* the same app chrome as the clinic surface, minus the tabs it has no use for */
+.bar {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; align-items: center; gap: 1rem;
+  padding: .35rem var(--gutter);
+  background: color-mix(in srgb, var(--canvas) 92%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.bar__mark {
+  font: 600 1rem/1 var(--text); letter-spacing: -.01em; color: var(--ink); text-decoration: none;
+  display: inline-flex; align-items: center; gap: .5rem; min-height: 44px;
+}
+.bar__mark span { font-weight: 400; color: var(--ink-soft); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.bar__back {
+  margin-left: auto; display: inline-flex; align-items: center; min-height: 44px;
+  font: 500 .72rem/1 var(--text); letter-spacing: .09em; text-transform: uppercase;
+  color: var(--ink-soft); text-decoration: none;
+}
+.bar__back:hover { color: var(--ink); }
+
+.lights {
+  display: inline-grid; place-items: center; flex: 0 0 auto;
+  width: 44px; height: 44px; padding: 0;
+  background: transparent; color: var(--ink-soft);
+  border: 1px solid var(--line); border-radius: 6px; cursor: pointer;
+}
+.lights:hover { color: var(--ink); border-color: var(--line-strong); }
+/* No `display` on the svg rule: at (0,1,1) it outranks the (0,1,0) rule that
+   hides the icon for the theme you are not in, and both icons show at once. */
+.lights svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.lights__moon { display: block; }
+.lights__sun { display: none; }
+:root[data-theme="dark"] .lights__sun { display: block; }
+:root[data-theme="dark"] .lights__moon { display: none; }
+@media (pointer: coarse) { .lights { width: 44px; height: 44px; } }
+
+main { width: min(68ch, 100%); margin-inline: auto; padding: clamp(2.5rem, 7vw, 4.5rem) var(--gutter) 5rem; }
+
+.eyebrow { font: 500 .72rem/1 var(--text); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); margin: 0 0 1rem; }
+h1 { font: 600 clamp(1.9rem, 1.4rem + 2.2vw, 2.8rem)/1.06 var(--display); letter-spacing: -.025em; margin: 0 0 .75rem; text-wrap: balance; }
+.stamp { color: var(--ink-soft); font-size: .88rem; margin: 0 0 2.5rem; }
+h2 { font: 600 clamp(1.2rem, 1.05rem + .55vw, 1.5rem)/1.2 var(--text); letter-spacing: -.015em; margin: 2.75rem 0 .8rem; text-wrap: balance; }
+h3 { font: 600 1.02rem/1.3 var(--text); letter-spacing: -.01em; margin: 1.8rem 0 .5rem; }
+p, li { text-wrap: pretty; }
+p { margin: 0 0 1.1rem; }
+ul, ol { margin: 0 0 1.1rem; padding-left: 1.25rem; }
+li { margin-bottom: .5rem; }
+a { color: var(--accent); }
+strong { color: var(--ink); font-weight: 600; }
+
+.note {
+  border: 1px solid var(--line-strong); border-left: 3px solid var(--accent);
+  border-radius: 8px; background: var(--surface);
+  padding: 1.2rem 1.35rem; margin: 0 0 2.5rem;
+}
+.note p:last-child { margin-bottom: 0; }
+
+.tablewrap { overflow-x: auto; margin: 0 0 1.5rem; }
+table { width: 100%; border-collapse: collapse; font-size: .93rem; min-width: 30rem; }
+caption { text-align: left; color: var(--ink-soft); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; padding-bottom: .7rem; }
+th, td { text-align: left; vertical-align: top; padding: .8rem .9rem .8rem 0; border-bottom: 1px solid var(--line); }
+th { font: 500 .78rem/1.3 var(--text); letter-spacing: .07em; text-transform: uppercase; color: var(--ink-soft); }
+
+.back {
+  display: inline-flex; align-items: center; min-height: 44px; margin-top: 3rem;
+  padding: .8rem 1.3rem; border: 1px solid var(--line-strong); border-radius: 6px;
+  color: var(--ink); text-decoration: none; font: 500 .9rem/1 var(--text);
+}
+.back:hover { border-color: var(--accent); color: var(--accent); }
+
+.foot { border-top: 1px solid var(--line); margin-top: 3.5rem; padding-top: 1.5rem; color: var(--ink-soft); font-size: .82rem; }
+.foot a { color: var(--ink-soft); }
+
+/* The demo strip, same job as on the clinic page. */
+.demo {
+  background: var(--surface); border-bottom: 1px solid var(--line);
+  padding: .55rem var(--gutter);
+  font: 400 .72rem/1.5 var(--text); letter-spacing: .09em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.demo p { margin: 0; display: flex; flex-wrap: wrap; gap: .2rem .9rem; align-items: baseline; }
+.demo b { color: var(--accent); font-weight: 500; white-space: nowrap; }
+.demo a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding-block: .15rem; }
+.demo a:hover { color: var(--accent); }
+
+/* 404 */
+.lost { display: grid; gap: 1.25rem; }
+.lost ul { list-style: none; padding: 0; display: grid; gap: .35rem; }
+.lost ul a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  text-decoration: none; border-bottom: 1px solid var(--line); width: 100%;
+  color: var(--ink);
+}
+.lost ul a:hover { color: var(--accent); }
+.lost ul span { color: var(--ink-soft); font-size: .82rem; margin-left: auto; letter-spacing: .08em; text-transform: uppercase; }

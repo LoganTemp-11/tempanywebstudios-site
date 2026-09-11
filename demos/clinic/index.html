@@ -1,280 +1,941 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rowanbank Physiotherapy &amp; Sports Injury Clinic | Demo site by Tempany Web Studios</title>
-<meta name="description" content="HCPC-registered physiotherapy, sports massage, dry needling and injury rehabilitation in Alloa. Fifty-minute assessments, evening and Saturday appointments, no GP referral needed.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rowanbank Physiotherapy &amp; Sports Injury · Alloa</title>
+<meta name="description" content="Physiotherapy in Alloa. Point at what hurts and this page works out where we would start, how many appointments it usually takes and what the first one costs.">
 <meta name="robots" content="noindex, follow">
-<meta name="theme-color" content="#F8F3EC">
-<meta name="color-scheme" content="light dark">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..700,0..100&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Physiotherapy",
-  "name": "Rowanbank Physiotherapy & Sports Injury Clinic",
-  "description": "HCPC-registered physiotherapy, sports massage, dry needling and rehabilitation clinic in Alloa, Clackmannanshire, treating back pain, sports injuries and post-operative recovery.",
-  "disambiguatingDescription": "Fictional business used as a demonstration website by Tempany Web Studios. Not a real clinic.",
-  "url": "https://tempanywebstudios.co.uk",
-  "telephone": "+441259555041",
-  "email": "hello@rowanbankphysio.co.uk",
-  "priceRange": "££",
-  "currenciesAccepted": "GBP",
-  "paymentAccepted": "Card, Cash, Bank transfer",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "The Old Bank, 14 Mill Wynd",
-    "addressLocality": "Alloa",
-    "addressRegion": "Clackmannanshire",
-    "postalCode": "FK10 1AB",
-    "addressCountry": "GB"
-  },
-  "geo": { "@type": "GeoCoordinates", "latitude": 56.1165, "longitude": -3.7853 },
-  "areaServed": [
-    { "@type": "City", "name": "Alloa" },
-    { "@type": "City", "name": "Tillicoultry" },
-    { "@type": "City", "name": "Dollar" },
-    { "@type": "City", "name": "Stirling" },
-    { "@type": "City", "name": "Falkirk" }
-  ],
-  "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Wednesday"], "opens": "08:00", "closes": "19:30" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Thursday"], "opens": "08:00", "closes": "17:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "08:00", "closes": "14:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00" }
-  ],
-  "makesOffer": [
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Initial physiotherapy assessment and treatment (50 minutes)" }, "price": "58.00", "priceCurrency": "GBP" },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Follow-up physiotherapy (30 minutes)" }, "price": "45.00", "priceCurrency": "GBP" },
-    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sports massage (60 minutes)" }, "price": "62.00", "priceCurrency": "GBP" }
-  ]
-}
-</script>
+<meta name="tws-storage-prefix" content="rb">
 <link rel="canonical" href="https://tempanywebstudios.co.uk/demos/clinic/">
+<meta name="theme-color" content="#0F1A18" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F7F6" media="(prefers-color-scheme: light)">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Rowanbank Physiotherapy">
-<meta property="og:title" content="Rowanbank Physiotherapy — Demo Site">
-<meta property="og:description" content="Demo site by Tempany Web Studios: HCPC-registered physiotherapy and sports injury care in Alloa.">
-<meta property="og:url" content="https://tempanywebstudios.co.uk/demos/clinic/">
+<meta property="og:title" content="Rowanbank Physiotherapy, Alloa">
+<meta property="og:description" content="Point at what hurts. The page works out where we would start, how many appointments it usually takes, and what the first one costs.">
 <meta property="og:locale" content="en_GB">
-<meta property="og:image" content="https://tempanywebstudios.co.uk/images/work/rowanbank.jpg">
-<meta property="og:image:width" content="900">
-<meta property="og:image:height" content="563">
-<meta property="og:image:alt" content="Rowanbank Physiotherapy demo site by Tempany Web Studios">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/demos/clinic/">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/demos/clinic/assets/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Rowanbank Physiotherapy, a demo site by Tempany Web Studios">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Rowanbank Physiotherapy — Demo Site">
-<meta name="twitter:description" content="Demo site by Tempany Web Studios: HCPC-registered physiotherapy and sports injury care in Alloa.">
-<meta name="twitter:image" content="https://tempanywebstudios.co.uk/images/work/rowanbank.jpg">
+<meta name="twitter:image" content="https://tempanywebstudios.co.uk/demos/clinic/assets/share.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F1A18'/><path d='M16 7v18M16 14c0-4 3-7 7-7 0 4-3 7-7 7Z' fill='none' stroke='%236FC3CF' stroke-width='2' stroke-linecap='round'/></svg>">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-600-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/figtree-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="scrollcraft.css">
+<script>
+/* Resolve the theme before the first paint, or the page flashes the wrong
+   ground for a frame. Deliberately NOT prefers-color-scheme by default: this
+   page is a sales prop and Logan needs to know which version appears when he
+   hands over the phone. Light is the default here because a clinic surface
+   should read like a room with the blinds open. One line below flips it to
+   follow the visitor's OS. */
+(function () {
+  var t = 'light';
+  try { t = localStorage.getItem('rb-theme') || 'light'; } catch (e) {}
+  /* follow the OS instead: t = localStorage.getItem('rb-theme') ||
+     (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); */
+  document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+})();
+</script>
+<style>
+  /* ====================================================================
+     Rowanbank. The grammar is a live surface: the page behaves like the
+     thing the clinic sells, which is an assessment. So there is app
+     chrome instead of a marketing header, the first screen is the
+     surface already in a state, and the close is a real input.
+     Two palettes, one accent, two families.
+     ==================================================================== */
+  :root {
+    color-scheme: light dark;
+
+    --sc-canvas:     #F5F7F6;
+    --sc-surface:    #EAEFED;
+    --sc-ink:        #1B2B2A;
+    --sc-ink-soft:   #495B59;
+    --sc-accent:     #17606B;
+    --sc-accent-ink: #FFFFFF;
+
+    --sc-font-display: "Fraunces", Georgia, serif;
+    --sc-font-text:    "Figtree", "Helvetica Neue", Arial, sans-serif;
+
+    --rb-line:        rgba(27,43,42,.16);
+    --rb-line-strong: rgba(27,43,42,.32);
+    --rb-panel:       #FFFFFF;
+    --rb-panel-2:     #EFF3F1;
+    --rb-input:       #FFFFFF;
+    --rb-input-line:  rgba(27,43,42,.30);
+    --rb-accent-wash: rgba(23,96,107,.10);
+    --rb-figure:      rgba(27,43,42,.46);
+    --rb-shadow-color: 174 22% 18%;
+    --rb-grain: 0;
+
+    --rb-chrome-h: 52px;
+  }
+
+  /* Dark is a second palette, not an inversion: deep pine, and the accent
+     lifts to a light teal because #17606B cannot clear 4.5:1 on it. One
+     hue, two lightnesses, keyed to the ground. */
+  :root[data-theme="dark"] {
+    --sc-canvas:     #0F1A18;
+    --sc-surface:    #16231F;
+    --sc-ink:        #E8EFEC;
+    --sc-ink-soft:   #93A6A2;
+    --sc-accent:     #6FC3CF;
+    --sc-accent-ink: #0F1A18;
+
+    --rb-line:        rgba(232,239,236,.16);
+    --rb-line-strong: rgba(232,239,236,.30);
+    --rb-panel:       #16231F;
+    --rb-panel-2:     #13201D;
+    --rb-input:       #0B1413;
+    --rb-input-line:  rgba(232,239,236,.28);
+    --rb-accent-wash: rgba(111,195,207,.12);
+    --rb-figure:      rgba(232,239,236,.42);
+    --rb-shadow-color: 174 40% 3%;
+    --rb-grain: .04;
+  }
+
+  /* color inherits as a computed value, so restating the token is not enough
+     on its own. */
+  :root[data-theme="dark"] body { color: var(--sc-ink); }
+  body { color: var(--sc-ink); background: var(--sc-canvas); }
+
+  body {
+    font-family: var(--sc-font-text);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: clip;
+  }
+  .sc-grain { opacity: var(--rb-grain); }
+
+  /* every figure on this page is a figure: times, fees, minutes, numerals */
+  dd, td, th, output, time, .rb-num, .rb-fee, .rb-legend, .rb-spot__num,
+  .rb-step__mark, .rb-hours td, .rb-worth li, .rb-fees td { font-variant-numeric: tabular-nums; }
+
+  h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  p { text-wrap: pretty; }
+  :is(h1,h2,h3) { text-wrap: balance; }
+  [id] { scroll-margin-top: calc(var(--rb-chrome-h) + 1.25rem); }
+
+  /* ---------- the label schema of the surface ---------- */
+  .rb-label {
+    font: 500 var(--sc-t-xs)/1.4 var(--sc-font-text);
+    letter-spacing: .1em; text-transform: uppercase; color: var(--sc-ink-soft);
+    margin: 0 0 var(--sc-3);
+  }
+  .rb-h {
+    font: 600 clamp(1.35rem, 1.1rem + 1vw, 1.85rem)/1.18 var(--sc-font-text);
+    letter-spacing: -.015em; margin: 0 0 var(--sc-4);
+  }
+  .rb-lede { color: var(--sc-ink-soft); max-width: 56ch; }
+
+  .rb-wrap { width: 100%; max-width: 74rem; margin-inline: auto; padding-inline: var(--sc-gutter); }
+  .rb-act { padding-block: clamp(3.5rem, 6vw, 6.5rem); }
+  /* A pinned stage needs a whole viewport to scroll off. Full section padding
+     on top of that is another empty screen, so the act after a pin starts
+     close to the top. */
+  #treatment { padding-top: clamp(1.25rem, 2vw, 2.25rem); }
+  #book { padding-bottom: clamp(1.5rem, 3vw, 3rem); }
+
+  /* ---------- demo strip ---------- */
+  .rb-demo {
+    position: relative; z-index: 2;
+    background: var(--sc-surface); border-bottom: 1px solid var(--rb-line);
+    padding: .55rem var(--sc-gutter);
+    font: 400 var(--sc-t-xs)/1.5 var(--sc-font-text);
+    letter-spacing: .09em; text-transform: uppercase; color: var(--sc-ink-soft);
+  }
+  .rb-demo p { display: flex; flex-wrap: wrap; gap: .2rem .9rem; align-items: baseline; }
+  .rb-demo b { color: var(--sc-accent); font-weight: 500; white-space: nowrap; }
+  .rb-demo a { color: var(--sc-ink); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding-block: .15rem; }
+
+  /* ---------- skip ---------- */
+  .rb-skip {
+    position: fixed; top: .5rem; left: .5rem; z-index: 999;
+    padding: .7rem 1rem; border-radius: var(--sc-r-sm);
+    background: var(--sc-accent); color: var(--sc-accent-ink);
+    font: 600 var(--sc-t-sm)/1 var(--sc-font-text); text-decoration: none;
+    display: inline-flex; align-items: center; min-height: 44px;
+    transform: translateY(-180%);
+  }
+  .rb-skip:focus-visible { transform: none; outline: 2px solid var(--sc-ink); outline-offset: 2px; }
+
+  /* ---------- app chrome. this IS the navigation ---------- */
+  .rb-chrome {
+    position: fixed; inset: 0 0 auto 0; z-index: var(--sc-z-chrome);
+    display: flex; align-items: center; gap: var(--sc-4);
+    height: var(--rb-chrome-h);
+    padding: 0 clamp(.75rem, 3vw, 1.75rem);
+    background: color-mix(in srgb, var(--sc-canvas) 92%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--rb-line);
+  }
+  .rb-chrome__app {
+    font: 600 var(--sc-t-sm)/1 var(--sc-font-text); letter-spacing: -.01em;
+    color: var(--sc-ink); text-decoration: none; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: .5rem; min-height: 44px;
+  }
+  .rb-chrome__app span { font-weight: 400; color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: .08em; text-transform: uppercase; }
+  .rb-tabs { display: flex; align-items: center; gap: clamp(.1rem, 1vw, .35rem); }
+  .rb-tab {
+    display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+    min-height: 44px; min-width: 44px; padding: 0 .7rem; border-radius: var(--sc-r-sm);
+    font: 500 var(--sc-t-xs)/1 var(--sc-font-text); letter-spacing: .07em; text-transform: uppercase;
+    color: var(--sc-ink-soft); text-decoration: none; white-space: nowrap;
+    transition: color var(--sc-d-fast) var(--sc-ease-out), background var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .rb-tab:hover { color: var(--sc-ink); background: var(--rb-accent-wash); }
+  .rb-tab[aria-current="true"] { color: var(--sc-accent); background: var(--rb-accent-wash); }
+  .rb-tab__i { display: none; }
+  .rb-chrome__state {
+    margin-left: auto; display: inline-flex; align-items: baseline; gap: .45rem;
+    font: 400 var(--sc-t-xs)/1 var(--sc-font-text); letter-spacing: .08em; text-transform: uppercase;
+    color: var(--sc-ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .rb-chrome__state b { font-weight: 500; color: var(--sc-accent); letter-spacing: .04em; }
+  .rb-lights {
+    flex: 0 0 auto; display: inline-grid; place-items: center;
+    width: 44px; height: 44px; padding: 0;
+    background: transparent; color: var(--sc-ink-soft);
+    border: 1px solid var(--rb-line); border-radius: var(--sc-r-sm); cursor: pointer;
+    transition: color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .rb-lights:hover { color: var(--sc-ink); border-color: var(--rb-line-strong); }
+  .rb-lights svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .rb-lights__sun { display: none; }
+  :root[data-theme="dark"] .rb-lights__sun { display: block; }
+  :root[data-theme="dark"] .rb-lights__moon { display: none; }
+
+  body { padding-top: var(--rb-chrome-h); }
+
+  /* the phone puts the chrome where the thumb is */
+  @media (max-width: 860px) {
+    :root { --rb-chrome-h: 74px; }
+    body { padding-top: 0; }
+    .rb-chrome {
+      inset: auto 0 var(--rb-consent-h, 0px) 0;
+      flex-wrap: wrap; align-content: center; gap: 0;
+      padding: 0 .35rem .3rem;
+      border-bottom: 0; border-top: 1px solid var(--rb-line);
+      transition: bottom var(--sc-d-base) var(--sc-ease-out);
+      padding-bottom: max(.3rem, env(safe-area-inset-bottom));
+    }
+    .rb-chrome__app { display: none; }
+    .rb-chrome__state {
+      order: -1; width: 100%; margin: 0; padding: .3rem .5rem 0;
+      justify-content: flex-start; font-size: .68rem;
+    }
+    .rb-tabs { flex: 1 1 auto; min-width: 0; flex-wrap: nowrap; justify-content: space-between; gap: 0; }
+    .rb-tab { flex-direction: column; gap: .18rem; padding: 0 .2rem; min-width: 52px; font-size: .6rem; letter-spacing: .04em; }
+    .rb-tab__i { display: block; width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    [id] { scroll-margin-top: 1rem; }
+  }
+
+  /* A 320px screen cannot hold five labelled tabs and the light switch on one
+     line, and a light switch that wraps to a second row is a light switch the
+     visitor cannot reach. The labels go; the icons and the 44px targets stay,
+     and the label text is still the accessible name. */
+  @media (max-width: 359px) {
+    .rb-tab { font-size: 0; gap: 0; padding: 0; min-width: 44px; }
+    .rb-tab__i { width: 21px; height: 21px; }
+    .rb-chrome { padding-inline: .2rem; }
+    .rb-chrome__state { font-size: .64rem; }
+  }
+
+  /* ---------- act 1. the surface, already in a state ---------- */
+  .rb-stage { display: grid; align-content: center; }
+  .rb-assess {
+    display: grid; gap: clamp(1.25rem, 3vw, 3rem);
+    align-items: center;
+    width: 100%; max-width: 74rem; margin-inline: auto;
+    padding: calc(var(--rb-chrome-h) + var(--sc-4)) var(--sc-gutter) var(--sc-5);
+  }
+  @media (min-width: 861px) { .rb-assess { grid-template-columns: minmax(240px, 320px) 1fr; } }
+  @media (max-width: 860px) { .rb-assess { padding: var(--sc-4) var(--sc-gutter) calc(var(--rb-chrome-h) + var(--sc-4)); align-content: start; } }
+
+  /* the figure */
+  .rb-body { display: grid; justify-items: center; gap: var(--sc-3); }
+  .rb-figure {
+    position: relative;
+    width: clamp(186px, min(46vw, calc((100vh - 300px) / 2.07)), 300px); aspect-ratio: 300 / 620;
+    margin-inline: auto;
+  }
+  .rb-figure svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .rb-figure__line { fill: none; stroke: var(--rb-figure); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .rb-figure__hint { fill: none; stroke: var(--rb-figure); stroke-width: 1.4; stroke-linecap: round; opacity: .45; }
+  .rb-zone { fill: var(--sc-accent); stroke: var(--sc-accent); stroke-width: 2; opacity: 0; transition: opacity var(--sc-d-base) var(--sc-ease-out); }
+  .rb-zone[data-on] { opacity: .2; }
+  .rb-zone--ring { fill: none; opacity: 0; }
+  .rb-zone--ring[data-on] { opacity: .9; }
+
+  /* 44px of target, less of it painted on a phone: the transparent border
+     carries the thumb, the padding box carries the dot. */
+  .rb-spot {
+    position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%);
+    width: 44px; height: 44px; padding: 0; margin: 0;
+    display: grid; place-items: center;
+    background-color: var(--rb-panel); background-clip: padding-box; color: var(--sc-ink);
+    border: 0 solid transparent; border-radius: 50%;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 1px var(--rb-line-strong), 0 2px 6px -2px hsl(var(--rb-shadow-color) / .35);
+    transition: background-color var(--sc-d-fast) var(--sc-ease-out), box-shadow var(--sc-d-fast) var(--sc-ease-out), color var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .rb-spot__num { font: 500 .8rem/1 var(--sc-font-text); font-variant-numeric: tabular-nums; }
+  .rb-spot:hover { box-shadow: inset 0 0 0 1px var(--sc-accent), 0 2px 6px -2px hsl(var(--rb-shadow-color) / .35); color: var(--sc-accent); }
+  .rb-spot[aria-pressed="true"] { background-color: var(--sc-accent); color: var(--sc-accent-ink); box-shadow: inset 0 0 0 1px var(--sc-accent), 0 0 0 4px var(--rb-accent-wash); }
+  .rb-spot:active { transform: translate(-50%, -50%) scale(.96); }
+  .rb-spot__name {
+    position: absolute; left: calc(100% + .4rem); top: 50%; transform: translateY(-50%);
+    padding: .2rem .45rem; border-radius: var(--sc-r-sm);
+    background: var(--rb-panel); border: 1px solid var(--rb-line);
+    color: var(--sc-ink); font: 500 .72rem/1.3 var(--sc-font-text); white-space: nowrap;
+    opacity: 0; pointer-events: none;
+    transition: opacity var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .rb-spot--flip .rb-spot__name { left: auto; right: calc(100% + .4rem); }
+  @media (hover: hover) and (pointer: fine) {
+    .rb-spot:hover .rb-spot__name,
+    .rb-spot:focus-visible .rb-spot__name,
+    .rb-spot[aria-pressed="true"] .rb-spot__name { opacity: 1; }
+  }
+
+  .rb-legend {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: .3rem .6rem;
+    width: 100%; max-width: 360px;
+    font: 400 .74rem/1.3 var(--sc-font-text); font-variant-numeric: tabular-nums; color: var(--sc-ink-soft);
+  }
+  .rb-legend li { display: flex; gap: .3rem; align-items: baseline; }
+  .rb-legend b { font-weight: 500; color: var(--sc-ink); }
+  .rb-legend .is-on { color: var(--sc-accent); }
+  .rb-legend .is-on b { color: var(--sc-accent); }
+  .rb-body__hint { font-size: var(--sc-t-xs); color: var(--sc-ink-soft); text-align: center; letter-spacing: .02em; }
+
+  /* the notes panel */
+  .rb-notes {
+    background: var(--rb-panel); border: 1px solid var(--rb-line);
+    border-radius: var(--sc-r-md); padding: clamp(1rem, 2.4vw, 1.9rem);
+    box-shadow: 0 18px 44px -30px hsl(var(--rb-shadow-color) / .5);
+  }
+  .rb-status {
+    display: flex; gap: .5rem; align-items: baseline;
+    font: 400 var(--sc-t-xs)/1.5 var(--sc-font-text); letter-spacing: .04em;
+    color: var(--sc-ink-soft);
+    padding-bottom: var(--sc-3); margin-bottom: var(--sc-4);
+    border-bottom: 1px solid var(--rb-line);
+  }
+  .rb-status__dot { flex: 0 0 auto; width: .45rem; height: .45rem; border-radius: 50%; background: var(--sc-accent); transform: translateY(-1px); }
+  .rb-notes h1 {
+    font: 600 clamp(1.45rem, 1.1rem + 1.6vw, 2.35rem)/1.1 var(--sc-font-display);
+    letter-spacing: -.02em; margin-bottom: var(--sc-5);
+  }
+  .rb-notes h1 b { font-weight: 600; color: var(--sc-accent); }
+  .rb-rows { border-top: 1px solid var(--rb-line); }
+  .rb-row {
+    display: grid; grid-template-columns: 9.5rem 1fr; gap: .25rem 1rem;
+    padding: .6rem 0; border-bottom: 1px solid var(--rb-line);
+  }
+  .rb-row dt { font: 500 var(--sc-t-xs)/1.5 var(--sc-font-text); letter-spacing: .09em; text-transform: uppercase; color: var(--sc-ink-soft); }
+  .rb-row dd { font-size: var(--sc-t-sm); }
+  .rb-row--lead dd { font-weight: 500; color: var(--sc-accent); font-size: var(--sc-t-base); }
+  .rb-row[hidden] { display: none; }
+  .rb-row small { display: block; color: var(--sc-ink-soft); font-size: var(--sc-t-xs); margin-top: .15rem; }
+  .rb-notes__foot { margin-top: var(--sc-4); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); max-width: 52ch; }
+  @media (max-width: 560px) {
+    .rb-row { grid-template-columns: 1fr; padding: .45rem 0; }
+  }
+
+  /* ---------- act 2. the first visit ---------- */
+  .rb-visit {
+    width: 100%; max-width: 54rem; margin-inline: auto;
+    padding: calc(var(--rb-chrome-h) + var(--sc-4)) var(--sc-gutter) var(--sc-5);
+    display: grid; gap: var(--sc-5);
+  }
+  @media (max-width: 860px) { .rb-visit { padding: var(--sc-4) var(--sc-gutter) calc(var(--rb-chrome-h) + var(--sc-4)); } }
+  .rb-visit__head { display: flex; flex-wrap: wrap; gap: var(--sc-4); align-items: flex-end; justify-content: space-between; }
+  .rb-visit__head > div { max-width: 38ch; }
+  .rb-clock { display: flex; align-items: baseline; gap: .55rem; }
+  .rb-clock output { font: 600 clamp(2rem, 1.4rem + 2.4vw, 3.2rem)/1 var(--sc-font-display); font-variant-numeric: tabular-nums; letter-spacing: -.03em; color: var(--sc-accent); }
+  .rb-clock span { font: 500 var(--sc-t-xs)/1 var(--sc-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--sc-ink-soft); }
+  .rb-track { position: relative; display: grid; gap: 0; padding-left: 2.1rem; }
+  .rb-rail { position: absolute; left: .55rem; top: .4rem; bottom: .4rem; width: 2px; background: var(--rb-line); }
+  .rb-rail__marker {
+    position: absolute; left: 50%; top: 0; width: 13px; height: 13px; margin-left: -6.5px; margin-top: -6.5px;
+    border-radius: 50%; background: var(--sc-accent);
+    box-shadow: 0 0 0 4px var(--rb-accent-wash);
+    transform: translateY(calc(var(--sc-p, 0) * var(--rb-rail-px, 0px)));
+  }
+  .rb-still .rb-rail__marker { transform: translateY(var(--rb-rail-px, 0px)); }
+  .rb-step { position: relative; padding: .8rem 0 1.1rem; border-top: 1px solid var(--rb-line); }
+  .rb-step:first-child { border-top: 0; padding-top: .2rem; }
+  .rb-step::before {
+    content: ""; position: absolute; left: -1.9rem; top: 1.15rem;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--sc-canvas); border: 2px solid var(--rb-line-strong);
+    transition: background var(--sc-d-base) var(--sc-ease-out), border-color var(--sc-d-base) var(--sc-ease-out);
+  }
+  .rb-step:first-child::before { top: .55rem; }
+  .rb-step.is-lit::before, .rb-still .rb-step::before { background: var(--sc-accent); border-color: var(--sc-accent); }
+  /* The `font` shorthand resets font-variant-numeric, so every rule that sets
+     it has to say tabular-nums again or the figures go proportional. */
+  .rb-step__mark { font: 500 var(--sc-t-xs)/1 var(--sc-font-text); font-variant-numeric: tabular-nums; letter-spacing: .1em; text-transform: uppercase; color: var(--sc-ink-soft); }
+  .rb-step h3 { font: 600 var(--sc-t-lg)/1.2 var(--sc-font-text); letter-spacing: -.015em; margin: .3rem 0 .35rem; color: var(--sc-ink-soft); transition: color var(--sc-d-base) var(--sc-ease-out); }
+  .rb-step.is-lit h3, .rb-still .rb-step h3 { color: var(--sc-ink); }
+  .rb-step p { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); max-width: 58ch; }
+  .rb-visit__foot { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); max-width: 60ch; border-top: 1px solid var(--rb-line); padding-top: var(--sc-4); }
+
+  /* ---------- act 3. treatments, as notes ---------- */
+  .rb-treat {
+    display: grid; gap: .5rem 2.5rem; padding: var(--sc-5) 0;
+    border-top: 1px solid var(--rb-line);
+  }
+  @media (min-width: 861px) { .rb-treat { grid-template-columns: 20rem 1fr; } }
+  .rb-treat h3 { font: 600 var(--sc-t-lg)/1.2 var(--sc-font-text); letter-spacing: -.015em; }
+  .rb-treat__for { color: var(--sc-accent); font-size: var(--sc-t-sm); margin-top: .25rem; }
+  .rb-treat p:last-child { color: var(--sc-ink-soft); max-width: 62ch; }
+
+  /* ---------- act 4. conditions ---------- */
+  .rb-alert {
+    display: flex; gap: .8rem; align-items: flex-start;
+    border: 1px solid var(--rb-line-strong); border-left: 3px solid var(--sc-accent);
+    border-radius: var(--sc-r-sm); background: var(--rb-panel-2);
+    padding: var(--sc-4); margin-bottom: var(--sc-6); max-width: 70ch;
+  }
+  .rb-alert svg { flex: 0 0 auto; width: 20px; height: 20px; margin-top: .15rem; fill: none; stroke: var(--sc-accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .rb-alert p { font-size: var(--sc-t-sm); }
+  .rb-groups { display: grid; gap: var(--sc-5) var(--sc-6); margin-top: var(--sc-6); }
+  @media (min-width: 700px) { .rb-groups { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1100px) { .rb-groups { grid-template-columns: repeat(4, 1fr); } }
+  .rb-group h3 {
+    font: 500 var(--sc-t-xs)/1.4 var(--sc-font-text); letter-spacing: .1em; text-transform: uppercase;
+    color: var(--sc-ink-soft); padding-bottom: .6rem; margin-bottom: .6rem; border-bottom: 1px solid var(--rb-line);
+    min-height: 2.8em; display: flex; align-items: flex-end;
+  }
+  .rb-group li { font-size: var(--sc-t-sm); padding: .3rem 0 .3rem .9rem; position: relative; }
+  .rb-group li::before { content: ""; position: absolute; left: 0; top: .95em; width: .3rem; height: 1px; background: var(--rb-line-strong); }
+
+  /* ---------- act 5. authored silence ---------- */
+  .rb-silence { min-height: 58vh; display: grid; align-content: center; }
+  .rb-silence__in { max-width: 44ch; padding-top: var(--sc-5); border-top: 1px solid var(--rb-line-strong); }
+  .rb-silence h2 {
+    font: 600 clamp(1.7rem, 1.2rem + 2.2vw, 2.8rem)/1.1 var(--sc-font-display);
+    letter-spacing: -.025em; margin: 0 0 var(--sc-4);
+  }
+  .rb-silence p { color: var(--sc-ink-soft); max-width: 46ch; }
+
+  /* ---------- act 6. who you will see ---------- */
+  .rb-people { display: grid; gap: var(--sc-7); margin-top: var(--sc-6); }
+  @media (min-width: 861px) { .rb-people { grid-template-columns: repeat(2, 1fr); gap: var(--sc-8); } }
+  .rb-person { display: grid; grid-template-columns: 4rem 1fr; gap: var(--sc-4); align-items: start; }
+  .rb-person__mark {
+    width: 4rem; height: 4rem; border-radius: 50%; display: grid; place-items: center;
+    background: var(--rb-panel-2); border: 1px solid var(--rb-line);
+    font: 600 1.05rem/1 var(--sc-font-text); letter-spacing: .02em; color: var(--sc-accent);
+  }
+  .rb-person h3 { font: 600 var(--sc-t-lg)/1.2 var(--sc-font-text); letter-spacing: -.015em; }
+  .rb-person__role { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin-top: .15rem; }
+  .rb-creds { display: flex; flex-wrap: wrap; gap: .35rem; margin: var(--sc-4) 0; }
+  .rb-creds li {
+    font-size: .74rem; letter-spacing: .02em; padding: .25rem .55rem;
+    border: 1px solid var(--rb-line); border-radius: var(--sc-r-pill); color: var(--sc-ink-soft);
+  }
+  .rb-person p:last-child { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); max-width: 46ch; }
+
+  /* ---------- act 7. fees ---------- */
+  .rb-feewrap { display: grid; gap: var(--sc-6); margin-top: var(--sc-5); }
+  @media (min-width: 961px) { .rb-feewrap { grid-template-columns: 1.55fr 1fr; gap: var(--sc-8); align-items: start; } }
+  .rb-fees { width: 100%; border-collapse: collapse; }
+  .rb-fees caption { text-align: left; font: 500 var(--sc-t-xs)/1.4 var(--sc-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--sc-ink-soft); padding-bottom: .7rem; }
+  .rb-fees th { text-align: left; font: 500 var(--sc-t-xs)/1.4 var(--sc-font-text); letter-spacing: .09em; text-transform: uppercase; color: var(--sc-ink-soft); padding: .5rem .5rem .5rem 0; border-bottom: 1px solid var(--rb-line-strong); }
+  .rb-fees th:last-child, .rb-fees td:last-child { text-align: right; padding-right: 0; }
+  .rb-fees td { padding: .8rem .5rem .8rem 0; border-bottom: 1px solid var(--rb-line); vertical-align: top; font-size: var(--sc-t-sm); }
+  .rb-fees td:first-child { padding-left: 0; }
+  .rb-fees b { font-weight: 500; }
+  .rb-fees small { display: block; color: var(--sc-ink-soft); font-size: var(--sc-t-xs); margin-top: .15rem; }
+  .rb-fee { font-weight: 500; white-space: nowrap; }
+  .rb-worth { background: var(--rb-panel-2); border: 1px solid var(--rb-line); border-radius: var(--sc-r-md); padding: var(--sc-5); }
+  .rb-worth h3 { font: 500 var(--sc-t-xs)/1.4 var(--sc-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--sc-ink-soft); margin-bottom: var(--sc-4); }
+  .rb-worth li { font-size: var(--sc-t-sm); color: var(--sc-ink-soft); padding: .55rem 0; border-top: 1px solid var(--rb-line); }
+  .rb-worth li:first-of-type { border-top: 0; padding-top: 0; }
+  .rb-worth strong { color: var(--sc-ink); font-weight: 500; }
+  .rb-fees__foot { margin-top: var(--sc-5); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); max-width: 60ch; }
+
+  /* ---------- act 8. the close is a real input ---------- */
+  .rb-facts { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; padding-bottom: var(--sc-5); margin-bottom: var(--sc-6); border-bottom: 1px solid var(--rb-line); }
+  .rb-facts li { font-size: var(--sc-t-xs); letter-spacing: .06em; text-transform: uppercase; color: var(--sc-ink-soft); display: flex; gap: .45rem; align-items: center; }
+  .rb-facts li::before { content: ""; width: .3rem; height: .3rem; border-radius: 50%; background: var(--sc-accent); }
+  .rb-book { display: grid; gap: var(--sc-7); }
+  @media (min-width: 961px) { .rb-book { grid-template-columns: 1fr 1.1fr; gap: var(--sc-8); align-items: start; } }
+  .rb-form { display: grid; gap: var(--sc-4); }
+  .rb-form[hidden] { display: none !important; }
+  .rb-field { display: grid; gap: .4rem; }
+  .rb-field > span, .rb-set legend {
+    font: 500 var(--sc-t-xs)/1.4 var(--sc-font-text); letter-spacing: .09em; text-transform: uppercase; color: var(--sc-ink-soft);
+  }
+  .rb-field input, .rb-field select, .rb-field textarea {
+    width: 100%; min-height: 46px; padding: .7rem .8rem;
+    color: var(--sc-ink); background: var(--rb-input);
+    border: 1px solid var(--rb-input-line); border-radius: var(--sc-r-sm);
+    font: 400 var(--sc-t-sm)/1.5 var(--sc-font-text);
+  }
+  .rb-field textarea { min-height: 96px; resize: vertical; }
+  .rb-field input:focus-visible, .rb-field select:focus-visible, .rb-field textarea:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; border-color: var(--sc-accent); }
+  .rb-two { display: grid; gap: var(--sc-4); }
+  @media (min-width: 560px) { .rb-two { grid-template-columns: 1fr 1fr; } }
+  .rb-set { border: 0; padding: 0; margin: 0; display: grid; gap: .5rem; }
+  .rb-checks { display: grid; gap: .25rem; }
+  @media (min-width: 560px) { .rb-checks { grid-template-columns: 1fr 1fr; } }
+  .rb-check { display: flex; gap: .35rem; align-items: center; min-height: 44px; font-size: var(--sc-t-sm); cursor: pointer; }
+  /* A 44px target with a 24px box inside it: the transparent border carries
+     the thumb, the padding box carries the design. */
+  .rb-check input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none;
+    flex: 0 0 auto; width: 44px; height: 44px; margin: 0 -10px;
+    border: 10px solid transparent; border-radius: 15px;
+    background-color: var(--rb-input); background-clip: padding-box;
+    box-shadow: inset 0 0 0 1px var(--rb-input-line);
+    cursor: pointer;
+    transition: background-color var(--sc-d-fast) var(--sc-ease-out), box-shadow var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .rb-check input[type="checkbox"]:checked {
+    background-color: var(--sc-accent);
+    box-shadow: inset 0 0 0 1px var(--sc-accent);
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12.5 10 17.5 19 7' fill='none' stroke='%23FFFFFF' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-size: 16px 16px; background-position: center; background-repeat: no-repeat; background-origin: content-box;
+  }
+  :root[data-theme="dark"] .rb-check input[type="checkbox"]:checked {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12.5 10 17.5 19 7' fill='none' stroke='%230F1A18' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  }
+  .rb-check input[type="checkbox"]:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: -8px; }
+  .rb-err { color: var(--sc-accent); font-size: var(--sc-t-xs); font-weight: 500; }
+  .rb-err[hidden] { display: none; }
+  .rb-submit {
+    min-height: 52px; padding: .9rem 1.4rem; width: 100%;
+    background: var(--sc-accent); color: var(--sc-accent-ink);
+    border: 0; border-radius: var(--sc-r-sm); cursor: pointer;
+    font: 600 var(--sc-t-base)/1 var(--sc-font-text); letter-spacing: -.01em;
+    transition: filter var(--sc-d-fast) var(--sc-ease-out), transform var(--sc-d-fast) var(--sc-ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) { .rb-submit:hover { filter: brightness(1.08); } }
+  .rb-submit:active { transform: translateY(1px); }
+  .rb-submit[disabled] { opacity: .6; cursor: progress; }
+  .rb-fine { color: var(--sc-ink-soft); font-size: var(--sc-t-xs); }
+  .rb-done { border: 1px solid var(--sc-accent); border-radius: var(--sc-r-md); padding: var(--sc-5); background: var(--rb-panel-2); }
+  .rb-done[hidden] { display: none; }
+  .rb-done h3 { font: 600 var(--sc-t-lg)/1.2 var(--sc-font-text); letter-spacing: -.015em; margin-bottom: var(--sc-3); }
+  .rb-done p { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin-bottom: var(--sc-3); }
+  /* Anything that echoes what a visitor typed breaks anywhere. An address with
+     no spaces in it is otherwise one unbreakable word, and one unbreakable word
+     wider than the screen opens the layout viewport and takes the fixed tab
+     strip off the side of the phone with it. */
+  #rbDoneBody, .rb-done p, .rb-notes dd, .rb-chrome__state b { overflow-wrap: anywhere; }
+  .rb-again { min-height: 44px; padding: .6rem 1.1rem; background: transparent; color: var(--sc-ink); border: 1px solid var(--rb-line-strong); border-radius: var(--sc-r-sm); font: 500 var(--sc-t-sm)/1 var(--sc-font-text); cursor: pointer; }
+  .rb-again:hover { border-color: var(--sc-accent); color: var(--sc-accent); }
+  .rb-aside { display: grid; gap: var(--sc-4); align-content: start; }
+  .rb-aside dl { display: grid; gap: .4rem; }
+  .rb-aside .rb-row { grid-template-columns: 5.5rem 1fr; }
+  .rb-aside a { color: var(--sc-accent); }
+
+  /* questions */
+  .rb-qa { margin-top: var(--sc-7); border-top: 1px solid var(--rb-line-strong); padding-top: var(--sc-5); }
+  .rb-qa > h3 { font: 500 var(--sc-t-xs)/1.4 var(--sc-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--sc-ink-soft); margin-bottom: var(--sc-4); }
+  .rb-qa details { border-bottom: 1px solid var(--rb-line); }
+  .rb-qa summary {
+    list-style: none; cursor: pointer; position: relative;
+    padding: .85rem 2rem .85rem 0; min-height: 44px; display: flex; align-items: center;
+    font: 500 var(--sc-t-sm)/1.4 var(--sc-font-text);
+  }
+  .rb-qa summary::-webkit-details-marker { display: none; }
+  .rb-qa summary::after {
+    content: ""; position: absolute; right: .4rem; top: 50%; width: .5rem; height: .5rem;
+    border-right: 1.5px solid var(--sc-ink-soft); border-bottom: 1.5px solid var(--sc-ink-soft);
+    transform: translateY(-70%) rotate(45deg); transition: transform var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .rb-qa details[open] summary::after { transform: translateY(-20%) rotate(-135deg); }
+  .rb-qa details p { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin: 0 0 var(--sc-4); max-width: 60ch; }
+
+  /* ---------- the foot of the document ---------- */
+  .rb-foot { border-top: 1px solid var(--rb-line); margin-top: var(--sc-7); padding-top: var(--sc-6); display: grid; gap: var(--sc-5); }
+  @media (min-width: 861px) { .rb-foot { grid-template-columns: repeat(3, 1fr); gap: var(--sc-6); } }
+  .rb-foot h3 { font: 500 var(--sc-t-xs)/1.4 var(--sc-font-text); letter-spacing: .1em; text-transform: uppercase; color: var(--sc-ink-soft); margin-bottom: var(--sc-3); }
+  .rb-foot p, .rb-foot li, .rb-foot address { font-size: var(--sc-t-sm); font-style: normal; color: var(--sc-ink-soft); }
+  .rb-foot a { color: var(--sc-ink); }
+  .rb-foot a:hover { color: var(--sc-accent); }
+  .rb-hours { width: 100%; border-collapse: collapse; font-size: var(--sc-t-sm); }
+  .rb-hours__note { text-align: left; color: var(--sc-ink-soft); font-size: var(--sc-t-xs); padding-bottom: .5rem; }
+  .rb-hours th { text-align: left; font-weight: 400; color: var(--sc-ink-soft); padding: .2rem 0; }
+  .rb-hours td { text-align: right; color: var(--sc-ink-soft); padding: .2rem 0; }
+  .rb-base {
+    border-top: 1px solid var(--rb-line); margin-top: var(--sc-6);
+    padding-top: var(--sc-5); padding-bottom: calc(var(--rb-chrome-h) + 1.5rem);
+    display: grid; gap: var(--sc-3); color: var(--sc-ink-soft); font-size: var(--sc-t-xs);
+  }
+  .rb-base a { color: var(--sc-ink-soft); }
+  .rb-base p { max-width: 76ch; }
+  @media (min-width: 861px) { .rb-base { padding-bottom: var(--sc-6); } }
+
+  /* ---------- consent ---------- */
+  .rb-consent {
+    position: fixed; inset: auto 0 0 0; z-index: calc(var(--sc-z-chrome) + 1);
+    display: flex; flex-wrap: wrap; align-items: center; gap: var(--sc-3) var(--sc-4);
+    padding: var(--sc-4) var(--sc-gutter);
+    background: var(--rb-panel); border-top: 1px solid var(--rb-line-strong);
+    font-size: var(--sc-t-sm);
+  }
+  .rb-consent[hidden] { display: none !important; }
+  .rb-consent p { flex: 1 1 26ch; max-width: 64ch; }
+  .rb-consent a { color: var(--sc-accent); }
+  .rb-consent__acts { display: flex; gap: var(--sc-3); flex: 0 0 auto; }
+  /* Identical buttons on purpose. A reject that is quieter than the accept is
+     not a free choice, and the ICO has said so. */
+  .rb-consent button {
+    min-height: 44px; padding: .7rem 1.25rem; cursor: pointer;
+    background: transparent; color: var(--sc-ink);
+    border: 1px solid var(--rb-line-strong); border-radius: var(--sc-r-sm);
+    font: 500 var(--sc-t-sm)/1 var(--sc-font-text);
+  }
+  .rb-consent button:hover { border-color: var(--sc-accent); color: var(--sc-accent); }
+  @media (max-width: 560px) { .rb-consent__acts { width: 100%; } .rb-consent button { flex: 1; } }
+
+
+  /* A laptop is a short screen, and a pinned stage clips. One rung down on
+     the visit so it fits a 720px viewport as well as a 900px one. */
+  @media (min-width: 861px) and (max-height: 820px) {
+    .rb-visit { gap: var(--sc-4); }
+    .rb-visit__head { gap: var(--sc-3); }
+    .rb-clock output { font-size: 2.2rem; }
+    .rb-step { padding: .55rem 0 .75rem; }
+    .rb-step p { font-size: var(--sc-t-xs); }
+    .rb-visit__foot { font-size: var(--sc-t-xs); padding-top: var(--sc-3); }
+  }
+
+  /* On a small or a short screen the figure alone fills the first screen and
+     the visitor lands on a drawing with no words. Below 384px, or under 700px
+     of height, the surface reorders: status line, title, figure, then the rows.
+     The panel's own box steps aside (display: contents) so its children can
+     take their place in the same column. */
+  @media (max-width: 860px) and ((max-width: 384px) or (max-height: 700px)) {
+    .rb-assess { display: flex; flex-direction: column; gap: var(--sc-3); }
+    .rb-notes { display: contents; }
+    .rb-status { order: 1; margin-bottom: 0; }
+    .rb-notes h1 { order: 2; margin-bottom: 0; font-size: clamp(1.3rem, 1rem + 2.6vw, 1.6rem); }
+    .rb-body { order: 3; }
+    .rb-rows { order: 4; }
+    .rb-notes__foot { order: 5; }
+  }
+
+  /* ---------- the phone, after everything it has to override ---------- */
+  @media (max-width: 860px) {
+    .rb-demo { padding: .5rem var(--sc-gutter); font-size: .62rem; letter-spacing: .06em; }
+    .rb-demo p { gap: .1rem .7rem; }
+    .rb-assess { gap: var(--sc-4); }
+    .rb-body { gap: var(--sc-2); }
+    .rb-legend { grid-template-columns: repeat(4, 1fr); gap: .2rem .4rem; font-size: .66rem; max-width: none; }
+    .rb-spot { border-width: 5px; box-shadow: inset 0 0 0 1px var(--rb-line-strong); }
+    .rb-spot[aria-pressed="true"] { box-shadow: inset 0 0 0 1px var(--sc-accent), 0 0 0 3px var(--rb-accent-wash); }
+    .rb-spot__num { font-size: .74rem; }
+    .rb-body__hint { font-size: .7rem; }
+    .rb-notes { padding: 1rem 1.1rem; }
+    .rb-notes h1 { margin-bottom: var(--sc-4); }
+    .rb-status { padding-bottom: var(--sc-2); margin-bottom: var(--sc-3); }
+    .rb-notes__foot { font-size: .8rem; }
+    /* The stage clips what does not fit, so the visit is set to fit: the
+       copy is all here, one step down the ramp. */
+    .rb-visit { gap: .75rem; padding-bottom: calc(var(--rb-chrome-h) + .5rem); }
+    .rb-visit .rb-label { margin-bottom: .35rem; font-size: .68rem; }
+    .rb-visit .rb-h { font-size: 1.12rem; margin-bottom: 0; }
+    .rb-visit__head { gap: var(--sc-2); align-items: baseline; }
+    .rb-clock output { font-size: 1.7rem; }
+    .rb-step { padding: .4rem 0 .55rem; }
+    .rb-step h3 { font-size: 1rem; margin: .1rem 0 .2rem; }
+    .rb-step p { font-size: .78rem; line-height: 1.45; }
+    .rb-step__mark { font-size: .66rem; }
+    .rb-step::before { top: .75rem; }
+    .rb-step:first-child::before { top: .3rem; }
+    .rb-visit__foot { font-size: .76rem; padding-top: .6rem; }
+    .rb-silence { min-height: 42vh; }
+    /* pills wrap badly in a 310px column, so the credentials go back to
+       being what they are: a list */
+    .rb-creds { display: grid; gap: 0; margin: var(--sc-3) 0; }
+    .rb-creds li { border: 0; border-radius: 0; padding: .12rem 0 .12rem .8rem; position: relative; font-size: .8rem; }
+    .rb-creds li::before { content: ""; position: absolute; left: 0; top: .82em; width: .3rem; height: 1px; background: var(--rb-line-strong); }
+    .rb-person { grid-template-columns: 3.25rem 1fr; gap: var(--sc-3); }
+    .rb-person__mark { width: 3.25rem; height: 3.25rem; font-size: .9rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rb-tab, .rb-spot, .rb-spot__name, .rb-zone, .rb-step::before, .rb-step h3,
+    .rb-submit, .rb-qa summary::after, .rb-chrome { transition: none; }
+  }
+</style>
 </head>
 <body>
 
-<div class="demo-banner">
-  <div class="demo-banner__inner">
-    <span class="demo-banner__tag">Demo site by Tempany Web Studios</span>
-    <span class="demo-banner__note">This is an example website, not a real business.</span>
-    <a class="demo-banner__link" href="https://tempanywebstudios.co.uk">tempanywebstudios.co.uk</a>
-  </div>
+<a class="rb-skip" href="#top">Skip to the assessment</a>
+
+<div class="rb-demo">
+  <p><b>Demo site by Tempany Web Studios</b> <span>This is an example website, not a real business.</span> <a href="https://tempanywebstudios.co.uk">tempanywebstudios.co.uk</a></p>
 </div>
 
-<a class="skip-link" href="#main">Skip to main content</a>
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
 
-<header class="site-header" id="top">
-  <div class="site-header__inner">
-    <a class="brand" href="#top" aria-label="Rowanbank Physiotherapy, home">
-      <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 40 40" focusable="false">
-          <path d="M20 36V16" class="mark-stem"/>
-          <path d="M20 16c0-7 5-12 12-12 0 7-5 12-12 12Z" class="mark-leaf-a"/>
-          <path d="M20 25c0-6-4.5-10-10.5-10 0 6 4.5 10 10.5 10Z" class="mark-leaf-b"/>
-          <circle cx="27.5" cy="24" r="3" class="mark-berry"/>
-        </svg>
-      </span>
-      <span class="brand__words">
-        <span class="brand__name">Rowanbank</span>
-        <span class="brand__kicker">Physiotherapy &amp; Sports Injury</span>
-      </span>
+<nav class="rb-chrome" data-chrome aria-label="Clinic">
+  <a class="rb-chrome__app" href="#top">Rowanbank <span>Physiotherapy</span></a>
+
+  <div class="rb-tabs">
+    <a class="rb-tab" href="#assessment" data-tab="assessment">
+      <svg class="rb-tab__i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2.6"/><path d="M12 8v8M12 16l-3.4 5M12 16l3.4 5M7 11h10"/></svg>
+      Assessment
     </a>
-
-    <div class="site-header__actions">
-      <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">
-        <span class="theme-toggle__icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.2 5.2l1.9 1.9M16.9 16.9l1.9 1.9M18.8 5.2l-1.9 1.9M7.1 16.9l-1.9 1.9"/></svg>
-        </span>
-        <span class="theme-toggle__label">Dark mode</span>
-      </button>
-
-      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-        <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span></span>
-        <span class="nav-toggle__text">Menu</span>
-      </button>
-    </div>
-
-    <nav class="primary-nav" id="primary-nav" aria-label="Primary">
-      <ul class="primary-nav__list">
-        <li><a href="#treatments">Treatments</a></li>
-        <li><a href="#conditions">Conditions</a></li>
-        <li><a href="#first-visit">Your first visit</a></li>
-        <li><a href="#fees">Fees</a></li>
-        <li><a href="#team">About</a></li>
-        <li><a href="#visiting">Visiting</a></li>
-      </ul>
-      <a class="btn btn--primary primary-nav__cta" href="#enquire">Book an assessment</a>
-    </nav>
+    <a class="rb-tab" href="#plan" data-tab="plan">
+      <svg class="rb-tab__i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.4l3.4 2"/></svg>
+      Plan
+    </a>
+    <a class="rb-tab" href="#treatment" data-tab="treatment">
+      <svg class="rb-tab__i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8c3-3 6 3 9 0s6-3 9 0M3 14c3-3 6 3 9 0s6-3 9 0M3 20c3-3 6 3 9 0s6-3 9 0"/></svg>
+      Treatment
+    </a>
+    <a class="rb-tab" href="#fees" data-tab="fees">
+      <svg class="rb-tab__i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h14v17l-3-1.6-2 1.6-2-1.6-2 1.6-2-1.6L5 20.5z"/><path d="M9 9h6M9 13h4"/></svg>
+      Fees
+    </a>
+    <a class="rb-tab" href="#book" data-tab="book">
+      <svg class="rb-tab__i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16v14H4zM4 10.5h16M8.5 3.5v4M15.5 3.5v4"/><path d="M9 15.5l2 2 4-4"/></svg>
+      Book
+    </a>
   </div>
-</header>
 
-<main id="main">
+  <p class="rb-chrome__state">Region <b id="rbChromeRegion">lower back</b></p>
 
-  <!-- ───────────────── HERO ───────────────── -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero__backdrop" aria-hidden="true">
-      <svg class="hero__art" viewBox="0 0 1440 680" preserveAspectRatio="xMidYMid slice" focusable="false">
-        <g class="hero__lines" fill="none" stroke-linecap="round">
-          <path d="M-100 70C140 14 300 144 560 78S900 -14 1080 64S1320 140 1560 72"/>
-          <path d="M-100 150C140 94 300 224 560 158S900 66 1080 144S1320 220 1560 152"/>
-          <path d="M-100 230C140 174 300 304 560 238S900 146 1080 224S1320 300 1560 232"/>
-          <path d="M-100 310C140 254 300 384 560 318S900 226 1080 304S1320 380 1560 312"/>
-          <path d="M-100 390C140 334 300 464 560 398S900 306 1080 384S1320 460 1560 392"/>
-          <path d="M-100 470C140 414 300 544 560 478S900 386 1080 464S1320 540 1560 472"/>
-          <path d="M-100 550C140 494 300 624 560 558S900 466 1080 544S1320 620 1560 552"/>
-          <path d="M-100 630C140 574 300 704 560 638S900 546 1080 624S1320 700 1560 632"/>
-        </g>
-        <path class="hero__lines-accent" d="M-100 430C140 374 300 504 560 438S900 346 1080 424S1320 500 1560 432" fill="none" stroke-linecap="round"/>
-        <g class="hero__focus">
-          <circle cx="1180" cy="440" r="54"/>
-          <circle cx="1180" cy="440" r="32"/>
-          <circle cx="1180" cy="440" r="8" class="hero__focus-dot"/>
-        </g>
-        <g class="hero__dots">
-          <circle cx="1140" cy="150" r="3.5"/><circle cx="1174" cy="128" r="3.5"/><circle cx="1208" cy="150" r="3.5"/>
-          <circle cx="1140" cy="184" r="3.5"/><circle cx="1174" cy="162" r="3.5"/><circle cx="1208" cy="184" r="3.5"/>
-        </g>
-      </svg>
-    </div>
+  <button class="rb-lights" id="lights" type="button" aria-pressed="false" aria-label="Turn the lights down">
+    <svg class="rb-lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="rb-lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+  </button>
+</nav>
 
-    <div class="wrap hero__content">
+<main id="top">
 
-      <div class="session-strip" aria-label="What happens in your first fifty minutes">
-        <div class="session-strip__head">
-          <span class="session-strip__label">First appointment</span>
-          <span class="session-strip__time">50 minutes &middot; &pound;58</span>
+  <!-- 1 · THE ASSESSMENT. The surface, already in a state. No entrance
+       devices here: the first screen is already the page. -->
+  <section id="assessment" data-sc-act="pin" data-sc-span="1.4" data-rb-ground="0" aria-labelledby="rbH1">
+    <div class="rb-stage" data-sc-stage>
+      <div class="rb-assess">
+
+        <div class="rb-body" data-landing>
+          <div class="rb-figure">
+            <svg viewBox="0 0 300 620" aria-hidden="true" focusable="false">
+              <g class="rb-zones">
+                <ellipse class="rb-zone" data-zone="neck" cx="150" cy="90" rx="22" ry="16"/>
+                <ellipse class="rb-zone" data-zone="shoulder" cx="99" cy="140" rx="30" ry="26"/>
+                <ellipse class="rb-zone" data-zone="elbow" cx="91" cy="264" rx="22" ry="28"/>
+                <ellipse class="rb-zone" data-zone="back" cx="150" cy="238" rx="40" ry="34"/>
+                <ellipse class="rb-zone" data-zone="hip" cx="194" cy="300" rx="28" ry="28"/>
+                <ellipse class="rb-zone" data-zone="knee" cx="125" cy="420" rx="24" ry="30"/>
+                <ellipse class="rb-zone" data-zone="ankle" cx="166" cy="545" rx="19" ry="23"/>
+                <ellipse class="rb-zone" data-zone="heel" cx="121" cy="566" rx="22" ry="15"/>
+              </g>
+
+              <!-- a figure, front on, line only, drawn for this page -->
+              <ellipse class="rb-figure__line" cx="150" cy="46" rx="25" ry="32"/>
+              <path class="rb-figure__line" d="M137 73 137 86M163 73 163 86"/>
+              <path class="rb-figure__line" d="M137 86C137 100 124 106 110 116C98 122 90 132 87 150C84 184 81 224 79 262C76 294 73 324 71 352C68 372 72 392 81 393C90 392 93 376 92 356C95 324 99 292 103 262C105 228 106 196 108 170C113 196 116 216 117 238C117 258 108 274 106 300C107 330 108 380 111 420C112 438 113 455 115 470C118 500 123 525 127 545C125 558 117 564 107 566C103 567 102 573 107 574L139 574C144 574 144 566 142 558C141 553 141 549 141 545C141 520 140 500 140 470C139 455 139 440 139 420C139 390 142 350 150 314C158 350 161 390 161 420C161 440 161 455 160 470C160 500 159 520 159 545C159 549 159 553 158 558C156 566 156 574 161 574L193 574C198 573 197 567 193 566C183 564 175 558 173 545C177 525 182 500 185 470C187 455 188 438 189 420C192 380 193 330 194 300C192 274 183 258 183 238C184 216 187 196 192 170C194 196 195 228 197 262C201 292 205 324 208 356C207 376 210 392 219 393C228 392 232 372 229 352C227 324 224 294 221 262C219 224 216 184 213 150C210 132 202 122 190 116C176 106 163 100 163 86Z"/>
+              <path class="rb-figure__hint" d="M124 128C138 136 162 136 176 128"/>
+              <path class="rb-figure__hint" d="M150 142 150 226"/>
+              <path class="rb-figure__hint" d="M128 232C140 238 160 238 172 232"/>
+              <g class="rb-zones">
+                <ellipse class="rb-zone rb-zone--ring" data-zone="neck" cx="150" cy="90" rx="22" ry="16"/>
+                <ellipse class="rb-zone rb-zone--ring" data-zone="shoulder" cx="99" cy="140" rx="30" ry="26"/>
+                <ellipse class="rb-zone rb-zone--ring" data-zone="elbow" cx="91" cy="264" rx="22" ry="28"/>
+                <ellipse class="rb-zone rb-zone--ring" data-zone="back" cx="150" cy="238" rx="40" ry="34"/>
+                <ellipse class="rb-zone rb-zone--ring" data-zone="hip" cx="194" cy="300" rx="28" ry="28"/>
+                <ellipse class="rb-zone rb-zone--ring" data-zone="knee" cx="125" cy="420" rx="24" ry="30"/>
+                <ellipse class="rb-zone rb-zone--ring" data-zone="ankle" cx="166" cy="545" rx="19" ry="23"/>
+                <ellipse class="rb-zone rb-zone--ring" data-zone="heel" cx="121" cy="566" rx="22" ry="15"/>
+              </g>
+            </svg>
+
+            <button class="rb-spot" type="button" data-region="neck" aria-pressed="false" style="--x:50.0%;--y:14.8%">
+              <span class="rb-spot__num" aria-hidden="true">1</span><span class="rb-spot__name">Neck</span>
+            </button>
+            <button class="rb-spot rb-spot--flip" type="button" data-region="shoulder" aria-pressed="false" style="--x:32.0%;--y:23.5%">
+              <span class="rb-spot__num" aria-hidden="true">2</span><span class="rb-spot__name">Shoulder</span>
+            </button>
+            <button class="rb-spot rb-spot--flip" type="button" data-region="elbow" aria-pressed="false" style="--x:28.0%;--y:43.9%">
+              <span class="rb-spot__num" aria-hidden="true">3</span><span class="rb-spot__name">Elbow</span>
+            </button>
+            <button class="rb-spot" type="button" data-region="back" aria-pressed="true" style="--x:50.0%;--y:38.4%">
+              <span class="rb-spot__num" aria-hidden="true">4</span><span class="rb-spot__name">Lower back</span>
+            </button>
+            <button class="rb-spot" type="button" data-region="hip" aria-pressed="false" style="--x:64.7%;--y:48.7%">
+              <span class="rb-spot__num" aria-hidden="true">5</span><span class="rb-spot__name">Hip</span>
+            </button>
+            <button class="rb-spot rb-spot--flip" type="button" data-region="knee" aria-pressed="false" style="--x:41.7%;--y:68.4%">
+              <span class="rb-spot__num" aria-hidden="true">6</span><span class="rb-spot__name">Knee</span>
+            </button>
+            <button class="rb-spot" type="button" data-region="ankle" aria-pressed="false" style="--x:57.3%;--y:86.1%">
+              <span class="rb-spot__num" aria-hidden="true">7</span><span class="rb-spot__name">Ankle</span>
+            </button>
+            <button class="rb-spot rb-spot--flip" type="button" data-region="heel" aria-pressed="false" style="--x:37.3%;--y:93.5%">
+              <span class="rb-spot__num" aria-hidden="true">8</span><span class="rb-spot__name">Heel</span>
+            </button>
+          </div>
+
+          <ol class="rb-legend" id="rbLegend">
+            <li data-for="neck"><b>1</b> Neck</li>
+            <li data-for="shoulder"><b>2</b> Shoulder</li>
+            <li data-for="elbow"><b>3</b> Elbow</li>
+            <li data-for="back" class="is-on"><b>4</b> Lower back</li>
+            <li data-for="hip"><b>5</b> Hip</li>
+            <li data-for="knee"><b>6</b> Knee</li>
+            <li data-for="ankle"><b>7</b> Ankle</li>
+            <li data-for="heel"><b>8</b> Heel</li>
+          </ol>
+          <p class="rb-body__hint">Tap the part that hurts.</p>
         </div>
-        <ol class="session-timeline">
-          <li>
-            <span class="session-timeline__mark">0&ndash;15</span>
-            <span class="session-timeline__what">Assessment</span>
-            <span class="session-timeline__desc">A full history and a proper look at how you move, not just where it hurts.</span>
-          </li>
-          <li>
-            <span class="session-timeline__mark">15&ndash;40</span>
-            <span class="session-timeline__what">Hands-on treatment</span>
-            <span class="session-timeline__desc">Joint mobilisation, soft tissue work or dry needling, whichever fits what's found.</span>
-          </li>
-          <li>
-            <span class="session-timeline__mark">40&ndash;50</span>
-            <span class="session-timeline__what">Your plan</span>
-            <span class="session-timeline__desc">A written, graded exercise programme, and a straight answer on what to expect.</span>
-          </li>
-        </ol>
-      </div>
 
-      <div class="hero__text">
-        <p class="eyebrow"><span class="eyebrow__rule" aria-hidden="true"></span>HCPC-registered physiotherapy in Alloa</p>
-        <h1 id="hero-title">Understand your pain. <em>Then get moving again.</em></h1>
-        <p class="hero__lede">One-to-one appointments with a chartered physiotherapist, built around your week, not a photocopied sheet of exercises.</p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#enquire">Book an assessment</a>
-          <a class="btn btn--ghost" href="#fees">See treatments &amp; fees</a>
+        <div class="rb-notes" data-landing>
+          <p class="rb-status" data-landing><span class="rb-status__dot" aria-hidden="true"></span>Sample assessment. Nothing you tap here is a diagnosis.</p>
+          <h1 id="rbH1">Understand your pain. <b>Then get moving again.</b></h1>
+
+          <dl class="rb-rows" aria-live="polite">
+            <div class="rb-row rb-row--lead">
+              <dt>Region</dt>
+              <dd id="rbRegionOut">Lower back</dd>
+            </div>
+            <div class="rb-row">
+              <dt>Likely start</dt>
+              <dd id="rbStart">Assessment, then hands-on treatment and a graded exercise programme.</dd>
+            </div>
+            <div class="rb-row" id="rbRowCourse">
+              <dt>Typical course</dt>
+              <dd id="rbCourse">3 to 6 appointments<small id="rbCourseNote">Long-standing back pain takes longer, and we say so on day one.</small></dd>
+            </div>
+            <div class="rb-row" id="rbRowSeen">
+              <dt>Commonly</dt>
+              <dd id="rbSeen">Lower back pain, acute and long-standing. Sciatica and referred leg pain. Disc-related pain.</dd>
+            </div>
+            <div class="rb-row">
+              <dt>First appointment</dt>
+              <dd id="rbFirst">50 min &middot; &pound;58</dd>
+            </div>
+          </dl>
+
+          <p class="rb-notes__foot">You will leave knowing what is sore, why it became sore, and what makes it better. Whatever you tap here is carried into the booking form at the foot of the page.</p>
         </div>
-        <p class="hero__micro">No GP referral needed &middot; Evening and Saturday appointments &middot; Most enquiries answered the same day</p>
-      </div>
-    </div>
 
-    <div class="trust">
-      <div class="wrap trust__inner">
-        <p class="trust__item"><span aria-hidden="true" class="trust__tick"></span>HCPC registered &amp; CSP members</p>
-        <p class="trust__item"><span aria-hidden="true" class="trust__tick"></span>Seen within 3 working days, typically</p>
-        <p class="trust__item"><span aria-hidden="true" class="trust__tick"></span>Ground-floor room, free parking</p>
-        <p class="trust__item"><span aria-hidden="true" class="trust__tick"></span>Runners, lifters, gardeners and desk workers</p>
       </div>
     </div>
   </section>
 
-  <!-- ───────────────── TREATMENTS ───────────────── -->
-  <section class="section section--treatments" id="treatments" aria-labelledby="treatments-title">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="label"><span class="label__num">01</span><span class="label__rule" aria-hidden="true"></span>Treatments</p>
-        <h2 id="treatments-title">What we do, and what each one is for</h2>
-        <p class="section-head__lede">Everything happens in one quiet treatment room. Most people need somewhere between three and six appointments — we will tell you honestly at the end of the first one.</p>
-      </div>
+  <!-- 2 · THE FIRST VISIT. The surface holds while state advances. -->
+  <section id="plan" data-sc-act="pin" data-sc-span="2.2" data-rb-ground="0" aria-labelledby="plan-h">
+    <div class="rb-stage" data-sc-stage>
+      <div class="rb-visit">
+        <div class="rb-visit__head">
+          <div>
+            <p class="rb-label">Your first visit</p>
+            <h2 class="rb-h" id="plan-h">Fifty minutes, three parts, and a written plan at the end of it.</h2>
+          </div>
+          <p class="rb-clock"><output id="rbMinutes" data-sc-count="0 50" data-sc-count-at="0 0.94">0</output> <span>min elapsed</span></p>
+        </div>
 
-      <ul class="treatments">
-        <li class="treat treat--wide">
-          <span class="treat__icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" focusable="false"><circle cx="9" cy="10" r="4.5"/><circle cx="23" cy="22" r="4.5"/><path d="M12.2 13.2 19.8 18.8"/><path d="M4 22.5c2.5 2 5 2 7.5 0M20.5 9.5c2.5-2 5-2 7.5 0"/></svg>
-          </span>
+        <div class="rb-track">
+          <div class="rb-rail" id="rbRail" aria-hidden="true"><span class="rb-rail__marker" id="rbMarker"></span></div>
+          <ol>
+            <li class="rb-step" data-min="0">
+              <p class="rb-step__mark">0&ndash;15 min</p>
+              <h3>Assessment</h3>
+              <p>A full history and a proper look at how you move, not just where it hurts. What happened, when it started, what makes it worse, what you have already tried, and what you are trying to get back to.</p>
+            </li>
+            <li class="rb-step" data-min="15">
+              <p class="rb-step__mark">15&ndash;40 min</p>
+              <h3>Hands-on treatment</h3>
+              <p>Joint mobilisation, soft tissue work or dry needling, whichever fits what is found. We explain each test before doing it and stop the moment you want to. You will not be asked to come back a second time simply to start treatment.</p>
+            </li>
+            <li class="rb-step" data-min="40">
+              <p class="rb-step__mark">40&ndash;50 min</p>
+              <h3>Your plan</h3>
+              <p>A written, graded exercise programme by email the same evening, usually three or four exercises rather than fifteen, and a straight answer on what to expect and what to do if it flares.</p>
+            </li>
+          </ol>
+        </div>
+
+        <p class="rb-visit__foot">Fifty minutes for a first appointment, thirty for a follow-up, and one person in the room. Nobody is treated on two plinths at once.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · TREATMENTS -->
+  <section id="treatment" class="rb-act" data-rb-ground="0" aria-labelledby="treat-h">
+    <div class="rb-wrap" data-sc-in data-sc-stagger="70">
+      <p class="rb-label">Treatments</p>
+      <h2 class="rb-h" id="treat-h">What we do, and what each one is for</h2>
+      <p class="rb-lede">Everything happens in one quiet treatment room. Most people need somewhere between three and six appointments, and we will tell you honestly at the end of the first one.</p>
+
+      <article class="rb-treat">
+        <div>
           <h3>Physiotherapy</h3>
-          <p class="treat__for">For pain that has a cause worth finding.</p>
-          <p>A full musculoskeletal assessment, hands-on treatment — joint mobilisation, soft tissue work, taping where it helps — and a graded exercise programme. Best for back and neck pain, joint problems, and anything that has not settled on its own after a fortnight.</p>
-        </li>
+          <p class="rb-treat__for">For pain that has a cause worth finding.</p>
+        </div>
+        <p>A full musculoskeletal assessment, hands-on treatment (joint mobilisation, soft tissue work, taping where it helps) and a graded exercise programme. Best for back and neck pain, joint problems, and anything that has not settled on its own after a fortnight.</p>
+      </article>
 
-        <li class="treat">
-          <span class="treat__icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" focusable="false"><path d="M5 11c4-4 8 4 11 0s7-4 11 0"/><path d="M5 17c4-4 8 4 11 0s7-4 11 0"/><path d="M5 23c4-4 8 4 11 0s7-4 11 0"/></svg>
-          </span>
+      <article class="rb-treat">
+        <div>
           <h3>Sports massage</h3>
-          <p class="treat__for">For tight, overworked, heavy-feeling muscles.</p>
-          <p>Deep soft tissue work for training loads, long shifts on your feet or a stiff back after a week at a desk. Useful in a race build-up and just as useful in week three of a garden project.</p>
-        </li>
+          <p class="rb-treat__for">For tight, overworked, heavy-feeling muscles.</p>
+        </div>
+        <p>Deep soft tissue work for training loads, long shifts on your feet or a stiff back after a week at a desk. Useful in a race build-up and just as useful in week three of a garden project.</p>
+      </article>
 
-        <li class="treat">
-          <span class="treat__icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" focusable="false"><path d="M4 25h6v-6h6v-6h6V7h6"/><path d="M4 25c6-1 11-5 14-10s6-7 10-8"/></svg>
-          </span>
+      <article class="rb-treat">
+        <div>
           <h3>Rehabilitation</h3>
-          <p class="treat__for">For getting strong enough that it stays fixed.</p>
-          <p>Structured, progressive loading after an injury or an operation — knee and shoulder surgery, ankle sprains, hamstring tears, tendon problems. Written programmes with sets, reps and a date to review them.</p>
-        </li>
+          <p class="rb-treat__for">For getting strong enough that it stays fixed.</p>
+        </div>
+        <p>Structured, progressive loading after an injury or an operation: knee and shoulder surgery, ankle sprains, hamstring tears, tendon problems. Written programmes with sets, reps and a date to review them.</p>
+      </article>
 
-        <li class="treat">
-          <span class="treat__icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" focusable="false"><path d="M6 26 20 12"/><path d="M18 10l4-4 4 4-4 4z"/><circle cx="12" cy="20" r="7.5" class="dash"/></svg>
-          </span>
+      <article class="rb-treat">
+        <div>
           <h3>Dry needling</h3>
-          <p class="treat__for">For stubborn trigger points that will not let go.</p>
-          <p>Fine acupuncture needles into a tight band of muscle to settle it down. Carried out by an AACP-accredited physiotherapist, always with your consent, and always as part of a wider plan rather than a treatment on its own.</p>
-        </li>
+          <p class="rb-treat__for">For stubborn trigger points that will not let go.</p>
+        </div>
+        <p>Fine acupuncture needles into a tight band of muscle to settle it down. Carried out by an AACP-accredited physiotherapist, always with your consent, and always as part of a wider plan rather than a treatment on its own.</p>
+      </article>
 
-        <li class="treat treat--wide">
-          <span class="treat__icon" aria-hidden="true">
-            <svg viewBox="0 0 32 32" focusable="false"><rect x="6" y="5" width="20" height="22" rx="3"/><path d="M11 12h10M11 17h10M11 22h6"/></svg>
-          </span>
-          <h3>Injury assessment &amp; second opinion</h3>
-          <p class="treat__for">For when you want to know what you are dealing with.</p>
-          <p>A one-off appointment: history, movement testing, clinical reasoning and a clear written summary you can take to your GP, consultant, coach or insurer. If you need a scan or a referral, we will say so plainly rather than book you in for six weeks.</p>
-        </li>
-      </ul>
+      <article class="rb-treat">
+        <div>
+          <h3>Injury assessment and second opinion</h3>
+          <p class="rb-treat__for">For when you want to know what you are dealing with.</p>
+        </div>
+        <p>A one-off appointment: history, movement testing, clinical reasoning and a clear written summary you can take to your GP, consultant, coach or insurer. If you need a scan or a referral, we will say so plainly rather than book you in for six weeks.</p>
+      </article>
     </div>
   </section>
 
-  <!-- ───────────────── CONDITIONS ───────────────── -->
-  <section class="section section--conditions" id="conditions" aria-labelledby="conditions-title">
-    <div class="wrap conditions__layout">
-      <div class="conditions__intro">
-        <p class="label"><span class="label__num">02</span><span class="label__rule" aria-hidden="true"></span>Conditions</p>
-        <h2 id="conditions-title">Conditions we treat</h2>
-        <p>If yours is not on the list, it is still worth an email — most weeks bring something that is not. And if we are not the right people, we will tell you who is.</p>
-        <p class="conditions__note">Physiotherapy is not a substitute for urgent medical care. If you have had a serious injury, sudden loss of power or feeling, chest pain or you feel unwell, phone NHS 24 on 111 or attend A&amp;E.</p>
+  <!-- 4 · CONDITIONS -->
+  <section id="conditions" class="rb-act" data-rb-ground="0" aria-labelledby="cond-h">
+    <div class="rb-wrap">
+      <p class="rb-label">Conditions</p>
+      <h2 class="rb-h" id="cond-h">Conditions we treat</h2>
+
+      <div class="rb-alert" role="note">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2 21.4 20H2.6z"/><path d="M12 9.5v4.2M12 16.8v.1"/></svg>
+        <p>Physiotherapy is not a substitute for urgent medical care. If you have had a serious injury, sudden loss of power or feeling, chest pain or you feel unwell, phone NHS 24 on 111 or attend A&amp;E.</p>
       </div>
 
-      <div class="conditions__groups">
-        <article class="cgroup">
-          <h3>Back, neck &amp; nerve pain</h3>
+      <p class="rb-lede">If yours is not on the list, it is still worth an email. Most weeks bring something that is not, and if we are not the right people, we will tell you who is.</p>
+
+      <div class="rb-groups">
+        <article class="rb-group">
+          <h3>Back, neck and nerve pain</h3>
           <ul>
             <li>Lower back pain, acute and long-standing</li>
             <li>Sciatica and referred leg pain</li>
@@ -283,20 +944,18 @@
             <li>Postural pain from desk and driving work</li>
           </ul>
         </article>
-
-        <article class="cgroup">
-          <h3>Sports &amp; overuse injuries</h3>
+        <article class="rb-group">
+          <h3>Sports and overuse injuries</h3>
           <ul>
-            <li>Runner's knee, shin pain and calf strains</li>
+            <li>Runner&rsquo;s knee, shin pain and calf strains</li>
             <li>Achilles and other tendon problems</li>
             <li>Hamstring and groin strains</li>
             <li>Ankle sprains and repeated giving way</li>
-            <li>Tennis and golfer's elbow</li>
+            <li>Tennis and golfer&rsquo;s elbow</li>
           </ul>
         </article>
-
-        <article class="cgroup">
-          <h3>Joints &amp; everyday wear</h3>
+        <article class="rb-group">
+          <h3>Joints and everyday wear</h3>
           <ul>
             <li>Frozen shoulder and rotator cuff pain</li>
             <li>Hip and knee osteoarthritis</li>
@@ -305,8 +964,7 @@
             <li>Pain and stiffness that has crept in with age</li>
           </ul>
         </article>
-
-        <article class="cgroup">
+        <article class="rb-group">
           <h3>After surgery or a fracture</h3>
           <ul>
             <li>Knee replacement and ligament reconstruction</li>
@@ -320,79 +978,32 @@
     </div>
   </section>
 
-  <!-- ───────────────── APPROACH / PROOF ───────────────── -->
-  <section class="section section--approach" id="approach" aria-labelledby="approach-title">
-    <div class="wrap">
-      <div class="section-head section-head--split">
-        <div>
-          <p class="label"><span class="label__num">03</span><span class="label__rule" aria-hidden="true"></span>How we work</p>
-          <h2 id="approach-title">Four things we do differently</h2>
-        </div>
-        <p class="section-head__lede">No treatment plans sold in blocks of ten. No jargon you have to look up afterwards. Just an honest assessment and a programme you will actually do.</p>
+  <!-- 5 · AUTHORED SILENCE. Nothing moves here. -->
+  <section id="honest" class="rb-act rb-silence" data-rb-ground="1" aria-labelledby="honest-h">
+    <div class="rb-wrap">
+      <div class="rb-silence__in">
+        <h2 id="honest-h">We give you an honest number.</h2>
+        <p>An estimate of how many appointments you are likely to need, given at the end of the first one, including when the answer is &ldquo;none, here is what to do at home&rdquo;.</p>
       </div>
-
-      <ol class="steps">
-        <li class="step">
-          <span class="step__num" aria-hidden="true">01</span>
-          <h3>We take the time</h3>
-          <p>Fifty minutes for a first appointment, thirty for a follow-up, and one person in the room. Nobody is treated on two plinths at once.</p>
-        </li>
-        <li class="step">
-          <span class="step__num" aria-hidden="true">02</span>
-          <h3>We explain it in plain English</h3>
-          <p>You will leave knowing what is sore, why it became sore, and what makes it better. If a diagram helps, you get a diagram.</p>
-        </li>
-        <li class="step">
-          <span class="step__num" aria-hidden="true">03</span>
-          <h3>We give you an honest number</h3>
-          <p>An estimate of how many appointments you are likely to need, given at the end of the first one — including when the answer is "none, here is what to do at home".</p>
-        </li>
-        <li class="step">
-          <span class="step__num" aria-hidden="true">04</span>
-          <h3>We finish the job</h3>
-          <p>Discharge means back to the thing you actually wanted to do — the parkrun, the hill, the shift, the garden — not simply the absence of pain.</p>
-        </li>
-      </ol>
-
-      <div class="stats">
-        <div class="stat"><span class="stat__n">2019</span><span class="stat__l">Treating in Clackmannanshire since</span></div>
-        <div class="stat"><span class="stat__n">50<span class="stat__u">min</span></span><span class="stat__l">First appointment length</span></div>
-        <div class="stat"><span class="stat__n">3–6</span><span class="stat__l">Typical course of treatment</span></div>
-        <div class="stat"><span class="stat__n">2</span><span class="stat__l">Practitioners, no locums</span></div>
-      </div>
-
-      <p class="proof-note">The themes that come up most often in our feedback forms: appointments that start on time, explanations people can repeat to their family, and exercise programmes short enough to actually fit into a week. Feedback is collected anonymously, so we do not publish names.</p>
     </div>
   </section>
 
-  <!-- ───────────────── TEAM ───────────────── -->
-  <section class="section section--team" id="team" aria-labelledby="team-title">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="label"><span class="label__num">04</span><span class="label__rule" aria-hidden="true"></span>Who you will see</p>
-        <h2 id="team-title">The two of us</h2>
-        <p class="section-head__lede">You will be assessed and treated by the same person throughout, unless you would rather change — which is entirely fine and happens more often than you would think.</p>
-      </div>
+  <!-- 6 · WHO YOU WILL SEE -->
+  <section id="people" class="rb-act" data-rb-ground="1" aria-labelledby="people-h">
+    <div class="rb-wrap" data-sc-in data-sc-stagger="80">
+      <p class="rb-label">Who you will see</p>
+      <h2 class="rb-h" id="people-h">Two practitioners, no locums</h2>
+      <p class="rb-lede">You will be assessed and treated by the same person throughout, unless you would rather change, which is entirely fine and happens more often than you would think.</p>
 
-      <div class="people">
-        <article class="person">
-          <div class="person__badge" aria-hidden="true">
-            <svg viewBox="0 0 120 140" focusable="false">
-              <rect x="1" y="1" width="118" height="138" rx="59" class="badge-bg"/>
-              <g class="badge-lines" fill="none">
-                <path d="M10 92c18-16 34-16 50 0s32 16 50 0"/>
-                <path d="M10 106c18-16 34-16 50 0s32 16 50 0"/>
-                <path d="M10 120c18-16 34-16 50 0s32 16 50 0"/>
-              </g>
-              <text x="60" y="66" text-anchor="middle" class="badge-initials">EB</text>
-            </svg>
-          </div>
-          <div class="person__body">
+      <div class="rb-people">
+        <article class="rb-person">
+          <p class="rb-person__mark" aria-hidden="true">EB</p>
+          <div>
             <h3>Erin Blackwood</h3>
-            <p class="person__role">Lead physiotherapist &middot; clinic owner</p>
-            <ul class="creds">
+            <p class="rb-person__role">Lead physiotherapist and clinic owner</p>
+            <ul class="rb-creds">
               <li>BSc (Hons) Physiotherapy</li>
-              <li>MSc Sports &amp; Exercise Medicine</li>
+              <li>MSc Sports and Exercise Medicine</li>
               <li>HCPC registered</li>
               <li>Member, Chartered Society of Physiotherapy</li>
               <li>AACP-accredited in acupuncture and dry needling</li>
@@ -401,25 +1012,15 @@
           </div>
         </article>
 
-        <article class="person">
-          <div class="person__badge" aria-hidden="true">
-            <svg viewBox="0 0 120 140" focusable="false">
-              <rect x="1" y="1" width="118" height="138" rx="59" class="badge-bg badge-bg--alt"/>
-              <g class="badge-lines" fill="none">
-                <path d="M10 92c18-16 34-16 50 0s32 16 50 0"/>
-                <path d="M10 106c18-16 34-16 50 0s32 16 50 0"/>
-                <path d="M10 120c18-16 34-16 50 0s32 16 50 0"/>
-              </g>
-              <text x="60" y="66" text-anchor="middle" class="badge-initials">CF</text>
-            </svg>
-          </div>
-          <div class="person__body">
+        <article class="rb-person">
+          <p class="rb-person__mark" aria-hidden="true">CF</p>
+          <div>
             <h3>Callum Ferrier</h3>
-            <p class="person__role">Sports therapist &middot; soft tissue &amp; rehabilitation</p>
-            <ul class="creds">
+            <p class="rb-person__role">Sports therapist, soft tissue and rehabilitation</p>
+            <ul class="rb-creds">
               <li>BSc (Hons) Sports Therapy</li>
               <li>Level 4 Sports Massage</li>
-              <li>Strength &amp; conditioning qualified</li>
+              <li>Strength and conditioning qualified</li>
               <li>Pitch-side first aid and trauma trained</li>
             </ul>
             <p>Callum handles most of the sports massage and gym-based rehabilitation, and covers Saturday mornings. He works with a couple of local football and running clubs during the season, so he has seen most of what a Sunday league pitch in February can do to a hamstring.</p>
@@ -429,374 +1030,781 @@
     </div>
   </section>
 
-  <!-- ───────────────── FIRST VISIT ───────────────── -->
-  <section class="section section--first" id="first-visit" aria-labelledby="first-title">
-    <div class="wrap first__layout">
-      <div class="first__intro">
-        <p class="label"><span class="label__num">05</span><span class="label__rule" aria-hidden="true"></span>Your first visit</p>
-        <h2 id="first-title">What actually happens on the day</h2>
-        <p>Nobody enjoys walking into a treatment room not knowing what is coming. Here is the whole thing, start to finish.</p>
+  <!-- 7 · FEES -->
+  <section id="fees" class="rb-act" data-rb-ground="1" aria-labelledby="fees-h">
+    <div class="rb-wrap" data-sc-in data-sc-stagger="70">
+      <p class="rb-label">Fees</p>
+      <h2 class="rb-h" id="fees-h">Clear prices, per session</h2>
+      <p class="rb-lede">One price per appointment. Needling, taping and your written programme are included: they are part of treatment, not extras.</p>
 
-        <div class="practical">
-          <h3>Practical bits</h3>
-          <dl>
-            <dt>What to wear</dt><dd>Loose, comfortable clothes you can move in. Shorts are handy for knee, hip and ankle problems; a vest top for shoulders and necks. Spares are available if you have come straight from work.</dd>
-            <dt>How to pay</dt><dd>Card, cash or bank transfer at the end of the appointment. No deposit to book.</dd>
-            <dt>Bringing someone</dt><dd>You are welcome to bring a friend, partner or chaperone into the room. Just let us know when you book.</dd>
-          </dl>
-        </div>
-      </div>
+      <div class="rb-feewrap">
+        <table class="rb-fees">
+          <caption>Fees, per appointment</caption>
+          <thead>
+            <tr><th scope="col">Appointment</th><th scope="col">Time</th><th scope="col">Fee</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Initial assessment and treatment</b><small>Everything above, in one visit.</small></td>
+              <td>50 min</td><td class="rb-fee">&pound;58</td>
+            </tr>
+            <tr>
+              <td><b>Follow-up physiotherapy</b><small>Review, hands-on treatment and progression of your programme.</small></td>
+              <td>30 min</td><td class="rb-fee">&pound;45</td>
+            </tr>
+            <tr>
+              <td><b>Extended follow-up</b><small>For complex problems or when you would rather not rush.</small></td>
+              <td>45 min</td><td class="rb-fee">&pound;58</td>
+            </tr>
+            <tr>
+              <td><b>Sports massage</b><small>Soft tissue work with no assessment element.</small></td>
+              <td>30 / 60 min</td><td class="rb-fee">&pound;40 / &pound;62</td>
+            </tr>
+            <tr>
+              <td><b>Rehabilitation review</b><small>Strength testing and a rewritten programme, in the gym space.</small></td>
+              <td>30 min</td><td class="rb-fee">&pound;45</td>
+            </tr>
+            <tr>
+              <td><b>Home visit</b><small>Within eight miles of Alloa, for anyone unable to travel.</small></td>
+              <td>45 min</td><td class="rb-fee">&pound;75</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <ol class="timeline">
-        <li>
-          <h3>Arrival</h3>
-          <p>Come in five minutes early. There is a small waiting area, a ground-floor treatment room with no steps, and a kettle that gets used more than the water cooler.</p>
-        </li>
-        <li>
-          <h3>The conversation — about 15 minutes</h3>
-          <p>What happened, when it started, what makes it worse, what you have already tried, and what you are trying to get back to. Bring a note of any medication and previous scans if you have them.</p>
-        </li>
-        <li>
-          <h3>The assessment — about 15 minutes</h3>
-          <p>Watching how you move, then testing joints, strength and nerves as needed. We explain each test before doing it and stop the moment you want to.</p>
-        </li>
-        <li>
-          <h3>Treatment on the day</h3>
-          <p>Hands-on work, needling or taping where it is appropriate. You will not be asked to come back a second time simply to start treatment.</p>
-        </li>
-        <li>
-          <h3>Your plan</h3>
-          <p>A written programme by email the same evening — usually three or four exercises, not fifteen — plus an honest estimate of how long this is likely to take and what to do if it flares.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ───────────────── FEES ───────────────── -->
-  <section class="section section--fees" id="fees" aria-labelledby="fees-title">
-    <div class="wrap">
-      <div class="section-head section-head--split">
-        <div>
-          <p class="label"><span class="label__num">06</span><span class="label__rule" aria-hidden="true"></span>Fees</p>
-          <h2 id="fees-title">Clear prices, per session</h2>
-        </div>
-        <p class="section-head__lede">One price per appointment. Needling, taping and your written programme are included — they are part of treatment, not extras.</p>
-      </div>
-
-      <div class="fees">
-        <ul class="fee-list">
-          <li class="fee">
-            <div class="fee__main"><h3>Initial assessment &amp; treatment</h3><p>Everything above, in one visit.</p></div>
-            <div class="fee__meta"><span class="fee__time">50 min</span><span class="fee__price">£58</span></div>
-          </li>
-          <li class="fee">
-            <div class="fee__main"><h3>Follow-up physiotherapy</h3><p>Review, hands-on treatment and progression of your programme.</p></div>
-            <div class="fee__meta"><span class="fee__time">30 min</span><span class="fee__price">£45</span></div>
-          </li>
-          <li class="fee">
-            <div class="fee__main"><h3>Extended follow-up</h3><p>For complex problems or when you would rather not rush.</p></div>
-            <div class="fee__meta"><span class="fee__time">45 min</span><span class="fee__price">£58</span></div>
-          </li>
-          <li class="fee">
-            <div class="fee__main"><h3>Sports massage</h3><p>Soft tissue work with no assessment element.</p></div>
-            <div class="fee__meta"><span class="fee__time">30 / 60 min</span><span class="fee__price">£40 / £62</span></div>
-          </li>
-          <li class="fee">
-            <div class="fee__main"><h3>Rehabilitation review</h3><p>Strength testing and a rewritten programme, in the gym space.</p></div>
-            <div class="fee__meta"><span class="fee__time">30 min</span><span class="fee__price">£45</span></div>
-          </li>
-          <li class="fee">
-            <div class="fee__main"><h3>Home visit</h3><p>Within eight miles of Alloa, for anyone unable to travel.</p></div>
-            <div class="fee__meta"><span class="fee__time">45 min</span><span class="fee__price">£75</span></div>
-          </li>
-        </ul>
-
-        <aside class="fee-aside" aria-label="Booking and payment notes">
+        <aside class="rb-worth" aria-label="Booking and payment notes">
           <h3>Worth knowing</h3>
           <ul>
-            <li><strong>Block of four follow-ups — £165.</strong> A saving of £15, valid for six months. Only offered when we genuinely think you need four.</li>
+            <li><strong>Block of four follow-ups, &pound;165.</strong> A saving of &pound;15, valid for six months. Only offered when we genuinely think you need four.</li>
             <li><strong>Insurance.</strong> We are not currently a registered provider with the insurers, but we issue a full invoice for self-claim and most policies accept it.</li>
-            <li><strong>Cancellations.</strong> Twenty-four hours' notice, please. Under that we charge half the fee, and we waive it for illness and emergencies.</li>
-            <li><strong>Concessions.</strong> £6 off follow-up appointments for students, over-65s and anyone on Universal Credit. Just say when you book.</li>
+            <li><strong>Cancellations.</strong> Twenty-four hours&rsquo; notice, please. Under that we charge half the fee, and we waive it for illness and emergencies.</li>
+            <li><strong>Concessions.</strong> &pound;6 off follow-up appointments for students, over-65s and anyone on Universal Credit. Just say when you book.</li>
           </ul>
-          <a class="btn btn--primary btn--block" href="#enquire">Enquire about an appointment</a>
         </aside>
       </div>
+
+      <p class="rb-fees__foot">Discharge means back to the thing you actually wanted to do, the parkrun, the hill, the shift, the garden, rather than simply the absence of pain.</p>
     </div>
   </section>
 
-  <!-- ───────────────── VISITING ───────────────── -->
-  <section class="section section--visiting" id="visiting" aria-labelledby="visiting-title">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="label"><span class="label__num">07</span><span class="label__rule" aria-hidden="true"></span>Finding us</p>
-        <h2 id="visiting-title">Where we are, and when</h2>
-      </div>
+  <!-- 8 · BOOK. The close is an actual input. -->
+  <section id="book" class="rb-act" data-rb-ground="1" aria-labelledby="book-h">
+    <div class="rb-wrap">
+      <ul class="rb-facts">
+        <li>HCPC registered and CSP members</li>
+        <li>Seen within 3 working days, typically</li>
+        <li>Ground-floor room, free parking</li>
+        <li>Runners, lifters, gardeners and desk workers</li>
+        <li>Fully insured</li>
+      </ul>
 
-      <div class="visiting">
-        <div class="visiting__area">
-          <h3>Service area</h3>
-          <p>The clinic sits just off Alloa town centre. Most of our patients travel in from across Clackmannanshire and the surrounding Forth Valley towns — the furthest is usually about twenty-five minutes' drive.</p>
-          <svg class="areamap" viewBox="0 0 400 300" role="img" aria-labelledby="areaTitle areaDesc" focusable="false">
-            <title id="areaTitle">Service area diagram</title>
-            <desc id="areaDesc">Alloa at the centre, with nearby towns arranged by approximate travel time: Sauchie, Tullibody and Clackmannan within ten minutes; Alva, Menstrie, Tillicoultry, Stirling and Kincardine within twenty minutes; Dollar, Bridge of Allan, Falkirk and Denny within thirty minutes.</desc>
-            <g class="ring-group" fill="none">
-              <circle cx="200" cy="150" r="132" class="ring ring--3"/>
-              <circle cx="200" cy="150" r="92" class="ring ring--2"/>
-              <circle cx="200" cy="150" r="50" class="ring ring--1"/>
-            </g>
-            <g class="area-dots">
-              <circle cx="200" cy="150" r="7" class="dot dot--home"/>
-              <circle cx="238" cy="122" r="3.5" class="dot"/>
-              <circle cx="164" cy="126" r="3.5" class="dot"/>
-              <circle cx="214" cy="192" r="3.5" class="dot"/>
-              <circle cx="268" cy="88" r="3.5" class="dot"/>
-              <circle cx="120" cy="94" r="3.5" class="dot"/>
-              <circle cx="106" cy="196" r="3.5" class="dot"/>
-              <circle cx="292" cy="204" r="3.5" class="dot"/>
-              <circle cx="316" cy="146" r="3.5" class="dot"/>
-            </g>
-            <g class="area-labels">
-              <text x="200" y="139" text-anchor="middle" class="area-home">ALLOA</text>
-              <text x="246" y="114" class="area-t">Sauchie</text>
-              <text x="158" y="118" text-anchor="end" class="area-t">Tullibody</text>
-              <text x="222" y="208" class="area-t">Clackmannan</text>
-              <text x="276" y="80" class="area-t">Tillicoultry</text>
-              <text x="112" y="86" text-anchor="end" class="area-t">Menstrie</text>
-              <text x="98" y="212" text-anchor="end" class="area-t">Stirling</text>
-              <text x="284" y="222" text-anchor="end" class="area-t">Falkirk</text>
-              <text x="324" y="140" class="area-t">Dollar</text>
-              <text x="200" y="34" text-anchor="middle" class="area-ring-l">30 min</text>
-              <text x="200" y="74" text-anchor="middle" class="area-ring-l">20 min</text>
-              <text x="200" y="112" text-anchor="middle" class="area-ring-l">10 min</text>
-            </g>
-          </svg>
-          <p class="visiting__list">Also serving Alva, Bridge of Allan, Denny, Kincardine, Bannockburn, Cambus and Fishcross.</p>
+      <div class="rb-book">
+        <div class="rb-aside">
+          <p class="rb-label">Booking</p>
+          <h2 class="rb-h" id="book-h">Tell us what is bothering you</h2>
+          <p class="rb-lede">Send the form and we will come back to you with two or three appointment times that fit. If you would rather just talk it through first, phone the clinic. That is free, and sometimes it is all people need.</p>
+          <dl class="rb-rows">
+            <div class="rb-row"><dt>Phone</dt><dd><a href="tel:+441259555041">01259 555 041</a></dd></div>
+            <div class="rb-row"><dt>Email</dt><dd><a href="mailto:hello@rowanbankphysio.co.uk">hello@rowanbankphysio.co.uk</a></dd></div>
+            <div class="rb-row"><dt>Clinic</dt><dd>The Old Bank, 14 Mill Wynd, Alloa FK10 1AB</dd></div>
+          </dl>
+          <p class="rb-fine">This form is not monitored out of hours and physiotherapy is not a substitute for urgent medical care. For a serious injury, sudden weakness or numbness, chest pain or feeling unwell, contact NHS 24 on 111 or attend A&amp;E.</p>
         </div>
 
-        <div class="visiting__panel">
-          <div class="hours-card">
-            <h3>Opening hours</h3>
-            <p class="hours-status" id="hoursStatus" data-fallback="See opening hours below">Checking today's hours…</p>
-            <table class="hours">
-              <caption class="visually-hidden">Clinic opening hours by day</caption>
-              <tbody>
-                <tr data-day="1"><th scope="row">Monday</th><td>08:00 – 19:30</td></tr>
-                <tr data-day="2"><th scope="row">Tuesday</th><td>08:00 – 17:00</td></tr>
-                <tr data-day="3"><th scope="row">Wednesday</th><td>08:00 – 19:30</td></tr>
-                <tr data-day="4"><th scope="row">Thursday</th><td>08:00 – 17:00</td></tr>
-                <tr data-day="5"><th scope="row">Friday</th><td>08:00 – 14:00</td></tr>
-                <tr data-day="6"><th scope="row">Saturday</th><td>09:00 – 13:00</td></tr>
-                <tr data-day="0"><th scope="row">Sunday</th><td>Closed</td></tr>
-              </tbody>
-            </table>
-            <p class="hours-note">The last appointment of the day starts one hour before closing. Messages left out of hours are answered the next working morning.</p>
-          </div>
+        <div>
+          <p class="rb-status" id="rbFormNote"><span class="rb-status__dot" aria-hidden="true"></span>Demonstration form. Nothing is sent, stored or emailed anywhere.</p>
 
-          <div class="contact-card">
-            <h3>The clinic</h3>
-            <address>
-              The Old Bank, 14 Mill Wynd<br>
-              Alloa, Clackmannanshire<br>
-              FK10 1AB
-            </address>
-            <p class="contact-lines">
-              <a href="tel:+441259555041">01259 555 041</a><br>
-              <a href="mailto:hello@rowanbankphysio.co.uk">hello@rowanbankphysio.co.uk</a>
-            </p>
-            <ul class="access">
-              <li>Free parking in the yard behind the building</li>
-              <li>Step-free entrance and ground-floor treatment room</li>
-              <li>Four minutes' walk from Alloa railway station</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───────────────── FAQ ───────────────── -->
-  <section class="section section--faq" id="faqs" aria-labelledby="faq-title">
-    <div class="wrap faq__layout">
-      <div class="faq__intro">
-        <p class="label"><span class="label__num">08</span><span class="label__rule" aria-hidden="true"></span>Questions</p>
-        <h2 id="faq-title">Things people ask before booking</h2>
-        <p>If your question is not here, phone or email — you will get an answer from the person who would be treating you, not a chatbot.</p>
-      </div>
-
-      <div class="faq__list">
-        <details name="faq">
-          <summary>Do I need a referral from my GP?</summary>
-          <div class="faq__body"><p>No. Physiotherapy in Scotland is a direct-access profession, so you can book yourself in. If we think your GP ought to be involved — for a scan, medication or an onward referral — we will write to them with your permission.</p></div>
-        </details>
-        <details name="faq">
-          <summary>How many appointments will I need?</summary>
-          <div class="faq__body"><p>Most problems settle in three to six appointments over four to eight weeks. Some need one. Long-standing back pain and post-operative rehabilitation take longer, and we will say so on day one rather than at appointment number seven.</p></div>
-        </details>
-        <details name="faq">
-          <summary>Will it hurt?</summary>
-          <div class="faq__body"><p>Assessment can reproduce your symptoms briefly, because that is often how we identify the source. Treatment should be comfortable — firm at times, but never something you have to grit your teeth through. You can stop anything at any point, and it is normal to feel a little achy for a day afterwards.</p></div>
-        </details>
-        <details name="faq">
-          <summary>Is dry needling the same as acupuncture?</summary>
-          <div class="faq__body"><p>Similar needles, different reasoning. Traditional acupuncture follows meridian points; dry needling targets a specific tight band of muscle to release it. It is done by an AACP-accredited physiotherapist using single-use sterile needles, and it is always optional — plenty of people decline and do perfectly well without.</p></div>
-        </details>
-        <details name="faq">
-          <summary>I am not sporty at all. Is this clinic for me?</summary>
-          <div class="faq__body"><p>Very much so. On a typical day we see more office workers, nurses, tradespeople, gardeners and retired walkers than athletes. "Sports injury" simply describes the kind of injury, not the kind of person.</p></div>
-        </details>
-        <details name="faq">
-          <summary>Can I claim it on my private health insurance?</summary>
-          <div class="faq__body"><p>We are not currently registered with the insurers directly, so you pay us at the appointment and we issue a full itemised invoice with our registration details for you to self-claim. Most policies accept this — it is worth ringing your insurer first to confirm.</p></div>
-        </details>
-        <details name="faq">
-          <summary>What if I need to cancel?</summary>
-          <div class="faq__body"><p>Let us know at least twenty-four hours ahead and there is no charge. Under that, we charge half the appointment fee, because the slot usually cannot be filled. Illness and genuine emergencies are always waived — just tell us.</p></div>
-        </details>
-        <details name="faq">
-          <summary>Do you treat children?</summary>
-          <div class="faq__body"><p>We see young people from twelve upwards for sports injuries, accompanied by a parent or guardian for the whole appointment. For younger children we would point you towards the NHS paediatric physiotherapy service, which is better set up for it.</p></div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ───────────────── ENQUIRY ───────────────── -->
-  <section class="section section--enquire" id="enquire" aria-labelledby="enquire-title">
-    <div class="wrap enquire__layout">
-      <div class="enquire__aside">
-        <p class="label label--light"><span class="label__num">09</span><span class="label__rule" aria-hidden="true"></span>Booking</p>
-        <h2 id="enquire-title">Tell us what is bothering you</h2>
-        <p>Send the form and we will come back to you with two or three appointment times that fit. If you would rather just talk it through first, phone the clinic — that is free, and sometimes it is all people need.</p>
-
-        <ul class="enquire__contacts">
-          <li><span>Phone</span><a href="tel:+441259555041">01259 555 041</a></li>
-          <li><span>Email</span><a href="mailto:hello@rowanbankphysio.co.uk">hello@rowanbankphysio.co.uk</a></li>
-          <li><span>Clinic</span>The Old Bank, 14 Mill Wynd, Alloa FK10 1AB</li>
-        </ul>
-
-        <p class="enquire__urgent"><strong>Please note:</strong> this form is not monitored out of hours and physiotherapy is not a substitute for urgent medical care. For a serious injury, sudden weakness or numbness, chest pain or feeling unwell, contact NHS 24 on 111 or attend A&amp;E.</p>
-      </div>
-
-      <div class="enquire__formwrap">
-        <p class="demo-note" id="demoNote">This is a demonstration form. Nothing is sent, stored or emailed anywhere — it simply shows what a real enquiry would look like.</p>
-
-        <form class="form" id="enquiryForm" novalidate aria-describedby="demoNote">
-          <div class="field">
-            <label for="name">Your name <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="name" name="name" autocomplete="name" required>
-            <p class="err" id="name-err" hidden>Please enter your name.</p>
-          </div>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
-              <input type="email" id="email" name="email" autocomplete="email" required>
-              <p class="err" id="email-err" hidden>Please enter a valid email address.</p>
-            </div>
-            <div class="field">
-              <label for="phone">Phone <span class="opt">(optional)</span></label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel">
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="issue">What is going on?</label>
-            <select id="issue" name="issue">
-              <option value="">Please choose…</option>
-              <option>Back or neck pain</option>
-              <option>Sports or running injury</option>
-              <option>Shoulder, hip or knee pain</option>
-              <option>After an operation or fracture</option>
-              <option>Sports massage</option>
-              <option>Not sure — I would like advice</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="duration">How long has it been bothering you?</label>
-            <select id="duration" name="duration">
-              <option value="">Please choose…</option>
-              <option>Less than two weeks</option>
-              <option>Two to six weeks</option>
-              <option>More than six weeks</option>
-              <option>On and off for years</option>
-            </select>
-          </div>
-
-          <fieldset class="field fieldset">
-            <legend>When suits you? Tick all that work.</legend>
-            <div class="checks">
-              <label class="check"><input type="checkbox" name="times" value="Weekday mornings"><span>Weekday mornings</span></label>
-              <label class="check"><input type="checkbox" name="times" value="Weekday afternoons"><span>Weekday afternoons</span></label>
-              <label class="check"><input type="checkbox" name="times" value="Weekday evenings"><span>Weekday evenings</span></label>
-              <label class="check"><input type="checkbox" name="times" value="Saturday morning"><span>Saturday morning</span></label>
-            </div>
-          </fieldset>
-
-          <div class="field">
-            <label for="message">Anything you would like us to know <span class="opt">(optional)</span></label>
-            <textarea id="message" name="message" rows="4" placeholder="For example: it started after a half marathon three weeks ago and it is worst going down stairs."></textarea>
-          </div>
-
-          <div class="field">
-            <label class="check check--consent">
-              <input type="checkbox" id="consent" name="consent" required>
-              <span>I am happy for the clinic to contact me about this enquiry. <span class="req" aria-hidden="true">*</span></span>
+          <form class="rb-form" id="rbForm" novalidate aria-describedby="rbFormNote">
+            <label class="rb-field">
+              <span>Reason for the visit</span>
+              <select name="reason" id="rbReason">
+                <option>Neck</option>
+                <option>Shoulder</option>
+                <option>Elbow</option>
+                <option selected>Lower back</option>
+                <option>Hip</option>
+                <option>Knee</option>
+                <option>Ankle</option>
+                <option>Heel</option>
+                <option>Something else, I will explain below</option>
+              </select>
             </label>
-            <p class="err" id="consent-err" hidden>Please tick the box so we know we can reply.</p>
-          </div>
+            <input type="hidden" name="region" id="rbRegionKey" value="back">
 
-          <button class="btn btn--primary btn--submit" type="submit">Send enquiry</button>
-          <p class="form-foot">We reply to enquiries within one working day. Your details would only ever be used to arrange your appointment.</p>
+            <label class="rb-field">
+              <span>How long has it been bothering you?</span>
+              <select name="duration" id="rbDuration">
+                <option value="">Please choose</option>
+                <option>Less than two weeks</option>
+                <option>Two to six weeks</option>
+                <option>More than six weeks</option>
+                <option>On and off for years</option>
+              </select>
+            </label>
 
-          <div class="confirm" id="formConfirm" role="status" aria-live="polite" hidden>
-            <h3>Thanks — that has come through.</h3>
-            <p id="confirmBody">We will be in touch within one working day with a couple of appointment times.</p>
-            <p class="confirm__demo">Demonstration only: this enquiry has not been sent anywhere.</p>
-            <button type="button" class="btn btn--ghost btn--small" id="resetForm">Send another</button>
+            <label class="rb-field">
+              <span>Your name</span>
+              <input type="text" name="name" id="rbName" autocomplete="name" maxlength="80" required aria-describedby="rbNameErr">
+            </label>
+            <p class="rb-err" id="rbNameErr" hidden>Please enter your name.</p>
+
+            <div class="rb-two">
+              <label class="rb-field">
+                <span>Email</span>
+                <input type="email" name="email" id="rbEmail" autocomplete="email" inputmode="email" maxlength="120" required aria-describedby="rbEmailErr">
+              </label>
+              <label class="rb-field">
+                <span>Phone (optional)</span>
+                <input type="tel" name="phone" id="rbPhone" autocomplete="tel" inputmode="tel" maxlength="20">
+              </label>
+            </div>
+            <p class="rb-err" id="rbEmailErr" hidden>Please enter a valid email address.</p>
+
+            <fieldset class="rb-set">
+              <legend>When suits you? Tick all that work.</legend>
+              <div class="rb-checks">
+                <label class="rb-check"><input type="checkbox" name="times" value="Weekday mornings"> Weekday mornings</label>
+                <label class="rb-check"><input type="checkbox" name="times" value="Weekday afternoons"> Weekday afternoons</label>
+                <label class="rb-check"><input type="checkbox" name="times" value="Weekday evenings"> Weekday evenings</label>
+                <label class="rb-check"><input type="checkbox" name="times" value="Saturday morning"> Saturday morning</label>
+              </div>
+            </fieldset>
+
+            <label class="rb-field">
+              <span>Anything you would like us to know (optional)</span>
+              <textarea name="message" id="rbMessage" rows="4" maxlength="600" placeholder="For example: it started after a half marathon three weeks ago and it is worst going down stairs."></textarea>
+            </label>
+
+            <label class="rb-check">
+              <input type="checkbox" name="consent" id="rbOk" required aria-describedby="rbOkErr">
+              I am happy for the clinic to contact me about this enquiry.
+            </label>
+            <p class="rb-err" id="rbOkErr" hidden>Please tick the box so we know we can reply.</p>
+
+            <button class="rb-submit" type="submit" id="rbSubmit">Ask for an assessment</button>
+            <p class="rb-fine">We reply to enquiries within one working day. Your details would only ever be used to arrange your appointment.</p>
+          </form>
+
+          <div class="rb-done" id="rbDone" role="status" hidden>
+            <h3>That is with the clinic.</h3>
+            <p id="rbDoneBody"></p>
+            <p>Demonstration only: this enquiry has not been sent anywhere.</p>
+            <button class="rb-again" type="button" id="rbAgain">Send another</button>
           </div>
-        </form>
+        </div>
       </div>
+
+      <section class="rb-qa" id="questions" aria-labelledby="qa-h">
+        <h3 id="qa-h">Things people ask before booking</h3>
+
+        <details>
+          <summary>Do I need a referral from my GP?</summary>
+          <p>No. Physiotherapy in Scotland is a direct-access profession, so you can book yourself in. If we think your GP ought to be involved, for a scan, medication or an onward referral, we will write to them with your permission.</p>
+        </details>
+
+        <details>
+          <summary>How many appointments will I need?</summary>
+          <p>Most problems settle in three to six appointments over four to eight weeks. Some need one. Long-standing back pain and post-operative rehabilitation take longer, and we will say so on day one rather than at appointment number seven.</p>
+        </details>
+
+        <details>
+          <summary>Will it hurt?</summary>
+          <p>Assessment can reproduce your symptoms briefly, because that is often how we identify the source. Treatment should be comfortable, firm at times, but never something you have to grit your teeth through. You can stop anything at any point, and it is normal to feel a little achy for a day afterwards.</p>
+        </details>
+
+        <details>
+          <summary>What should I wear, and how do I pay?</summary>
+          <p>Loose, comfortable clothes you can move in. Shorts are handy for knee, hip and ankle problems; a vest top for shoulders and necks. Spares are available if you have come straight from work.</p>
+          <p>Card, cash or bank transfer at the end of the appointment, and no deposit to book. You are welcome to bring a friend, partner or chaperone into the room. Just let us know when you book.</p>
+        </details>
+
+        <details>
+          <summary>Is dry needling the same as acupuncture?</summary>
+          <p>Similar needles, different reasoning. Traditional acupuncture follows meridian points; dry needling targets a specific tight band of muscle to release it. It is done by an AACP-accredited physiotherapist using single-use sterile needles, and it is always optional. Plenty of people decline and do perfectly well without.</p>
+        </details>
+
+        <details>
+          <summary>I am not sporty at all. Is this clinic for me?</summary>
+          <p>Very much so. On a typical day we see more office workers, nurses, tradespeople, gardeners and retired walkers than athletes. &ldquo;Sports injury&rdquo; simply describes the kind of injury, not the kind of person.</p>
+        </details>
+
+        <details>
+          <summary>Can I claim it on my private health insurance?</summary>
+          <p>We are not currently registered with the insurers directly, so you pay us at the appointment and we issue a full itemised invoice with our registration details for you to self-claim. Most policies accept this, and it is worth ringing your insurer first to confirm.</p>
+        </details>
+
+        <details>
+          <summary>What if I need to cancel?</summary>
+          <p>Let us know at least twenty-four hours ahead and there is no charge. Under that, we charge half the appointment fee, because the slot usually cannot be filled. Illness and genuine emergencies are always waived. Just tell us.</p>
+        </details>
+
+        <details>
+          <summary>Do you treat children?</summary>
+          <p>We see young people from twelve upwards for sports injuries, accompanied by a parent or guardian for the whole appointment. For younger children we would point you towards the NHS paediatric physiotherapy service, which is better set up for it.</p>
+        </details>
+      </section>
+
+      <footer class="rb-footend">
+      <div class="rb-foot">
+        <div>
+          <h3>The clinic</h3>
+          <address>
+            The Old Bank, 14 Mill Wynd<br>
+            Alloa, Clackmannanshire<br>
+            FK10 1AB
+          </address>
+          <p style="margin-top:.6rem"><a href="tel:+441259555041">01259 555 041</a><br><a href="mailto:hello@rowanbankphysio.co.uk">hello@rowanbankphysio.co.uk</a></p>
+        </div>
+        <div>
+          <h3>Opening hours</h3>
+          <table class="rb-hours">
+            <caption class="rb-hours__note">Last appointment starts an hour before closing</caption>
+            <tbody>
+              <tr><th scope="row">Monday, Wednesday</th><td>08:00&ndash;19:30</td></tr>
+              <tr><th scope="row">Tuesday, Thursday</th><td>08:00&ndash;17:00</td></tr>
+              <tr><th scope="row">Friday</th><td>08:00&ndash;14:00</td></tr>
+              <tr><th scope="row">Saturday</th><td>09:00&ndash;13:00</td></tr>
+              <tr><th scope="row">Sunday</th><td>Closed</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Getting here</h3>
+          <ul>
+            <li>Free parking in the yard behind the building</li>
+            <li>Step-free entrance and ground-floor treatment room</li>
+            <li>Four minutes&rsquo; walk from Alloa railway station</li>
+            <li>Patients travel in from across Clackmannanshire and Forth Valley</li>
+          </ul>
+          <p style="margin-top:.6rem">Also serving Alva, Bridge of Allan, Denny, Kincardine, Bannockburn, Cambus and Fishcross.</p>
+        </div>
+      </div>
+
+      <div class="rb-base">
+        <p>Physiotherapy is not a substitute for urgent medical care. In an emergency phone 999, or contact NHS 24 on 111.</p>
+        <p>This is a demonstration site built by <a href="https://tempanywebstudios.co.uk">Tempany Web Studios</a>. The clinic, the people, the address and the phone number are invented, and nothing sent from this page reaches anyone.</p>
+        <p><a href="privacy">Privacy policy</a> &middot; <a href="terms">Terms and conditions</a> &middot; <a href="privacy#cookies">Cookie settings</a></p>
+      </div>
+      </footer>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="wrap footer__grid">
-    <div class="footer__brand">
-      <span class="brand__name">Rowanbank</span>
-      <p>Physiotherapy, sports massage and rehabilitation in Alloa, serving Clackmannanshire and Forth Valley.</p>
-      <p class="footer__reg">HCPC-registered physiotherapists &middot; Members of the Chartered Society of Physiotherapy &middot; Fully insured</p>
-    </div>
-
-    <nav class="footer__nav" aria-label="Footer">
-      <h2>Pages</h2>
-      <ul>
-        <li><a href="#treatments">Treatments</a></li>
-        <li><a href="#conditions">Conditions we treat</a></li>
-        <li><a href="#first-visit">Your first visit</a></li>
-        <li><a href="#fees">Fees</a></li>
-        <li><a href="#team">About us</a></li>
-        <li><a href="#faqs">Questions</a></li>
-      </ul>
-    </nav>
-
-    <div class="footer__contact">
-      <h2>Clinic</h2>
-      <address>The Old Bank, 14 Mill Wynd<br>Alloa, Clackmannanshire, FK10 1AB</address>
-      <p><a href="tel:+441259555041">01259 555 041</a><br><a href="mailto:hello@rowanbankphysio.co.uk">hello@rowanbankphysio.co.uk</a></p>
-      <p class="footer__hours">Mon &amp; Wed 08:00–19:30 &middot; Tue &amp; Thu 08:00–17:00 &middot; Fri 08:00–14:00 &middot; Sat 09:00–13:00</p>
-    </div>
+<div class="rb-consent" id="consent" role="region" aria-label="Cookie choice" hidden>
+  <p>This page keeps one thing in your browser: whether you had the lights up or down. Analytics is off until you say otherwise. <a href="privacy#cookies">How we use cookies</a></p>
+  <div class="rb-consent__acts">
+    <button type="button" data-consent="reject">Reject</button>
+    <button type="button" data-consent="accept">Accept</button>
   </div>
+</div>
 
-  <div class="wrap footer__base">
-    <p>Physiotherapy is not a substitute for urgent medical care. In an emergency phone 999, or contact NHS 24 on 111.</p>
-    <p class="footer__demo">Example website built by <a href="https://tempanywebstudios.co.uk">Tempany Web Studios</a>. Rowanbank Physiotherapy is a fictional business created for demonstration purposes.</p>
-  </div>
-</footer>
+<!-- Analytics. On a live client site, delete the comment markers below and put
+     the clinic's own domain in. Plausible is cookie-free and hosted in the EU,
+     which is why it is the default here. It is loaded only after a visitor
+     accepts, by the consent script at the foot of this page. This
+     demonstration fires no analytics request at all.
+<script defer data-domain="rowanbankphysio.co.uk" src="https://plausible.io/js/script.js"></script>
+-->
 
-<script src="script.js"></script>
+<script src="scrollcraft.js"></script>
+<script>
+/* Reduced motion is decided before the engine mounts: the minute counter is
+   scrubbed by scroll, so the only way to hand a still reader the finished
+   state is to take the attribute off before the engine reads it. */
+(function () {
+  /* A pinned stage clips whatever does not fit inside it. On a phone the
+     figure and the notes panel together are taller than the screen, so the
+     assessment runs as an ordinary section there and the visitor scrolls it.
+     The move itself does not care: it works at any scroll position. */
+  if (innerWidth <= 860) {
+    var one = document.getElementById('assessment');
+    if (one) one.setAttribute('data-sc-act', 'flow');
+  }
+
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (still) {
+    var m = document.getElementById('rbMinutes');
+    if (m) { m.removeAttribute('data-sc-count'); m.textContent = '50'; }
+    var plan = document.getElementById('plan');
+    if (plan) plan.classList.add('rb-still');
+  }
+  if (window.ScrollCraft) ScrollCraft.mount(document.body);
+})();
+</script>
+<script>
+/* ---------------------------------------------------------------
+   The signature move: tap the body, the plan writes itself.
+
+   Eight regions, each with what the clinic would start with, the
+   likely course and what is commonly seen there. Every line comes
+   from the clinic's own treatment and condition lists; the table is
+   sample data and the panel says so on its face. Tapping a region
+   writes the notes panel, lights the figure, updates the tab strip
+   and sets the reason on the booking form.
+   --------------------------------------------------------------- */
+(function () {
+  var REGIONS = {
+    neck: {
+      key: 'neck', label: 'Neck', n: 1,
+      start: 'Assessment, then hands-on treatment and a graded exercise programme.',
+      course: '3 to 6 appointments',
+      note: 'Dry needling if a trigger point will not let go, always with your consent.',
+      seen: 'Neck pain, stiffness and headaches from the neck. Postural pain from desk and driving work.',
+      firstLine: '50 min · £58'
+    },
+    shoulder: {
+      key: 'shoulder', label: 'Shoulder', n: 2,
+      start: 'Assessment, then joint mobilisation, soft tissue work and a graded exercise programme.',
+      course: '3 to 6 appointments',
+      note: 'Post-operative rehabilitation takes longer, and we say so on day one.',
+      seen: 'Frozen shoulder and rotator cuff pain. Shoulder repair and decompression rehabilitation.',
+      firstLine: '50 min · £58'
+    },
+    elbow: {
+      key: 'elbow', label: 'Elbow', n: 3,
+      start: 'Assessment, then soft tissue work and a graded loading programme.',
+      course: '3 to 6 appointments',
+      note: 'Some need one appointment and a programme to do at home.',
+      seen: 'Tennis and golfer’s elbow. Wrist, thumb and hand pain.',
+      firstLine: '50 min · £58'
+    },
+    back: {
+      key: 'back', label: 'Lower back', n: 4,
+      start: 'Assessment, then hands-on treatment and a graded exercise programme.',
+      course: '3 to 6 appointments',
+      note: 'Long-standing back pain takes longer, and we say so on day one.',
+      seen: 'Lower back pain, acute and long-standing. Sciatica and referred leg pain. Disc-related pain.',
+      firstLine: '50 min · £58'
+    },
+    hip: {
+      key: 'hip', label: 'Hip', n: 5,
+      start: 'Assessment, then hands-on treatment and progressive loading.',
+      course: '3 to 6 appointments',
+      note: 'Hip replacement rehabilitation takes longer, and we say so on day one.',
+      seen: 'Hip osteoarthritis. Hip replacement rehabilitation. Hamstring and groin strains.',
+      firstLine: '50 min · £58'
+    },
+    knee: {
+      key: 'knee', label: 'Knee', n: 6,
+      start: 'Assessment, then hands-on treatment and progressive loading.',
+      course: '3 to 6 appointments',
+      note: 'Ligament reconstruction and knee replacement rehabilitation take longer.',
+      seen: 'Runner’s knee, shin pain and calf strains. Knee osteoarthritis. Knee replacement and ligament reconstruction.',
+      firstLine: '50 min · £58'
+    },
+    ankle: {
+      key: 'ankle', label: 'Ankle', n: 7,
+      start: 'Assessment, then structured, progressive loading with sets, reps and a date to review them.',
+      course: '3 to 6 appointments',
+      note: 'Some need one appointment and a programme to do at home.',
+      seen: 'Ankle sprains and repeated giving way. Achilles and other tendon problems. Recovery once a cast or boot comes off.',
+      firstLine: '50 min · £58'
+    },
+    heel: {
+      key: 'heel', label: 'Heel', n: 8,
+      start: 'Assessment, then soft tissue work and a graded loading programme.',
+      course: '3 to 6 appointments',
+      note: 'Plantar heel pain is slow by nature. We will give you the honest number.',
+      seen: 'Plantar heel pain. Achilles and other tendon problems.',
+      firstLine: '50 min · £58'
+    }
+  };
+  var ORDER = ['neck', 'shoulder', 'elbow', 'back', 'hip', 'knee', 'ankle', 'heel'];
+
+  var spots   = Array.prototype.slice.call(document.querySelectorAll('.rb-spot'));
+  var zones   = Array.prototype.slice.call(document.querySelectorAll('.rb-zone'));
+  var legend  = Array.prototype.slice.call(document.querySelectorAll('#rbLegend li'));
+  var out     = document.getElementById('rbRegionOut');
+  var startEl = document.getElementById('rbStart');
+  var course  = document.getElementById('rbCourse');
+  var cnote   = document.getElementById('rbCourseNote');
+  var seen    = document.getElementById('rbSeen');
+  var first   = document.getElementById('rbFirst');
+  var chrome  = document.getElementById('rbChromeRegion');
+  var reason  = document.getElementById('rbReason');
+  var keyEl   = document.getElementById('rbRegionKey');
+  var rowCourse = document.getElementById('rbRowCourse');
+  var rowSeen   = document.getElementById('rbRowSeen');
+  var current = 'back';
+
+  function select(key, moveFocus) {
+    var r = REGIONS[key];
+    if (!r) return;
+    current = key;
+
+    rowCourse.hidden = false;
+    rowSeen.hidden = false;
+    out.textContent     = r.label;
+    startEl.textContent = r.start;
+    cnote.textContent   = r.note;
+    if (course.firstChild && course.firstChild.nodeType === 3) course.firstChild.nodeValue = r.course;
+    seen.textContent    = r.seen;
+    first.textContent   = r.firstLine;
+    chrome.textContent  = r.label.toLowerCase();
+
+    for (var i = 0; i < spots.length; i++) {
+      var on = spots[i].getAttribute('data-region') === key;
+      spots[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+      spots[i].tabIndex = on ? 0 : -1;
+      if (on && moveFocus) spots[i].focus();
+    }
+    for (var z = 0; z < zones.length; z++) {
+      if (zones[z].getAttribute('data-zone') === key) zones[z].setAttribute('data-on', '');
+      else zones[z].removeAttribute('data-on');
+    }
+    for (var l = 0; l < legend.length; l++) {
+      legend[l].classList.toggle('is-on', legend[l].getAttribute('data-for') === key);
+    }
+    if (reason) {
+      for (var o = 0; o < reason.options.length; o++) {
+        if (reason.options[o].text === r.label) { reason.selectedIndex = o; break; }
+      }
+    }
+    if (keyEl) keyEl.value = key;
+  }
+
+  spots.forEach(function (b) {
+    b.tabIndex = b.getAttribute('data-region') === current ? 0 : -1;
+    b.addEventListener('click', function () { select(b.getAttribute('data-region'), false); });
+    b.addEventListener('keydown', function (e) {
+      var i = ORDER.indexOf(b.getAttribute('data-region'));
+      var next = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = ORDER[(i + 1) % ORDER.length];
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = ORDER[(i - 1 + ORDER.length) % ORDER.length];
+      else if (e.key === 'Home') next = ORDER[0];
+      else if (e.key === 'End') next = ORDER[ORDER.length - 1];
+      if (next) { e.preventDefault(); select(next, true); }
+    });
+  });
+
+  /* "Something else" is a state of its own, not the last region with a
+     different label on it: the figure lets go, and the panel says what it
+     honestly can, which is that the box below is where this one gets read. */
+  function neutral() {
+    current = 'other';
+    out.textContent     = 'Something else';
+    startEl.textContent = 'Tell us what is going on in the box below and we will take it from there.';
+    first.textContent   = '50 min \u00b7 \u00a358';
+    rowCourse.hidden = true;
+    rowSeen.hidden = true;
+    chrome.textContent = 'something else';
+    if (keyEl) keyEl.value = 'other';
+    for (var i = 0; i < spots.length; i++) {
+      spots[i].setAttribute('aria-pressed', 'false');
+      spots[i].tabIndex = i === 0 ? 0 : -1;
+    }
+    for (var z = 0; z < zones.length; z++) zones[z].removeAttribute('data-on');
+    for (var l = 0; l < legend.length; l++) legend[l].classList.remove('is-on');
+  }
+
+  /* The form is the other end of the same wire: change the reason there and
+     the figure follows, so the two can never disagree. */
+  if (reason) {
+    reason.addEventListener('change', function () {
+      for (var k in REGIONS) {
+        if (REGIONS[k].label === reason.value) { select(k, false); return; }
+      }
+      neutral();
+    });
+  }
+
+  select('back', false);
+  window.__rbSelect = select;
+})();
+</script>
+<script>
+/* ---------------------------------------------------------------
+   Act two. The engine pins the stage and publishes --sc-p on the
+   act; the three steps light as the marker passes them, and the
+   marker's travel is the rail's own height in pixels.
+   --------------------------------------------------------------- */
+(function () {
+  var act   = document.getElementById('plan');
+  var rail  = document.getElementById('rbRail');
+  var steps = Array.prototype.slice.call(document.querySelectorAll('#plan .rb-step'));
+  var mins  = document.getElementById('rbMinutes');
+  if (!act || !rail) return;
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function measure() {
+    act.style.setProperty('--rb-rail-px', Math.round(rail.getBoundingClientRect().height) + 'px');
+  }
+
+  /* The steps light off the clock, not off raw progress. The engine's counter
+     is smoothstepped across its window, so a step keyed to a flat fraction of
+     --sc-p lights at 11 minutes while the clock beside it reads 15. Reading
+     the minutes is the only way the two agree exactly. */
+  function read() {
+    var m = still ? 50 : (parseFloat(mins && mins.textContent) || 0);
+    for (var i = 0; i < steps.length; i++) {
+      var at = parseFloat(steps[i].getAttribute('data-min')) || 0;
+      steps[i].classList.toggle('is-lit', m >= at);
+    }
+  }
+
+  var queued = false;
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { read(); queued = false; });
+  }
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', function () { measure(); schedule(); }, { passive: true });
+  if (window.ResizeObserver) new ResizeObserver(measure).observe(rail);
+  measure(); read();
+})();
+</script>
+<script>
+/* ---------------------------------------------------------------
+   The tab strip tracks the scroll. The active tab is the last one
+   whose section has passed 45% of the viewport, so the tab changes
+   when the act is what you are looking at.
+   --------------------------------------------------------------- */
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.rb-tab'));
+  if (!tabs.length) return;
+  var pairs = tabs.map(function (t) {
+    return { tab: t, sec: document.getElementById(t.getAttribute('data-tab')) };
+  }).filter(function (p) { return !!p.sec; });
+
+  function paint() {
+    var mark = innerHeight * 0.45, active = pairs[0];
+    for (var i = 0; i < pairs.length; i++) {
+      if (pairs[i].sec.getBoundingClientRect().top <= mark) active = pairs[i];
+    }
+    for (var j = 0; j < pairs.length; j++) {
+      if (pairs[j] === active) pairs[j].tab.setAttribute('aria-current', 'true');
+      else pairs[j].tab.removeAttribute('aria-current');
+    }
+  }
+  var queued = false;
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { paint(); queued = false; });
+  }
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule, { passive: true });
+  paint();
+})();
+</script>
+<script>
+/* ---------------------------------------------------------------
+   The booking form. Nothing leaves the browser; the failure paths
+   are still real, because a form that only handles the happy path
+   is the half of the job that gets noticed.
+   --------------------------------------------------------------- */
+(function () {
+  var form  = document.getElementById('rbForm');
+  var name  = document.getElementById('rbName');
+  var email = document.getElementById('rbEmail');
+  var ok    = document.getElementById('rbOk');
+  var send  = document.getElementById('rbSubmit');
+  var done  = document.getElementById('rbDone');
+  var body  = document.getElementById('rbDoneBody');
+  var again = document.getElementById('rbAgain');
+  var reason = document.getElementById('rbReason');
+  if (!form) return;
+  var busy = false;
+
+  function err(id, on) {
+    var el = document.getElementById(id);
+    if (el) el.hidden = !on;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (busy) return;
+
+    var n = (name.value || '').trim();
+    var m = (email.value || '').trim();
+    var badName = n.length < 2;
+    var badMail = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m);
+    var badOk = !ok.checked;
+
+    err('rbNameErr', badName);
+    err('rbEmailErr', badMail);
+    err('rbOkErr', badOk);
+
+    if (badName) { name.focus(); return; }
+    if (badMail) { email.focus(); return; }
+    if (badOk) { ok.focus(); return; }
+
+    busy = true;
+    send.disabled = true;
+
+    var when = Array.prototype.slice.call(form.querySelectorAll('input[name="times"]:checked'))
+      .map(function (c) { return c.value.toLowerCase(); });
+
+    /* "Something else, I will explain below" is an instruction to the visitor,
+       not a thing to read back at them in lower case. */
+    var other = /^Something else/.test(reason.value || '');
+    body.textContent = n + ', we have your enquiry'
+      + (other ? '' : ' about ' + (reason.value || '').toLowerCase())
+      + (when.length ? ', with ' + when.join(' or ') + ' noted' : '')
+      + '.'
+      + (other ? ' You said you would explain below, and we will read it.' : '')
+      + ' On a live site the clinic would reply to ' + m + ' within one working day with two or three times.';
+
+    form.hidden = true;
+    done.hidden = false;
+    done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  again.addEventListener('click', function () {
+    form.reset();
+    if (window.__rbSelect) window.__rbSelect('back', false);
+    err('rbNameErr', false); err('rbEmailErr', false); err('rbOkErr', false);
+    busy = false;
+    send.disabled = false;
+    done.hidden = true;
+    form.hidden = false;
+    name.focus();
+  });
+
+  /* Clear an error the moment the field it belongs to is fixed. */
+  name.addEventListener('input', function () { if (name.value.trim().length >= 2) err('rbNameErr', false); });
+  email.addEventListener('input', function () { if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) err('rbEmailErr', false); });
+  ok.addEventListener('change', function () { if (ok.checked) err('rbOkErr', false); });
+})();
+</script>
+<script>
+/* ---------------------------------------------------------------
+   The ground.
+   scroll-craft's own data-sc-drift writes --sc-canvas as an inline
+   style on <html>, which outranks :root[data-theme] and is parsed
+   once at mount, so in light mode the first scroll would repaint
+   the page dark and stay there. The ground therefore lives here,
+   where both palettes own it. Two stops only: this grammar reads
+   as software, and software does not fade through five colours.
+   --------------------------------------------------------------- */
+(function () {
+  var STOPS = {
+    light: ['#F5F7F6', '#EDF1EF'],
+    dark:  ['#0F1A18', '#13211E']
+  };
+  var docEl = document.documentElement;
+  var secs = Array.prototype.slice.call(document.querySelectorAll('[data-rb-ground]'));
+  if (!secs.length) return;
+
+  function rgb(h) { return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]; }
+  function mix(a, b, t) {
+    return 'rgb(' + Math.round(a[0] + (b[0] - a[0]) * t) + ',' +
+                    Math.round(a[1] + (b[1] - a[1]) * t) + ',' +
+                    Math.round(a[2] + (b[2] - a[2]) * t) + ')';
+  }
+  function ease(t) { t = t < 0 ? 0 : t > 1 ? 1 : t; return t * t * (3 - 2 * t); }
+
+  function paint() {
+    var list = STOPS[docEl.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'];
+    /* 42% of the viewport, not the top edge: the ground should change when
+       the new act is what you are looking at, not when a sliver appears. */
+    var mark = innerHeight * 0.42, idx = 0, t = 1;
+    for (var i = 0; i < secs.length; i++) {
+      var want = parseInt(secs[i].getAttribute('data-rb-ground'), 10) || 0;
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= mark && r.bottom > mark) {
+        idx = want;
+        t = ease((mark - r.top) / Math.max(r.height * 0.35, 1));
+        break;
+      }
+      if (r.bottom <= mark) { idx = want; t = 1; }
+    }
+    var cur = rgb(list[Math.min(idx, list.length - 1)]);
+    var prv = rgb(list[Math.max(idx - 1, 0)]);
+    docEl.style.setProperty('--sc-canvas', mix(prv, cur, t));
+  }
+
+  var queued = false;
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { paint(); queued = false; });
+  }
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule, { passive: true });
+  window.__rbGround = paint;
+  paint();
+})();
+
+/* ---------------------------------------------------------------
+   The lights. In a treatment room the lighting is part of the room.
+   --------------------------------------------------------------- */
+(function () {
+  var btn = document.getElementById('lights');
+  var docEl = document.documentElement;
+  var meta = document.querySelector('meta[name="theme-color"][media*="dark"]');
+  if (!btn) return;
+
+  function sync() {
+    var dark = docEl.getAttribute('data-theme') === 'dark';
+    btn.setAttribute('aria-pressed', dark ? 'false' : 'true');
+    btn.setAttribute('aria-label', dark ? 'Turn the lights up' : 'Turn the lights down');
+    if (window.__rbGround) window.__rbGround();
+    /* The paired theme-color metas answer prefers-color-scheme, not this
+       button, so the browser chrome would keep the OS colour after a manual
+       flip. Rewriting the media query is what makes the two agree. */
+    if (meta) meta.setAttribute('content', dark ? '#0F1A18' : '#F5F7F6');
+  }
+
+  btn.addEventListener('click', function () {
+    var dark = docEl.getAttribute('data-theme') === 'dark';
+    docEl.setAttribute('data-theme', dark ? 'light' : 'dark');
+    try { localStorage.setItem('rb-theme', dark ? 'light' : 'dark'); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+
+/* ---------------------------------------------------------------
+   Consent. The bar is honest about its own scope: the only thing
+   this page stores without asking is the light switch, which is a
+   functional preference and does not need consent under PECR.
+   Analytics does, so that is what the two buttons actually govern.
+   Nothing is injected on accept, because there is nothing to count.
+   --------------------------------------------------------------- */
+(function () {
+  var bar = document.getElementById('consent');
+  var docEl = document.documentElement;
+  if (!bar) return;
+
+  function measure() {
+    docEl.style.setProperty('--rb-consent-h',
+      (bar.hidden ? 0 : Math.round(bar.getBoundingClientRect().height)) + 'px');
+  }
+
+  function open() {
+    bar.hidden = false;
+    requestAnimationFrame(measure);
+  }
+
+  var stored = null;
+  try { stored = localStorage.getItem('rb-consent'); } catch (e) {}
+
+  if (!stored) { open(); } else { measure(); }
+  addEventListener('resize', measure, { passive: true });
+
+  /* The privacy page links here with #cookie-settings. That is a cross-document
+     load, so hashchange never fires: the bar has to be reopened on arrival.
+     The hash is then dropped, or a reload would reopen it for ever. */
+  if (location.hash === '#cookie-settings') {
+    open();
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+  }
+
+  bar.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-consent]');
+    if (!b) return;
+    try { localStorage.setItem('rb-consent', b.getAttribute('data-consent')); } catch (e2) {}
+    bar.hidden = true;
+    measure();
+  });
+
+  /* Reopening from the privacy page's cookie section. */
+  addEventListener('hashchange', function () {
+    if (location.hash === '#cookie-settings') { bar.hidden = false; measure(); }
+  });
+})();
+</script>
 </body>
 </html>

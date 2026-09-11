@@ -1,0 +1,44 @@
+/* Self-hosted. No request leaves for Google from a page that publishes a
+   privacy policy, and two fewer third-party handshakes before first paint.
+   Latin only: the clinic's copy, the fee figures and the £ sign all sit in it.
+
+   Built from the @fontsource packages rather than ../_kit/fonts.py, because
+   fonts.googleapis.com and fonts.gstatic.com are both refused by the egress
+   proxy in this environment (CONNECT 403). Same upstream files, same licence
+   (SIL OFL 1.1), fetched from the npm registry instead. */
+
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(fonts/fraunces-600-latin.woff2) format('woff2');
+}
+
+/* latin */
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(fonts/figtree-400-latin.woff2) format('woff2');
+}
+
+/* latin */
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(fonts/figtree-500-latin.woff2) format('woff2');
+}
+
+/* latin */
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(fonts/figtree-600-latin.woff2) format('woff2');
+}

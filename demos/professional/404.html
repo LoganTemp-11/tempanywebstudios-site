@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page not found &middot; Ochil Ledger</title>
+<meta name="description" content="That page is not here. The chapters of the Ochil Ledger statement are listed below, along with the office telephone number.">
+<meta name="robots" content="noindex, follow">
+<meta name="tws-storage-prefix" content="ol">
+<meta name="theme-color" content="#14171C" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4EFE4" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%23F4EFE4'/><g stroke='%231B2433' stroke-width='2.1' stroke-linecap='round'><path d='M7 10h18M7 16h13'/></g><path d='M7 22h18' stroke='%231F5C3E' stroke-width='2.1' stroke-linecap='round'/></svg>">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/source-serif-4-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="legal.css">
+<style>
+  .contents { list-style: none; margin: 0 0 1.5rem; padding: 0; border-top: 2px solid var(--ink); }
+  .contents li { margin: 0; border-bottom: 1px solid var(--line); }
+  .contents a {
+    display: flex; align-items: baseline; gap: 1rem;
+    min-height: 48px; padding: .7rem 0;
+    color: var(--ink); text-decoration: none;
+  }
+  .contents a:hover { color: var(--accent); }
+  .contents b { font-weight: 600; color: var(--ink-soft); min-width: 2.2rem; }
+  .lost { font-size: clamp(1.1rem, 1rem + .6vw, 1.3rem); margin-bottom: 2rem; }
+</style>
+<script>
+(function () {
+  var t = 'light';
+  try { t = localStorage.getItem('ol-theme') || 'light'; } catch (e) {}
+  document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+})();
+</script>
+</head>
+<body>
+<a class="skip" href="#doc">Skip to the page</a>
+
+<div class="demo">
+  <p><b>Demo site by Tempany Web Studios</b> <span>This is an example website, not a real business.</span> <a href="https://tempanywebstudios.co.uk">tempanywebstudios.co.uk</a></p>
+</div>
+
+<header class="bar">
+  <a class="bar__mark" href="./">Ochil Ledger <span>Accountancy &amp; Bookkeeping</span></a>
+  <button class="lights" id="lights" type="button" aria-pressed="true" aria-label="Turn the lights down">
+    <svg class="lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+  </button>
+  <a class="bar__back" href="./">Back to the statement</a>
+</header>
+
+<main id="doc">
+  <p class="eyebrow">404</p>
+  <h1>That page is not on the file.</h1>
+  <p class="stamp">Nothing has gone wrong with your affairs. A link somewhere is out of date, which is a filing error rather than a tax one.</p>
+
+  <p class="lost">Here is the whole of the statement, chapter by chapter. Everything on this site is on one page, so one of these will be the thing you were after.</p>
+
+  <ul class="contents">
+    <li><a href="./#top"><b>00</b> <span>The statement, at a glance</span></a></li>
+    <li><a href="./#c01"><b>01</b> <span>What we do</span></a></li>
+    <li><a href="./#c02"><b>02</b> <span>What it costs, and the fee list</span></a></li>
+    <li><a href="./#c03"><b>03</b> <span>How it works</span></a></li>
+    <li><a href="./#dates"><b>04</b> <span>Key dates</span></a></li>
+    <li><a href="./#c05"><b>05</b> <span>The fee is the fee</span></a></li>
+    <li><a href="./#area"><b>06</b> <span>Where we work</span></a></li>
+    <li><a href="./#ask"><b>07</b> <span>Colophon, questions and the enquiry form</span></a></li>
+  </ul>
+
+  <h2>Or just ring the office</h2>
+  <p>The phone is answered here in Tillicoultry, Monday to Thursday 9am to 5pm and Friday 9am to 3pm. <a href="tel:+4412595550142">01259 555 0142</a>, or <a href="mailto:hello@ochilledger.co.uk">hello@ochilledger.co.uk</a>.</p>
+
+  <a class="back" href="./">Back to the statement</a>
+
+  <div class="foot">
+    <p>Ochil Ledger is a demonstration build by <a href="https://tempanywebstudios.co.uk">Tempany Web Studios</a>. <a href="privacy">Privacy</a> &middot; <a href="terms">Terms</a> &middot; <a href="./">The statement</a></p>
+  </div>
+</main>
+
+<script>
+(function () {
+  var btn = document.getElementById('lights');
+  var docEl = document.documentElement;
+  var meta = document.querySelector('meta[name="theme-color"][media*="dark"]');
+  if (!btn) return;
+  function sync() {
+    var dark = docEl.getAttribute('data-theme') === 'dark';
+    btn.setAttribute('aria-pressed', dark ? 'false' : 'true');
+    btn.setAttribute('aria-label', dark ? 'Turn the lights up' : 'Turn the lights down');
+    if (meta) meta.setAttribute('content', dark ? '#14171C' : '#F4EFE4');
+  }
+  btn.addEventListener('click', function () {
+    var dark = docEl.getAttribute('data-theme') === 'dark';
+    docEl.setAttribute('data-theme', dark ? 'light' : 'dark');
+    try { localStorage.setItem('ol-theme', dark ? 'light' : 'dark'); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+</script>
+</body>
+</html>

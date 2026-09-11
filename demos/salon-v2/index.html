@@ -105,7 +105,7 @@
     font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide);
     text-transform: uppercase;
   }
-  .bw-index__mark { font-family: var(--sc-font-display); font-weight: 700; letter-spacing: -.01em; text-transform: none; font-size: var(--sc-t-base); }
+  .bw-index__mark { font-family: var(--sc-font-display); font-weight: 700; letter-spacing: -.01em; text-transform: none; font-size: var(--sc-t-base); display: inline-flex; align-items: center; min-height: 44px; }
   .bw-index__list { display: flex; gap: var(--sc-4); margin-left: auto; list-style: none; padding: 0; }
   .bw-index a { color: var(--sc-ink-soft); text-decoration: none; }
   .bw-index a:hover { color: var(--sc-ink); }
@@ -216,7 +216,7 @@
   /* ---------- skip link ---------- */
   .bw-skip {
     position: fixed; top: .5rem; left: .5rem; z-index: 999;
-    padding: .7rem 1rem; border-radius: var(--sc-r-sm);
+    padding: .9rem 1.1rem; min-height: 44px; border-radius: var(--sc-r-sm);
     background: var(--sc-accent); color: var(--sc-accent-ink);
     font: 600 var(--sc-t-sm)/1 var(--sc-font-text); text-decoration: none;
     transform: translateY(-160%);
@@ -235,11 +235,11 @@
   .bw-index__list { margin-left: var(--sc-4); }
   .bw-lights:hover { color: var(--sc-ink); border-color: var(--bw-line-strong); }
   .bw-lights:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
-  .bw-lights svg { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-  /* Written with the parent so they outrank the generic .bw-lights svg rule. */
-  .bw-lights .bw-lights__sun { display: none; }
-  :root[data-theme="light"] .bw-lights .bw-lights__sun { display: block; }
-  :root[data-theme="light"] .bw-lights .bw-lights__moon { display: none; }
+  .bw-lights svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .bw-lights__moon { display: block; }
+  .bw-lights__sun { display: none; }
+  :root[data-theme="light"] .bw-lights__sun { display: block; }
+  :root[data-theme="light"] .bw-lights__moon { display: none; }
   @media (pointer: coarse) { .bw-lights { width: 44px; height: 44px; } }
 
   /* ---------- the questions. extended label copy, sitting with the form
@@ -496,8 +496,8 @@
             <span>Mobile</span>
             <input name="phone" id="bwPhone" type="tel" autocomplete="tel" inputmode="tel" required>
           </label>
-          <label class="bw-field" style="display:flex; gap:.75rem; align-items:center">
-            <input type="checkbox" name="quiet" id="bwQuiet" style="width:auto; min-width:20px; min-height:20px; accent-color:var(--sc-accent)">
+          <label class="bw-field" style="display:flex; gap:.75rem; align-items:center; min-height:44px" data-target-skip>
+            <input type="checkbox" name="quiet" id="bwQuiet" style="width:auto; min-width:24px; min-height:24px; accent-color:var(--sc-accent)">
             <span style="margin:0; text-transform:none; letter-spacing:normal; font-size:var(--sc-t-sm); color:var(--sc-ink)">Make it a quiet appointment</span>
           </label>
           <button class="bw-submit" type="submit">Send the request</button>
@@ -761,10 +761,16 @@
        injected. Nothing is injected here, because there is nothing to count. */
   });
 
-  /* Reopening from the privacy page's cookie section. */
-  addEventListener('hashchange', function () {
-    if (location.hash === '#cookie-settings') { bar.hidden = false; measure(); }
-  });
+  /* Reopening from the privacy page's cookie section. hashchange never fires
+     on a cross-document load, so the hash is also read once on arrival, then
+     cleared so a reload does not reopen a choice already made. */
+  function reopen() {
+    if (location.hash !== '#cookie-settings') return;
+    bar.hidden = false; measure();
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+  }
+  addEventListener('hashchange', reopen);
+  reopen();
 })();
 </script>
 </body>

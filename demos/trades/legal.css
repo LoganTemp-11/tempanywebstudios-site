@@ -1,0 +1,166 @@
+/* Whinstone Joinery. The pages nobody reads until they need them.
+   Same two palettes as the job sheet, no engine, no scroll work. Set like a
+   specification sheet rather than a web page: mono for every label and figure,
+   Space Grotesk for the headings, IBM Plex Sans for the prose. */
+
+:root {
+  color-scheme: light dark;
+  --canvas: #F4F0E7; --surface: #ECE6D9;
+  --ink: #171A1E; --ink-soft: #555C63;
+  --accent: #8A5600; --accent-ink: #FFFFFF;
+  --line: rgba(23,26,30,.20);
+  --line-strong: rgba(23,26,30,.42);
+
+  --display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --text: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+}
+:root[data-theme="dark"] {
+  --canvas: #111A26; --surface: #18222F;
+  --ink: #EDF1F4; --ink-soft: #93A1AE;
+  --accent: #E8A33D; --accent-ink: #111A26;
+  --line: rgba(237,241,244,.18);
+  --line-strong: rgba(237,241,244,.38);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0; background: var(--canvas); color: var(--ink);
+  font: 400 clamp(.9375rem, .905rem + .17vw, 1.0625rem)/1.62 var(--text);
+  letter-spacing: -.004em;
+  -webkit-font-smoothing: antialiased;
+}
+:root[data-theme="dark"] body { color: var(--ink); }
+
+.skip {
+  position: fixed; top: .5rem; left: .5rem; z-index: 99;
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: .75rem 1rem; border-radius: 2px;
+  background: var(--accent); color: var(--accent-ink);
+  font: 500 .8125rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; transform: translateY(-200%);
+}
+.skip:focus-visible { transform: none; outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* The header is a title block, not a marketing bar: the sheet name on the
+   left, the reference on the right, one rule under it. */
+.bar {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; align-items: center; gap: 1rem;
+  padding: .9rem var(--gutter);
+  background: color-mix(in srgb, var(--canvas) 90%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line-strong);
+}
+.bar__mark {
+  display: flex; align-items: baseline; gap: .5rem;
+  font: 700 1.05rem/1 var(--display); letter-spacing: -.024em;
+  color: var(--ink); text-decoration: none;
+}
+.bar__mark span { font: 400 .6875rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+.bar__back { margin-left: auto; font: 400 .6875rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; }
+.bar__back:hover { color: var(--accent); }
+
+.lights {
+  display: inline-grid; place-items: center; width: 40px; height: 40px; padding: 0;
+  background: transparent; color: var(--ink-soft);
+  border: 1px solid var(--line-strong); border-radius: 2px; cursor: pointer;
+}
+.lights:hover { color: var(--ink); border-color: var(--accent); }
+.lights:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* No `display` on this rule: `.lights svg` outranks `.lights__sun`, so a
+   display here would beat the icon switch and both glyphs would show. */
+.lights svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+/* Keyed off dark, not light, so the default with no data-theme attribute
+   (which is what a JS-off visitor gets) shows the sun that matches the light
+   default rather than the moon. */
+.lights__moon { display: none; }
+.lights__sun { display: block; }
+:root[data-theme="dark"] .lights__moon { display: block; }
+:root[data-theme="dark"] .lights__sun { display: none; }
+@media (pointer: coarse) { .lights { width: 44px; height: 44px; } }
+
+main { width: min(70ch, 100%); margin-inline: auto; padding: clamp(2.5rem, 7vw, 4.5rem) var(--gutter) 4rem; }
+/* The bar is sticky, so a hash jump has to clear it or the heading it lands on
+   is the one thing hidden behind the chrome. Measured: about 70px. */
+main :is(h1, h2, h3, [id]) { scroll-margin-top: 5.5rem; }
+
+.eyebrow { font: 500 .6875rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 0 0 1rem; }
+h1 { font: 700 clamp(1.9rem, 1.4rem + 2.4vw, 3rem)/1.02 var(--display); letter-spacing: -.032em; margin: 0 0 .7rem; text-wrap: balance; }
+.stamp { color: var(--ink-soft); font: 400 .8125rem/1.5 var(--mono); margin: 0 0 2.4rem; }
+h2 { font: 600 clamp(1.2rem, 1.05rem + .6vw, 1.55rem)/1.16 var(--display); letter-spacing: -.024em; margin: 2.8rem 0 .8rem; text-wrap: balance; }
+h3 { font: 600 1.05rem/1.3 var(--display); letter-spacing: -.018em; margin: 1.9rem 0 .5rem; }
+p, li { text-wrap: pretty; }
+p { margin: 0 0 1.05rem; }
+ul, ol { margin: 0 0 1.05rem; padding-left: 1.25rem; }
+li { margin-bottom: .45rem; }
+a { color: var(--accent); text-underline-offset: 3px; }
+strong { color: var(--ink); font-weight: 500; }
+:where(td, th, .stamp, .num) { font-variant-numeric: tabular-nums; }
+
+.note {
+  border: 1px solid var(--line-strong); border-left: 3px solid var(--accent);
+  background: var(--surface);
+  padding: 1.15rem 1.3rem; margin: 0 0 2.4rem;
+}
+.note p:last-child { margin-bottom: 0; }
+
+/* The table is wider than a phone, so its wrapper is a focusable scroll
+   region: without tabindex a keyboard user cannot reach the third column at
+   all, and without the hint a touch user does not know there is one. */
+.tablewrap { overflow-x: auto; margin: 0 0 1.4rem; }
+.tablewrap:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.scrollhint { display: none; }
+@media (max-width: 680px) {
+  .scrollhint {
+    display: block; margin: 0 0 .5rem;
+    font: 400 .75rem/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+}
+table { width: 100%; border-collapse: collapse; font-size: .9rem; min-width: 30rem; }
+caption { text-align: left; color: var(--ink-soft); font: 400 .6875rem/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; padding-bottom: .7rem; }
+th, td { text-align: left; vertical-align: top; padding: .75rem .85rem; border-bottom: 1px solid var(--line); }
+th { font: 500 .6875rem/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-soft); }
+td:first-child { font-family: var(--mono); font-size: .85rem; }
+
+.back {
+  display: inline-flex; align-items: center; min-height: 44px;
+  margin-top: 2.6rem; padding: .8rem 1.3rem;
+  border: 1px solid var(--line-strong); border-radius: 2px;
+  color: var(--ink); text-decoration: none;
+  font: 500 .8125rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase;
+}
+.back:hover { border-color: var(--accent); color: var(--accent); }
+
+.foot { border-top: 1px solid var(--line); margin-top: 3.5rem; padding-top: 1.4rem; color: var(--ink-soft); font-size: .82rem; }
+.foot a { color: var(--ink-soft); }
+.foot a:hover { color: var(--accent); }
+
+/* The demo strip, same job as on the job sheet. */
+.demo {
+  background: var(--surface); border-bottom: 1px solid var(--line);
+  padding: .55rem var(--gutter);
+  font: 400 .6875rem/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.demo p { margin: 0; display: flex; flex-wrap: wrap; gap: .2rem .9rem; align-items: baseline; }
+.demo b { color: var(--accent); font-weight: 500; white-space: nowrap; }
+.demo a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding-block: .15rem; }
+.demo a:hover { color: var(--accent); }
+
+/* 404 only: the page is short, so it gets a little air and a list of routes. */
+.lost ul { list-style: none; padding: 0; margin: 1.6rem 0 0; border-top: 1px solid var(--line); }
+.lost li { margin: 0; border-bottom: 1px solid var(--line); }
+.lost li a {
+  display: flex; align-items: baseline; gap: 1rem; min-height: 48px;
+  padding: .9rem 0; color: var(--ink); text-decoration: none;
+}
+.lost li a:hover { color: var(--accent); }
+.lost li a b { font: 600 1.05rem/1.3 var(--display); letter-spacing: -.018em; font-weight: 600; }
+.lost li a span { margin-left: auto; text-align: right; font: 400 .8125rem/1.4 var(--mono); color: var(--ink-soft); }
+.lost li a:hover span { color: var(--accent); }

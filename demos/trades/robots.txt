@@ -1,0 +1,20 @@
+# Whinstone Joinery & Building -- a demonstration site by Tempany Web Studios.
+#
+# This is a sales prop, not a business. The pages also carry
+# <meta name="robots" content="noindex, follow">, which is the instruction that
+# actually keeps them out of a search index: a Disallow here would stop a
+# crawler FETCHING the page, and a page it cannot fetch is a page whose noindex
+# it can never read. So crawling is allowed and indexing is refused, in that
+# order, which is the only combination that works.
+#
+# "follow" is deliberate too. The demo links back to tempanywebstudios.co.uk,
+# and that link should still count.
+
+User-agent: *
+Allow: /
+
+# Nothing here is private. There is no admin area, no upload folder and no
+# search endpoint to keep a crawler out of, so there is nothing to disallow and
+# an invented Disallow line would only advertise a path that does not exist.
+
+Sitemap: https://tempanywebstudios.co.uk/demos/trades/sitemap.xml

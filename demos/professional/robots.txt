@@ -1,0 +1,24 @@
+# Ochil Ledger, a demonstration build by Tempany Web Studios.
+#
+# Everything here is allowed to be crawled, because there is nothing on the
+# site a crawler should not see: no admin path, no staging copy, no customer
+# area. A disallow list on a five-page site is usually somebody copying a
+# WordPress robots.txt they did not read, and it does more harm than good,
+# because it publishes the exact list of paths worth poking at.
+#
+# The pages themselves carry <meta name="robots" content="noindex, follow">,
+# which is the right tool for keeping a demonstration practice out of the
+# index. Disallow here would be the wrong one: a disallowed page cannot be
+# crawled, so the noindex is never read, and the URL can still end up listed
+# from links pointing at it. Allow the crawl, refuse the index.
+#
+# Note the demo is fictional. Nothing on it should ever rank against a real
+# accountant in Clackmannanshire, which is the other reason for the noindex.
+
+User-agent: *
+Allow: /
+
+# One sitemap, listing the three real URLs, extensionless the way Cloudflare
+# Pages serves them. The 404 is deliberately not in it: a sitemap is a list of
+# pages you want found, and an error page is not one.
+Sitemap: https://tempanywebstudios.co.uk/demos/professional/sitemap.xml

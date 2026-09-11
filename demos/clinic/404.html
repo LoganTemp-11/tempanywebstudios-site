@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page not found · Rowanbank Physiotherapy</title>
+<meta name="description" content="That page is not here. The treatments, the fees, the first visit and the booking form all are.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="tws-storage-prefix" content="rb">
+<meta name="theme-color" content="#0F1A18" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F5F7F6" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F1A18'/><path d='M16 7v18M16 14c0-4 3-7 7-7 0 4-3 7-7 7Z' fill='none' stroke='%236FC3CF' stroke-width='2' stroke-linecap='round'/></svg>">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/figtree-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="legal.css">
+<script>
+(function () {
+  var t = 'light';
+  try { t = localStorage.getItem('rb-theme') || 'light'; } catch (e) {}
+  document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+})();
+</script>
+</head>
+<body>
+<a class="skip" href="#doc">Skip to the page</a>
+<div class="demo">
+  <p><b>Demo site by Tempany Web Studios</b> <span>This is an example website, not a real business.</span> <a href="https://tempanywebstudios.co.uk">tempanywebstudios.co.uk</a></p>
+</div>
+
+<header class="bar">
+  <a class="bar__mark" href="./">Rowanbank <span>Physiotherapy</span></a>
+  <button class="lights" id="lights" type="button" aria-pressed="true" aria-label="Turn the lights down">
+    <svg class="lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+  </button>
+  <a class="bar__back" href="./">Back to the clinic</a>
+</header>
+
+<main id="doc">
+  <p class="eyebrow">404</p>
+  <h1>That page is not here.</h1>
+  <p class="stamp">Nothing is sore. The link is just wrong, or the page has been renamed since you last saw it.</p>
+
+  <div class="lost">
+    <p>Everything the clinic publishes sits on one page, and these are the parts of it people usually want:</p>
+    <ul>
+      <li><a href="./#assessment">Point at what hurts <span>Assessment</span></a></li>
+      <li><a href="./#plan">What happens in the first fifty minutes <span>Plan</span></a></li>
+      <li><a href="./#treatment">Treatments, and what each one is for <span>Treatment</span></a></li>
+      <li><a href="./#conditions">Conditions we treat <span>Conditions</span></a></li>
+      <li><a href="./#fees">Fees, per appointment <span>Fees</span></a></li>
+      <li><a href="./#book">Ask for an assessment <span>Book</span></a></li>
+      <li><a href="./#questions">Things people ask before booking <span>Questions</span></a></li>
+    </ul>
+    <p>Or phone the clinic on <a href="tel:+441259555041">01259 555 041</a>, which is usually quicker than hunting for a page.</p>
+  </div>
+
+  <a class="back" href="./">Back to the clinic</a>
+
+  <div class="foot">
+    <p>Rowanbank Physiotherapy is a demonstration build by <a href="https://tempanywebstudios.co.uk">Tempany Web Studios</a>. <a href="privacy">Privacy</a> &middot; <a href="terms">Terms</a> &middot; <a href="./">The clinic</a></p>
+  </div>
+</main>
+
+<script>
+(function () {
+  var btn = document.getElementById('lights');
+  var docEl = document.documentElement;
+  var meta = document.querySelector('meta[name="theme-color"][media*="dark"]');
+  if (!btn) return;
+  function sync() {
+    var dark = docEl.getAttribute('data-theme') === 'dark';
+    btn.setAttribute('aria-pressed', dark ? 'false' : 'true');
+    btn.setAttribute('aria-label', dark ? 'Turn the lights up' : 'Turn the lights down');
+    if (meta) meta.setAttribute('content', dark ? '#0F1A18' : '#F5F7F6');
+  }
+  btn.addEventListener('click', function () {
+    var dark = docEl.getAttribute('data-theme') === 'dark';
+    docEl.setAttribute('data-theme', dark ? 'light' : 'dark');
+    try { localStorage.setItem('rb-theme', dark ? 'light' : 'dark'); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+</script>
+</body>
+</html>

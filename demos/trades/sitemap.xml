@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Three URLs, all extensionless. Cloudflare Pages strips .html and issues a
+     308 to the extensionless form, so listing trades/privacy.html here would
+     put a redirect in the sitemap. The 404 is never listed: a sitemap is a list
+     of pages that exist. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tempanywebstudios.co.uk/demos/trades/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tempanywebstudios.co.uk/demos/trades/privacy</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://tempanywebstudios.co.uk/demos/trades/terms</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

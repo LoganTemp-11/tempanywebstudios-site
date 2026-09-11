@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Not on this sheet &middot; Whinstone Joinery &amp; Building</title>
+<meta name="description" content="That page is not here. The drawings, the prices, how a job runs and the enquiry form all are.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="tws-storage-prefix" content="wh">
+<meta name="theme-color" content="#111A26" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F4F0E7" media="(prefers-color-scheme: light)">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23111A26'/><path d='M5 23 16 8l11 15' fill='none' stroke='%23E8A33D' stroke-width='2.2' stroke-linejoin='round'/><path d='M5 26.5h22' stroke='%23E8A33D' stroke-width='2.2' stroke-linecap='round'/></svg>">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="legal.css">
+<script>
+(function () {
+  var t = 'light';
+  try { t = localStorage.getItem('wh-theme') || 'light'; } catch (e) {}
+  document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+})();
+</script>
+</head>
+<body>
+<a class="skip" href="#doc">Skip to the page</a>
+<div class="demo">
+  <p><b>Demo site by Tempany Web Studios</b> <span>This is an example website, not a real business.</span> <a href="https://tempanywebstudios.co.uk">tempanywebstudios.co.uk</a></p>
+</div>
+
+<header class="bar">
+  <a class="bar__mark" href="./">Whinstone <span>Joinery &amp; Building</span></a>
+  <button class="lights" id="lights" type="button" aria-pressed="true" aria-label="Turn the lights down">
+    <svg class="lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+  </button>
+  <a class="bar__back" href="./">Back to the job sheet</a>
+</header>
+
+<main id="doc" class="lost">
+  <p class="eyebrow">Error 404 &middot; Sheet not issued</p>
+  <h1>That one is not on the drawing</h1>
+  <p class="stamp">Page not found</p>
+
+  <p>Either the address has a typo in it or we took the page down. Nothing has gone wrong with your end of it. Here is where everything actually lives.</p>
+
+  <ul>
+    <li><a href="./"><b>The drawing and the build</b> <span>Fig. 01, and the same kitchen finished</span></a></li>
+    <li><a href="./#quote"><b>Six things we do</b> <span>Prices before we start</span></a></li>
+    <li><a href="./#work"><b>A year on site</b> <span>Six jobs, 148 days, in drawings</span></a></li>
+    <li><a href="./#how"><b>How a job runs</b> <span>Five steps, start to snagging</span></a></li>
+    <li><a href="./#ask"><b>Ask for a price</b> <span>One working day for a reply</span></a></li>
+    <li><a href="privacy"><b>Privacy policy</b> <span>What this page keeps</span></a></li>
+    <li><a href="terms"><b>Terms and conditions</b> <span>How a quote works</span></a></li>
+  </ul>
+
+  <p style="margin-top:2.2rem">If you were after something specific and cannot find it, ring the workshop on <a href="tel:+441632960118">01632 960118</a> and ask. It is quicker than hunting.</p>
+
+  <a class="back" href="./">Back to the job sheet</a>
+
+  <div class="foot">
+    <p>Whinstone Joinery &amp; Building is a demonstration build by <a href="https://tempanywebstudios.co.uk">Tempany Web Studios</a>. <a href="privacy">Privacy</a> &middot; <a href="terms">Terms</a> &middot; <a href="./">The job sheet</a></p>
+  </div>
+</main>
+
+<script>
+(function () {
+  var btn = document.getElementById('lights');
+  var docEl = document.documentElement;
+  var meta = document.querySelector('meta[name="theme-color"][media*="dark"]');
+  if (!btn) return;
+  function sync() {
+    var light = docEl.getAttribute('data-theme') !== 'dark';
+    btn.setAttribute('aria-pressed', light ? 'true' : 'false');
+    btn.setAttribute('aria-label', light ? 'Turn the lights down' : 'Turn the lights up');
+    if (meta) meta.setAttribute('content', light ? '#F4F0E7' : '#111A26');
+  }
+  btn.addEventListener('click', function () {
+    var dark = docEl.getAttribute('data-theme') === 'dark';
+    docEl.setAttribute('data-theme', dark ? 'light' : 'dark');
+    try { localStorage.setItem('wh-theme', dark ? 'light' : 'dark'); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+</script>
+</body>
+</html>
