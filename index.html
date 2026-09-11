@@ -587,6 +587,7 @@
   var rail = act && act.querySelector('[data-sc-pan]');
   if (!act || !rail) return;
   act.addEventListener('focusin', function (e) {
+    try {
     var card = e.target.closest && e.target.closest('.tw-object, .tw-rail__lead');
     if (!card) return;
     var vw = innerWidth, vh = innerHeight;
@@ -599,8 +600,16 @@
     var p = -want / (over + extra);
     var top = act.getBoundingClientRect().top + scrollY;
     var y = top + p * (act.offsetHeight - vh);
-    scrollTo({ top: y, behavior: 'instant' });
+    // Plain scrollTo with smooth scrolling switched off for the jump. The
+    // {behavior:'instant'} form throws on browsers that predate that enum,
+    // which is exactly the silent failure a keyboard-only audit found.
+    var root = document.documentElement;
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    try { scrollTo(0, y); } finally { root.style.scrollBehavior = prev; }
     rail.style.transform = 'translate3d(' + want.toFixed(2) + 'px,0,0)';
+    dispatchEvent(new Event('scroll'));
+    } catch (err) { /* never let a focus handler take the page down */ }
   });
 })();
 </script>
