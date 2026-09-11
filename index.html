@@ -98,6 +98,7 @@
   .tw-plate--tall { aspect-ratio: 4/5; }
   /* A phone screenshot sits inside the tall plate as a phone, not stretched to fill it. */
   .tw-plate--phone { display:grid; place-items:end center; padding: var(--sc-5) var(--sc-5) 0; }
+  .tw-plate--phone picture { display: contents; }
   .tw-plate--phone img { width: min(62%, 15rem); height: auto; aspect-ratio: 780/1688; border-radius: 18px 18px 0 0; border: 1px solid var(--tw-line-strong); border-bottom: 0; box-shadow: 0 18px 40px -14px hsl(var(--sc-shadow-color) / .95); }
 
   /* ---------- buttons ---------- */
@@ -320,7 +321,10 @@
     <div class="tw-open-act">
       <div>
         <div class="tw-plate tw-plate--wide" data-sc-parallax="0.06">
-          <img src="/images/home/hero-brackenwynd.jpg" alt="The Brackenwynd Hair Studio demonstration site on a laptop screen: a dark page with a large photograph of balayage hair, the service named and priced beside it." width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
+          <picture>
+            <source type="image/webp" srcset="/images/home/hero-brackenwynd-800.webp 800w, /images/home/hero-brackenwynd.webp 1600w" sizes="(min-width: 900px) 54vw, 92vw">
+            <img src="/images/home/hero-brackenwynd.jpg" srcset="/images/home/hero-brackenwynd-800.jpg 800w, /images/home/hero-brackenwynd.jpg 1600w" sizes="(min-width: 900px) 54vw, 92vw" alt="The Brackenwynd Hair Studio demonstration site on a laptop screen: a dark page with a large photograph of balayage hair, the service named and priced beside it." width="1600" height="900" loading="eager" decoding="async" fetchpriority="high">
+          </picture>
           <span class="tw-plate__caption">Latest: Brackenwynd Hair Studio</span>
         </div>
       </div>
@@ -329,7 +333,7 @@
         <h1 id="h1">Hand-built websites for small businesses that need enquiries, not a brochure.</h1>
         <p class="tw-label__facts">Up to five pages &middot; 10 to 14 days &middot; &pound;399, fixed</p>
         <p class="tw-label__who">Designed, written and built by Logan Tempany</p>
-        <p class="tw-lede">Most studios want a call before they will give you a number. I think that is backwards. The whole quote is on this page, the price, the time, what you own and the sites to judge it by, before you have had to ask.</p>
+        <p class="tw-lede">Most studios want a call before they will give you a number. I think that's backwards. The whole quote is on this page, the price, the time, what you own and the sites to judge it by, before you've had to ask.</p>
         <button class="tw-pick" type="button" data-pick data-service="A new website" data-detail="Up to five pages &middot; 10 to 14 days &middot; &pound;399" data-who="">
           <span class="tw-pick__dot" aria-hidden="true"></span> Reply to this quote
         </button>
@@ -343,12 +347,15 @@
       <div class="tw-rail" data-sc-pan="0.07">
         <div class="tw-rail__lead">
           <h2 id="work-h">The work</h2>
-          <p>The first one is a real client's site, live and taking her bookings. The other four are complete demonstrations, one per trade, so you can judge the craft before you commit anything. Shown on a phone, because that is where your customers are. Point at the one nearest your business.</p>
+          <p>The first one is a real client's site, live and taking her bookings. The other four are complete demonstrations, one per trade, so you can judge the craft before you commit anything. Shown on a phone, because that's where your customers are. Point at the one nearest your business.</p>
         </div>
 
         <article class="tw-object tw-object--live">
           <div class="tw-plate tw-plate--tall tw-plate--phone" data-sc-tilt="5">
-            <img src="/images/home/phone-jennifer.jpg" alt="Jennifer Ellis Yoga, a live client site, shown on a phone" width="780" height="1688" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/webp" srcset="/images/home/phone-jennifer-390.webp 390w, /images/home/phone-jennifer.webp 780w" sizes="(max-width: 720px) 45vw, 240px">
+              <img src="/images/home/phone-jennifer.jpg" srcset="/images/home/phone-jennifer-390.jpg 390w, /images/home/phone-jennifer.jpg 780w" sizes="(max-width: 720px) 45vw, 240px" alt="Jennifer Ellis Yoga, a live client site, shown on a phone" width="780" height="1688" loading="lazy" decoding="async">
+            </picture>
           </div>
           <p class="tw-label__flag">Live client site</p>
           <h3 class="tw-label__name">Jennifer Ellis Yoga</h3>
@@ -359,7 +366,10 @@
 
         <article class="tw-object">
           <div class="tw-plate tw-plate--tall tw-plate--phone" data-sc-tilt="5">
-            <img src="/images/home/phone-salon.jpg" alt="Brackenwynd Hair Studio demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/webp" srcset="/images/home/phone-salon-390.webp 390w, /images/home/phone-salon.webp 780w" sizes="(max-width: 720px) 45vw, 240px">
+              <img src="/images/home/phone-salon.jpg" srcset="/images/home/phone-salon-390.jpg 390w, /images/home/phone-salon.jpg 780w" sizes="(max-width: 720px) 45vw, 240px" alt="Brackenwynd Hair Studio demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
+            </picture>
           </div>
           <h3 class="tw-label__name">Brackenwynd Hair Studio</h3>
           <p class="tw-label__facts">Salon &middot; every look priced, every stylist named</p>
@@ -369,7 +379,10 @@
 
         <article class="tw-object">
           <div class="tw-plate tw-plate--tall tw-plate--phone" data-sc-tilt="5">
-            <img src="/images/home/phone-trades.jpg" alt="Whinstone Joinery demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/webp" srcset="/images/home/phone-trades-390.webp 390w, /images/home/phone-trades.webp 780w" sizes="(max-width: 720px) 45vw, 240px">
+              <img src="/images/home/phone-trades.jpg" srcset="/images/home/phone-trades-390.jpg 390w, /images/home/phone-trades.jpg 780w" sizes="(max-width: 720px) 45vw, 240px" alt="Whinstone Joinery demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
+            </picture>
           </div>
           <h3 class="tw-label__name">Whinstone Joinery</h3>
           <p class="tw-label__facts">Trades &middot; proof of the work up front</p>
@@ -379,7 +392,10 @@
 
         <article class="tw-object">
           <div class="tw-plate tw-plate--tall tw-plate--phone" data-sc-tilt="5">
-            <img src="/images/home/phone-clinic.jpg" alt="Rowanbank Physiotherapy demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/webp" srcset="/images/home/phone-clinic-390.webp 390w, /images/home/phone-clinic.webp 780w" sizes="(max-width: 720px) 45vw, 240px">
+              <img src="/images/home/phone-clinic.jpg" srcset="/images/home/phone-clinic-390.jpg 390w, /images/home/phone-clinic.jpg 780w" sizes="(max-width: 720px) 45vw, 240px" alt="Rowanbank Physiotherapy demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
+            </picture>
           </div>
           <h3 class="tw-label__name">Rowanbank Physiotherapy</h3>
           <p class="tw-label__facts">Clinic &middot; session pricing in the open</p>
@@ -389,7 +405,10 @@
 
         <article class="tw-object">
           <div class="tw-plate tw-plate--tall tw-plate--phone" data-sc-tilt="5">
-            <img src="/images/home/phone-professional.jpg" alt="Ochil Ledger accountancy demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
+            <picture>
+              <source type="image/webp" srcset="/images/home/phone-professional-390.webp 390w, /images/home/phone-professional.webp 780w" sizes="(max-width: 720px) 45vw, 240px">
+              <img src="/images/home/phone-professional.jpg" srcset="/images/home/phone-professional-390.jpg 390w, /images/home/phone-professional.jpg 780w" sizes="(max-width: 720px) 45vw, 240px" alt="Ochil Ledger accountancy demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
+            </picture>
           </div>
           <h3 class="tw-label__name">Ochil Ledger</h3>
           <p class="tw-label__facts">Accountancy &middot; a full fee table</p>
@@ -401,7 +420,7 @@
         <article class="tw-object">
           <div class="tw-plate tw-plate--tall" data-sc-tilt="5" style="display:grid;align-content:end;padding:var(--sc-5)">
             <p class="tw-label__eyebrow" style="margin:0 0 .5rem">Not your trade?</p>
-            <p style="margin:0;color:var(--sc-ink);font-family:var(--sc-font-display);font-weight:600;font-size:var(--sc-t-lg);line-height:1.15;letter-spacing:var(--sc-track-snug)">Tell me what you do and I will rough out the top of your homepage first, for nothing, before you commit to anything.</p>
+            <p style="margin:0;color:var(--sc-ink);font-family:var(--sc-font-display);font-weight:600;font-size:var(--sc-t-lg);line-height:1.15;letter-spacing:var(--sc-track-snug)">Tell me what you do and I'll rough out the top of your homepage first, for nothing, before you commit to anything.</p>
           </div>
           <h3 class="tw-label__name">Your business</h3>
           <p class="tw-label__facts">Any trade &middot; the first screen, free</p>
@@ -416,14 +435,14 @@
   <section id="quote" class="sc-section" data-sc-act="flow" data-tw-ground aria-labelledby="quote-h">
     <div class="tw-quote" data-sc-in data-sc-stagger="60">
       <h2 id="quote-h">The quote</h2>
-      <p class="tw-quote__intro">A site that just looks nice is not doing its job. If a price is not confident enough to put in writing, something is wrong with the price. So here is the whole thing, built to get people to actually pick up the phone.</p>
+      <p class="tw-quote__intro">A site that just looks nice isn't doing its job. If a price isn't confident enough to put in writing, something is wrong with the price. So here is the whole thing, built to get people to actually pick up the phone.</p>
 
       <div class="tw-clause">
         <span class="tw-clause__num">01</span>
         <div>
           <h3>The price</h3>
           <p class="tw-figure">&pound;399<small>fixed</small></p>
-          <p><strong>&pound;200 to start, &pound;199 when you approve it.</strong> Nothing else added afterwards unless you ask for it. No VAT, because I am not registered for it.</p>
+          <p><strong>&pound;200 to start, &pound;199 when you approve it.</strong> Nothing else added afterwards unless you ask for it. No VAT, because I'm not registered for it.</p>
           <div class="tw-line"><span>Already have a site that just needs fixed?</span><strong>&pound;95 audit</strong></div>
           <p style="font-size:var(--sc-t-xs);margin-top:.5rem">Credited against a rebuild, and sometimes the honest answer is a few changes rather than a new site.</p>
         </div>
@@ -434,7 +453,7 @@
         <div>
           <h3>The time</h3>
           <p class="tw-figure">10&ndash;14<small>days</small></p>
-          <p>From a proper brief to the site being live, as long as you are quick to reply along the way. The clock pauses while I am waiting on content or a decision, and starts again when it arrives. If a job genuinely needs more than five pages, I will say so before we start, not after.</p>
+          <p>From a proper brief to the site being live, as long as you're quick to reply along the way. The clock pauses while I'm waiting on content or a decision, and starts again when it arrives. If a job genuinely needs more than five pages, I'll say so before we start, not after.</p>
         </div>
       </div>
 
@@ -451,7 +470,7 @@
         <span class="tw-clause__num">04</span>
         <div>
           <h3>What you own</h3>
-          <p>Your domain, your hosting, your code, in your name from day one. Leave whenever you like, for me or for anyone else, and the site keeps working exactly as it did the day before. I do not build anything that only I can maintain, so if I am ever ill, busy, or stop doing this altogether, you lose nothing, because none of it depends on me.</p>
+          <p>Your domain, your hosting, your code, in your name from day one. Leave whenever you like, for me or for anyone else, and the site keeps working exactly as it did the day before. I don't build anything that only I can maintain, so if I'm ever ill, busy, or stop doing this altogether, you lose nothing, because none of it depends on me.</p>
         </div>
       </div>
 
@@ -459,19 +478,19 @@
         <span class="tw-clause__num">05</span>
         <div>
           <h3>After launch</h3>
-          <p>Small text and photo changes are free for 30 days. After that it is <strong>&pound;25 an hour</strong>, billed in half-hour steps, nothing rounded up. No monthly fee, no contract, no obligation to ever come back.</p>
+          <p>Small text and photo changes are free for 30 days. After that it's <strong>&pound;25 an hour</strong>, billed in half-hour steps, nothing rounded up. No monthly fee, no contract, no obligation to ever come back.</p>
         </div>
       </div>
 
       <div class="tw-clause">
         <span class="tw-clause__num">06</span>
         <div>
-          <h3>When five pages is not the job</h3>
+          <h3>When five pages isn't the job</h3>
           <p>Some businesses need the site to do something, not just say something. I build those on the same hand-coded stack, and each one is added on top of the &pound;399 as its own line, not hidden inside it. <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer" style="color:var(--sc-ink)">Jennifer Ellis Yoga</a> is the first one in practice: a booking calendar that holds the slot, and an admin page she updates herself.</p>
           <div class="tw-line"><span>Booking with live availability and an admin page you control</span><strong>from &pound;350</strong></div>
           <div class="tw-line"><span>Card payment taken at the point of booking</span><strong>from &pound;120</strong></div>
           <div class="tw-line"><span>Each page beyond the first five</span><strong>&pound;45</strong></div>
-          <p style="font-size:var(--sc-t-xs);margin-top:.6rem">So a five-page site that takes bookings starts at &pound;749, the &pound;399 plus the &pound;350. If your job does not need any of it, do not buy any of it.</p>
+          <p style="font-size:var(--sc-t-xs);margin-top:.6rem">So a five-page site that takes bookings starts at &pound;749, the &pound;399 plus the &pound;350. If your job doesn't need any of it, don't buy any of it.</p>
         </div>
       </div>
 
@@ -483,7 +502,7 @@
             <dt>What happens after I get in touch?</dt>
             <dd>I look at your business, and your current site if you have one, then reply with an honest recommendation and the real scope, before anything is agreed.</dd>
             <dt>Is &pound;399 really the price for every project?</dt>
-            <dd>For the standard scope above, yes. If your business needs something bigger, I will say so and give you the real number before any work starts, never after.</dd>
+            <dd>For the five-page site, yes, and it's the only number you pay unless you ask for one of the add-ons in 06: booking, card payment or extra pages. Those are the only other prices on this page, each is optional, and each is quoted before anything starts. If your business needs something bigger than that, I'll say so and give you the real number before any work starts, never after.</dd>
             <dt>Who else has bought one?</dt>
             <dd><a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer" style="color:var(--sc-ink)">Jennifer Ellis Yoga</a> was the first: paid for, live on her own domain, and taking bookings through the site. Two more local businesses have sites in progress with me.</dd>
           </dl>
@@ -496,9 +515,9 @@
   <section id="me" class="sc-section" data-sc-act="reveal" data-tw-ground aria-labelledby="me-h">
     <div class="tw-me">
       <div class="tw-me__inner" data-sc-reveal="up" data-sc-reveal-at="0.1 0.55">
-        <h2 id="me-h">It is just me.</h2>
-        <p>I am Logan Tempany, and I design, write and build every site myself, in Dollar. No account manager, no handoff to a junior partway through, no agency chain between you and the person doing the work. If something needs changed, you email me directly and I do it.</p>
-        <p>That is the whole quote. No follow-up call needed to get the real number, because you have just read it.</p>
+        <h2 id="me-h">It's just me.</h2>
+        <p>I'm Logan Tempany, and I design, write and build every site myself, in Dollar. No account manager, no handoff to a junior partway through, no agency chain between you and the person doing the work. If something needs changed, you email me directly and I do it.</p>
+        <p>That's the whole quote. No follow-up call needed to get the real number, because you've just read it.</p>
         <p class="tw-sign">Logan Tempany</p>
         <p>Tempany Web Studios</p>
       </div>
@@ -548,7 +567,7 @@
       <div class="tw-foot">
         <p>Logan Tempany trading as Tempany Web Studios &middot; Dollar, Scotland &middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a> &middot; <a href="tel:+447487536649">07487 536649</a></p>
         <p><a href="/privacy/">Privacy notice</a> &middot; <a href="/privacy/#complaints">Complaints</a> &middot; <a href="/terms/">Service terms</a> &middot; <a href="/privacy/#cookies">Cookies</a></p>
-        <p style="margin-top:var(--sc-4)">Jennifer Ellis Yoga is a real client site, shown with her permission. The four demonstration sites are not: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
+        <p style="margin-top:var(--sc-4)">Jennifer Ellis Yoga is a real client site, shown with her permission. The four demonstration sites aren't: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
       </div>
     </div>
   </section>
@@ -557,6 +576,34 @@
 
 <script src="scrollcraft.js"></script>
 <script>ScrollCraft.mount(document.body);</script>
+<script>
+/* Keyboard focus in the work rail. The rail is moved by a transform the
+   engine derives from scroll position, so a Tab into an off-screen card
+   focuses a link the reader cannot see. Invert the engine's mapping
+   (translateX = -(over + extra) * p, p = (y - top) / (height - vh)) and scroll
+   the page to the position that centres the focused card. */
+(function () {
+  var act = document.querySelector('[data-sc-act="pan"]');
+  var rail = act && act.querySelector('[data-sc-pan]');
+  if (!act || !rail) return;
+  act.addEventListener('focusin', function (e) {
+    var card = e.target.closest && e.target.closest('.tw-object, .tw-rail__lead');
+    if (!card) return;
+    var vw = innerWidth, vh = innerHeight;
+    var over = rail.scrollWidth - vw;
+    if (over <= 0) return;
+    var extra = over * (parseFloat(rail.getAttribute('data-sc-pan')) || 0);
+    var want = -(card.offsetLeft + card.offsetWidth / 2 - vw / 2);
+    var lo = -(over + extra);
+    if (want < lo) want = lo; if (want > 0) want = 0;
+    var p = -want / (over + extra);
+    var top = act.getBoundingClientRect().top + scrollY;
+    var y = top + p * (act.offsetHeight - vh);
+    scrollTo({ top: y, behavior: 'instant' });
+    rail.style.transform = 'translate3d(' + want.toFixed(2) + 'px,0,0)';
+  });
+})();
+</script>
 <script>
 /* The ground. scrollcraft's data-sc-drift writes --sc-canvas inline on <html>
    from a list parsed once at mount, which would repaint a light page dark on
