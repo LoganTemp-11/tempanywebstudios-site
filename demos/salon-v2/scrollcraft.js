@@ -1170,6 +1170,42 @@
       if (!el || !el.closest) return;
       var act = el.closest('[data-sc-act]');
       if (!act || !root.contains(act)) return;
+      // A panning act moves its rail by a transform derived from scroll, so a
+      // Tab into an off-screen item focuses a control nobody can see. Invert
+      // the mapping (translateX = -(over + extra) * p, p = (y - top) /
+      // (height - vh)) and scroll the page to the position that centres the
+      // item. Under reduced motion the rail is not transformed and the stage
+      // is a horizontal scroller, so scroll the stage sideways instead.
+      if (act.getAttribute('data-sc-act') === 'pan') {
+        var rail = act.querySelector('[data-sc-pan]');
+        var item = el;
+        while (item && item.parentElement && item.parentElement !== rail) item = item.parentElement;
+        if (rail && item && item.parentElement === rail) {
+          var vw0 = innerWidth, vh0 = innerHeight;
+          var stage = rail.closest('[data-sc-stage], .sc-stage') || rail.parentElement;
+          var rootEl = document.documentElement, prevSB = rootEl.style.scrollBehavior;
+          rootEl.style.scrollBehavior = 'auto';
+          try {
+            if (reduce || getComputedStyle(rail).transform === 'none') {
+              scrollTo(0, act.getBoundingClientRect().top + scrollY);
+              stage.scrollLeft = Math.max(0, item.offsetLeft + item.offsetWidth / 2 - vw0 / 2);
+            } else {
+              var over0 = rail.scrollWidth - vw0;
+              if (over0 > 0) {
+                var extra0 = over0 * (parseFloat(rail.getAttribute('data-sc-pan')) || 0);
+                var want = -(item.offsetLeft + item.offsetWidth / 2 - vw0 / 2);
+                if (want < -(over0 + extra0)) want = -(over0 + extra0);
+                if (want > 0) want = 0;
+                var pp0 = -want / (over0 + extra0);
+                var top0 = act.getBoundingClientRect().top + scrollY;
+                scrollTo(0, top0 + pp0 * (act.offsetHeight - vh0));
+                rail.style.transform = 'translate3d(' + want.toFixed(2) + 'px,0,0)';
+              }
+            }
+          } catch (err) {} finally { rootEl.style.scrollBehavior = prevSB; }
+          return;
+        }
+      }
       var cue = el.closest('[data-sc-cue]');
       if (!cue) return;
       if (parseFloat(getComputedStyle(cue).opacity || '1') > 0.85) return;

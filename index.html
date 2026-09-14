@@ -124,6 +124,10 @@
   @media (min-width: 900px) { .tw-open-act { grid-template-columns: 1.2fr 1fr; padding-top: var(--sc-10); } }
   .tw-open-act h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: clamp(1.9rem, 1.3rem + 1.7vw, 2.75rem); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-3); text-wrap: balance; }
   .tw-open-act .tw-lede { color: var(--sc-ink-soft); max-width: 36ch; margin: var(--sc-4) 0 0; text-wrap: pretty; }
+  .tw-hero-said { margin: var(--sc-5) 0 0; max-width: 36ch; padding-left: var(--sc-4); border-left: 2px solid var(--sc-accent); font-size: var(--sc-t-sm); color: var(--sc-ink-soft); text-wrap: pretty; }
+  .tw-hero-said q { color: var(--sc-ink); quotes: "\201C" "\201D"; }
+  .tw-hero-said a { display: block; margin-top: .35rem; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; margin: -10px 0; }
+  .tw-hero-said a:hover { color: var(--sc-ink); }
   .tw-plate__caption { position:absolute; left: var(--sc-4); bottom: var(--sc-4); z-index:2; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink); background: color-mix(in srgb, var(--sc-canvas) 78%, transparent); padding:.45rem .7rem; border-radius: var(--sc-r-sm); backdrop-filter: blur(8px); }
 
   /* ---------- act 2: the rail ---------- */
@@ -276,16 +280,68 @@
   "url": "https://tempanywebstudios.co.uk/",
   "email": "logan@tempanywebstudios.co.uk",
   "telephone": "+447487536649",
-  "founder": { "@type": "Person", "name": "Logan Tempany" },
+  "founder": {
+    "@type": "Person",
+    "name": "Logan Tempany"
+  },
   "description": "Hand-built websites for small businesses that need enquiries, not a brochure.",
-  "areaServed": ["Clackmannanshire", "Stirling", "Falkirk", "Scotland", "United Kingdom"],
-  "address": { "@type": "PostalAddress", "addressLocality": "Dollar", "addressRegion": "Clackmannanshire", "addressCountry": "GB" },
+  "areaServed": [
+    "Clackmannanshire",
+    "Stirling",
+    "Falkirk",
+    "Scotland",
+    "United Kingdom"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dollar",
+    "addressRegion": "Clackmannanshire",
+    "addressCountry": "GB"
+  },
   "makesOffer": [
-    { "@type": "Offer", "name": "New website — up to five pages", "price": "399", "priceCurrency": "GBP" },
-    { "@type": "Offer", "name": "Website audit, credited to a build", "price": "95", "priceCurrency": "GBP" },
-    { "@type": "Offer", "name": "Booking system with live availability and admin page", "price": "350", "priceCurrency": "GBP" },
-    { "@type": "Offer", "name": "Card payment at point of booking", "price": "120", "priceCurrency": "GBP" }
-  ]
+    {
+      "@type": "Offer",
+      "name": "New website — up to five pages",
+      "price": "399",
+      "priceCurrency": "GBP"
+    },
+    {
+      "@type": "Offer",
+      "name": "Website audit, credited to a build",
+      "price": "95",
+      "priceCurrency": "GBP"
+    },
+    {
+      "@type": "Offer",
+      "name": "Booking system with live availability and admin page",
+      "price": "350",
+      "priceCurrency": "GBP"
+    },
+    {
+      "@type": "Offer",
+      "name": "Card payment at point of booking",
+      "price": "120",
+      "priceCurrency": "GBP"
+    }
+  ],
+  "review": {
+    "@type": "Review",
+    "author": {
+      "@type": "Person",
+      "name": "Jennifer Ellis"
+    },
+    "datePublished": "2026-09-14",
+    "reviewBody": "I had a sense of what I wanted for my website and, from our first meeting, Logan listened carefully, confirming via email his understanding of what I wanted. He then created a site with the functionality I needed, while also patiently explaining what wasn't possible to a website novice like me. He managed to capture the tone and vibe that was important to me, and I am so impressed by that. He replied quickly to emails and made any changes that I requested. I recommend Logan and Tempany Web Studios highly.",
+    "itemReviewed": {
+      "@type": "ProfessionalService",
+      "name": "Tempany Web Studios"
+    },
+    "about": {
+      "@type": "WebSite",
+      "name": "Yoga with Jennifer Ellis",
+      "url": "https://yogawithjenniferellis.co.uk/"
+    }
+  }
 }
 </script>
 </head>
@@ -345,6 +401,7 @@
         <button class="tw-pick" type="button" data-pick data-service="A new website" data-detail="Up to five pages &middot; 10 to 14 days &middot; &pound;399" data-who="">
           <span class="tw-pick__dot" aria-hidden="true"></span> Reply to this quote
         </button>
+        <p class="tw-hero-said"><q>He managed to capture the tone and vibe that was important to me.</q> <a href="#said">Jennifer Ellis, the first client</a></p>
       </div>
     </div>
   </section>
@@ -597,55 +654,6 @@
 
 <script src="scrollcraft.js"></script>
 <script>ScrollCraft.mount(document.body);</script>
-<script>
-/* Keyboard focus in the work rail. The rail is moved by a transform the
-   engine derives from scroll position, so a Tab into an off-screen card
-   focuses a link the reader cannot see. Invert the engine's mapping
-   (translateX = -(over + extra) * p, p = (y - top) / (height - vh)) and scroll
-   the page to the position that centres the focused card. */
-(function () {
-  var act = document.querySelector('[data-sc-act="pan"]');
-  var rail = act && act.querySelector('[data-sc-pan]');
-  if (!act || !rail) return;
-  act.addEventListener('focusin', function (e) {
-    try {
-    var card = e.target.closest && e.target.closest('.tw-object, .tw-rail__lead');
-    if (!card) return;
-    var vw = innerWidth, vh = innerHeight;
-    var stage = rail.closest('[data-sc-stage], .sc-stage') || rail.parentElement;
-    var root = document.documentElement;
-    var prev = root.style.scrollBehavior;
-    // Under reduced motion the engine zeroes the rail transform and the stage
-    // becomes an ordinary horizontal scroller, so the card is reached by
-    // scrolling the stage sideways, not by moving the page to a pan position.
-    if (getComputedStyle(rail).transform === 'none' || matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      root.style.scrollBehavior = 'auto';
-      try {
-        scrollTo(0, act.getBoundingClientRect().top + scrollY);
-        stage.scrollLeft = Math.max(0, card.offsetLeft + card.offsetWidth / 2 - vw / 2);
-      } finally { root.style.scrollBehavior = prev; }
-      return;
-    }
-    var over = rail.scrollWidth - vw;
-    if (over <= 0) return;
-    var extra = over * (parseFloat(rail.getAttribute('data-sc-pan')) || 0);
-    var want = -(card.offsetLeft + card.offsetWidth / 2 - vw / 2);
-    var lo = -(over + extra);
-    if (want < lo) want = lo; if (want > 0) want = 0;
-    var p = -want / (over + extra);
-    var top = act.getBoundingClientRect().top + scrollY;
-    var y = top + p * (act.offsetHeight - vh);
-    // Plain scrollTo with smooth scrolling switched off for the jump. The
-    // {behavior:'instant'} form throws on browsers that predate that enum,
-    // which is exactly the silent failure a keyboard-only audit found.
-    root.style.scrollBehavior = 'auto';
-    try { scrollTo(0, y); } finally { root.style.scrollBehavior = prev; }
-    rail.style.transform = 'translate3d(' + want.toFixed(2) + 'px,0,0)';
-    dispatchEvent(new Event('scroll'));
-    } catch (err) { /* never let a focus handler take the page down */ }
-  });
-})();
-</script>
 <script>
 /* The ground. scrollcraft's data-sc-drift writes --sc-canvas inline on <html>
    from a list parsed once at mount, which would repaint a light page dark on
