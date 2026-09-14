@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Web design in Stirling, from &pound;399 | Tempany Web Studios</title>
+<meta name="description" content="Hand-built websites for small businesses in Stirling and Bridge of Allan, from Dollar, twelve miles away. &pound;399 fixed, up to five pages, 10 to 14 days.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/web-design-stirling/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#141210">
+<meta property="og:title" content="Web design in Stirling, from &pound;399">
+<meta property="og:description" content="Hand-built websites for small businesses in Stirling and Bridge of Allan, from Dollar, twelve miles away. &pound;399 fixed, up to five pages, 10 to 14 days.">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/web-design-stirling/">
+<meta property="og:site_name" content="Tempany Web Studios">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/tempany-web-studios-share.png">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-700-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css">
+<script>
+/* Resolve the theme before the first paint so the page never flashes the
+   wrong ground. Dark by default, remembered per browser under the same key
+   the old homepage used, so anyone who chose light before still gets light. */
+(function () {
+  var t = 'dark';
+  try { t = localStorage.getItem('tws-theme') || 'dark'; } catch (e) {}
+  document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+})();
+</script>
+<link rel="stylesheet" href="/scrollcraft.min.css?v=3">
+<style>
+  :root {
+    /* The brand's own ink and paper, with the room lights off. Rust is
+       brightened one step so it still reads on the dark ground. */
+    --sc-canvas:     #141210;
+    --sc-surface:    #1d1a15;
+    --sc-ink:        #efe9dd;
+    --sc-ink-soft:   #a69d8a;
+    --sc-accent:     #d46a41;
+    --sc-accent-ink: #141210;
+    --sc-font-display: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --sc-font-text:    "Geist", "Helvetica Neue", Arial, sans-serif;
+    --sc-font-mono:    "Geist Mono", ui-monospace, monospace;
+    --sc-shadow-color: 36 30% 3%;
+
+    --tw-glass: #221e18;
+    --tw-line:  rgba(239,233,221,.14);
+    --tw-line-strong: rgba(239,233,221,.28);
+  }
+
+  .skip { position:absolute; left:-9999px; top:0; background:var(--sc-accent); color:var(--sc-accent-ink); padding:12px 20px; z-index:100; }
+  .skip:focus { left:0; }
+
+  /* ---------- the index: fixed to the foot, jumps rather than markets ---------- */
+  .tw-index {
+    position: fixed; inset: auto 0 0 0; z-index: var(--sc-z-chrome);
+    display: flex; align-items: center; gap: var(--sc-4);
+    padding: var(--sc-3) var(--sc-gutter);
+    padding-bottom: max(var(--sc-3), env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--sc-canvas) 88%, transparent);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--tw-line);
+    font-family: var(--sc-font-mono);
+    font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide);
+    text-transform: uppercase;
+  }
+  .tw-index__mark { display:inline-flex; align-items:center; gap:.6rem; font-family: var(--sc-font-display); font-weight: 700; letter-spacing: -.01em; text-transform: none; font-size: var(--sc-t-base); text-decoration:none; color:var(--sc-ink); min-height:44px; }
+  .tw-index__mark svg { width:26px; height:26px; transform: rotate(-3deg); }
+  .tw-index__list { display: flex; gap: var(--sc-4); margin: 0 0 0 auto; list-style: none; padding: 0; align-items:center; }
+  .tw-index a { color: var(--sc-ink-soft); text-decoration: none; display:inline-flex; align-items:center; min-height:44px; }
+  .tw-index a:hover { color: var(--sc-ink); }
+  .tw-index__ask { color: var(--sc-accent-ink) !important; background: var(--sc-accent); padding: 0 1rem; border-radius: var(--sc-r-pill); font-weight: 500; }
+  @media (max-width: 720px) { .tw-index__list li:not(:last-child) { display: none; } .tw-index__mark span { display:none; } }
+
+  /* ---------- the label schema, borrowed from the salon: name, facts, who ---------- */
+  .tw-label__eyebrow { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0 0 var(--sc-3); }
+  .tw-label__name { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-xl); line-height: 1.04; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-2); text-wrap: balance; }
+  .tw-label__facts { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin: 0 0 var(--sc-2); font-variant-numeric: tabular-nums; }
+  .tw-label__who { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0; }
+
+  /* ---------- the plate ---------- */
+  .tw-plate {
+    position: relative; overflow: hidden; border-radius: var(--sc-r-md);
+    background:
+      linear-gradient(118deg, var(--tw-plate-a) 0%, rgba(255,255,255,0) 34%),
+      linear-gradient(200deg, var(--tw-plate-b) 0%, var(--tw-plate-c) 58%, var(--tw-plate-d) 100%);
+    box-shadow: 0 24px 60px -28px var(--tw-plate-shadow);
+  }
+  .tw-plate::after { content:""; position:absolute; inset:0; border:1px solid var(--tw-line); border-radius: inherit; pointer-events:none; }
+  .tw-plate img { display:block; width:100%; height:100%; object-fit: cover; object-position: top; }
+  .tw-plate--wide { aspect-ratio: 16/9; }
+  .tw-plate--tall { aspect-ratio: 4/5; }
+  /* A phone screenshot sits inside the tall plate as a phone, not stretched to fill it. */
+  .tw-plate--phone { display:grid; place-items:end center; padding: var(--sc-5) var(--sc-5) 0; }
+  .tw-plate--phone img { width: min(62%, 15rem); height: auto; aspect-ratio: 780/1688; border-radius: 18px 18px 0 0; border: 1px solid var(--tw-line-strong); border-bottom: 0; box-shadow: 0 18px 40px -14px hsl(var(--sc-shadow-color) / .95); }
+
+  /* ---------- buttons ---------- */
+  .tw-pick, .tw-open {
+    display: inline-flex; align-items: center; gap: .5rem;
+    margin-top: var(--sc-3); padding: .6rem 1rem; min-height:44px;
+    background: transparent; color: var(--sc-ink);
+    border: 1px solid var(--tw-line-strong); border-radius: var(--sc-r-pill);
+    font: 500 var(--sc-t-xs)/1 var(--sc-font-mono); letter-spacing: var(--sc-track-wide); text-transform: uppercase;
+    cursor: pointer; text-decoration:none;
+    transition: background var(--sc-d-fast) var(--sc-ease-out), color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .tw-open { margin-right: .5rem; }
+  @media (hover: hover) and (pointer: fine) {
+    .tw-pick:hover { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
+    .tw-open:hover { border-color: var(--sc-ink); }
+  }
+  .tw-pick:active, .tw-open:active { transform: translateY(1px); }
+  .tw-pick__dot { width: .42rem; height: .42rem; border-radius: 50%; background: var(--sc-accent); }
+
+  /* ---------- act 1: the opening plate ---------- */
+  .tw-open-act { display: grid; gap: var(--sc-7); align-items: end; padding: var(--sc-9) var(--sc-gutter) var(--sc-8); max-width: var(--sc-maxw); margin-inline:auto; }
+  @media (min-width: 900px) { .tw-open-act { grid-template-columns: 1.2fr 1fr; padding-top: var(--sc-10); } }
+  .tw-open-act h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: clamp(1.9rem, 1.3rem + 1.7vw, 2.75rem); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-3); text-wrap: balance; }
+  .tw-open-act .tw-lede { color: var(--sc-ink-soft); max-width: 36ch; margin: var(--sc-4) 0 0; text-wrap: pretty; }
+  .tw-plate__caption { position:absolute; left: var(--sc-4); bottom: var(--sc-4); z-index:2; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink); background: color-mix(in srgb, var(--sc-canvas) 78%, transparent); padding:.45rem .7rem; border-radius: var(--sc-r-sm); backdrop-filter: blur(8px); }
+
+  /* ---------- act 2: the rail ---------- */
+  .tw-rail { display: flex; gap: var(--sc-6); align-items: flex-end; padding-inline: var(--sc-gutter); }
+  .tw-rail__lead { flex: 0 0 min(30ch, 68vw); }
+  .tw-rail__lead h2, .tw-quote > h2, .tw-ask h2, .tw-me h2 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-3); text-wrap: balance; }
+  .tw-rail__lead p { color: var(--sc-ink-soft); margin: 0; }
+  .tw-object { flex: 0 0 min(30ch, 72vw); }
+  .tw-object .tw-plate { margin-bottom: var(--sc-4); }
+  .tw-object .tw-label__name { font-size: var(--sc-t-lg); }
+
+  /* ---------- act 3: the quote, the one act that reads like a document ---------- */
+  .tw-quote { max-width: var(--sc-maxw); margin-inline:auto; padding: var(--sc-section) var(--sc-gutter); display:grid; gap: var(--sc-6); }
+  @media (min-width: 900px) { .tw-quote { grid-template-columns: repeat(2, 1fr); gap: var(--sc-7) var(--sc-8); } }
+  .tw-quote > h2 { grid-column: 1 / -1; margin:0; }
+  .tw-quote__intro { grid-column: 1 / -1; color: var(--sc-ink-soft); max-width: 62ch; margin: 0; text-wrap: pretty; }
+  .tw-clause { display:grid; grid-template-columns: 2.6rem 1fr; gap: var(--sc-4); align-items:start; padding-top: var(--sc-4); border-top: 1px solid var(--tw-line); }
+  .tw-clause--wide { grid-column: 1 / -1; }
+  .tw-clause__num { font-family: var(--sc-font-mono); color: var(--sc-accent); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); padding-top:.45rem; }
+  .tw-clause h3 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); margin: 0 0 .5rem; letter-spacing: var(--sc-track-snug); }
+  .tw-clause p { margin: 0 0 var(--sc-3); color: var(--sc-ink-soft); max-width: 52ch; text-wrap: pretty; }
+  .tw-clause p:last-child { margin-bottom:0; }
+  .tw-clause strong { color: var(--sc-ink); font-weight:600; }
+  .tw-figure { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); line-height: .95; letter-spacing: var(--sc-track-tight); color: var(--sc-ink); margin: .2rem 0 .6rem; font-variant-numeric: tabular-nums; }
+  .tw-figure small { font-family: var(--sc-font-mono); font-weight: 400; font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); margin-left: .6rem; vertical-align: .9em; }
+  .tw-line { display:flex; justify-content:space-between; gap: var(--sc-4); align-items:baseline; padding: .55rem 0; border-bottom: 1px dashed var(--tw-line); font-size: var(--sc-t-sm); color: var(--sc-ink-soft); }
+  .tw-line:last-of-type { border-bottom:0; }
+  .tw-line strong { font-family: var(--sc-font-mono); font-weight: 500; color: var(--sc-ink); white-space:nowrap; font-variant-numeric: tabular-nums; }
+  .tw-qa dt { font-weight: 600; color: var(--sc-ink); margin: 0 0 .25rem; }
+  .tw-qa dd { margin: 0 0 var(--sc-4); color: var(--sc-ink-soft); max-width: 52ch; text-wrap: pretty; }
+  .tw-qa dd:last-child { margin-bottom:0; }
+
+  /* ---------- act 4: just me. authored silence ---------- */
+  .tw-me { min-height: 62vh; display: grid; align-content: center; padding: var(--sc-section) var(--sc-gutter); max-width: var(--sc-maxw); margin-inline:auto; }
+  .tw-me__inner { max-width: 48ch; padding-top: var(--sc-5); border-top: 1px solid var(--tw-line-strong); }
+  .tw-me__inner::before { content:""; display:block; width:2.5rem; height:2px; background: var(--sc-accent); margin: 0 0 var(--sc-5); transform: translateY(calc(-1 * var(--sc-5) - 1px)); }
+  .tw-me h2 { font-size: var(--sc-t-xl); line-height: 1.06; margin-bottom: var(--sc-4); }
+  .tw-me p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-3); text-wrap: pretty; }
+  .tw-sign { font-family: "Newsreader", Georgia, serif; font-style: italic; font-weight: 500; font-size: var(--sc-t-xl); color: var(--sc-ink); margin: var(--sc-5) 0 0; line-height:1; }
+  .tw-sign + p { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin-top:.5rem; }
+
+  /* ---------- act 5: the reply ---------- */
+  .tw-ask { width: min(60ch, 100%); margin-inline: auto; padding: var(--sc-gutter); }
+  .tw-ask__lead { color: var(--sc-ink-soft); margin: 0 0 var(--sc-5); text-wrap: pretty; }
+  .tw-ask__lead a { color: var(--sc-ink); display:inline-block; padding: 10px 2px; margin: -10px -2px; }
+  .tw-chosen { border: 1px solid var(--tw-line); border-radius: var(--sc-r-md); background: var(--tw-glass); padding: var(--sc-4); margin-bottom: var(--sc-5); }
+  .tw-chosen[hidden] { display:none !important; }
+  .tw-chosen__eyebrow { font-family: var(--sc-font-mono); color: var(--sc-accent); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0 0 var(--sc-2); }
+  .tw-chosen p { margin:0; }
+  .tw-chosen .tw-label__name { font-size: var(--sc-t-lg); }
+  .tw-field { display: block; margin-bottom: var(--sc-4); }
+  .tw-field > span { display: block; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); margin-bottom: .5rem; }
+  .tw-field > span em { font-style: normal; text-transform: none; letter-spacing: normal; opacity:.7; }
+  .tw-field input, .tw-field select, .tw-field textarea {
+    width: 100%; padding: .85rem 1rem; color: var(--sc-ink);
+    background: var(--sc-canvas); border: 1px solid var(--tw-line); border-radius: var(--sc-r-sm);
+    font: 400 max(16px, var(--sc-t-base))/1.4 var(--sc-font-text);
+  }
+  .tw-field textarea { resize: vertical; min-height: 7rem; }
+  .tw-field select { appearance:none; -webkit-appearance:none; background-image: linear-gradient(45deg, transparent 50%, var(--sc-ink-soft) 50%), linear-gradient(135deg, var(--sc-ink-soft) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat:no-repeat; padding-right: 2.6rem; }
+  .tw-field input:focus-visible, .tw-field select:focus-visible, .tw-field textarea:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; border-color: var(--sc-accent); }
+  .tw-row { display:grid; gap: 0 var(--sc-4); }
+  @media (min-width: 620px) { .tw-row { grid-template-columns: 1fr 1fr; } }
+  .tw-honeypot { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .tw-submit {
+    width: 100%; min-height: 52px; padding: 1rem 1.4rem;
+    background: var(--sc-accent); color: var(--sc-accent-ink); border: 0; border-radius: var(--sc-r-pill);
+    font: 600 var(--sc-t-base)/1 var(--sc-font-display); letter-spacing: var(--sc-track-snug); cursor: pointer;
+    transition: transform var(--sc-d-fast) var(--sc-ease-out), filter var(--sc-d-fast) var(--sc-ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) { .tw-submit:hover { filter: brightness(1.06); } }
+  .tw-submit:active { transform: translateY(1px); }
+  .tw-submit:disabled { opacity:.6; cursor: default; }
+  .tw-status { min-height:1.4em; margin: var(--sc-3) 0 0; font-size: var(--sc-t-sm); color: var(--sc-ink-soft); }
+  .tw-status.is-ok { color: var(--sc-ink); }
+  .tw-status.is-error { color: #e08b8b; }
+  .tw-fine { color: var(--sc-ink-soft); font-size: var(--sc-t-xs); margin-top: var(--sc-3); text-wrap: pretty; }
+  .tw-fine a { color: var(--sc-ink-soft); }
+
+  .tw-foot { padding: var(--sc-7) 0 calc(var(--sc-8) + 3rem); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); border-top: 1px solid var(--tw-line); margin-top: var(--sc-7); }
+  .tw-foot a { color: var(--sc-ink-soft); display:inline-block; padding: 10px 2px; margin: -10px -2px; }
+  .tw-foot p { margin: 0 0 var(--sc-2); max-width: 62ch; }
+  .tw-foot details { margin: var(--sc-3) 0; border-top: 1px solid var(--tw-line); padding-top: var(--sc-3); }
+  .tw-foot summary { cursor:pointer; font-family: var(--sc-font-mono); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink); min-height: 44px; display:flex; align-items:center; }
+  .tw-foot details p { font-size: var(--sc-t-sm); line-height: 1.6; }
+
+  @media (max-width: 700px) {
+    .tw-open-act h1, .tw-rail__lead h2, .tw-quote > h2, .tw-ask h2 { font-size: var(--sc-t-xl); }
+    .tw-figure { font-size: var(--sc-t-2xl); }
+  }
+  @media (prefers-reduced-motion: reduce) { .tw-pick, .tw-open, .tw-submit { transition: none; } }
+
+  /* Light is the brand's own paper and ink, not an inversion of the dark
+     set. The rust drops back to its print value because the brightened one
+     cannot clear 4.5:1 on paper. */
+  :root { color-scheme: dark light; --tw-plate-a: rgba(255,255,255,.08); --tw-plate-b: #2a251d; --tw-plate-c: #1b1813; --tw-plate-d: #13110d; --tw-plate-shadow: hsl(36 30% 3% / .9); }
+  :root[data-theme="light"] {
+    --sc-canvas:     #efe9dd;
+    --sc-surface:    #f7f3ea;
+    --sc-ink:        #191712;
+    --sc-ink-soft:   #61594c;
+    --sc-accent:     #a1462a;
+    --sc-accent-ink: #f7f3ea;
+    --sc-shadow-color: 36 20% 30%;
+    --tw-glass: #f7f3ea;
+    --tw-line:  rgba(25,23,18,.16);
+    --tw-line-strong: rgba(25,23,18,.34);
+    --tw-plate-a: rgba(255,255,255,.6); --tw-plate-b: #e3dccd; --tw-plate-c: #d9d1c0; --tw-plate-d: #cec5b2; --tw-plate-shadow: hsl(36 20% 30% / .35);
+  }
+  :root[data-theme="light"] body { color: var(--sc-ink); }
+  :root[data-theme="light"] .sc-grain { opacity: .03; }
+  :root[data-theme="light"] .tw-status.is-error { color: #a13333; }
+
+  /* ---------- the light switch, in the index ---------- */
+  .tw-lights {
+    margin-left: auto; display: inline-grid; place-items: center; flex: none;
+    width: 40px; height: 40px; padding: 0;
+    background: transparent; color: var(--sc-ink-soft);
+    border: 1px solid var(--tw-line); border-radius: 50%;
+    cursor: pointer; transition: color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .tw-lights:hover { color: var(--sc-ink); border-color: var(--tw-line-strong); }
+  .tw-lights svg { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  /* Written with the parent so they outrank the generic icon rule above. */
+  .tw-lights .tw-lights__sun { display: none; }
+  :root[data-theme="light"] .tw-lights .tw-lights__sun { display: block; }
+  :root[data-theme="light"] .tw-lights .tw-lights__moon { display: none; }
+  @media (pointer: coarse) { .tw-lights { width: 44px; height: 44px; } }
+  .tw-index__list { margin-left: var(--sc-4); }
+</style>
+<style>
+  .tw-back { display:inline-flex; align-items:center; min-height:44px; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); text-decoration:none; }
+  .tw-back:hover { color: var(--sc-ink); }
+  .tw-open-act--page { grid-template-columns: 1fr; align-items:start; padding-bottom: var(--sc-4); }
+  @media (min-width: 900px) { .tw-open-act--page { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); } }
+  .tw-open-act--page .tw-lede { max-width: 52ch; }
+  .tw-aside { padding-top: var(--sc-4); border-top: 1px solid var(--tw-line); }
+  .tw-aside p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-3); text-wrap: pretty; max-width: 40ch; }
+  .tw-aside p:last-child { margin: 0; }
+  .tw-aside strong { color: var(--sc-ink); font-weight: 600; }
+  .tw-aside a, .tw-clause a, .tw-qa a, .tw-quote__intro a { color: var(--sc-ink); display:inline-block; padding: 10px 2px; margin: -10px -2px; }
+  .tw-quote--page { padding-top: var(--sc-6); }
+  .tw-list { margin: 0 0 var(--sc-3); padding: 0; list-style: none; }
+  .tw-list li { position: relative; padding-left: 1.1rem; margin: 0 0 .55rem; color: var(--sc-ink-soft); max-width: 52ch; text-wrap: pretty; }
+  .tw-list li::before { content: ""; position: absolute; left: 0; top: .62em; width: .42rem; height: .42rem; border-radius: 50%; background: var(--sc-accent); }
+  .tw-list strong { color: var(--sc-ink); font-weight: 600; }
+  .tw-demos { display:grid; gap: var(--sc-3); grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); margin: var(--sc-3) 0 0; }
+  .tw-demos a { display:block; padding: var(--sc-4); border: 1px solid var(--tw-line); border-radius: var(--sc-r-md); text-decoration:none; color: var(--sc-ink); background: var(--tw-glass); }
+  .tw-demos a:hover { border-color: var(--tw-line-strong); }
+  .tw-demos .tw-label__name { font-size: var(--sc-t-base); margin-bottom: .2rem; }
+  .tw-demos .tw-label__facts { margin: 0; }
+  .tw-ask--page { padding-top: var(--sc-8); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Web design in Stirling",
+  "serviceType": "Web design",
+  "url": "https://tempanywebstudios.co.uk/web-design-stirling/",
+  "description": "Hand-built websites for small businesses in Stirling, Bridge of Allan, Dunblane and the villages around them. Up to five pages, 10 to 14 days, a fixed price, and the domain, hosting and code in the client's name.",
+  "provider": { "@type": "ProfessionalService", "name": "Tempany Web Studios", "url": "https://tempanywebstudios.co.uk/", "telephone": "+447487536649", "email": "logan@tempanywebstudios.co.uk", "address": { "@type": "PostalAddress", "addressLocality": "Dollar", "addressRegion": "Clackmannanshire", "addressCountry": "GB" } },
+  "areaServed": [ { "@type": "City", "name": "Stirling" }, { "@type": "Place", "name": "Bridge of Allan" }, { "@type": "Place", "name": "Dunblane" } ],
+  "offers": { "@type": "Offer", "name": "New website, up to five pages", "price": "399", "priceCurrency": "GBP", "url": "https://tempanywebstudios.co.uk/web-design-stirling/" }
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="sc-grain" aria-hidden="true"></div>
+<nav class="tw-index" aria-label="Sections of this quote">
+  <a class="tw-index__mark" href="/" aria-label="Tempany Web Studios, back to top">
+    <svg viewBox="0 0 44 44" aria-hidden="true">
+      <circle cx="22" cy="22" r="18.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="22" cy="22" r="14.5" fill="none" stroke="currentColor" stroke-width=".7" opacity=".45"/>
+      <g stroke="#d46a41" stroke-width="1.4" stroke-linecap="round">
+        <line x1="22" y1="1.5" x2="22" y2="5"/><line x1="22" y1="39" x2="22" y2="42.5"/>
+        <line x1="1.5" y1="22" x2="5" y2="22"/><line x1="39" y1="22" x2="42.5" y2="22"/>
+      </g>
+      <path transform="translate(15.52 30) scale(0.0100 -0.0100)" fill="currentColor" d="M1376 1238H388L505 1266L268 959L208 975L378 1426H417L511 1333L430 1352H1411L1310 1333L1468 1426H1506L1409 960H1351L1308 1266ZM800 1283H1008L646 96L787 50L772 0H260L275 50L439 99Z"/>
+    </svg>
+    <span>Tempany Web Studios</span>
+  </a>
+  <button class="tw-lights" id="twLights" type="button" aria-pressed="false" aria-label="Turn the lights up">
+    <svg class="tw-lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="tw-lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+  </button>
+  <ul class="tw-index__list">
+    <li><a href="/#work">The work</a></li>
+    <li><a href="/#quote">The quote</a></li>
+    <li><a href="/#me">Just me</a></li>
+    <li><a class="tw-index__ask" href="/#reply">Reply</a></li>
+  </ul>
+</nav>
+<main id="main">
+  <section class="sc-section" aria-labelledby="h1">
+    <div class="tw-open-act tw-open-act--page">
+      <div>
+        <a class="tw-back" href="/">&larr; Back to the quote</a>
+        <p class="tw-label__eyebrow" style="margin-top:var(--sc-5)">Stirling, Bridge of Allan, Dunblane and the villages</p>
+        <h1 id="h1">Web design in Stirling, from someone twelve miles up the road.</h1>
+        <p class="tw-label__facts">Up to five pages &middot; 10 to 14 days &middot; &pound;399, fixed</p>
+        <p class="tw-label__who">Designed, written and built by Logan Tempany</p>
+        <p class="tw-lede">I'm in Dollar, on the Clackmannanshire side of the Ochils, close enough to meet you at your counter. The quote is the same one on the homepage, because the price doesn't change with the postcode. This page is about what a Stirling business gets for it, and the sites to judge it by, which are all set in the towns either side of you.</p>
+        <a class="tw-pick" href="#reply"><span class="tw-pick__dot" aria-hidden="true"></span> Reply to this quote</a>
+      </div>
+      <div class="tw-aside">
+        <p><strong>Who it's for.</strong> Sole traders and small firms in Stirling and the villages round it: trades, salons, clinics, tutors, food, anyone whose customers search on a phone and ring the first one that looks right.</p>
+        <p><strong>Who it isn't for.</strong> Agencies, shops with hundreds of products, or anyone who needs a login system on day one. Booking and card payment are add-ons; a full shop isn't something I build.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section" aria-labelledby="what-h">
+    <div class="tw-quote tw-quote--page">
+      <h2 id="what-h">The Stirling version of the quote</h2>
+      <p class="tw-quote__intro">Same numbers as the <a href="/#quote">homepage</a>, same terms, same person doing the work. What's different is the groundwork, because "plumber Stirling" has real competition and most of it is a decade old.</p>
+
+      <div class="tw-clause">
+        <span class="tw-clause__num">01</span>
+        <div>
+          <h3>What's in the &pound;399</h3>
+          <ul class="tw-list">
+            <li><strong>Up to five pages</strong>, written from your own words and hand-coded rather than dropped into a theme.</li>
+            <li><strong>Built for a phone first</strong> and tested on a real one, because that's where a Stirling customer finds you.</li>
+            <li><strong>An enquiry form and click-to-call</strong>, so the route from landing to ringing you is one tap.</li>
+            <li><strong>A Google Business Profile set up properly</strong>, pointed at the site, with Stirling and the villages as the service area.</li>
+            <li><strong>The page title and description written for what people here actually type</strong>, your trade and your town, not a slogan.</li>
+            <li><strong>Two rounds of changes</strong> before it goes live, then 30 days of small fixes free.</li>
+          </ul>
+          <p style="font-size:var(--sc-t-xs)">Not included unless written into the quote: domain registration, hosting, e-commerce, professional photography and full brand design. Booking with live availability is from &pound;350, card payment at booking from &pound;120, each page beyond five &pound;45. <a href="/#quote">Every price is on the homepage.</a></p>
+        </div>
+      </div>
+
+      <div class="tw-clause">
+        <span class="tw-clause__num">02</span>
+        <div>
+          <h3>What "local search groundwork" means</h3>
+          <p>It's unglamorous. A title that names the trade and the town. A Business Profile carrying exactly the same name, number and address as the site, because a mismatch is what quietly drops you off the map. Structured data so Google reads the business as a business, with Stirling as the area it serves. And a page that opens fast on 4G in Bridge of Allan, not just on the office wifi.</p>
+          <p>None of that is a ranking promise. Nobody can promise a position on Google. It's the groundwork that most Stirling sites built five years ago never had, done as part of the build rather than sold to you afterwards.</p>
+        </div>
+      </div>
+
+      <div class="tw-clause">
+        <span class="tw-clause__num">03</span>
+        <div>
+          <h3>Twenty-five minutes down the A91</h3>
+          <p>Dollar to Stirling is twenty-five minutes. I'd rather see the business than read a brief, so the first meeting can be at your place if you want one. Everything after that is by email, so there's a written record of every decision, and you talk to me directly, not to an account manager.</p>
+        </div>
+      </div>
+
+      <div class="tw-clause">
+        <span class="tw-clause__num">04</span>
+        <div>
+          <h3>What you own</h3>
+          <p>Your domain, your hosting, your code, in your name from day one. Leave whenever you like, for me or for anyone else, and the site keeps working exactly as it did the day before. Nothing I build depends on me.</p>
+        </div>
+      </div>
+
+      <div class="tw-clause tw-clause--wide">
+        <span class="tw-clause__num">05</span>
+        <div>
+          <h3>The sites to judge it by</h3>
+          <p>One real client site and four complete demonstrations, one per trade, all set in the towns either side of Stirling. Open them on your phone.</p>
+          <div class="tw-demos">
+            <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer"><p class="tw-label__flag">Live client site</p><p class="tw-label__name">Jennifer Ellis Yoga</p><p class="tw-label__facts">Yoga &middot; takes her bookings</p></a>
+            <a href="/demos/clinic/" target="_blank" rel="noopener noreferrer"><p class="tw-label__name">Rowanbank Physiotherapy</p><p class="tw-label__facts">Clinic &middot; set in Alloa</p></a>
+            <a href="/demos/professional/" target="_blank" rel="noopener noreferrer"><p class="tw-label__name">Ochil Ledger</p><p class="tw-label__facts">Accountancy &middot; set in Tillicoultry</p></a>
+            <a href="/demos/trades/" target="_blank" rel="noopener noreferrer"><p class="tw-label__name">Whinstone Joinery</p><p class="tw-label__facts">Trades &middot; set in Dollar</p></a>
+            <a href="/demos/salon-v2/" target="_blank" rel="noopener noreferrer"><p class="tw-label__name">Brackenwynd Hair Studio</p><p class="tw-label__facts">Salon &middot; set in Falkirk</p></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tw-clause tw-clause--wide">
+        <span class="tw-clause__num">06</span>
+        <div>
+          <h3>Questions you might have</h3>
+          <dl class="tw-qa">
+            <dt>Is the price really the same in Stirling?</dt>
+            <dd>Yes. &pound;399 fixed, &pound;200 to start and &pound;199 when you approve it, the same as in Dollar or Falkirk. The only other prices are the optional add-ons, and each is quoted before anything starts.</dd>
+            <dt>I already have a site. Do I need a new one?</dt>
+            <dd>Maybe not. The <a href="/audit/">&pound;95 audit</a> looks at what you have and says fix, rebuild or leave alone, and the &pound;95 comes off the rebuild if that's the answer.</dd>
+            <dt>Do you work outside Stirling?</dt>
+            <dd>Yes: Clackmannanshire, Falkirk and, by email, anywhere in Scotland. Stirling just happens to be the biggest town within half an hour of my desk.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reply" aria-labelledby="reply-h">
+    <div class="tw-ask tw-ask--page">
+      <h2 id="reply-h">Reply to this quote</h2>
+      <p class="tw-ask__lead">Straight answer within one working day. Or write to <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a>, or call or text <a href="tel:+447487536649">07487 536649</a>.</p>
+      <form id="enquiry-form" method="post" action="https://api.web3forms.com/submit" novalidate>
+        <input type="hidden" name="access_key" value="7148c950-d9f1-4d33-b78e-a411c89cb1e3">
+        <input type="hidden" name="picked" value="The Stirling page">
+        <div class="tw-row">
+          <label class="tw-field"><span>Your name</span><input type="text" name="name" autocomplete="name" required></label>
+          <label class="tw-field"><span>Business name</span><input type="text" name="business" autocomplete="organization" required></label>
+        </div>
+        <div class="tw-row">
+          <label class="tw-field"><span>Email address</span><input type="email" name="email" autocomplete="email" required></label>
+          <label class="tw-field"><span>This is about</span>
+            <select name="project" id="twProject" required>
+              <option selected>The &pound;399 website</option>
+              <option>The &pound;95 audit</option>
+              <option>Something else</option>
+            </select>
+          </label>
+        </div>
+        <label class="tw-field"><span>Current website <em>optional, if you have one</em></span><input type="url" name="website" inputmode="url" placeholder="https://yourbusiness.co.uk"></label>
+        <label class="tw-field"><span>Tell me about the job</span><textarea name="message" rows="4" placeholder="What does your business do, and what would you like the website to achieve?" required></textarea></label>
+        <label class="tw-honeypot" aria-hidden="true">Leave this field empty<input type="text" tabindex="-1" autocomplete="off" name="company_url"></label>
+        <button class="tw-submit" type="submit">Send your reply</button>
+        <p class="tw-status" role="status"></p>
+        <p class="tw-fine">Your details are sent securely to Tempany Web Studios without leaving this page. <a href="/privacy/">Read the privacy notice.</a></p>
+      </form>
+
+      <div class="tw-foot">
+        <p>Logan Tempany trading as Tempany Web Studios &middot; Dollar, Scotland &middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a> &middot; <a href="tel:+447487536649">07487 536649</a></p>
+        <p><a href="/">The quote</a> &middot; <a href="/audit/">The &pound;95 audit</a> &middot; <a href="/web-design-stirling/">Web design in Stirling</a> &middot; <a href="/privacy/">Privacy notice</a> &middot; <a href="/terms/">Service terms</a></p>
+        <p style="margin-top:var(--sc-4)">&copy; 2026 Tempany Web Studios.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+/* Posts JSON to Web3Forms without leaving the page. method/action stay as the no-JS fallback. */
+(function () {
+  var form = document.getElementById('enquiry-form');
+  var status = form.querySelector('.tw-status');
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var data = new FormData(form);
+    if (String(data.get('company_url') || '') !== '') return;
+    if (!form.reportValidity()) return;
+    var payload = {
+      access_key: String(data.get('access_key')),
+      subject: 'Reply to your quote from ' + String(data.get('name') || 'a visitor'),
+      from_name: 'Tempany Web Studios website',
+      name: String(data.get('name') || ''),
+      business: String(data.get('business') || ''),
+      email: String(data.get('email') || ''),
+      this_is_about: String(data.get('project') || 'Not selected'),
+      started_from: String(data.get('picked') || ''),
+      current_website: String(data.get('website') || 'Not supplied'),
+      message: String(data.get('message') || '')
+    };
+    var button = form.querySelector('.tw-submit');
+    button.disabled = true;
+    status.textContent = 'Sending…'; status.className = 'tw-status';
+    try {
+      var res = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
+      var result = await res.json();
+      if (!result.success) throw new Error(result.message || 'Submission failed');
+      status.textContent = 'Sent. You will get a straight answer within one working day.';
+      status.className = 'tw-status is-ok';
+      form.reset();
+    } catch (err) {
+      status.textContent = 'That did not send. Please email logan@tempanywebstudios.co.uk directly.';
+      status.className = 'tw-status is-error';
+    } finally {
+      button.disabled = false;
+    }
+  });
+})();
+</script>
+<script>
+/* The lights. */
+(function () {
+  var btn = document.getElementById('twLights');
+  var docEl = document.documentElement;
+  var meta = document.querySelector('meta[name="theme-color"]');
+  if (!btn) return;
+  function sync() {
+    var light = docEl.getAttribute('data-theme') === 'light';
+    btn.setAttribute('aria-pressed', light ? 'true' : 'false');
+    btn.setAttribute('aria-label', light ? 'Turn the lights down' : 'Turn the lights up');
+    if (meta) meta.setAttribute('content', light ? '#efe9dd' : '#141210');
+    if (window.__twGround) window.__twGround();
+  }
+  btn.addEventListener('click', function () {
+    var light = docEl.getAttribute('data-theme') === 'light';
+    docEl.setAttribute('data-theme', light ? 'dark' : 'light');
+    try { localStorage.setItem('tws-theme', light ? 'dark' : 'light'); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+</script>
+</body>
+</html>
