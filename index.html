@@ -229,6 +229,16 @@
   .tw-foot details p { font-size: var(--sc-t-sm); line-height: 1.6; }
 
   @media (max-width: 700px) {
+    /* On a phone the label block is a column and the client's line moves up
+       to sit under the facts, ahead of the paragraph and the button, so the
+       one sentence of proof is on the first screen rather than the second. */
+    .tw-open-act { padding-top: var(--sc-6); gap: var(--sc-5); }
+    .tw-open-act > div:last-child { display: flex; flex-direction: column; }
+    .tw-open-act > div:last-child > * { order: 2; }
+    .tw-open-act > div:last-child > :is(.tw-label__eyebrow, h1, .tw-label__facts, .tw-label__who, .tw-hero-said) { order: 1; }
+    .tw-open-act .tw-hero-said { margin-top: var(--sc-4); }
+    .tw-open-act .tw-lede { margin-top: var(--sc-4); }
+    .tw-open-act .tw-pick { margin-top: var(--sc-4); align-self: flex-start; }
     .tw-open-act h1, .tw-rail__lead h2, .tw-quote > h2, .tw-ask h2 { font-size: var(--sc-t-xl); }
     .tw-figure { font-size: var(--sc-t-2xl); }
   }
@@ -652,7 +662,7 @@
 
 </main>
 
-<script src="scrollcraft.js"></script>
+<script src="scrollcraft.js?v=2"></script>
 <script>ScrollCraft.mount(document.body);</script>
 <script>
 /* The ground. scrollcraft's data-sc-drift writes --sc-canvas inline on <html>
