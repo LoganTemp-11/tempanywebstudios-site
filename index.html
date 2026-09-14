@@ -142,6 +142,13 @@
   .tw-label__flag::before { content: ""; width: .5em; height: .5em; border-radius: 50%; background: currentColor; }
   .tw-object--live .tw-plate { outline: 1px solid color-mix(in srgb, var(--sc-ink) 22%, transparent); outline-offset: 3px; }
 
+  /* ---------- the client's own words, between the work and the quote ---------- */
+  .tw-said { max-width: var(--sc-maxw); margin-inline:auto; padding: var(--sc-section) var(--sc-gutter); }
+  .tw-said blockquote { margin:0; max-width: 60ch; }
+  .tw-said blockquote p { font-family: var(--sc-font-display); font-weight: 500; font-size: var(--sc-t-lg); line-height: 1.35; letter-spacing: var(--sc-track-snug); color: var(--sc-ink); margin: 0; text-wrap: pretty; }
+  .tw-said figcaption { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: var(--sc-4) 0 0; }
+  .tw-said figcaption a { color: inherit; }
+
   /* ---------- act 3: the quote, the one act that reads like a document ---------- */
   .tw-quote { max-width: var(--sc-maxw); margin-inline:auto; padding: var(--sc-section) var(--sc-gutter); display:grid; gap: var(--sc-6); }
   @media (min-width: 900px) { .tw-quote { grid-template-columns: repeat(2, 1fr); gap: var(--sc-7) var(--sc-8); } }
@@ -307,6 +314,7 @@
   </button>
   <ul class="tw-index__list">
     <li><a href="#work">The work</a></li>
+    <li><a href="#said">What she said</a></li>
     <li><a href="#quote">The quote</a></li>
     <li><a href="#me">Just me</a></li>
     <li><a class="tw-index__ask" href="#reply">Reply</a></li>
@@ -428,6 +436,19 @@
           <button class="tw-pick" type="button" data-pick data-service="Something else" data-detail="Rough out the top of my homepage first" data-who=""><span class="tw-pick__dot" aria-hidden="true"></span> Start from scratch</button>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- Between the work and the quote: the only words on this page that aren't mine. -->
+  <section id="said" data-sc-act="flow" data-tw-ground aria-labelledby="said-h">
+    <div class="tw-said" data-sc-in>
+      <h2 id="said-h" class="tw-label__eyebrow" style="margin-bottom:var(--sc-5)">What the client said</h2>
+      <figure class="tw-said__fig" style="margin:0">
+        <blockquote cite="https://yogawithjenniferellis.co.uk/">
+          <p>&ldquo;I had a sense of what I wanted for my website and, from our first meeting, Logan listened carefully, confirming via email his understanding of what I wanted. He then created a site with the functionality I needed, while also patiently explaining what wasn't possible to a website novice like me. He managed to capture the tone and vibe that was important to me, and I am so impressed by that. He replied quickly to emails and made any changes that I requested. I recommend Logan and Tempany Web Studios highly.&rdquo;</p>
+        </blockquote>
+        <figcaption>Jennifer Ellis &middot; <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Yoga with Jennifer Ellis</a></figcaption>
+      </figure>
     </div>
   </section>
 
