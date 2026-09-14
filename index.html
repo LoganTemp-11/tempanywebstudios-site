@@ -25,12 +25,15 @@
 <link rel="stylesheet" href="/fonts.css">
 <script>
 /* Resolve the theme before the first paint so the page never flashes the
-   wrong ground. Dark by default, remembered per browser under the same key
-   the old homepage used, so anyone who chose light before still gets light. */
+   wrong ground. Remembered per browser under the same key the old homepage
+   used, so anyone who chose light before still gets light; on a first visit
+   with nothing stored, the device's own preference decides. */
 (function () {
-  var t = 'dark';
-  try { t = localStorage.getItem('tws-theme') || 'dark'; } catch (e) {}
-  document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+  var t = null;
+  try { t = localStorage.getItem('tws-theme'); } catch (e) {}
+  /* No stored choice yet: follow the device. A choice made with the light switch wins from then on. */
+  if (t !== 'light' && t !== 'dark') { try { t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; } catch (e) { t = 'dark'; } }
+  document.documentElement.setAttribute('data-theme', t);
 })();
 </script>
 <link rel="stylesheet" href="/scrollcraft.min.css?v=3">
@@ -281,6 +284,23 @@
   :root[data-theme="light"] .tw-lights .tw-lights__moon { display: none; }
   @media (pointer: coarse) { .tw-lights { width: 44px; height: 44px; } }
   .tw-index__list { margin-left: var(--sc-4); }
+
+  /* ---------- where I work: a small list in the index, the town pages ---------- */
+  /* ---- sub-page additions. Everything else comes from tw-pages.css, copied from the homepage. ---- */
+  .tw-where { position: relative; }
+  .tw-where__btn { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--sc-ink-soft); background: none; border: 0; padding: 0; min-height: 44px; cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; }
+  .tw-where__btn::after { content: ""; width: .5em; height: .5em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-135deg) translate(-1px, -1px); transition: transform var(--sc-d-fast) var(--sc-ease-out); }
+  .tw-where__btn[aria-expanded="true"]::after { transform: rotate(45deg) translate(-2px, -2px); }
+  .tw-where__btn:hover, .tw-where__btn[aria-expanded="true"] { color: var(--sc-ink); }
+  .tw-where__list { position: absolute; bottom: calc(100% + .75rem); left: 50%; transform: translateX(-50%); min-width: 12rem; margin: 0; padding: .5rem; list-style: none; background: var(--tw-glass); border: 1px solid var(--tw-line-strong); border-radius: var(--sc-r-md); box-shadow: var(--sc-e3); text-transform: none; letter-spacing: 0; font-family: var(--sc-font-text); font-size: var(--sc-t-sm); }
+  .tw-where__list[hidden] { display: none; }
+  .tw-where__list a, .tw-where__list span { display: flex; align-items: center; min-height: 44px; padding: 0 .9rem; border-radius: var(--sc-r-sm); color: var(--sc-ink); text-decoration: none; }
+  .tw-where__list a:hover { background: color-mix(in srgb, var(--sc-ink) 8%, transparent); }
+  .tw-where__list span[aria-current] { color: var(--sc-accent); }
+  .tw-soon { color: var(--sc-ink-soft) !important; }
+  .tw-soon::after { content: "soon"; margin-left: auto; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; opacity: .8; }
+  @media (max-width: 720px) { .tw-index__list li.tw-where { display: none; } }
+
 </style>
 <script type="application/ld+json">
 {
@@ -367,6 +387,17 @@
     <li><a href="#said">What she said</a></li>
     <li><a href="#quote">The quote</a></li>
     <li><a href="#me">Just me</a></li>
+    <li class="tw-where">
+      <button class="tw-where__btn" type="button" aria-expanded="false" aria-controls="twWhere">Where I work</button>
+      <ul class="tw-where__list" id="twWhere" hidden>
+        <li><a href="/web-design-falkirk/">Falkirk</a></li>
+        <li><a href="/web-design-stirling/">Stirling</a></li>
+        <li><span class="tw-soon" title="Page on its way">Alloa</span></li>
+        <li><span class="tw-soon" title="Page on its way">Grangemouth</span></li>
+        <li><span class="tw-soon" title="Page on its way">Dollar</span></li>
+        <li><span class="tw-soon" title="Page on its way">Tillicoultry</span></li>
+      </ul>
+    </li>
     <li><a class="tw-index__ask" href="#reply">Reply</a></li>
   </ul>
 </nav>
@@ -559,10 +590,10 @@
         <div>
           <h3>When five pages isn't the job</h3>
           <p>Some businesses need the site to do something, not just say something. I build those on the same hand-coded stack, and each one is added on top of the &pound;399 as its own line, not hidden inside it. <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer" style="color:var(--sc-ink)">Jennifer Ellis Yoga</a> is the first one in practice: a booking calendar that holds the slot, and an admin page she updates herself.</p>
-          <div class="tw-line"><span>Booking with live availability and an admin page you control</span><strong>from &pound;350</strong></div>
+          <div class="tw-line"><span><a href="/booking/" style="color:var(--sc-ink)">Booking with live availability and an admin page you control</a></span><strong>from &pound;350</strong></div>
           <div class="tw-line"><span>Card payment taken at the point of booking</span><strong>from &pound;120</strong></div>
           <div class="tw-line"><span>Each page beyond the first five</span><strong>&pound;45</strong></div>
-          <p style="font-size:var(--sc-t-xs);margin-top:.6rem">So a five-page site that takes bookings starts at &pound;749, the &pound;399 plus the &pound;350. If your job doesn't need any of it, don't buy any of it.</p>
+          <p style="font-size:var(--sc-t-xs);margin-top:.6rem">So a five-page site that takes bookings starts at &pound;749, the &pound;399 plus the &pound;350. If your job doesn't need any of it, don't buy any of it. <a href="/booking/" style="color:var(--sc-ink)">The booking system has its own page</a>, with the three-year sum against renting one.</p>
         </div>
       </div>
 
@@ -574,7 +605,7 @@
             <dt>What happens after I get in touch?</dt>
             <dd>I look at your business, and your current site if you have one, then reply with an honest recommendation and the real scope, before anything is agreed.</dd>
             <dt>Is &pound;399 really the price for every project?</dt>
-            <dd>For the five-page site, yes, and it's the only number you pay unless you ask for one of the add-ons in 06: booking, card payment or extra pages. Those are the only other prices on this page, each is optional, and each is quoted before anything starts. If your business needs something bigger than that, I'll say so and give you the real number before any work starts, never after.</dd>
+            <dd>For the five-page site, yes, and it's the only number you pay unless you ask for one of the add-ons in 06: booking, card payment or extra pages. Those are the only other prices on this page, each is optional, and each is quoted before anything starts. If your business needs something bigger than that, I'll say so and give you the real number before any work starts, never after. <a href="/how-much-does-a-website-cost/" style="color:var(--sc-ink)">The full arithmetic, against builders and agencies, is on its own page.</a></dd>
             <dt>Who else has bought one?</dt>
             <dd><a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer" style="color:var(--sc-ink)">Jennifer Ellis Yoga</a> was the first: paid for, live on her own domain, and taking bookings through the site. Two more local businesses have sites in progress with me.</dd>
           </dl>
@@ -638,7 +669,7 @@
 
       <div class="tw-foot">
         <p>Logan Tempany trading as Tempany Web Studios &middot; Dollar, Scotland &middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a> &middot; <a href="tel:+447487536649">07487 536649</a></p>
-        <p><a href="/audit/">The &pound;95 audit</a> &middot; <a href="/web-design-stirling/">Web design in Stirling</a> &middot; <a href="/privacy/">Privacy notice</a> &middot; <a href="/privacy/#complaints">Complaints</a> &middot; <a href="/terms/">Service terms</a> &middot; <a href="/privacy/#cookies">Cookies</a></p>
+        <p><a href="/audit/">The &pound;95 audit</a> &middot; <a href="/how-much-does-a-website-cost/">What a website costs</a> &middot; <a href="/booking/">The booking system</a> &middot; <a href="/web-design-falkirk/">Web design in Falkirk</a> &middot; <a href="/web-design-stirling/">Web design in Stirling</a> &middot; <a href="/privacy/">Privacy notice</a> &middot; <a href="/privacy/#complaints">Complaints</a> &middot; <a href="/terms/">Service terms</a> &middot; <a href="/privacy/#cookies">Cookies</a></p>
         <p style="margin-top:var(--sc-4)">Jennifer Ellis Yoga is a real client site, shown with her permission. The four demonstration sites aren't: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
       </div>
     </div>
@@ -779,6 +810,17 @@
       button.disabled = false;
     }
   });
+})();
+</script>
+<script>
+/* Where I work: a small list in the index. Escape and clicking away close it. */
+(function () {
+  var btn = document.querySelector('.tw-where__btn'), list = document.getElementById('twWhere');
+  if (!btn || !list) return;
+  function set(open) { list.hidden = !open; btn.setAttribute('aria-expanded', String(open)); }
+  btn.addEventListener('click', function () { set(list.hidden); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !list.hidden) { set(false); btn.focus(); } });
+  document.addEventListener('click', function (e) { if (!list.hidden && !e.target.closest('.tw-where')) set(false); });
 })();
 </script>
 </body>

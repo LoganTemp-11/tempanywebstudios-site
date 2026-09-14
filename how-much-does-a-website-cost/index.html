@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How Much Does a Website Cost? | Tempany Web Studios</title>
+<meta name="description" content="The full arithmetic of a small business website: £399 for five pages, £749 with booking, what builders and agencies charge, and when you should not buy from me.">
+<meta name="author" content="Logan Tempany">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/how-much-does-a-website-cost/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#141210">
+<meta property="og:title" content="How Much Does a Website Cost? | Tempany Web Studios">
+<meta property="og:description" content="The full arithmetic of a small business website: £399 for five pages, £749 with booking, what builders and agencies charge, and when you should not buy from me.">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/how-much-does-a-website-cost/">
+<meta property="og:site_name" content="Tempany Web Studios">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/tempany-web-studios-share.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-700-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css">
+<script>
+/* Resolve the theme before the first paint so the page never flashes the
+   wrong ground. Remembered per browser under the same key the old homepage
+   used, so anyone who chose light before still gets light; on a first visit
+   with nothing stored, the device's own preference decides. */
+(function () {
+  var t = null;
+  try { t = localStorage.getItem('tws-theme'); } catch (e) {}
+  /* No stored choice yet: follow the device. A choice made with the light switch wins from then on. */
+  if (t !== 'light' && t !== 'dark') { try { t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; } catch (e) { t = 'dark'; } }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+<link rel="stylesheet" href="/scrollcraft.min.css?v=3">
+<link rel="stylesheet" href="/tw-pages.css">
+<style>
+  /* ---- sub-page additions. Everything else comes from tw-pages.css, copied from the homepage. ---- */
+  .tw-where { position: relative; }
+  .tw-where__btn { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--sc-ink-soft); background: none; border: 0; padding: 0; min-height: 44px; cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; }
+  .tw-where__btn::after { content: ""; width: .5em; height: .5em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-135deg) translate(-1px, -1px); transition: transform var(--sc-d-fast) var(--sc-ease-out); }
+  .tw-where__btn[aria-expanded="true"]::after { transform: rotate(45deg) translate(-2px, -2px); }
+  .tw-where__btn:hover, .tw-where__btn[aria-expanded="true"] { color: var(--sc-ink); }
+  .tw-where__list { position: absolute; bottom: calc(100% + .75rem); left: 50%; transform: translateX(-50%); min-width: 12rem; margin: 0; padding: .5rem; list-style: none; background: var(--tw-glass); border: 1px solid var(--tw-line-strong); border-radius: var(--sc-r-md); box-shadow: var(--sc-e3); text-transform: none; letter-spacing: 0; font-family: var(--sc-font-text); font-size: var(--sc-t-sm); }
+  .tw-where__list[hidden] { display: none; }
+  .tw-where__list a, .tw-where__list span { display: flex; align-items: center; min-height: 44px; padding: 0 .9rem; border-radius: var(--sc-r-sm); color: var(--sc-ink); text-decoration: none; }
+  .tw-where__list a:hover { background: color-mix(in srgb, var(--sc-ink) 8%, transparent); }
+  .tw-where__list span[aria-current] { color: var(--sc-accent); }
+  .tw-soon { color: var(--sc-ink-soft) !important; }
+  .tw-soon::after { content: "soon"; margin-left: auto; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; opacity: .8; }
+  @media (max-width: 720px) { .tw-index__list li.tw-where { display: none; } }
+
+  .tw-page { max-width: var(--sc-maxw); margin: 0 auto; padding: 0 var(--sc-gutter); }
+  .tw-prose { max-width: 62ch; }
+  .tw-prose p, .tw-prose li { color: var(--sc-ink-soft); font-size: var(--sc-t-base); line-height: var(--sc-leading-body); }
+  .tw-prose p { margin: 0 0 var(--sc-4); text-wrap: pretty; }
+  .tw-prose p strong, .tw-prose li strong { color: var(--sc-ink); font-weight: 600; }
+  .tw-prose a { color: var(--sc-ink); text-decoration: underline; text-underline-offset: .18em; text-decoration-color: var(--tw-line-strong); }
+  .tw-prose a:hover { text-decoration-color: var(--sc-accent); }
+  /* In-text links keep their layout but get a 44px tall hit area, the way the homepage footer does it. */
+  .tw-prose p a, .tw-prose li a, .tw-prose dd a, .tw-src a, .tw-said__fig figcaption a, .tw-offer a { display: inline-block; padding: 13px 0; margin: -13px 0; }
+  .tw-prose a.tw-cta { color: var(--sc-accent-ink); text-decoration: none; padding: 0 1.4rem; margin: 0; display: inline-flex; }
+  .tw-prose a.tw-cta--quiet { color: var(--sc-ink); }
+  .tw-index__mark { min-width: 44px; justify-content: center; }
+  @media (min-width: 721px) { .tw-index__mark { justify-content: flex-start; } }
+  .tw-lights { width: 44px; height: 44px; }
+  .tw-prose h2 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-xl); line-height: 1.08; letter-spacing: var(--sc-track-snug); color: var(--sc-ink); margin: 0 0 var(--sc-4); text-wrap: balance; }
+  .tw-prose h3 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); line-height: 1.2; color: var(--sc-ink); margin: 0 0 var(--sc-3); }
+  .tw-prose ul { padding-left: 1.2em; margin: 0 0 var(--sc-4); }
+  .tw-prose li { margin-bottom: .4em; }
+  .tw-act { padding: var(--sc-8) 0; border-top: 1px solid var(--tw-line); }
+  .tw-act--first { border-top: 0; padding-top: 0; }
+  .tw-opening { padding: calc(var(--sc-8) + 1rem) 0 var(--sc-8); min-height: calc(100svh - 2rem); display: grid; align-content: center; }
+  .tw-eyebrow { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0 0 var(--sc-3); }
+  .tw-offer { border: 1px solid var(--tw-line); border-radius: var(--sc-r-md); background: var(--tw-glass); padding: var(--sc-5); max-width: 40rem; }
+  .tw-offer .tw-figure { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); line-height: 1; letter-spacing: var(--sc-track-tight); color: var(--sc-ink); margin: 0 0 var(--sc-3); font-variant-numeric: tabular-nums; }
+  .tw-offer .tw-figure small { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); margin-left: .6rem; vertical-align: middle; }
+  .tw-offer p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-3); font-size: var(--sc-t-sm); }
+  .tw-offer .tw-line strong { color: var(--sc-ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .tw-cta { display: inline-flex; align-items: center; gap: .6rem; min-height: 48px; padding: 0 1.4rem; border-radius: var(--sc-r-pill); background: var(--sc-accent); color: var(--sc-accent-ink); font-family: var(--sc-font-display); font-weight: 600; text-decoration: none; }
+  .tw-cta:hover { filter: brightness(1.06); }
+  .tw-cta--quiet { background: transparent; color: var(--sc-ink); border: 1px solid var(--tw-line-strong); }
+  .tw-said { padding: 0; }
+  .tw-qa dt { font-family: var(--sc-font-display); font-weight: 600; color: var(--sc-ink); font-size: var(--sc-t-base); margin: var(--sc-4) 0 var(--sc-2); }
+  .tw-qa dd { margin: 0; color: var(--sc-ink-soft); max-width: 62ch; }
+  .tw-table { width: 100%; border-collapse: collapse; font-size: var(--sc-t-sm); font-variant-numeric: tabular-nums; }
+  .tw-table th, .tw-table td { text-align: left; vertical-align: top; padding: .8rem .6rem; border-bottom: 1px solid var(--tw-line); color: var(--sc-ink-soft); }
+  .tw-table th { color: var(--sc-ink); font-family: var(--sc-font-mono); font-weight: 500; font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; }
+  .tw-table td strong { color: var(--sc-ink); }
+  .tw-table td:first-child { color: var(--sc-ink); font-weight: 600; }
+  .tw-table-wrap { overflow-x: auto; margin: var(--sc-5) 0; }
+  .tw-src { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); color: var(--sc-ink-soft); letter-spacing: 0; }
+  .tw-src a { color: var(--sc-ink-soft); }
+  .tw-foot { max-width: 62ch; }
+  :focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 3px; }
+
+  /* The sum: the price arithmetic set as a till roll. */
+  .tw-sum { max-width: 34rem; font-family: var(--sc-font-mono); font-variant-numeric: tabular-nums; border: 1px solid var(--tw-line-strong); border-radius: var(--sc-r-md); background: var(--tw-glass); padding: var(--sc-5) var(--sc-6); box-shadow: var(--sc-e3); }
+  .tw-sum__row { display: grid; grid-template-columns: 4.5ch 1fr auto; gap: var(--sc-3); align-items: baseline; padding: .55rem 0; border-bottom: 1px dashed var(--tw-line); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); }
+  .tw-sum__row span:first-child { color: var(--sc-ink-soft); }
+  .tw-sum__row strong { color: var(--sc-ink); font-weight: 500; font-size: var(--sc-t-lg); white-space: nowrap; }
+  .tw-sum__row--total { border-bottom: 0; border-top: 2px solid var(--sc-ink); margin-top: .6rem; padding-top: .9rem; }
+  .tw-sum__row--total strong { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); letter-spacing: var(--sc-track-tight); color: var(--sc-ink); }
+  .tw-sum__row--total span { color: var(--sc-ink); }
+  .tw-sum__foot { margin-top: var(--sc-4); font-size: var(--sc-t-xs); color: var(--sc-ink-soft); letter-spacing: var(--sc-track-wide); text-transform: uppercase; }
+  .tw-sum__alt { margin-top: var(--sc-5); display: grid; gap: .4rem; font-size: var(--sc-t-xs); color: var(--sc-ink-soft); }
+  .tw-sum__alt span b { color: var(--sc-ink); font-weight: 500; }
+  @media (max-width: 480px) { .tw-sum { padding: var(--sc-4); } .tw-sum__row { grid-template-columns: 3.5ch 1fr auto; } }
+</style>
+<noscript><style>[data-sc-in],[data-sc-stagger]>*{opacity:1!important;transform:none!important}</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tempany Web Studios",
+  "url": "https://tempanywebstudios.co.uk/how-much-does-a-website-cost/",
+  "email": "logan@tempanywebstudios.co.uk",
+  "telephone": "+447487536649",
+  "founder": {
+    "@type": "Person",
+    "name": "Logan Tempany"
+  },
+  "image": "https://tempanywebstudios.co.uk/tempany-web-studios-share.png",
+  "description": "Hand-built websites for small businesses that need enquiries, not a brochure.",
+  "priceRange": "£95 to £869",
+  "areaServed": [
+    "Clackmannanshire",
+    "Stirling",
+    "Falkirk",
+    "Scotland",
+    "United Kingdom"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dollar",
+    "addressRegion": "Clackmannanshire",
+    "addressCountry": "GB"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is £399 the whole price, or the price before extras?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's the whole price for a five-page site. £200 to start and £199 when you approve it, and the add-ons on this page are the only other numbers I charge: booking from £350, card payment from £120, £45 a page past five. Each is optional and each is quoted before anything starts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is a Wix or Squarespace site not just cheaper?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For the first year it usually is. A basic plan runs roughly £10 to £20 a month, so £120 to £240 a year, and the domain is free for the first year then about £8 after. The difference is that it never stops. By year three you have paid close to what a built site costs and you still don't own anything: leave, and the site goes with you only as screenshots."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does an agency charge for the same five pages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The UK guides I checked in September 2026 put a five-page brochure site at £1,500 to £3,000 from a freelancer and £3,000 to £5,000 from an agency, with £500 to £2,000 a year on top for hosting and upkeep. I'm cheaper because it's one person, no office and no account manager, not because the site is smaller."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I pay anything every month after it goes live?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not to me. There's no monthly fee and no contract. Your domain renews with the registrar at roughly £8 to £15 a year, the hosting I set you up on has a free tier that suits a five-page site, and changes after the free 30 days are £25 an hour, billed in half-hour steps, only when you ask for them."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<nav class="tw-index" aria-label="Site">
+  <a class="tw-index__mark" href="/" aria-label="Tempany Web Studios, back to the homepage">
+    <svg viewBox="0 0 44 44" aria-hidden="true">
+      <circle cx="22" cy="22" r="18.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="22" cy="22" r="14.5" fill="none" stroke="currentColor" stroke-width=".7" opacity=".45"/>
+      <g stroke="#d46a41" stroke-width="1.4" stroke-linecap="round">
+        <line x1="22" y1="1.5" x2="22" y2="5"/><line x1="22" y1="39" x2="22" y2="42.5"/>
+        <line x1="1.5" y1="22" x2="5" y2="22"/><line x1="39" y1="22" x2="42.5" y2="22"/>
+      </g>
+      <path transform="translate(15.52 30) scale(0.0100 -0.0100)" fill="currentColor" d="M1376 1238H388L505 1266L268 959L208 975L378 1426H417L511 1333L430 1352H1411L1310 1333L1468 1426H1506L1409 960H1351L1308 1266ZM800 1283H1008L646 96L787 50L772 0H260L275 50L439 99Z"/>
+    </svg>
+    <span>Tempany Web Studios</span>
+  </a>
+  <button class="tw-lights" id="twLights" type="button" aria-pressed="false" aria-label="Turn the lights up">
+    <svg class="tw-lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="tw-lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+  </button>
+  <ul class="tw-index__list">
+    <li><a href="/#work">The work</a></li>
+    <li><a href="/#said">What she said</a></li>
+    <li><a href="/#quote">The quote</a></li>
+    <li><a href="/#me">Just me</a></li>
+    <li class="tw-where">
+      <button class="tw-where__btn" type="button" aria-expanded="false" aria-controls="twWhere">Where I work</button>
+      <ul class="tw-where__list" id="twWhere" hidden>
+        <li><a href="/web-design-falkirk/">Falkirk</a></li>
+        <li><a href="/web-design-stirling/">Stirling</a></li>
+        <li><span class="tw-soon" title="Page on its way">Alloa</span></li>
+        <li><span class="tw-soon" title="Page on its way">Grangemouth</span></li>
+        <li><span class="tw-soon" title="Page on its way">Dollar</span></li>
+        <li><span class="tw-soon" title="Page on its way">Tillicoultry</span></li>
+      </ul>
+    </li>
+    <li><a class="tw-index__ask" href="/#reply">Reply</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+  <!-- 1 · The sum. Numbers are the subject of this page, so the numbers are the opening image. -->
+  <section class="tw-page tw-opening" data-sc-act="flow" aria-labelledby="h1">
+    <h1 id="h1" class="tw-eyebrow" style="margin-bottom:var(--sc-5)">How much does a website cost? The arithmetic, in full</h1>
+    <div class="tw-sum" role="table" aria-label="What a website costs from Tempany Web Studios">
+      <div class="tw-sum__row" role="row"><span>&nbsp;</span><span>Five pages, written and hand-built, live in 10 to 14 days</span><strong>&pound;399</strong></div>
+      <div class="tw-sum__row" role="row"><span>+</span><span>Booking with live availability and an admin page you control</span><strong>&pound;350</strong></div>
+      <div class="tw-sum__row tw-sum__row--total" role="row"><span>=</span><span>A five-page site that takes bookings</span><strong>&pound;749</strong></div>
+      <p class="tw-sum__foot">No VAT. No monthly fee. Nothing added afterwards unless you ask for it.</p>
+      <div class="tw-sum__alt">
+        <span>Card payment at the point of booking <b>+ &pound;120</b></span>
+        <span>Each page beyond the first five <b>+ &pound;45</b></span>
+        <span>A site you already have that needs fixed <b><a href="/audit/" style="color:var(--sc-ink);text-decoration:none;display:inline-block;padding:13px 0;margin:-13px 0">&pound;95 audit</a></b>, credited against a rebuild</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="real-h">
+    <div class="tw-prose" data-sc-in data-sc-stagger="60">
+      <h2 id="real-h">The real arithmetic</h2>
+      <p>Most pages with this title are written to avoid giving a number. Here are mine. <strong>&pound;399</strong> buys up to five pages, written from your own words, hand-coded rather than dropped into a theme, built mobile-first and tested on a real phone, with an enquiry form, click-to-call, a Google Business Profile set up properly and the basic local search groundwork done. Two rounds of changes before it goes live. &pound;200 to start and &pound;199 when you approve it.</p>
+      <p>If the site needs to do something rather than say something, each of those is its own line on top. <strong>Booking is from &pound;350</strong>: live availability, the slot held when someone picks it, and an admin page you edit yourself. <strong>Card payment at the point of booking is from &pound;120.</strong> <strong>Each page past five is &pound;45.</strong> So a five-page site that takes bookings is &pound;749, and one that takes bookings and payment is &pound;869. That is the top of what I sell, and it is on the page so you never have to ask.</p>
+      <p>After launch, small text and photo changes are free for 30 days, then &pound;25 an hour billed in half-hour steps. There is no retainer because there is nothing to retain: the domain, the hosting and the code are in your name from the first day.</p>
+    </div>
+  </section>
+
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="compare-h">
+    <div class="tw-prose" data-sc-in data-sc-stagger="60" style="max-width:none">
+      <h2 id="compare-h">Builder, me, or an agency</h2>
+      <p style="max-width:62ch">Three honest columns, including the one where a builder is the right answer. The builder prices are Squarespace's UK plans as published in the price guide I checked on 14 September 2026; the agency and freelancer ranges are from a UK five-page pricing guide last updated in July 2026. Sources are under the table.</p>
+      <div class="tw-table-wrap">
+      <table class="tw-table">
+        <thead><tr><th scope="col">&nbsp;</th><th scope="col">DIY builder</th><th scope="col">This studio</th><th scope="col">Local agency</th></tr></thead>
+        <tbody>
+          <tr><td>Up front</td><td>&pound;0, plus your evenings</td><td><strong>&pound;399</strong> for five pages; &pound;749 with booking</td><td>&pound;1,500 to &pound;3,000 freelance, &pound;3,000 to &pound;5,000 agency</td></tr>
+          <tr><td>Per year</td><td>&pound;144 to &pound;204 for a basic plan on annual billing, plus about &pound;8 for the domain after the free first year</td><td><strong>&pound;0 to me.</strong> Domain renewal about &pound;8 to &pound;15; hosting on a free tier that suits five pages</td><td>&pound;500 to &pound;2,000 for hosting, updates and support, by the guide's own figures</td></tr>
+          <tr><td>Who owns it</td><td>You own the words and pictures. The site itself lives inside their platform</td><td><strong>You.</strong> Domain, hosting and code in your name from day one</td><td>Varies. Read the contract for who holds the domain and the hosting login</td></tr>
+          <tr><td>If you leave</td><td>Export what you can; the design does not come with you</td><td>Nothing changes. The site keeps working exactly as it did the day before</td><td>Usually a handover fee or a rebuild; sometimes the site stays on their hosting</td></tr>
+          <tr><td>Right for</td><td>Someone spending nothing, comfortable building it themselves, who needs it this week</td><td>A one to five person business that needs enquiries, bookings, or both</td><td>A business that needs strategy, brand work, photography and a team on the job</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="tw-src">Squarespace UK: Basic &pound;12 and Core &pound;17 a month on annual billing (&pound;16 and &pound;24 monthly), free domain for the first year then &pound;8 a year for a .co.uk, per <a href="https://startups.co.uk/websites/builders/squarespace-pricing/" target="_blank" rel="noopener noreferrer">startups.co.uk</a>, last updated 15 September 2025, checked 14 September 2026. Freelancer and agency ranges and the &pound;500 to &pound;2,000 yearly figure from <a href="https://www.media-village.co.uk/websites/5-page-website-cost-uk/" target="_blank" rel="noopener noreferrer">Media Village's five-page website cost guide</a>, last modified 30 July 2026. Prices change; if these are out of date when you read this, tell me and I will correct them.</p>
+    </div>
+  </section>
+
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="three-h">
+    <div class="tw-prose" data-sc-in data-sc-stagger="60">
+      <h2 id="three-h">Three years, side by side</h2>
+      <p>The builder looks cheapest on day one and the agency looks dearest. Over three years the picture changes. A Squarespace Basic plan on annual billing is &pound;144 a year, so &pound;432 over three years, plus two domain renewals at &pound;8, call it <strong>&pound;448</strong>, and at the end you are renting the same site you rented at the start. A five-page site from me is <strong>&pound;399</strong> once, plus three domain renewals, call it &pound;430, and at the end you own it and can hand it to anyone. The agency site is <strong>&pound;3,000 or more plus &pound;1,500 to &pound;6,000 in yearly costs</strong>, and for a business with a marketing budget and a brand to build, that can be exactly right.</p>
+      <p>The honest version of the comparison is this: the builder wins if you have more time than money and can live with the result; I win for a small business that wants it done properly once and owned outright; the agency wins when the site is one part of a bigger job.</p>
+    </div>
+  </section>
+
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="not-h">
+    <div class="tw-prose" data-sc-in data-sc-stagger="60">
+      <h2 id="not-h">When you should not buy from me</h2>
+      <p>Some of the enquiries I get are for the wrong product, and I would rather say so here than after a deposit.</p>
+      <ul>
+        <li><strong>A shop with hundreds of products.</strong> Stock, variants, postage rules, VAT, returns: that is an e-commerce platform's job, and Shopify or a WooCommerce build from someone who does that all day will serve you better than five hand-coded pages. I can build the site around the shop, not the shop.</li>
+        <li><strong>Anything needing a custom database beyond bookings.</strong> Member accounts, customer portals, stock systems, anything where the data is the business. My booking system is the one piece of software I sell, and it is built for one thing.</li>
+        <li><strong>A business that needs a designer on retainer.</strong> If you want someone on call for campaigns, new pages every week and brand work, you want an agency or a freelancer on a monthly arrangement. I build, hand over, and step back.</li>
+        <li><strong>A launch this week.</strong> Ten to fourteen days is the real timescale. Anyone promising three days is either skipping the writing or using a template.</li>
+        <li><strong>Nothing to say yet.</strong> If the business has no name, no service list and no idea of its prices, a site will not fix that. Sort those first, then come back; the &pound;399 will still be &pound;399.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="faq-h">
+    <div class="tw-prose" data-sc-in data-sc-stagger="60">
+      <h2 id="faq-h">Questions about the price</h2>
+      <dl class="tw-qa">
+        <dt>Is £399 the whole price, or the price before extras?</dt>
+        <dd>It&#x27;s the whole price for a five-page site. £200 to start and £199 when you approve it, and the add-ons on this page are the only other numbers I charge: booking from £350, card payment from £120, £45 a page past five. Each is optional and each is quoted before anything starts.</dd>
+        <dt>Why is a Wix or Squarespace site not just cheaper?</dt>
+        <dd>For the first year it usually is. A basic plan runs roughly £10 to £20 a month, so £120 to £240 a year, and the domain is free for the first year then about £8 after. The difference is that it never stops. By year three you have paid close to what a built site costs and you still don&#x27;t own anything: leave, and the site goes with you only as screenshots.</dd>
+        <dt>What does an agency charge for the same five pages?</dt>
+        <dd>The UK guides I checked in September 2026 put a five-page brochure site at £1,500 to £3,000 from a freelancer and £3,000 to £5,000 from an agency, with £500 to £2,000 a year on top for hosting and upkeep. I&#x27;m cheaper because it&#x27;s one person, no office and no account manager, not because the site is smaller.</dd>
+        <dt>Do I pay anything every month after it goes live?</dt>
+        <dd>Not to me. There&#x27;s no monthly fee and no contract. Your domain renews with the registrar at roughly £8 to £15 a year, the hosting I set you up on has a free tier that suits a five-page site, and changes after the free 30 days are £25 an hour, billed in half-hour steps, only when you ask for them.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="where-h">
+    <div class="tw-prose" data-sc-in data-sc-stagger="60">
+      <h2 id="where-h">Where the price applies</h2>
+      <p>The same &pound;399 wherever you are, but the towns I work in most have their own pages, because what a salon in Falkirk needs and what a joiner in Grangemouth needs are not the same site. So far: <a href="/web-design-falkirk/">web design in Falkirk</a> and <a href="/web-design-stirling/">web design in Stirling</a>. Alloa, Grangemouth, Dollar and Tillicoultry are on their way. If your business takes appointments, read about <a href="/booking/">the booking system</a> before you decide, because it changes the sum.</p>
+      <p><a class="tw-cta" href="/#reply">Reply to the quote</a></p>
+      <div class="tw-foot">
+        <p>Logan Tempany trading as Tempany Web Studios &middot; Dollar, Scotland &middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a> &middot; <a href="tel:+447487536649">07487 536649</a></p>
+        <p><a href="/audit/">The &pound;95 audit</a> &middot; <a href="/privacy/">Privacy notice</a> &middot; <a href="/privacy/#complaints">Complaints</a> &middot; <a href="/terms/">Service terms</a> &middot; <a href="/privacy/#cookies">Cookies</a></p>
+        <p style="margin-top:var(--sc-4)">Jennifer Ellis Yoga is a real client site, shown with her permission. The demonstration sites aren't: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="/scrollcraft.min.js?v=3"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script>
+/* The lights. */
+(function () {
+  var btn = document.getElementById('twLights');
+  var docEl = document.documentElement;
+  var meta = document.querySelector('meta[name="theme-color"]');
+  if (!btn) return;
+  function sync() {
+    var light = docEl.getAttribute('data-theme') === 'light';
+    btn.setAttribute('aria-pressed', light ? 'true' : 'false');
+    btn.setAttribute('aria-label', light ? 'Turn the lights down' : 'Turn the lights up');
+    if (meta) meta.setAttribute('content', light ? '#efe9dd' : '#141210');
+    if (window.__twGround) window.__twGround();
+  }
+  btn.addEventListener('click', function () {
+    var light = docEl.getAttribute('data-theme') === 'light';
+    docEl.setAttribute('data-theme', light ? 'dark' : 'light');
+    try { localStorage.setItem('tws-theme', light ? 'dark' : 'light'); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+</script>
+
+<script>
+/* Where I work: a small list in the index. Escape and clicking away close it. */
+(function () {
+  var btn = document.querySelector('.tw-where__btn'), list = document.getElementById('twWhere');
+  if (!btn || !list) return;
+  function set(open) { list.hidden = !open; btn.setAttribute('aria-expanded', String(open)); }
+  btn.addEventListener('click', function () { set(list.hidden); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !list.hidden) { set(false); btn.focus(); } });
+  document.addEventListener('click', function (e) { if (!list.hidden && !e.target.closest('.tw-where')) set(false); });
+})();
+</script>
+
+</body>
+</html>

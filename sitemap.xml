@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tempanywebstudios.co.uk/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://tempanywebstudios.co.uk/how-much-does-a-website-cost/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tempanywebstudios.co.uk/booking/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tempanywebstudios.co.uk/audit/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://tempanywebstudios.co.uk/web-design-stirling/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tempanywebstudios.co.uk/web-design-falkirk/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://tempanywebstudios.co.uk/web-design-stirling/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://tempanywebstudios.co.uk/privacy/</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url><loc>https://tempanywebstudios.co.uk/terms/</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>

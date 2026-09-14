@@ -1,38 +1,7 @@
-<!DOCTYPE html>
-<html lang="en-GB">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Page not found — Tempany Web Studios</title>
-<meta name="description" content="That page is not here. The whole quote is on the homepage.">
-<meta name="robots" content="noindex, follow">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#141210">
-<meta property="og:title" content="Page not found — Tempany Web Studios">
-<meta property="og:description" content="That page is not here. The whole quote is on the homepage.">
-<meta property="og:url" content="https://tempanywebstudios.co.uk/404.html">
-<meta property="og:site_name" content="Tempany Web Studios">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://tempanywebstudios.co.uk/tempany-web-studios-share.png">
-<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-700-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-400-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/fonts.css">
-<script>
-/* Resolve the theme before the first paint so the page never flashes the
-   wrong ground. Dark by default, remembered per browser under the same key
-   the old homepage used, so anyone who chose light before still gets light. */
-(function () {
-  var t = null;
-  try { t = localStorage.getItem('tws-theme'); } catch (e) {}
-  /* No stored choice yet: follow the device. A choice made with the light switch wins from then on. */
-  if (t !== 'light' && t !== 'dark') { try { t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; } catch (e) { t = 'dark'; } }
-  document.documentElement.setAttribute('data-theme', t);
-})();
-</script>
-<link rel="stylesheet" href="/scrollcraft.min.css?v=3">
-<style>
+/* Shared by the sub-pages. Copied from the homepage style block on 14 Sep 2026 so the
+   tokens, the index bar, the labels, the plates and the light theme never drift from it.
+   If the homepage tokens change, copy this block again; do not edit values here. */
+
   :root {
     /* The brand's own ink and paper, with the room lights off. Rust is
        brightened one step so it still reads on the dark ground. */
@@ -96,6 +65,7 @@
   .tw-plate--tall { aspect-ratio: 4/5; }
   /* A phone screenshot sits inside the tall plate as a phone, not stretched to fill it. */
   .tw-plate--phone { display:grid; place-items:end center; padding: var(--sc-5) var(--sc-5) 0; }
+  .tw-plate--phone picture { display: contents; }
   .tw-plate--phone img { width: min(62%, 15rem); height: auto; aspect-ratio: 780/1688; border-radius: 18px 18px 0 0; border: 1px solid var(--tw-line-strong); border-bottom: 0; box-shadow: 0 18px 40px -14px hsl(var(--sc-shadow-color) / .95); }
 
   /* ---------- buttons ---------- */
@@ -121,6 +91,10 @@
   @media (min-width: 900px) { .tw-open-act { grid-template-columns: 1.2fr 1fr; padding-top: var(--sc-10); } }
   .tw-open-act h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: clamp(1.9rem, 1.3rem + 1.7vw, 2.75rem); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-3); text-wrap: balance; }
   .tw-open-act .tw-lede { color: var(--sc-ink-soft); max-width: 36ch; margin: var(--sc-4) 0 0; text-wrap: pretty; }
+  .tw-hero-said { margin: var(--sc-5) 0 0; max-width: 36ch; padding-left: var(--sc-4); border-left: 2px solid var(--sc-accent); font-size: var(--sc-t-sm); color: var(--sc-ink-soft); text-wrap: pretty; }
+  .tw-hero-said q { color: var(--sc-ink); quotes: "\201C" "\201D"; }
+  .tw-hero-said a { display: block; margin-top: .35rem; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; margin: -10px 0; }
+  .tw-hero-said a:hover { color: var(--sc-ink); }
   .tw-plate__caption { position:absolute; left: var(--sc-4); bottom: var(--sc-4); z-index:2; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink); background: color-mix(in srgb, var(--sc-canvas) 78%, transparent); padding:.45rem .7rem; border-radius: var(--sc-r-sm); backdrop-filter: blur(8px); }
 
   /* ---------- act 2: the rail ---------- */
@@ -131,6 +105,20 @@
   .tw-object { flex: 0 0 min(30ch, 72vw); }
   .tw-object .tw-plate { margin-bottom: var(--sc-4); }
   .tw-object .tw-label__name { font-size: var(--sc-t-lg); }
+
+  /* The one real client site in the rail. Flagged rather than restyled: the
+     point is that a visitor can tell at a glance which of these is somebody's
+     actual business, without the card shouting over the others. */
+  .tw-label__flag { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0 0 var(--sc-2); display: inline-flex; align-items: center; gap: .5em; color: var(--sc-ink); }
+  .tw-label__flag::before { content: ""; width: .5em; height: .5em; border-radius: 50%; background: currentColor; }
+  .tw-object--live .tw-plate { outline: 1px solid color-mix(in srgb, var(--sc-ink) 22%, transparent); outline-offset: 3px; }
+
+  /* ---------- the client's own words, between the work and the quote ---------- */
+  .tw-said { max-width: var(--sc-maxw); margin-inline:auto; padding: var(--sc-section) var(--sc-gutter); }
+  .tw-said blockquote { margin:0; max-width: 60ch; }
+  .tw-said blockquote p { font-family: var(--sc-font-display); font-weight: 500; font-size: var(--sc-t-lg); line-height: 1.35; letter-spacing: var(--sc-track-snug); color: var(--sc-ink); margin: 0; text-wrap: pretty; }
+  .tw-said figcaption { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: var(--sc-4) 0 0; }
+  .tw-said figcaption a { color: inherit; }
 
   /* ---------- act 3: the quote, the one act that reads like a document ---------- */
   .tw-quote { max-width: var(--sc-maxw); margin-inline:auto; padding: var(--sc-section) var(--sc-gutter); display:grid; gap: var(--sc-6); }
@@ -208,6 +196,16 @@
   .tw-foot details p { font-size: var(--sc-t-sm); line-height: 1.6; }
 
   @media (max-width: 700px) {
+    /* On a phone the label block is a column and the client's line moves up
+       to sit under the facts, ahead of the paragraph and the button, so the
+       one sentence of proof is on the first screen rather than the second. */
+    .tw-open-act { padding-top: var(--sc-6); gap: var(--sc-5); }
+    .tw-open-act > div:last-child { display: flex; flex-direction: column; }
+    .tw-open-act > div:last-child > * { order: 2; }
+    .tw-open-act > div:last-child > :is(.tw-label__eyebrow, h1, .tw-label__facts, .tw-label__who, .tw-hero-said) { order: 1; }
+    .tw-open-act .tw-hero-said { margin-top: var(--sc-4); }
+    .tw-open-act .tw-lede { margin-top: var(--sc-4); }
+    .tw-open-act .tw-pick { margin-top: var(--sc-4); align-self: flex-start; }
     .tw-open-act h1, .tw-rail__lead h2, .tw-quote > h2, .tw-ask h2 { font-size: var(--sc-t-xl); }
     .tw-figure { font-size: var(--sc-t-2xl); }
   }
@@ -250,75 +248,3 @@
   :root[data-theme="light"] .tw-lights .tw-lights__moon { display: none; }
   @media (pointer: coarse) { .tw-lights { width: 44px; height: 44px; } }
   .tw-index__list { margin-left: var(--sc-4); }
-</style>
-<style>
-  .tw-page { width: min(64ch, 100%); margin-inline:auto; padding: var(--sc-9) var(--sc-gutter) calc(var(--sc-9) + 3rem); }
-  .tw-page h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-5); text-wrap: balance; }
-  .tw-page h2 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); margin: var(--sc-7) 0 var(--sc-3); letter-spacing: var(--sc-track-snug); }
-  .tw-page p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-4); text-wrap: pretty; }
-  .tw-page strong { color: var(--sc-ink); font-weight: 600; }
-  .tw-page a { color: var(--sc-ink); }
-  .tw-page .tw-back { display:inline-flex; align-items:center; min-height:44px; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); text-decoration:none; margin-bottom: var(--sc-5); }
-  .tw-page .tw-back:hover { color: var(--sc-ink); }
-</style>
-</head>
-<body>
-<a class="skip" href="#main">Skip to content</a>
-<div class="sc-grain" aria-hidden="true"></div>
-<nav class="tw-index" aria-label="Sections of this quote">
-  <a class="tw-index__mark" href="/" aria-label="Tempany Web Studios, back to top">
-    <svg viewBox="0 0 44 44" aria-hidden="true">
-      <circle cx="22" cy="22" r="18.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
-      <circle cx="22" cy="22" r="14.5" fill="none" stroke="currentColor" stroke-width=".7" opacity=".45"/>
-      <g stroke="#d46a41" stroke-width="1.4" stroke-linecap="round">
-        <line x1="22" y1="1.5" x2="22" y2="5"/><line x1="22" y1="39" x2="22" y2="42.5"/>
-        <line x1="1.5" y1="22" x2="5" y2="22"/><line x1="39" y1="22" x2="42.5" y2="22"/>
-      </g>
-      <path transform="translate(15.52 30) scale(0.0100 -0.0100)" fill="currentColor" d="M1376 1238H388L505 1266L268 959L208 975L378 1426H417L511 1333L430 1352H1411L1310 1333L1468 1426H1506L1409 960H1351L1308 1266ZM800 1283H1008L646 96L787 50L772 0H260L275 50L439 99Z"/>
-    </svg>
-    <span>Tempany Web Studios</span>
-  </a>
-  <button class="tw-lights" id="twLights" type="button" aria-pressed="false" aria-label="Turn the lights up">
-    <svg class="tw-lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
-    <svg class="tw-lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
-  </button>
-  <ul class="tw-index__list">
-    <li><a href="/#work">The work</a></li>
-    <li><a href="/#quote">The quote</a></li>
-    <li><a href="/#me">Just me</a></li>
-    <li><a class="tw-index__ask" href="/#reply">Reply</a></li>
-  </ul>
-</nav>
-<main id="main">
-  <div class="tw-page">
-    <a class="tw-back" href="/">&larr; Back to the quote</a>
-    <h1>That page is not here.</h1>
-    <p>The address may be old or mistyped. Everything on this site is on one page: the work, the quote, and the form to reply to it.</p>
-    <p><a href="/">Go to the quote</a> &middot; <a href="/#work">See the work</a> &middot; <a href="/#reply">Reply</a></p>
-  </div>
-</main>
-<script>
-/* The lights. */
-(function () {
-  var btn = document.getElementById('twLights');
-  var docEl = document.documentElement;
-  var meta = document.querySelector('meta[name="theme-color"]');
-  if (!btn) return;
-  function sync() {
-    var light = docEl.getAttribute('data-theme') === 'light';
-    btn.setAttribute('aria-pressed', light ? 'true' : 'false');
-    btn.setAttribute('aria-label', light ? 'Turn the lights down' : 'Turn the lights up');
-    if (meta) meta.setAttribute('content', light ? '#efe9dd' : '#141210');
-    if (window.__twGround) window.__twGround();
-  }
-  btn.addEventListener('click', function () {
-    var light = docEl.getAttribute('data-theme') === 'light';
-    docEl.setAttribute('data-theme', light ? 'dark' : 'light');
-    try { localStorage.setItem('tws-theme', light ? 'dark' : 'light'); } catch (e) {}
-    sync();
-  });
-  sync();
-})();
-</script>
-</body>
-</html>

@@ -25,9 +25,11 @@
    wrong ground. Dark by default, remembered per browser under the same key
    the old homepage used, so anyone who chose light before still gets light. */
 (function () {
-  var t = 'dark';
-  try { t = localStorage.getItem('tws-theme') || 'dark'; } catch (e) {}
-  document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
+  var t = null;
+  try { t = localStorage.getItem('tws-theme'); } catch (e) {}
+  /* No stored choice yet: follow the device. A choice made with the light switch wins from then on. */
+  if (t !== 'light' && t !== 'dark') { try { t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; } catch (e) { t = 'dark'; } }
+  document.documentElement.setAttribute('data-theme', t);
 })();
 </script>
 <link rel="stylesheet" href="/scrollcraft.min.css?v=3">

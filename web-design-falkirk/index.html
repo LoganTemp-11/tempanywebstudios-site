@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Web Design in Falkirk | £399 Fixed | Tempany Web Studios</title>
+<meta name="description" content="Hand-built websites for Falkirk businesses: £399 fixed for up to five pages, live in 10 to 14 days, and you own the domain, hosting and code from day one.">
+<meta name="author" content="Logan Tempany">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/web-design-falkirk/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#141210">
+<meta property="og:title" content="Web Design in Falkirk | £399 Fixed | Tempany Web Studios">
+<meta property="og:description" content="Hand-built websites for Falkirk businesses: £399 fixed for up to five pages, live in 10 to 14 days, and you own the domain, hosting and code from day one.">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/web-design-falkirk/">
+<meta property="og:site_name" content="Tempany Web Studios">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/tempany-web-studios-share.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-700-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css">
+<script>
+/* Resolve the theme before the first paint so the page never flashes the
+   wrong ground. Remembered per browser under the same key the old homepage
+   used, so anyone who chose light before still gets light; on a first visit
+   with nothing stored, the device's own preference decides. */
+(function () {
+  var t = null;
+  try { t = localStorage.getItem('tws-theme'); } catch (e) {}
+  /* No stored choice yet: follow the device. A choice made with the light switch wins from then on. */
+  if (t !== 'light' && t !== 'dark') { try { t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; } catch (e) { t = 'dark'; } }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+<link rel="stylesheet" href="/scrollcraft.min.css?v=3">
+<link rel="stylesheet" href="/tw-pages.css">
+<style>
+  /* ---- sub-page additions. Everything else comes from tw-pages.css, copied from the homepage. ---- */
+  .tw-where { position: relative; }
+  .tw-where__btn { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--sc-ink-soft); background: none; border: 0; padding: 0; min-height: 44px; cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; }
+  .tw-where__btn::after { content: ""; width: .5em; height: .5em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-135deg) translate(-1px, -1px); transition: transform var(--sc-d-fast) var(--sc-ease-out); }
+  .tw-where__btn[aria-expanded="true"]::after { transform: rotate(45deg) translate(-2px, -2px); }
+  .tw-where__btn:hover, .tw-where__btn[aria-expanded="true"] { color: var(--sc-ink); }
+  .tw-where__list { position: absolute; bottom: calc(100% + .75rem); left: 50%; transform: translateX(-50%); min-width: 12rem; margin: 0; padding: .5rem; list-style: none; background: var(--tw-glass); border: 1px solid var(--tw-line-strong); border-radius: var(--sc-r-md); box-shadow: var(--sc-e3); text-transform: none; letter-spacing: 0; font-family: var(--sc-font-text); font-size: var(--sc-t-sm); }
+  .tw-where__list[hidden] { display: none; }
+  .tw-where__list a, .tw-where__list span { display: flex; align-items: center; min-height: 44px; padding: 0 .9rem; border-radius: var(--sc-r-sm); color: var(--sc-ink); text-decoration: none; }
+  .tw-where__list a:hover { background: color-mix(in srgb, var(--sc-ink) 8%, transparent); }
+  .tw-where__list span[aria-current] { color: var(--sc-accent); }
+  .tw-soon { color: var(--sc-ink-soft) !important; }
+  .tw-soon::after { content: "soon"; margin-left: auto; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; opacity: .8; }
+  @media (max-width: 720px) { .tw-index__list li.tw-where { display: none; } }
+
+  .tw-page { max-width: var(--sc-maxw); margin: 0 auto; padding: 0 var(--sc-gutter); }
+  .tw-prose { max-width: 62ch; }
+  .tw-prose p, .tw-prose li { color: var(--sc-ink-soft); font-size: var(--sc-t-base); line-height: var(--sc-leading-body); }
+  .tw-prose p { margin: 0 0 var(--sc-4); text-wrap: pretty; }
+  .tw-prose p strong, .tw-prose li strong { color: var(--sc-ink); font-weight: 600; }
+  .tw-prose a { color: var(--sc-ink); text-decoration: underline; text-underline-offset: .18em; text-decoration-color: var(--tw-line-strong); }
+  .tw-prose a:hover { text-decoration-color: var(--sc-accent); }
+  /* In-text links keep their layout but get a 44px tall hit area, the way the homepage footer does it. */
+  .tw-prose p a, .tw-prose li a, .tw-prose dd a, .tw-src a, .tw-said__fig figcaption a, .tw-offer a { display: inline-block; padding: 13px 0; margin: -13px 0; }
+  .tw-prose a.tw-cta { color: var(--sc-accent-ink); text-decoration: none; padding: 0 1.4rem; margin: 0; display: inline-flex; }
+  .tw-prose a.tw-cta--quiet { color: var(--sc-ink); }
+  .tw-index__mark { min-width: 44px; justify-content: center; }
+  @media (min-width: 721px) { .tw-index__mark { justify-content: flex-start; } }
+  .tw-lights { width: 44px; height: 44px; }
+  .tw-prose h2 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-xl); line-height: 1.08; letter-spacing: var(--sc-track-snug); color: var(--sc-ink); margin: 0 0 var(--sc-4); text-wrap: balance; }
+  .tw-prose h3 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); line-height: 1.2; color: var(--sc-ink); margin: 0 0 var(--sc-3); }
+  .tw-prose ul { padding-left: 1.2em; margin: 0 0 var(--sc-4); }
+  .tw-prose li { margin-bottom: .4em; }
+  .tw-act { padding: var(--sc-8) 0; border-top: 1px solid var(--tw-line); }
+  .tw-act--first { border-top: 0; padding-top: 0; }
+  .tw-opening { padding: calc(var(--sc-8) + 1rem) 0 var(--sc-8); min-height: calc(100svh - 2rem); display: grid; align-content: center; }
+  .tw-eyebrow { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0 0 var(--sc-3); }
+  .tw-offer { border: 1px solid var(--tw-line); border-radius: var(--sc-r-md); background: var(--tw-glass); padding: var(--sc-5); max-width: 40rem; }
+  .tw-offer .tw-figure { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); line-height: 1; letter-spacing: var(--sc-track-tight); color: var(--sc-ink); margin: 0 0 var(--sc-3); font-variant-numeric: tabular-nums; }
+  .tw-offer .tw-figure small { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); margin-left: .6rem; vertical-align: middle; }
+  .tw-offer p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-3); font-size: var(--sc-t-sm); }
+  .tw-offer .tw-line strong { color: var(--sc-ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .tw-cta { display: inline-flex; align-items: center; gap: .6rem; min-height: 48px; padding: 0 1.4rem; border-radius: var(--sc-r-pill); background: var(--sc-accent); color: var(--sc-accent-ink); font-family: var(--sc-font-display); font-weight: 600; text-decoration: none; }
+  .tw-cta:hover { filter: brightness(1.06); }
+  .tw-cta--quiet { background: transparent; color: var(--sc-ink); border: 1px solid var(--tw-line-strong); }
+  .tw-said { padding: 0; }
+  .tw-qa dt { font-family: var(--sc-font-display); font-weight: 600; color: var(--sc-ink); font-size: var(--sc-t-base); margin: var(--sc-4) 0 var(--sc-2); }
+  .tw-qa dd { margin: 0; color: var(--sc-ink-soft); max-width: 62ch; }
+  .tw-table { width: 100%; border-collapse: collapse; font-size: var(--sc-t-sm); font-variant-numeric: tabular-nums; }
+  .tw-table th, .tw-table td { text-align: left; vertical-align: top; padding: .8rem .6rem; border-bottom: 1px solid var(--tw-line); color: var(--sc-ink-soft); }
+  .tw-table th { color: var(--sc-ink); font-family: var(--sc-font-mono); font-weight: 500; font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; }
+  .tw-table td strong { color: var(--sc-ink); }
+  .tw-table td:first-child { color: var(--sc-ink); font-weight: 600; }
+  .tw-table-wrap { overflow-x: auto; margin: var(--sc-5) 0; }
+  .tw-src { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); color: var(--sc-ink-soft); letter-spacing: 0; }
+  .tw-src a { color: var(--sc-ink-soft); }
+  .tw-foot { max-width: 62ch; }
+  :focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 3px; }
+
+  /* The index card: the town on one card, set as type. */
+  .tw-card { max-width: 46rem; border: 1px solid var(--tw-line-strong); border-radius: var(--sc-r-md); background: var(--tw-glass); box-shadow: var(--sc-e3); padding: var(--sc-5) var(--sc-6); position: relative; font-family: var(--sc-font-mono); font-size: var(--sc-t-sm); color: var(--sc-ink-soft); transform: rotate(-.6deg); }
+  .tw-card::before { content: ""; position: absolute; left: 0; right: 0; top: 4.2rem; border-top: 1px solid var(--sc-accent); opacity: .55; }
+  .tw-card__hole { position: absolute; top: 1.1rem; right: 1.2rem; width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--tw-line-strong); }
+  .tw-card__town { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); line-height: .95; letter-spacing: var(--sc-track-tight); color: var(--sc-ink); margin: 0 0 var(--sc-5); }
+  .tw-card__town small { display: block; font-family: var(--sc-font-mono); font-weight: 400; font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); margin-bottom: .6rem; }
+  .tw-card dl { display: grid; grid-template-columns: max-content 1fr; gap: .55rem var(--sc-5); margin: 0; font-variant-numeric: tabular-nums; }
+  .tw-card dt { text-transform: uppercase; letter-spacing: var(--sc-track-wide); font-size: var(--sc-t-xs); color: var(--sc-ink-soft); padding-top: .15em; }
+  .tw-card dd { margin: 0; color: var(--sc-ink); }
+  .tw-card dd b { color: var(--sc-accent); font-weight: 500; }
+  .tw-card__foot { margin-top: var(--sc-5); padding-top: var(--sc-4); border-top: 1px dashed var(--tw-line); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; }
+  @media (max-width: 560px) { .tw-card { padding: var(--sc-4); transform: none; } .tw-card dl { grid-template-columns: 1fr; gap: .1rem 0; } .tw-card dt { margin-top: .6rem; } }
+</style>
+<noscript><style>[data-sc-in],[data-sc-stagger]>*{opacity:1!important;transform:none!important}</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Tempany Web Studios",
+  "url": "https://tempanywebstudios.co.uk/web-design-falkirk/",
+  "email": "logan@tempanywebstudios.co.uk",
+  "telephone": "+447487536649",
+  "founder": {
+    "@type": "Person",
+    "name": "Logan Tempany"
+  },
+  "image": "https://tempanywebstudios.co.uk/tempany-web-studios-share.png",
+  "description": "Hand-built websites for small businesses that need enquiries, not a brochure.",
+  "priceRange": "£95 to £869",
+  "areaServed": [
+    "Falkirk",
+    "Grangemouth",
+    "Larbert",
+    "Denny",
+    "Clackmannanshire",
+    "Stirling"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dollar",
+    "addressRegion": "Clackmannanshire",
+    "addressCountry": "GB"
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<nav class="tw-index" aria-label="Site">
+  <a class="tw-index__mark" href="/" aria-label="Tempany Web Studios, back to the homepage">
+    <svg viewBox="0 0 44 44" aria-hidden="true">
+      <circle cx="22" cy="22" r="18.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="22" cy="22" r="14.5" fill="none" stroke="currentColor" stroke-width=".7" opacity=".45"/>
+      <g stroke="#d46a41" stroke-width="1.4" stroke-linecap="round">
+        <line x1="22" y1="1.5" x2="22" y2="5"/><line x1="22" y1="39" x2="22" y2="42.5"/>
+        <line x1="1.5" y1="22" x2="5" y2="22"/><line x1="39" y1="22" x2="42.5" y2="22"/>
+      </g>
+      <path transform="translate(15.52 30) scale(0.0100 -0.0100)" fill="currentColor" d="M1376 1238H388L505 1266L268 959L208 975L378 1426H417L511 1333L430 1352H1411L1310 1333L1468 1426H1506L1409 960H1351L1308 1266ZM800 1283H1008L646 96L787 50L772 0H260L275 50L439 99Z"/>
+    </svg>
+    <span>Tempany Web Studios</span>
+  </a>
+  <button class="tw-lights" id="twLights" type="button" aria-pressed="false" aria-label="Turn the lights up">
+    <svg class="tw-lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="tw-lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+  </button>
+  <ul class="tw-index__list">
+    <li><a href="/#work">The work</a></li>
+    <li><a href="/#said">What she said</a></li>
+    <li><a href="/#quote">The quote</a></li>
+    <li><a href="/#me">Just me</a></li>
+    <li class="tw-where">
+      <button class="tw-where__btn" type="button" aria-expanded="false" aria-controls="twWhere">Where I work</button>
+      <ul class="tw-where__list" id="twWhere" hidden>
+        <li><span aria-current="page">Falkirk</span></li>
+        <li><a href="/web-design-stirling/">Stirling</a></li>
+        <li><span class="tw-soon" title="Page on its way">Alloa</span></li>
+        <li><span class="tw-soon" title="Page on its way">Grangemouth</span></li>
+        <li><span class="tw-soon" title="Page on its way">Dollar</span></li>
+        <li><span class="tw-soon" title="Page on its way">Tillicoultry</span></li>
+      </ul>
+    </li>
+    <li><a class="tw-index__ask" href="/#reply">Reply</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+  <!-- 1 · The index card. The town on one card, set as type; the numbers are from my own list. -->
+  <section class="tw-page tw-opening" data-sc-act="flow" aria-labelledby="h1">
+    <h1 id="h1" class="tw-eyebrow" style="margin-bottom:var(--sc-5)">Web design in Falkirk, on one card</h1>
+    <div class="tw-card">
+      <span class="tw-card__hole" aria-hidden="true"></span>
+      <p class="tw-card__town"><small>Index card &middot; 01 of 06</small>Falkirk</p>
+      <dl>
+        <dt>Where</dt><dd>The largest town in the Falkirk council area, between Stirling and Edinburgh on the M9. About half an hour from my desk in Dollar.</dd>
+        <dt>The street</dt><dd>A pedestrianised High Street under the Steeple, the Howgate Centre on it, a building site at the east end where Callendar Square stood.</dd>
+        <dt>The trades</dt><dd>Salons and barbers, cafés, gift and homeware shops, trades working out of Bainsford and Camelon, and the visitors who come for the Kelpies and the Wheel.</dd>
+        <dt>My list</dt><dd><b>25</b> Falkirk salons and barbers with no site of their own, found this summer. <b>19</b> show no website at all on Google Maps. <b>11</b> take bookings by Instagram or Facebook message, <b>9</b> by phone, <b>5</b> through a booking app.</dd>
+        <dt>A site here</dt><dd><b>&pound;399</b> fixed, up to five pages, live in 10 to 14 days.</dd>
+      </dl>
+      <p class="tw-card__foot">Counts from my own research, August 2026. No business is named on this page.</p>
+    </div>
+  </section>
+
+  <!-- 2 · What is true about businesses here -->
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="here-h">
+    <div class="tw-prose" data-sc-in data-sc-stagger="60">
+      <h2 id="here-h">What is true about Falkirk businesses right now</h2>
+      <p>Falkirk's High Street is pedestrianised and overlooked by the Steeple, with the Howgate Centre on it and, at the east end, the cleared ground where Callendar Square shopping centre stood until the council pulled it down for the new Town Hall. That building site is the backdrop to the east end of the street until the hall opens, which the council currently puts at summer 2029. Independents cluster on Cow Wynd, Vicar Street, Manor Street and Newmarket Street, and along Bank Street and Cockburn Street off the main run. Grahams Road carries the traffic up to Grahamston station, and the Central Retail Park takes the chains.</p>
+      <p>The trades I hear from most in Falkirk are hair and beauty, food, gifts and homeware, and the people working from a van out of Bainsford, Camelon and Larbert. The Kelpies at the Helix and the Falkirk Wheel bring more visitors past the town than any other place I work in, and most of them never make it to the High Street, because nothing online tells them what is there.</p>
+      <p>This summer I went looking for Falkirk hairdressers and barbers with no website of their own, before I emailed a single one. I found twenty-five. On Google Maps, nineteen of them show no website link at all, three point at a Facebook page, one at a Linktree and two at a booking app. Eleven take bookings by Instagram or Facebook message, nine by phone, five through an app. Their average Google rating was 4.9. The businesses are good. What they have online is not.</p>
+    </div>
+  </section>
+
+  <!-- 3 · The problem, stated locally -->
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="problem-h">
+    <div class="tw-prose" data-sc-in data-sc-stagger="60">
+      <h2 id="problem-h">What Falkirk sites tend to get wrong</h2>
+      <p>Not looks. The problem is that most of them are not really websites. A Facebook page with the opening hours in a pinned post from 2023. A Linktree with three stylists' price lists as images nobody can search. A site built for a desktop in 2019 that, on a phone, is a strip of tiny text down the left with a picture that never loads. Page titles that say "Home". No address in text, so Google cannot tell it is in Falkirk at all.</p>
+      <p>The one that costs the most money is booking by message. Every enquiry is a conversation. Every conversation is unpaid admin, usually at nine at night, and the moment a phone dies or a page gets locked, the diary goes with it. The list above is what that looks like from the outside, and I have <a href="/booking/">built the fix</a> for a yoga teacher in Ayrshire, so I know both ends of it.</p>
+      <p>I am not naming anyone. Most of these are good businesses run by one or two people who have never had a quiet week to sort it. That is the whole point of a fixed price and a fixed timescale: it is a job with an end.</p>
+    </div>
+  </section>
+
+  <!-- 4 · The offer, copied from the homepage -->
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="offer-h">
+    <div class="tw-prose" data-sc-in data-sc-stagger="60">
+      <h2 id="offer-h">What a Falkirk website costs from me</h2>
+      <div class="tw-offer">
+        <p class="tw-figure">&pound;399<small>fixed</small></p>
+        <p><strong style="color:var(--sc-ink)">&pound;200 to start, &pound;199 when you approve it.</strong> Up to five pages, written from your own words and hand-coded rather than dropped into a theme. From a proper brief to live in <strong style="color:var(--sc-ink)">10 to 14 days</strong>, as long as you're quick to reply along the way. Your domain, your hosting, your code, in your name from day one.</p>
+        <div class="tw-line"><span><a href="/booking/" style="color:var(--sc-ink)">Booking with live availability and an admin page you control</a></span><strong>from &pound;350</strong></div>
+        <div class="tw-line"><span>Card payment taken at the point of booking</span><strong>from &pound;120</strong></div>
+        <div class="tw-line"><span>Each page beyond the first five</span><strong>&pound;45</strong></div>
+        <div class="tw-line"><span>Already have a site that just needs fixed?</span><strong><a href="/audit/" style="color:var(--sc-ink)">&pound;95 audit</a></strong></div>
+        <p style="margin-top:var(--sc-3)">The full written quote, every clause, is on the <a href="/#quote" style="color:var(--sc-ink)">homepage</a>. These numbers are copied from it, not rounded for this page.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · The nearest demo -->
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="demo-h">
+    <div class="tw-prose" data-sc-in data-sc-stagger="60">
+      <h2 id="demo-h">The demo to look at first</h2>
+      <p>For Falkirk I point people at <a href="/demos/salon-v2/">Brackenwynd, the salon demonstration</a>. It is a fictional Falkirk salon with an invented address, but the way it sells is the way the real ones on Cow Wynd and Bank Street sell: you point at the hair you want and the request form already knows which stylist does it. Hair and beauty is the biggest gap I found in the town, so it is the example most Falkirk owners will recognise. Trades in Bainsford or Camelon should look at <a href="/demos/trades/">the joinery demo</a> instead.</p>
+    </div>
+  </section>
+
+  <!-- 6 · The proof -->
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="said-h">
+    <div class="tw-said" data-sc-in>
+      <h2 id="said-h" class="tw-label__eyebrow" style="margin-bottom:var(--sc-5)">What the first client said</h2>
+      <figure class="tw-said__fig" style="margin:0">
+        <blockquote cite="https://yogawithjenniferellis.co.uk/">
+          <p>&ldquo;I had a sense of what I wanted for my website and, from our first meeting, Logan listened carefully, confirming via email his understanding of what I wanted. He then created a site with the functionality I needed, while also patiently explaining what wasn't possible to a website novice like me. He managed to capture the tone and vibe that was important to me, and I am so impressed by that. He replied quickly to emails and made any changes that I requested. I recommend Logan and Tempany Web Studios highly.&rdquo;</p>
+        </blockquote>
+        <figcaption>Jennifer Ellis &middot; <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Yoga with Jennifer Ellis</a></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 7 · Falkirk questions -->
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="faq-h">
+    <div class="tw-prose" data-sc-in data-sc-stagger="60">
+      <h2 id="faq-h">Questions Falkirk owners ask me</h2>
+      <dl class="tw-qa">
+        <dt>Can we meet in person in Falkirk?</dt>
+        <dd>Yes. I'm in Dollar, about half an hour away, and I would rather see the shop, the van or the salon than guess at it from Instagram. The brief takes an hour at your premises, and everything after that works by email so you have it in writing.</dd>
+        <dt>My Facebook page does fine. Why would I need a site?</dt>
+        <dd>Facebook is where your regulars find you. A site is where the people who have never heard of you find you: someone searching "barber Falkirk" or "gift shop near the Howgate" on a Saturday morning. Facebook does not show up for that search, and a Linktree does not either. The site sends them to your Facebook page once they have found you, not the other way round.</dd>
+        <dt>Do you work with businesses in Grangemouth, Larbert and Denny as well?</dt>
+        <dd>Yes, the whole council area. Grangemouth is getting its own page because its trades are different, but the price and the timescale are the same wherever you are. Nearer Stirling? There is a <a href="/web-design-stirling/">Stirling page</a>, same price, same person.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 8 · One CTA, to the homepage quote -->
+  <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="cta-h">
+    <div class="tw-prose" data-sc-in data-sc-stagger="60">
+      <h2 id="cta-h">Reply to the quote</h2>
+      <p>The whole quote is written out on the homepage, price first. There is no form on this page on purpose: one place for enquiries means I answer every one of them myself, usually the same day.</p>
+      <p><a class="tw-cta" href="/#reply">Reply to the quote</a> &nbsp; <a class="tw-cta tw-cta--quiet" href="/how-much-does-a-website-cost/">What a website costs, in full</a></p>
+      <div class="tw-foot">
+        <p>Logan Tempany trading as Tempany Web Studios &middot; Dollar, Scotland &middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a> &middot; <a href="tel:+447487536649">07487 536649</a></p>
+        <p><a href="/audit/">The &pound;95 audit</a> &middot; <a href="/privacy/">Privacy notice</a> &middot; <a href="/privacy/#complaints">Complaints</a> &middot; <a href="/terms/">Service terms</a> &middot; <a href="/privacy/#cookies">Cookies</a></p>
+        <p style="margin-top:var(--sc-4)">Jennifer Ellis Yoga is a real client site, shown with her permission. The demonstration sites aren't: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="/scrollcraft.min.js?v=3"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script>
+/* The lights. */
+(function () {
+  var btn = document.getElementById('twLights');
+  var docEl = document.documentElement;
+  var meta = document.querySelector('meta[name="theme-color"]');
+  if (!btn) return;
+  function sync() {
+    var light = docEl.getAttribute('data-theme') === 'light';
+    btn.setAttribute('aria-pressed', light ? 'true' : 'false');
+    btn.setAttribute('aria-label', light ? 'Turn the lights down' : 'Turn the lights up');
+    if (meta) meta.setAttribute('content', light ? '#efe9dd' : '#141210');
+    if (window.__twGround) window.__twGround();
+  }
+  btn.addEventListener('click', function () {
+    var light = docEl.getAttribute('data-theme') === 'light';
+    docEl.setAttribute('data-theme', light ? 'dark' : 'light');
+    try { localStorage.setItem('tws-theme', light ? 'dark' : 'light'); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+</script>
+
+<script>
+/* Where I work: a small list in the index. Escape and clicking away close it. */
+(function () {
+  var btn = document.querySelector('.tw-where__btn'), list = document.getElementById('twWhere');
+  if (!btn || !list) return;
+  function set(open) { list.hidden = !open; btn.setAttribute('aria-expanded', String(open)); }
+  btn.addEventListener('click', function () { set(list.hidden); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !list.hidden) { set(false); btn.focus(); } });
+  document.addEventListener('click', function (e) { if (!list.hidden && !e.target.closest('.tw-where')) set(false); });
+})();
+</script>
+
+</body>
+</html>
