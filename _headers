@@ -1,0 +1,28 @@
+# Cloudflare Pages response headers.
+#
+# Fonts and images only ever change by getting a new filename, and the engine
+# files carry a ?v= query that is bumped on every edit, so all of them can be
+# cached hard. HTML stays on Cloudflare's default (revalidate every visit) so
+# a deploy shows up immediately.
+#
+# The Link header on the homepage is turned into a 103 Early Hints response
+# by Cloudflare, so the browser starts fetching the two render-blocking
+# stylesheets before the HTML has finished arriving.
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=2592000
+
+/scrollcraft.min.js
+  Cache-Control: public, max-age=604800
+
+/scrollcraft.min.css
+  Cache-Control: public, max-age=604800
+
+/fonts.css
+  Cache-Control: public, max-age=604800
+
+/
+  Link: </scrollcraft.min.css?v=3>; rel=preload; as=style, </fonts.css>; rel=preload; as=style
