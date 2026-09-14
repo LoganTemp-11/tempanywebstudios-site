@@ -1,0 +1,21 @@
+# robots.txt for the Cathy Swan Yoga first version (concept build)
+#
+# A robots.txt only carries weight at the root of a domain
+# (https://example.co.uk/robots.txt). This copy sits in a subfolder, so no
+# crawler will read it here. It ships anyway so the same shape exists when the
+# site moves to Cathy's own domain, where it would sit at the root.
+#
+# Tempany Web Studios note: this concept is kept out of the index by the
+# noindex, nofollow meta tag on every page. Do NOT add a Disallow for this
+# folder to the root robots.txt instead: a Disallow stops crawlers reading that
+# meta tag at all, which leaves the URL indexable from inbound links with no
+# description under it. The meta tag is the thing doing the work.
+
+User-agent: *
+Allow: /
+
+# On Cathy's own live site, exclusions would go here:
+# Disallow: /thank-you/
+# Disallow: /admin/
+
+Sitemap: https://tempanywebstudios.co.uk/concepts/cathy-swan/sitemap.xml

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  One URL, and it is the concept itself.
+
+  This is not a public site. Every page carries noindex, nofollow, and this
+  concept is deliberately absent from the studio's own sitemap. The file exists
+  so the build has the same shape it will have on Cathy's domain, and so that
+  nothing downstream trips over a missing sitemap.xml. The privacy and terms
+  pages are not listed: they exist for the form, not for search.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tempanywebstudios.co.uk/concepts/cathy-swan/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

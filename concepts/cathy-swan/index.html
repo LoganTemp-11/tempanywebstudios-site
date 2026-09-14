@@ -1,0 +1,1204 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cathy Swan Yoga &middot; Perth</title>
+<meta name="description" content="A first version of a website for Cathy Swan, a yoga teacher in Perth who qualified in 1985. Sunday workshops at Perth Yoga Studio, classes, one-to-one yoga therapy and teacher training.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="tws-storage-prefix" content="cs">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/concepts/cathy-swan/">
+<meta name="theme-color" content="#151A24" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#EDE8DF" media="(prefers-color-scheme: light)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cathy Swan Yoga">
+<meta property="og:title" content="Cathy Swan Yoga, Perth">
+<meta property="og:description" content="Teaching yoga in Perth since 1985. Classes, Sunday workshops at Perth Yoga Studio, one-to-one yoga therapy and teacher training.">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/concepts/cathy-swan/">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/concepts/cathy-swan/assets/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cathy Swan Yoga, Perth. A first version built by Tempany Web Studios.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tempanywebstudios.co.uk/concepts/cathy-swan/assets/share.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23EDE8DF'/><circle cx='16' cy='16' r='9' fill='none' stroke='%235E4B8B' stroke-width='1.6'/><circle cx='16' cy='16' r='3.4' fill='%235E4B8B'/></svg>">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-serif-400-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/dm-sans-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="scrollcraft.css">
+<script>
+/* Resolve the theme before the first paint, or the page flashes the wrong
+   ground for a frame. Deliberately NOT prefers-color-scheme by default: Cathy
+   and Logan need to know which version appears when the link is handed over.
+   A studio poster is printed on paper, so light is the default here. One line
+   below flips it to follow the visitor's OS. */
+(function () {
+  var t = 'light';
+  try { t = localStorage.getItem('cs-theme') || 'light'; } catch (e) {}
+  /* follow the OS instead: t = localStorage.getItem('cs-theme') ||
+     (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); */
+  document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+})();
+</script>
+<style>
+  /* ====================================================================
+     CATHY SWAN YOGA, PERTH. First version. A typographic poster.
+
+     Everything on this page about Cathy comes from her public listings
+     (Yoga Scotland and Perth Yoga Studio). Where a fact is not known, the
+     page says so in a labelled line rather than filling the hole. There
+     are no photographs yet, and this grammar does not need any: type is
+     the imagery and rhythm comes from scale, not motion.
+     ==================================================================== */
+
+  :root {
+    color-scheme: light dark;
+    --sc-canvas:     #EDE8DF;   /* warm stone */
+    --sc-surface:    #E4DDD0;
+    --sc-ink:        #221F1C;
+    --sc-ink-soft:   #5A534A;
+    --sc-accent:     #5E4B8B;   /* plum. The breath and the links, nothing else */
+    --sc-accent-ink: #FFFFFF;
+
+    --sc-font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --sc-font-text:    "DM Sans", "Helvetica Neue", Arial, sans-serif;
+
+    --cs-rule:       rgba(34, 31, 28, .26);
+    --cs-rule-soft:  rgba(34, 31, 28, .13);
+    --cs-field:      #FFFFFF;
+    --cs-field-line: rgba(34, 31, 28, .34);
+
+    /* The ramp. Tracking tightens as size grows: at 26vw, default tracking is
+       a visible defect, not a stylistic choice. */
+    --cs-t-word:    min(26vw, 46vh);
+    /* The circle has to finish inside its own row, or its lower arc lands on
+       the readout. The last term is the height left once the stage padding,
+       the readout and the foot have taken theirs. */
+    --cs-ring:      min(62vh, 86vw, max(180px, calc(100vh - 320px)));
+    --cs-t-silence: clamp(2.6rem, 1.1rem + 7vw, 7rem);
+    --cs-t-h2:      clamp(2.2rem, 1.3rem + 3.6vw, 4rem);
+    --cs-t-name:    clamp(1.9rem, 1.1rem + 3.2vw, 3.6rem);
+    --cs-t-h1:      clamp(1.7rem, 0.9rem + 2.6vw, 2.9rem);
+    --cs-t-mark:    clamp(1.5rem, 1rem + 1.6vw, 2.4rem);
+    --cs-t-micro:   0.78rem;
+    --cs-t-small:   0.9375rem;   /* 15px: the close is set at this */
+
+    --cs-band:   clamp(5rem, 10.5vw, 11rem);
+  }
+
+  /* Dark is a real second palette, not an inversion of the stone. The accent
+     takes a second stop because plum at #5E4B8B cannot clear 4.5:1 on a slate
+     ground. One hue, two lightnesses, keyed to the ground. */
+  :root[data-theme="dark"] {
+    --sc-canvas:     #151A24;   /* deep slate-blue night */
+    --sc-surface:    #1C2331;
+    --sc-ink:        #ECE7DE;
+    --sc-ink-soft:   #8792A6;
+    --sc-accent:     #BFA8E6;
+    --sc-accent-ink: #151A24;
+
+    --cs-rule:       rgba(236, 231, 222, .26);
+    --cs-rule-soft:  rgba(236, 231, 222, .13);
+    --cs-field:      #1D2431;
+    --cs-field-line: rgba(236, 231, 222, .32);
+  }
+  /* color is inherited as a computed value, so restating the token on its own
+     is not enough. */
+  :root[data-theme="dark"] body { color: var(--sc-ink); }
+  body { color: var(--sc-ink); background: var(--sc-canvas); }
+
+  ::selection { background: var(--sc-accent); color: var(--sc-accent-ink); }
+
+  /* Grain over everything, chrome included. It ships below the chrome layer,
+     and the corner cluster carries a ground of its own, so any element above
+     the grain shows up as a clean rectangle in a grained field. */
+  .sc-grain { z-index: calc(var(--sc-z-chrome) + 2); opacity: .05; }
+
+  /* ---------------------------------------------------------- shared ---- */
+  .cs-wrap { width: 100%; max-width: 76rem; margin-inline: auto; padding-inline: var(--sc-gutter); }
+  .cs-act { padding-block: var(--cs-band); position: relative; }
+  .cs-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+  .cs-h2 {
+    font-family: var(--sc-font-display); font-weight: 400;
+    font-size: var(--cs-t-h2); line-height: 0.98; letter-spacing: -0.028em;
+    margin: 0; text-wrap: balance;
+  }
+  .cs-lede {
+    font-size: var(--sc-t-base); line-height: 1.55; color: var(--sc-ink-soft);
+    max-width: 46ch; margin: var(--sc-4) 0 0; text-wrap: pretty;
+  }
+  .cs-label {
+    font-family: var(--sc-font-text); font-weight: 500;
+    font-variant-caps: all-small-caps; font-variant-numeric: tabular-nums;
+    letter-spacing: 0.14em; font-size: var(--cs-t-micro);
+    color: var(--sc-ink-soft); margin: 0;
+  }
+  p { text-wrap: pretty; }
+
+  /* ------------------------------------------------------------ gaps ----
+     The one thing this page must never do is fill a hole it does not have
+     the facts for. Where something is missing it is marked, quietly, in the
+     page's own label style, with a plum tick so it is findable. */
+  .cs-todo {
+    margin: var(--sc-4) 0 0; padding-left: 1.1rem; position: relative;
+    font-family: var(--sc-font-text); font-weight: 500; font-size: var(--cs-t-micro);
+    font-variant-caps: all-small-caps; letter-spacing: .12em;
+    color: var(--sc-ink-soft);
+  }
+  .cs-todo::before {
+    content: ""; position: absolute; left: 0; top: .42em;
+    width: .42rem; height: .42rem; border: 1px solid var(--sc-accent); border-radius: 50%;
+  }
+
+  /* ----------------------------------------------------- version strip ---
+     Not a demo strip. This build is a first version for a real person, and
+     the line at the top of every page says exactly that, so nobody who is
+     sent the link mistakes it for a finished site. */
+  .cs-strip {
+    position: relative; z-index: 2;
+    background: var(--sc-surface); border-bottom: 1px solid var(--cs-rule-soft);
+    padding: .55rem var(--sc-gutter);
+    font-family: var(--sc-font-text); font-size: var(--cs-t-micro);
+    font-variant-caps: all-small-caps; letter-spacing: .12em;
+    color: var(--sc-ink-soft);
+  }
+  .cs-strip p { margin: 0; display: flex; flex-wrap: wrap; gap: .2rem .9rem; align-items: baseline; }
+  .cs-strip b { color: var(--sc-accent); font-weight: 500; white-space: nowrap; }
+  .cs-strip a { color: var(--sc-ink); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding-block: .1rem; }
+  .cs-strip a:hover { color: var(--sc-accent); }
+  /* Three lines of strip is a third of a phone's first screen. Tighten it. */
+  @media (max-width: 560px) {
+    .cs-strip { font-size: .72rem; letter-spacing: .08em; padding-inline: 1rem; }
+    .cs-strip p { gap: .1rem .7rem; }
+  }
+
+  /* ------------------------------------------------------ skip link ----- */
+  .cs-skip {
+    position: fixed; top: .5rem; left: .5rem; z-index: 999;
+    display: flex; align-items: center; min-height: 44px;
+    padding: .4rem 1rem; border-radius: var(--sc-r-sm);
+    background: var(--sc-accent); color: var(--sc-accent-ink);
+    font: 500 var(--sc-t-sm)/1 var(--sc-font-text); text-decoration: none;
+    transform: translateY(-180%);
+  }
+  .cs-skip:focus-visible { transform: none; outline: 2px solid var(--sc-ink); outline-offset: 2px; }
+
+  /* --------------------------------------------------- corner cluster ---
+     There is no bar. A poster does not carry a navigation bar across its
+     face, so the only fixed chrome on this page is two things in a corner:
+     the lights, and the one link anybody actually came for. */
+  .cs-chrome {
+    position: fixed; z-index: var(--sc-z-chrome);
+    top: calc(var(--cs-strip-h, 2.4rem) + .85rem); right: var(--sc-gutter);
+    display: flex; align-items: center; gap: .55rem;
+    /* The cluster carries the ground it is standing on. Visually that is the
+       same colour as what is already behind it, so nothing shows; it is here
+       so the contrast of a fixed element is measurable against the thing it
+       actually sits over rather than against whatever is at the top of the
+       document. */
+    background: var(--sc-canvas);
+    padding: .25rem .45rem; border-radius: var(--sc-r-pill);
+    transition: top var(--sc-d-mid, .3s) var(--sc-ease-out);
+  }
+  .cs-chrome__ask {
+    display: inline-flex; align-items: center; min-height: 38px; padding-inline: .55rem;
+    font: 500 var(--cs-t-micro)/1 var(--sc-font-text);
+    font-variant-caps: all-small-caps; letter-spacing: .14em;
+    color: var(--sc-ink); text-decoration: underline;
+    text-decoration-color: var(--sc-accent); text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.28em;
+  }
+  .cs-chrome__ask:hover { color: var(--sc-accent); }
+  /* The close inverts the ground under the cluster, and fixed chrome that does
+     not notice goes invisible. The palette here follows what is behind it. */
+  .cs-chrome[data-cs-over="invert"] {
+    --sc-ink: #ECE7DE; --sc-ink-soft: #8792A6; --sc-accent: #BFA8E6;
+    --cs-rule: rgba(236, 231, 222, .3);
+    background: #151A24;
+  }
+  :root[data-theme="dark"] .cs-chrome[data-cs-over="invert"] {
+    --sc-ink: #221F1C; --sc-ink-soft: #5A534A; --sc-accent: #5E4B8B;
+    --cs-rule: rgba(34, 31, 28, .3);
+    background: #EDE8DF;
+  }
+  .cs-lights {
+    display: inline-grid; place-items: center; width: 38px; height: 38px; padding: 0;
+    background: transparent; color: var(--sc-ink-soft);
+    border: 1px solid var(--cs-rule); border-radius: 50%; cursor: pointer;
+    transition: color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .cs-lights:hover { color: var(--sc-ink); border-color: var(--sc-ink); }
+  .cs-lights:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
+  /* No `display` in this rule. scrollcraft.css already sets svg { display:block },
+     and putting it back here would outrank .cs-lights__sun { display:none } on
+     specificity, which paints the sun and the moon on top of each other. */
+  .cs-lights svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .cs-lights__sun { display: none; }
+  :root[data-theme="dark"] .cs-lights__sun { display: block; }
+  :root[data-theme="dark"] .cs-lights__moon { display: none; }
+  @media (pointer: coarse) {
+    .cs-lights { width: 44px; height: 44px; }
+    /* "Ask" is three letters. Without the min-width the tap target is 40px
+       across, which is under the floor on a coarse pointer. */
+    .cs-chrome__ask { min-height: 44px; min-width: 44px; justify-content: center; }
+  }
+  /* On a phone the cluster moves to the thumb, and it rides above the consent
+     bar rather than under it. */
+  @media (max-width: 760px) {
+    .cs-chrome {
+      top: auto; bottom: calc(var(--cs-consent-h, 0px) + .85rem); right: .85rem;
+      transition: bottom var(--sc-d-mid, .3s) var(--sc-ease-out);
+    }
+  }
+
+  /* ================================================== 1 · THE BREATH ==== */
+  .cs-breath { --cs-breath: 0.55; --cs-word-o: 1; --cs-rise: 0; }
+  .cs-breath .sc-stage {
+    display: flex; flex-direction: column; gap: var(--sc-5);
+    /* Two things eat into the first screen and neither is in this act: the
+       version strip above it, which pushes the stage's last band below the
+       fold on arrival, and the consent bar over it. Both are measured, and
+       both are reserved here, so the wordmark is on the first screen on a
+       first visit as well as on a second one. */
+    padding: var(--sc-6) var(--sc-gutter)
+             calc(var(--cs-strip-h, 2.4rem) + var(--cs-consent-h, 0px) + var(--sc-5));
+  }
+  /* The circle sweeps a wide band as it breathes, so the readout is parked at
+     the foot of the stage rather than tucked under the word: anything inside
+     that band gets crossed by the arc at some point in the cycle, and a line
+     of type with a circle drawn through it looks like a mistake, not a move. */
+  .cs-breath__top {
+    flex: 1 1 auto; min-height: 0;
+    display: grid; grid-template-rows: 1fr auto auto; align-content: stretch;
+    justify-items: center; row-gap: clamp(.6rem, 1.4vh, 1rem);
+    position: relative;
+  }
+  .cs-frame { position: relative; display: grid; place-items: center; align-self: center; }
+  .cs-ring {
+    position: absolute; left: 50%; top: 50%; translate: -50% -50%;
+    width: var(--cs-ring); height: var(--cs-ring);
+    /* scrollcraft.css caps every svg at max-width:100%, and this one's
+       containing block is the width of the word. On a phone that quietly
+       squashed the circle down onto the count line. */
+    max-width: none;
+    color: var(--sc-accent); overflow: visible;
+  }
+  .cs-ring__g { transform: scale(var(--cs-breath)); transform-origin: center; transform-box: fill-box; }
+  .cs-ring circle { fill: none; stroke: currentColor; }
+
+  .cs-word {
+    position: relative; margin: 0;
+    font-family: var(--sc-font-display); font-weight: 400;
+    font-size: var(--cs-t-word); line-height: 0.82;
+    letter-spacing: -0.045em; white-space: nowrap;
+    opacity: var(--cs-word-o);
+    /* the period is a full sidebearing wide; nudging back re-centres the word
+       optically over the ring */
+    margin-right: -0.08em;
+  }
+
+  .cs-state { display: grid; justify-items: center; margin: 0; }
+  .cs-state > span {
+    grid-area: 1 / 1; opacity: 0;
+    font-family: var(--sc-font-text); font-weight: 500;
+    font-variant-caps: all-small-caps; letter-spacing: .34em;
+    font-size: clamp(.82rem, .7rem + .5vw, 1.05rem);
+    color: var(--sc-accent);
+    transition: opacity 240ms var(--sc-ease-out);
+    padding-left: .34em;
+  }
+  .cs-count {
+    margin: 0; display: flex; align-items: baseline; gap: .7rem;
+    font-family: var(--sc-font-text); font-size: var(--cs-t-micro);
+    font-variant-caps: all-small-caps; font-variant-numeric: tabular-nums;
+    letter-spacing: .14em; color: var(--sc-ink-soft);
+  }
+  .cs-count__n { color: var(--sc-accent); font-weight: 500; min-width: 1ch; }
+  .cs-count__dot { color: var(--cs-rule); }
+
+  .cs-breath__foot {
+    flex: 0 0 auto; border-top: 1px solid var(--cs-rule);
+    padding-top: var(--sc-4);
+    display: flex; align-items: flex-end; justify-content: space-between; gap: var(--sc-5);
+  }
+  .cs-mark { margin: 0; }
+  .cs-mark__name {
+    display: block; font-family: var(--sc-font-display); font-weight: 400;
+    font-size: var(--cs-t-mark); line-height: 1; letter-spacing: .07em;
+    font-variant-caps: all-small-caps;
+  }
+  .cs-mark__sub {
+    display: block; margin-top: .3rem;
+    font-family: var(--sc-font-text); font-weight: 500; font-size: var(--cs-t-micro);
+    font-variant-caps: all-small-caps; letter-spacing: .2em; color: var(--sc-ink-soft);
+  }
+  .cs-promise {
+    margin: 0; text-align: right;
+    font-family: var(--sc-font-display); font-style: italic; font-weight: 400;
+    font-size: var(--cs-t-h1); line-height: 1.06; letter-spacing: -0.015em;
+    opacity: var(--cs-rise);
+    transform: translateY(calc((1 - var(--cs-rise)) * 0.7em));
+    will-change: opacity, transform;
+  }
+  /* A phone is tall and narrow, so the word can take more of the width and the
+     ring has more height to open into. Two sets of numbers, not one squeezed. */
+  @media (max-width: 760px) {
+    :root {
+      --cs-t-word: min(31vw, 40vh);
+      --cs-ring: min(52vh, 88vw, max(180px, calc(100vh - 380px)));
+    }
+    /* the readout has to sit clear of the circle's lower arc, and on a narrow
+       screen the circle is only a little wider than the line */
+    .cs-count { font-size: .68rem; letter-spacing: .1em; gap: .5rem; }
+    .cs-breath__foot { flex-direction: column; align-items: flex-start; gap: var(--sc-4); }
+    .cs-promise { text-align: left; }
+    .cs-breath .sc-stage {
+      padding-bottom: calc(var(--cs-strip-h, 2.4rem) + var(--cs-consent-h, 0px) + 3.4rem);
+    }
+  }
+  /* Reduced motion: the circle is simply open, the line is simply there, and
+     nothing counts. The page still says everything it was going to say. */
+  @media (prefers-reduced-motion: reduce) {
+    .cs-breath { --cs-breath: 1; --cs-word-o: 1; --cs-rise: 1; }
+    .cs-state, .cs-count__n, .cs-count__dot { display: none; }
+    .cs-promise { transform: none; }
+  }
+
+  /* ============================================ 2 · WHAT CATHY TEACHES == */
+  .cs-teaches { list-style: none; margin: var(--sc-8) 0 0; padding: 0; }
+  .cs-teach {
+    border-top: 1px solid var(--cs-rule);
+    padding-block: var(--sc-5) var(--sc-6);
+    display: grid; gap: var(--sc-3);
+  }
+  @media (min-width: 860px) {
+    .cs-teach { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: var(--sc-6); align-items: start; }
+  }
+  .cs-teach__name {
+    margin: 0; font-family: var(--sc-font-display); font-weight: 400;
+    font-size: var(--cs-t-name); line-height: 0.98; letter-spacing: -0.025em;
+  }
+  .cs-teach__body { margin: 0; color: var(--sc-ink-soft); max-width: 46ch; }
+  .cs-teach__body + .cs-teach__body { margin-top: var(--sc-3); }
+  .cs-teach__src { margin: 0 0 var(--sc-2); }
+
+  /* ==================================================== 3 · WORKSHOPS === */
+  .cs-spec { margin: var(--sc-7) 0 0; max-width: 46rem; }
+  .cs-spec div {
+    display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: var(--sc-4);
+    padding-block: .85rem; border-bottom: 1px solid var(--cs-rule-soft);
+    align-items: baseline;
+  }
+  .cs-spec div:first-child { border-top: 1px solid var(--cs-rule); }
+  .cs-spec dt {
+    font-family: var(--sc-font-text); font-weight: 500; font-size: var(--cs-t-micro);
+    font-variant-caps: all-small-caps; letter-spacing: .16em; color: var(--sc-ink-soft);
+  }
+  .cs-spec dd { margin: 0; font-size: var(--sc-t-base); font-variant-numeric: tabular-nums; }
+  @media (max-width: 520px) {
+    .cs-spec div { grid-template-columns: 5.5rem minmax(0, 1fr); gap: var(--sc-3); }
+    .cs-spec dd { font-size: var(--sc-t-sm); }
+  }
+  /* Somebody else's sentence, reproduced word for word. It is set below
+     display scale on purpose: at 2.4rem the only clean two-line break in it
+     does not fit a 390px screen, and a quotation is not the place to be
+     choosing between an orphan and a line that ends on "an". */
+  .cs-quote { margin: var(--sc-7) 0 0; max-width: 38ch; }
+  .cs-quote p {
+    margin: 0; font-family: var(--sc-font-display); font-weight: 400;
+    font-size: clamp(1.2rem, 1rem + 0.7vw, 1.55rem); line-height: 1.34;
+    letter-spacing: -0.012em;
+    /* balance, not pretty: the only even two-line split of this sentence
+       falls after "meditation", and a balanced block finds it. Left to a
+       greedy line breaker the first line ends on "an". */
+    text-wrap: balance;
+  }
+  .cs-quote footer { margin-top: var(--sc-3); }
+
+  /* ===================================================== 4 · SILENCE ==== */
+  .cs-silence { min-height: 104vh; display: grid; align-content: center; }
+  .cs-silence__line {
+    margin: 0; font-family: var(--sc-font-display); font-weight: 400;
+    font-size: var(--cs-t-silence); line-height: 0.96; letter-spacing: -0.035em;
+    text-wrap: balance; max-width: 14ch;
+  }
+  .cs-silence__sub {
+    margin: var(--sc-7) 0 0; font-size: var(--sc-t-base); color: var(--sc-ink-soft);
+    max-width: 42ch;
+  }
+
+  /* ================================================== 5 · ABOUT CATHY === */
+  .cs-about { display: grid; gap: var(--sc-5); }
+  @media (min-width: 860px) { .cs-about { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: var(--sc-8); align-items: start; } }
+  .cs-about p { margin: 0 0 var(--sc-4); color: var(--sc-ink-soft); max-width: 46ch; }
+  .cs-about p:last-child { margin-bottom: 0; }
+  /* Stacked, not one line with middots: at this size a wrapped credential
+     leaves a separator hanging on the end of a line, which is a defect. */
+  .cs-cred { list-style: none; margin: var(--sc-5) 0 0; padding: var(--sc-4) 0 0; border-top: 1px solid var(--cs-rule); }
+  .cs-cred li { margin: 0 0 .35rem; }
+  .cs-cred li:last-child { margin-bottom: 0; }
+
+  /* =================================================== 6 · THE CLOSE ====
+     The page inverts here, and the type gets smaller than anywhere else on
+     it. After that much volume the ask should be almost a whisper: a plain
+     underlined link, and a form set at 15px. */
+  .cs-close {
+    --sc-canvas:     #151A24;
+    --sc-surface:    #1C2331;
+    --sc-ink:        #ECE7DE;
+    --sc-ink-soft:   #8792A6;
+    --sc-accent:     #BFA8E6;
+    --sc-accent-ink: #151A24;
+    --cs-rule:       rgba(236, 231, 222, .26);
+    --cs-rule-soft:  rgba(236, 231, 222, .13);
+    --cs-field:      #1D2431;
+    --cs-field-line: rgba(236, 231, 222, .32);
+    background: #151A24; color: var(--sc-ink);
+    font-size: var(--cs-t-small);
+    /* A short tail. The page should stop, not fade out into ground. */
+    padding-bottom: var(--sc-8);
+  }
+  :root[data-theme="dark"] .cs-close {
+    --sc-canvas:     #EDE8DF;
+    --sc-surface:    #E4DDD0;
+    --sc-ink:        #221F1C;
+    --sc-ink-soft:   #5A534A;
+    --sc-accent:     #5E4B8B;
+    --sc-accent-ink: #FFFFFF;
+    --cs-rule:       rgba(34, 31, 28, .26);
+    --cs-rule-soft:  rgba(34, 31, 28, .13);
+    --cs-field:      #FFFFFF;
+    --cs-field-line: rgba(34, 31, 28, .34);
+    background: #EDE8DF; color: var(--sc-ink);
+  }
+  /* Same wrap and the same left edge as every other act, so the inversion is
+     the only thing that changes here. */
+  .cs-close__inner { width: 100%; max-width: 76rem; margin-inline: auto; padding-inline: var(--sc-gutter); }
+  .cs-ask {
+    display: inline-block;
+    font-family: var(--sc-font-display); font-weight: 400;
+    font-size: clamp(1.5rem, 1rem + 1.9vw, 2.4rem); line-height: 1.12; letter-spacing: -0.018em;
+    color: var(--sc-ink); text-decoration: underline;
+    text-decoration-color: var(--sc-accent); text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.16em;
+  }
+  .cs-ask:hover { color: var(--sc-accent); }
+  .cs-ask:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 4px; }
+  @media (max-width: 600px) { .cs-ask { font-size: 1.35rem; } }
+
+  .cs-form { margin-top: var(--sc-7); max-width: 32rem; }
+  .cs-field { display: block; margin-bottom: var(--sc-4); }
+  .cs-field > span {
+    display: block; margin-bottom: .45rem;
+    font-family: var(--sc-font-text); font-weight: 500; font-size: var(--cs-t-micro);
+    font-variant-caps: all-small-caps; letter-spacing: .16em; color: var(--sc-ink-soft);
+  }
+  .cs-field input, .cs-field select, .cs-field textarea {
+    width: 100%; min-height: 46px; padding: .65rem .8rem;
+    color: var(--sc-ink); background: var(--cs-field);
+    border: 1px solid var(--cs-field-line); border-radius: var(--sc-r-sm);
+    font: 400 var(--cs-t-small)/1.5 var(--sc-font-text);
+  }
+  .cs-field textarea { min-height: 7.5rem; resize: vertical; }
+  .cs-field input:focus-visible, .cs-field select:focus-visible, .cs-field textarea:focus-visible {
+    outline: 2px solid var(--sc-accent); outline-offset: 2px; border-color: var(--sc-accent);
+  }
+  .cs-submit {
+    min-height: 48px; padding: .8rem 1.5rem; cursor: pointer;
+    background: var(--sc-accent); color: var(--sc-accent-ink);
+    border: 0; border-radius: var(--sc-r-sm);
+    font: 500 var(--cs-t-small)/1 var(--sc-font-text); letter-spacing: .02em;
+    transition: filter var(--sc-d-fast) var(--sc-ease-out), transform var(--sc-d-fast) var(--sc-ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) { .cs-submit:hover { filter: brightness(1.08); } }
+  .cs-submit:active { transform: translateY(1px); }
+  .cs-submit[disabled] { opacity: .55; cursor: not-allowed; }
+  .cs-fine { margin: var(--sc-4) 0 0; color: var(--sc-ink-soft); font-size: var(--cs-t-micro); max-width: 46ch; }
+  .cs-alert { margin: var(--sc-3) 0 0; color: var(--sc-accent); font-size: var(--cs-t-micro); }
+  .cs-alert:empty { margin: 0; }
+  .cs-done { border-top: 1px solid var(--sc-accent); padding-top: var(--sc-4); margin-top: var(--sc-7); max-width: 36rem; }
+  .cs-done[hidden] { display: none !important; }
+  .cs-done h3 { margin: 0 0 var(--sc-2); font-family: var(--sc-font-display); font-weight: 400; font-size: var(--sc-t-lg); letter-spacing: -0.015em; }
+  .cs-done p { margin: 0; color: var(--sc-ink-soft); }
+
+  .cs-qa { margin-top: var(--sc-8); border-top: 1px solid var(--cs-rule); padding-top: var(--sc-5); max-width: 44rem; }
+  .cs-qa > h2 {
+    margin: 0 0 var(--sc-3); font-family: var(--sc-font-text); font-weight: 500;
+    font-size: var(--cs-t-micro); font-variant-caps: all-small-caps; letter-spacing: .18em;
+    color: var(--sc-ink-soft);
+  }
+  .cs-qa details { border-bottom: 1px solid var(--cs-rule-soft); }
+  .cs-qa summary {
+    list-style: none; cursor: pointer; position: relative;
+    padding: .8rem 2rem .8rem 0; min-height: 44px;
+    display: flex; align-items: center;
+    font-family: var(--sc-font-display); font-weight: 400;
+    font-size: 1.15rem; letter-spacing: -0.012em;
+  }
+  .cs-qa summary::-webkit-details-marker { display: none; }
+  .cs-qa summary::after {
+    content: ""; position: absolute; right: .4rem; top: 50%; width: .5rem; height: .5rem;
+    border-right: 1.5px solid var(--sc-ink-soft); border-bottom: 1.5px solid var(--sc-ink-soft);
+    transform: translateY(-70%) rotate(45deg); transition: transform var(--sc-d-fast) var(--sc-ease-out);
+  }
+  .cs-qa details[open] summary::after { transform: translateY(-20%) rotate(-135deg); }
+  .cs-qa summary:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 3px; border-radius: 3px; }
+  .cs-qa details p { margin: 0 0 var(--sc-4); color: var(--sc-ink-soft); max-width: 52ch; }
+  /* One closing rule under the questions, not two 4rem apart. */
+  .cs-qa details:last-of-type { border-bottom: 0; }
+
+  .cs-foot { margin-top: var(--sc-7); border-top: 1px solid var(--cs-rule); padding-top: var(--sc-5); color: var(--sc-ink-soft); font-size: var(--cs-t-micro); max-width: 46rem; }
+  .cs-foot p { margin: 0 0 var(--sc-3); max-width: 60ch; line-height: 1.7; }
+  .cs-foot p:last-child { margin-bottom: 0; }
+  .cs-foot a { color: var(--sc-ink); text-decoration: underline; text-decoration-color: var(--sc-accent); text-underline-offset: .2em; }
+  .cs-foot a:hover { color: var(--sc-accent); }
+  .cs-foot .cs-foot__where { color: var(--sc-ink); font-size: var(--cs-t-small); }
+
+  /* --------------------------------------------------------- consent ---- */
+  .cs-consent {
+    position: fixed; inset: auto 0 0 0; z-index: calc(var(--sc-z-chrome) + 1);
+    display: flex; flex-wrap: wrap; align-items: center; gap: var(--sc-3) var(--sc-4);
+    padding: var(--sc-4) var(--sc-gutter);
+    background: var(--sc-surface); border-top: 1px solid var(--cs-rule);
+    font-size: var(--sc-t-sm);
+  }
+  .cs-consent[hidden] { display: none !important; }
+  .cs-consent p { margin: 0; flex: 1 1 26ch; color: var(--sc-ink); max-width: 62ch; }
+  .cs-consent a { color: var(--sc-ink); text-decoration: underline; text-decoration-color: var(--sc-accent); text-underline-offset: .2em; }
+  .cs-consent__acts { display: flex; gap: var(--sc-3); flex: 0 0 auto; }
+  /* Identical buttons on purpose. A reject that is quieter than the accept is
+     not a free choice, and the ICO has said so. */
+  .cs-consent button {
+    min-height: 44px; padding: .7rem 1.25rem; cursor: pointer;
+    background: transparent; color: var(--sc-ink);
+    border: 1px solid var(--cs-rule); border-radius: var(--sc-r-sm);
+    font: 500 var(--sc-t-sm)/1 var(--sc-font-text);
+  }
+  .cs-consent button:hover { border-color: var(--sc-accent); color: var(--sc-accent); }
+  .cs-consent button:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
+  @media (max-width: 560px) { .cs-consent__acts { width: 100%; } .cs-consent button { flex: 1; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cs-chrome, .cs-qa summary::after, .cs-submit, .cs-lights { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="cs-skip" href="#top">Skip to the page</a>
+
+<!-- The strip slot every Tempany Web Studios build carries. On the four
+     demonstration sites it says the site is an example of a business that does
+     not exist; this build is a first version for a real person, so it says
+     that instead. The job is the same either way: nobody who is sent the link
+     should be in any doubt about what they are looking at, and it is the route
+     back to Logan.
+
+     Note for whoever runs ../_kit/verify.mjs: that harness greps index.html
+     for the demo wording verbatim, so this build fails that one check on
+     purpose rather than carrying a line that is not true of it. See BRIEF.md,
+     "Two harness checks this build fails on purpose". -->
+<div class="cs-strip" id="csStrip">
+  <p><b>First version for Cathy Swan</b> <span>by Tempany Web Studios</span> <span>nothing here is final</span> <a href="https://tempanywebstudios.co.uk">tempanywebstudios.co.uk</a></p>
+</div>
+
+<div class="sc-grain" aria-hidden="true"></div>
+
+<div class="cs-chrome" data-chrome>
+  <button class="cs-lights" id="lights" type="button" aria-pressed="false" aria-label="Turn the lights down">
+    <svg class="cs-lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="cs-lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+  </button>
+  <a class="cs-chrome__ask" href="#close">Ask</a>
+</div>
+
+<main id="top">
+
+  <!-- 1 · THE BREATH. pin. Scroll drives one full cycle: four counts in, four
+       held, six out, and the one line we can stand behind arrives on the
+       exhale. The reader has done the first thing that happens in a class
+       before they have read a word about her. -->
+  <section id="breath" class="cs-breath" data-sc-act="pin" data-sc-span="2.6" data-cs-ground="0" aria-labelledby="since">
+    <div class="sc-stage" data-sc-stage>
+
+      <div class="cs-breath__top">
+        <div class="cs-frame">
+          <svg class="cs-ring" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+            <g class="cs-ring__g">
+              <circle id="csRing" cx="100" cy="100" r="98" vector-effect="non-scaling-stroke" stroke-width="1.8"></circle>
+            </g>
+          </svg>
+          <p class="cs-word" id="csWord" data-landing>Breathe.</p>
+        </div>
+
+        <p class="cs-state" id="csState" data-landing aria-hidden="true">
+          <span>in</span><span>hold</span><span>out</span>
+        </p>
+
+        <p class="cs-count" data-landing>
+          <span>Four in. Hold. Six out.</span>
+          <span class="cs-count__dot" aria-hidden="true">&middot;</span>
+          <span class="cs-count__n" id="csCount" aria-hidden="true">1</span>
+        </p>
+      </div>
+
+      <div class="cs-breath__foot">
+        <p class="cs-mark" data-landing>
+          <span class="cs-mark__name">Cathy Swan</span>
+          <span class="cs-mark__sub">yoga &middot; Perth</span>
+        </p>
+        <!-- The break is authored. Left to balance, this line breaks after
+             "in", and a display line that ends on a preposition is a defect
+             at this size. The space before the <br> is deliberate: it keeps
+             the text content readable to anything that ignores the break. -->
+        <h1 class="cs-promise" id="since">Teaching yoga in Perth <br>since 1985.</h1>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 2 · WHAT CATHY TEACHES. flow. Four scale-contrasted blocks. Every line
+       in them is quoted or closely paraphrased from a public listing, and the
+       small line above each one names which listing. -->
+  <section id="teaches" class="cs-act" data-sc-act="flow" data-cs-ground="1" aria-labelledby="teaches-h">
+    <div class="cs-wrap">
+      <h2 class="cs-h2" id="teaches-h">What Cathy teaches.</h2>
+      <p class="cs-lede">Four things, taken from her Yoga Scotland tutor profile and the Perth Yoga Studio listing. Anything that is not on those pages is marked below as still to come from Cathy.</p>
+
+      <ol class="cs-teaches" data-sc-in data-sc-stagger="70">
+        <li class="cs-teach">
+          <h3 class="cs-teach__name">Classes</h3>
+          <div>
+            <p class="cs-label cs-teach__src">Yoga Scotland tutor profile</p>
+            <p class="cs-teach__body">&ldquo;She teaches classes, workshops, and provides one-to-one yoga therapy.&rdquo; Her teaching reflects a varied yoga background built up since 1985, and emphasises &ldquo;functional movement, and embodied awareness&rdquo;.</p>
+            <p class="cs-todo">Weekly classes, venues and prices to follow from Cathy.</p>
+          </div>
+        </li>
+
+        <li class="cs-teach">
+          <h3 class="cs-teach__name">Workshops</h3>
+          <div>
+            <p class="cs-label cs-teach__src">Perth Yoga Studio listing</p>
+            <p class="cs-teach__body">Sunday mornings at Perth Yoga Studio, 10am to 12:30pm, &pound;25. The format and the venue are set out further down this page.</p>
+            <p class="cs-todo">Next date to be confirmed with Cathy.</p>
+          </div>
+        </li>
+
+        <li class="cs-teach">
+          <h3 class="cs-teach__name">One-to-one yoga therapy</h3>
+          <div>
+            <p class="cs-label cs-teach__src">Yoga Scotland tutor profile</p>
+            <p class="cs-teach__body">Cathy provides one-to-one yoga therapy. She &ldquo;is particularly inspired by the therapeutic benefits of yoga and keeps updated with the latest research in support of yoga and health&rdquo;.</p>
+            <p class="cs-todo">Availability and prices to follow from Cathy.</p>
+          </div>
+        </li>
+
+        <li class="cs-teach">
+          <h3 class="cs-teach__name">Teacher training</h3>
+          <div>
+            <p class="cs-label cs-teach__src">Yoga Scotland</p>
+            <p class="cs-teach__body">Cathy is one of Yoga Scotland&rsquo;s Head Tutors. &ldquo;Cathy has been a tutor on the Yoga Scotland Teacher Training Course since the 1990s and is passionate about training student teachers in all aspects of yoga, providing a safe and supportive environment for learning and self-growth.&rdquo;</p>
+            <p class="cs-teach__body">She is involved in Yoga Scotland&rsquo;s 300-hour Advanced Teacher Training programme, which begins in September 2026.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 3 · WORKSHOPS AT PERTH YOGA STUDIO. flow. The one set of details we can
+       publish, as a ruled list, with the studio's own description of the
+       format quoted exactly and credited. -->
+  <section id="workshops" class="cs-act" data-sc-act="flow" data-cs-ground="2" aria-labelledby="workshops-h">
+    <div class="cs-wrap">
+      <h2 class="cs-h2" id="workshops-h">Workshops at Perth Yoga Studio.</h2>
+      <p class="cs-lede">The format Perth Yoga Studio publishes for Cathy&rsquo;s workshops. Booking is currently by email or text; on this site you ask for a place at the foot of the page and Cathy confirms.</p>
+
+      <dl class="cs-spec">
+        <div><dt>Day</dt><dd>Sunday</dd></div>
+        <div><dt>Time</dt><dd>10am to 12:30pm</dd></div>
+        <div><dt>Price</dt><dd>&pound;25</dd></div>
+        <div><dt>Where</dt><dd>Perth Yoga Studio, Academy Building, 7 Rose Terrace, Perth PH1 5HA</dd></div>
+      </dl>
+
+      <blockquote class="cs-quote">
+        <p>&ldquo;Asanas, pranayama, relaxation and meditation with an anatomical and philosophical focus.&rdquo;</p>
+        <footer class="cs-label">Perth Yoga Studio listing</footer>
+      </blockquote>
+
+      <p class="cs-todo">Next date to be confirmed.</p>
+    </div>
+  </section>
+
+  <!-- 4 · AUTHORED SILENCE. One line, alone, at the second-largest scale on
+       the page. The only kinetic line on the site, and then it holds. -->
+  <section id="silence" class="cs-act cs-silence" data-sc-act="flow" data-cs-ground="3" aria-labelledby="silence-h">
+    <div class="cs-wrap">
+      <h2 class="cs-silence__line" id="silence-h" data-sc-kinetic="words" data-sc-cue="0.14 1 0.34 0.02">Qualified in 1985. Still learning.</h2>
+      <p class="cs-silence__sub">Practising since her teens, trained with the Scottish School of Yoga Teachers in 1984 and 1985.</p>
+    </div>
+  </section>
+
+  <!-- 5 · ABOUT CATHY. flow. Her Yoga Scotland tutor profile, in the third
+       person, quoted. The label at the end of it says where it came from and
+       that it is a stand-in for her own words. -->
+  <section id="about" class="cs-act" data-sc-act="flow" data-cs-ground="4" aria-labelledby="about-h">
+    <div class="cs-wrap">
+      <div class="cs-about">
+        <div>
+          <h2 class="cs-h2" id="about-h">About Cathy.</h2>
+          <ul class="cs-cred">
+            <li class="cs-label">Qualified 1985</li>
+            <li class="cs-label">Scottish School of Yoga Teachers, 1984 and 1985</li>
+            <li class="cs-label">Yoga Scotland Head Tutor</li>
+          </ul>
+        </div>
+        <div>
+          <p>&ldquo;Cathy has practised yoga since her teenage years and trained with the Scottish School of Yoga Teachers in 1984/5.&rdquo;</p>
+          <p>&ldquo;Cathy Swan qualified as a yoga teacher in 1985 and has continued to learn and study many styles and schools of yoga since then, and her teaching reflects her varied yoga background.&rdquo;</p>
+          <p>&ldquo;She teaches classes, workshops, and provides one-to-one yoga therapy&rdquo;, and &ldquo;is particularly inspired by the therapeutic benefits of yoga and keeps updated with the latest research in support of yoga and health&rdquo;.</p>
+          <p>She is one of Yoga Scotland&rsquo;s Head Tutors and has been a tutor on its Teacher Training Course since the 1990s.</p>
+          <p class="cs-todo">These lines are from Cathy&rsquo;s Yoga Scotland tutor profile and will be replaced with her own words.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · THE CLOSE. The page inverts and goes quiet. The form is a
+       demonstration: it is not wired to anything and says so. -->
+  <section id="close" class="cs-act cs-close" data-sc-act="flow" data-cs-ground="5" aria-labelledby="close-h">
+    <div class="cs-close__inner">
+      <h2 class="cs-vh" id="close-h">Ask Cathy</h2>
+
+      <!-- Authored break again: left to itself this line ends on "the". -->
+      <a class="cs-ask" id="csAsk" href="#csName">Ask for a place <br>at the next Sunday workshop</a>
+
+      <form class="cs-form" id="csForm" novalidate>
+        <label class="cs-field">
+          <span>Your name</span>
+          <input name="name" id="csName" type="text" autocomplete="name" required>
+        </label>
+        <label class="cs-field">
+          <span>Email or mobile</span>
+          <input name="contact" id="csContact" type="text" autocomplete="email" required>
+        </label>
+        <label class="cs-field">
+          <span>What you are asking about</span>
+          <select name="about" id="csAbout">
+            <option value="The Sunday workshop">The Sunday workshop</option>
+            <option value="Weekly classes">Weekly classes</option>
+            <option value="One-to-one yoga therapy">One-to-one yoga therapy</option>
+            <option value="Teacher training">Teacher training</option>
+            <option value="Something else">Something else</option>
+          </select>
+        </label>
+        <label class="cs-field">
+          <span>Message</span>
+          <textarea name="message" id="csMessage" rows="4"></textarea>
+        </label>
+        <button class="cs-submit" type="submit" id="csSubmit">Send it</button>
+        <p class="cs-alert" id="csAlert" role="status" aria-live="polite"></p>
+        <p class="cs-fine">This form is a demonstration and sends nothing at all. On the live site it would land in Cathy&rsquo;s inbox. Until then, email or text her on the details below.</p>
+      </form>
+
+      <div class="cs-done" id="csDone" hidden>
+        <h3>Nothing was sent.</h3>
+        <p id="csDoneBody"></p>
+      </div>
+
+      <section class="cs-qa" id="questions" aria-labelledby="qa-h">
+        <h2 id="qa-h">Questions we can answer today</h2>
+
+        <details>
+          <summary>Where are the workshops?</summary>
+          <p>Perth Yoga Studio, in the Academy Building at 7 Rose Terrace, Perth PH1 5HA.</p>
+        </details>
+
+        <details>
+          <summary>How do I book a place?</summary>
+          <p>Cathy takes bookings by email or text: <a href="mailto:cathyswanyoga@gmail.com">cathyswanyoga@gmail.com</a> or <a href="tel:+447990945752">07990 945 752</a>. The form on this page is a demonstration and does not reach her.</p>
+        </details>
+
+        <details>
+          <summary>Does Cathy teach one to one?</summary>
+          <p>Yes. Her Yoga Scotland tutor profile says she &ldquo;teaches classes, workshops, and provides one-to-one yoga therapy&rdquo;.</p>
+        </details>
+
+        <details>
+          <summary>Does Cathy train teachers?</summary>
+          <p>Yes. She is one of Yoga Scotland&rsquo;s Head Tutors and has been a tutor on its Teacher Training Course since the 1990s. She is involved in the 300-hour Advanced Teacher Training programme beginning in September 2026.</p>
+        </details>
+      </section>
+
+      <div class="cs-foot">
+        <p class="cs-foot__where">Workshops at Perth Yoga Studio, 7 Rose Terrace, Perth PH1 5HA. <a href="mailto:cathyswanyoga@gmail.com">cathyswanyoga@gmail.com</a>. <a href="tel:+447990945752">07990 945 752</a>.</p>
+        <p>This is a first version of a website for Cathy Swan, built by <a href="https://tempanywebstudios.co.uk">Tempany Web Studios</a>. Nothing on it is final. Everything it says about Cathy is quoted or closely paraphrased from her Yoga Scotland tutor profile and the Perth Yoga Studio workshops listing, and it will be replaced with her own words and her own class details before anything goes live.</p>
+        <p><a href="privacy">Privacy policy</a> &middot; <a href="terms">Terms</a> &middot; <a href="privacy#cookies">Cookie settings</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="cs-consent" id="consent" role="region" aria-label="Cookie choice" hidden>
+  <p>This page keeps one thing in your browser: whether you had the lights up or down. Analytics is off until you say otherwise. <a href="privacy#cookies">How we use cookies</a></p>
+  <div class="cs-consent__acts">
+    <button type="button" data-consent="reject">Reject</button>
+    <button type="button" data-consent="accept">Accept</button>
+  </div>
+</div>
+
+<!-- Analytics. On the live site, delete the comment markers below and put
+     Cathy's own domain in. Plausible is cookie-free and hosted in the EU,
+     which is why it is the default here. It would be loaded only after a
+     visitor accepts, by the consent script at the foot of this page. This
+     first version fires no analytics request at all.
+<script defer data-domain="example.co.uk" src="https://plausible.io/js/script.js"></script>
+-->
+
+<script src="scrollcraft.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script>
+/* ---------------------------------------------------------------
+   THE SIGNATURE MOVE: the breath.
+   Scroll over act one drives one full cycle, four counts in, four
+   held, six out, and the one line about Cathy that is beyond doubt
+   arrives on the exhale.
+
+   All of it is here, in the page. The engine publishes --sc-p on the
+   act and nothing else; the windows, the circle, the counts and the
+   rise of the h1 are ours.
+   --------------------------------------------------------------- */
+(function () {
+  var act = document.getElementById('breath');
+  if (!act) return;
+
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Reduced motion is handled in the stylesheet: circle open, line present,
+     no ticking. Writing inline styles here would outrank it. */
+  if (reduce) return;
+
+  var countEl = document.getElementById('csCount');
+  var states  = act.querySelectorAll('.cs-state > span');
+
+  /* 4 : 4 : 6. The windows are the ratio, not a guess. */
+  var IN_END = 0.29, HOLD_END = 0.57;
+
+  function clamp01(x) { return x < 0 ? 0 : x > 1 ? 1 : x; }
+  function ease(t) { t = clamp01(t); return t * t * (3 - 2 * t); }
+
+  function progress() {
+    var v = parseFloat(getComputedStyle(act).getPropertyValue('--sc-p'));
+    if (!isNaN(v)) return clamp01(v);
+    /* Before the engine's first read, and if it ever fails to mount, the act
+       can still tell us where it is: same formula, off its own rect. */
+    var r = act.getBoundingClientRect();
+    return clamp01(-r.top / Math.max(r.height - innerHeight, 1));
+  }
+
+  var lastN = -1, lastWin = -1;
+
+  function frame() {
+    var p = progress(), scale, wordO, rise, win, n;
+
+    if (p < IN_END) {                          // four in
+      var ti = ease(p / IN_END);
+      scale = 0.55 + 0.45 * ti;
+      wordO = 1;
+      rise  = 0;
+      win   = 0;
+      n     = Math.min(4, Math.floor((p / IN_END) * 4) + 1);
+    } else if (p < HOLD_END) {                 // four held
+      var th = (p - IN_END) / (HOLD_END - IN_END);
+      scale = 1;
+      wordO = 1 - 0.7 * ease(th);              // the word steps back so the line can land
+      rise  = 0;
+      win   = 1;
+      n     = Math.min(4, Math.floor(th * 4) + 1);
+    } else {                                   // six out
+      var to = (p - HOLD_END) / (1 - HOLD_END);
+      scale = 1 - 0.45 * ease(to);
+      wordO = 0.3;
+      rise  = ease(clamp01((to - 0.12) / 0.55));
+      win   = 2;
+      n     = Math.min(6, Math.floor(to * 6) + 1);
+    }
+
+    act.style.setProperty('--cs-breath', scale.toFixed(4));
+    act.style.setProperty('--cs-word-o', wordO.toFixed(3));
+    act.style.setProperty('--cs-rise', rise.toFixed(3));
+
+    if (win !== lastWin) {
+      for (var i = 0; i < states.length; i++) states[i].style.opacity = (i === win ? '1' : '0');
+      lastWin = win;
+    }
+    if (n !== lastN) { countEl.textContent = String(n); lastN = n; }
+  }
+
+  var queued = false;
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () {
+      frame();
+      /* The engine writes --sc-p on its own rAF. A second pass on the next
+         frame guarantees we are never reading last frame's value. */
+      requestAnimationFrame(function () { frame(); queued = false; });
+    });
+  }
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule, { passive: true });
+  addEventListener('load', schedule);
+  frame();
+  schedule();
+})();
+</script>
+
+<script>
+/* ---------------------------------------------------------------
+   The ask.
+   There is no timetable to compute from, so the link says what it
+   says and nothing is generated. Clicking it does the one useful
+   thing: sets the subject and puts the cursor in the first field.
+   --------------------------------------------------------------- */
+(function () {
+  var ask = document.getElementById('csAsk');
+  var about = document.getElementById('csAbout');
+  var name = document.getElementById('csName');
+  if (!ask || !about || !name) return;
+
+  ask.addEventListener('click', function (e) {
+    e.preventDefault();
+    about.value = 'The Sunday workshop';
+    name.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(function () { name.focus({ preventScroll: true }); }, 360);
+  });
+})();
+
+/* ---------------------------------------------------------------
+   The form. It validates, it says why when it will not send, and it
+   cannot be sent twice. Nothing leaves the browser, and the page
+   says so before and after.
+   --------------------------------------------------------------- */
+(function () {
+  var form    = document.getElementById('csForm');
+  if (!form) return;
+  var name    = document.getElementById('csName');
+  var contact = document.getElementById('csContact');
+  var about   = document.getElementById('csAbout');
+  var submit  = document.getElementById('csSubmit');
+  var alertP  = document.getElementById('csAlert');
+  var done    = document.getElementById('csDone');
+  var body    = document.getElementById('csDoneBody');
+  var sent    = false;
+
+  function fail(el, msg) {
+    alertP.textContent = msg;
+    el.setAttribute('aria-invalid', 'true');
+    el.focus();
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (sent) return;                       // a double tap is one message, not two
+
+    name.removeAttribute('aria-invalid');
+    contact.removeAttribute('aria-invalid');
+    alertP.textContent = '';
+
+    var n = (name.value || '').trim();
+    var c = (contact.value || '').trim();
+    var looksEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c);
+    var looksPhone = c.replace(/[^\d]/g, '').length >= 10;
+
+    if (n.length < 2) { fail(name, 'We need a name to put on the message.'); return; }
+    if (!looksEmail && !looksPhone) {
+      fail(contact, 'Give an email address or a mobile number, so there is a way to answer.');
+      return;
+    }
+
+    sent = true;
+    submit.disabled = true;
+    body.textContent = n + ', this form is not connected to anything yet, so your message about '
+      + about.value.toLowerCase() + ' has gone nowhere. On the live site it would arrive in Cathy’s '
+      + 'inbox. For now, email cathyswanyoga@gmail.com or text 07990 945 752.';
+    form.hidden = true;
+    done.hidden = false;
+    done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
+</script>
+
+<script>
+/* ---------------------------------------------------------------
+   The ground.
+   scroll-craft's own data-sc-drift writes --sc-canvas as an INLINE
+   style on <html>. Inline beats :root[data-theme="dark"], and the
+   drift list is parsed once at mount and is not reachable from
+   outside, so one scroll would have repainted the page in the wrong
+   palette and stayed that way. On a page that is nine tenths ground,
+   that is not a detail. So the ground lives here, where both
+   palettes own it, and the engine keeps everything else.
+
+   The stops are deliberately close together. This is stone and slate,
+   not a light show: the reader should feel the room change, not watch
+   it. The close paints its own inverted ground and is left at the
+   base colour here so the page ground never contradicts the theme.
+   --------------------------------------------------------------- */
+(function () {
+  var STOPS = {
+    light: ['#EDE8DF', '#E9E3D8', '#EDE8DF', '#E4DDD0', '#E9E3D8', '#EDE8DF'],
+    dark:  ['#151A24', '#1A2130', '#151A24', '#1E2637', '#1A2130', '#151A24']
+  };
+  var docEl = document.documentElement;
+  var secs = Array.prototype.slice.call(document.querySelectorAll('[data-cs-ground]'));
+  if (!secs.length) return;
+
+  function rgb(h) { return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]; }
+  function mix(a, b, t) {
+    return 'rgb(' + Math.round(a[0] + (b[0] - a[0]) * t) + ',' +
+                    Math.round(a[1] + (b[1] - a[1]) * t) + ',' +
+                    Math.round(a[2] + (b[2] - a[2]) * t) + ')';
+  }
+  function ease(t) { t = t < 0 ? 0 : t > 1 ? 1 : t; return t * t * (3 - 2 * t); }
+
+  function paint() {
+    var list = STOPS[docEl.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'];
+    /* 42% of the viewport, not the top edge: the colour turns when the new act
+       is what you are looking at, not when a sliver of it appears. */
+    var mark = innerHeight * 0.42, idx = 0, t = 1;
+    for (var i = 0; i < secs.length; i++) {
+      var r = secs[i].getBoundingClientRect();
+      if (r.top <= mark && r.bottom > mark) {
+        idx = i;
+        t = ease((mark - r.top) / Math.max(r.height * 0.35, 1));
+        break;
+      }
+      if (r.bottom <= mark) { idx = i; t = 1; }
+    }
+    var cur = rgb(list[Math.min(idx, list.length - 1)]);
+    var prv = rgb(list[Math.max(idx - 1, 0)]);
+    docEl.style.setProperty('--sc-canvas', mix(prv, cur, t));
+  }
+
+  var queued = false;
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () { paint(); queued = false; });
+  }
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule, { passive: true });
+  window.__csGround = paint;
+  paint();
+})();
+
+/* ---------------------------------------------------------------
+   The lights.
+   --------------------------------------------------------------- */
+(function () {
+  var btn = document.getElementById('lights');
+  var docEl = document.documentElement;
+  var meta = document.querySelector('meta[name="theme-color"][media*="dark"]');
+  if (!btn) return;
+
+  function sync() {
+    var dark = docEl.getAttribute('data-theme') === 'dark';
+    btn.setAttribute('aria-pressed', dark ? 'false' : 'true');
+    btn.setAttribute('aria-label', dark ? 'Turn the lights up' : 'Turn the lights down');
+    if (window.__csGround) window.__csGround();
+    /* The paired theme-color metas answer prefers-color-scheme, not this
+       button, so the browser chrome would keep the OS colour after a manual
+       flip. Rewriting the media query is what makes the two agree. */
+    if (meta) meta.setAttribute('content', dark ? '#151A24' : '#EDE8DF');
+  }
+
+  btn.addEventListener('click', function () {
+    var dark = docEl.getAttribute('data-theme') === 'dark';
+    docEl.setAttribute('data-theme', dark ? 'light' : 'dark');
+    try { localStorage.setItem('cs-theme', dark ? 'light' : 'dark'); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+
+/* ---------------------------------------------------------------
+   Chrome measurements.
+   The version strip is real content at the top of the document, so
+   the corner cluster has to know how tall it is rather than guess;
+   and the consent bar has to be measured so the cluster rides above
+   it on a phone instead of hiding under it.
+   --------------------------------------------------------------- */
+(function () {
+  var docEl = document.documentElement;
+  var strip = document.getElementById('csStrip');
+  var bar   = document.getElementById('consent');
+
+  var chrome = document.querySelector('[data-chrome]');
+  var invert = document.getElementById('close');
+
+  function measureStrip() {
+    if (!strip) return;
+    docEl.style.setProperty('--cs-strip-h', Math.round(strip.getBoundingClientRect().height) + 'px');
+  }
+
+  /* The close inverts the ground. Fixed chrome sitting over it has to invert
+     too, or the one link anybody came for turns the same colour as the page. */
+  function watchChrome() {
+    if (!chrome || !invert) return;
+    var c = chrome.getBoundingClientRect();
+    var s = invert.getBoundingClientRect();
+    var mid = c.top + c.height / 2;
+    var over = mid > s.top && mid < s.bottom;
+    if (over) chrome.setAttribute('data-cs-over', 'invert');
+    else chrome.removeAttribute('data-cs-over');
+  }
+  var cq = false;
+  function scheduleChrome() {
+    if (cq) return;
+    cq = true;
+    requestAnimationFrame(function () { watchChrome(); cq = false; });
+  }
+  addEventListener('scroll', scheduleChrome, { passive: true });
+  addEventListener('resize', scheduleChrome, { passive: true });
+  watchChrome();
+
+  function measureBar() {
+    docEl.style.setProperty('--cs-consent-h',
+      (!bar || bar.hidden ? 0 : Math.round(bar.getBoundingClientRect().height)) + 'px');
+  }
+  function measure() { measureStrip(); measureBar(); watchChrome(); }
+
+  var stored = null;
+  try { stored = localStorage.getItem('cs-consent'); } catch (e) {}
+
+  if (bar && !stored) bar.hidden = false;
+  requestAnimationFrame(measure);
+  addEventListener('resize', measure, { passive: true });
+  addEventListener('load', measure);
+
+  if (!bar) return;
+
+  /* The bar is honest about its own scope: the only thing this page stores
+     without asking is the light switch, which is a functional preference and
+     does not need consent under PECR. Analytics does, so that is what the two
+     buttons actually govern. */
+  bar.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-consent]');
+    if (!b) return;
+    try { localStorage.setItem('cs-consent', b.getAttribute('data-consent')); } catch (e2) {}
+    bar.hidden = true;
+    measureBar();
+    scheduleChrome();
+    /* On the live site the accept branch is where the analytics tag gets
+       injected. Nothing is injected here, because there is nothing to count. */
+  });
+
+  addEventListener('hashchange', function () {
+    if (location.hash === '#cookie-settings') { bar.hidden = false; measureBar(); scheduleChrome(); }
+  });
+})();
+</script>
+</body>
+</html>
