@@ -10,48 +10,65 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#141210">
+<meta name="theme-color" content="#efe9dd">
 <meta property="og:title" content="&pound;95 website audit, credited to a rebuild">
 <meta property="og:description" content="Your existing site checked on a phone, in Google and on the route to an enquiry, written up in plain English for &pound;95. Credited in full if you rebuild with me.">
 <meta property="og:url" content="https://tempanywebstudios.co.uk/audit/">
 <meta property="og:site_name" content="Tempany Web Studios">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://tempanywebstudios.co.uk/tempany-web-studios-share.png">
-<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-700-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-400-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/fonts.css">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/images/share/tempany-sketchpad.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A pencil rough of a homepage on cream paper, lettered Tempany Web Studios, under the pencilled words: Tell me what you do and I'll rough out the top of your homepage, for nothing. £399 fixed, up to five pages, 10 to 14 days.">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/alegreya-var-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/alegreya-sans-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css?v=2">
 <script>
-/* Resolve the theme before the first paint so the page never flashes the
-   wrong ground. Dark by default, remembered per browser under the same key
-   the old homepage used, so anyone who chose light before still gets light. */
+/* Paper for everyone: only a stored 'dark' (set by pressing the switch) gives
+   the dark desk. The device's own preference is not read. Also marks the page
+   as scripted (class js). */
 (function () {
-  var t = null;
+  var d = document.documentElement, t = null;
   try { t = localStorage.getItem('tws-theme'); } catch (e) {}
-  /* No stored choice yet: follow the device. A choice made with the light switch wins from then on. */
-  if (t !== 'light' && t !== 'dark') { try { t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; } catch (e) { t = 'dark'; } }
-  document.documentElement.setAttribute('data-theme', t);
+  d.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+  d.className += (d.className ? ' ' : '') + 'js';
+  // Firefox does not start a fallback face while the web font ahead of it is still
+  // loading (it draws its default face instead), so ask for the size-matched ones now.
+  var F = document.fonts, S = 'Alegreya Sans Fallback ', A = 'Alegreya Fallback ';
+  if (F && F.load) [S + 'Segoe', S + 'Helvetica', S + 'Arial', S + 'Roboto', S + 'DejaVu', A + 'Georgia', A + 'Noto'].forEach(function (n) {
+    ['400', '700'].forEach(function (w) { F.load(w + ' 1em "' + n + '"').catch(function () {}); });
+  });
 })();
 </script>
 <link rel="stylesheet" href="/scrollcraft.min.css?v=3">
 <style>
   :root {
-    /* The brand's own ink and paper, with the room lights off. Rust is
-       brightened one step so it still reads on the dark ground. */
-    --sc-canvas:     #141210;
-    --sc-surface:    #1d1a15;
-    --sc-ink:        #efe9dd;
-    --sc-ink-soft:   #a69d8a;
-    --sc-accent:     #d46a41;
-    --sc-accent-ink: #141210;
-    --sc-font-display: "Geist", "Helvetica Neue", Arial, sans-serif;
-    --sc-font-text:    "Geist", "Helvetica Neue", Arial, sans-serif;
-    --sc-font-mono:    "Geist Mono", ui-monospace, monospace;
-    --sc-shadow-color: 36 30% 3%;
+    /* Paper is the default for everyone; the dark desk (further down) only on the switch. */
+    --sc-canvas:     #efe9dd;
+    --sc-surface:    #f7f3ea;
+    --sc-ink:        #191712;
+    --sc-ink-soft:   #61594c;
+    --sc-accent:     #a1462a;
+    --sc-accent-ink: #f7f3ea;
+    --sc-font-display: Alegreya, "Alegreya Fallback Georgia", "Alegreya Fallback Noto", serif;
+    --sc-font-text:    "Alegreya Sans", "Alegreya Sans Fallback Segoe", "Alegreya Sans Fallback Helvetica", "Alegreya Sans Fallback Arial", "Alegreya Sans Fallback Roboto", "Alegreya Sans Fallback DejaVu", sans-serif;
+    --sc-font-mono:    "Alegreya Sans", "Alegreya Sans Fallback Segoe", "Alegreya Sans Fallback Helvetica", "Alegreya Sans Fallback Arial", "Alegreya Sans Fallback Roboto", "Alegreya Sans Fallback DejaVu", sans-serif;
+    /* Alegreya Sans has a small x-height and a narrow space, so the text sizes run a step up:
+       body 18px on a phone and 19px on a desktop, and nothing under 16px, as on the homepage. */
+    --sc-t-xs:   1rem;
+    --sc-t-sm:   clamp(1rem, .98rem + .1vw, 1.0625rem);
+    --sc-t-base: clamp(1.125rem, 1.09rem + .15vw, 1.1875rem);
+    --sc-shadow-color: 36 20% 30%;
 
-    --tw-glass: #221e18;
-    --tw-line:  rgba(239,233,221,.14);
-    --tw-line-strong: rgba(239,233,221,.28);
+    --tw-glass: #f7f3ea;
+    --tw-line:  rgba(25,23,18,.16);
+    --tw-line-strong: #857c6c;
+    --tw-ink-quiet: #6b6356;
   }
+  body { font-style: normal; letter-spacing: 0; word-spacing: .04em; font-variant-numeric: lining-nums tabular-nums; }
+  em, i, cite { font-style: normal; }
+  /* Alegreya Sans Bold has a narrow space: bold runs get a wider word gap (3px at 16px in Chromium). */
+  strong, b, :is(h2, h3).tw-label__eyebrow { word-spacing: .065em; }
 
   .skip { position:absolute; left:-9999px; top:0; background:var(--sc-accent); color:var(--sc-accent-ink); padding:12px 20px; z-index:100; }
   .skip:focus { left:0; }
@@ -66,8 +83,7 @@
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border-top: 1px solid var(--tw-line);
     font-family: var(--sc-font-mono);
-    font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide);
-    text-transform: uppercase;
+    font-size: var(--sc-t-xs); letter-spacing: 0;
   }
   .tw-index__mark { display:inline-flex; align-items:center; gap:.6rem; font-family: var(--sc-font-display); font-weight: 700; letter-spacing: -.01em; text-transform: none; font-size: var(--sc-t-base); text-decoration:none; color:var(--sc-ink); min-height:44px; }
   .tw-index__mark svg { width:26px; height:26px; transform: rotate(-3deg); }
@@ -78,10 +94,10 @@
   @media (max-width: 720px) { .tw-index__list li:not(:last-child) { display: none; } .tw-index__mark span { display:none; } }
 
   /* ---------- the label schema, borrowed from the salon: name, facts, who ---------- */
-  .tw-label__eyebrow { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0 0 var(--sc-3); }
+  .tw-label__eyebrow { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: 0; margin: 0 0 var(--sc-3); }
   .tw-label__name { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-xl); line-height: 1.04; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-2); text-wrap: balance; }
-  .tw-label__facts { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin: 0 0 var(--sc-2); font-variant-numeric: tabular-nums; }
-  .tw-label__who { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0; }
+  .tw-label__facts { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin: 0 0 var(--sc-2); font-variant-numeric: lining-nums tabular-nums; }
+  .tw-label__who { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: 0; margin: 0; }
 
   /* ---------- the plate ---------- */
   .tw-plate {
@@ -105,7 +121,7 @@
     margin-top: var(--sc-3); padding: .6rem 1rem; min-height:44px;
     background: transparent; color: var(--sc-ink);
     border: 1px solid var(--tw-line-strong); border-radius: var(--sc-r-pill);
-    font: 500 var(--sc-t-xs)/1 var(--sc-font-mono); letter-spacing: var(--sc-track-wide); text-transform: uppercase;
+    font: 500 var(--sc-t-xs)/1 var(--sc-font-mono); letter-spacing: 0;
     cursor: pointer; text-decoration:none;
     transition: background var(--sc-d-fast) var(--sc-ease-out), color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
   }
@@ -122,7 +138,7 @@
   @media (min-width: 900px) { .tw-open-act { grid-template-columns: 1.2fr 1fr; padding-top: var(--sc-10); } }
   .tw-open-act h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: clamp(1.9rem, 1.3rem + 1.7vw, 2.75rem); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-3); text-wrap: balance; }
   .tw-open-act .tw-lede { color: var(--sc-ink-soft); max-width: 36ch; margin: var(--sc-4) 0 0; text-wrap: pretty; }
-  .tw-plate__caption { position:absolute; left: var(--sc-4); bottom: var(--sc-4); z-index:2; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink); background: color-mix(in srgb, var(--sc-canvas) 78%, transparent); padding:.45rem .7rem; border-radius: var(--sc-r-sm); backdrop-filter: blur(8px); }
+  .tw-plate__caption { position:absolute; left: var(--sc-4); bottom: var(--sc-4); z-index:2; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink); background: color-mix(in srgb, var(--sc-canvas) 78%, transparent); padding:.45rem .7rem; border-radius: var(--sc-r-sm); backdrop-filter: blur(8px); }
 
   /* ---------- act 2: the rail ---------- */
   .tw-rail { display: flex; gap: var(--sc-6); align-items: flex-end; padding-inline: var(--sc-gutter); }
@@ -145,11 +161,11 @@
   .tw-clause p { margin: 0 0 var(--sc-3); color: var(--sc-ink-soft); max-width: 52ch; text-wrap: pretty; }
   .tw-clause p:last-child { margin-bottom:0; }
   .tw-clause strong { color: var(--sc-ink); font-weight:600; }
-  .tw-figure { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); line-height: .95; letter-spacing: var(--sc-track-tight); color: var(--sc-ink); margin: .2rem 0 .6rem; font-variant-numeric: tabular-nums; }
-  .tw-figure small { font-family: var(--sc-font-mono); font-weight: 400; font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); margin-left: .6rem; vertical-align: .9em; }
+  .tw-figure { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); line-height: .95; letter-spacing: var(--sc-track-tight); color: var(--sc-ink); margin: .2rem 0 .6rem; font-variant-numeric: lining-nums tabular-nums; }
+  .tw-figure small { font-family: var(--sc-font-mono); font-weight: 400; font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); margin-left: .6rem; vertical-align: .9em; }
   .tw-line { display:flex; justify-content:space-between; gap: var(--sc-4); align-items:baseline; padding: .55rem 0; border-bottom: 1px dashed var(--tw-line); font-size: var(--sc-t-sm); color: var(--sc-ink-soft); }
   .tw-line:last-of-type { border-bottom:0; }
-  .tw-line strong { font-family: var(--sc-font-mono); font-weight: 500; color: var(--sc-ink); white-space:nowrap; font-variant-numeric: tabular-nums; }
+  .tw-line strong { font-family: var(--sc-font-mono); font-weight: 500; color: var(--sc-ink); white-space:nowrap; font-variant-numeric: lining-nums tabular-nums; }
   .tw-qa dt { font-weight: 600; color: var(--sc-ink); margin: 0 0 .25rem; }
   .tw-qa dd { margin: 0 0 var(--sc-4); color: var(--sc-ink-soft); max-width: 52ch; text-wrap: pretty; }
   .tw-qa dd:last-child { margin-bottom:0; }
@@ -160,8 +176,8 @@
   .tw-me__inner::before { content:""; display:block; width:2.5rem; height:2px; background: var(--sc-accent); margin: 0 0 var(--sc-5); transform: translateY(calc(-1 * var(--sc-5) - 1px)); }
   .tw-me h2 { font-size: var(--sc-t-xl); line-height: 1.06; margin-bottom: var(--sc-4); }
   .tw-me p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-3); text-wrap: pretty; }
-  .tw-sign { font-family: "Newsreader", Georgia, serif; font-style: italic; font-weight: 500; font-size: var(--sc-t-xl); color: var(--sc-ink); margin: var(--sc-5) 0 0; line-height:1; }
-  .tw-sign + p { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin-top:.5rem; }
+  .tw-sign { font-family: "Shadows Into Light Two", "Hand Fallback Georgia", "Hand Fallback Noto", "Hand Fallback DejaVu", cursive; font-style: normal; font-weight: 400; font-size: var(--sc-t-xl); color: var(--sc-ink); margin: var(--sc-5) 0 0; line-height:1; }
+  .tw-sign + p { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; margin-top:.5rem; }
 
   /* ---------- act 5: the reply ---------- */
   .tw-ask { width: min(60ch, 100%); margin-inline: auto; padding: var(--sc-gutter); }
@@ -169,15 +185,16 @@
   .tw-ask__lead a { color: var(--sc-ink); display:inline-block; padding: 10px 2px; margin: -10px -2px; }
   .tw-chosen { border: 1px solid var(--tw-line); border-radius: var(--sc-r-md); background: var(--tw-glass); padding: var(--sc-4); margin-bottom: var(--sc-5); }
   .tw-chosen[hidden] { display:none !important; }
-  .tw-chosen__eyebrow { font-family: var(--sc-font-mono); color: var(--sc-accent); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0 0 var(--sc-2); }
+  .tw-chosen__eyebrow { font-family: var(--sc-font-mono); color: var(--sc-accent); font-size: var(--sc-t-xs); letter-spacing: 0; margin: 0 0 var(--sc-2); }
   .tw-chosen p { margin:0; }
   .tw-chosen .tw-label__name { font-size: var(--sc-t-lg); }
   .tw-field { display: block; margin-bottom: var(--sc-4); }
-  .tw-field > span { display: block; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); margin-bottom: .5rem; }
-  .tw-field > span em { font-style: normal; text-transform: none; letter-spacing: normal; opacity:.7; }
+  .tw-field > span { display: block; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); margin-bottom: .5rem; }
+  .tw-field > span em { font-style: normal; text-transform: none; letter-spacing: normal; color: var(--tw-ink-quiet); }
+  .tw-field input::placeholder, .tw-field textarea::placeholder { color: var(--tw-ink-quiet); opacity: 1; }
   .tw-field input, .tw-field select, .tw-field textarea {
     width: 100%; padding: .85rem 1rem; color: var(--sc-ink);
-    background: var(--sc-canvas); border: 1px solid var(--tw-line); border-radius: var(--sc-r-sm);
+    background: var(--sc-canvas); border: 1px solid var(--tw-line-strong); border-radius: var(--sc-r-sm);
     font: 400 max(16px, var(--sc-t-base))/1.4 var(--sc-font-text);
   }
   .tw-field textarea { resize: vertical; min-height: 7rem; }
@@ -205,7 +222,7 @@
   .tw-foot a { color: var(--sc-ink-soft); display:inline-block; padding: 10px 2px; margin: -10px -2px; }
   .tw-foot p { margin: 0 0 var(--sc-2); max-width: 62ch; }
   .tw-foot details { margin: var(--sc-3) 0; border-top: 1px solid var(--tw-line); padding-top: var(--sc-3); }
-  .tw-foot summary { cursor:pointer; font-family: var(--sc-font-mono); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink); min-height: 44px; display:flex; align-items:center; }
+  .tw-foot summary { cursor:pointer; font-family: var(--sc-font-mono); letter-spacing: 0; color: var(--sc-ink); min-height: 44px; display:flex; align-items:center; }
   .tw-foot details p { font-size: var(--sc-t-sm); line-height: 1.6; }
 
   @media (max-width: 700px) {
@@ -214,46 +231,47 @@
   }
   @media (prefers-reduced-motion: reduce) { .tw-pick, .tw-open, .tw-submit { transition: none; } }
 
-  /* Light is the brand's own paper and ink, not an inversion of the dark
-     set. The rust drops back to its print value because the brightened one
-     cannot clear 4.5:1 on paper. */
-  :root { color-scheme: dark light; --tw-plate-a: rgba(255,255,255,.08); --tw-plate-b: #2a251d; --tw-plate-c: #1b1813; --tw-plate-d: #13110d; --tw-plate-shadow: hsl(36 30% 3% / .9); }
-  :root[data-theme="light"] {
-    --sc-canvas:     #efe9dd;
-    --sc-surface:    #f7f3ea;
-    --sc-ink:        #191712;
-    --sc-ink-soft:   #61594c;
-    --sc-accent:     #a1462a;
-    --sc-accent-ink: #f7f3ea;
-    --sc-shadow-color: 36 20% 30%;
-    --tw-glass: #f7f3ea;
-    --tw-line:  rgba(25,23,18,.16);
-    --tw-line-strong: rgba(25,23,18,.34);
-    --tw-plate-a: rgba(255,255,255,.6); --tw-plate-b: #e3dccd; --tw-plate-c: #d9d1c0; --tw-plate-d: #cec5b2; --tw-plate-shadow: hsl(36 20% 30% / .35);
+  /* The dark desk, on the switch. The rust is brightened one step so it
+     still reads on the dark ground. */
+  :root { color-scheme: light; --tw-plate-a: rgba(255,255,255,.6); --tw-plate-b: #e3dccd; --tw-plate-c: #d9d1c0; --tw-plate-d: #cec5b2; --tw-plate-shadow: hsl(36 20% 30% / .35); }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --sc-canvas:     #141210;
+    --sc-surface:    #1d1a15;
+    --sc-ink:        #efe9dd;
+    --sc-ink-soft:   #a69d8a;
+    --sc-accent:     #d46a41;
+    --sc-accent-ink: #141210;
+    --sc-shadow-color: 36 30% 3%;
+    --tw-glass: #221e18;
+    --tw-line:  rgba(239,233,221,.14);
+    --tw-line-strong: #76705f;
+    --tw-ink-quiet: #968d7b;
+    --tw-plate-a: rgba(255,255,255,.08); --tw-plate-b: #2a251d; --tw-plate-c: #1b1813; --tw-plate-d: #13110d; --tw-plate-shadow: hsl(36 30% 3% / .9);
   }
-  :root[data-theme="light"] body { color: var(--sc-ink); }
-  :root[data-theme="light"] .sc-grain { opacity: .03; }
-  :root[data-theme="light"] .tw-status.is-error { color: #a13333; }
+  :root:not([data-theme="dark"]) body { color: var(--sc-ink); }
+  :root:not([data-theme="dark"]) .sc-grain { opacity: .03; }
+  :root:not([data-theme="dark"]) .tw-status.is-error { color: #a13333; }
 
   /* ---------- the light switch, in the index ---------- */
   .tw-lights {
     margin-left: auto; display: inline-grid; place-items: center; flex: none;
     width: 40px; height: 40px; padding: 0;
     background: transparent; color: var(--sc-ink-soft);
-    border: 1px solid var(--tw-line); border-radius: 50%;
+    border: 1px solid var(--tw-line-strong); border-radius: 50%;
     cursor: pointer; transition: color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
   }
-  .tw-lights:hover { color: var(--sc-ink); border-color: var(--tw-line-strong); }
+  .tw-lights:hover { color: var(--sc-ink); border-color: var(--sc-ink-soft); }
   .tw-lights svg { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
   /* Written with the parent so they outrank the generic icon rule above. */
   .tw-lights .tw-lights__sun { display: none; }
-  :root[data-theme="light"] .tw-lights .tw-lights__sun { display: block; }
-  :root[data-theme="light"] .tw-lights .tw-lights__moon { display: none; }
+  :root:not([data-theme="dark"]) .tw-lights .tw-lights__sun { display: block; }
+  :root:not([data-theme="dark"]) .tw-lights .tw-lights__moon { display: none; }
   @media (pointer: coarse) { .tw-lights { width: 44px; height: 44px; } }
   .tw-index__list { margin-left: var(--sc-4); }
 </style>
 <style>
-  .tw-back { display:inline-flex; align-items:center; min-height:44px; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); text-decoration:none; }
+  .tw-back { display:inline-flex; align-items:center; min-height:44px; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); text-decoration:none; }
   .tw-back:hover { color: var(--sc-ink); }
   .tw-open-act--page { grid-template-columns: 1fr; align-items:start; padding-bottom: var(--sc-4); }
   @media (min-width: 900px) { .tw-open-act--page { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); } }

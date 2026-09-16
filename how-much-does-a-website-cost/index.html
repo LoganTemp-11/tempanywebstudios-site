@@ -11,33 +11,40 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#141210">
+<meta name="theme-color" content="#efe9dd">
 <meta property="og:title" content="How Much Does a Website Cost? | Tempany Web Studios">
 <meta property="og:description" content="The full arithmetic of a small business website: £399 for five pages, £749 with booking, what builders and agencies charge, and when you should not buy from me.">
 <meta property="og:url" content="https://tempanywebstudios.co.uk/how-much-does-a-website-cost/">
 <meta property="og:site_name" content="Tempany Web Studios">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_GB">
-<meta property="og:image" content="https://tempanywebstudios.co.uk/tempany-web-studios-share.png">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/images/share/tempany-sketchpad.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A pencil rough of a homepage on cream paper, lettered Tempany Web Studios, under the pencilled words: Tell me what you do and I'll rough out the top of your homepage, for nothing. £399 fixed, up to five pages, 10 to 14 days.">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-700-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="/fonts/geist-400-latin.woff2" crossorigin>
-<link rel="stylesheet" href="/fonts.css">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/alegreya-var-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/alegreya-sans-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css?v=2">
 <script>
-/* Resolve the theme before the first paint so the page never flashes the
-   wrong ground. Remembered per browser under the same key the old homepage
-   used, so anyone who chose light before still gets light; on a first visit
-   with nothing stored, the device's own preference decides. */
+/* Paper for everyone: only a stored 'dark' (set by pressing the switch) gives
+   the dark desk. The device's own preference is not read. Also marks the page
+   as scripted (class js). */
 (function () {
-  var t = null;
+  var d = document.documentElement, t = null;
   try { t = localStorage.getItem('tws-theme'); } catch (e) {}
-  /* No stored choice yet: follow the device. A choice made with the light switch wins from then on. */
-  if (t !== 'light' && t !== 'dark') { try { t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; } catch (e) { t = 'dark'; } }
-  document.documentElement.setAttribute('data-theme', t);
+  d.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+  d.className += (d.className ? ' ' : '') + 'js';
+  // Firefox does not start a fallback face while the web font ahead of it is still
+  // loading (it draws its default face instead), so ask for the size-matched ones now.
+  var F = document.fonts, S = 'Alegreya Sans Fallback ', A = 'Alegreya Fallback ';
+  if (F && F.load) [S + 'Segoe', S + 'Helvetica', S + 'Arial', S + 'Roboto', S + 'DejaVu', A + 'Georgia', A + 'Noto'].forEach(function (n) {
+    ['400', '700'].forEach(function (w) { F.load(w + ' 1em "' + n + '"').catch(function () {}); });
+  });
 })();
 </script>
 <link rel="stylesheet" href="/scrollcraft.min.css?v=3">
-<link rel="stylesheet" href="/tw-pages.css">
+<link rel="stylesheet" href="/tw-pages.css?v=2">
 <style>
   /* ---- sub-page additions. Everything else comes from tw-pages.css, copied from the homepage. ---- */
   .tw-where { position: relative; }
@@ -51,7 +58,7 @@
   .tw-where__list a:hover { background: color-mix(in srgb, var(--sc-ink) 8%, transparent); }
   .tw-where__list span[aria-current] { color: var(--sc-accent); }
   .tw-soon { color: var(--sc-ink-soft) !important; }
-  .tw-soon::after { content: "soon"; margin-left: auto; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; opacity: .8; }
+  .tw-soon::after { content: "soon"; margin-left: auto; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--tw-ink-quiet); }
   @media (max-width: 720px) { .tw-index__list li.tw-where { display: none; } }
 
   .tw-page { max-width: var(--sc-maxw); margin: 0 auto; padding: 0 var(--sc-gutter); }
@@ -72,24 +79,24 @@
   .tw-prose h3 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); line-height: 1.2; color: var(--sc-ink); margin: 0 0 var(--sc-3); }
   .tw-prose ul { padding-left: 1.2em; margin: 0 0 var(--sc-4); }
   .tw-prose li { margin-bottom: .4em; }
-  .tw-act { padding: var(--sc-8) 0; border-top: 1px solid var(--tw-line); }
+  .tw-act { padding-block: var(--sc-8); border-top: 1px solid var(--tw-line); }
   .tw-act--first { border-top: 0; padding-top: 0; }
-  .tw-opening { padding: calc(var(--sc-8) + 1rem) 0 var(--sc-8); min-height: calc(100svh - 2rem); display: grid; align-content: center; }
-  .tw-eyebrow { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; margin: 0 0 var(--sc-3); }
+  .tw-opening { padding-block: calc(var(--sc-8) + 1rem) var(--sc-8); min-height: calc(100svh - 2rem); display: grid; align-content: center; }
+  .tw-eyebrow { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: 0; word-spacing: .065em; margin: 0 0 var(--sc-3); }
   .tw-offer { border: 1px solid var(--tw-line); border-radius: var(--sc-r-md); background: var(--tw-glass); padding: var(--sc-5); max-width: 40rem; }
-  .tw-offer .tw-figure { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); line-height: 1; letter-spacing: var(--sc-track-tight); color: var(--sc-ink); margin: 0 0 var(--sc-3); font-variant-numeric: tabular-nums; }
-  .tw-offer .tw-figure small { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; color: var(--sc-ink-soft); margin-left: .6rem; vertical-align: middle; }
+  .tw-offer .tw-figure { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); line-height: 1; letter-spacing: var(--sc-track-tight); color: var(--sc-ink); margin: 0 0 var(--sc-3); font-variant-numeric: lining-nums tabular-nums; }
+  .tw-offer .tw-figure small { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); margin-left: .6rem; vertical-align: middle; }
   .tw-offer p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-3); font-size: var(--sc-t-sm); }
-  .tw-offer .tw-line strong { color: var(--sc-ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .tw-offer .tw-line strong { color: var(--sc-ink); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
   .tw-cta { display: inline-flex; align-items: center; gap: .6rem; min-height: 48px; padding: 0 1.4rem; border-radius: var(--sc-r-pill); background: var(--sc-accent); color: var(--sc-accent-ink); font-family: var(--sc-font-display); font-weight: 600; text-decoration: none; }
   .tw-cta:hover { filter: brightness(1.06); }
   .tw-cta--quiet { background: transparent; color: var(--sc-ink); border: 1px solid var(--tw-line-strong); }
   .tw-said { padding: 0; }
   .tw-qa dt { font-family: var(--sc-font-display); font-weight: 600; color: var(--sc-ink); font-size: var(--sc-t-base); margin: var(--sc-4) 0 var(--sc-2); }
   .tw-qa dd { margin: 0; color: var(--sc-ink-soft); max-width: 62ch; }
-  .tw-table { width: 100%; border-collapse: collapse; font-size: var(--sc-t-sm); font-variant-numeric: tabular-nums; }
+  .tw-table { width: 100%; border-collapse: collapse; font-size: var(--sc-t-sm); font-variant-numeric: lining-nums tabular-nums; }
   .tw-table th, .tw-table td { text-align: left; vertical-align: top; padding: .8rem .6rem; border-bottom: 1px solid var(--tw-line); color: var(--sc-ink-soft); }
-  .tw-table th { color: var(--sc-ink); font-family: var(--sc-font-mono); font-weight: 500; font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); text-transform: uppercase; }
+  .tw-table th { color: var(--sc-ink); font-family: var(--sc-font-mono); font-weight: 500; font-size: var(--sc-t-xs); letter-spacing: 0; }
   .tw-table td strong { color: var(--sc-ink); }
   .tw-table td:first-child { color: var(--sc-ink); font-weight: 600; }
   .tw-table-wrap { overflow-x: auto; margin: var(--sc-5) 0; }
@@ -99,14 +106,14 @@
   :focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 3px; }
 
   /* The sum: the price arithmetic set as a till roll. */
-  .tw-sum { max-width: 34rem; font-family: var(--sc-font-mono); font-variant-numeric: tabular-nums; border: 1px solid var(--tw-line-strong); border-radius: var(--sc-r-md); background: var(--tw-glass); padding: var(--sc-5) var(--sc-6); box-shadow: var(--sc-e3); }
+  .tw-sum { max-width: 34rem; font-family: var(--sc-font-mono); font-variant-numeric: lining-nums tabular-nums; border: 1px solid var(--tw-line-strong); border-radius: var(--sc-r-md); background: var(--tw-glass); padding: var(--sc-5) var(--sc-6); box-shadow: var(--sc-e3); }
   .tw-sum__row { display: grid; grid-template-columns: 4.5ch 1fr auto; gap: var(--sc-3); align-items: baseline; padding: .55rem 0; border-bottom: 1px dashed var(--tw-line); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); }
   .tw-sum__row span:first-child { color: var(--sc-ink-soft); }
   .tw-sum__row strong { color: var(--sc-ink); font-weight: 500; font-size: var(--sc-t-lg); white-space: nowrap; }
   .tw-sum__row--total { border-bottom: 0; border-top: 2px solid var(--sc-ink); margin-top: .6rem; padding-top: .9rem; }
   .tw-sum__row--total strong { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); letter-spacing: var(--sc-track-tight); color: var(--sc-ink); }
   .tw-sum__row--total span { color: var(--sc-ink); }
-  .tw-sum__foot { margin-top: var(--sc-4); font-size: var(--sc-t-xs); color: var(--sc-ink-soft); letter-spacing: var(--sc-track-wide); text-transform: uppercase; }
+  .tw-sum__foot { margin-top: var(--sc-4); font-size: var(--sc-t-xs); color: var(--sc-ink-soft); letter-spacing: 0; }
   .tw-sum__alt { margin-top: var(--sc-5); display: grid; gap: .4rem; font-size: var(--sc-t-xs); color: var(--sc-ink-soft); }
   .tw-sum__alt span b { color: var(--sc-ink); font-weight: 500; }
   @media (max-width: 480px) { .tw-sum { padding: var(--sc-4); } .tw-sum__row { grid-template-columns: 3.5ch 1fr auto; } }
@@ -124,7 +131,7 @@
     "@type": "Person",
     "name": "Logan Tempany"
   },
-  "image": "https://tempanywebstudios.co.uk/tempany-web-studios-share.png",
+  "image": "https://tempanywebstudios.co.uk/images/share/tempany-sketchpad.png",
   "description": "Hand-built websites for small businesses that need enquiries, not a brochure.",
   "priceRange": "£95 to £869",
   "areaServed": [

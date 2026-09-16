@@ -25,4 +25,4 @@
   Cache-Control: public, max-age=604800
 
 /
-  Link: </scrollcraft.min.css?v=3>; rel=preload; as=style, </fonts.css>; rel=preload; as=style
+  Link: </scrollcraft.min.css?v=3>; rel=preload; as=style, </fonts.css?v=2>; rel=preload; as=style
