@@ -8,9 +8,10 @@
 <meta name="author" content="Logan Tempany">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tempanywebstudios.co.uk/how-much-does-a-website-cost/">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" href="/favicon-32x32.png?v=2" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#efe9dd">
 <meta property="og:title" content="How Much Does a Website Cost? | Tempany Web Studios">
 <meta property="og:description" content="The full arithmetic of a small business website: £399 for five pages, £749 with booking, what builders and agencies charge, and when you should not buy from me.">
@@ -44,7 +45,7 @@
 })();
 </script>
 <link rel="stylesheet" href="/scrollcraft.min.css?v=3">
-<link rel="stylesheet" href="/tw-pages.css?v=2">
+<link rel="stylesheet" href="/tw-pages.css?v=3">
 <style>
   /* ---- sub-page additions. Everything else comes from tw-pages.css, copied from the homepage. ---- */
   .tw-where { position: relative; }
@@ -52,9 +53,9 @@
   .tw-where__btn::after { content: ""; width: .5em; height: .5em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-135deg) translate(-1px, -1px); transition: transform var(--sc-d-fast) var(--sc-ease-out); }
   .tw-where__btn[aria-expanded="true"]::after { transform: rotate(45deg) translate(-2px, -2px); }
   .tw-where__btn:hover, .tw-where__btn[aria-expanded="true"] { color: var(--sc-ink); }
-  .tw-where__list { position: absolute; bottom: calc(100% + .75rem); left: 50%; transform: translateX(-50%); min-width: 12rem; margin: 0; padding: .5rem; list-style: none; background: var(--tw-glass); border: 1px solid var(--tw-line-strong); border-radius: var(--sc-r-md); box-shadow: var(--sc-e3); text-transform: none; letter-spacing: 0; font-family: var(--sc-font-text); font-size: var(--sc-t-sm); }
+  .tw-where__list { position: absolute; bottom: calc(100% + .75rem); left: 50%; transform: translateX(-50%); min-width: 12rem; margin: 0; padding: .5rem; list-style: none; background: var(--tw-glass); border: 1px solid var(--tw-line-strong); border-radius: 4px; box-shadow: var(--sc-e3); text-transform: none; letter-spacing: 0; font-family: var(--sc-font-text); font-size: var(--sc-t-sm); }
   .tw-where__list[hidden] { display: none; }
-  .tw-where__list a, .tw-where__list span { display: flex; align-items: center; min-height: 44px; padding: 0 .9rem; border-radius: var(--sc-r-sm); color: var(--sc-ink); text-decoration: none; }
+  .tw-where__list a, .tw-where__list span { display: flex; align-items: center; min-height: 44px; padding: 0 .9rem; border-radius: 2px; color: var(--sc-ink); text-decoration: none; }
   .tw-where__list a:hover { background: color-mix(in srgb, var(--sc-ink) 8%, transparent); }
   .tw-where__list span[aria-current] { color: var(--sc-accent); }
   .tw-soon { color: var(--sc-ink-soft) !important; }
@@ -83,12 +84,12 @@
   .tw-act--first { border-top: 0; padding-top: 0; }
   .tw-opening { padding-block: calc(var(--sc-8) + 1rem) var(--sc-8); min-height: calc(100svh - 2rem); display: grid; align-content: center; }
   .tw-eyebrow { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: 0; word-spacing: .065em; margin: 0 0 var(--sc-3); }
-  .tw-offer { border: 1px solid var(--tw-line); border-radius: var(--sc-r-md); background: var(--tw-glass); padding: var(--sc-5); max-width: 40rem; }
+  .tw-offer { border: 1px solid var(--tw-line); border-radius: 4px; background: var(--tw-glass); padding: var(--sc-5); max-width: 40rem; }
   .tw-offer .tw-figure { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); line-height: 1; letter-spacing: var(--sc-track-tight); color: var(--sc-ink); margin: 0 0 var(--sc-3); font-variant-numeric: lining-nums tabular-nums; }
   .tw-offer .tw-figure small { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); margin-left: .6rem; vertical-align: middle; }
   .tw-offer p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-3); font-size: var(--sc-t-sm); }
   .tw-offer .tw-line strong { color: var(--sc-ink); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
-  .tw-cta { display: inline-flex; align-items: center; gap: .6rem; min-height: 48px; padding: 0 1.4rem; border-radius: var(--sc-r-pill); background: var(--sc-accent); color: var(--sc-accent-ink); font-family: var(--sc-font-display); font-weight: 600; text-decoration: none; }
+  .tw-cta { display: inline-flex; align-items: center; gap: .6rem; min-height: 48px; padding: 0 1.4rem; border-radius: 3px; background: var(--sc-accent); color: var(--sc-accent-ink); font: 700 1.125rem/1.15 var(--sc-font-text); text-decoration: none; }
   .tw-cta:hover { filter: brightness(1.06); }
   .tw-cta--quiet { background: transparent; color: var(--sc-ink); border: 1px solid var(--tw-line-strong); }
   .tw-said { padding: 0; }
@@ -103,10 +104,10 @@
   .tw-src { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); color: var(--sc-ink-soft); letter-spacing: 0; }
   .tw-src a { color: var(--sc-ink-soft); }
   .tw-foot { max-width: 62ch; }
-  :focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--sc-ink); outline-offset: 3px; }
 
   /* The sum: the price arithmetic set as a till roll. */
-  .tw-sum { max-width: 34rem; font-family: var(--sc-font-mono); font-variant-numeric: lining-nums tabular-nums; border: 1px solid var(--tw-line-strong); border-radius: var(--sc-r-md); background: var(--tw-glass); padding: var(--sc-5) var(--sc-6); box-shadow: var(--sc-e3); }
+  .tw-sum { max-width: 34rem; font-family: var(--sc-font-mono); font-variant-numeric: lining-nums tabular-nums; border: 1px solid var(--tw-line-strong); border-radius: 2px; background: var(--tw-glass); padding: var(--sc-5) var(--sc-6); box-shadow: var(--sc-e3); }
   .tw-sum__row { display: grid; grid-template-columns: 4.5ch 1fr auto; gap: var(--sc-3); align-items: baseline; padding: .55rem 0; border-bottom: 1px dashed var(--tw-line); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); }
   .tw-sum__row span:first-child { color: var(--sc-ink-soft); }
   .tw-sum__row strong { color: var(--sc-ink); font-weight: 500; font-size: var(--sc-t-lg); white-space: nowrap; }
@@ -200,7 +201,7 @@
     <svg viewBox="0 0 44 44" aria-hidden="true">
       <circle cx="22" cy="22" r="18.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
       <circle cx="22" cy="22" r="14.5" fill="none" stroke="currentColor" stroke-width=".7" opacity=".45"/>
-      <g stroke="#d46a41" stroke-width="1.4" stroke-linecap="round">
+      <g stroke="#a1462a" stroke-width="1.4" stroke-linecap="round">
         <line x1="22" y1="1.5" x2="22" y2="5"/><line x1="22" y1="39" x2="22" y2="42.5"/>
         <line x1="1.5" y1="22" x2="5" y2="22"/><line x1="39" y1="22" x2="42.5" y2="22"/>
       </g>
