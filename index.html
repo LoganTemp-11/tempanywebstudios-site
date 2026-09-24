@@ -501,9 +501,14 @@
   /* act 3: the cards */
   .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .card--yours { grid-column: 1 / -1; }
+  /* The second live client heads the row: full width like Jennifer's on a phone, one of six from 1100px. */
+  @media (max-width: 699px) {
+    .card--live { grid-column: 1 / -1; width: min(100%, 320px); justify-self: center; }
+    .card--live .plate--phone :is(img, video) { width: 70%; border-radius: 20px 20px 0 0; }
+  }
   .card--yours .plate--yours { aspect-ratio: auto; min-height: 9rem; }
   @media (min-width: 700px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.25rem 1.5rem; } .card--yours { grid-column: auto; } .card--yours .plate--yours { aspect-ratio: 4 / 5; } }
-  @media (min-width: 1100px) { .cards { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  @media (min-width: 1100px) { .cards { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
   .card { min-width: 0; display: flex; flex-direction: column; }
   .card > .open { margin-top: auto; align-self: flex-start; }
   .card__who { margin-bottom: .35rem !important; }
@@ -952,7 +957,7 @@ addEventListener('pagereveal', function (e) {
     <div class="wrap">
       <div class="act__head">
         <h2 id="work-h">The work</h2>
-        <p class="act__lead">The first one is a real client's site, live and taking her bookings. The other four are complete demonstrations, one per trade, so you can judge the craft before you commit anything. Shown on a phone, because that's where your customers are.</p>
+        <p class="act__lead">The first two are real clients' sites, live on their own domains. The other four are complete demonstrations, one per trade, so you can judge the craft before you commit anything. Shown on a phone, because that's where your customers are.</p>
       </div>
       <div class="jen">
         <article class="jen__site" aria-labelledby="jen-h">
@@ -980,10 +985,23 @@ addEventListener('pagereveal', function (e) {
     </div>
   </section>
 
-  <!-- 3 · THE DEMONSTRATIONS. One per trade, and a card for everyone else. -->
+  <!-- 3 · RAYNEY DAY, THEN THE DEMONSTRATIONS. The second live client at the head of the row, one demonstration per trade, and a card for everyone else. -->
   <section id="work-demos" class="act act--demos">
     <div class="wrap">
       <ul class="cards">
+        <li class="card card--live" id="work-rayney">
+          <div class="plate plate--phone" data-clip="rayney">
+            <picture>
+              <source type="image/webp" srcset="/images/home/phone-rayney-v2-390.webp 390w, /images/home/phone-rayney-v2.webp 780w" sizes="(min-width: 1100px) 120px, (min-width: 700px) 18vw, 224px">
+              <img src="/images/home/phone-rayney-v2.jpg" srcset="/images/home/phone-rayney-v2-390.jpg 390w, /images/home/phone-rayney-v2.jpg 780w" sizes="(min-width: 1100px) 120px, (min-width: 700px) 18vw, 224px" alt="Rayney Day Pet Services, a live client site, shown on a phone" width="780" height="1688" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <p class="flag">Live client site</p>
+          <h3 class="card__name" id="card-rayney">Rayney Day Pet Services</h3>
+          <p class="card__facts">Dog walking and pet home checks&nbsp;&middot; Dollar and surrounding area</p>
+          <p class="card__who">Enquiries handled directly by Fiona</p>
+          <a class="open" href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer" aria-describedby="card-rayney">Open it<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11.2L11.1 5.1M6.2 4.8H11.3V9.9"/></svg></a>
+        </li>
         <li class="card" id="work-salon">
           <div class="plate plate--phone" data-clip="salon">
             <picture>
@@ -1124,7 +1142,7 @@ addEventListener('pagereveal', function (e) {
             <dt>Is &pound;399 really the price for every project?</dt>
             <dd>For the five-page site, yes, and it's the only number you pay unless you ask for one of the add-ons in 06: booking, card payment or extra pages. Those are the only other prices on this page, each is optional, and each is quoted before anything starts. If your business needs something bigger than that, I'll say so and give you the real number before any work starts. <a href="/how-much-does-a-website-cost/">The full arithmetic, against builders and agencies, is on its own page.</a></dd>
             <dt>Who else has bought one?</dt>
-            <dd><a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Jennifer Ellis Yoga</a> was the first: paid for, live on her own domain, and taking bookings through the site. Two more local businesses have sites in progress with me.</dd>
+            <dd><a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Jennifer Ellis Yoga</a> was the first: paid for, live on her own domain, and taking bookings through the site. <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a>, dog walking and pet home checks in Dollar, is the second. Another local business has a site in progress with me now.</dd>
           </dl>
         </div>
       </div>
@@ -1195,7 +1213,7 @@ addEventListener('pagereveal', function (e) {
         <p>Logan Tempany trading as Tempany Web Studios&nbsp;&middot; Dollar, Scotland&nbsp;&middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a>&nbsp;&middot; <a href="tel:+447487536649">07487 536649</a></p>
         
         <p><a href="/audit/">The &pound;95 audit</a>&nbsp;&middot; <a href="/how-much-does-a-website-cost/">What a website costs</a>&nbsp;&middot; <a href="/booking/">The booking system</a>&nbsp;&middot; <a href="/web-design-falkirk/">Web design in Falkirk</a>&nbsp;&middot; <a href="/web-design-stirling/">Web design in Stirling</a>&nbsp;&middot; <a href="/privacy/">Privacy notice</a>&nbsp;&middot; <a href="/privacy/#complaints">Complaints</a>&nbsp;&middot; <a href="/terms/">Service terms</a>&nbsp;&middot; <a href="/privacy/#cookies">Cookies</a></p>
-        <p class="tw-foot__last">Jennifer Ellis Yoga is a real client site, shown with her permission. The four demonstration sites aren't: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
+        <p class="tw-foot__last">Jennifer Ellis Yoga and Rayney Day Pet Services are real client sites, shown with their owners' permission. The four demonstration sites aren't: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
       </div>
     </div>
   </section>
@@ -1669,7 +1687,7 @@ p.v.play().catch(()=>{});
 const pick=()=>{
 if(cur) { if(!cur.v.paused&&cur.r>=.5) return; cur.v.pause(); }
 cur=null;
-all.forEach(p=>{ if(p.v&&!p.done&&p.r>=.5&&(!cur||p.r>cur.r)) cur=p; });
+all.forEach(p=>{ if(p.v&&!p.done&&p.r>=.5&&(!cur||p.r>cur.r+.05)) cur=p; });
 if(cur) go(cur);
 };
 const make=p=>{
