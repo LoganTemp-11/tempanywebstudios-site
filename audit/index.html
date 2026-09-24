@@ -42,7 +42,7 @@
 })();
 </script>
 <link rel="stylesheet" href="/scrollcraft.min.css?v=3">
-<link rel="stylesheet" href="/tw-pages.css?v=4">
+<link rel="stylesheet" href="/tw-pages.css?v=5">
 <style>
   .tw-back { display:inline-flex; align-items:center; min-height:44px; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); text-decoration:none; }
   .tw-back:hover { color: var(--sc-ink); }
@@ -78,6 +78,13 @@
   "areaServed": ["Clackmannanshire", "Stirling", "Falkirk", "Scotland", "United Kingdom"],
   "offers": { "@type": "Offer", "price": "95", "priceCurrency": "GBP", "url": "https://tempanywebstudios.co.uk/audit/" }
 }
+</script>
+<script>
+/* The tear-off going back: a back or forward step lays the sheet down again instead of tearing it off. */
+addEventListener('pagereveal', function (e) {
+  var a = window.navigation && navigation.activation;
+  if (e.viewTransition && e.viewTransition.types && a && a.navigationType === 'traverse') e.viewTransition.types.add('back');
+});
 </script>
 </head>
 <body>

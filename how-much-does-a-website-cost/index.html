@@ -45,7 +45,7 @@
 })();
 </script>
 <link rel="stylesheet" href="/scrollcraft.min.css?v=3">
-<link rel="stylesheet" href="/tw-pages.css?v=4">
+<link rel="stylesheet" href="/tw-pages.css?v=5">
 <style>
   /* ---- sub-page additions. Everything else comes from tw-pages.css, copied from the homepage. ---- */
   .tw-where { position: relative; }
@@ -189,6 +189,13 @@
     }
   ]
 }
+</script>
+<script>
+/* The tear-off going back: a back or forward step lays the sheet down again instead of tearing it off. */
+addEventListener('pagereveal', function (e) {
+  var a = window.navigation && navigation.activation;
+  if (e.viewTransition && e.viewTransition.types && a && a.navigationType === 'traverse') e.viewTransition.types.add('back');
+});
 </script>
 </head>
 <body>

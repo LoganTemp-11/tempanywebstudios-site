@@ -262,3 +262,36 @@
   .tw-drawing picture { display: block; }
   .tw-drawing img { display: block; width: 100%; max-width: 520px; height: auto; filter: brightness(1.02); mix-blend-mode: darken; }
   :root[data-theme="dark"] .tw-drawing img { filter: none; mix-blend-mode: normal; border-radius: 2px; box-shadow: var(--sk-shadow); transform: rotate(-.6deg); }
+
+  /* The tear-off. Every page is a sheet on one pad: following a link to another
+     page tears this one off along a perforated top edge (6px holes every 14px,
+     drawn by the mask below, no image file). It tugs about its bottom-left
+     corner, then drops away, and the next page is already lying underneath.
+     CSS only, so it runs with scripting off; nothing under reduced motion or in
+     a browser without cross-document view transitions. Going back lays the
+     sheet down again from below (the type is set by the pagereveal listener). */
+  @media (prefers-reduced-motion: no-preference) {
+    @view-transition { navigation: auto; }
+    ::view-transition-group(root) { animation-duration: .42s; }
+    ::view-transition-new(root) { animation: none; }
+    ::view-transition-old(root), :root:active-view-transition-type(back)::view-transition-new(root) {
+      z-index: 1; mix-blend-mode: normal; transform-origin: 0 100%;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath fill-rule='evenodd' d='M0 0h14v14H0zM7 4a3 3 0 1 0 0 6a3 3 0 1 0 0-6z'/%3E%3C/svg%3E") 0 0 / 14px 14px repeat-x, linear-gradient(#000 0 0) -60px 14px / calc(100% + 120px) calc(100% + 60px) no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath fill-rule='evenodd' d='M0 0h14v14H0zM7 4a3 3 0 1 0 0 6a3 3 0 1 0 0-6z'/%3E%3C/svg%3E") 0 0 / 14px 14px repeat-x, linear-gradient(#000 0 0) -60px 14px / calc(100% + 120px) calc(100% + 60px) no-repeat;
+      -webkit-mask-clip: no-clip; mask-clip: no-clip;
+      filter: drop-shadow(0 18px 22px rgba(40, 30, 14, .32));
+      animation: tw-tear .42s both;
+    }
+    :root:active-view-transition-type(back)::view-transition-old(root) { z-index: 0; animation: none; }
+    :root:active-view-transition-type(back)::view-transition-new(root) { animation-name: tw-lay; }
+    @keyframes tw-tear {
+      0% { transform: none; animation-timing-function: cubic-bezier(.3, 0, .4, 1); }
+      26% { transform: rotate(1.5deg); animation-timing-function: cubic-bezier(.55, 0, .9, .45); }
+      100% { transform: translateY(105vh) rotate(-4deg); }
+    }
+    @keyframes tw-lay {
+      0% { transform: translateY(105vh) rotate(-4deg); animation-timing-function: cubic-bezier(.1, .55, .45, 1); }
+      74% { transform: rotate(1.5deg); animation-timing-function: cubic-bezier(.3, 0, .4, 1); }
+      100% { transform: none; }
+    }
+  }

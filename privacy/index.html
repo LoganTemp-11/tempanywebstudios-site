@@ -42,7 +42,7 @@
 })();
 </script>
 <link rel="stylesheet" href="/scrollcraft.min.css?v=3">
-<link rel="stylesheet" href="/tw-pages.css?v=4">
+<link rel="stylesheet" href="/tw-pages.css?v=5">
 <style>
   .tw-page { width: min(64ch, 100%); margin-inline:auto; padding: var(--sc-9) var(--sc-gutter) calc(var(--sc-9) + 3rem); }
   .tw-page h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-5); text-wrap: balance; }
@@ -53,6 +53,13 @@
   .tw-page .tw-back { display:inline-flex; align-items:center; min-height:44px; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); text-decoration:none; margin-bottom: var(--sc-5); }
   .tw-page .tw-back:hover { color: var(--sc-ink); }
 </style>
+<script>
+/* The tear-off going back: a back or forward step lays the sheet down again instead of tearing it off. */
+addEventListener('pagereveal', function (e) {
+  var a = window.navigation && navigation.activation;
+  if (e.viewTransition && e.viewTransition.types && a && a.navigationType === 'traverse') e.viewTransition.types.add('back');
+});
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
