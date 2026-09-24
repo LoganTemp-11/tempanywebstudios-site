@@ -466,6 +466,10 @@
   @media (max-width: 819px) { .jen__site { margin-inline: auto; } }
   .flag { display: inline-flex; align-items: center; gap: .45em; margin: 1rem 0 .15rem; font-weight: 700; font-size: 1rem; word-spacing: .065em; color: var(--sc-ink); }
   .flag::before { content: ""; width: .55em; height: .55em; border-radius: 50%; background: var(--sc-ink); }
+  .flag--demo::before { background: none; border: 1.5px solid currentColor; box-sizing: border-box; }
+  .card .flag { margin-top: .9rem; }
+  .flag + .card__name { margin-top: .2rem; }
+  @media (min-width: 700px) { .card--yours .card__name { margin-top: 2.8rem; } }
   .said { margin: 0; max-width: 40rem; }
   .said h3 { font: 700 1.125rem/1.2 var(--sc-font-text); margin: 0 0 .75rem; color: var(--sc-ink-soft); letter-spacing: 0; }
   .said blockquote { margin: 0; }
@@ -480,6 +484,15 @@
   .plate--phone picture { display: contents; }
   .plate--phone img { display: block; width: 64%; max-width: none; height: auto; aspect-ratio: 780 / 1688; border-radius: 14px 14px 0 0; border: 1px solid var(--tw-line-strong); box-shadow: 0 16px 30px -18px hsl(var(--sc-shadow-color) / .8); }
   .plate--big img { width: 70%; border-radius: 20px 20px 0 0; }
+  /* the recordings: a <video> added by script takes the image's exact box; the image stays for screen readers */
+  .plate--phone video { display: block; width: 64%; height: auto; aspect-ratio: 780 / 1688; object-fit: cover; border-radius: 14px 14px 0 0; border: 1px solid var(--tw-line-strong); box-shadow: 0 16px 30px -18px hsl(var(--sc-shadow-color) / .8); background: var(--sk-paper); }
+  .plate--big video { width: 70%; border-radius: 20px 20px 0 0; }
+  .plate.is-clip img { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .again { position: absolute; right: 8px; bottom: 8px; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1.4px solid var(--sk-graphite); border-radius: 50% 46% 52% 48%; background: var(--sk-paper); color: var(--sk-graphite); cursor: pointer; box-shadow: 0 6px 12px -8px rgba(70,56,30,.5); }
+  .again[hidden] { display: none; }
+  .again::before { content: ""; width: 18px; height: 18px; background: currentColor; -webkit-mask: var(--again) center / contain no-repeat; mask: var(--again) center / contain no-repeat; }
+  .again { --again: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15.6 7.4A6.2 6.2 0 1 0 16.2 12M16 3.6v4.1h-4.1'/%3E%3C/svg%3E"); }
+  .again:hover { border-width: 2px; }
   .plate--yours { display: grid; align-content: end; gap: .5rem; padding: 1rem; background: var(--sk-paper); color: var(--sk-graphite); border-radius: 3px; }
   .plate--yours::after { border: 1.6px dashed var(--sk-faint); inset: 5px; border-radius: 3px; }
   .plate__eyebrow { margin: 0; font-weight: 700; font-size: 1rem; word-spacing: .065em; color: var(--sk-faint); }
@@ -912,7 +925,7 @@
       </div>
       <div class="jen">
         <article class="jen__site" aria-labelledby="jen-h">
-          <div class="plate plate--phone plate--big">
+          <div class="plate plate--phone plate--big" data-clip="jennifer">
             <picture>
               <source type="image/webp" srcset="/images/home/phone-jennifer-390.webp 390w, /images/home/phone-jennifer.webp 780w" sizes="(min-width: 720px) 224px, 60vw">
               <img src="/images/home/phone-jennifer.jpg" srcset="/images/home/phone-jennifer-390.jpg 390w, /images/home/phone-jennifer.jpg 780w" sizes="(min-width: 720px) 224px, 60vw" alt="Jennifer Ellis Yoga, a live client site, shown on a phone" width="780" height="1688" loading="lazy" decoding="async">
@@ -941,48 +954,52 @@
     <div class="wrap">
       <ul class="cards">
         <li class="card" id="work-salon">
-          <div class="plate plate--phone">
+          <div class="plate plate--phone" data-clip="salon">
             <picture>
               <source type="image/webp" srcset="/images/home/phone-salon-v2-390.webp 390w, /images/home/phone-salon-v2.webp 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw">
               <img src="/images/home/phone-salon-v2.jpg" srcset="/images/home/phone-salon-v2-390.jpg 390w, /images/home/phone-salon-v2.jpg 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw" alt="Brackenwynd Hair Studio demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
             </picture>
           </div>
+          <p class="flag flag--demo">Demonstration</p>
           <h3 class="card__name" id="card-salon">Brackenwynd Hair Studio</h3>
           <p class="card__facts">Salon&nbsp;&middot; every look priced, every stylist named</p>
           <p class="card__who">Book by pointing at the hair you want</p>
           <a class="open" href="/demos/salon-v2/" target="_blank" rel="noopener noreferrer" aria-describedby="card-salon">Open it<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11.2L11.1 5.1M6.2 4.8H11.3V9.9"/></svg></a>
         </li>
         <li class="card" id="work-trades">
-          <div class="plate plate--phone">
+          <div class="plate plate--phone" data-clip="trades">
             <picture>
               <source type="image/webp" srcset="/images/home/phone-trades-v2-390.webp 390w, /images/home/phone-trades-v2.webp 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw">
               <img src="/images/home/phone-trades-v2.jpg" srcset="/images/home/phone-trades-v2-390.jpg 390w, /images/home/phone-trades-v2.jpg 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw" alt="Whinstone Joinery demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
             </picture>
           </div>
+          <p class="flag flag--demo">Demonstration</p>
           <h3 class="card__name" id="card-trades">Whinstone Joinery</h3>
           <p class="card__facts">Trades&nbsp;&middot; the job drawn to scale, dimensioned and priced</p>
           <p class="card__who">Then a fast route to a quote</p>
           <a class="open" href="/demos/trades/" target="_blank" rel="noopener noreferrer" aria-describedby="card-trades">Open it<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11.2L11.1 5.1M6.2 4.8H11.3V9.9"/></svg></a>
         </li>
         <li class="card" id="work-clinic">
-          <div class="plate plate--phone">
+          <div class="plate plate--phone" data-clip="clinic">
             <picture>
               <source type="image/webp" srcset="/images/home/phone-clinic-v2-390.webp 390w, /images/home/phone-clinic-v2.webp 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw">
               <img src="/images/home/phone-clinic-v2.jpg" srcset="/images/home/phone-clinic-v2-390.jpg 390w, /images/home/phone-clinic-v2.jpg 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw" alt="Rowanbank Physiotherapy demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
             </picture>
           </div>
+          <p class="flag flag--demo">Demonstration</p>
           <h3 class="card__name" id="card-clinic">Rowanbank Physiotherapy</h3>
           <p class="card__facts">Clinic&nbsp;&middot; session pricing in the open</p>
           <p class="card__who">What happens at a first visit</p>
           <a class="open" href="/demos/clinic/" target="_blank" rel="noopener noreferrer" aria-describedby="card-clinic">Open it<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11.2L11.1 5.1M6.2 4.8H11.3V9.9"/></svg></a>
         </li>
         <li class="card" id="work-professional">
-          <div class="plate plate--phone">
+          <div class="plate plate--phone" data-clip="professional">
             <picture>
               <source type="image/webp" srcset="/images/home/phone-professional-v2-390.webp 390w, /images/home/phone-professional-v2.webp 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw">
               <img src="/images/home/phone-professional-v2.jpg" srcset="/images/home/phone-professional-v2-390.jpg 390w, /images/home/phone-professional-v2.jpg 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw" alt="Ochil Ledger accountancy demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
             </picture>
           </div>
+          <p class="flag flag--demo">Demonstration</p>
           <h3 class="card__name" id="card-professional">Ochil Ledger</h3>
           <p class="card__facts">Accountancy&nbsp;&middot; a full fee table</p>
           <p class="card__who">No hidden numbers</p>
@@ -1603,6 +1620,50 @@ var skMeasure = (function () {
     if (document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', refit);
   }
   window.__skReady = true;
+})();
+</script>
+<script>
+/* The recordings: once per visit, one card at a time, motion allowed and no
+   data saving only. No clip is fetched before its card is 200px away. */
+(()=>{
+const c=navigator.connection||{}, IO=window.IntersectionObserver, all=[];
+if (!IO||!matchMedia('(prefers-reduced-motion: no-preference)').matches||c.saveData||/2g|3g/.test(c.effectiveType)) return;
+let cur;
+const go=p=>{
+if (cur&&cur!=p) cur.v.pause();
+cur=p; p.b.hidden=true;
+if (p.v.ended) p.v.currentTime=0;
+p.v.play().catch(()=>{});
+};
+const pick=()=>{
+if (cur) { if (!cur.v.paused&&cur.r>=.5) return; cur.v.pause(); }
+cur=null;
+all.forEach(p=>{ if (p.v&&!p.done&&p.r>=.5&&(!cur||p.r>cur.r)) cur=p; });
+if (cur) go(cur);
+};
+const make=p=>{
+const el=p.el, img=el.querySelector('img'), f='/images/home/clips/clip-'+p.id+'-1.';
+el.insertAdjacentHTML('beforeend', '<video muted playsinline disablepictureinpicture preload="auto" aria-hidden="true" poster="'+(img.currentSrc||img.src)+'">'+['webm', 'mp4'].map(t=>'<source src="'+f+t+'" type="video/'+t+'">').join('')+'</video><button class="again" hidden aria-label="Play again"></button>');
+const v=p.v=el.querySelector('video'), b=p.b=el.querySelector('.again');
+el.classList.add('is-clip');
+b.onclick=()=>go(p);
+v.onended=()=>{ p.done=true; b.hidden=false; if (cur==p) cur=null; pick(); };
+if (matchMedia('(hover: hover)').matches) ['mouseenter', 'focusin'].forEach(t=>el.parentNode.addEventListener(t, e=>{ if (e.target!=b&&(cur!=p||v.ended)) go(p); }));
+};
+const near=new IO(es=>{
+es.forEach(e=>{ if (e.isIntersecting) { near.unobserve(e.target); make(e.target.p); } });
+pick();
+}, { rootMargin: '200px 0px' }), seen=new IO(es=>{
+es.forEach(e=>{
+const p=e.target.p; p.r=e.intersectionRatio;
+if (!p.r&&p.v) { p.done=false; p.v.pause(); p.v.currentTime=0; }
+});
+pick();
+}, { threshold: [0, .5, .75, 1] });
+document.querySelectorAll('[data-clip]').forEach(el=>{
+all.push(el.p={ el, id: el.dataset.clip });
+near.observe(el); seen.observe(el);
+});
 })();
 </script>
 <script>
