@@ -45,7 +45,7 @@
 })();
 </script>
 <link rel="stylesheet" href="/scrollcraft.min.css?v=3">
-<link rel="stylesheet" href="/tw-pages.css?v=5">
+<link rel="stylesheet" href="/tw-pages.css?v=6">
 <style>
   /* ---- sub-page additions. Everything else comes from tw-pages.css, copied from the homepage. ---- */
   .tw-where { position: relative; }
@@ -118,6 +118,10 @@
   .tw-sum__alt { margin-top: var(--sc-5); display: grid; gap: .4rem; font-size: var(--sc-t-xs); color: var(--sc-ink-soft); }
   .tw-sum__alt span b { color: var(--sc-ink); font-weight: 500; }
   @media (max-width: 480px) { .tw-sum { padding: var(--sc-4); } .tw-sum__row { grid-template-columns: 3.5ch 1fr auto; } }
+  /* The pencil drawing, mid-page only: darkened into the paper (the drawing's cream is 3 below the page), a sheet on the dark desk. */
+  .tw-drawing { max-width: var(--sc-maxw); margin: 0 auto; padding: var(--sc-6) var(--sc-gutter) var(--sc-7); }
+  .tw-drawing img { width: 100%; max-width: 520px; height: auto; filter: brightness(1.02); mix-blend-mode: darken; }
+  :root[data-theme="dark"] .tw-drawing img { filter: none; mix-blend-mode: normal; border-radius: 2px; transform: rotate(-.6deg); box-shadow: 0 1px 2px rgba(0,0,0,.5), 0 14px 30px -10px rgba(0,0,0,.75), 0 40px 80px -30px rgba(0,0,0,.9); }
 </style>
 <noscript><style>[data-sc-in],[data-sc-stagger]>*{opacity:1!important;transform:none!important}</style></noscript>
 <script type="application/ld+json">
@@ -267,13 +271,6 @@ addEventListener('pagereveal', function (e) {
     </div>
   </section>
 
-  <figure class="tw-drawing">
-    <picture>
-      <source type="image/webp" srcset="/images/pages/s-cost-1.webp">
-      <img src="/images/pages/s-cost-1.jpg" alt="Pencil drawing of a wooden ruler, a sharpened pencil and a folded sheet of ruled paper" width="1024" height="768" loading="lazy" decoding="async">
-    </picture>
-  </figure>
-
   <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="compare-h">
     <div class="tw-prose" data-sc-in data-sc-stagger="60" style="max-width:none">
       <h2 id="compare-h">Builder, me, or an agency</h2>
@@ -293,6 +290,13 @@ addEventListener('pagereveal', function (e) {
       <p class="tw-src">Squarespace UK: Basic &pound;12 and Core &pound;17 a month on annual billing (&pound;16 and &pound;24 monthly), free domain for the first year then &pound;8 a year for a .co.uk, per <a href="https://startups.co.uk/websites/builders/squarespace-pricing/" target="_blank" rel="noopener noreferrer">startups.co.uk</a>, last updated 15 September 2025, checked 14 September 2026. Freelancer and agency ranges and the &pound;500 to &pound;2,000 yearly figure from <a href="https://www.media-village.co.uk/websites/5-page-website-cost-uk/" target="_blank" rel="noopener noreferrer">Media Village's five-page website cost guide</a>, last modified 30 July 2026. Prices change; if these are out of date when you read this, tell me and I will correct them.</p>
     </div>
   </section>
+
+  <figure class="tw-drawing">
+    <picture>
+      <source type="image/webp" srcset="/images/pages/s-cost-1.webp">
+      <img src="/images/pages/s-cost-1.jpg" alt="Pencil drawing of a wooden ruler, a sharpened pencil and a folded sheet of ruled paper" width="1024" height="768" loading="lazy" decoding="async">
+    </picture>
+  </figure>
 
   <section class="tw-page tw-act" data-sc-act="flow" aria-labelledby="three-h">
     <div class="tw-prose" data-sc-in data-sc-stagger="60">

@@ -42,7 +42,7 @@
 })();
 </script>
 <link rel="stylesheet" href="/scrollcraft.min.css?v=3">
-<link rel="stylesheet" href="/tw-pages.css?v=5">
+<link rel="stylesheet" href="/tw-pages.css?v=6">
 <style>
   .tw-back { display:inline-flex; align-items:center; min-height:44px; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); text-decoration:none; }
   .tw-back:hover { color: var(--sc-ink); }
@@ -65,6 +65,10 @@
   .tw-demos .tw-label__name { font-size: var(--sc-t-base); margin-bottom: .2rem; }
   .tw-demos .tw-label__facts { margin: 0; }
   .tw-ask--page { padding-top: var(--sc-8); }
+  /* The pencil drawing, mid-page only: darkened into the paper (the drawing's cream is 3 below the page), a sheet on the dark desk. */
+  .tw-drawing { max-width: var(--sc-maxw); margin: 0 auto; padding: var(--sc-6) var(--sc-gutter) var(--sc-7); }
+  .tw-drawing img { width: 100%; max-width: 520px; height: auto; filter: brightness(1.02); mix-blend-mode: darken; }
+  :root[data-theme="dark"] .tw-drawing img { filter: none; mix-blend-mode: normal; border-radius: 2px; transform: rotate(-.6deg); box-shadow: 0 1px 2px rgba(0,0,0,.5), 0 14px 30px -10px rgba(0,0,0,.75), 0 40px 80px -30px rgba(0,0,0,.9); }
 </style>
 <script type="application/ld+json">
 {
