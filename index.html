@@ -475,6 +475,7 @@
   .said blockquote { margin: 0; }
   .said blockquote p { margin: 0; font: 500 clamp(1.25rem, 1.05rem + .75vw, 1.6rem)/1.38 var(--sc-font-display); color: var(--sc-ink); letter-spacing: -.004em; }
   .said figcaption { margin: 1rem 0 0; color: var(--sc-ink-soft); font-size: 1.0625rem; }
+  .said--fiona { margin: 0 0 clamp(2rem, 1.5rem + 2vw, 3rem); }
   .said figcaption a { display: inline-flex; align-items: center; min-height: 44px; vertical-align: middle; }
 
   /* the plates */
@@ -988,6 +989,13 @@ addEventListener('pagereveal', function (e) {
   <!-- 3 · RAYNEY DAY, THEN THE DEMONSTRATIONS. The second live client at the head of the row, one demonstration per trade, and a card for everyone else. -->
   <section id="work-demos" class="act act--demos">
     <div class="wrap">
+      <figure class="said said--fiona" aria-labelledby="said-fiona-h">
+        <h3 id="said-fiona-h">What Fiona said</h3>
+        <blockquote cite="https://rayneydaypets.co.uk/">
+          <p>&ldquo;Working with Logan has been smooth and professional from the get go. No query was too much and always answered with enthusiasm. His in-depth knowledge and calm nature meant I always felt at ease through the whole process.&rdquo;</p>
+        </blockquote>
+        <figcaption>Fiona Stewart&nbsp;&middot; <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a></figcaption>
+      </figure>
       <ul class="cards">
         <li class="card card--live" id="work-rayney">
           <div class="plate plate--phone" data-clip="rayney">
