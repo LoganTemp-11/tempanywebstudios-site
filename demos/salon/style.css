@@ -759,6 +759,7 @@ h2.light{color:#fff}
   border-top:2px solid var(--brass);
   box-shadow:0 -8px 30px rgba(0,0,0,.22);
 }
+.cookie-bar[hidden]{display:none}
 /* B4: every 10px of bar is 10px stolen from the time grid at 375x667, so
    this is deliberately the smallest honest bar: two lines and one row of
    buttons. */
