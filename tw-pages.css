@@ -210,9 +210,10 @@
   .tw-fine__here { display: none; }
   form[data-posts-here] .tw-fine__here { display: inline; }
 
-  /* Cookie choice in a page's closing line: a 44px hit area from padding, cancelled by an equal negative
-     margin where the link is an inline-block (/thanks/), so no line moves. */
-  .tw-page > p a[data-cookie-choice] { padding-block: 14px; margin-block: -14px; }
+  /* Cookie choice: a 44px hit area that grows only downwards, into the plain text or space under its line (it is
+     always the last link of its paragraph), so it never takes a tap meant for a link above. Where the link is an
+     inline-block (sub-page footers, /thanks/), the equal negative margin keeps every line where it was. */
+  .tw-page a[data-cookie-choice], .tw-foot a[data-cookie-choice] { padding-top: 0; padding-bottom: 28px; margin-top: 0; margin-bottom: -28px; }
 
   .tw-foot { padding: var(--sc-7) 0 calc(var(--sc-8) + 3rem); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); border-top: 1px solid var(--tw-line); margin-top: var(--sc-7); }
   .tw-foot a { color: var(--sc-ink-soft); display:inline-block; padding: 10px 2px; margin: -10px -2px; }

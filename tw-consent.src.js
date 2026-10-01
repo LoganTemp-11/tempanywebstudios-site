@@ -15,7 +15,7 @@
   window.twArrivedFrom = function () {
     var q = new URLSearchParams(location.search);
     var src = (q.get('utm_source') || '').toLowerCase(), med = (q.get('utm_medium') || '').toLowerCase();
-    var ad = ['gclid', 'gbraid', 'wbraid'].some(function (k) { return !!q.get(k); }) || (src === 'google' && /^(cpc|ppc|paid|paidsearch)$/.test(med));
+    var ad = /[?&](gclid|gbraid|wbraid)=[^&#]/.test(location.search) || (src === 'google' && /^(cpc|ppc|paid|paidsearch)$/.test(med));
     return ad ? 'Google advert' : 'Not marked as from an advert';
   };
 
@@ -70,7 +70,7 @@
     return ids;
   }
   function erase(ids) {
-    if (!ids.length || !FORM || typeof fetch !== 'function') return;
+    if (!ids.length || !FORM) return;
     try {
       fetch('https://api.web3forms.com/submit', { method: 'POST', keepalive: true, credentials: 'omit', redirect: 'manual', headers: { Accept: 'application/json' },
         body: new URLSearchParams({ access_key: FORM, subject: 'Delete Google Analytics data', message: 'Client ID: ' + ids.join(', ') + '\nDate: ' + WHEN(Date.now()) }) })['catch'](function () {});
@@ -204,14 +204,19 @@
     + '@media (max-width:719px),(max-height:500px){#consent{font-size:15px}.tw-cc__in{padding:16px 12px 10px}.tw-cc__acts{margin-top:8px}}'
     + '@media (min-width:720px){#consent{left:auto;width:30rem;max-width:calc(100% - 20px)}}'
     + '#consent.tw-cc--top{top:calc(8px + env(safe-area-inset-top,0px));bottom:auto}'
-    + '#consent.tw-cc--in{position:relative;inset:auto;width:auto;max-width:30rem;margin:24px 10px}@media (min-width:520px){#consent.tw-cc--in{margin:24px auto}}'
+    // in the page, scrolled to from Cookie choice: 40px of the page stays above it, more than a footer still
+    // rising into place (two 14px reveals) takes away, so the question stays in view
+    + '#consent.tw-cc--in{position:relative;inset:auto;width:auto;max-width:30rem;margin:24px 10px;scroll-margin-top:40px}@media (min-width:520px){#consent.tw-cc--in{margin:24px auto}}'
+    // a fixed slip never runs past its room: it scrolls inside, question first
+    + '#consent:not(.tw-cc--in){overflow-y:auto}'
     + '@media print{#consent{display:none!important}}';
 
   var slip, now, pick, ticks, save, live, bar, skip, where = 'bottom', vw = 0;
   // Lines a first-time visitor must still see: the homepage's bar, question, facts, proof, chips and name line,
   // the town pages' proof line, and the opening h1 and price line where a page has them; from 1200px also
-  // the plan's desktop list.
-  var KEEP = '.te,#skH1,.sk-facts,.sk-live,#skPick,#skNameRow,.tw-live,.tw-open-act h1,.tw-open-act .tw-label__facts', WIDE = ',.sk-send,.tw-card,.tw-pick,.tw-sum,.tw-week';
+  // the plan's desktop list. A slip at the top must also leave every focusable thing clear, because the page
+  // cannot scroll it out from under the slip (WCAG 2.4.11), such as "Back to the quote".
+  var KEEP = '.te,#skH1,.sk-facts,.sk-live,#skPick,#skNameRow,.tw-live,.tw-open-act h1,.tw-open-act .tw-label__facts', WIDE = ',.sk-send,.tw-card,.tw-pick,.tw-sum,.tw-week', FOCUS = 'a[href],button,input:not([type=hidden]),select,textarea,summary,[tabindex]:not([tabindex="-1"])';
   function build() {
     document.head.appendChild(h('style', { text: CSS }));
     var tick = function (name, words) { return h('label', { class: 'tw-cc__tick' }, [h('input', { type: 'checkbox', name: name }), h('span', { class: 'tw-cc__box', 'aria-hidden': 'true' }), words]); };
@@ -236,22 +241,29 @@
       var c = b.getAttribute('data-consent');
       if (c) decide(c === 'accept', c === 'accept');
       else if (b === save) decide(ticks[0].checked, ticks[1].checked);
-      else { var open = pick.hidden; pick.hidden = !open; b.setAttribute('aria-expanded', String(open)); place(); }
+      else {
+        var open = pick.hidden;
+        pick.hidden = !open; b.setAttribute('aria-expanded', String(open)); place();
+        // Choose made a fixed slip taller than two thirds of the room, or it is at the top, where it could now
+        // cover something focusable: it goes into the page where the screen starts, and the page scrolls to it
+        if (where !== 'in' && (where === 'top' || slip.scrollHeight > room() * 2 / 3)) { put('in', spot(0)); slip.scrollIntoView({ block: 'start', behavior: 'instant' }); }
+      }
     });
     if (window.ResizeObserver) { var ro = new ResizeObserver(place); ro.observe(slip); if (bar) ro.observe(bar); }
-    addEventListener('resize', function () { if (mode === 'arrival' && innerWidth !== vw) seat(); else place(); });
+    addEventListener('resize', function () { if (mode && innerWidth !== vw) seat(); else place(); });
   }
 
-  // Bottom: 8px above the index bar or 10px above the foot. Top: 8px below the top. In: after the page's first block.
-  // --tw-cc-h lets the last line or a focused field scroll clear of a fixed slip.
-  function put(w) {
-    var f = document.activeElement, back = slip.contains(f), host = w === 'in' && document.querySelector('main > *');
-    where = host ? w : w === 'in' ? 'bottom' : w;
+  // Bottom: 8px above the index bar or 10px above the foot. Top: 8px below the top. In: in the page, at `at`
+  // ([parent, next sibling]). A fixed slip is capped to its room and scrolls inside; --tw-cc-h lets the last
+  // line or a focused field scroll clear of it.
+  function put(w, at) {
+    var f = document.activeElement, back = slip.contains(f);
+    where = w === 'in' && !at ? 'bottom' : w;
     slip.classList.toggle('tw-cc--top', where === 'top');
     slip.classList.toggle('tw-cc--in', where === 'in');
-    if (host) host.parentNode.insertBefore(slip, host.nextSibling);
+    if (where === 'in') at[0].insertBefore(slip, at[1]);
     else if (skip && skip.parentNode) skip.parentNode.insertBefore(slip, skip.nextSibling); else document.body.insertBefore(slip, document.body.firstChild);
-    if (back && document.activeElement !== f) try { f.focus({ preventScroll: true }); } catch (e) {}
+    if (back && document.activeElement !== f) f.focus({ preventScroll: true });
     place();
   }
   function place() {
@@ -260,24 +272,51 @@
     d.classList.toggle('tw-cc-on', on && where === 'bottom');
     d.classList.toggle('tw-cc-top', on && where === 'top');
     s.bottom = where === 'bottom' && bar ? Math.max(0, innerHeight - bar.getBoundingClientRect().top) + 8 + 'px' : '';
+    s.maxHeight = where === 'in' ? '' : room() + 'px';
     if (!on || where === 'in') return d.style.removeProperty('--tw-cc-h');
     var r = slip.getBoundingClientRect();
     d.style.setProperty('--tw-cc-h', Math.ceil(where === 'top' ? r.bottom + 8 : innerHeight - r.top + 8) + 'px');
   }
-  // On arrival the slip goes where it covers none of KEEP (4px clear): the foot, else the top, else in the page.
-  // The desktop list only chooses between foot and top; it never sends the slip into the page.
+  // The room a fixed slip has: from 8px below the top of the screen to 8px above the bar (or 10px above the foot).
+  function room() { return (bar ? bar.getBoundingClientRect().top - 8 : innerHeight - 10) - 8; }
+  // A fixed slip takes at most two thirds of the room, so a third is left for the page and whatever has focus.
+  // On arrival it is fixed only if the whole of it fits that, and it covers none of KEEP (4px clear): the foot,
+  // else the top. Otherwise it goes in the page, just below the first screen. The desktop list only chooses
+  // between foot and top; it never sends the slip into the page. Opened from Cookie choice, it is fixed at the
+  // foot if it fits the two thirds, else in the page after the control.
   function covers(sel) {
     var s = slip.getBoundingClientRect();
     return [].some.call(document.querySelectorAll(sel), function (e) {
       var r = e.getBoundingClientRect();
-      return r.height > 0 && r.bottom > 0 && r.top < innerHeight && r.top < s.bottom + 4 && r.bottom > s.top - 4 && r.left < s.right && r.right > s.left;
+      return !slip.contains(e) && r.top < s.bottom + 4 && r.bottom > s.top - 4 && r.left < s.right && r.right > s.left;
     });
   }
   function seat() {
-    var i, wide = KEEP + (innerWidth > 1199 ? WIDE : '');
+    var i, w, by = opener && (opener.closest('p') || opener), wide = KEEP + (innerWidth > 1199 ? WIDE : '');
     vw = innerWidth;
-    for (i = 0; i < 4; i++) { put(i % 2 ? 'top' : 'bottom'); if (mode !== 'arrival' || !covers(i < 2 ? wide : KEEP)) return; }
-    put('in');
+    put('bottom');
+    if (slip.scrollHeight <= room() * 2 / 3) {
+      if (mode !== 'arrival') return;
+      for (i = 0; i < 4; i++) {
+        put(w = i % 2 ? 'top' : 'bottom');
+        if (!covers((i < 2 ? wide : KEEP) + (w === 'top' ? ',' + FOCUS : ''))) return;
+      }
+    }
+    put('in', by ? [by.parentNode, by.nextSibling] : spot(innerHeight));
+  }
+  // In the page, at a line y on screen (the foot of the screen on arrival, so nothing on screen moves; its top when
+  // Choose opens): before the first block that starts below y, else after the block y runs through. It only goes
+  // down through plain page structure, never into a card, a list, a revealed group or the homepage's sketchpad
+  // (there it goes after the first block).
+  function spot(y) {
+    var el = document.querySelector('main > *'), i, r, k;
+    while (el && el.matches('section,.tw-page,.tw-open-act,.tw-open-act>div') && !el.querySelector('#sk')) {
+      for (i = 0; (k = el.children[i]); i++) if (k !== slip && (r = k.getBoundingClientRect()).height && r.bottom > y) break;
+      if (!k) break;
+      if (r.top >= y) return [el, k];
+      el = k;
+    }
+    return el && [el.parentNode, el.nextSibling];
   }
   function links(open) {
     document.querySelectorAll('[data-cookie-choice]').forEach(function (l) { l.setAttribute('aria-expanded', String(open)); });
@@ -295,13 +334,13 @@
     slip.hidden = false;
     links(true);
     seat();
-    if (change) slip.focus();
+    if (change) { slip.focus({ preventScroll: true }); if (where === 'in') slip.scrollIntoView({ block: 'start', behavior: 'instant' }); }
   }
   function hide(back) {
     var inside = slip && slip.contains(document.activeElement);
     var next = null;
     if (inside && !back) {
-      var all = document.querySelectorAll('a[href],button,input:not([type=hidden]),select,textarea,summary,[tabindex]:not([tabindex="-1"])');
+      var all = document.querySelectorAll(FOCUS);
       for (var i = 0; i < all.length && !next; i++) {
         var el = all[i];
         if (!slip.contains(el) && (slip.compareDocumentPosition(el) & 4) && el.getClientRects().length && !el.disabled) next = el;
@@ -312,7 +351,7 @@
     place();
     links(false);
     var to = back || next;
-    if (to) try { to.focus({ preventScroll: true }); } catch (e) { to.focus(); }
+    if (to) to.focus({ preventScroll: true });
   }
   function decide(analytics, ads) {
     var back = mode === 'change' ? opener : null;
