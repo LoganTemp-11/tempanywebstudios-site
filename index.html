@@ -1215,6 +1215,7 @@ addEventListener('pagereveal', function (e) {
         <input type="hidden" name="access_key" value="7148c950-d9f1-4d33-b78e-a411c89cb1e3">
         <input type="hidden" id="twPicked" value="">
         <input type="hidden" name="subject" value="Reply to your quote from the no-script form">
+        <input type="hidden" name="redirect" value="https://tempanywebstudios.co.uk/thanks/">
         <div class="tw-row">
           <label class="tw-field"><span>Your name</span><input type="text" name="name" autocomplete="name" required></label>
           <label class="tw-field"><span>Business name</span><input type="text" name="business" autocomplete="organization" required></label>
@@ -1807,6 +1808,7 @@ near.observe(el); seen.observe(el);
       current_website: String(data.get('website') || 'Not supplied'),
       message: String(data.get('message') || '')
     };
+    try { if (typeof window.twArrivedFrom === 'function') payload.arrived_from = window.twArrivedFrom(); } catch (e) {}
     var button = form.querySelector('.tw-submit');
     button.disabled = true;
     status.textContent = 'Sending…'; status.className = 'tw-status';
@@ -1818,6 +1820,7 @@ near.observe(el); seen.observe(el);
       });
       var result = await res.json();
       if (!result.success) throw new Error(result.message || 'Submission failed');
+      try { if (typeof window.twLead === 'function') window.twLead('home'); } catch (e) {}
       status.textContent = 'Sent. You will get a straight answer within one working day.';
       status.className = 'tw-status is-ok';
       form.reset();

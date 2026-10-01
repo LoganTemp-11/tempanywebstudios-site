@@ -206,6 +206,9 @@
   .tw-status.is-error { color: #e08b8b; }
   .tw-fine { color: var(--sc-ink-soft); font-size: var(--sc-t-xs); margin-top: var(--sc-3); text-wrap: pretty; }
   .tw-fine a { color: var(--sc-ink-soft); }
+  /* The no-script post goes to Web3Forms and back to /thanks/, so this claim only shows when the page does the posting. */
+  .tw-fine__here { display: none; }
+  form[data-posts-here] .tw-fine__here { display: inline; }
 
   .tw-foot { padding: var(--sc-7) 0 calc(var(--sc-8) + 3rem); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); border-top: 1px solid var(--tw-line); margin-top: var(--sc-7); }
   .tw-foot a { color: var(--sc-ink-soft); display:inline-block; padding: 10px 2px; margin: -10px -2px; }

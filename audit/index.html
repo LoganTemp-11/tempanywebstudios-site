@@ -220,9 +220,11 @@ addEventListener('pagereveal', function (e) {
     <div class="tw-ask tw-ask--page">
       <h2 id="reply-h">Send me the address</h2>
       <p class="tw-ask__lead">Straight answer within one working day. Or write to <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a>, or call or text <a href="tel:+447487536649">07487 536649</a>.</p>
-      <form id="enquiry-form" method="post" action="https://api.web3forms.com/submit" novalidate>
+      <form id="enquiry-form" method="post" action="https://api.web3forms.com/submit">
         <input type="hidden" name="access_key" value="7148c950-d9f1-4d33-b78e-a411c89cb1e3">
         <input type="hidden" name="picked" value="The £95 audit page">
+        <input type="hidden" name="subject" value="Audit request from the no-script form">
+        <input type="hidden" name="redirect" value="https://tempanywebstudios.co.uk/thanks/">
         <div class="tw-row">
           <label class="tw-field"><span>Your name</span><input type="text" name="name" autocomplete="name" required></label>
           <label class="tw-field"><span>Business name</span><input type="text" name="business" autocomplete="organization" required></label>
@@ -242,7 +244,7 @@ addEventListener('pagereveal', function (e) {
         <label class="tw-honeypot" aria-hidden="true">Leave this field empty<input type="text" tabindex="-1" autocomplete="off" name="company_url"></label>
         <button class="tw-submit" type="submit">Request the audit</button>
         <p class="tw-status" role="status"></p>
-        <p class="tw-fine">Your details are sent securely to Tempany Web Studios without leaving this page. <a href="/privacy/">Read the privacy notice.</a></p>
+        <p class="tw-fine">Your details are sent securely to Tempany Web Studios<span class="tw-fine__here"> without leaving this page</span>. <a href="/privacy/">Read the privacy notice.</a></p>
       </form>
 
       <div class="tw-foot">
@@ -254,10 +256,13 @@ addEventListener('pagereveal', function (e) {
   </section>
 </main>
 <script>
-/* Posts JSON to Web3Forms without leaving the page. method/action stay as the no-JS fallback. */
+/* Posts JSON to Web3Forms without leaving the page. method/action stay as the no-JS fallback,
+   where the browser validates the form and Web3Forms returns the visitor to /thanks/. */
 (function () {
   var form = document.getElementById('enquiry-form');
   var status = form.querySelector('.tw-status');
+  form.noValidate = true;
+  form.setAttribute('data-posts-here', '');
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     var data = new FormData(form);
@@ -275,6 +280,7 @@ addEventListener('pagereveal', function (e) {
       current_website: String(data.get('website') || 'Not supplied'),
       message: String(data.get('message') || '')
     };
+    try { if (typeof window.twArrivedFrom === 'function') payload.arrived_from = window.twArrivedFrom(); } catch (e) {}
     var button = form.querySelector('.tw-submit');
     button.disabled = true;
     status.textContent = 'Sending…'; status.className = 'tw-status';
@@ -282,6 +288,7 @@ addEventListener('pagereveal', function (e) {
       var res = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
       var result = await res.json();
       if (!result.success) throw new Error(result.message || 'Submission failed');
+      try { if (typeof window.twLead === 'function') window.twLead('audit'); } catch (e) {}
       status.textContent = 'Sent. You will hear back within one working day.';
       status.className = 'tw-status is-ok';
       form.reset();
