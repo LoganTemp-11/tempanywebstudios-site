@@ -178,45 +178,47 @@
     (kids || []).forEach(function (c) { e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
     return e;
   }
-  var CSS = '#consent{position:fixed;z-index:70;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));color:#4a463f;font:400 1rem/1.35 var(--sc-font-text);letter-spacing:0;word-spacing:.04em;text-align:left;transform:rotate(-.4deg);'
+  // The slip carries its own type, ink and spacing, set on every element in it under its id, so no page rule for
+  // p, strong or a can reach in: it reads and measures the same at the foot or in the page, in either theme, on
+  // every page. Bold runs take the site's wider word gap (.065em) everywhere, the homepage included.
+  var CSS = '#consent{position:fixed;z-index:70;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));color:#4a463f;font:400 1rem/1.35 var(--sc-font-text);letter-spacing:0;word-spacing:.04em;text-align:left;text-wrap:pretty;overflow-wrap:break-word;transform:rotate(-.4deg);'
     + 'box-shadow:0 1px 1px rgba(70,56,30,.1),0 8px 18px -8px rgba(70,56,30,.3),0 30px 50px -30px rgba(70,56,30,.35)}'
     + ':root[data-theme=dark] #consent{box-shadow:0 1px 2px rgba(0,0,0,.5),0 14px 30px -10px rgba(0,0,0,.75),0 40px 80px -30px rgba(0,0,0,.9)}'
     + '#consent[hidden],#consent [hidden]{display:none!important}'
+    + '#consent p,#consent strong,#consent legend,#consent label{margin:0;padding:0;max-width:none;color:inherit;font:inherit}#consent strong,#consent legend{font-weight:700;word-spacing:.065em}'
     // the tear-off's holes, 6px every 14px, painted: cut holes vanish where the slip lies over the sheet
-    + '.tw-cc__in{background:radial-gradient(circle at 7px 7px,#d3cab8 2.2px,#e4ddcf 2.9px,#0000 3.4px) 0 0/14px 14px repeat-x,#fbf8f1;padding:18px 14px 12px}'
-    + '.tw-cc__q,.tw-cc__now{margin:0}.tw-cc__now{margin-top:6px}.tw-cc__q strong{font-weight:700}'
+    + '#consent .tw-cc__in{background:radial-gradient(circle at 7px 7px,#d3cab8 2.2px,#e4ddcf 2.9px,#0000 3.4px) 0 0/14px 14px repeat-x,#fbf8f1;padding:18px 14px 12px}'
+    + '#consent .tw-cc__now{margin-top:6px}'
     + '#consent a{display:inline-block;padding:12px 0;margin:-12px 0;color:#4a463f}#consent a,#consent .tw-cc__choose{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}'
-    + '.tw-cc__acts{display:flex;align-items:center;gap:8px;margin-top:10px}'
+    + '#consent .tw-cc__acts{display:flex;align-items:center;gap:8px;margin-top:10px}'
     + '#consent button{min-height:44px;margin:0;color:#4a463f;background:none;font:700 1rem/1.1 var(--sc-font-text);letter-spacing:0;cursor:pointer}'
-    + '.tw-cc__btn{flex:1 1 0;min-width:0;padding:0 6px;border:1.4px solid #4a463f;border-radius:3px}'
+    + '#consent .tw-cc__btn{flex:1 1 0;min-width:0;padding:0 6px;border:1.4px solid #4a463f;border-radius:3px}'
     + '#consent .tw-cc__choose{flex:none;padding:0 6px;border:0;font-weight:400}'
-    + '.tw-cc__pick{border:0;margin:6px 0 0;padding:0;min-width:0}.tw-cc__pick legend{padding:0;font-weight:700}'
-    + '.tw-cc__tick{position:relative;display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer}'
-    + '.tw-cc__tick input{position:absolute;left:0;top:50%;width:18px;height:18px;margin:-9px 0 0;opacity:0}'
-    + ".tw-cc__box{flex:none;width:18px;height:18px;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10.4 2.7C5.6 2.3 2.5 5.6 2.6 10.1C2.7 14.5 5.9 17.5 10.1 17.4C14.5 17.3 17.5 14.2 17.4 9.9C17.3 5.4 14.2 2.6 9.5 2.9C7.9 3 6.4 3.7 5.5 4.6' fill='none' stroke='%234a463f' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E\") center/contain no-repeat}"
-    + ".tw-cc__tick input:checked+.tw-cc__box{background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10.4 2.7C5.6 2.3 2.5 5.6 2.6 10.1C2.7 14.5 5.9 17.5 10.1 17.4C14.5 17.3 17.5 14.2 17.4 9.9C17.3 5.4 14.2 2.6 9.5 2.9C7.9 3 6.4 3.7 5.5 4.6' fill='none' stroke='%234a463f' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M7.2 9.1C8.4 7.4 11.8 7.1 12.9 9C13.8 10.7 12.2 13 9.7 12.9C7.7 12.8 6.9 11.2 7.9 9.9C8.9 8.7 11.4 8.8 11.7 10.3C11.9 11.3 10.6 11.8 9.6 11.2' fill='none' stroke='%234a463f' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")}"
-    + '.tw-cc__save{display:block;width:100%;margin-top:4px!important}'
-    + '#consent:focus{outline:none}#consent:focus-visible,#consent a:focus-visible,#consent button:focus-visible,.tw-cc__tick:has(:focus-visible){outline:2px solid #4a463f;outline-offset:3px}'
-    + '@supports not selector(:has(a)){.tw-cc__tick input:focus-visible+.tw-cc__box{outline:2px solid #4a463f;outline-offset:3px}}'
+    + '#consent fieldset{border:0;margin:6px 0 0;padding:0;min-width:0}'
+    + '#consent label{position:relative;display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer}'
+    + '#consent input{position:absolute;left:0;top:50%;width:18px;height:18px;margin:-9px 0 0;opacity:0}'
+    + "#consent .tw-cc__box{flex:none;width:18px;height:18px;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10.4 2.7C5.6 2.3 2.5 5.6 2.6 10.1C2.7 14.5 5.9 17.5 10.1 17.4C14.5 17.3 17.5 14.2 17.4 9.9C17.3 5.4 14.2 2.6 9.5 2.9C7.9 3 6.4 3.7 5.5 4.6' fill='none' stroke='%234a463f' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E\") center/contain no-repeat}"
+    + "#consent input:checked+.tw-cc__box{background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10.4 2.7C5.6 2.3 2.5 5.6 2.6 10.1C2.7 14.5 5.9 17.5 10.1 17.4C14.5 17.3 17.5 14.2 17.4 9.9C17.3 5.4 14.2 2.6 9.5 2.9C7.9 3 6.4 3.7 5.5 4.6' fill='none' stroke='%234a463f' stroke-width='1.5' stroke-linecap='round'/%3E%3Cpath d='M7.2 9.1C8.4 7.4 11.8 7.1 12.9 9C13.8 10.7 12.2 13 9.7 12.9C7.7 12.8 6.9 11.2 7.9 9.9C8.9 8.7 11.4 8.8 11.7 10.3C11.9 11.3 10.6 11.8 9.6 11.2' fill='none' stroke='%234a463f' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")}"
+    + '#consent .tw-cc__save{display:block;width:100%;margin-top:4px}'
+    + '#consent:focus{outline:none}#consent:focus-visible,#consent a:focus-visible,#consent button:focus-visible,#consent label:has(:focus-visible){outline:2px solid #4a463f;outline-offset:3px}'
+    + '@supports not selector(:has(a)){#consent input:focus-visible+span{outline:2px solid #4a463f;outline-offset:3px}}'
     + '.tw-cc-vh{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}'
-    + 'html.tw-cc-on{scroll-padding-bottom:var(--tw-cc-h)}html.tw-cc-on body{padding-bottom:var(--tw-cc-h)}html.tw-cc-top{scroll-padding-top:var(--tw-cc-h)}'
-    // compact on phones and short screens; at the top where the foot has no room; in the page where neither has
-    + '@media (max-width:719px),(max-height:500px){#consent{font-size:15px}.tw-cc__in{padding:16px 12px 10px}.tw-cc__acts{margin-top:8px}}'
+    + 'html.tw-cc-on{scroll-padding-bottom:var(--tw-cc-h)}html.tw-cc-on body{padding-bottom:var(--tw-cc-h)}'
+    // compact on phones and short screens
+    + '@media (max-width:719px),(max-height:500px){#consent{font-size:15px}#consent .tw-cc__in{padding:16px 12px 10px}#consent .tw-cc__acts{margin-top:8px}}'
     + '@media (min-width:720px){#consent{left:auto;width:30rem;max-width:calc(100% - 20px)}}'
-    + '#consent.tw-cc--top{top:calc(8px + env(safe-area-inset-top,0px));bottom:auto}'
-    // in the page, scrolled to from Cookie choice: 40px of the page stays above it, more than a footer still
-    // rising into place (two 14px reveals) takes away, so the question stays in view
-    + '#consent.tw-cc--in{position:relative;inset:auto;width:auto;max-width:30rem;margin:24px 10px;scroll-margin-top:40px}@media (min-width:520px){#consent.tw-cc--in{margin:24px auto}}'
+    // in the page: on a phone it reaches out over the page's gutters to 10px from each edge, as wide as at the foot;
+    // scrolled to from Cookie choice, 40px of the page stays above it, more than a footer still rising into place
+    // (two 14px reveals) takes away, so the question stays in view
+    + '#consent.tw-cc--in{position:relative;inset:auto;width:auto;max-width:30rem;margin:24px calc(10px - (100vw - 100%) / 2);scroll-margin-top:40px}@media (min-width:520px){#consent.tw-cc--in{margin:24px auto}}'
     // a fixed slip never runs past its room: it scrolls inside, question first
     + '#consent:not(.tw-cc--in){overflow-y:auto}'
     + '@media print{#consent{display:none!important}}';
 
-  var slip, now, pick, ticks, save, live, bar, skip, where = 'bottom', vw = 0;
+  var slip, now, pick, ticks, save, live, bar, skip, where = 'bottom', kb = false, vw = innerWidth, turned = 0;
   // Lines a first-time visitor must still see: the homepage's bar, question, facts, proof, chips and name line,
-  // the town pages' proof line, and the opening h1 and price line where a page has them; from 1200px also
-  // the plan's desktop list. A slip at the top must also leave every focusable thing clear, because the page
-  // cannot scroll it out from under the slip (WCAG 2.4.11), such as "Back to the quote".
-  var KEEP = '.te,#skH1,.sk-facts,.sk-live,#skPick,#skNameRow,.tw-live,.tw-open-act h1,.tw-open-act .tw-label__facts', WIDE = ',.sk-send,.tw-card,.tw-pick,.tw-sum,.tw-week', FOCUS = 'a[href],button,input:not([type=hidden]),select,textarea,summary,[tabindex]:not([tabindex="-1"])';
+  // the town pages' proof line, and the opening h1 and price line where a page has them.
+  var KEEP = '.te,#skH1,.sk-facts,.sk-live,#skPick,#skNameRow,.tw-live,.tw-open-act h1,.tw-open-act .tw-label__facts', FOCUS = 'a[href],button,input:not([type=hidden]),select,textarea,summary,[tabindex]:not([tabindex="-1"])';
   function build() {
     document.head.appendChild(h('style', { text: CSS }));
     var tick = function (name, words) { return h('label', { class: 'tw-cc__tick' }, [h('input', { type: 'checkbox', name: name }), h('span', { class: 'tw-cc__box', 'aria-hidden': 'true' }), words]); };
@@ -238,52 +240,49 @@
     slip.addEventListener('click', function (e) {
       var b = e.target.closest ? e.target.closest('button') : null;
       if (!b) return;
+      kb = !e.detail;   // pressed from the keyboard (a click by pointer has a count)
       var c = b.getAttribute('data-consent');
       if (c) decide(c === 'accept', c === 'accept');
       else if (b === save) decide(ticks[0].checked, ticks[1].checked);
-      else {
-        var open = pick.hidden;
-        pick.hidden = !open; b.setAttribute('aria-expanded', String(open)); place();
-        // Choose made a fixed slip taller than two thirds of the room, or it is at the top, where it could now
-        // cover something focusable: it goes into the page where the screen starts, and the page scrolls to it
-        if (where !== 'in' && (where === 'top' || slip.scrollHeight > room() * 2 / 3)) { put('in', spot(0)); slip.scrollIntoView({ block: 'start', behavior: 'instant' }); }
-      }
+      else { var open = pick.hidden; pick.hidden = !open; b.setAttribute('aria-expanded', String(open)); place(); }
     });
-    if (window.ResizeObserver) { var ro = new ResizeObserver(place); ro.observe(slip); if (bar) ro.observe(bar); }
-    addEventListener('resize', function () { if (mode && innerWidth !== vw) seat(); else place(); });
+    if (window.ResizeObserver) { var ro = new ResizeObserver(keep); ro.observe(slip); ro.observe(document.documentElement); if (bar) ro.observe(bar); }
+    addEventListener('resize', function () { if (innerWidth !== vw) { vw = innerWidth; turned = Date.now(); } keep(); });
   }
 
-  // Bottom: 8px above the index bar or 10px above the foot. Top: 8px below the top. In: in the page, at `at`
-  // ([parent, next sibling]). A fixed slip is capped to its room and scrolls inside; --tw-cc-h lets the last
-  // line or a focused field scroll clear of it.
+  // Two places, and once placed the slip stays there: Choose opening it out, or the phone turning, never moves it.
+  // At the foot: fixed 8px above the index bar or 10px above the foot of the screen, capped to its room and
+  // scrolling inside if it ever outgrows it; --tw-cc-h lets the last line or a focused field scroll clear of it.
+  // In the page: at `at` ([parent, next sibling]).
   function put(w, at) {
     var f = document.activeElement, back = slip.contains(f);
     where = w === 'in' && !at ? 'bottom' : w;
-    slip.classList.toggle('tw-cc--top', where === 'top');
     slip.classList.toggle('tw-cc--in', where === 'in');
     if (where === 'in') at[0].insertBefore(slip, at[1]);
     else if (skip && skip.parentNode) skip.parentNode.insertBefore(slip, skip.nextSibling); else document.body.insertBefore(slip, document.body.firstChild);
     if (back && document.activeElement !== f) f.focus({ preventScroll: true });
     place();
   }
+  // The screen turned while someone is in a slip in the page: for a second, while the page lays itself out again
+  // (scrollcraft's resize, WebKit's late reflow; WebKit keeps no reading place across it), the page scrolls back to
+  // them. The slip itself stays where it is.
+  function keep() {
+    var f = document.activeElement;
+    place();
+    if (Date.now() - turned < 1000 && where === 'in' && slip.contains(f)) f.scrollIntoView({ block: f === slip ? 'start' : 'nearest', behavior: 'instant' });
+  }
+  // --tw-cc-h is what the page keeps free at its foot: the fixed slip and the bar, or in the page only the bar, so
+  // a slip that ends up last on a short page (404) can still be scrolled clear of the bar.
   function place() {
     if (!slip) return;
-    var d = document.documentElement, s = slip.style, on = !slip.hidden;
-    d.classList.toggle('tw-cc-on', on && where === 'bottom');
-    d.classList.toggle('tw-cc-top', on && where === 'top');
-    s.bottom = where === 'bottom' && bar ? Math.max(0, innerHeight - bar.getBoundingClientRect().top) + 8 + 'px' : '';
-    s.maxHeight = where === 'in' ? '' : room() + 'px';
-    if (!on || where === 'in') return d.style.removeProperty('--tw-cc-h');
-    var r = slip.getBoundingClientRect();
-    d.style.setProperty('--tw-cc-h', Math.ceil(where === 'top' ? r.bottom + 8 : innerHeight - r.top + 8) + 'px');
+    var d = document.documentElement, s = slip.style, on = !slip.hidden, foot = on && where === 'bottom', low = foot ? slip : on && bar;
+    d.classList.toggle('tw-cc-on', !!low);
+    s.bottom = foot && bar ? Math.max(0, innerHeight - bar.getBoundingClientRect().top) + 8 + 'px' : '';
+    s.maxHeight = foot ? room() + 'px' : '';
+    if (low) d.style.setProperty('--tw-cc-h', Math.ceil(innerHeight - low.getBoundingClientRect().top + 8) + 'px'); else d.style.removeProperty('--tw-cc-h');
   }
-  // The room a fixed slip has: from 8px below the top of the screen to 8px above the bar (or 10px above the foot).
+  // The room at the foot: from 8px below the top of the screen to 8px above the bar (or 10px above the foot).
   function room() { return (bar ? bar.getBoundingClientRect().top - 8 : innerHeight - 10) - 8; }
-  // A fixed slip takes at most two thirds of the room, so a third is left for the page and whatever has focus.
-  // On arrival it is fixed only if the whole of it fits that, and it covers none of KEEP (4px clear): the foot,
-  // else the top. Otherwise it goes in the page, just below the first screen. The desktop list only chooses
-  // between foot and top; it never sends the slip into the page. Opened from Cookie choice, it is fixed at the
-  // foot if it fits the two thirds, else in the page after the control.
   function covers(sel) {
     var s = slip.getBoundingClientRect();
     return [].some.call(document.querySelectorAll(sel), function (e) {
@@ -291,29 +290,25 @@
       return !slip.contains(e) && r.top < s.bottom + 4 && r.bottom > s.top - 4 && r.left < s.right && r.right > s.left;
     });
   }
+  // One rule for both ways in. The slip is fixed at the foot only if the whole of it, Choose open, takes no more
+  // than two thirds of the room, so a third is always left for the page and whatever has focus; on arrival it must
+  // also leave KEEP clear by 4px. Otherwise it goes in the page: straight after the control that opened it, or on
+  // arrival just below the first screen, so nothing on screen moves.
   function seat() {
-    var i, w, by = opener && (opener.closest('p') || opener), wide = KEEP + (innerWidth > 1199 ? WIDE : '');
-    vw = innerWidth;
+    var by = opener && (opener.closest('p') || opener), was = pick.hidden, tall;
     put('bottom');
-    if (slip.scrollHeight <= room() * 2 / 3) {
-      if (mode !== 'arrival') return;
-      for (i = 0; i < 4; i++) {
-        put(w = i % 2 ? 'top' : 'bottom');
-        if (!covers((i < 2 ? wide : KEEP) + (w === 'top' ? ',' + FOCUS : ''))) return;
-      }
-    }
-    put('in', by ? [by.parentNode, by.nextSibling] : spot(innerHeight));
+    pick.hidden = false; tall = slip.scrollHeight > room() * 2 / 3; pick.hidden = was;
+    if (tall || mode === 'arrival' && covers(KEEP)) put('in', by ? [by.parentNode, by.nextSibling] : spot());
   }
-  // In the page, at a line y on screen (the foot of the screen on arrival, so nothing on screen moves; its top when
-  // Choose opens): before the first block that starts below y, else after the block y runs through. It only goes
-  // down through plain page structure, never into a card, a list, a revealed group or the homepage's sketchpad
-  // (there it goes after the first block).
-  function spot(y) {
+  // In the page on arrival: before the first block that starts below the screen, else after the block the fold
+  // runs through. It only goes down through plain page structure, never into a card, a list, a revealed group or
+  // the homepage's sketchpad (there it goes after the first block).
+  function spot() {
     var el = document.querySelector('main > *'), i, r, k;
     while (el && el.matches('section,.tw-page,.tw-open-act,.tw-open-act>div') && !el.querySelector('#sk')) {
-      for (i = 0; (k = el.children[i]); i++) if (k !== slip && (r = k.getBoundingClientRect()).height && r.bottom > y) break;
+      for (i = 0; (k = el.children[i]); i++) if (k !== slip && (r = k.getBoundingClientRect()).height && r.bottom > innerHeight) break;
       if (!k) break;
-      if (r.top >= y) return [el, k];
+      if (r.top >= innerHeight) return [el, k];
       el = k;
     }
     return el && [el.parentNode, el.nextSibling];
@@ -336,22 +331,18 @@
     seat();
     if (change) { slip.focus({ preventScroll: true }); if (where === 'in') slip.scrollIntoView({ block: 'start', behavior: 'instant' }); }
   }
+  // One rule for every close: focus goes back to the control that opened the slip, or else to the first control
+  // after the slip that is not above the screen. If that is off screen, a keyboard user's page scrolls at once,
+  // the least it can, to show it; after a pointer the page stays where it is.
   function hide(back) {
-    var inside = slip && slip.contains(document.activeElement);
-    var next = null;
-    if (inside && !back) {
-      var all = document.querySelectorAll(FOCUS);
-      for (var i = 0; i < all.length && !next; i++) {
-        var el = all[i];
-        if (!slip.contains(el) && (slip.compareDocumentPosition(el) & 4) && el.getClientRects().length && !el.disabled) next = el;
-      }
-    }
+    var inside = slip && slip.contains(document.activeElement), to = back, all, i;
     slip.hidden = true;
     mode = null;
     place();
     links(false);
-    var to = back || next;
-    if (to) to.focus({ preventScroll: true });
+    if (inside && !to) for (all = document.querySelectorAll(FOCUS), i = 0; !to && i < all.length; i++)
+      if ((slip.compareDocumentPosition(all[i]) & 4) && all[i].getClientRects().length && !all[i].disabled && all[i].getBoundingClientRect().top >= 0) to = all[i];
+    if (to) { to.focus({ preventScroll: true }); if (kb) to.scrollIntoView({ block: 'nearest', behavior: 'instant' }); }
   }
   function decide(analytics, ads) {
     var back = mode === 'change' ? opener : null;
@@ -374,6 +365,7 @@
       l.setAttribute('aria-expanded', 'false');
       l.addEventListener('click', function (e) {
         e.preventDefault();
+        kb = !e.detail;
         if (mode === 'change') hide(l); else show('change', l);
       });
       l.addEventListener('keydown', function (e) {
@@ -382,15 +374,16 @@
     });
   }
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && mode === 'change') hide(opener);
+    if (e.key === 'Escape' && mode === 'change') { kb = true; hide(opener); }
   });
 
   function arrive() {
-    if (gpc) {   // a stored yes under Global Privacy Control is withdrawn here
+    if (gpc) {   // a stored yes under Global Privacy Control is withdrawn here, and the refusal saved
       var r = read(), ids = r && r.analytics ? gaIds() : [];
       window[OFF] = true;
       drop(GA_RE); drop(AD_RE, true);
       erase(ids);
+      if (r && (r.analytics || r.ads)) write({ analytics: false, ads: false, at: Date.now() });   // kept, like any refusal
     } else if ((state = read())) {
       if (!state.analytics) { window[OFF] = true; drop(GA_RE); }
       if (!state.ads) drop(AD_RE, true);
