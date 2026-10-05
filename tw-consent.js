@@ -1,5 +1,5 @@
 /* ===== The one place to edit: fill both Ads slots and push, and Ads is on ===== */
-var TW_GA4_ID = 'G-F1TEBTR40D';
+var TW_GA4_ID = 'G-ZFDENLSWXF';
 var TW_ADS_ID = '';          // 'AW-' and digits, from Google Ads once the account exists
 var TW_ADS_LEAD_LABEL = '';  // the label of the "Enquiry sent" conversion action
 var TW_FORM_KEY = '7148c950-d9f1-4d33-b78e-a411c89cb1e3';  // the forms' Web3Forms key (public); carries deletion requests

@@ -90,7 +90,7 @@ addEventListener('pagereveal', function (e) {
   if (e.viewTransition && e.viewTransition.types && a && a.navigationType === 'traverse') e.viewTransition.types.add('back');
 });
 </script>
-<script src="/tw-consent.js?v=1" defer></script>
+<script src="/tw-consent.js?v=2" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -241,7 +241,7 @@ addEventListener('pagereveal', function (e) {
         </div>
         <label class="tw-field"><span>Your website</span><input type="url" name="website" inputmode="url" placeholder="https://yourbusiness.co.uk" required></label>
         <label class="tw-field"><span>Anything I should know</span><textarea name="message" rows="4" placeholder="What the site is for, and what you suspect is wrong with it, if anything." required></textarea></label>
-        <label class="tw-honeypot" aria-hidden="true">Leave this field empty<input type="text" tabindex="-1" autocomplete="off" name="company_url"></label>
+        <input type="checkbox" name="botcheck" class="tw-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
         <button class="tw-submit" type="submit">Request the audit</button>
         <p class="tw-status" role="status"></p>
         <p class="tw-fine">Your details are sent securely to Tempany Web Studios<span class="tw-fine__here"> without leaving this page</span>. <a href="/privacy/">Read the privacy notice.</a></p>
@@ -266,8 +266,12 @@ addEventListener('pagereveal', function (e) {
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     var data = new FormData(form);
-    if (String(data.get('company_url') || '') !== '') return;
-    if (!form.reportValidity()) return;
+    if (data.get('botcheck')) return; // honeypot: a hidden tick box no person can reach
+    if (!form.reportValidity()) {
+      status.textContent = 'Please fill in the highlighted field, then send it again.';
+      status.className = 'tw-status is-error';
+      return;
+    }
     var payload = {
       access_key: String(data.get('access_key')),
       subject: 'Audit request from ' + String(data.get('name') || 'a visitor'),
