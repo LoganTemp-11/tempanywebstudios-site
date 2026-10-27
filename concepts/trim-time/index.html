@@ -18,7 +18,9 @@
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#141a24">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css?v=3">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BarberShop","name":"Trim Time Barbershop","telephone":"+447727934222","url":"https://tempanywebstudios.co.uk/concepts/trim-time/","image":"https://tempanywebstudios.co.uk/concepts/trim-time/images/og.png?v=2","priceRange":"££",
 "address":{"@type":"PostalAddress","streetAddress":"7 La Porte Precinct","addressLocality":"Grangemouth","postalCode":"FK3 8AZ","addressCountry":"GB"},
@@ -42,37 +44,28 @@
 </header>
 
 <main id="main">
-<section class="front" aria-labelledby="shop-name">
+<section class="window" aria-labelledby="shop-name">
   <div class="wrap">
-    <div class="shop">
-      <div class="fascia">
-        <span class="pole spin" aria-hidden="true"></span>
-        <h1 id="shop-name">Trim Time<small>Barbershop · Grangemouth</small></h1>
-        <span class="pole spin" aria-hidden="true"></span>
+    <div class="pane">
+      <div class="lettering">
+        <p class="addr-top">No. 7 La Porte Precinct</p>
+        <h1 id="shop-name">Trim Time<span>Barbershop</span></h1>
+        <p class="trades">Skin fades <i aria-hidden="true">·</i> Beard work <i aria-hidden="true">·</i> Children's cuts</p>
+        <p class="rating"><span class="gstars" aria-hidden="true">★★★★★</span> 4.9 from 123 Google reviews <a href="#reviews">Read them</a></p>
       </div>
-      <div class="facade">
-        <div class="glass">
-          <p class="painted">Skin fades · Beards · Kids' cuts<br><span>Walk in, no booking</span></p>
-          <aside class="board" aria-labelledby="board-title">
-            <p class="eyebrow" id="board-title" style="color:#ffd166">On Google</p>
-            <div class="score"><b>4.9</b><small>from 123 reviews</small></div>
-            <p class="stars" aria-label="4.9 out of 5 stars">★★★★★</p>
-            <blockquote>“Always a cracking haircut and a good bit of chat while you're in the chair.”<cite>Local Guide, Google review</cite></blockquote>
-            <blockquote>“Grandson doesn't like having a hair cut, this is the only place that manages to give him a nice hair cut.”<cite>Isabel, Google review</cite></blockquote>
-            <p class="more">“Friendly staff” comes up in 44 of them. <a href="#reviews">Read more</a></p>
-          </aside>
-        </div>
-        <div class="door">
-          <p id="status" class="status sign"><span class="dot" aria-hidden="true"></span><span>Open · closes 6pm</span></p>
-          <p class="door-no">No. 7</p>
-          <a class="handle" href="#find">Hours and directions</a>
-        </div>
-      </div>
-      <div class="riser">
-        <a href="tel:+447727934222">07727 934222</a>
-        <span>7 La Porte Precinct, Grangemouth</span>
-      </div>
+      <aside class="plaque" aria-labelledby="plaque-title">
+        <p class="plaque-title" id="plaque-title">Hours</p>
+        <p id="status" class="status"><span class="dot" aria-hidden="true"></span><span>Open now · closes 6pm</span></p>
+        <dl class="mini">
+          <div><dt>Monday to Friday</dt><dd>9am to 6pm</dd></div>
+          <div><dt>Saturday</dt><dd>9am to 5pm</dd></div>
+          <div><dt>Sunday</dt><dd>Closed</dd></div>
+        </dl>
+        <p class="walkin">Walk in, no appointment needed</p>
+        <a class="plaque-call" href="tel:+447727934222">07727 934222</a>
+      </aside>
     </div>
+    <div class="sill"><span>7 La Porte Precinct, Grangemouth FK3 8AZ</span><a href="#find">Directions and parking</a></div>
   </div>
 </section>
 
@@ -97,7 +90,7 @@
 <section id="reviews" class="alt">
   <div class="wrap">
     <p class="eyebrow">Reviews</p>
-    <h2>123 reviews, 4.9 stars, nobody paid</h2>
+    <h2>4.9 stars from 123 Google reviews</h2>
     <div class="reviews">
       <article class="review"><p class="stars" aria-label="Five stars">★★★★★</p><p>“Been coming here about a year now and the lads never miss. Always a cracking haircut and a good bit of chat while you're in the chair. Friendly bunch and a great atmosphere in the shop. Smashin' barbers, highly recommend!”</p><cite>Local Guide, 6 months ago</cite></article>
       <article class="review"><p class="stars" aria-label="Five stars">★★★★★</p><p>“Great barbers. Friendly staff, excellent service, and very reasonably priced for the quality you get. Always leave happy with my haircut. Highly recommended.”</p><cite>Callum, 4 months ago</cite></article>
@@ -184,7 +177,7 @@
   </div>
 </footer>
 <div class="callbar"><a class="btn" href="tel:+447727934222">Call 07727 934222</a></div>
-<script src="script.js?v=2" defer></script>
+<script src="script.js?v=3" defer></script>
 <!-- Cloudflare Web Analytics (cookieless). Token goes in when the Pages project is created. -->
 <!-- <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "CF_ANALYTICS_TOKEN"}'></script> -->
 </body>
