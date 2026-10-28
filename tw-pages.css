@@ -1,283 +1,192 @@
-/* Shared by all eight sub-pages; each keeps only its own rules inline.
-   If the homepage tokens change, change them here to match. */
+/* tempanywebstudios.co.uk: the sub-page layouts, loaded after tw-base.css by every page
+   except the homepage. The index bar fixed to the foot, the Where I work dropdown, the
+   page column, prose, the opening act, the offer box, tables, cards and the document
+   pages. Tokens, type, the quote components, the form and the footer are in tw-base.css.
+   Each page keeps only what is unique to it inline. */
 
-  :root {
-    /* Paper is the default for everyone; the dark desk (further down) only on the switch. */
-    --sc-canvas:     #efe9dd;
-    --sc-surface:    #f7f3ea;
-    --sc-ink:        #191712;
-    --sc-ink-soft:   #61594c;
-    --sc-accent:     #a1462a;
-    --sc-accent-ink: #f7f3ea;
-    --sc-font-display: Alegreya, "Alegreya Fallback Georgia", "Alegreya Fallback Noto", serif;
-    --sc-font-text:    "Alegreya Sans", "Alegreya Sans Fallback Segoe", "Alegreya Sans Fallback Helvetica", "Alegreya Sans Fallback Arial", "Alegreya Sans Fallback Roboto", "Alegreya Sans Fallback DejaVu", sans-serif;
-    --sc-font-mono:    "Alegreya Sans", "Alegreya Sans Fallback Segoe", "Alegreya Sans Fallback Helvetica", "Alegreya Sans Fallback Arial", "Alegreya Sans Fallback Roboto", "Alegreya Sans Fallback DejaVu", sans-serif;
-    /* Alegreya Sans has a small x-height and a narrow space, so the text sizes run a step up:
-       body 18px on a phone and 19px on a desktop, and nothing under 16px, as on the homepage. */
-    --sc-t-xs:   1rem;
-    --sc-t-sm:   clamp(1rem, .98rem + .1vw, 1.0625rem);
-    --sc-t-base: clamp(1.125rem, 1.09rem + .15vw, 1.1875rem);
-    --sc-shadow-color: 36 20% 30%;
+/* Alegreya Sans has a small x-height and a narrow space, so the text sizes run a step up:
+   body 18px on a phone and 19px on a desktop, and nothing under 16px, as on the homepage. */
+:root {
+  --sc-t-xs:   1rem;
+  --sc-t-sm:   clamp(1rem, .98rem + .1vw, 1.0625rem);
+  --sc-t-base: clamp(1.125rem, 1.09rem + .15vw, 1.1875rem);
+}
+:root:not([data-theme="dark"]) .sc-grain { opacity: .03; }
+/* With scripting off (no js class) the reveal engine never runs, so nothing waits for it. */
+:root:not(.js) [data-sc-in], :root:not(.js) [data-sc-stagger] > * { opacity: 1; transform: none; }
+/* Alegreya Sans Bold has a narrow space: bold runs get a wider word gap (3px at 16px in Chromium). */
+strong, b, :is(h2, h3).tw-label__eyebrow { word-spacing: .065em; }
+/* A field or link reached by keyboard is scrolled clear of the index bar fixed to the foot. */
+html { scroll-padding-bottom: 5.5rem; }
 
-    --tw-glass: #f7f3ea;
-    --tw-line:  rgba(25,23,18,.16);
-    --tw-line-strong: #857c6c;
-    --tw-ink-quiet: #6b6356;
-  }
-  body { font-style: normal; letter-spacing: 0; word-spacing: .04em; font-variant-numeric: lining-nums tabular-nums; }
-  em, i, cite { font-style: normal; }
-  /* With scripting off (no js class) the reveal engine never runs, so nothing waits for it. */
-  :root:not(.js) [data-sc-in], :root:not(.js) [data-sc-stagger] > * { opacity: 1; transform: none; }
-  /* Alegreya Sans Bold has a narrow space: bold runs get a wider word gap (3px at 16px in Chromium). */
-  strong, b, :is(h2, h3).tw-label__eyebrow { word-spacing: .065em; }
+/* ---------- the index: fixed to the foot, jumps rather than markets ---------- */
+.tw-index {
+  position: fixed; inset: auto 0 0 0; z-index: var(--sc-z-chrome);
+  display: flex; align-items: center; gap: var(--sc-4);
+  padding: var(--sc-3) var(--sc-gutter);
+  padding-bottom: max(var(--sc-3), env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--sc-canvas) 88%, transparent);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--tw-line);
+  font-family: var(--sc-font-mono);
+  font-size: var(--sc-t-xs); letter-spacing: 0;
+}
+.tw-index__mark { display:inline-flex; align-items:center; justify-content:center; gap:.6rem; min-width:44px; font-family: var(--sc-font-display); font-weight: 700; letter-spacing: -.01em; text-transform: none; font-size: var(--sc-t-base); text-decoration:none; color:var(--sc-ink); min-height:44px; }
+@media (min-width: 721px) { .tw-index__mark { justify-content: flex-start; } }
+.tw-index__mark svg { width:26px; height:26px; transform: rotate(-3deg); }
+.tw-index .tw-lights { margin-left: auto; }
+.tw-index__list { display: flex; gap: var(--sc-4); margin: 0 0 0 var(--sc-4); list-style: none; padding: 0; align-items:center; }
+.tw-index a { color: var(--sc-ink-soft); text-decoration: none; display:inline-flex; align-items:center; min-height:44px; }
+.tw-index a:hover { color: var(--sc-ink); }
+.tw-index__ask { color: var(--sc-accent-ink) !important; background: var(--sc-accent); padding: 0 1rem; border-radius: 3px; font-weight: 700; }
+@media (max-width: 720px) { .tw-index__list li:not(:last-child) { display: none; } .tw-index__mark span { display:none; } }
 
-  .skip { position:absolute; left:-9999px; top:0; background:var(--sc-ink); color:var(--sc-canvas); padding:12px 20px; z-index:100; }
-  .skip:focus { left:0; }
-  :focus-visible { outline-color: var(--sc-ink); }
-  /* A field or link reached by keyboard is scrolled clear of the index bar fixed to the foot. */
-  html { scroll-padding-bottom: 5.5rem; }
+/* Where I work: a button in the bar that opens the town list upwards. */
+.tw-where { position: relative; }
+.tw-where__btn { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--sc-ink-soft); background: none; border: 0; padding: 0; min-height: 44px; cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; }
+.tw-where__btn::after { content: ""; width: .5em; height: .5em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-135deg) translate(-1px, -1px); transition: transform var(--sc-d-fast) var(--sc-ease-out); }
+.tw-where__btn[aria-expanded="true"]::after { transform: rotate(45deg) translate(-2px, -2px); }
+.tw-where__btn:hover, .tw-where__btn[aria-expanded="true"] { color: var(--sc-ink); }
+.tw-where__list { position: absolute; bottom: calc(100% + .75rem); left: 50%; transform: translateX(-50%); min-width: 12rem; margin: 0; padding: .5rem; list-style: none; background: var(--tw-glass); border: 1px solid var(--tw-line-strong); border-radius: 4px; box-shadow: var(--sc-e3); text-transform: none; letter-spacing: 0; font-family: var(--sc-font-text); font-size: var(--sc-t-sm); }
+.tw-where__list[hidden] { display: none; }
+.tw-where__list a, .tw-where__list span { display: flex; align-items: center; min-height: 44px; padding: 0 .9rem; border-radius: 2px; color: var(--sc-ink); text-decoration: none; }
+.tw-where__list a:hover { background: color-mix(in srgb, var(--sc-ink) 8%, transparent); }
+.tw-where__list [aria-current] { color: var(--sc-accent); }
+.tw-soon { color: var(--sc-ink-soft) !important; }
+.tw-soon::after { content: "soon"; margin-left: auto; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--tw-ink-quiet); }
+@media (max-width: 720px) { .tw-index__list li.tw-where { display: none; } }
 
-  /* ---------- the index: fixed to the foot, jumps rather than markets ---------- */
-  .tw-index {
-    position: fixed; inset: auto 0 0 0; z-index: var(--sc-z-chrome);
-    display: flex; align-items: center; gap: var(--sc-4);
-    padding: var(--sc-3) var(--sc-gutter);
-    padding-bottom: max(var(--sc-3), env(safe-area-inset-bottom));
-    background: color-mix(in srgb, var(--sc-canvas) 88%, transparent);
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border-top: 1px solid var(--tw-line);
-    font-family: var(--sc-font-mono);
-    font-size: var(--sc-t-xs); letter-spacing: 0;
-  }
-  .tw-index__mark { display:inline-flex; align-items:center; gap:.6rem; font-family: var(--sc-font-display); font-weight: 700; letter-spacing: -.01em; text-transform: none; font-size: var(--sc-t-base); text-decoration:none; color:var(--sc-ink); min-height:44px; }
-  .tw-index__mark svg { width:26px; height:26px; transform: rotate(-3deg); }
-  .tw-index__list { display: flex; gap: var(--sc-4); margin: 0 0 0 auto; list-style: none; padding: 0; align-items:center; }
-  .tw-index a { color: var(--sc-ink-soft); text-decoration: none; display:inline-flex; align-items:center; min-height:44px; }
-  .tw-index a:hover { color: var(--sc-ink); }
-  .tw-index__ask { color: var(--sc-accent-ink) !important; background: var(--sc-accent); padding: 0 1rem; border-radius: 3px; font-weight: 700; }
-  @media (max-width: 720px) { .tw-index__list li:not(:last-child) { display: none; } .tw-index__mark span { display:none; } }
+/* ---------- the label schema, borrowed from the salon: name, facts, who ---------- */
+.tw-label__eyebrow { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: 0; margin: 0 0 var(--sc-3); }
+.tw-label__name { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-xl); line-height: 1.04; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-2); text-wrap: balance; }
+.tw-label__facts { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin: 0 0 var(--sc-2); font-variant-numeric: lining-nums tabular-nums; }
+.tw-label__who { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: 0; margin: 0; }
+.tw-label__flag, .tw-clause .tw-label__flag { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; margin: 0 0 var(--sc-2); display: inline-flex; align-items: center; gap: .5em; color: var(--sc-ink); }
+.tw-label__flag::before { content: ""; width: .5em; height: .5em; border-radius: 50%; background: currentColor; }
+/* The two live client sites, named on the first screen of the town pages. Links take 44px without adding line height. */
+.tw-live { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); line-height: 1.5; letter-spacing: 0; margin: 0 0 var(--sc-2); text-wrap: pretty; }
+.tw-live a { display: inline-block; padding: 10px 0; margin: -10px 0; color: var(--sc-ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.tw-opening .tw-live { margin: calc(var(--sc-3) - var(--sc-5)) 0 var(--sc-5); }
 
-  /* ---------- the label schema, borrowed from the salon: name, facts, who ---------- */
-  .tw-label__eyebrow { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: 0; margin: 0 0 var(--sc-3); }
-  .tw-label__name { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-xl); line-height: 1.04; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-2); text-wrap: balance; }
-  .tw-label__facts { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin: 0 0 var(--sc-2); font-variant-numeric: lining-nums tabular-nums; }
-  .tw-label__who { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: 0; margin: 0; }
-  /* The two live client sites, named on the first screen of the town pages. Links take 44px without adding line height. */
-  .tw-live { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-sm); line-height: 1.5; letter-spacing: 0; margin: 0 0 var(--sc-2); text-wrap: pretty; }
-  .tw-live a { display: inline-block; padding: 10px 0; margin: -10px 0; color: var(--sc-ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
-  .tw-opening .tw-live { margin: calc(var(--sc-3) - var(--sc-5)) 0 var(--sc-5); }
+/* ---------- buttons ---------- */
+.tw-pick, .tw-open {
+  display: inline-flex; align-items: center; gap: .5rem;
+  margin-top: var(--sc-3); padding: .6rem 1rem; min-height:44px;
+  background: transparent; color: var(--sc-ink);
+  border: 1px solid var(--tw-line-strong); border-radius: 3px;
+  font: 700 var(--sc-t-xs)/1 var(--sc-font-mono); letter-spacing: 0;
+  cursor: pointer; text-decoration:none;
+  transition: background var(--sc-d-fast) var(--sc-ease-out), color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
+}
+.tw-open { margin-right: .5rem; }
+@media (hover: hover) and (pointer: fine) {
+  .tw-pick:hover { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
+  .tw-open:hover { border-color: var(--sc-ink); }
+}
+.tw-pick:active, .tw-open:active { transform: translateY(1px); }
+.tw-pick__dot { width: .42rem; height: .42rem; border-radius: 50%; background: var(--sc-accent); }
+.tw-cta { display: inline-flex; align-items: center; gap: .6rem; min-height: 48px; padding: 0 1.4rem; border-radius: 3px; background: var(--sc-accent); color: var(--sc-accent-ink); font: 700 1.125rem/1.15 var(--sc-font-text); text-decoration: none; }
+.tw-cta:hover { filter: brightness(1.06); }
+.tw-cta--quiet { background: transparent; color: var(--sc-ink); border: 1px solid var(--tw-line-strong); }
+.tw-back { display:inline-flex; align-items:center; min-height:44px; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); text-decoration:none; }
+.tw-back:hover { color: var(--sc-ink); }
+@media (prefers-reduced-motion: reduce) { .tw-pick, .tw-open { transition: none; } }
 
-  /* ---------- the plate ---------- */
-  .tw-plate {
-    position: relative; overflow: hidden; border-radius: 4px;
-    background:
-      linear-gradient(118deg, var(--tw-plate-a) 0%, rgba(255,255,255,0) 34%),
-      linear-gradient(200deg, var(--tw-plate-b) 0%, var(--tw-plate-c) 58%, var(--tw-plate-d) 100%);
-    box-shadow: 0 24px 60px -28px var(--tw-plate-shadow);
-  }
-  .tw-plate::after { content:""; position:absolute; inset:0; border:1px solid var(--tw-line); border-radius: inherit; pointer-events:none; }
-  .tw-plate img { display:block; width:100%; height:100%; object-fit: cover; object-position: top; }
-  .tw-plate--wide { aspect-ratio: 16/9; }
-  .tw-plate--tall { aspect-ratio: 4/5; }
-  /* A phone screenshot sits inside the tall plate as a phone, not stretched to fill it. */
-  .tw-plate--phone { display:grid; place-items:end center; padding: var(--sc-5) var(--sc-5) 0; }
-  .tw-plate--phone picture { display: contents; }
-  .tw-plate--phone img { width: min(62%, 15rem); height: auto; aspect-ratio: 780/1688; border-radius: 18px 18px 0 0; border: 1px solid var(--tw-line-strong); border-bottom: 0; box-shadow: 0 18px 40px -14px hsl(var(--sc-shadow-color) / .95); }
+/* ---------- the opening act (audit, Stirling): heading column and aside ---------- */
+.tw-open-act { display: grid; gap: var(--sc-7); align-items: end; padding: var(--sc-9) var(--sc-gutter) var(--sc-8); max-width: var(--sc-maxw); margin-inline:auto; }
+@media (min-width: 900px) { .tw-open-act { grid-template-columns: 1.2fr 1fr; padding-top: var(--sc-10); } }
+.tw-open-act h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: clamp(1.9rem, 1.3rem + 1.7vw, 2.75rem); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-3); text-wrap: balance; }
+.tw-open-act .tw-lede { color: var(--sc-ink-soft); max-width: 36ch; margin: var(--sc-4) 0 0; text-wrap: pretty; }
+.tw-open-act--page { grid-template-columns: 1fr; align-items:start; padding-bottom: var(--sc-4); }
+@media (min-width: 900px) { .tw-open-act--page { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); } }
+.tw-open-act--page .tw-lede { max-width: 52ch; }
+.tw-aside { padding-top: var(--sc-4); border-top: 1px solid var(--tw-line); }
+.tw-aside p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-3); text-wrap: pretty; max-width: 40ch; }
+.tw-aside p:last-child { margin: 0; }
+.tw-aside strong { color: var(--sc-ink); font-weight: 600; }
+.tw-aside a, .tw-clause a, .tw-qa a, .tw-quote__intro a { color: var(--sc-ink); display:inline-block; padding: 10px 2px; margin: -10px -2px; }
 
-  /* ---------- buttons ---------- */
-  .tw-pick, .tw-open {
-    display: inline-flex; align-items: center; gap: .5rem;
-    margin-top: var(--sc-3); padding: .6rem 1rem; min-height:44px;
-    background: transparent; color: var(--sc-ink);
-    border: 1px solid var(--tw-line-strong); border-radius: 3px;
-    font: 700 var(--sc-t-xs)/1 var(--sc-font-mono); letter-spacing: 0;
-    cursor: pointer; text-decoration:none;
-    transition: background var(--sc-d-fast) var(--sc-ease-out), color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
-  }
-  .tw-open { margin-right: .5rem; }
-  @media (hover: hover) and (pointer: fine) {
-    .tw-pick:hover { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
-    .tw-open:hover { border-color: var(--sc-ink); }
-  }
-  .tw-pick:active, .tw-open:active { transform: translateY(1px); }
-  .tw-pick__dot { width: .42rem; height: .42rem; border-radius: 50%; background: var(--sc-accent); }
+/* ---------- the quote and the reply as sub-page acts: the layout around the base components ---------- */
+.tw-quote { max-width: var(--sc-maxw); margin-inline:auto; padding: var(--sc-section) var(--sc-gutter); }
+.tw-quote--page { padding-top: var(--sc-6); }
+.tw-quote > h2, .tw-ask h2 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); text-wrap: balance; }
+.tw-ask h2 { margin: 0 0 var(--sc-3); }
+.tw-list { margin: 0 0 var(--sc-3); padding: 0; list-style: none; }
+.tw-list li { position: relative; padding-left: 1.1rem; margin: 0 0 .55rem; color: var(--sc-ink-soft); max-width: 52ch; text-wrap: pretty; }
+.tw-list li::before { content: ""; position: absolute; left: 0; top: .62em; width: .42rem; height: .42rem; border-radius: 50%; background: var(--sc-accent); }
+.tw-list strong { color: var(--sc-ink); font-weight: 600; }
+.tw-demos { display:grid; gap: var(--sc-3); grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); margin: var(--sc-3) 0 0; }
+.tw-demos a { display:block; padding: var(--sc-4); border: 1px solid var(--tw-line); border-radius: 4px; text-decoration:none; color: var(--sc-ink); background: var(--tw-glass); }
+.tw-demos a:hover { border-color: var(--tw-line-strong); }
+.tw-demos .tw-label__name { font-size: var(--sc-t-base); margin-bottom: .2rem; }
+.tw-demos .tw-label__facts { margin: 0; }
+.tw-ask { width: min(60ch, 100%); margin-inline: auto; padding: var(--sc-gutter); }
+.tw-ask--page { padding-top: var(--sc-8); }
+.tw-ask__lead { color: var(--sc-ink-soft); margin: 0 0 var(--sc-5); text-wrap: pretty; }
+.tw-ask__lead a { color: var(--sc-ink); display:inline-block; padding: 10px 2px; margin: -10px -2px; }
+@media (max-width: 700px) {
+  .tw-open-act h1, .tw-quote > h2, .tw-ask h2 { font-size: var(--sc-t-xl); }
+  .tw-figure { font-size: var(--sc-t-2xl); }
+}
 
-  /* ---------- act 1: the opening plate ---------- */
-  .tw-open-act { display: grid; gap: var(--sc-7); align-items: end; padding: var(--sc-9) var(--sc-gutter) var(--sc-8); max-width: var(--sc-maxw); margin-inline:auto; }
-  @media (min-width: 900px) { .tw-open-act { grid-template-columns: 1.2fr 1fr; padding-top: var(--sc-10); } }
-  .tw-open-act h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: clamp(1.9rem, 1.3rem + 1.7vw, 2.75rem); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-3); text-wrap: balance; }
-  .tw-open-act .tw-lede { color: var(--sc-ink-soft); max-width: 36ch; margin: var(--sc-4) 0 0; text-wrap: pretty; }
-  .tw-hero-said { margin: var(--sc-5) 0 0; max-width: 36ch; padding-left: var(--sc-4); border-left: 2px solid var(--sc-accent); font-size: var(--sc-t-sm); color: var(--sc-ink-soft); text-wrap: pretty; }
-  .tw-hero-said q { color: var(--sc-ink); quotes: "\201C" "\201D"; }
-  .tw-hero-said a { display: block; margin-top: .35rem; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; margin: -10px 0; }
-  .tw-hero-said a:hover { color: var(--sc-ink); }
-  .tw-plate__caption { position:absolute; left: var(--sc-4); bottom: var(--sc-4); z-index:2; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink); background: color-mix(in srgb, var(--sc-canvas) 78%, transparent); padding:.45rem .7rem; border-radius: 2px; backdrop-filter: blur(8px); }
+/* ---------- the page column and prose (Falkirk, booking, cost) ---------- */
+.tw-page { max-width: var(--sc-maxw); margin: 0 auto; padding: 0 var(--sc-gutter); }
+.tw-prose { max-width: 62ch; }
+.tw-prose p, .tw-prose li { color: var(--sc-ink-soft); font-size: var(--sc-t-base); line-height: var(--sc-leading-body); }
+.tw-prose p { margin: 0 0 var(--sc-4); text-wrap: pretty; }
+.tw-prose p strong, .tw-prose li strong { color: var(--sc-ink); font-weight: 600; }
+.tw-prose a { color: var(--sc-ink); text-decoration: underline; text-underline-offset: .18em; text-decoration-color: var(--tw-line-strong); }
+.tw-prose a:hover { text-decoration-color: var(--sc-accent); }
+/* In-text links keep their layout but get a 44px tall hit area, the way the homepage footer does it. */
+.tw-prose p a, .tw-prose li a, .tw-prose dd a, .tw-src a, .tw-said__fig figcaption a, .tw-offer a { display: inline-block; padding: 13px 0; margin: -13px 0; }
+.tw-prose a.tw-cta { color: var(--sc-accent-ink); text-decoration: none; padding: 0 1.4rem; margin: 0; display: inline-flex; }
+.tw-prose a.tw-cta--quiet { color: var(--sc-ink); }
+.tw-prose h2 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-xl); line-height: 1.08; letter-spacing: var(--sc-track-snug); color: var(--sc-ink); margin: 0 0 var(--sc-4); text-wrap: balance; }
+.tw-prose h3 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); line-height: 1.2; color: var(--sc-ink); margin: 0 0 var(--sc-3); }
+.tw-prose ul { padding-left: 1.2em; margin: 0 0 var(--sc-4); }
+.tw-prose li { margin-bottom: .4em; }
+.tw-act { padding-block: var(--sc-8); border-top: 1px solid var(--tw-line); }
+.tw-opening { padding-block: calc(var(--sc-8) + 1rem) var(--sc-8); min-height: calc(100svh - 2rem); display: grid; align-content: center; }
+.tw-eyebrow { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: 0; word-spacing: .065em; margin: 0 0 var(--sc-3); }
+.tw-offer { border: 1px solid var(--tw-line); border-radius: 4px; background: var(--tw-glass); padding: var(--sc-5); max-width: 40rem; }
+.tw-offer .tw-figure { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); line-height: 1; letter-spacing: var(--sc-track-tight); color: var(--sc-ink); margin: 0 0 var(--sc-3); font-variant-numeric: lining-nums tabular-nums; }
+.tw-offer .tw-figure small { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); margin-left: .6rem; vertical-align: middle; }
+.tw-offer p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-3); font-size: var(--sc-t-sm); }
+.tw-offer .tw-line strong { color: var(--sc-ink); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+.tw-table { width: 100%; border-collapse: collapse; font-size: var(--sc-t-sm); font-variant-numeric: lining-nums tabular-nums; }
+.tw-table th, .tw-table td { text-align: left; vertical-align: top; padding: .8rem .6rem; border-bottom: 1px solid var(--tw-line); color: var(--sc-ink-soft); }
+.tw-table th { color: var(--sc-ink); font-family: var(--sc-font-mono); font-weight: 500; font-size: var(--sc-t-xs); letter-spacing: 0; }
+.tw-table td strong { color: var(--sc-ink); }
+.tw-table td:first-child { color: var(--sc-ink); font-weight: 600; }
+.tw-table-wrap { overflow-x: auto; margin: var(--sc-5) 0; }
+.tw-src { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); color: var(--sc-ink-soft); letter-spacing: 0; }
+.tw-src a { color: var(--sc-ink-soft); }
 
-  /* ---------- act 2: the rail ---------- */
-  .tw-rail { display: flex; gap: var(--sc-6); align-items: flex-end; padding-inline: var(--sc-gutter); }
-  .tw-rail__lead { flex: 0 0 min(30ch, 68vw); }
-  .tw-rail__lead h2, .tw-quote > h2, .tw-ask h2, .tw-me h2 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-3); text-wrap: balance; }
-  .tw-rail__lead p { color: var(--sc-ink-soft); margin: 0; }
-  .tw-object { flex: 0 0 min(30ch, 72vw); }
-  .tw-object .tw-plate { margin-bottom: var(--sc-4); }
-  .tw-object .tw-label__name { font-size: var(--sc-t-lg); }
+/* ---------- the client's own words ---------- */
+.tw-said { padding: 0; }
+.tw-said blockquote { margin:0; max-width: 60ch; }
+.tw-said blockquote p { font-family: var(--sc-font-display); font-weight: 500; font-size: var(--sc-t-lg); line-height: 1.35; letter-spacing: var(--sc-track-snug); color: var(--sc-ink); margin: 0; text-wrap: pretty; }
+.tw-said figcaption { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: 0; margin: var(--sc-4) 0 0; }
+.tw-said figcaption a { color: inherit; }
 
-  /* The one real client site in the rail. Flagged rather than restyled: the
-     point is that a visitor can tell at a glance which of these is somebody's
-     actual business, without the card shouting over the others. */
-  /* Listed again with .tw-clause so that inside a clause it outranks .tw-clause p (margin, colour). */
-  .tw-label__flag, .tw-clause .tw-label__flag { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; margin: 0 0 var(--sc-2); display: inline-flex; align-items: center; gap: .5em; color: var(--sc-ink); }
-  .tw-label__flag::before { content: ""; width: .5em; height: .5em; border-radius: 50%; background: currentColor; }
-  .tw-object--live .tw-plate { outline: 1px solid color-mix(in srgb, var(--sc-ink) 22%, transparent); outline-offset: 3px; }
+/* ---------- the pencil drawing, mid-page only ---------- */
+/* Darkened into the paper (the drawing's cream is 3 below the page), a sheet on the dark desk. */
+.tw-drawing { max-width: var(--sc-maxw); margin: 0 auto; padding: var(--sc-6) var(--sc-gutter) var(--sc-7); }
+.tw-drawing img { width: 100%; max-width: 520px; height: auto; filter: brightness(1.02); mix-blend-mode: darken; }
+:root[data-theme="dark"] .tw-drawing img { filter: none; mix-blend-mode: normal; border-radius: 2px; transform: rotate(-.6deg); box-shadow: 0 1px 2px rgba(0,0,0,.5), 0 14px 30px -10px rgba(0,0,0,.75), 0 40px 80px -30px rgba(0,0,0,.9); }
 
-  /* ---------- the client's own words, between the work and the quote ---------- */
-  .tw-said { max-width: var(--sc-maxw); margin-inline:auto; padding: var(--sc-section) var(--sc-gutter); }
-  .tw-said blockquote { margin:0; max-width: 60ch; }
-  .tw-said blockquote p { font-family: var(--sc-font-display); font-weight: 500; font-size: var(--sc-t-lg); line-height: 1.35; letter-spacing: var(--sc-track-snug); color: var(--sc-ink); margin: 0; text-wrap: pretty; }
-  .tw-said figcaption { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: 0; margin: var(--sc-4) 0 0; }
-  .tw-said figcaption a { color: inherit; }
+/* ---------- the document pages: privacy, terms, thanks, 404 ---------- */
+.tw-doc { width: min(64ch, 100%); margin-inline:auto; padding: var(--sc-9) var(--sc-gutter) calc(var(--sc-9) + 3rem); }
+.tw-doc h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-5); text-wrap: balance; }
+.tw-doc h2 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); margin: var(--sc-7) 0 var(--sc-3); letter-spacing: var(--sc-track-snug); }
+.tw-doc p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-4); text-wrap: pretty; }
+.tw-doc strong { color: var(--sc-ink); font-weight: 600; }
+.tw-doc a { color: var(--sc-ink); }
+.tw-doc .tw-back { margin-bottom: var(--sc-5); }
+.tw-doc ul { margin: 0 0 var(--sc-4); padding-left: 1.2em; color: var(--sc-ink-soft); }
+.tw-doc li { margin: 0 0 var(--sc-2); text-wrap: pretty; }
+.tw-doc a[data-cookie-choice] { padding-top: 0; padding-bottom: 28px; margin-top: 0; margin-bottom: -28px; }
 
-  /* ---------- act 3: the quote, the one act that reads like a document ---------- */
-  .tw-quote { max-width: var(--sc-maxw); margin-inline:auto; padding: var(--sc-section) var(--sc-gutter); display:grid; gap: var(--sc-6); }
-  @media (min-width: 900px) { .tw-quote { grid-template-columns: repeat(2, 1fr); gap: var(--sc-7) var(--sc-8); } }
-  .tw-quote > h2 { grid-column: 1 / -1; margin:0; }
-  .tw-quote__intro { grid-column: 1 / -1; color: var(--sc-ink-soft); max-width: 62ch; margin: 0; text-wrap: pretty; }
-  .tw-clause { display:grid; grid-template-columns: 2.6rem 1fr; gap: var(--sc-4); align-items:start; padding-top: var(--sc-4); border-top: 1px solid var(--tw-line); }
-  .tw-clause--wide { grid-column: 1 / -1; }
-  .tw-clause__num { font-family: var(--sc-font-mono); color: var(--sc-accent); font-size: var(--sc-t-xs); letter-spacing: var(--sc-track-wide); padding-top:.45rem; }
-  .tw-clause h3 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); margin: 0 0 .5rem; letter-spacing: var(--sc-track-snug); }
-  .tw-clause p { margin: 0 0 var(--sc-3); color: var(--sc-ink-soft); max-width: 52ch; text-wrap: pretty; }
-  .tw-clause p:last-child { margin-bottom:0; }
-  .tw-clause strong { color: var(--sc-ink); font-weight:600; }
-  .tw-figure { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); line-height: .95; letter-spacing: var(--sc-track-tight); color: var(--sc-ink); margin: .2rem 0 .6rem; font-variant-numeric: lining-nums tabular-nums; }
-  .tw-figure small { font-family: var(--sc-font-mono); font-weight: 400; font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); margin-left: .6rem; vertical-align: .9em; }
-  .tw-line { display:flex; justify-content:space-between; gap: var(--sc-4); align-items:baseline; padding: .55rem 0; border-bottom: 1px dashed var(--tw-line); font-size: var(--sc-t-sm); color: var(--sc-ink-soft); }
-  .tw-line:last-of-type { border-bottom:0; }
-  .tw-line strong { font-family: var(--sc-font-mono); font-weight: 500; color: var(--sc-ink); white-space:nowrap; font-variant-numeric: lining-nums tabular-nums; }
-  .tw-qa dt { font-weight: 600; color: var(--sc-ink); margin: 0 0 .25rem; }
-  .tw-qa dd { margin: 0 0 var(--sc-4); color: var(--sc-ink-soft); max-width: 52ch; text-wrap: pretty; }
-  .tw-qa dd:last-child { margin-bottom:0; }
-
-  /* ---------- act 4: just me. authored silence ---------- */
-  .tw-me { min-height: 62vh; display: grid; align-content: center; padding: var(--sc-section) var(--sc-gutter); max-width: var(--sc-maxw); margin-inline:auto; }
-  .tw-me__inner { max-width: 48ch; padding-top: var(--sc-5); border-top: 1px solid var(--tw-line-strong); }
-  .tw-me__inner::before { content:""; display:block; width:2.5rem; height:2px; background: var(--sc-accent); margin: 0 0 var(--sc-5); transform: translateY(calc(-1 * var(--sc-5) - 1px)); }
-  .tw-me h2 { font-size: var(--sc-t-xl); line-height: 1.06; margin-bottom: var(--sc-4); }
-  .tw-me p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-3); text-wrap: pretty; }
-  .tw-sign { font-family: "Shadows Into Light Two", "Hand Fallback Georgia", "Hand Fallback Noto", "Hand Fallback DejaVu", cursive; font-style: normal; font-weight: 400; font-size: var(--sc-t-xl); color: var(--sc-ink); margin: var(--sc-5) 0 0; line-height:1; }
-  .tw-sign + p { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; margin-top:.5rem; }
-
-  /* ---------- act 5: the reply ---------- */
-  .tw-ask { width: min(60ch, 100%); margin-inline: auto; padding: var(--sc-gutter); }
-  .tw-ask__lead { color: var(--sc-ink-soft); margin: 0 0 var(--sc-5); text-wrap: pretty; }
-  .tw-ask__lead a { color: var(--sc-ink); display:inline-block; padding: 10px 2px; margin: -10px -2px; }
-  .tw-chosen { border: 1px solid var(--tw-line); border-radius: 4px; background: var(--tw-glass); padding: var(--sc-4); margin-bottom: var(--sc-5); }
-  .tw-chosen[hidden] { display:none !important; }
-  .tw-chosen__eyebrow { font-family: var(--sc-font-mono); color: var(--sc-accent); font-size: var(--sc-t-xs); letter-spacing: 0; margin: 0 0 var(--sc-2); }
-  .tw-chosen p { margin:0; }
-  .tw-chosen .tw-label__name { font-size: var(--sc-t-lg); }
-  .tw-field { display: block; margin-bottom: var(--sc-4); }
-  .tw-field > span { display: block; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); margin-bottom: .5rem; }
-  .tw-field > span em { font-style: normal; text-transform: none; letter-spacing: normal; color: var(--tw-ink-quiet); }
-  .tw-field input::placeholder, .tw-field textarea::placeholder { color: var(--tw-ink-quiet); opacity: 1; }
-  .tw-field input, .tw-field select, .tw-field textarea {
-    width: 100%; padding: .85rem 1rem; color: var(--sc-ink);
-    background: var(--sc-surface); border: 1px solid var(--tw-line-strong); border-radius: 4px;
-    font: 400 max(16px, var(--sc-t-base))/1.4 var(--sc-font-text);
-  }
-  .tw-field textarea { resize: vertical; min-height: 7rem; }
-  .tw-field select { appearance:none; -webkit-appearance:none; background-image: linear-gradient(45deg, transparent 50%, var(--sc-ink-soft) 50%), linear-gradient(135deg, var(--sc-ink-soft) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat:no-repeat; padding-right: 2.6rem; }
-  .tw-field input:focus-visible, .tw-field select:focus-visible, .tw-field textarea:focus-visible { outline: 2px solid var(--sc-ink); outline-offset: 2px; }
-  .tw-row { display:grid; gap: 0 var(--sc-4); }
-  @media (min-width: 620px) { .tw-row { grid-template-columns: 1fr 1fr; } }
-  .tw-honeypot { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
-  .tw-submit {
-    width: 100%; min-height: 52px; padding: 1rem 1.4rem;
-    background: var(--sc-accent); color: var(--sc-accent-ink); border: 0; border-radius: 4px;
-    font: 700 1.1875rem/1 var(--sc-font-text); cursor: pointer;
-    transition: transform var(--sc-d-fast) var(--sc-ease-out), filter var(--sc-d-fast) var(--sc-ease-out);
-  }
-  @media (hover: hover) and (pointer: fine) { .tw-submit:hover { filter: brightness(1.06); } }
-  .tw-submit:active { transform: translateY(1px); }
-  .tw-submit:disabled { opacity:.6; cursor: default; }
-  .tw-submit:focus-visible { outline: 2px solid var(--sc-ink); outline-offset: 3px; }
-  .tw-status { min-height:1.4em; margin: var(--sc-3) 0 0; font-size: var(--sc-t-sm); color: var(--sc-ink-soft); }
-  .tw-status.is-ok { color: var(--sc-ink); }
-  .tw-status.is-error { color: #e08b8b; }
-  .tw-fine { color: var(--sc-ink-soft); font-size: var(--sc-t-xs); margin-top: var(--sc-3); text-wrap: pretty; }
-  .tw-fine a { color: var(--sc-ink-soft); }
-  /* The no-script post goes to Web3Forms and back to /thanks/, so this claim only shows when the page does the posting. */
-  .tw-fine__here { display: none; }
-  form[data-posts-here] .tw-fine__here { display: inline; }
-
-  /* Cookie choice: a 44px hit area that grows only downwards, into the plain text or space under its line (it is
-     always the last link of its paragraph), so it never takes a tap meant for a link above. Where the link is an
-     inline-block (sub-page footers, /thanks/), the equal negative margin keeps every line where it was. */
-  .tw-page a[data-cookie-choice], .tw-foot a[data-cookie-choice] { padding-top: 0; padding-bottom: 28px; margin-top: 0; margin-bottom: -28px; }
-
-  .tw-foot { padding: var(--sc-7) 0 calc(var(--sc-8) + 3rem); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); border-top: 1px solid var(--tw-line); margin-top: var(--sc-7); }
-  .tw-foot a { color: var(--sc-ink-soft); display:inline-block; padding: 10px 2px; margin: -10px -2px; }
-  .tw-foot p { margin: 0 0 var(--sc-2); max-width: 62ch; }
-  .tw-foot details { margin: var(--sc-3) 0; border-top: 1px solid var(--tw-line); padding-top: var(--sc-3); }
-  .tw-foot summary { cursor:pointer; font-family: var(--sc-font-mono); letter-spacing: 0; color: var(--sc-ink); min-height: 44px; display:flex; align-items:center; }
-  .tw-foot details p { font-size: var(--sc-t-sm); line-height: 1.6; }
-
-  @media (max-width: 700px) {
-    .tw-open-act h1, .tw-rail__lead h2, .tw-quote > h2, .tw-ask h2 { font-size: var(--sc-t-xl); }
-    .tw-figure { font-size: var(--sc-t-2xl); }
-  }
-  @media (prefers-reduced-motion: reduce) { .tw-pick, .tw-open, .tw-submit { transition: none; } }
-
-  /* The dark desk, on the switch. The rust is brightened one step so it
-     still reads on the dark ground. */
-  :root { color-scheme: light; --tw-plate-a: rgba(255,255,255,.6); --tw-plate-b: #e3dccd; --tw-plate-c: #d9d1c0; --tw-plate-d: #cec5b2; --tw-plate-shadow: hsl(36 20% 30% / .35); }
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-    --sc-canvas:     #141210;
-    --sc-surface:    #1d1a15;
-    --sc-ink:        #efe9dd;
-    --sc-ink-soft:   #a69d8a;
-    --sc-accent:     #d46a41;
-    --sc-accent-ink: #141210;
-    --sc-shadow-color: 36 30% 3%;
-    --tw-glass: #221e18;
-    --tw-line:  rgba(239,233,221,.14);
-    --tw-line-strong: #76705f;
-    --tw-ink-quiet: #968d7b;
-    --tw-plate-a: rgba(255,255,255,.08); --tw-plate-b: #2a251d; --tw-plate-c: #1b1813; --tw-plate-d: #13110d; --tw-plate-shadow: hsl(36 30% 3% / .9);
-  }
-  :root:not([data-theme="dark"]) body { color: var(--sc-ink); }
-  :root:not([data-theme="dark"]) .sc-grain { opacity: .03; }
-  :root:not([data-theme="dark"]) .tw-status.is-error { color: #a13333; }
-
-  /* ---------- the light switch, in the index ---------- */
-  .tw-lights {
-    margin-left: auto; display: inline-grid; place-items: center; flex: none;
-    width: 44px; height: 44px; padding: 0;
-    background: transparent; color: var(--sc-ink-soft);
-    border: 1px solid var(--tw-line-strong); border-radius: 50%;
-    cursor: pointer; transition: color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
-  }
-  .tw-lights:hover { color: var(--sc-ink); border-color: var(--sc-ink-soft); }
-  .tw-lights svg { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
-  /* Written with the parent so they outrank the generic icon rule above. */
-  .tw-lights .tw-lights__sun { display: none; }
-  :root:not([data-theme="dark"]) .tw-lights .tw-lights__sun { display: block; }
-  :root:not([data-theme="dark"]) .tw-lights .tw-lights__moon { display: none; }
-  .tw-index__list { margin-left: var(--sc-4); }
-
-  /* The tear-off: each page a sheet on one pad, torn off along a perforated edge (a gradient mask: 6px holes every 14px, no image),
-     tug then drop, 420ms. CSS only; off under reduced motion. Back or forward lays the sheet down (pagereveal sets 'back'). */
-  @media (prefers-reduced-motion: no-preference) {
-    @view-transition { navigation: auto; }
-    ::view-transition-new(root) { animation: none; }
-    ::view-transition-old(root), :root:active-view-transition-type(back)::view-transition-new(root) {
-      --m: radial-gradient(circle at 7px 7px, #0000 3px, #000 3.5px) 0 0 / 14px 14px repeat-x, linear-gradient(#000 0 0) -60px 14px / calc(100% + 120px) calc(100% + 60px) no-repeat;
-      z-index: 1; mix-blend-mode: normal; transform-origin: 0 100%; -webkit-mask: var(--m); mask: var(--m); -webkit-mask-clip: no-clip; mask-clip: no-clip;
-      filter: drop-shadow(0 18px 22px rgba(40,30,14,.32)); animation: tw-tear .42s both;
-    }
-    :root:active-view-transition-type(back)::view-transition-old(root) { z-index: 0; animation: none; }
-    :root:active-view-transition-type(back)::view-transition-new(root) { animation-name: tw-lay; }
-    @keyframes tw-tear { 26% { transform: rotate(1.5deg); animation-timing-function: cubic-bezier(.55,0,.9,.45); } to { transform: translateY(105vh) rotate(-4deg); } }
-    @keyframes tw-lay { from { transform: translateY(105vh) rotate(-4deg); animation-timing-function: cubic-bezier(.1,.55,.45,1); } 74% { transform: rotate(1.5deg); } }
-  }
+/* ---------- the foot, under the bar ---------- */
+/* The homepage has no bar; here the footer clears it. */
+.tw-foot { padding-bottom: calc(var(--sc-8) + 3rem); }

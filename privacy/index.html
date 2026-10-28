@@ -42,18 +42,9 @@
 })();
 </script>
 <link rel="stylesheet" href="/scrollcraft.min.css?v=3">
-<link rel="stylesheet" href="/tw-pages.css?v=7">
+<link rel="stylesheet" href="/tw-base.css?v=1">
+<link rel="stylesheet" href="/tw-pages.css?v=8">
 <style>
-  .tw-page { width: min(64ch, 100%); margin-inline:auto; padding: var(--sc-9) var(--sc-gutter) calc(var(--sc-9) + 3rem); }
-  .tw-page h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-5); text-wrap: balance; }
-  .tw-page h2 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); margin: var(--sc-7) 0 var(--sc-3); letter-spacing: var(--sc-track-snug); }
-  .tw-page p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-4); text-wrap: pretty; }
-  .tw-page strong { color: var(--sc-ink); font-weight: 600; }
-  .tw-page a { color: var(--sc-ink); }
-  .tw-page .tw-back { display:inline-flex; align-items:center; min-height:44px; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); text-decoration:none; margin-bottom: var(--sc-5); }
-  .tw-page .tw-back:hover { color: var(--sc-ink); }
-  .tw-page ul { margin: 0 0 var(--sc-4); padding-left: 1.2em; color: var(--sc-ink-soft); }
-  .tw-page li { margin: 0 0 var(--sc-2); text-wrap: pretty; }
   .tw-cookie-table { overflow-x: auto; margin: 0 0 var(--sc-4); }
   .tw-cookie-table table { width: 100%; border-collapse: collapse; font-size: var(--sc-t-sm); color: var(--sc-ink-soft); }
   .tw-cookie-table caption { text-align: left; color: var(--sc-ink); font-weight: 600; padding-bottom: var(--sc-2); }
@@ -61,8 +52,8 @@
   .tw-cookie-table th { color: var(--sc-ink); font-weight: 600; }
   .tw-cookie-table td:first-child { color: var(--sc-ink); overflow-wrap: anywhere; min-width: 8.4em; }
   @media (max-width: 359px) { .tw-cookie-table td:first-child { min-width: 0; } }
-  .tw-page .tw-open { margin: 0 0 var(--sc-4); }
-  .tw-page .tw-open[hidden] { display: none; }
+  .tw-doc .tw-open { margin: 0 0 var(--sc-4); }
+  .tw-doc .tw-open[hidden] { display: none; }
 </style>
 <script>
 /* The tear-off going back: a back or forward step lays the sheet down again instead of tearing it off. */
@@ -101,7 +92,7 @@ addEventListener('pagereveal', function (e) {
   </ul>
 </nav>
 <main id="main">
-  <div class="tw-page">
+  <div class="tw-doc">
     <a class="tw-back" href="/">&larr; Back to the quote</a>
     <h1>Privacy notice</h1>
 <p><strong>Last updated: 1 October 2026.</strong> Logan Tempany, trading as Tempany Web Studios in Dollar, Scotland, is responsible for the personal information collected through this website. Questions can be sent to <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a>.</p>

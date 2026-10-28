@@ -1,0 +1,140 @@
+/* tempanywebstudios.co.uk: the one base stylesheet, loaded by every page, the homepage
+   included, straight after scrollcraft.min.css. Tokens for both themes, the body type
+   settings, the skip link and focus ring, the light switch, the quote-document components,
+   the form components, the footer and the tear-off page transition. The values here are
+   the homepage's (28 Oct 2026); where the old sub-page copy disagreed, the homepage won.
+   Sub-page layouts (the index bar, prose, cards, tables) live in tw-pages.css. */
+
+/* ---------- tokens: paper for everyone, the dark desk only on the switch ---------- */
+:root {
+  color-scheme: light;
+  --sc-canvas:     #efe9dd;
+  --sc-surface:    #f7f3ea;
+  --sc-ink:        #191712;
+  --sc-ink-soft:   #61594c;
+  --sc-accent:     #a1462a;
+  --sc-accent-ink: #f7f3ea;
+  --sc-shadow-color: 36 20% 30%;
+  --sc-font-display: Alegreya, "Alegreya Fallback Georgia", "Alegreya Fallback Noto", serif;
+  --sc-font-text:    "Alegreya Sans", "Alegreya Sans Fallback Segoe", "Alegreya Sans Fallback Helvetica", "Alegreya Sans Fallback Arial", "Alegreya Sans Fallback Roboto", "Alegreya Sans Fallback DejaVu", sans-serif;
+  --sc-font-mono:    "Alegreya Sans", "Alegreya Sans Fallback Segoe", "Alegreya Sans Fallback Helvetica", "Alegreya Sans Fallback Arial", "Alegreya Sans Fallback Roboto", "Alegreya Sans Fallback DejaVu", sans-serif;
+  --tw-glass: #f7f3ea;
+  --tw-line:  rgba(25,23,18,.16);
+  --tw-line-strong: #857c6c;
+  --tw-ink-quiet: #6b6356;
+  --tw-plate: #e6dfd1;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --sc-canvas:     #141210;
+  --sc-surface:    #1d1a15;
+  --sc-ink:        #efe9dd;
+  --sc-ink-soft:   #a69d8a;
+  --sc-accent:     #d46a41;
+  --sc-accent-ink: #141210;
+  --sc-shadow-color: 36 30% 3%;
+  --tw-glass: #221e18;
+  --tw-line:  rgba(239,233,221,.14);
+  --tw-line-strong: #76705f;
+  --tw-ink-quiet: #968d7b;
+  --tw-plate: #1f1c17;
+}
+
+/* ---------- body type ---------- */
+body { font-size: 1.125rem; font-style: normal; letter-spacing: 0; word-spacing: .04em; font-variant-numeric: lining-nums tabular-nums; }
+em, i, cite { font-style: normal; }
+@media (min-width: 900px) { body { font-size: 1.1875rem; } }
+/* color inherits as a computed value, so the light theme restates it on body. */
+:root:not([data-theme="dark"]) body { color: var(--sc-ink); }
+.skip { position:absolute; left:-9999px; top:0; background:var(--sc-ink); color:var(--sc-canvas); padding:12px 20px; z-index:100; }
+.skip:focus { left:0; }
+:focus-visible { outline-color: var(--sc-ink); }
+
+/* ---------- the light switch ---------- */
+.tw-lights {
+  display: inline-grid; place-items: center; flex: none;
+  width: 44px; height: 44px; padding: 0;
+  background: transparent; color: var(--sc-ink-soft);
+  border: 1px solid var(--tw-line-strong); border-radius: 50%;
+  cursor: pointer; transition: color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out);
+}
+.tw-lights:hover { color: var(--sc-ink); border-color: var(--sc-ink-soft); }
+.tw-lights svg { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.tw-lights .tw-lights__moon { display: none; }
+:root[data-theme="dark"] .tw-lights .tw-lights__moon { display: block; }
+:root[data-theme="dark"] .tw-lights .tw-lights__sun { display: none; }
+
+/* ---------- the quote: the document components ---------- */
+.tw-quote { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+@media (min-width: 900px) { .tw-quote { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem 4rem; } }
+.tw-quote > h2 { grid-column: 1 / -1; margin: 0; }
+.tw-quote__intro { grid-column: 1 / -1; color: var(--sc-ink-soft); max-width: 46rem; margin: -.5rem 0 0; }
+.tw-clause { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; align-items: start; padding-top: 1rem; border-top: 1px solid var(--tw-line-strong); }
+.tw-clause--wide { grid-column: 1 / -1; }
+.tw-clause__num { font: 700 1rem/1 var(--sc-font-text); color: var(--sc-ink-soft); padding-top: .45rem; font-variant-numeric: lining-nums tabular-nums; }
+.tw-clause h3 { font-family: var(--sc-font-display); font-weight: 700; color: var(--sc-ink); letter-spacing: -.005em; font-size: clamp(1.3rem, 1.15rem + .5vw, 1.55rem); line-height: 1.15; margin: 0 0 .4rem; }
+.tw-clause p { margin: 0 0 .75rem; color: var(--sc-ink-soft); max-width: 36rem; text-wrap: pretty; }
+.tw-clause p:last-child { margin-bottom: 0; }
+.tw-clause strong { color: var(--sc-ink); font-weight: 700; }
+.tw-figure { font: 700 clamp(2.6rem, 2rem + 2.4vw, 3.9rem)/.95 var(--sc-font-display); letter-spacing: -.02em; margin: .15rem 0 .6rem !important; color: var(--sc-ink) !important; font-variant-numeric: lining-nums tabular-nums; }
+.tw-figure small { display: inline-block; font: 700 1.0625rem/1 var(--sc-font-text); letter-spacing: 0; color: var(--sc-ink-soft); margin-left: .55rem; vertical-align: .95em; font-variant-numeric: lining-nums tabular-nums; }
+.tw-line { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: baseline; padding: .5rem 0; border-bottom: 1px dashed var(--tw-line-strong); color: var(--sc-ink-soft); font-size: 1.0625rem; }
+.tw-line > span { flex: 1 1 6rem; min-width: 0; }
+.tw-line:last-of-type { border-bottom: 0; margin-bottom: .35rem; }
+.tw-line strong { font: 700 1.0625rem/1.3 var(--sc-font-text); color: var(--sc-ink); white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; }
+.tw-line a { display: inline-flex; align-items: center; min-height: 44px; margin: -8px 0; }
+.tw-qa dt { font-weight: 700; color: var(--sc-ink); margin: 0 0 .25rem; }
+.tw-qa dd { margin: 0 0 1rem; color: var(--sc-ink-soft); }
+
+/* ---------- the form ---------- */
+.tw-field { display: block; margin-bottom: 1rem; }
+.tw-field > span { display: block; font-size: 1rem; font-weight: 700; word-spacing: .065em; color: var(--sc-ink-soft); margin-bottom: .4rem; }
+.tw-field > span em { font-weight: 400; color: var(--tw-ink-quiet); }
+.tw-field input, .tw-field select, .tw-field textarea { width: 100%; min-height: 48px; padding: .75rem .9rem; color: var(--sc-ink); background: var(--sc-surface); border: 1px solid var(--tw-line-strong); border-radius: 4px; font: 400 1.125rem/1.35 var(--sc-font-text); }
+.tw-field input::placeholder, .tw-field textarea::placeholder { color: var(--tw-ink-quiet); opacity: 1; }
+.tw-field textarea { resize: vertical; min-height: 7rem; }
+.tw-field select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--sc-ink-soft) 50%), linear-gradient(135deg, var(--sc-ink-soft) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 2.6rem; }
+.tw-field input:focus-visible, .tw-field select:focus-visible, .tw-field textarea:focus-visible { outline: 2px solid var(--sc-ink); outline-offset: 2px; }
+.tw-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 1rem; }
+@media (min-width: 620px) { .tw-row { grid-template-columns: 1fr 1fr; } }
+.tw-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.tw-submit { width: 100%; min-height: 52px; padding: 1rem 1.4rem; background: var(--sc-accent); color: var(--sc-accent-ink); border: 0; border-radius: 4px; font: 700 1.1875rem/1 var(--sc-font-text); cursor: pointer; }
+.tw-submit:hover { filter: brightness(1.06); }
+.tw-submit:active { transform: translateY(1px); }
+.tw-submit:disabled { opacity: .6; cursor: default; }
+.tw-submit:focus-visible { outline: 2px solid var(--sc-ink); outline-offset: 3px; }
+.tw-status { min-height: 1.4em; margin: .75rem 0 0; color: var(--sc-ink-soft); }
+.tw-status.is-ok { color: var(--sc-ink); }
+.tw-status.is-error { color: #a13333; }
+:root[data-theme="dark"] .tw-status.is-error { color: #e08b8b; }
+.tw-fine { color: var(--sc-ink-soft); font-size: 1rem; margin: .5rem 0 0; }
+.tw-fine a { color: var(--sc-ink-soft); padding: 10px 0; }
+@media (prefers-reduced-motion: reduce) { .tw-submit { transition: none; } }
+/* The no-script post goes to Web3Forms' own page, so the claim only shows when the page does the posting. */
+.tw-fine__here { display: none; }
+form[data-posts-here] .tw-fine__here { display: inline; }
+
+/* ---------- the foot ---------- */
+.tw-foot { overflow-wrap: anywhere; margin-top: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--tw-line-strong); color: var(--sc-ink-soft); font-size: 1rem; }
+.tw-foot p { margin: 0 0 .6rem; max-width: 62rem; line-height: 1.9; }
+.tw-foot a { color: var(--sc-ink-soft); padding: 10px 0; }
+/* Cookie choice: a hit area that grows only downwards, into the space under its line (it is always the last link of its paragraph), so it never takes a tap meant for a link above. */
+.tw-foot a[data-cookie-choice] { padding: 0 0 30px; }
+.tw-foot__last { margin-top: 1rem !important; }
+
+/* ---------- the tear-off ---------- */
+/* Each page a sheet on one pad, torn off along a perforated edge (a gradient mask: 6px holes every 14px, no image),
+   tug then drop, 420ms. CSS only; off under reduced motion. Back or forward lays the sheet down (pagereveal sets 'back'). */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-new(root) { animation: none; }
+  ::view-transition-old(root), :root:active-view-transition-type(back)::view-transition-new(root) {
+    --m: radial-gradient(circle at 7px 7px, #0000 3px, #000 3.5px) 0 0 / 14px 14px repeat-x, linear-gradient(#000 0 0) -60px 14px / calc(100% + 120px) calc(100% + 60px) no-repeat;
+    z-index: 1; mix-blend-mode: normal; transform-origin: 0 100%; -webkit-mask: var(--m); mask: var(--m); -webkit-mask-clip: no-clip; mask-clip: no-clip;
+    filter: drop-shadow(0 18px 22px rgba(40,30,14,.32)); animation: tw-tear .42s both;
+  }
+  :root:active-view-transition-type(back)::view-transition-old(root) { z-index: 0; animation: none; }
+  :root:active-view-transition-type(back)::view-transition-new(root) { animation-name: tw-lay; }
+  @keyframes tw-tear { 26% { transform: rotate(1.5deg); animation-timing-function: cubic-bezier(.55,0,.9,.45); } to { transform: translateY(105vh) rotate(-4deg); } }
+  @keyframes tw-lay { from { transform: translateY(105vh) rotate(-4deg); animation-timing-function: cubic-bezier(.1,.55,.45,1); } 74% { transform: rotate(1.5deg); } }
+}
