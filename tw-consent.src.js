@@ -216,9 +216,9 @@
     + '@media print{#consent{display:none!important}}';
 
   var slip, now, pick, ticks, save, live, bar, skip, where = 'bottom', kb = false, vw = innerWidth, turned = 0;
-  // Lines a first-time visitor must still see: the homepage's bar, question, facts, proof, chips and name line,
+  // Lines a first-time visitor must still see: the homepage's bar, question, facts, proof, chips, name line and send button,
   // the town pages' proof line, and the opening h1 and price line where a page has them.
-  var KEEP = '.te,#skH1,.sk-facts,.sk-live,#skPick,#skNameRow,.tw-live,.tw-open-act h1,.tw-open-act .tw-label__facts', FOCUS = 'a[href],button,input:not([type=hidden]),select,textarea,summary,[tabindex]:not([tabindex="-1"])';
+  var KEEP = '.te,#skH1,.sk-facts,.sk-live,#skPick,#skNameRow,.sk-send,.tw-live,.tw-open-act h1,.tw-open-act .tw-label__facts', FOCUS = 'a[href],button,input:not([type=hidden]),select,textarea,summary,[tabindex]:not([tabindex="-1"])';
   function build() {
     document.head.appendChild(h('style', { text: CSS }));
     var tick = function (name, words) { return h('label', { class: 'tw-cc__tick' }, [h('input', { type: 'checkbox', name: name }), h('span', { class: 'tw-cc__box', 'aria-hidden': 'true' }), words]); };
