@@ -17,9 +17,9 @@
 //    notification goes.
 //
 // Secrets, set in Pages > Settings > Variables and Secrets, Production only:
-// TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID, or NTFY_TOPIC (plus NTFY_TOKEN on
-// a paid ntfy account). Telegram wins if both are set. With none set, nothing
-// is sent and nothing is stored. ALERT_HOST is for local testing only.
+// TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID. Telegram is the only channel, as
+// the privacy notice says. With neither set, nothing is sent and nothing is
+// stored. ALERT_HOST is for local testing only.
 //
 // The raw IP address is never stored or sent. Every alert step sits inside
 // waitUntil and try/catch: a failure logs one line and the page is unaffected.
@@ -48,7 +48,6 @@ const QUIET_COOKIE = /(?:^|;)\s*tws_quiet=1\s*(?:;|$)/;
 
 function channelOf(env) {
   if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) return 'telegram';
-  if (env.NTFY_TOPIC) return 'ntfy';
   return null;
 }
 
@@ -83,7 +82,7 @@ async function quietSwitch({ request, env, next }) {
   const channel = channelOf(env || {});
   // Names the channel only, never a value. This is how Logan checks that the
   // secrets reached the production deployment.
-  const status = channel === 'telegram' ? 'on (Telegram)' : channel === 'ntfy' ? 'on (ntfy)' : 'off (not set up)';
+  const status = channel === 'telegram' ? 'on (Telegram)' : 'off (not set up)';
   const said = undo
     ? 'Undone. Opening a preview page in this browser will notify Logan again.'
     : 'Done. Opening a preview page in this browser will no longer notify Logan. This is one cookie, tws_quiet, kept in this browser only, for up to 400 days.';
@@ -132,7 +131,6 @@ const MOBILE_ORG = /\b(EE|Vodafone|Telefonica|O2|Hutchison|Three|Tesco Mobile|gi
 
 const DEMO_NAMES = {
   'salon-v2': 'Salon demo',
-  salon: 'Old salon demo',
   clinic: 'Clinic demo',
   trades: 'Trades demo',
   professional: 'Professional demo',
@@ -288,26 +286,17 @@ async function sha256hex(text) {
 }
 
 async function deliver(env, channel, m) {
-  let url;
   const headers = { 'Content-Type': 'application/json' };
-  let body;
-  if (channel === 'telegram') {
-    url = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`;
-    // Plain text, no parse_mode. The path has no scheme, so Telegram neither
-    // links it nor fetches a preview of it.
-    body = {
-      chat_id: env.TELEGRAM_CHAT_ID,
-      text: `${m.title}\n${m.message}`,
-      disable_notification: m.silent,
-      link_preview_options: { is_disabled: true },
-    };
-  } else {
-    // JSON rather than headers, so a city such as Łódź never hits the
-    // Latin-1 limit on fetch headers.
-    url = 'https://ntfy.sh/';
-    if (env.NTFY_TOKEN) headers.Authorization = `Bearer ${env.NTFY_TOKEN}`;
-    body = { topic: env.NTFY_TOPIC, title: m.title, message: m.message, priority: m.priority };
-  }
+  const url = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`;
+  // Plain text, no parse_mode. The path has no scheme, so Telegram neither
+  // links it nor fetches a preview of it. JSON body rather than headers, so a
+  // city such as Łódź never hits the Latin-1 limit on fetch headers.
+  const body = {
+    chat_id: env.TELEGRAM_CHAT_ID,
+    text: `${m.title}\n${m.message}`,
+    disable_notification: m.silent,
+    link_preview_options: { is_disabled: true },
+  };
   let status;
   try {
     // A hung connection is abandoned after 5 s, so waitUntil always settles.
@@ -348,7 +337,7 @@ async function sendAlert(env, channel, v) {
   try {
     // Every key is a one-way hash, and the secret in it stops anyone
     // reversing it by trying every IPv4 address. No raw IP is stored.
-    const secret = channel === 'telegram' ? env.TELEGRAM_BOT_TOKEN : env.NTFY_TOPIC;
+    const secret = env.TELEGRAM_BOT_TOKEN;
     const visit = `${secret}|${v.ip}|${v.ua}|${v.kind}/${v.slug}|`;
     const seen = `https://${APEX}/__alert-seen/${await sha256hex(visit + v.tag)}`;
     const seenUntagged = v.tag ? `https://${APEX}/__alert-seen/${await sha256hex(visit)}` : seen;
