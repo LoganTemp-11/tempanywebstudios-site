@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Web design in Dollar, Stirling and Falkirk | Tempany Web Studios</title>
+<title>Web design: Dollar, Stirling, Falkirk | Tempany Web Studios</title>
 <meta name="description" content="Web design for small businesses in Dollar, Stirling and Falkirk. £599 fixed for up to five pages, 10 to 14 days, and you own the domain, hosting and code.">
 <meta name="author" content="Logan Tempany">
 <meta name="robots" content="index, follow">
@@ -49,7 +49,7 @@
   });
 })();
 </script>
-<link rel="stylesheet" href="/scrollcraft.min.css?v=3">
+<link rel="stylesheet" href="/scrollcraft.min.css?v=4">
 <link rel="stylesheet" href="/tw-base.css?v=1">
 <style>
   /* Tokens, body type, the skip link, the light switch, the quote and form components and the footer: /tw-base.css. */
@@ -480,7 +480,13 @@
   /* act 4: the quote. The components are in tw-base.css; this is the act's own layout, and two pins
      that keep the act's generic rules (.act h2, .act a) from reaching into the shared components. */
   .act .tw-quote > h2 { margin: 0; }
-  .act :is(.tw-foot, .tw-fine) a { color: var(--sc-ink-soft); }
+  .act .tw-fine a { color: var(--sc-ink-soft); }
+  /* The footer is the shared partial after main, a contentinfo landmark. It sits where it did inside the reply
+     act: the act gives up its bottom padding, the footer takes it, and keeps the act's link and paragraph rules. */
+  .act--reply { padding-bottom: 0; }
+  main + .tw-foot { width: min(100% - 2 * clamp(16px, 4.2vw, 48px), 1180px); margin: calc(1.75rem + 1rem) auto 0; padding-bottom: clamp(2.5rem, 4.6vw, 4.25rem); }
+  main + .tw-foot a { text-decoration-thickness: 1px; text-underline-offset: .2em; }
+  main + .tw-foot p { text-wrap: pretty; }
   .tw-small { font-size: 1rem; }
   .tw-qa { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 3rem; }
   @media (min-width: 900px) { .tw-qa { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: column; grid-template-rows: auto auto; } }
@@ -502,7 +508,7 @@
   .tw-ask { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.75rem 3.5rem; align-items: start; }
   @media (min-width: 960px) {
     .tw-ask { grid-template-columns: minmax(0, 320px) minmax(0, 1fr); }
-    .tw-ask__head, .tw-foot { grid-column: 1 / -1; }
+    .tw-ask__head { grid-column: 1 / -1; }
     .sk-return { grid-column: 1; }
     .tw-form { grid-column: 2; }
   }
@@ -1135,18 +1141,18 @@ addEventListener('pagereveal', function (e) {
         <p class="tw-fine">Your details are sent securely to Tempany Web Studios<span class="tw-fine__here"> without leaving this page</span>. <a href="/privacy/">Read the privacy notice.</a></p>
       </form>
 
-      <!-- tw:foot -->
+    </div>
+  </section>
+
+
+</main>
+<!-- tw:foot -->
 <footer class="tw-foot">
   <p>Logan Tempany trading as Tempany Web Studios&nbsp;&middot; Dollar, Scotland&nbsp;&middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a>&nbsp;&middot; <a href="tel:+447487536649">07487 536649</a></p>
   <p><a href="/audit/">The &pound;95 audit</a>&nbsp;&middot; <a href="/how-much-does-a-website-cost/">What a website costs</a>&nbsp;&middot; <a href="/booking/">The booking system</a>&nbsp;&middot; <a href="/web-design-falkirk/">Web design in Falkirk</a>&nbsp;&middot; <a href="/web-design-stirling/">Web design in Stirling</a>&nbsp;&middot; <a href="/privacy/">Privacy notice</a>&nbsp;&middot; <a href="/privacy/#complaints">Complaints</a>&nbsp;&middot; <a href="/terms/">Service terms</a>&nbsp;&middot; <a href="/privacy/#cookies" data-cookie-choice>Cookie choice</a></p>
   <p class="tw-foot__last">Jennifer Ellis Yoga and Rayney Day Pet Services are real client sites, shown with their owners' permission. The four demonstration sites aren't: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
 </footer>
 <!-- /tw:foot -->
-    </div>
-  </section>
-
-
-</main>
 
 <script>
 /* Name fitting, shared by the page, the contact sheet and the share image.
