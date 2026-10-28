@@ -1,6 +1,8 @@
 /v2/* / 301
 /v2 / 301
 /demos/yoga/* /demos/salon-v2/ 301
+/demos/salon/* /demos/salon-v2/:splat 301
+/demos/salon /demos/salon-v2/ 301
 /demos/yoga /demos/salon-v2/ 301
 /work/* / 301
 /work / 301
