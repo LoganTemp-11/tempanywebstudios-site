@@ -47,20 +47,6 @@
 <link rel="stylesheet" href="/scrollcraft.min.css?v=3">
 <link rel="stylesheet" href="/tw-base.css?v=1">
 <link rel="stylesheet" href="/tw-pages.css?v=8">
-<style>
-  /* The index card: the town on one card, set as type. */
-  .tw-card { max-width: 46rem; border: 1px solid var(--tw-line-strong); border-radius: 2px; background: var(--tw-glass); box-shadow: var(--sc-e3); padding: var(--sc-5) var(--sc-6); position: relative; font-family: var(--sc-font-mono); font-size: var(--sc-t-sm); color: var(--sc-ink-soft); transform: rotate(-.6deg); }
-  .tw-card::before { content: ""; position: absolute; left: 0; right: 0; top: 4.2rem; border-top: 1px solid var(--sc-accent); opacity: .55; }
-  .tw-card__hole { position: absolute; top: 1.1rem; right: 1.2rem; width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--tw-line-strong); }
-  .tw-card__town { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-3xl); line-height: .95; letter-spacing: var(--sc-track-tight); color: var(--sc-ink); margin: 0 0 var(--sc-5); }
-  .tw-card__town small { display: block; font-family: var(--sc-font-mono); font-weight: 400; font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--sc-ink-soft); margin-bottom: .6rem; }
-  .tw-card dl { display: grid; grid-template-columns: max-content 1fr; gap: .55rem var(--sc-5); margin: 0; font-variant-numeric: lining-nums tabular-nums; }
-  .tw-card dt { letter-spacing: 0; font-size: var(--sc-t-xs); color: var(--sc-ink-soft); padding-top: .15em; }
-  .tw-card dd { margin: 0; color: var(--sc-ink); }
-  .tw-card dd b { color: var(--sc-accent); font-weight: 500; }
-  .tw-card__foot { margin-top: var(--sc-5); padding-top: var(--sc-4); border-top: 1px dashed var(--tw-line); font-size: var(--sc-t-xs); letter-spacing: 0; }
-  @media (max-width: 560px) { .tw-card { padding: var(--sc-4); transform: none; } .tw-card dl { grid-template-columns: 1fr; gap: .1rem 0; } .tw-card dt { margin-top: .6rem; } }
-</style>
 <noscript><style>[data-sc-in],[data-sc-stagger]>*{opacity:1!important;transform:none!important}</style></noscript>
 <script type="application/ld+json">
 {
@@ -154,8 +140,8 @@ addEventListener('pagereveal', function (e) {
   <!-- 1 · The index card. The town on one card, set as type; the numbers are from my own list. -->
   <section class="tw-page tw-opening" data-sc-act="flow" aria-labelledby="h1">
     <h1 id="h1" class="tw-eyebrow" style="margin-bottom:var(--sc-5)">Web design in Falkirk, on one card</h1>
-    <p class="tw-live"><span class="tw-live__k">Live client sites:</span> <a href="/#work">Jennifer Ellis Yoga</a> &middot; <a href="/#work-demos">Rayney Day Pet Services</a></p>
-    <div class="tw-card">
+    <p class="tw-live" data-landing><span class="tw-live__k">Live client sites:</span> <a href="/#work">Jennifer Ellis Yoga</a> &middot; <a href="/#work-demos">Rayney Day Pet Services</a></p>
+    <div class="tw-card" data-landing>
       <span class="tw-card__hole" aria-hidden="true"></span>
       <p class="tw-card__town"><small>Index card &middot; 01 of 06</small>Falkirk</p>
       <dl>
