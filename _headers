@@ -40,6 +40,9 @@
 /tw-pages.css
   Cache-Control: public, max-age=604800
 
+/tw-page.js
+  Cache-Control: public, max-age=604800
+
 # The cookie choice and Google tag script holds the Google Ads slots. Revalidated on
 # every visit, so filling them is one edit and one push.
 /tw-consent.js
