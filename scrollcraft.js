@@ -1,4 +1,5 @@
 /* ============================================================================
+   scrollcraft 1.1, Sep 2026, pan-rail focus fix included
    scrollcraft: a scroll-driven interaction runtime
    ----------------------------------------------------------------------------
    Vanilla JS. Zero dependencies. Zero DOM generation.
