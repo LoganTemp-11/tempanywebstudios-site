@@ -117,7 +117,8 @@ form[data-posts-here] .tw-fine__here { display: inline; }
 /* ---------- the foot ---------- */
 .tw-foot { overflow-wrap: anywhere; margin-top: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--tw-line-strong); color: var(--sc-ink-soft); font-size: 1rem; }
 .tw-foot p { margin: 0 0 .6rem; max-width: 62rem; line-height: 1.9; }
-.tw-foot a { color: var(--sc-ink-soft); padding: 10px 0; }
+/* Inline links: vertical padding does not move the line, so the 13px takes each link to 44px of hit area. */
+.tw-foot a { color: var(--sc-ink-soft); padding: 13px 0; }
 /* Cookie choice: a hit area that grows only downwards, into the space under its line (it is always the last link of its paragraph), so it never takes a tap meant for a link above. */
 .tw-foot a[data-cookie-choice] { padding: 0 0 30px; }
 .tw-foot__last { margin-top: 1rem !important; }

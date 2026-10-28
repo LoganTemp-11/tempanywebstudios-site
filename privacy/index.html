@@ -63,12 +63,14 @@ addEventListener('pagereveal', function (e) {
 });
 </script>
 <script src="/tw-consent.js" defer></script>
+<script src="/tw-page.js?v=1" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="sc-grain" aria-hidden="true"></div>
-<nav class="tw-index" aria-label="Sections of this quote">
-  <a class="tw-index__mark" href="/" aria-label="Tempany Web Studios, back to top">
+<!-- tw:index -->
+<nav class="tw-index" aria-label="Site">
+  <a class="tw-index__mark" href="/" aria-label="Tempany Web Studios, back to the homepage">
     <svg viewBox="0 0 44 44" aria-hidden="true">
       <circle cx="22" cy="22" r="18.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
       <circle cx="22" cy="22" r="14.5" fill="none" stroke="currentColor" stroke-width=".7" opacity=".45"/>
@@ -86,11 +88,24 @@ addEventListener('pagereveal', function (e) {
   </button>
   <ul class="tw-index__list">
     <li><a href="/#work">The work</a></li>
+    <li><a href="/#said">What she said</a></li>
     <li><a href="/#quote">The quote</a></li>
     <li><a href="/#me">Just me</a></li>
+    <li class="tw-where">
+      <button class="tw-where__btn" type="button" aria-expanded="false" aria-controls="twWhere">Where I work</button>
+      <ul class="tw-where__list" id="twWhere" hidden>
+        <li><a href="/web-design-falkirk/">Falkirk</a></li>
+        <li><a href="/web-design-stirling/">Stirling</a></li>
+        <li><span class="tw-soon" title="Page on its way">Alloa</span></li>
+        <li><span class="tw-soon" title="Page on its way">Grangemouth</span></li>
+        <li><span class="tw-soon" title="Page on its way">Dollar</span></li>
+        <li><span class="tw-soon" title="Page on its way">Tillicoultry</span></li>
+      </ul>
+    </li>
     <li><a class="tw-index__ask" href="/#reply">Reply</a></li>
   </ul>
 </nav>
+<!-- /tw:index -->
 <main id="main">
   <div class="tw-doc">
     <a class="tw-back" href="/">&larr; Back to the quote</a>
@@ -136,31 +151,14 @@ addEventListener('pagereveal', function (e) {
     <h2 id="complaints">Complaints</h2>
 <p>Tempany Web Studios will acknowledge your complaint within 30 days of receiving it. Appropriate steps will then be taken to investigate, you will be kept informed where necessary, and the outcome will be communicated without undue delay.</p>
           <p>If you remain dissatisfied, you may complain to the UK supervisory authority, the <a href="https://ico.org.uk/make-a-complaint/data-protection-complaints/data-protection-complaints/" target="_blank" rel="noreferrer">Information Commissioner's Office</a>. You do not have to wait for this internal process if you prefer to contact the ICO directly.</p>
-    <p><a href="/terms/">Service terms</a> &middot; <a href="/privacy/#cookies" data-cookie-choice>Cookie choice</a></p>
+    <!-- tw:foot -->
+<footer class="tw-foot">
+  <p>Logan Tempany trading as Tempany Web Studios&nbsp;&middot; Dollar, Scotland&nbsp;&middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a>&nbsp;&middot; <a href="tel:+447487536649">07487 536649</a></p>
+  <p><a href="/audit/">The &pound;95 audit</a>&nbsp;&middot; <a href="/how-much-does-a-website-cost/">What a website costs</a>&nbsp;&middot; <a href="/booking/">The booking system</a>&nbsp;&middot; <a href="/web-design-falkirk/">Web design in Falkirk</a>&nbsp;&middot; <a href="/web-design-stirling/">Web design in Stirling</a>&nbsp;&middot; <a href="/privacy/">Privacy notice</a>&nbsp;&middot; <a href="/privacy/#complaints">Complaints</a>&nbsp;&middot; <a href="/terms/">Service terms</a>&nbsp;&middot; <a href="/privacy/#cookies" data-cookie-choice>Cookie choice</a></p>
+  <p class="tw-foot__last">Jennifer Ellis Yoga and Rayney Day Pet Services are real client sites, shown with their owners' permission. The four demonstration sites aren't: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
+</footer>
+<!-- /tw:foot -->
   </div>
 </main>
-<script>
-/* The lights. */
-(function () {
-  var btn = document.getElementById('twLights');
-  var docEl = document.documentElement;
-  var meta = document.querySelector('meta[name="theme-color"]');
-  if (!btn) return;
-  function sync() {
-    var light = docEl.getAttribute('data-theme') === 'light';
-    btn.setAttribute('aria-pressed', light ? 'true' : 'false');
-    btn.setAttribute('aria-label', light ? 'Turn the lights down' : 'Turn the lights up');
-    if (meta) meta.setAttribute('content', light ? '#efe9dd' : '#141210');
-    if (window.__twGround) window.__twGround();
-  }
-  btn.addEventListener('click', function () {
-    var light = docEl.getAttribute('data-theme') === 'light';
-    docEl.setAttribute('data-theme', light ? 'dark' : 'light');
-    try { localStorage.setItem('tws-theme', light ? 'dark' : 'light'); } catch (e) {}
-    sync();
-  });
-  sync();
-})();
-</script>
 </body>
 </html>

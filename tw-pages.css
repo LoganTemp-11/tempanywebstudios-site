@@ -176,7 +176,8 @@ html { scroll-padding-bottom: 5.5rem; }
 :root[data-theme="dark"] .tw-drawing img { filter: none; mix-blend-mode: normal; border-radius: 2px; transform: rotate(-.6deg); box-shadow: 0 1px 2px rgba(0,0,0,.5), 0 14px 30px -10px rgba(0,0,0,.75), 0 40px 80px -30px rgba(0,0,0,.9); }
 
 /* ---------- the document pages: privacy, terms, thanks, 404 ---------- */
-.tw-doc { width: min(64ch, 100%); margin-inline:auto; padding: var(--sc-9) var(--sc-gutter) calc(var(--sc-9) + 3rem); }
+.tw-doc { width: min(64ch, 100%); margin-inline:auto; padding: var(--sc-9) var(--sc-gutter) 0; }
+.tw-doc .tw-foot { margin-top: var(--sc-7); }
 .tw-doc h1 { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-2xl); line-height: 1.0; letter-spacing: var(--sc-track-tight); margin: 0 0 var(--sc-5); text-wrap: balance; }
 .tw-doc h2 { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); margin: var(--sc-7) 0 var(--sc-3); letter-spacing: var(--sc-track-snug); }
 .tw-doc p { color: var(--sc-ink-soft); margin: 0 0 var(--sc-4); text-wrap: pretty; }

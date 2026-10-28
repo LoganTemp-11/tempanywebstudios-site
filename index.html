@@ -603,6 +603,7 @@ addEventListener('pagereveal', function (e) {
 });
 </script>
 <script src="/tw-consent.js" defer></script>
+<script src="/tw-page.js?v=1" defer></script>
 </head>
 <body>
 
@@ -1127,60 +1128,19 @@ addEventListener('pagereveal', function (e) {
         <p class="tw-fine">Your details are sent securely to Tempany Web Studios<span class="tw-fine__here"> without leaving this page</span>. <a href="/privacy/">Read the privacy notice.</a></p>
       </form>
 
-      <div class="tw-foot">
-        <p>Logan Tempany trading as Tempany Web Studios&nbsp;&middot; Dollar, Scotland&nbsp;&middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a>&nbsp;&middot; <a href="tel:+447487536649">07487 536649</a></p>
-        
-        <p><a href="/audit/">The &pound;95 audit</a>&nbsp;&middot; <a href="/how-much-does-a-website-cost/">What a website costs</a>&nbsp;&middot; <a href="/booking/">The booking system</a>&nbsp;&middot; <a href="/web-design-falkirk/">Web design in Falkirk</a>&nbsp;&middot; <a href="/web-design-stirling/">Web design in Stirling</a>&nbsp;&middot; <a href="/privacy/">Privacy notice</a>&nbsp;&middot; <a href="/privacy/#complaints">Complaints</a>&nbsp;&middot; <a href="/terms/">Service terms</a>&nbsp;&middot; <a href="/privacy/#cookies" data-cookie-choice>Cookie choice</a></p>
-        <p class="tw-foot__last">Jennifer Ellis Yoga and Rayney Day Pet Services are real client sites, shown with their owners' permission. The four demonstration sites aren't: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
-      </div>
+      <!-- tw:foot -->
+<footer class="tw-foot">
+  <p>Logan Tempany trading as Tempany Web Studios&nbsp;&middot; Dollar, Scotland&nbsp;&middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a>&nbsp;&middot; <a href="tel:+447487536649">07487 536649</a></p>
+  <p><a href="/audit/">The &pound;95 audit</a>&nbsp;&middot; <a href="/how-much-does-a-website-cost/">What a website costs</a>&nbsp;&middot; <a href="/booking/">The booking system</a>&nbsp;&middot; <a href="/web-design-falkirk/">Web design in Falkirk</a>&nbsp;&middot; <a href="/web-design-stirling/">Web design in Stirling</a>&nbsp;&middot; <a href="/privacy/">Privacy notice</a>&nbsp;&middot; <a href="/privacy/#complaints">Complaints</a>&nbsp;&middot; <a href="/terms/">Service terms</a>&nbsp;&middot; <a href="/privacy/#cookies" data-cookie-choice>Cookie choice</a></p>
+  <p class="tw-foot__last">Jennifer Ellis Yoga and Rayney Day Pet Services are real client sites, shown with their owners' permission. The four demonstration sites aren't: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
+</footer>
+<!-- /tw:foot -->
     </div>
   </section>
 
 
 </main>
 
-<script>
-/* The lights. Written to storage only when pressed. */
-(function () {
-  var btn = document.getElementById('twLights');
-  var docEl = document.documentElement;
-  var meta = document.querySelector('meta[name="theme-color"]');
-  if (!btn) return;
-  function sync() {
-    var light = docEl.getAttribute('data-theme') !== 'dark';
-    btn.setAttribute('aria-pressed', light ? 'true' : 'false');
-    btn.setAttribute('aria-label', light ? 'Turn the lights down' : 'Turn the lights up');
-    if (meta) meta.setAttribute('content', light ? '#efe9dd' : '#141210');
-  }
-  btn.addEventListener('click', function () {
-    var light = docEl.getAttribute('data-theme') !== 'dark';
-    docEl.setAttribute('data-theme', light ? 'dark' : 'light');
-    try { localStorage.setItem('tws-theme', light ? 'dark' : 'light'); } catch (e) {}
-    sync();
-  });
-  sync();
-})();
-</script>
-<script>
-/* Where I work: closes on Escape (focus back on its summary), when focus moves
-   out of it, and on a click anywhere else. */
-(function () {
-  var d = document.querySelector('.te__where');
-  if (!d) return;
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Escape' || !d.open) return;
-    d.open = false;
-    var s = d.querySelector('summary');
-    if (s) s.focus();
-  });
-  d.addEventListener('focusout', function (e) {
-    if (d.open && e.relatedTarget && !d.contains(e.relatedTarget)) d.open = false;
-  });
-  document.addEventListener('click', function (e) {
-    if (d.open && !d.contains(e.target)) d.open = false;
-  });
-})();
-</script>
 <script>
 /* Name fitting, shared by the page, the contact sheet and the share image.
    The slot is a box (x y w h size). One line if it fits at 78% of the size or
