@@ -202,6 +202,9 @@ html { scroll-padding-bottom: 5.5rem; }
 .tw-offer .tw-line > span { flex: 1 1 auto; }
 .tw-offer .tw-line strong { font-family: var(--sc-font-mono); font-weight: 500; font-size: inherit; line-height: inherit; }
 .tw-offer .tw-figure small { display: inline; font-weight: 400; }
+.tw-clause .tw-figure { font: 700 var(--sc-t-3xl)/.95 var(--sc-font-display); letter-spacing: var(--sc-track-tight); color: var(--sc-ink-soft) !important; margin: 0 0 var(--sc-3) !important; }
+.tw-clause .tw-figure small { display: inline; font: 400 var(--sc-t-xs)/1 var(--sc-font-mono); letter-spacing: 0; color: var(--sc-ink-soft); margin-left: .6rem; vertical-align: .9em; }
+@media (max-width: 700px) { .tw-clause .tw-figure { font-size: var(--sc-t-2xl); } }
 .tw-table th { white-space: nowrap; }
 
 /* ---------- the client's own words ---------- */
@@ -234,7 +237,8 @@ html { scroll-padding-bottom: 5.5rem; }
 /* ---------- the foot, under the bar ---------- */
 /* The shared footer is pasted after main. It takes the column of the page it follows: the prose pages' column
    and 62ch, the reply pages' 60ch, the document pages' 64ch. The homepage has no bar; here the footer clears it. */
-.tw-foot { padding-bottom: calc(var(--sc-8) + 3rem); max-width: var(--sc-maxw); margin-inline: auto; padding-inline: var(--sc-gutter); }
-main:has(.tw-prose) + .tw-foot p { max-width: 62ch; }
-main:has(.tw-ask) + .tw-foot { width: min(60ch, 100%); }
-main:has(.tw-doc) + .tw-foot { width: min(64ch, 100%); margin-top: 0; }
+/* The box, and so the rule along its top, is the text column itself: no padding outside it. */
+.tw-foot { padding-bottom: calc(var(--sc-8) + 3rem); box-sizing: border-box; max-width: 62ch; margin-inline: calc(max(0px, (100% - var(--sc-maxw)) / 2) + var(--sc-gutter)); }
+/* 60ch and 64ch are the columns' widths at the body size (19px); the footer is set at 16px, so 19/16 of them. */
+main:has(.tw-ask) + .tw-foot { width: calc(min(71.25ch, 100%) - 2 * var(--sc-gutter)); max-width: none; margin-inline: auto; }
+main:has(.tw-doc) + .tw-foot { width: calc(min(76ch, 100%) - 2 * var(--sc-gutter)); max-width: none; margin-inline: auto; margin-top: 0; }
