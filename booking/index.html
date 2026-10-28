@@ -70,63 +70,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Tempany Web Studios",
-  "url": "https://tempanywebstudios.co.uk/",
-  "@id": "https://tempanywebstudios.co.uk/#business",
-  "sameAs": ["https://share.google/ZBnZVEuyqWCGcK8Ie"],
-  "email": "logan@tempanywebstudios.co.uk",
-  "telephone": "+447487536649",
-  "founder": {
-    "@type": "Person",
-    "name": "Logan Tempany"
+  "@type": "Service",
+  "name": "Booking system with live availability",
+  "serviceType": "Online booking system",
+  "url": "https://tempanywebstudios.co.uk/booking/",
+  "provider": {
+    "@id": "https://tempanywebstudios.co.uk/#business"
   },
-  "image": "https://tempanywebstudios.co.uk/images/share/tempany-sketchpad-v2.png",
-  "description": "Hand-built websites for small businesses that need enquiries, not a brochure.",
-  "priceRange": "£95 to £769",
-  "areaServed": [
-    "Clackmannanshire",
-    "Stirling",
-    "Falkirk",
-    "Scotland",
-    "United Kingdom"
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Dollar",
-    "addressRegion": "Clackmannanshire",
-    "addressCountry": "GB"
-  },
-  "makesOffer": [
+  "offers": [
     {
-      "@type": "Offer",
-      "name": "Website with a Tempany Web Studios booking system: live availability and admin page, care plan required for 12 months",
-      "price": "649",
-      "priceCurrency": "GBP"
+      "@id": "https://tempanywebstudios.co.uk/#offer-booking"
     },
     {
-      "@type": "Offer",
-      "name": "Card payment at point of booking",
-      "price": "120",
-      "priceCurrency": "GBP"
-    },
-    {
-      "@type": "Offer",
-      "name": "New website, up to five pages",
-      "price": "599",
-      "priceCurrency": "GBP"
-    },
-    {
-      "@type": "Offer",
-      "name": "Care plan: renewals handled (registrar's fee not included), a monthly check and up to an hour of small changes",
-      "description": "Optional, cancel any time; required for the first 12 months with a Tempany Web Studios booking system",
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": "20",
-        "priceCurrency": "GBP",
-        "unitCode": "MON",
-        "unitText": "month"
-      }
+      "@id": "https://tempanywebstudios.co.uk/#offer-card"
     }
   ]
 }
