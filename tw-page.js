@@ -15,7 +15,7 @@
       var light = docEl.getAttribute('data-theme') !== 'dark';
       btn.setAttribute('aria-pressed', light ? 'true' : 'false');
       btn.setAttribute('aria-label', light ? 'Turn the lights down' : 'Turn the lights up');
-      if (meta) meta.setAttribute('content', light ? '#efe9dd' : '#141210');
+      if (meta) meta.setAttribute('content', light ? '#f5f5f2' : '#141516');
     }
     btn.addEventListener('click', function () {
       var light = docEl.getAttribute('data-theme') !== 'dark';

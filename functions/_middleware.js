@@ -59,7 +59,7 @@ function quietPage(said, again, status) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Preview notifications &middot; Tempany Web Studios</title>
-<style>body{margin:0;padding:3rem 1rem;background:#efe9dd;color:#191712;font:1.125rem/1.55 Georgia,"Times New Roman",serif}main{max-width:34rem;margin:0 auto}h1{font-size:1.5rem;line-height:1.2;margin:0 0 1rem}a{color:#191712}</style>
+<style>body{margin:0;padding:3rem 1rem;background:#f5f5f2;color:#141516;font:1.125rem/1.55 "Helvetica Neue",Arial,sans-serif}main{max-width:34rem;margin:0 auto}h1{font-size:1.5rem;line-height:1.2;margin:0 0 1rem}a{color:#191712}</style>
 </head>
 <body>
 <main>
