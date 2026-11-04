@@ -170,7 +170,7 @@ form[data-posts-here] .tw-fine__here { display: inline; }
 }
 body{font-family:var(--sc-font-text)}
 /* the headline: café menu-board type */
-html body .sk h1{font:800 clamp(2rem,1.4rem + 2.6vw,3.6rem)/.92 var(--sc-font-display);text-transform:uppercase;letter-spacing:0;color:var(--sc-ink)}
+html body .sk h1{font:800 clamp(2rem,1.4rem + 2.6vw,3.6rem)/.92 var(--sc-font-display);text-transform:uppercase;letter-spacing:0;color:var(--sk-graphite)}
 html body .sk h1 .tw-hi{color:#141516;background:linear-gradient(transparent 14%,#f5d547 14%,#f5d547 90%,transparent 90%);padding:0 .12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 html body .sk-facts{font-family:var(--sc-font-mono);font-size:.875rem;letter-spacing:.02em;text-transform:uppercase;color:var(--sk-graphite);border-color:var(--sk-graphite)}
 html body .sk-facts span{background:none!important;color:inherit!important}
