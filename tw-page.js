@@ -70,4 +70,32 @@
       if (!list.hidden && !wrap.contains(e.target)) set(false);
     });
   })();
+
+  /* The tear-off for jumps within a page: a link to a section on this page tears the sheet
+     off and lands you on the section underneath, the same 420ms as moving between pages
+     (the animation is the one in tw-base.css). Links whose own handlers already took the
+     click are left alone; reduced motion or no View Transitions means a plain jump. */
+  (function () {
+    if (!document.startViewTransition) return;
+    var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)');
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (calm && calm.matches) return;
+      var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a || a.target || a.hasAttribute('download') || a.classList.contains('skip')) return;
+      var url = new URL(a.href, location.href);
+      if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search || !url.hash) return;
+      var id = decodeURIComponent(url.hash.slice(1));
+      var el = id === 'top' ? (document.getElementById('top') || document.body) : document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      document.startViewTransition(function () {
+        if (location.hash !== url.hash) history.pushState(null, '', url.hash);
+        if (id === 'top' && !document.getElementById('top')) window.scrollTo(0, 0);
+        else el.scrollIntoView({ behavior: 'instant', block: 'start' });
+        if (!el.hasAttribute('tabindex') && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(el.tagName)) el.setAttribute('tabindex', '-1');
+        try { el.focus({ preventScroll: true }); } catch (err) {}
+      });
+    });
+  })();
 })();

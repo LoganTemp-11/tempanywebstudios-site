@@ -32,6 +32,22 @@
   document.documentElement.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
 })();
 </script>
+<style>/* Tempany Web Studios tear-off: arriving from or leaving for the studio site, the page tears off the pad (same as tw-base.css). */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-new(root) { animation: none; }
+  ::view-transition-old(root), :root:active-view-transition-type(back)::view-transition-new(root) {
+    --m: radial-gradient(circle at 7px 7px, #0000 3px, #000 3.5px) 0 0 / 14px 14px repeat-x, linear-gradient(#000 0 0) -60px 14px / calc(100% + 120px) calc(100% + 60px) no-repeat;
+    z-index: 1; mix-blend-mode: normal; transform-origin: 0 100%; -webkit-mask: var(--m); mask: var(--m); -webkit-mask-clip: no-clip; mask-clip: no-clip;
+    filter: drop-shadow(0 18px 22px rgba(40,30,14,.32)); animation: tw-tear .42s both;
+  }
+  :root:active-view-transition-type(back)::view-transition-old(root) { z-index: 0; animation: none; }
+  :root:active-view-transition-type(back)::view-transition-new(root) { animation-name: tw-lay; }
+  @keyframes tw-tear { 26% { transform: rotate(1.5deg); animation-timing-function: cubic-bezier(.55,0,.9,.45); } to { transform: translateY(105vh) rotate(-4deg); } }
+  @keyframes tw-lay { from { transform: translateY(105vh) rotate(-4deg); animation-timing-function: cubic-bezier(.1,.55,.45,1); } 74% { transform: rotate(1.5deg); } }
+}
+</style>
+<script>addEventListener('pagereveal', function (e) { var a = window.navigation && navigation.activation; if (e.viewTransition && e.viewTransition.types && a && a.navigationType === 'traverse') e.viewTransition.types.add('back'); });</script>
 </head>
 <body>
 <a class="skip" href="#doc">Skip to the page</a>
