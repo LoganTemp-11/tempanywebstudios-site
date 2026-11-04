@@ -242,3 +242,8 @@ html { scroll-padding-top: 5.5rem; }
 /* 60ch and 64ch are the columns' widths at the body size (19px); the footer is set at 16px, so 19/16 of them. */
 main:has(.tw-ask) + .tw-foot { width: calc(min(71.25ch, 100%) - 2 * var(--sc-gutter)); max-width: none; margin-inline: auto; }
 main:has(.tw-doc) + .tw-foot { width: calc(min(76ch, 100%) - 2 * var(--sc-gutter)); max-width: none; margin-inline: auto; margin-top: 0; }
+
+/* The light switch sits at the far right of the bar, as on the homepage; on phones it stays on the first row beside the mark. */
+.tw-index .tw-lights { order: 5; margin-left: .25rem; }
+.tw-index__list { margin-left: auto; }
+@media (max-width: 720px) { .tw-index .tw-lights { order: 2; margin-left: auto; } .tw-index__list { margin-left: calc(-1 * var(--sc-gutter)); } }
