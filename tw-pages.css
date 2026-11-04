@@ -17,17 +17,17 @@
 /* Alegreya Sans Bold has a narrow space: bold runs get a wider word gap (3px at 16px in Chromium). */
 strong, b, :is(h2, h3).tw-label__eyebrow { word-spacing: .065em; }
 /* A field or link reached by keyboard is scrolled clear of the index bar fixed to the foot. */
-html { scroll-padding-bottom: 5.5rem; }
+html { scroll-padding-top: 5.5rem; }
 
 /* ---------- the index: fixed to the foot, jumps rather than markets ---------- */
 .tw-index {
-  position: fixed; inset: auto 0 0 0; z-index: var(--sc-z-chrome);
+  position: sticky; top: 0; z-index: var(--sc-z-chrome);
   display: flex; align-items: center; gap: var(--sc-4);
   padding: var(--sc-3) var(--sc-gutter);
-  padding-bottom: max(var(--sc-3), env(safe-area-inset-bottom));
+  padding-top: max(var(--sc-3), env(safe-area-inset-top));
   background: color-mix(in srgb, var(--sc-canvas) 88%, transparent);
   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  border-top: 1px solid var(--tw-line);
+  border-bottom: 1px solid var(--tw-line);
   font-family: var(--sc-font-mono);
   font-size: var(--sc-t-xs); letter-spacing: 0;
 }
@@ -39,7 +39,7 @@ html { scroll-padding-bottom: 5.5rem; }
 .tw-index a { color: var(--sc-ink-soft); text-decoration: none; display:inline-flex; align-items:center; min-height:44px; }
 .tw-index a:hover { color: var(--sc-ink); }
 .tw-index__ask { color: var(--sc-accent-ink) !important; background: var(--sc-accent); padding: 0 1rem; border-radius: 3px; font-weight: 700; }
-@media (max-width: 720px) { .tw-index__list li:not(:last-child) { display: none; } .tw-index__mark span { display:none; } }
+@media (max-width: 720px) { .tw-index { flex-wrap: wrap; row-gap: 0; } .tw-index__mark span { display:none; } .tw-index__list { order: 3; flex: 1 0 100%; margin: 0 calc(-1 * var(--sc-gutter)); padding: 0 var(--sc-gutter); overflow-x: auto; scrollbar-width: none; white-space: nowrap; } .tw-index__list::-webkit-scrollbar { display: none; } .tw-index__list li.tw-where { display: none; } }
 
 /* Where I work: a button in the bar that opens the town list upwards. */
 .tw-where { position: relative; }
@@ -47,7 +47,7 @@ html { scroll-padding-bottom: 5.5rem; }
 .tw-where__btn::after { content: ""; width: .5em; height: .5em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-135deg) translate(-1px, -1px); transition: transform var(--sc-d-fast) var(--sc-ease-out); }
 .tw-where__btn[aria-expanded="true"]::after { transform: rotate(45deg) translate(-2px, -2px); }
 .tw-where__btn:hover, .tw-where__btn[aria-expanded="true"] { color: var(--sc-ink); }
-.tw-where__list { position: absolute; bottom: calc(100% + .75rem); left: 50%; transform: translateX(-50%); min-width: 12rem; margin: 0; padding: .5rem; list-style: none; background: var(--tw-glass); border: 1px solid var(--tw-line-strong); border-radius: 4px; box-shadow: var(--sc-e3); text-transform: none; letter-spacing: 0; font-family: var(--sc-font-text); font-size: var(--sc-t-sm); }
+.tw-where__list { position: absolute; top: calc(100% + .75rem); left: 50%; transform: translateX(-50%); min-width: 12rem; margin: 0; padding: .5rem; list-style: none; background: var(--tw-glass); border: 1px solid var(--tw-line-strong); border-radius: 4px; box-shadow: var(--sc-e3); text-transform: none; letter-spacing: 0; font-family: var(--sc-font-text); font-size: var(--sc-t-sm); }
 .tw-where__list[hidden] { display: none; }
 .tw-where__list a, .tw-where__list span { display: flex; align-items: center; min-height: 44px; padding: 0 .9rem; border-radius: 2px; color: var(--sc-ink); text-decoration: none; }
 .tw-where__list a:hover { background: color-mix(in srgb, var(--sc-ink) 8%, transparent); }

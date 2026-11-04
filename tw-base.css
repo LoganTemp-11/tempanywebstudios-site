@@ -207,3 +207,50 @@ html body .act--work a,html body .act--demos a,html body .act--reply a{text-deco
 :root:not([data-theme="dark"]) .lib-flag--live { color: #141516 !important; background: linear-gradient(transparent 12%, #f5d547 12%, #f5d547 88%, transparent 88%); padding: 0 .15em; }
 :root:not([data-theme="dark"]) .lib-entry__no { color: #141516; text-decoration: underline; text-decoration-color: #f5d547; text-decoration-thickness: .14em; text-underline-offset: .08em; }
 :root:not([data-theme="dark"]) .tw-sheet__foot a { color: #141516; text-decoration-color: #f5d547; text-decoration-thickness: 3px; }
+
+/* ---------- The bar on top, Back to the top, and the sketchbook (4 Nov 2026) ----------
+   The homepage's top edge stays pinned to the top as you scroll (sub-pages pin their index bar
+   the same way, in tw-pages.css). Once you are a screen down, a Back to the top tab appears
+   (made by tw-page.js): the homepage's top here, the front page from anywhere else. On the
+   homepage each act after the sketchpad is a sheet of a sketchbook, ring-bound along its top
+   edge, that swings down flat onto the pad as you scroll to it. */
+html body .te { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--sc-canvas) 90%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .2s; }
+html body.tw-scrolled .te { border-bottom-color: var(--tw-line); }
+html { scroll-padding-top: 4.5rem; }
+@media (max-width: 719px) {
+  html body .te__nav { display: block; order: 10; flex: 1 0 100%; margin: 0 -12px; padding: 0 12px; overflow-x: auto; scrollbar-width: none; -webkit-mask: linear-gradient(90deg, #000 85%, #0000); mask: linear-gradient(90deg, #000 85%, #0000); }
+  html body .te__nav::-webkit-scrollbar { display: none; }
+  html body .te__nav ul { flex-wrap: nowrap; white-space: nowrap; column-gap: 1.1rem; padding-right: 2rem; }
+  html body .te__nav li:has(> .te__where) { display: none; }
+  html body .sk { --sk-chrome: calc(var(--te-h) + var(--sk-safe-t) + 68px); }
+  html { scroll-padding-top: 7.5rem; }
+}
+
+.tw-totop { position: fixed; left: max(16px, env(safe-area-inset-left)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 35; display: inline-flex; align-items: center; gap: .45rem; min-height: 44px; padding: 0 1rem 0 .85rem; border-radius: 999px; background: var(--sc-ink); color: var(--sc-canvas) !important; font: 700 1rem/1 var(--sc-font-text); text-decoration: none !important; box-shadow: 0 8px 22px -10px rgba(0,0,0,.5); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .22s, transform .22s; }
+.tw-totop svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.tw-totop.is-on { opacity: 1; transform: none; pointer-events: auto; }
+.tw-totop:hover { filter: brightness(1.15); }
+.tw-totop:focus-visible { outline: 2px solid #f5d547; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .tw-totop { transition: none; } }
+@media print { .tw-totop { display: none; } }
+
+#work, #quote, #me, #reply { position: relative; z-index: 1; }
+:where(#quote, #me) { background-color: var(--sc-canvas); }
+#work::after, #quote::after, #me::after, #reply::after {
+  content: ""; position: absolute; top: 7px; left: 50%; width: min(100% - 32px, 1180px); height: 16px; transform: translateX(-50%); pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, #0000 3.2px, var(--sc-ink) 3.6px, var(--sc-ink) 5.2px, #0000 5.6px) 0 0 / 26px 16px repeat-x;
+  opacity: .55;
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    #work, #quote, #me, #reply {
+      transform-origin: 50% 0;
+      animation: tw-sheet linear both; animation-timeline: view(); animation-range: entry 0% entry 70%;
+    }
+    @keyframes tw-sheet {
+      from { transform: perspective(1300px) rotateX(-58deg); filter: drop-shadow(0 -26px 26px rgba(20,21,22,.35)); }
+      70%  { transform: perspective(1300px) rotateX(-6deg); filter: drop-shadow(0 -10px 14px rgba(20,21,22,.2)); }
+      to   { transform: none; filter: none; }
+    }
+  }
+}
