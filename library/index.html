@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="/tw-pages.css?v=8">
 <style>
   .vh { position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
-  /* The shelf: every site as a spine, strongest on the left. A spine is a jump to its entry. */
+  /* The shelf: every site as a spine, strongest on the left. A spine opens that site. */
   .lib-shelf { max-width: 56rem; margin: 0; }
   .lib-shelf__row { list-style: none; margin: 0; padding: 0 var(--sc-3); display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: clamp(.3rem, 1vw, .7rem); align-items: end; height: clamp(16rem, 48vh, 26rem); }
   .lib-shelf__row li { height: 100%; display: flex; align-items: flex-end; }
@@ -164,18 +164,18 @@ addEventListener('pagereveal', function (e) {
 
 <main id="main">
 
-  <!-- 1 · The shelf. Every site as a spine, strongest on the left; each spine jumps to its entry. -->
+  <!-- 1 · The shelf. Every site as a spine, strongest on the left; each spine opens that site. -->
   <section class="tw-page tw-opening" data-sc-act="flow" aria-labelledby="h1">
     <h1 id="h1" class="tw-eyebrow" style="margin-bottom:var(--sc-5)">The library: every site I&rsquo;ve built, on one shelf, strongest first</h1>
     <nav class="lib-shelf" aria-label="The shelf, in rank order">
       <ol class="lib-shelf__row">
-      <li><a class="lib-spine" href="#lib-gloaming" style="--sp-bg:#2440E6;--sp-fg:#F6F6F3;--sp-h:100%" aria-label="Number 1, Gloaming Coffee"><span class="lib-spine__no">01</span><span class="lib-spine__name">Gloaming Coffee</span></a></li>
-      <li><a class="lib-spine" href="#lib-salon" style="--sp-bg:#18191c;--sp-fg:#d79a68;--sp-h:95%" aria-label="Number 2, Brackenwynd Hair Studio"><span class="lib-spine__no">02</span><span class="lib-spine__name">Brackenwynd Hair Studio</span></a></li>
-      <li><a class="lib-spine" href="#lib-clinic" style="--sp-bg:#f1f5f4;--sp-fg:#1f5d5a;--sp-h:90%" aria-label="Number 3, Rowanbank Physiotherapy"><span class="lib-spine__no">03</span><span class="lib-spine__name">Rowanbank Physiotherapy</span></a></li>
-      <li><a class="lib-spine" href="#lib-jennifer" style="--sp-bg:#e6f0ec;--sp-fg:#1d6470;--sp-h:96%" aria-label="Number 4, Jennifer Ellis Yoga"><span class="lib-spine__no">04</span><span class="lib-spine__name">Jennifer Ellis Yoga</span></a></li>
-      <li><a class="lib-spine" href="#lib-rayney" style="--sp-bg:#173f36;--sp-fg:#f2ece0;--sp-h:88%" aria-label="Number 5, Rayney Day Pet Services"><span class="lib-spine__no">05</span><span class="lib-spine__name">Rayney Day Pet Services</span></a></li>
-      <li><a class="lib-spine" href="#lib-trades" style="--sp-bg:#efe8da;--sp-fg:#7a4a1c;--sp-h:90%" aria-label="Number 6, Whinstone Joinery"><span class="lib-spine__no">06</span><span class="lib-spine__name">Whinstone Joinery</span></a></li>
-      <li><a class="lib-spine" href="#lib-professional" style="--sp-bg:#ece4d4;--sp-fg:#2f5a3a;--sp-h:85%" aria-label="Number 7, Ochil Ledger"><span class="lib-spine__no">07</span><span class="lib-spine__name">Ochil Ledger</span></a></li>
+      <li><a class="lib-spine" href="/demos/gloaming/" target="_blank" rel="noopener noreferrer" style="--sp-bg:#2440E6;--sp-fg:#F6F6F3;--sp-h:100%" aria-label="Number 1, Gloaming Coffee, opens the site in a new tab"><span class="lib-spine__no">01</span><span class="lib-spine__name">Gloaming Coffee</span></a></li>
+      <li><a class="lib-spine" href="/demos/salon-v2/" target="_blank" rel="noopener noreferrer" style="--sp-bg:#18191c;--sp-fg:#d79a68;--sp-h:95%" aria-label="Number 2, Brackenwynd Hair Studio, opens the site in a new tab"><span class="lib-spine__no">02</span><span class="lib-spine__name">Brackenwynd Hair Studio</span></a></li>
+      <li><a class="lib-spine" href="/demos/clinic/" target="_blank" rel="noopener noreferrer" style="--sp-bg:#f1f5f4;--sp-fg:#1f5d5a;--sp-h:90%" aria-label="Number 3, Rowanbank Physiotherapy, opens the site in a new tab"><span class="lib-spine__no">03</span><span class="lib-spine__name">Rowanbank Physiotherapy</span></a></li>
+      <li><a class="lib-spine" href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer" style="--sp-bg:#e6f0ec;--sp-fg:#1d6470;--sp-h:96%" aria-label="Number 4, Jennifer Ellis Yoga, opens the site in a new tab"><span class="lib-spine__no">04</span><span class="lib-spine__name">Jennifer Ellis Yoga</span></a></li>
+      <li><a class="lib-spine" href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer" style="--sp-bg:#173f36;--sp-fg:#f2ece0;--sp-h:88%" aria-label="Number 5, Rayney Day Pet Services, opens the site in a new tab"><span class="lib-spine__no">05</span><span class="lib-spine__name">Rayney Day Pet Services</span></a></li>
+      <li><a class="lib-spine" href="/demos/trades/" target="_blank" rel="noopener noreferrer" style="--sp-bg:#efe8da;--sp-fg:#7a4a1c;--sp-h:90%" aria-label="Number 6, Whinstone Joinery, opens the site in a new tab"><span class="lib-spine__no">06</span><span class="lib-spine__name">Whinstone Joinery</span></a></li>
+      <li><a class="lib-spine" href="/demos/professional/" target="_blank" rel="noopener noreferrer" style="--sp-bg:#ece4d4;--sp-fg:#2f5a3a;--sp-h:85%" aria-label="Number 7, Ochil Ledger, opens the site in a new tab"><span class="lib-spine__no">07</span><span class="lib-spine__name">Ochil Ledger</span></a></li>
       </ol>
       <div class="lib-shelf__plank" aria-hidden="true"></div>
       <p class="lib-shelf__key"><span>&larr; strongest</span><span>Pick a spine</span></p>
