@@ -7,23 +7,23 @@
 @font-face{font-family:"Work Sans";font-weight:600;font-display:swap;src:url(/demos/gloaming/assets/fonts/work-sans-latin-600-normal.woff2) format("woff2")}
 @font-face{font-family:"Azeret Mono";font-weight:500;font-display:swap;src:url(/demos/gloaming/assets/fonts/azeret-mono-latin-500-normal.woff2) format("woff2")}
 :root:root{
-  --sc-canvas:#f6f6f3; --sc-surface:#ecebe6; --sc-ink:#160f0c; --sc-ink-soft:#625853;
-  --sc-accent:#2440e6; --sc-accent-ink:#ffffff; --sc-shadow-color:20 30% 20%;
-  --tw-glass:#ffffff; --tw-line:rgba(22,15,12,.14); --tw-line-strong:#9a918b; --tw-ink-quiet:#6f6560; --tw-plate:#ecebe6;
+  --sc-canvas:#f4f5f2; --sc-surface:#e8ebe7; --sc-ink:#111414; --sc-ink-soft:#56605e;
+  --sc-accent:#d63a1e; --sc-accent-ink:#ffffff; --sc-shadow-color:180 30% 15%;
+  --tw-glass:#ffffff; --tw-line:rgba(17,20,20,.14); --tw-line-strong:#8f9997; --tw-ink-quiet:#66706e; --tw-plate:#e8ebe7;
   --sc-font-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
   --sc-font-text:"Work Sans","Helvetica Neue",Arial,sans-serif;
   --sc-font-mono:"Azeret Mono",ui-monospace,monospace;
-  --sk-paper:#ffffff; --sk-graphite:#160f0c; --sk-faint:#4a403b; --sk-hatch:#8a807a;
-  --sk-rust:#2440e6; --sk-rust-ink:#ffffff;
+  --sk-paper:#ffffff; --sk-graphite:#111414; --sk-faint:#454d4c; --sk-hatch:#858d8b;
+  --sk-rust:#d63a1e; --sk-rust-ink:#ffffff;
   --sk-text:"Work Sans","Helvetica Neue",Arial,sans-serif;
-  --sk-shadow:0 1px 1px rgba(22,15,12,.08),0 10px 24px -10px rgba(22,15,12,.22),0 36px 60px -34px rgba(22,15,12,.30);
-  --esp:#110c0a; --esp-2:#1b1411; --milk:#f5f3ef; --milk-soft:#ada29b; --cob-lit:#6f86ff;
+  --sk-shadow:0 1px 1px rgba(22,15,12,.08),0 10px 24px -10px rgba(22,15,12,.22),0 36px 60px -34px rgba(15,59,58,.35);
+  --esp:#0f3b3a; --esp-2:#164a48; --milk:#f4f5f2; --milk-soft:#a9c2bf; --cob-lit:#ff7a5c;
 }
 :root:root[data-theme="dark"]{
-  --sc-canvas:#110c0a; --sc-surface:#1b1411; --sc-ink:#f5f3ef; --sc-ink-soft:#ada29b;
-  --sc-accent:#6f86ff; --sc-accent-ink:#0b0d1f; --tw-glass:#1b1411; --tw-line:rgba(245,243,239,.13);
-  --tw-line-strong:#5f5550; --tw-ink-quiet:#968a83; --tw-plate:#1b1411;
-  --esp:#1b1411; --esp-2:#261c17;
+  --sc-canvas:#0b1717; --sc-surface:#122322; --sc-ink:#f4f5f2; --sc-ink-soft:#a3b3b1;
+  --sc-accent:#ff7a5c; --sc-accent-ink:#111414; --tw-glass:#122322; --tw-line:rgba(244,245,242,.13);
+  --tw-line-strong:#4f605e; --tw-ink-quiet:#8a9a98; --tw-plate:#122322;
+  --esp:#0f3b3a; --esp-2:#164a48;
 }
 body{font-family:var(--sc-font-text)}
 /* the headline: café menu-board type */
@@ -40,9 +40,9 @@ html body .tw-submit,.sk-send button,.sk-send a{border-radius:999px}
 /* espresso spreads */
 html body .act--work,.act--demos,.act--reply{
   --sc-canvas:var(--esp); --sc-surface:var(--esp-2); --tw-plate:var(--esp-2); --tw-glass:var(--esp-2);
-  --sc-ink:var(--milk); --sc-ink-soft:var(--milk-soft); --tw-ink-quiet:#968a83;
+  --sc-ink:var(--milk); --sc-ink-soft:var(--milk-soft); --tw-ink-quiet:#8fb0ac;
   --tw-line:rgba(245,243,239,.13); --tw-line-strong:rgba(245,243,239,.3);
-  --sc-accent:var(--cob-lit); --sc-accent-ink:#0b0d1f;
+  --sc-accent:var(--cob-lit); --sc-accent-ink:#111414;
   background:var(--esp); color:var(--milk);
   box-shadow:0 0 0 100vmax var(--esp); clip-path:inset(0 -100vmax);
 }
