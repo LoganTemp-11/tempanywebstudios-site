@@ -6,7 +6,7 @@
 @font-face{font-family:"Work Sans";font-weight:500;font-display:swap;src:url(/demos/gloaming/assets/fonts/work-sans-latin-500-normal.woff2) format("woff2")}
 @font-face{font-family:"Work Sans";font-weight:600;font-display:swap;src:url(/demos/gloaming/assets/fonts/work-sans-latin-600-normal.woff2) format("woff2")}
 @font-face{font-family:"Azeret Mono";font-weight:500;font-display:swap;src:url(/demos/gloaming/assets/fonts/azeret-mono-latin-500-normal.woff2) format("woff2")}
-:root{
+:root:root{
   --sc-canvas:#f6f6f3; --sc-surface:#ecebe6; --sc-ink:#160f0c; --sc-ink-soft:#625853;
   --sc-accent:#2440e6; --sc-accent-ink:#ffffff; --sc-shadow-color:20 30% 20%;
   --tw-glass:#ffffff; --tw-line:rgba(22,15,12,.14); --tw-line-strong:#9a918b; --tw-ink-quiet:#6f6560; --tw-plate:#ecebe6;
@@ -19,7 +19,7 @@
   --sk-shadow:0 1px 1px rgba(22,15,12,.08),0 10px 24px -10px rgba(22,15,12,.22),0 36px 60px -34px rgba(26,47,194,.35);
   --esp:#110c0a; --esp-2:#1b1411; --milk:#f5f3ef; --milk-soft:#ada29b; --cob-lit:#6f86ff;
 }
-:root[data-theme="dark"]{
+:root:root[data-theme="dark"]{
   --sc-canvas:#110c0a; --sc-surface:#1b1411; --sc-ink:#f5f3ef; --sc-ink-soft:#ada29b;
   --sc-accent:#6f86ff; --sc-accent-ink:#0b0d1f; --tw-glass:#1b1411; --tw-line:rgba(245,243,239,.13);
   --tw-line-strong:#5f5550; --tw-ink-quiet:#968a83; --tw-plate:#1b1411;
@@ -27,18 +27,18 @@
 }
 body{font-family:var(--sc-font-text)}
 /* the headline: café menu-board type */
-.sk h1{font:800 clamp(2rem,1.4rem + 2.6vw,3.6rem)/.92 var(--sc-font-display);text-transform:uppercase;letter-spacing:0;color:var(--sc-ink)}
-.sk h1 .ink-hi{color:var(--sk-rust);background:none;padding:0}
-.sk-facts{font-family:var(--sc-font-mono);font-size:.875rem;letter-spacing:.02em;text-transform:uppercase;color:var(--sk-graphite);border-color:var(--sk-graphite)}
-.sk-facts span{background:none!important;color:inherit!important}
-.act h2,.tw-quote>h2{font-weight:800;text-transform:uppercase;letter-spacing:0;line-height:.92;font-size:clamp(2.2rem,1.5rem + 2.6vw,3.6rem)}
-.act h3,.tw-clause h3{font-weight:700;text-transform:uppercase;letter-spacing:.01em}
-.tw-figure{font-weight:800}
-.tw-clause__num{font-family:var(--sc-font-mono);color:var(--sc-accent);font-weight:500}
-.tw-clause{border-top-color:var(--sc-ink)}
-.tw-submit,.sk-send button,.sk-send a{border-radius:999px}
+html body .sk h1{font:800 clamp(2rem,1.4rem + 2.6vw,3.6rem)/.92 var(--sc-font-display);text-transform:uppercase;letter-spacing:0;color:var(--sc-ink)}
+html body .sk h1 .ink-hi{color:var(--sk-rust);background:none;padding:0}
+html body .sk-facts{font-family:var(--sc-font-mono);font-size:.875rem;letter-spacing:.02em;text-transform:uppercase;color:var(--sk-graphite);border-color:var(--sk-graphite)}
+html body .sk-facts span{background:none!important;color:inherit!important}
+html body .act h2,.tw-quote>h2{font-weight:800;text-transform:uppercase;letter-spacing:0;line-height:.92;font-size:clamp(2.2rem,1.5rem + 2.6vw,3.6rem)}
+html body .act h3,.tw-clause h3{font-weight:700;text-transform:uppercase;letter-spacing:.01em}
+html body .tw-figure{font-weight:800}
+html body .tw-clause__num{font-family:var(--sc-font-mono);color:var(--sc-accent);font-weight:500}
+html body .tw-clause{border-top-color:var(--sc-ink)}
+html body .tw-submit,.sk-send button,.sk-send a{border-radius:999px}
 /* espresso spreads */
-.act--work,.act--demos,.act--reply{
+html body .act--work,.act--demos,.act--reply{
   --sc-canvas:var(--esp); --sc-surface:var(--esp-2); --tw-plate:var(--esp-2); --tw-glass:var(--esp-2);
   --sc-ink:var(--milk); --sc-ink-soft:var(--milk-soft); --tw-ink-quiet:#968a83;
   --tw-line:rgba(245,243,239,.13); --tw-line-strong:rgba(245,243,239,.3);
@@ -46,7 +46,9 @@ body{font-family:var(--sc-font-text)}
   background:var(--esp); color:var(--milk);
   box-shadow:0 0 0 100vmax var(--esp); clip-path:inset(0 -100vmax);
 }
-.act--work a,.act--demos a,.act--reply a{color:var(--cob-lit)}
-.act--work::before,.act--demos::before,.act--reply::before,.act--quote::before,.act--me::before{display:none}
-.act--quote{padding-top:clamp(3rem,5vw,5rem)}
-.ink-banner{background:var(--sc-accent);color:#fff;font:600 14px/1.35 var(--sc-font-text);text-align:center;padding:8px 16px}
+html body .act--work a,.act--demos a,.act--reply a{color:var(--cob-lit)}
+html body .act--work::before,.act--demos::before,.act--reply::before,.act--quote::before,.act--me::before{display:none}
+html body .act--quote{padding-top:clamp(3rem,5vw,5rem)}
+html body .ink-banner{background:var(--sc-accent);color:#fff;font:600 14px/1.35 var(--sc-font-text);text-align:center;padding:8px 16px}
+
+html body .act blockquote,html body .act blockquote p,html body .act figure blockquote{font-family:var(--sc-font-text);font-weight:400;text-transform:none;font-size:1.15rem;line-height:1.55}
