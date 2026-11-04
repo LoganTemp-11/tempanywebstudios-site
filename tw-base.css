@@ -199,3 +199,11 @@ html body .act blockquote,html body .act blockquote p,html body .act figure bloc
 html body .tw-submit,html body .sk-send button,html body .sk-send a,html body .sk [type=submit]{box-shadow:inset 0 0 0 1.5px #141516}
 html body .act--work .tw-submit,html body .act--reply .tw-submit{box-shadow:none}
 html body .act--work a,html body .act--demos a,html body .act--reply a{text-decoration-color:#f5d547}
+
+/* yellow can't be read as text on white: on paper, accent text is ink with a highlighter swipe */
+:root:not([data-theme="dark"]) .tw-card dd b,
+:root:not([data-theme="dark"]) .tw-where__list [aria-current],
+:root:not([data-theme="dark"]) .tw-week__hold,
+:root:not([data-theme="dark"]) .lib-flag--live { color: #141516 !important; background: linear-gradient(transparent 12%, #f5d547 12%, #f5d547 88%, transparent 88%); padding: 0 .15em; }
+:root:not([data-theme="dark"]) .lib-entry__no { color: #141516; text-decoration: underline; text-decoration-color: #f5d547; text-decoration-thickness: .14em; text-underline-offset: .08em; }
+:root:not([data-theme="dark"]) .tw-sheet__foot a { color: #141516; text-decoration-color: #f5d547; text-decoration-thickness: 3px; }
