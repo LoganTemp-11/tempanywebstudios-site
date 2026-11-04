@@ -1,0 +1,37 @@
+/* Ink and marker: paper stays for the sketchpad, the work and the reply go onto ink-navy spreads,
+   vermilion takes the numbers and the buttons, highlighter goes under the selling facts. */
+:root{
+  --sc-ink:#1f2430; --sc-ink-soft:#545866; --tw-ink-quiet:#646876;
+  --sc-accent:#b83d1e; --sc-accent-ink:#ffffff;
+  --sk-rust:#c2411f; --sk-rust-ink:#ffffff;
+  --ink-navy:#16324f; --ink-navy-2:#1e4166; --ink-on:#f3eee3; --ink-on-soft:#c3ccd8;
+  --ink-verm:#e2593a; --ink-hi:#f5d547;
+}
+:root[data-theme="dark"]{
+  --sc-canvas:#15171d; --sc-surface:#1b1e26; --sc-ink:#efe9dd; --sc-ink-soft:#b4aea2;
+  --sc-accent:#f0704f; --sc-accent-ink:#15171d; --tw-plate:#1b1e26;
+  --ink-navy:#0f2238; --ink-navy-2:#173152; --ink-verm:#f0704f;
+}
+.ink-hi{background:linear-gradient(transparent 10%,var(--ink-hi) 10%,var(--ink-hi) 90%,transparent 90%);color:#1f2430;padding:0 .18em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.sk-facts span:first-child,.sk-facts span:last-child{background:linear-gradient(transparent 12%,var(--ink-hi) 12%,var(--ink-hi) 88%,transparent 88%);color:#1f2430;padding:0 .2em}
+/* the spreads */
+.act--work,.act--demos,.act--reply{
+  --sc-canvas:var(--ink-navy); --sc-surface:var(--ink-navy-2); --tw-plate:var(--ink-navy-2);
+  --sc-ink:var(--ink-on); --sc-ink-soft:var(--ink-on-soft); --tw-ink-quiet:#a9b6c6;
+  --tw-line:rgba(243,238,227,.18); --tw-line-strong:rgba(243,238,227,.34);
+  --sc-accent:var(--ink-hi); --sc-accent-ink:#1f2430;
+  background:var(--ink-navy); color:var(--ink-on);
+  box-shadow:0 0 0 100vmax var(--ink-navy); clip-path:inset(0 -100vmax);
+}
+.act--work::before,.act--demos::before,.act--reply::before,.act--quote::before,.act--me::before{display:none}
+.act--work a,.act--demos a,.act--reply a{color:var(--ink-hi)}
+.act--work .plate__pitch,.act--demos .plate__pitch,.act--demos .plate--yours *{color:inherit}
+.act--quote{padding-top:clamp(3rem,5vw,5rem)}
+.act--me{background:var(--sc-surface);box-shadow:0 0 0 100vmax var(--sc-surface);clip-path:inset(0 -100vmax)}
+/* vermilion: clause numbers and the big figures */
+.tw-clause__num{color:var(--ink-verm);font-size:1.6rem;padding-top:0}
+.tw-clause{border-top-color:var(--sc-ink)}
+.act--quote .tw-figure:first-of-type{background:linear-gradient(transparent 18%,var(--ink-hi) 18%,var(--ink-hi) 86%,transparent 86%);display:inline-block;padding:0 .12em;color:#1f2430!important}
+.act--quote .tw-figure:first-of-type small{color:#545866}
+.tw-submit{border-radius:999px}
+.ink-banner{background:var(--ink-hi);color:#1f2430;font:700 15px/1.35 var(--sc-font-text);text-align:center;padding:8px max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px))}
