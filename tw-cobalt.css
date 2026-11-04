@@ -13,10 +13,10 @@
   --sc-font-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
   --sc-font-text:"Work Sans","Helvetica Neue",Arial,sans-serif;
   --sc-font-mono:"Azeret Mono",ui-monospace,monospace;
-  --sk-paper:#ffffff; --sk-graphite:#1a2fc2; --sk-faint:#5363c9; --sk-hatch:#8e9be0;
+  --sk-paper:#ffffff; --sk-graphite:#160f0c; --sk-faint:#4a403b; --sk-hatch:#8a807a;
   --sk-rust:#2440e6; --sk-rust-ink:#ffffff;
   --sk-text:"Work Sans","Helvetica Neue",Arial,sans-serif;
-  --sk-shadow:0 1px 1px rgba(22,15,12,.08),0 10px 24px -10px rgba(22,15,12,.22),0 36px 60px -34px rgba(26,47,194,.35);
+  --sk-shadow:0 1px 1px rgba(22,15,12,.08),0 10px 24px -10px rgba(22,15,12,.22),0 36px 60px -34px rgba(22,15,12,.30);
   --esp:#110c0a; --esp-2:#1b1411; --milk:#f5f3ef; --milk-soft:#ada29b; --cob-lit:#6f86ff;
 }
 :root:root[data-theme="dark"]{
