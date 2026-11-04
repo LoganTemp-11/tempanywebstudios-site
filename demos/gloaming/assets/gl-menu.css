@@ -1,0 +1,92 @@
+/* Gloaming: the house card. One menu for every page: where to go, and the lights.
+   Its own tokens, keyed to the page theme, so it reads the same on the film page
+   and the plain pages. */
+.glm {
+  --glm-bg: #17100A; --glm-ink: #F1E6D6; --glm-soft: #B9A48C; --glm-rule: rgba(241,230,214,.16);
+  --glm-accent: #E2583E; --glm-hover: rgba(241,230,214,.06); --glm-scrim: rgba(6,4,2,.62);
+  position: fixed; inset: 0; z-index: 120;
+  font-family: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+}
+:root[data-theme="light"] .glm {
+  --glm-bg: #F6EEE1; --glm-ink: #22170F; --glm-soft: #6E5A47; --glm-rule: rgba(34,23,15,.2);
+  --glm-accent: #A3361F; --glm-hover: rgba(34,23,15,.05); --glm-scrim: rgba(40,28,18,.35);
+}
+.glm[hidden] { display: none !important; }
+.glm__scrim { position: absolute; inset: 0; background: var(--glm-scrim); backdrop-filter: blur(3px); opacity: 0; transition: opacity .35s ease; }
+.glm.is-open .glm__scrim { opacity: 1; }
+
+.glm__card {
+  position: absolute; top: 0; right: 0; bottom: 0; width: min(30rem, 100%);
+  display: flex; flex-direction: column; gap: 1.4rem; overflow: auto; overscroll-behavior: contain;
+  padding: max(1.4rem, env(safe-area-inset-top, 0px)) max(1.5rem, env(safe-area-inset-right, 0px)) max(1.4rem, env(safe-area-inset-bottom, 0px)) 1.6rem;
+  background:
+    repeating-linear-gradient(0deg, rgba(128,100,70,.03) 0 1px, transparent 1px 4px),
+    var(--glm-bg);
+  color: var(--glm-ink);
+  box-shadow: -30px 0 60px -20px rgba(0,0,0,.5);
+  transform: translateX(104%); transition: transform .5s cubic-bezier(.2,.8,.2,1);
+}
+.glm.is-open .glm__card { transform: none; }
+
+.glm__head { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: .3rem 1rem; border-bottom: 1px dashed var(--glm-rule); padding-bottom: 1.1rem; }
+.glm__eyebrow { grid-column: 1; margin: 0; font: 500 .7rem/1 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; color: var(--glm-soft); }
+.glm__h { grid-column: 1; margin: 0; font: 400 clamp(2.6rem, 2rem + 2.4vw, 3.4rem)/.92 "Instrument Serif", Georgia, serif; letter-spacing: -.02em; }
+.glm__h em { color: var(--glm-accent); }
+.glm__x { grid-column: 2; grid-row: 1 / span 2; appearance: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--glm-rule); background: transparent; color: var(--glm-ink); cursor: pointer; display: grid; place-items: center; }
+.glm__x:hover { border-color: var(--glm-ink); }
+.glm__x svg { width: 14px; height: 14px; }
+
+.glm__group { margin: 0; }
+.glm__label { margin: 0 0 .5rem; font: 500 .68rem/1 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .16em; text-transform: uppercase; color: var(--glm-soft); }
+.glm__list { list-style: none; margin: 0; padding: 0; }
+.glm__list a {
+  display: grid; grid-template-columns: 2rem auto 1fr auto; align-items: baseline; gap: .6rem;
+  padding: .55rem .4rem; margin: 0 -.4rem; border-radius: 6px; min-height: 44px;
+  color: var(--glm-ink); text-decoration: none;
+}
+.glm__list a:hover { background: var(--glm-hover); }
+.glm__n { font: 400 .72rem/1 "JetBrains Mono", ui-monospace, monospace; color: var(--glm-accent); font-variant-numeric: tabular-nums; }
+.glm__t { font: 400 1.65rem/1.05 "Instrument Serif", Georgia, serif; letter-spacing: -.01em; }
+.glm__dots { border-bottom: 1px dotted var(--glm-rule); transform: translateY(-.3rem); min-width: 1rem; }
+.glm__k { font: 400 .72rem/1 "JetBrains Mono", ui-monospace, monospace; color: var(--glm-soft); text-transform: lowercase; white-space: nowrap; }
+.glm__list a[aria-current="page"] .glm__t { font-style: italic; color: var(--glm-accent); }
+.glm__list a[aria-current="page"] .glm__k::before { content: "you're here · "; }
+.glm__list--small a { grid-template-columns: 2rem auto 1fr auto; min-height: 40px; padding-block: .35rem; }
+.glm__list--small .glm__t { font: 500 .95rem/1.2 "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif; letter-spacing: 0; }
+
+/* Lights: three swatches, one choice */
+.glm__lights { border-top: 1px dashed var(--glm-rule); padding-top: 1.1rem; }
+.glm__opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; border: 0; margin: 0; padding: 0; min-width: 0; }
+.glm__opt { position: relative; display: grid; gap: .45rem; justify-items: center; text-align: center; cursor: pointer; padding: .7rem .4rem .6rem; border: 1px solid var(--glm-rule); border-radius: 12px; transition: border-color .2s, background .2s; }
+.glm__opt:hover { background: var(--glm-hover); }
+.glm__opt input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.glm__opt:has(input:checked) { border-color: var(--glm-accent); box-shadow: inset 0 0 0 1px var(--glm-accent); }
+.glm__opt:has(input:focus-visible) { outline: 2px solid var(--glm-accent); outline-offset: 2px; }
+.glm__sw { width: 3.4rem; height: 2.3rem; border-radius: 7px; position: relative; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(128,100,70,.35); }
+.glm__sw::after { content: ""; position: absolute; left: 22%; top: 24%; width: 30%; height: 52%; border-radius: 2px; background: #F2E8D8; box-shadow: 0 2px 4px rgba(0,0,0,.35); }
+.glm__sw--dark { background: radial-gradient(circle at 75% 70%, #C97B3A 0 18%, transparent 19%), #0E0A07; }
+.glm__sw--light { background: radial-gradient(circle at 75% 70%, #A3361F 0 18%, transparent 19%), #EFE6D8; }
+.glm__sw--system { background: linear-gradient(115deg, #0E0A07 0 50%, #EFE6D8 50% 100%); }
+.glm__on { font: 400 1.15rem/1 "Instrument Serif", Georgia, serif; }
+.glm__sub { font: 400 .62rem/1.2 "JetBrains Mono", ui-monospace, monospace; color: var(--glm-soft); letter-spacing: .04em; }
+.glm__opt:has(input:checked) .glm__on::after { content: " ✓"; color: var(--glm-accent); font-family: "JetBrains Mono", monospace; font-size: .75rem; }
+
+.glm__foot { margin-top: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem 1rem; border-top: 1px dashed var(--glm-rule); padding-top: 1rem; font-size: .82rem; color: var(--glm-soft); }
+.glm__foot a, .glm__foot button { color: var(--glm-ink); text-underline-offset: 3px; }
+.glm__foot button { appearance: none; background: none; border: 0; padding: 0; font: inherit; text-decoration: underline; cursor: pointer; min-height: 32px; }
+.glm a:focus-visible, .glm button:focus-visible { outline: 2px solid var(--glm-accent); outline-offset: 2px; }
+
+/* stagger the card's rows in */
+.glm__group, .glm__lights, .glm__foot { opacity: 0; transform: translateX(14px); transition: opacity .4s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
+.glm.is-open .glm__group, .glm.is-open .glm__lights, .glm.is-open .glm__foot { opacity: 1; transform: none; }
+.glm.is-open .glm__group:nth-of-type(2) { transition-delay: .06s; }
+.glm.is-open .glm__lights { transition-delay: .12s; }
+.glm.is-open .glm__foot { transition-delay: .16s; }
+
+/* the opener used on the plain pages and on phones */
+.glm-open { appearance: none; display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: 0 1rem; border-radius: 999px; border: 1px solid currentColor; background: transparent; color: inherit; font: 500 .74rem/1 "JetBrains Mono", ui-monospace, monospace; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
+.glm-open svg { width: 14px; height: 10px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .glm__card, .glm__scrim, .glm__group, .glm__lights, .glm__foot { transition: none; }
+}

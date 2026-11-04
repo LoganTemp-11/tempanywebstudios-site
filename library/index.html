@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Website Portfolio: Every Site, Ranked | Tempany Web Studios</title>
+<meta name="description" content="Every website Tempany Web Studios has built, on one shelf and ranked strongest first: two live client sites and five demonstrations, each open to try on your phone.">
+<meta name="author" content="Logan Tempany">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/library/">
+<link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" href="/favicon-32x32.png?v=2" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#efe9dd">
+<meta property="og:title" content="Website Portfolio: Every Site, Ranked | Tempany Web Studios">
+<meta property="og:description" content="Every website Tempany Web Studios has built, on one shelf and ranked strongest first: two live client sites and five demonstrations, each open to try on your phone.">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/library/">
+<meta property="og:site_name" content="Tempany Web Studios">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/images/share/tempany-sketchpad-v2.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A pencil rough of a homepage on cream paper, lettered Tempany Web Studios, under the pencilled words: Tell me what you do and I'll rough out the top of your homepage, for nothing. £599 fixed, up to five pages, 10 to 14 days.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/alegreya-var-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/alegreya-sans-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css?v=2">
+<script>
+/* Paper for everyone: only a stored 'dark' (set by pressing the switch) gives the dark desk. */
+(function () {
+  var d = document.documentElement, t = null;
+  try { t = localStorage.getItem('tws-theme'); } catch (e) {}
+  d.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+  d.className += (d.className ? ' ' : '') + 'js';
+  var F = document.fonts, S = 'Alegreya Sans Fallback ', A = 'Alegreya Fallback ';
+  if (F && F.load) [S + 'Segoe', S + 'Helvetica', S + 'Arial', S + 'Roboto', S + 'DejaVu', A + 'Georgia', A + 'Noto'].forEach(function (n) {
+    ['400', '700'].forEach(function (w) { F.load(w + ' 1em "' + n + '"').catch(function () {}); });
+  });
+})();
+</script>
+<link rel="stylesheet" href="/scrollcraft.min.css?v=4">
+<link rel="stylesheet" href="/tw-base.css?v=1">
+<link rel="stylesheet" href="/tw-pages.css?v=8">
+<style>
+  .vh { position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0; }
+  /* The shelf: every site as a spine, strongest on the left. A spine is a jump to its entry. */
+  .lib-shelf { max-width: 56rem; margin: 0; }
+  .lib-shelf__row { list-style: none; margin: 0; padding: 0 var(--sc-3); display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: clamp(.3rem, 1vw, .7rem); align-items: end; height: clamp(16rem, 48vh, 26rem); }
+  .lib-shelf__row li { height: 100%; display: flex; align-items: flex-end; }
+  .lib-spine { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between; width: 100%; height: var(--sp-h); min-height: 44px; padding: .8rem 0 .7rem; background: var(--sp-bg); color: var(--sp-fg); border: 1px solid color-mix(in srgb, var(--sp-fg) 22%, transparent); border-radius: 3px 3px 1px 1px; box-shadow: inset 4px 0 0 color-mix(in srgb, #000 10%, transparent), inset -2px 0 0 color-mix(in srgb, #fff 12%, transparent), var(--sc-e2); text-decoration: none; transform-origin: 50% 100%; transition: transform var(--sc-d-fast) var(--sc-ease-out); }
+  .lib-spine::before, .lib-spine::after { content: ""; position: absolute; left: 12%; right: 12%; height: 1px; background: currentColor; opacity: .35; }
+  .lib-spine::before { top: 2.6rem; } .lib-spine::after { bottom: 2.6rem; }
+  .lib-spine__no { font: 700 var(--sc-t-xs)/1 var(--sc-font-mono); font-variant-numeric: lining-nums tabular-nums; }
+  .lib-spine__name { writing-mode: vertical-rl; transform: rotate(180deg); font: 700 clamp(.9rem, .78rem + .4vw, 1.12rem)/1 var(--sc-font-display); letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: calc(100% - 6.2rem); margin-bottom: 1.6rem; }
+  @media (hover: hover) and (pointer: fine) { .lib-spine:hover { transform: translateY(-.6rem) rotate(-1.2deg); } }
+  .lib-spine:focus-visible { transform: translateY(-.6rem); outline: 2px solid var(--sc-accent); outline-offset: 3px; }
+  .lib-shelf__plank { height: .9rem; margin: 0; border-radius: 1px; background: linear-gradient(var(--sc-ink) 0 2px, color-mix(in srgb, var(--sc-ink) 72%, var(--sc-canvas)) 2px); box-shadow: 0 10px 18px -12px color-mix(in srgb, var(--sc-ink) 60%, transparent); }
+  .lib-shelf__key { display: flex; justify-content: space-between; gap: var(--sc-3); margin: var(--sc-3) 0 0; font: var(--sc-t-xs)/1.4 var(--sc-font-mono); color: var(--sc-ink-soft); }
+  .lib-lead { max-width: 52ch; color: var(--sc-ink-soft); margin: var(--sc-5) 0 0; text-wrap: pretty; }
+  .lib-lead a { color: var(--sc-ink); display: inline-block; padding: 10px 2px; margin: -10px -2px; }
+  @media (max-width: 520px) { .lib-shelf__row { padding: 0 .25rem; gap: .25rem; } .lib-spine::before, .lib-spine::after { display: none; } .lib-spine__name { margin-bottom: .4rem; max-height: calc(100% - 2.6rem); } }
+
+  /* The entries: the rank as a big numeral, the site on a phone, then what it does and why it sits there. */
+  .lib-list { list-style: none; margin: 0 auto; padding: 0 var(--sc-gutter) var(--sc-section); max-width: var(--sc-maxw); }
+  .lib-entry { display: grid; grid-template-columns: auto minmax(0, 200px) minmax(0, 1fr); gap: var(--sc-3) var(--sc-6); align-items: start; padding: var(--sc-7) 0; border-top: 1px solid var(--tw-line); scroll-margin-top: var(--sc-5); }
+  .lib-entry__no { margin: 0; font: 700 clamp(3rem, 2rem + 4vw, 6rem)/.8 var(--sc-font-display); letter-spacing: -.04em; color: var(--sc-accent); font-variant-numeric: lining-nums tabular-nums; min-width: 2ch; }
+  .lib-entry__plate img { display: block; width: 100%; height: auto; border-radius: 22px; border: 6px solid var(--sc-ink); box-shadow: var(--sc-e3); background: var(--sc-ink); }
+  .lib-entry__text { max-width: 46ch; }
+  .lib-entry__text .tw-label__flag { color: var(--sc-ink-soft); }
+  .lib-flag--live { color: var(--sc-accent) !important; }
+  .lib-entry__what { margin: var(--sc-3) 0 0; text-wrap: pretty; }
+  .lib-entry__why { margin: var(--sc-3) 0 0; padding-left: var(--sc-3); border-left: 2px solid var(--sc-accent); color: var(--sc-ink-soft); text-wrap: pretty; }
+  .lib-entry__why span { display: block; font: var(--sc-t-xs)/1.4 var(--sc-font-mono); color: var(--sc-ink); }
+  .lib-entry .tw-open { margin-top: var(--sc-4); flex-wrap: wrap; }
+  .lib-entry__dom { font-weight: 400; color: var(--sc-ink-soft); overflow-wrap: anywhere; }
+  @media (max-width: 799px) {
+    .lib-entry { grid-template-columns: auto minmax(0, 1fr); padding: var(--sc-6) 0; }
+    .lib-entry__plate { grid-column: 2; max-width: 11rem; }
+    .lib-entry__no { grid-row: 1; }
+    .lib-entry__text { grid-column: 1 / -1; }
+  }
+  .lib-close { max-width: var(--sc-maxw); margin: 0 auto; padding: 0 var(--sc-gutter) calc(var(--sc-section) + 4rem); }
+  @media (prefers-reduced-motion: reduce) { .lib-spine { transition: none; } .lib-spine:hover, .lib-spine:focus-visible { transform: none; } }
+</style>
+<noscript><style>[data-sc-in],[data-sc-stagger]>*{opacity:1!important;transform:none!important}</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "The library: every Tempany Web Studios site, ranked",
+  "url": "https://tempanywebstudios.co.uk/library/",
+  "isPartOf": { "@id": "https://tempanywebstudios.co.uk/#website" },
+  "about": { "@id": "https://tempanywebstudios.co.uk/#business" },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "numberOfItems": 7,
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Gloaming Coffee", "url": "https://tempanywebstudios.co.uk/demos/gloaming/" },
+      { "@type": "ListItem", "position": 2, "name": "Brackenwynd Hair Studio", "url": "https://tempanywebstudios.co.uk/demos/salon-v2/" },
+      { "@type": "ListItem", "position": 3, "name": "Rowanbank Physiotherapy", "url": "https://tempanywebstudios.co.uk/demos/clinic/" },
+      { "@type": "ListItem", "position": 4, "name": "Jennifer Ellis Yoga", "url": "https://yogawithjenniferellis.co.uk/" },
+      { "@type": "ListItem", "position": 5, "name": "Rayney Day Pet Services", "url": "https://rayneydaypets.co.uk/" },
+      { "@type": "ListItem", "position": 6, "name": "Whinstone Joinery", "url": "https://tempanywebstudios.co.uk/demos/trades/" },
+      { "@type": "ListItem", "position": 7, "name": "Ochil Ledger", "url": "https://tempanywebstudios.co.uk/demos/professional/" }
+    ]
+  }
+}
+</script>
+<script>
+addEventListener('pagereveal', function (e) {
+  var a = window.navigation && navigation.activation;
+  if (e.viewTransition && e.viewTransition.types && a && a.navigationType === 'traverse') e.viewTransition.types.add('back');
+});
+</script>
+<script src="/tw-consent.js" defer></script>
+<script src="/tw-page.js?v=1" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="sc-grain" aria-hidden="true"></div>
+<!-- tw:index -->
+<nav class="tw-index" aria-label="Site">
+  <a class="tw-index__mark" href="/" aria-label="Tempany Web Studios, back to the homepage">
+    <svg viewBox="0 0 44 44" aria-hidden="true">
+      <circle cx="22" cy="22" r="18.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="22" cy="22" r="14.5" fill="none" stroke="currentColor" stroke-width=".7" opacity=".45"/>
+      <g stroke="#a1462a" stroke-width="1.4" stroke-linecap="round">
+        <line x1="22" y1="1.5" x2="22" y2="5"/><line x1="22" y1="39" x2="22" y2="42.5"/>
+        <line x1="1.5" y1="22" x2="5" y2="22"/><line x1="39" y1="22" x2="42.5" y2="22"/>
+      </g>
+      <path transform="translate(15.52 30) scale(0.0100 -0.0100)" fill="currentColor" d="M1376 1238H388L505 1266L268 959L208 975L378 1426H417L511 1333L430 1352H1411L1310 1333L1468 1426H1506L1409 960H1351L1308 1266ZM800 1283H1008L646 96L787 50L772 0H260L275 50L439 99Z"/>
+    </svg>
+    <span>Tempany Web Studios</span>
+  </a>
+  <button class="tw-lights" id="twLights" type="button" aria-pressed="false" aria-label="Turn the lights up">
+    <svg class="tw-lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="tw-lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+  </button>
+  <ul class="tw-index__list">
+    <li><a href="/#work">The work</a></li>
+    <li><a href="/library/">The library</a></li>
+    <li><a href="/#said">What she said</a></li>
+    <li><a href="/#quote">The quote</a></li>
+    <li><a href="/#me">Just me</a></li>
+    <li class="tw-where">
+      <button class="tw-where__btn" type="button" aria-expanded="false" aria-controls="twWhere">Where I work</button>
+      <ul class="tw-where__list" id="twWhere" hidden>
+        <li><a href="/web-design-falkirk/">Falkirk</a></li>
+        <li><a href="/web-design-stirling/">Stirling</a></li>
+        <li><span class="tw-soon" title="Page on its way">Alloa</span></li>
+        <li><span class="tw-soon" title="Page on its way">Grangemouth</span></li>
+        <li><span class="tw-soon" title="Page on its way">Dollar</span></li>
+        <li><span class="tw-soon" title="Page on its way">Tillicoultry</span></li>
+      </ul>
+    </li>
+    <li><a class="tw-index__ask" href="/#reply">Reply</a></li>
+  </ul>
+</nav>
+<!-- /tw:index -->
+
+<main id="main">
+
+  <!-- 1 · The shelf. Every site as a spine, strongest on the left; each spine jumps to its entry. -->
+  <section class="tw-page tw-opening" data-sc-act="flow" aria-labelledby="h1">
+    <h1 id="h1" class="tw-eyebrow" style="margin-bottom:var(--sc-5)">The library: every site I&rsquo;ve built, on one shelf, strongest first</h1>
+    <nav class="lib-shelf" aria-label="The shelf, in rank order">
+      <ol class="lib-shelf__row">
+      <li><a class="lib-spine" href="#lib-gloaming" style="--sp-bg:#1d140e;--sp-fg:#efe2c8;--sp-h:100%" aria-label="Number 1, Gloaming Coffee"><span class="lib-spine__no">01</span><span class="lib-spine__name">Gloaming Coffee</span></a></li>
+      <li><a class="lib-spine" href="#lib-salon" style="--sp-bg:#18191c;--sp-fg:#d79a68;--sp-h:95%" aria-label="Number 2, Brackenwynd Hair Studio"><span class="lib-spine__no">02</span><span class="lib-spine__name">Brackenwynd Hair Studio</span></a></li>
+      <li><a class="lib-spine" href="#lib-clinic" style="--sp-bg:#f1f5f4;--sp-fg:#1f5d5a;--sp-h:90%" aria-label="Number 3, Rowanbank Physiotherapy"><span class="lib-spine__no">03</span><span class="lib-spine__name">Rowanbank Physiotherapy</span></a></li>
+      <li><a class="lib-spine" href="#lib-jennifer" style="--sp-bg:#e6f0ec;--sp-fg:#1d6470;--sp-h:96%" aria-label="Number 4, Jennifer Ellis Yoga"><span class="lib-spine__no">04</span><span class="lib-spine__name">Jennifer Ellis Yoga</span></a></li>
+      <li><a class="lib-spine" href="#lib-rayney" style="--sp-bg:#173f36;--sp-fg:#f2ece0;--sp-h:88%" aria-label="Number 5, Rayney Day Pet Services"><span class="lib-spine__no">05</span><span class="lib-spine__name">Rayney Day Pet Services</span></a></li>
+      <li><a class="lib-spine" href="#lib-trades" style="--sp-bg:#efe8da;--sp-fg:#7a4a1c;--sp-h:90%" aria-label="Number 6, Whinstone Joinery"><span class="lib-spine__no">06</span><span class="lib-spine__name">Whinstone Joinery</span></a></li>
+      <li><a class="lib-spine" href="#lib-professional" style="--sp-bg:#ece4d4;--sp-fg:#2f5a3a;--sp-h:85%" aria-label="Number 7, Ochil Ledger"><span class="lib-spine__no">07</span><span class="lib-spine__name">Ochil Ledger</span></a></li>
+      </ol>
+      <div class="lib-shelf__plank" aria-hidden="true"></div>
+      <p class="lib-shelf__key"><span>&larr; strongest</span><span>Pick a spine</span></p>
+    </nav>
+    <p class="lib-lead">Two of these are real clients&rsquo; sites, live on their own addresses. The other five are complete demonstrations I built to show what a site can do for one kind of business. I&rsquo;ve ranked them myself, by craft, so you see the best of it first. Every one opens on your phone.</p>
+  </section>
+
+  <!-- 2 · The entries, in the same order as the shelf. -->
+  <ol class="lib-list" aria-label="Every site, ranked">
+    <li class="lib-entry" id="lib-gloaming" data-sc-in>
+      <p class="lib-entry__no" aria-hidden="true">01</p>
+      <div class="lib-entry__plate">
+        <picture>
+          <source type="image/webp" srcset="/images/home/phone-gloaming-390.webp 390w, /images/home/phone-gloaming.webp 780w" sizes="(min-width: 800px) 200px, 46vw">
+          <img src="/images/home/phone-gloaming.jpg" srcset="/images/home/phone-gloaming-390.jpg 390w, /images/home/phone-gloaming.jpg 780w" sizes="(min-width: 800px) 200px, 46vw" alt="Gloaming Coffee, demonstration site, shown on a phone" width="780" height="1688" loading="eager" decoding="async">
+        </picture>
+      </div>
+      <div class="lib-entry__text">
+        <p class="tw-label__flag">Demonstration</p>
+        <h2 class="tw-label__name" id="lib-gloaming-h"><span class="vh">Number 1: </span>Gloaming Coffee</h2>
+        <p class="tw-label__facts">Caf&eacute;&nbsp;&middot; order ahead, collect at the pass</p>
+        <p class="lib-entry__what">A film of the shot being pulled plays as you scroll, and the order docket clipped to the edge prints the dose, the shot time and the milk temperature in step with it. Order ahead and the docket gets stamped COLLECT.</p>
+        <p class="lib-entry__why"><span>Why it sits here</span> The page is one continuous scene rather than a stack of sections. The most ambitious build in the library.</p>
+        <a class="tw-open" href="/demos/gloaming/" target="_blank" rel="noopener noreferrer" aria-describedby="lib-gloaming-h">Open it<span class="lib-entry__dom">tempanywebstudios.co.uk/demos/gloaming/</span></a>
+      </div>
+    </li>
+    <li class="lib-entry" id="lib-salon" data-sc-in>
+      <p class="lib-entry__no" aria-hidden="true">02</p>
+      <div class="lib-entry__plate">
+        <picture>
+          <source type="image/webp" srcset="/images/home/phone-salon-v2-390.webp 390w, /images/home/phone-salon-v2.webp 780w" sizes="(min-width: 800px) 200px, 46vw">
+          <img src="/images/home/phone-salon-v2.jpg" srcset="/images/home/phone-salon-v2-390.jpg 390w, /images/home/phone-salon-v2.jpg 780w" sizes="(min-width: 800px) 200px, 46vw" alt="Brackenwynd Hair Studio, demonstration site, shown on a phone" width="780" height="1688" loading="eager" decoding="async">
+        </picture>
+      </div>
+      <div class="lib-entry__text">
+        <p class="tw-label__flag">Demonstration</p>
+        <h2 class="tw-label__name" id="lib-salon-h"><span class="vh">Number 2: </span>Brackenwynd Hair Studio</h2>
+        <p class="tw-label__facts">Salon&nbsp;&middot; Falkirk&nbsp;&middot; every look priced, every stylist named</p>
+        <p class="lib-entry__what">Tap a photo of the hair you want and that service is carried into the booking form, with the stylist named and the price shown before anyone sits down.</p>
+        <p class="lib-entry__why"><span>Why it sits here</span> Booking by pointing at the result is how people already choose a hairdresser. The site just stops getting in the way.</p>
+        <a class="tw-open" href="/demos/salon-v2/" target="_blank" rel="noopener noreferrer" aria-describedby="lib-salon-h">Open it<span class="lib-entry__dom">tempanywebstudios.co.uk/demos/salon-v2/</span></a>
+      </div>
+    </li>
+    <li class="lib-entry" id="lib-clinic" data-sc-in>
+      <p class="lib-entry__no" aria-hidden="true">03</p>
+      <div class="lib-entry__plate">
+        <picture>
+          <source type="image/webp" srcset="/images/home/phone-clinic-v2-390.webp 390w, /images/home/phone-clinic-v2.webp 780w" sizes="(min-width: 800px) 200px, 46vw">
+          <img src="/images/home/phone-clinic-v2.jpg" srcset="/images/home/phone-clinic-v2-390.jpg 390w, /images/home/phone-clinic-v2.jpg 780w" sizes="(min-width: 800px) 200px, 46vw" alt="Rowanbank Physiotherapy, demonstration site, shown on a phone" width="780" height="1688" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="lib-entry__text">
+        <p class="tw-label__flag">Demonstration</p>
+        <h2 class="tw-label__name" id="lib-clinic-h"><span class="vh">Number 3: </span>Rowanbank Physiotherapy</h2>
+        <p class="tw-label__facts">Clinic&nbsp;&middot; Alloa&nbsp;&middot; session pricing in the open</p>
+        <p class="lib-entry__what">Tap where it hurts on the body and the page answers: the likely start, the typical course, and what a first appointment costs.</p>
+        <p class="lib-entry__why"><span>Why it sits here</span> It answers the question a patient arrives with before they have to phone and ask it.</p>
+        <a class="tw-open" href="/demos/clinic/" target="_blank" rel="noopener noreferrer" aria-describedby="lib-clinic-h">Open it<span class="lib-entry__dom">tempanywebstudios.co.uk/demos/clinic/</span></a>
+      </div>
+    </li>
+    <li class="lib-entry" id="lib-jennifer" data-sc-in>
+      <p class="lib-entry__no" aria-hidden="true">04</p>
+      <div class="lib-entry__plate">
+        <picture>
+          <source type="image/webp" srcset="/images/home/phone-jennifer-390.webp 390w, /images/home/phone-jennifer.webp 780w" sizes="(min-width: 800px) 200px, 46vw">
+          <img src="/images/home/phone-jennifer.jpg" srcset="/images/home/phone-jennifer-390.jpg 390w, /images/home/phone-jennifer.jpg 780w" sizes="(min-width: 800px) 200px, 46vw" alt="Jennifer Ellis Yoga, a live client site, shown on a phone" width="780" height="1688" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="lib-entry__text">
+        <p class="tw-label__flag lib-flag--live">Live client site</p>
+        <h2 class="tw-label__name" id="lib-jennifer-h"><span class="vh">Number 4: </span>Jennifer Ellis Yoga</h2>
+        <p class="tw-label__facts">Yoga&nbsp;&middot; Ayrshire and online&nbsp;&middot; she books and edits it herself</p>
+        <p class="lib-entry__what">A working booking system: class dates with the places left, the place held the moment someone books, and an admin page Jennifer runs herself.</p>
+        <p class="lib-entry__why"><span>Why it sits here</span> Real classes, real bookings, every week. The highest-working site in the library.</p>
+        <a class="tw-open" href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer" aria-describedby="lib-jennifer-h">Open it<span class="lib-entry__dom">yogawithjenniferellis.co.uk</span></a>
+      </div>
+    </li>
+    <li class="lib-entry" id="lib-rayney" data-sc-in>
+      <p class="lib-entry__no" aria-hidden="true">05</p>
+      <div class="lib-entry__plate">
+        <picture>
+          <source type="image/webp" srcset="/images/home/phone-rayney-v2-390.webp 390w, /images/home/phone-rayney-v2.webp 780w" sizes="(min-width: 800px) 200px, 46vw">
+          <img src="/images/home/phone-rayney-v2.jpg" srcset="/images/home/phone-rayney-v2-390.jpg 390w, /images/home/phone-rayney-v2.jpg 780w" sizes="(min-width: 800px) 200px, 46vw" alt="Rayney Day Pet Services, a live client site, shown on a phone" width="780" height="1688" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="lib-entry__text">
+        <p class="tw-label__flag lib-flag--live">Live client site</p>
+        <h2 class="tw-label__name" id="lib-rayney-h"><span class="vh">Number 5: </span>Rayney Day Pet Services</h2>
+        <p class="tw-label__facts">Dog walking and pet home checks&nbsp;&middot; Dollar</p>
+        <p class="lib-entry__what">Fiona's own photographs, her services in plain words, and one tap to email or ring her from any page.</p>
+        <p class="lib-entry__why"><span>Why it sits here</span> Small, quick and clear, which is exactly what a local service needs to be on a phone.</p>
+        <a class="tw-open" href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer" aria-describedby="lib-rayney-h">Open it<span class="lib-entry__dom">rayneydaypets.co.uk</span></a>
+      </div>
+    </li>
+    <li class="lib-entry" id="lib-trades" data-sc-in>
+      <p class="lib-entry__no" aria-hidden="true">06</p>
+      <div class="lib-entry__plate">
+        <picture>
+          <source type="image/webp" srcset="/images/home/phone-trades-v2-390.webp 390w, /images/home/phone-trades-v2.webp 780w" sizes="(min-width: 800px) 200px, 46vw">
+          <img src="/images/home/phone-trades-v2.jpg" srcset="/images/home/phone-trades-v2-390.jpg 390w, /images/home/phone-trades-v2.jpg 780w" sizes="(min-width: 800px) 200px, 46vw" alt="Whinstone Joinery, demonstration site, shown on a phone" width="780" height="1688" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="lib-entry__text">
+        <p class="tw-label__flag">Demonstration</p>
+        <h2 class="tw-label__name" id="lib-trades-h"><span class="vh">Number 6: </span>Whinstone Joinery</h2>
+        <p class="tw-label__facts">Trades&nbsp;&middot; Dollar&nbsp;&middot; the job drawn to scale</p>
+        <p class="lib-entry__what">Each job drawn as an elevation, dimensioned and priced, with the quoted figure running beside the invoiced one.</p>
+        <p class="lib-entry__why"><span>Why it sits here</span> It proves a builder's honesty with numbers rather than adjectives.</p>
+        <a class="tw-open" href="/demos/trades/" target="_blank" rel="noopener noreferrer" aria-describedby="lib-trades-h">Open it<span class="lib-entry__dom">tempanywebstudios.co.uk/demos/trades/</span></a>
+      </div>
+    </li>
+    <li class="lib-entry" id="lib-professional" data-sc-in>
+      <p class="lib-entry__no" aria-hidden="true">07</p>
+      <div class="lib-entry__plate">
+        <picture>
+          <source type="image/webp" srcset="/images/home/phone-professional-v2-390.webp 390w, /images/home/phone-professional-v2.webp 780w" sizes="(min-width: 800px) 200px, 46vw">
+          <img src="/images/home/phone-professional-v2.jpg" srcset="/images/home/phone-professional-v2-390.jpg 390w, /images/home/phone-professional-v2.jpg 780w" sizes="(min-width: 800px) 200px, 46vw" alt="Ochil Ledger, demonstration site, shown on a phone" width="780" height="1688" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <div class="lib-entry__text">
+        <p class="tw-label__flag">Demonstration</p>
+        <h2 class="tw-label__name" id="lib-professional-h"><span class="vh">Number 7: </span>Ochil Ledger</h2>
+        <p class="tw-label__facts">Accountancy&nbsp;&middot; Tillicoultry&nbsp;&middot; a full fee table</p>
+        <p class="lib-entry__what">Written as a chaptered statement, with the full fee table in the open and a running total in the margin as you tick what you need.</p>
+        <p class="lib-entry__why"><span>Why it sits here</span> Clear and calm. The quietest of the seven, which suits an accountant and is why it closes the shelf.</p>
+        <a class="tw-open" href="/demos/professional/" target="_blank" rel="noopener noreferrer" aria-describedby="lib-professional-h">Open it<span class="lib-entry__dom">tempanywebstudios.co.uk/demos/professional/</span></a>
+      </div>
+    </li>
+  </ol>
+
+  <section class="lib-close tw-prose" aria-labelledby="next-h">
+    <h2 id="next-h">The next one on the shelf could be yours</h2>
+    <p>Five pages, built properly for phones, &pound;599 fixed, live in 10 to 14 days. Tell me what you do and I&rsquo;ll rough out the top of your homepage first, for nothing.</p>
+    <p><a class="tw-cta" href="/#top">Draw yours first</a> &nbsp; <a class="tw-cta tw-cta--quiet" href="/#quote">Read the quote</a></p>
+  </section>
+
+</main>
+<!-- tw:foot -->
+<footer class="tw-foot">
+  <p>Logan Tempany trading as Tempany Web Studios&nbsp;&middot; Dollar, Scotland&nbsp;&middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a>&nbsp;&middot; <a href="tel:+447487536649">07487 536649</a></p>
+  <p><a href="/library/">The library</a>&nbsp;&middot; <a href="/audit/">The &pound;95 audit</a>&nbsp;&middot; <a href="/how-much-does-a-website-cost/">What a website costs</a>&nbsp;&middot; <a href="/booking/">The booking system</a>&nbsp;&middot; <a href="/web-design-falkirk/">Web design in Falkirk</a>&nbsp;&middot; <a href="/web-design-stirling/">Web design in Stirling</a>&nbsp;&middot; <a href="/privacy/">Privacy notice</a>&nbsp;&middot; <a href="/privacy/#complaints">Complaints</a>&nbsp;&middot; <a href="/terms/">Service terms</a>&nbsp;&middot; <a href="/privacy/#cookies" data-cookie-choice>Cookie choice</a></p>
+  <p class="tw-foot__last">Jennifer Ellis Yoga and Rayney Day Pet Services are real client sites, shown with their owners' permission. The demonstration sites aren't: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
+</footer>
+<!-- /tw:foot -->
+
+<script src="/scrollcraft.min.js?v=4"></script>
+<script>ScrollCraft.mount(document.body);</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Gloaming Coffee is a Tempany Web Studios demonstration site.
+# Crawling is allowed so links resolve and previews render; the pages carry
+# <meta name="robots" content="noindex"> so the demo never ranks as a real cafe.
+User-agent: *
+Allow: /
+
+Sitemap: https://tempanywebstudios.co.uk/demos/gloaming/sitemap.xml

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en-GB" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The board · Gloaming Coffee</title>
+<meta name="description" content="Gloaming Coffee's full menu: five coffees, tea, bakes and toasties, every price and every allergen.">
+<meta name="robots" content="noindex, follow">
+<meta name="tws-storage-prefix" content="gl">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/demos/gloaming/menu">
+<meta name="theme-color" content="#0E0A07">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gloaming Coffee">
+<meta property="og:title" content="The board · Gloaming Coffee">
+<meta property="og:description" content="Gloaming Coffee's full menu: five coffees, tea, bakes and toasties, every price and every allergen.">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/demos/gloaming/assets/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="legal.css">
+<link rel="stylesheet" href="assets/gl-menu.css">
+<script src="assets/gl-menu.js" defer></script>
+<script>(function(){var t='dark';try{t=localStorage.getItem('gl-theme')||'dark'}catch(e){}if(t==='system')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})();</script>
+<style>
+.mb section { margin-top: 3rem; }
+.mb h2 { font-size: clamp(1.8rem,1.4rem + 1.6vw,2.6rem); margin: 0 0 .6rem; }
+.mb-list { list-style: none; margin: 0; padding: 0; }
+.mb-row { display: grid; grid-template-columns: auto 1fr auto; column-gap: .7rem; row-gap: .15rem; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.mb-name { font: 400 clamp(1.35rem,1.2rem + .6vw,1.7rem)/1.1 var(--display); color: var(--ink); }
+.mb-dots { border-bottom: 1px dotted var(--line); transform: translateY(-.35rem); }
+.mb-price { font: 500 .95rem/1 var(--mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+.mb-desc { grid-column: 1 / 3; color: var(--ink-soft); font-size: .95rem; }
+.mb-al { grid-column: 3; justify-self: end; font: 400 .72rem/1 var(--mono); letter-spacing: .08em; color: var(--ink-soft); }
+.mb-add { grid-column: 1 / -1; justify-self: start; margin-top: .3rem; font: 500 .74rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); min-height: 32px; display: inline-flex; align-items: center; }
+.mb-extra { font: 400 .85rem/1.5 var(--mono); color: var(--ink-soft); margin-top: 1rem; }
+.mb-key p { max-width: 62ch; }
+.mb .note { margin-top: 1.2rem; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar"><a class="bar__mark" href="./">Gloaming</a><a class="bar__back" href="./">Back to the café</a><button class="glm-open" type="button" data-menu-open><svg viewBox="0 0 14 10" aria-hidden="true"><path d="M0 1h14M0 5h14M0 9h9" stroke="currentColor" stroke-width="1.4"/></svg>Menu</button></header>
+<main id="main" class="mb">
+<p class="kicker">The board · prices include VAT</p>
+<h1>Short menu. <em>Long mornings.</em></h1>
+<p>Everything we make, what it costs and what's in it. Tap "Order this" on a coffee and it goes straight on your docket for collection.</p>
+<section aria-labelledby="mb-c"><h2 id="mb-c">Coffee</h2><ul class="mb-list">
+<li class="mb-row"><span class="mb-name">Espresso</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£2.60</span><span class="mb-desc">Double shot in glass. House blend, chocolate and hazelnut.</span><span class="mb-al" aria-label="Allergens: none listed">—</span><a class="mb-add" href="./#order" data-drink="espresso">Order this</a></li>
+<li class="mb-row"><span class="mb-name">Cortado</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£3.10</span><span class="mb-desc">Equal parts espresso and milk, barely any foam.</span><span class="mb-al" aria-label="Allergens: M">M</span><a class="mb-add" href="./#order" data-drink="cortado">Order this</a></li>
+<li class="mb-row"><span class="mb-name">Flat white</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£3.40</span><span class="mb-desc">Double shot, 62°C milk, rosetta on top.</span><span class="mb-al" aria-label="Allergens: M">M</span><a class="mb-add" href="./#order" data-drink="flatwhite">Order this</a></li>
+<li class="mb-row"><span class="mb-name">Latte</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£3.60</span><span class="mb-desc">Bigger, softer, tulip on top.</span><span class="mb-al" aria-label="Allergens: M">M</span><a class="mb-add" href="./#order" data-drink="latte">Order this</a></li>
+<li class="mb-row"><span class="mb-name">Long black</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£3.00</span><span class="mb-desc">Double shot poured over 88°C water.</span><span class="mb-al" aria-label="Allergens: none listed">—</span><a class="mb-add" href="./#order" data-drink="longblack">Order this</a></li>
+</ul><p class="mb-extra">Oat milk +30p · Extra shot +60p · Decaf any coffee, no charge</p></section>
+<section aria-labelledby="mb-o"><h2 id="mb-o">Not coffee</h2><ul class="mb-list">
+<li class="mb-row"><span class="mb-name">Filter of the week</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£3.20</span><span class="mb-desc">Ask what it is. Changes every Monday.</span><span class="mb-al" aria-label="Allergens: none listed">—</span></li>
+<li class="mb-row"><span class="mb-name">Hot chocolate</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£3.30</span><span class="mb-desc">Dark, not too sweet, steamed milk.</span><span class="mb-al" aria-label="Allergens: M">M</span></li>
+<li class="mb-row"><span class="mb-name">Chai latte</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£3.40</span><span class="mb-desc">Spiced tea, steamed milk.</span><span class="mb-al" aria-label="Allergens: M">M</span></li>
+<li class="mb-row"><span class="mb-name">Pot of tea</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£2.60</span><span class="mb-desc">Breakfast, Earl Grey, green or peppermint.</span><span class="mb-al" aria-label="Allergens: none listed">—</span></li>
+</ul></section>
+<section aria-labelledby="mb-b"><h2 id="mb-b">From the oven</h2><ul class="mb-list">
+<li class="mb-row"><span class="mb-name">Cardamom bun</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£3.20</span><span class="mb-desc">Knotted, sticky, gone by eleven most days.</span><span class="mb-al" aria-label="Allergens: G M E">G M E</span></li>
+<li class="mb-row"><span class="mb-name">Tablet brownie</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£3.00</span><span class="mb-desc">Dark chocolate, crumbled tablet top.</span><span class="mb-al" aria-label="Allergens: M E">M E</span></li>
+<li class="mb-row"><span class="mb-name">Cheese &amp; chive scone</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£2.90</span><span class="mb-desc">Warmed, with salted butter.</span><span class="mb-al" aria-label="Allergens: G M E">G M E</span></li>
+<li class="mb-row"><span class="mb-name">Toastie of the day</span><span class="mb-dots" aria-hidden="true"></span><span class="mb-price">£6.50</span><span class="mb-desc">Sourdough, filling changes daily.</span><span class="mb-al" aria-label="Allergens: G M">G M</span></li>
+</ul></section>
+<section class="mb-key" aria-labelledby="mb-k"><h2 id="mb-k">Allergen key</h2>
+<p><strong>G</strong> gluten · <strong>M</strong> milk · <strong>E</strong> egg · <strong>N</strong> nuts · <strong>—</strong> none of the 14 listed allergens as served. Oat milk contains oats (gluten). The kitchen handles nuts, gluten, milk, eggs and sesame, so we can't promise anything is free from traces. Ask at the counter before you order.</p>
+<p class="note"><strong>Demonstration site.</strong> Gloaming Coffee is not a real business. On a real café's site this page carries their own menu and allergen matrix.</p></section>
+<p><a class="btn" href="./#order">Order ahead</a><a class="btn btn--ghost" href="./">Back to the film</a></p>
+</main>
+<script>
+document.querySelectorAll('.mb-add').forEach(function (a) {
+  a.addEventListener('click', function () {
+    try { localStorage.setItem('gl-docket', JSON.stringify({ drink: a.getAttribute('data-drink'), milk: 'whole' })); } catch (e) {}
+  });
+});
+</script>
+<footer><span>Gloaming Coffee is a demonstration site by <a href="https://tempanywebstudios.co.uk/">Tempany Web Studios</a>. Not a real business.</span><span><a href="menu">Menu</a> · <a href="privacy">Privacy</a> · <a href="terms">Terms</a> · <a href="./#order">Order ahead</a></span></footer>
+</body>
+</html>
