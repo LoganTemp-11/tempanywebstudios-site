@@ -63,12 +63,12 @@
 
   /* ---------------------------------------------------------- lights -- */
   var mq = matchMedia('(prefers-color-scheme: light)');
-  function stored() { try { return localStorage.getItem('gl-theme') || 'dark'; } catch (e) { return 'dark'; } }
+  function stored() { try { return localStorage.getItem('gl-theme') || 'light'; } catch (e) { return 'light'; } }
   function apply(choice) {
     var t = choice === 'system' ? (mq.matches ? 'light' : 'dark') : choice;
     document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
     var m = document.querySelector('meta[name="theme-color"]');
-    if (m) m.setAttribute('content', t === 'light' ? '#EFE6D8' : '#0E0A07');
+    if (m) m.setAttribute('content', t === 'light' ? '#F6F6F3' : '#110C0A');
     try { document.dispatchEvent(new CustomEvent('gl:theme', { detail: { choice: choice, theme: t } })); } catch (e) {}
   }
   function choose(choice) { try { localStorage.setItem('gl-theme', choice); } catch (e) {} apply(choice); }
