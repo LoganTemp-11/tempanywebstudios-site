@@ -1,0 +1,311 @@
+[
+ {
+  "id": "s01",
+  "photo": "dn-01",
+  "shape": "almond",
+  "finish": "dots",
+  "colourName": "plum",
+  "accent": "ring",
+  "caption": "Almond, deep plum with white dots and stars",
+  "base": {
+   "point": {
+    "file": "dn-01.jpg",
+    "x": 584,
+    "y": 1086,
+    "r": 8,
+    "mode": "dark"
+   },
+   "hex": "#36202c"
+  },
+  "art": {
+   "point": {
+    "file": "dn-01.jpg",
+    "x": 762,
+    "y": 1147,
+    "r": 10,
+    "mode": "light"
+   },
+   "hex": "#fbfbff"
+  }
+ },
+ {
+  "id": "s02",
+  "photo": "dn-02",
+  "shape": "coffin",
+  "finish": "dots",
+  "colourName": "chocolate",
+  "accent": "middle ring",
+  "caption": "Coffin, chocolate brown with pink polka-dot accents",
+  "base": {
+   "point": {
+    "file": "dn-02.jpg",
+    "x": 533,
+    "y": 1209,
+    "r": 8,
+    "mode": "median"
+   },
+   "hex": "#412728"
+  },
+  "art": {
+   "point": {
+    "file": "dn-02.jpg",
+    "x": 633,
+    "y": 1209,
+    "r": 6,
+    "mode": "median"
+   },
+   "hex": "#e5b9c6"
+  }
+ },
+ {
+  "id": "s03",
+  "photo": "dn-03",
+  "shape": "almond",
+  "finish": "french",
+  "colourName": "nude",
+  "accent": "",
+  "caption": "Long almond, classic white French",
+  "base": {
+   "point": {
+    "file": "dn-03.jpg",
+    "x": 553,
+    "y": 902,
+    "r": 8,
+    "mode": "median"
+   },
+   "hex": "#dca5a1"
+  },
+  "art": {
+   "point": {
+    "file": "dn-03.jpg",
+    "x": 421,
+    "y": 737,
+    "r": 10,
+    "mode": "light"
+   },
+   "hex": "#e8e9e4"
+  }
+ },
+ {
+  "id": "s04",
+  "photo": "dn-04",
+  "shape": "almond",
+  "finish": "line",
+  "colourName": "orange",
+  "accent": "middle ring",
+  "caption": "Almond, bright orange with orange-slice accents",
+  "base": {
+   "point": {
+    "file": "dn-04.jpg",
+    "x": 861,
+    "y": 676,
+    "r": 8,
+    "mode": "median"
+   },
+   "hex": "#fe4913"
+  },
+  "art": {
+   "point": {
+    "file": "dn-04.jpg",
+    "x": 834,
+    "y": 769,
+    "r": 10,
+    "mode": "dark"
+   },
+   "hex": "#f95713"
+  }
+ },
+ {
+  "id": "s06",
+  "photo": "dn-06",
+  "shape": "almond",
+  "finish": "leopard",
+  "colourName": "burgundy",
+  "accent": "middle ring",
+  "caption": "Almond, burgundy with leopard accents",
+  "base": {
+   "point": {
+    "file": "dn-06.jpg",
+    "x": 789,
+    "y": 840,
+    "r": 6,
+    "mode": "median"
+   },
+   "hex": "#64071a"
+  },
+  "art": {
+   "point": {
+    "file": "dn-06.jpg",
+    "x": 717,
+    "y": 953,
+    "r": 14,
+    "mode": "light"
+   },
+   "hex": "#cd9168"
+  }
+ },
+ {
+  "id": "s07",
+  "photo": "dn-07",
+  "shape": "almond",
+  "finish": "line",
+  "colourName": "nude",
+  "accent": "all",
+  "caption": "Almond, nude with black line art",
+  "base": {
+   "point": {
+    "file": "dn-07.jpg",
+    "x": 831,
+    "y": 948,
+    "r": 6,
+    "mode": "median"
+   },
+   "hex": "#b99291"
+  },
+  "art": {
+   "point": {
+    "file": "dn-07.jpg",
+    "x": 615,
+    "y": 1117,
+    "r": 14,
+    "mode": "dark"
+   },
+   "hex": "#432c2a"
+  }
+ },
+ {
+  "id": "s09",
+  "photo": "dn-09",
+  "shape": "almond",
+  "finish": "dots",
+  "colourName": "nude",
+  "accent": "all",
+  "caption": "Almond, nude with blue dotted French tips",
+  "base": {
+   "point": {
+    "file": "dn-09.jpg",
+    "x": 1712,
+    "y": 1404,
+    "r": 12,
+    "mode": "median"
+   },
+   "hex": "#ead9d4"
+  },
+  "art": {
+   "point": {
+    "file": "dn-09.jpg",
+    "x": 1610,
+    "y": 1387,
+    "r": 24,
+    "mode": "sat"
+   },
+   "hex": "#2468d8"
+  }
+ },
+ {
+  "id": "s10",
+  "photo": "dn-10",
+  "shape": "almond",
+  "finish": "french",
+  "colourName": "milky",
+  "accent": "ring",
+  "caption": "Almond, nude with patterned magenta tips and a dark accent",
+  "base": {
+   "point": {
+    "file": "dn-10.jpg",
+    "x": 701,
+    "y": 1067,
+    "r": 6,
+    "mode": "median"
+   },
+   "hex": "#efeaec"
+  },
+  "art": {
+   "point": {
+    "file": "dn-10.jpg",
+    "x": 662,
+    "y": 653,
+    "r": 14,
+    "mode": "sat"
+   },
+   "hex": "#a43068"
+  }
+ },
+ {
+  "id": "s11",
+  "photo": "dn-11",
+  "shape": "oval",
+  "finish": "plain",
+  "colourName": "nude",
+  "accent": "",
+  "caption": "Short oval, natural gloss",
+  "base": {
+   "point": {
+    "file": "dn-11.jpg",
+    "x": 480,
+    "y": 921,
+    "r": 8,
+    "mode": "median"
+   },
+   "hex": "#bfa7ac"
+  }
+ },
+ {
+  "id": "s17",
+  "photo": "dn-17",
+  "shape": "almond",
+  "finish": "french",
+  "colourName": "pink",
+  "accent": "all",
+  "caption": "Almond, pink with white French tips and pink flowers",
+  "base": {
+   "point": {
+    "file": "dn-17.jpg",
+    "x": 380,
+    "y": 790,
+    "r": 8,
+    "mode": "median"
+   },
+   "hex": "#f1aecb"
+  },
+  "art": {
+   "point": {
+    "file": "dn-17.jpg",
+    "x": 300,
+    "y": 825,
+    "r": 10,
+    "mode": "light"
+   },
+   "hex": "#f8e8fb"
+  }
+ },
+ {
+  "id": "s19",
+  "photo": "dn-19",
+  "shape": "almond",
+  "finish": "french",
+  "colourName": "nude",
+  "accent": "ring",
+  "caption": "Almond, nude with green French tips and a leaf",
+  "base": {
+   "point": {
+    "file": "dn-19.jpg",
+    "x": 522,
+    "y": 828,
+    "r": 6,
+    "mode": "median"
+   },
+   "hex": "#9a7c82"
+  },
+  "art": {
+   "point": {
+    "file": "dn-19.jpg",
+    "x": 472,
+    "y": 808,
+    "r": 12,
+    "mode": "sat"
+   },
+   "hex": "#0f3a1f"
+  }
+ }
+]

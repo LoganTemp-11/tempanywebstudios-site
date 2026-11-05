@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="tws-storage-prefix" content="dn">
+<script>
+/* Theme before first paint. Light is the default for this concept; the
+   visitor's own choice wins once made. To follow the device instead, swap the
+   fallback for: matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light' */
+(function () {
+  var d = document.documentElement, t = null;
+  try { t = localStorage.getItem('dn-theme'); } catch (e) {}
+  if (t !== 'dark' && t !== 'light') t = 'light';
+  d.setAttribute('data-theme', t);
+  d.classList.add('js');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('rm');
+})();
+</script>
+<title>Dunblane Nails, 15 High Street, Dunblane | Walk-ins welcome</title>
+<meta name="description" content="Dunblane Nails, 15 High Street, Dunblane: acrylics, dip powder, manicures, pedicures and nail art. Walk in Mon to Sat, 9am to 6pm, or call 07726 776666.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/concepts/dunblane-nails/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dunblane Nails, a first version by Tempany Web Studios">
+<meta property="og:title" content="Dunblane Nails, 15 High Street, Dunblane">
+<meta property="og:description" content="Dunblane Nails, 15 High Street, Dunblane: acrylics, dip powder, manicures, pedicures and nail art. Walk in Mon to Sat, 9am to 6pm, or call 07726 776666.">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/concepts/dunblane-nails/">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/concepts/dunblane-nails/assets/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Dunblane Nails loyalty card lying on a white sheepskin rug, with the phone number and opening times">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dunblane Nails, 15 High Street, Dunblane">
+<meta name="twitter:description" content="Walk in Monday to Saturday, 9am to 6pm, or call 07726 776666.">
+<meta name="twitter:image" content="https://tempanywebstudios.co.uk/concepts/dunblane-nails/assets/share.png">
+<meta name="twitter:image:alt" content="The Dunblane Nails loyalty card lying on a white sheepskin rug, with the phone number and opening times">
+<meta name="theme-color" content="#f5f2eb">
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/archivo-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/newsreader-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip" href="#top">Skip to the page</a>
+<p class="strip">First version for Dunblane Nails · A concept by Tempany Web Studios, not yet the salon's site · <a href="https://tempanywebstudios.co.uk/">tempanywebstudios.co.uk</a></p>
+
+<!-- The chrome: a small copy of their loyalty card. Its six stamp boxes are
+     the six sections and stamp themselves as each is reached. The lamp sits
+     beside it and stays on screen even while the small card is tucked away. -->
+<nav class="chrome" data-chrome aria-label="Sections">
+  <button type="button" id="lights" class="lamp" aria-pressed="true" aria-label="Turn the lamp off">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="mini" id="mini" data-hidden>
+    <p class="mini__band" aria-hidden="true">Dunblane Nails</p>
+    <ol class="mini__boxes">
+      <li><a href="#card" data-box="1" aria-label="1, The card"><span>1</span></a></li>
+      <li><a href="#menu" data-box="2" aria-label="2, What they do"><span>2</span></a></li>
+      <li><a href="#tryon" data-box="3" aria-label="3, Try a set"><span>3</span></a></li>
+      <li><a href="#work" data-box="4" aria-label="4, Their work"><span>4</span></a></li>
+      <li><a href="#questions" data-box="5" aria-label="5, Questions"><span>5</span></a></li>
+      <li><a href="#walkin" data-box="6" aria-label="6, Walk in"><span>6</span></a></li>
+    </ol>
+  </div>
+</nav>
+
+<div id="consent" class="consent" role="region" aria-label="Cookie choice" hidden>
+  <p>This page remembers your lamp choice. Analytics stays off unless you accept, and this concept loads none either way. <a href="privacy#cookies">More</a></p>
+  <div class="consent__actions">
+    <button type="button" class="consent__btn" data-consent="reject">Reject</button>
+    <button type="button" class="consent__btn" data-consent="accept">Accept</button>
+  </div>
+</div>
+
+<main id="top" tabindex="-1">
+
+  <!-- 1. The card. Their own loyalty card reset in type, lying on the rug.
+       No entrance device: it is already there on arrival. -->
+  <section id="card" class="act act-card" data-sc-act="flow" data-dn-ground="0" tabindex="-1" aria-label="The card">
+    <div class="card-lie">
+      <article class="card" aria-labelledby="name">
+        <div class="card__band"><h1 id="name" class="card__name">Dunblane Nails</h1></div>
+        <div class="card__body">
+          <ol class="stamps" aria-label="Loyalty card, six stamp boxes">
+            <li><span>1</span></li><li><span>2</span></li><li><span>3</span></li>
+            <li><span>4</span></li><li><span>5</span></li>
+            <li class="stamps__six"><span>6</span><small>treat</small></li>
+          </ol>
+          <picture class="card__panel">
+            <source type="image/webp" srcset="assets/img/card-panel.webp 360w, assets/img/card-panel@2x.webp 720w" sizes="(min-width: 900px) 240px, 40vw">
+            <img src="assets/img/card-panel.jpg" width="360" height="240" alt="Almond nails with white French tips dotted in blue, done at the salon" loading="eager" decoding="async" fetchpriority="high">
+          </picture>
+        </div>
+        <p class="card__phone"><a href="tel:+447726776666" data-landing>07726 776666</a></p>
+        <p class="card__line" data-landing><span class="card__k">Opening times</span> Mon to Sat, <span class="num">9am</span> to <span class="num">6pm</span> <span class="card__soft">(closed Sunday)</span></p>
+        <p class="card__line" data-landing>15 High Street, Dunblane FK15 0EE</p>
+        <ul class="card__socials">
+          <li><a href="https://www.facebook.com/profile.php?id=100092354306720" rel="noopener" target="_blank">Facebook</a></li>
+          <li><a href="https://www.instagram.com/dunblanenails_uk/" rel="noopener" target="_blank">@dunblanenails_uk</a></li>
+          <li><a href="https://www.tiktok.com/@dunblane.nails" rel="noopener" target="_blank">TikTok dunblane.nails</a></li>
+        </ul>
+      </article>
+      <p class="slip slip--hello" data-landing>Walk-ins welcome.<br>Students <span class="num">10%</span> off.</p>
+    </div>
+  </section>
+
+  <!-- 2. What they do: the service slip. Prices are not published anywhere,
+       so every line carries the gap instead of a figure. -->
+  <section id="menu" class="act act-menu" data-sc-act="flow" data-dn-ground="1" tabindex="-1" aria-labelledby="menu-h">
+    <div class="slip-sheet">
+      <h2 id="menu-h" class="h-label">What they do</h2>
+      <ul class="services" data-sc-in data-sc-stagger="40">
+        <li><span class="services__n">Acrylic nails</span><span class="gap">Price from the salon</span></li>
+        <li><span class="services__n">Dip powder nails</span><span class="gap">Price from the salon</span></li>
+        <li><span class="services__n">Manicure</span><span class="gap">Price from the salon</span></li>
+        <li><span class="services__n">Manicure and pedicure</span><span class="gap">Price from the salon</span></li>
+        <li><span class="services__n">Men's manicure</span><span class="gap">Price from the salon</span></li>
+        <li><span class="services__n">Nail art</span><span class="gap">Price from the salon</span></li>
+        <li><span class="services__n">Nail polish</span><span class="gap">Price from the salon</span></li>
+        <li><span class="services__n">Spa pedicure</span><span class="gap">Price from the salon</span></li>
+        <li><span class="services__n">Waterless pedicure</span><span class="gap">Price from the salon</span></li>
+        <li><span class="services__n">Nail decals</span><span class="gap">Price from the salon</span></li>
+        <li><span class="services__n">Polish change</span><span class="gap">Price from the salon</span></li>
+      </ul>
+      <p class="slip-sheet__foot">Walk in, or book by phone, Facebook or Instagram.</p>
+      <p class="slip-sheet__foot"><span class="num">4.6</span> from <span class="num">76</span> Google reviews. People mention lovely staff, consistent work and a clean salon.</p>
+    </div>
+  </section>
+
+  <!-- 3. The try-on. Compose a set from what the salon does; the drawn hand
+       repaints, and the closest set they have done is laid beside
+       it. Nothing typed, nothing stored, nothing sent. -->
+  <section id="tryon" class="act act-tryon" data-sc-act="flow" data-dn-ground="2" tabindex="-1" aria-labelledby="tryon-h">
+    <div class="tryon">
+      <div class="tryon__stage">
+        <svg id="hand" class="hand" viewBox="20 0 400 520" role="img" aria-label="Drawn hand wearing almond nails, nude, dots">
+<!--hand:start-->
+<g class="hand__skin"><line x1="126.9" y1="303.7" x2="92.8" y2="185" stroke="#c99f8a" stroke-width="38" stroke-linecap="round"/><line x1="167.3" y1="273.2" x2="150.6" y2="114.4" stroke="#c99f8a" stroke-width="44" stroke-linecap="round"/><line x1="206.5" y1="261.9" x2="212.5" y2="89.5" stroke="#c99f8a" stroke-width="46" stroke-linecap="round"/><line x1="244.1" y1="271.3" x2="274.6" y2="114.6" stroke="#c99f8a" stroke-width="44" stroke-linecap="round"/><line x1="251.8" y1="359.9" x2="364.3" y2="243.5" stroke="#c99f8a" stroke-width="48" stroke-linecap="round"/><polygon points="92,300 120,268 214,258 290,272 302,330 290,410 262,470 248,520 150,520 136,470 108,400 96,350" fill="#c99f8a" stroke="#c99f8a" stroke-width="4" stroke-linejoin="round"/><line x1="126.9" y1="303.7" x2="92.8" y2="185" stroke="#e9c9b5" stroke-width="34" stroke-linecap="round"/><line x1="167.3" y1="273.2" x2="150.6" y2="114.4" stroke="#e9c9b5" stroke-width="40" stroke-linecap="round"/><line x1="206.5" y1="261.9" x2="212.5" y2="89.5" stroke="#e9c9b5" stroke-width="42" stroke-linecap="round"/><line x1="244.1" y1="271.3" x2="274.6" y2="114.6" stroke="#e9c9b5" stroke-width="40" stroke-linecap="round"/><line x1="251.8" y1="359.9" x2="364.3" y2="243.5" stroke="#e9c9b5" stroke-width="44" stroke-linecap="round"/><polygon points="92,300 120,268 214,258 290,272 302,330 290,410 262,470 248,520 150,520 136,470 108,400 96,350" fill="#e9c9b5"/><path d="M112 286Q200 262 286 288" fill="none" stroke="#c99f8a" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="1 9" opacity=".8"/><path d="M101.8 240.9q7.4 1 13.1 -3.7" fill="none" stroke="#c99f8a" stroke-width="1.6" stroke-linecap="round" opacity=".7"/><path d="M150.1 186.9q8.3 2.1 15.9 -1.7" fill="none" stroke="#c99f8a" stroke-width="1.6" stroke-linecap="round" opacity=".7"/><path d="M201.4 166.9q8.3 3.3 16.8 0.6" fill="none" stroke="#c99f8a" stroke-width="1.6" stroke-linecap="round" opacity=".7"/><path d="M253 183.8q7.3 4.5 15.7 3.1" fill="none" stroke="#c99f8a" stroke-width="1.6" stroke-linecap="round" opacity=".7"/></g><g class="hand__nails"><g transform="translate(96 196) rotate(-16)"><clipPath id="c-little"><use href="#n-little"/></clipPath><path id="n-little" data-nail="little" class="nail" d="M-14 0C-14 -26 -6.3 -45.8 0 -52C6.3 -45.8 14 -26 14 0Q0 7.7 -14 0Z" style="fill:#dca5a1"/><g class="nail__art" clip-path="url(#c-little)"><circle cx="-11.8" cy="-10.4" r="2.4" fill="#2468d8"/><circle cx="-2.2" cy="-10.4" r="2.4" fill="#2468d8"/><circle cx="7.3" cy="-10.4" r="2.4" fill="#2468d8"/><circle cx="-7" cy="-20.3" r="2.4" fill="#2468d8"/><circle cx="2.5" cy="-20.3" r="2.4" fill="#2468d8"/><circle cx="12" cy="-20.3" r="2.4" fill="#2468d8"/><circle cx="-11.8" cy="-30.2" r="2.4" fill="#2468d8"/><circle cx="-2.2" cy="-30.2" r="2.4" fill="#2468d8"/><circle cx="7.3" cy="-30.2" r="2.4" fill="#2468d8"/><circle cx="-7" cy="-40" r="2.4" fill="#2468d8"/><circle cx="2.5" cy="-40" r="2.4" fill="#2468d8"/><circle cx="12" cy="-40" r="2.4" fill="#2468d8"/><circle cx="-11.8" cy="-49.9" r="2.4" fill="#2468d8"/><circle cx="-2.2" cy="-49.9" r="2.4" fill="#2468d8"/><circle cx="7.3" cy="-49.9" r="2.4" fill="#2468d8"/></g><path class="nail__shine" d="M-5.9 -8.3Q-7.8 -26 -2.2 -41.6"/></g><g transform="translate(152 128) rotate(-6)"><clipPath id="c-ring"><use href="#n-ring"/></clipPath><path id="n-ring" data-nail="ring" class="nail" d="M-16.5 0C-16.5 -31 -7.4 -54.6 0 -62C7.4 -54.6 16.5 -31 16.5 0Q0 9.1 -16.5 0Z" style="fill:#dca5a1"/><g class="nail__art" clip-path="url(#c-ring)"><circle cx="-13.9" cy="-12.4" r="2.8" fill="#2468d8"/><circle cx="-2.6" cy="-12.4" r="2.8" fill="#2468d8"/><circle cx="8.6" cy="-12.4" r="2.8" fill="#2468d8"/><circle cx="-8.2" cy="-24.2" r="2.8" fill="#2468d8"/><circle cx="3" cy="-24.2" r="2.8" fill="#2468d8"/><circle cx="14.2" cy="-24.2" r="2.8" fill="#2468d8"/><circle cx="-13.9" cy="-36" r="2.8" fill="#2468d8"/><circle cx="-2.6" cy="-36" r="2.8" fill="#2468d8"/><circle cx="8.6" cy="-36" r="2.8" fill="#2468d8"/><circle cx="-8.2" cy="-47.7" r="2.8" fill="#2468d8"/><circle cx="3" cy="-47.7" r="2.8" fill="#2468d8"/><circle cx="14.2" cy="-47.7" r="2.8" fill="#2468d8"/><circle cx="-13.9" cy="-59.5" r="2.8" fill="#2468d8"/><circle cx="-2.6" cy="-59.5" r="2.8" fill="#2468d8"/><circle cx="8.6" cy="-59.5" r="2.8" fill="#2468d8"/></g><path class="nail__shine" d="M-6.9 -9.9Q-9.2 -31 -2.6 -49.6"/></g><g transform="translate(212 104) rotate(2)"><clipPath id="c-middle"><use href="#n-middle"/></clipPath><path id="n-middle" data-nail="middle" class="nail" d="M-17.5 0C-17.5 -33 -7.9 -58.1 0 -66C7.9 -58.1 17.5 -33 17.5 0Q0 9.6 -17.5 0Z" style="fill:#dca5a1"/><g class="nail__art" clip-path="url(#c-middle)"><circle cx="-14.7" cy="-13.2" r="3" fill="#2468d8"/><circle cx="-2.8" cy="-13.2" r="3" fill="#2468d8"/><circle cx="9.1" cy="-13.2" r="3" fill="#2468d8"/><circle cx="-8.7" cy="-25.7" r="3" fill="#2468d8"/><circle cx="3.2" cy="-25.7" r="3" fill="#2468d8"/><circle cx="15.1" cy="-25.7" r="3" fill="#2468d8"/><circle cx="-14.7" cy="-38.3" r="3" fill="#2468d8"/><circle cx="-2.8" cy="-38.3" r="3" fill="#2468d8"/><circle cx="9.1" cy="-38.3" r="3" fill="#2468d8"/><circle cx="-8.7" cy="-50.8" r="3" fill="#2468d8"/><circle cx="3.2" cy="-50.8" r="3" fill="#2468d8"/><circle cx="15.1" cy="-50.8" r="3" fill="#2468d8"/><circle cx="-14.7" cy="-63.4" r="3" fill="#2468d8"/><circle cx="-2.8" cy="-63.4" r="3" fill="#2468d8"/><circle cx="9.1" cy="-63.4" r="3" fill="#2468d8"/></g><path class="nail__shine" d="M-7.3 -10.6Q-9.8 -33 -2.8 -52.8"/></g><g transform="translate(272 128) rotate(11)"><clipPath id="c-index"><use href="#n-index"/></clipPath><path id="n-index" data-nail="index" class="nail" d="M-16.5 0C-16.5 -31 -7.4 -54.6 0 -62C7.4 -54.6 16.5 -31 16.5 0Q0 9.1 -16.5 0Z" style="fill:#dca5a1"/><g class="nail__art" clip-path="url(#c-index)"><circle cx="-13.9" cy="-12.4" r="2.8" fill="#2468d8"/><circle cx="-2.6" cy="-12.4" r="2.8" fill="#2468d8"/><circle cx="8.6" cy="-12.4" r="2.8" fill="#2468d8"/><circle cx="-8.2" cy="-24.2" r="2.8" fill="#2468d8"/><circle cx="3" cy="-24.2" r="2.8" fill="#2468d8"/><circle cx="14.2" cy="-24.2" r="2.8" fill="#2468d8"/><circle cx="-13.9" cy="-36" r="2.8" fill="#2468d8"/><circle cx="-2.6" cy="-36" r="2.8" fill="#2468d8"/><circle cx="8.6" cy="-36" r="2.8" fill="#2468d8"/><circle cx="-8.2" cy="-47.7" r="2.8" fill="#2468d8"/><circle cx="3" cy="-47.7" r="2.8" fill="#2468d8"/><circle cx="14.2" cy="-47.7" r="2.8" fill="#2468d8"/><circle cx="-13.9" cy="-59.5" r="2.8" fill="#2468d8"/><circle cx="-2.6" cy="-59.5" r="2.8" fill="#2468d8"/><circle cx="8.6" cy="-59.5" r="2.8" fill="#2468d8"/></g><path class="nail__shine" d="M-6.9 -9.9Q-9.2 -31 -2.6 -49.6"/></g><g transform="translate(356 252) rotate(44)"><clipPath id="c-thumb"><use href="#n-thumb"/></clipPath><path id="n-thumb" data-nail="thumb" class="nail" d="M-17.5 0C-17.5 -27 -7.9 -47.5 0 -54C7.9 -47.5 17.5 -27 17.5 0Q0 9.6 -17.5 0Z" style="fill:#dca5a1"/><g class="nail__art" clip-path="url(#c-thumb)"><circle cx="-14.7" cy="-10.8" r="3" fill="#2468d8"/><circle cx="-2.8" cy="-10.8" r="3" fill="#2468d8"/><circle cx="9.1" cy="-10.8" r="3" fill="#2468d8"/><circle cx="-8.7" cy="-21.1" r="3" fill="#2468d8"/><circle cx="3.2" cy="-21.1" r="3" fill="#2468d8"/><circle cx="15.1" cy="-21.1" r="3" fill="#2468d8"/><circle cx="-14.7" cy="-31.3" r="3" fill="#2468d8"/><circle cx="-2.8" cy="-31.3" r="3" fill="#2468d8"/><circle cx="9.1" cy="-31.3" r="3" fill="#2468d8"/><circle cx="-8.7" cy="-41.6" r="3" fill="#2468d8"/><circle cx="3.2" cy="-41.6" r="3" fill="#2468d8"/><circle cx="15.1" cy="-41.6" r="3" fill="#2468d8"/><circle cx="-14.7" cy="-51.8" r="3" fill="#2468d8"/><circle cx="-2.8" cy="-51.8" r="3" fill="#2468d8"/><circle cx="9.1" cy="-51.8" r="3" fill="#2468d8"/></g><path class="nail__shine" d="M-7.3 -8.6Q-9.8 -27 -2.8 -43.2"/></g></g>
+<!--hand:end-->
+        </svg>
+        <figure class="match">
+          <picture>
+            <source id="match-src" type="image/webp" srcset="assets/img/dn-09-480.webp 480w, assets/img/dn-09-800.webp 800w, assets/img/dn-09-1200.webp 1200w" sizes="(min-width: 900px) 220px, 36vw">
+            <img id="match-img" src="assets/img/dn-09-800.jpg" width="800" height="1066" alt="Almond, nude with blue dotted French tips, a set done at the salon" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+        <p class="match__cap" id="match-cap" aria-live="polite"><span class="match__k">Closest set they have done:</span> <span id="match-text">Almond, nude with blue dotted French tips</span>.<span id="match-none" class="match__none" hidden> Not one they have posted yet. Ask at the desk.</span></p>
+      </div>
+      <div class="tryon__side">
+        <div class="tryon__head">
+          <h2 id="tryon-h" class="h-label">Try a set</h2>
+          <p class="tryon__lede">Pick a shape, a colour and a finish from what the salon does. The hand changes, and the closest set they have already done lands beside it.</p>
+        </div>
+        <form class="chips" id="composer" aria-label="Compose a set" onsubmit="return false">
+          <fieldset>
+            <legend>Shape</legend>
+            <label class="chip"><input type="radio" name="shape" value="almond" checked><span>Almond</span></label>
+            <label class="chip"><input type="radio" name="shape" value="coffin"><span>Coffin</span></label>
+            <label class="chip"><input type="radio" name="shape" value="oval"><span>Oval</span></label>
+          </fieldset>
+          <fieldset>
+            <legend>Colour</legend>
+<!--colours:start-->
+            <label class="chip chip--sw"><input type="radio" name="colour" value="plum"><span><i style="background:#36202c"></i>Plum</span></label>
+            <label class="chip chip--sw"><input type="radio" name="colour" value="chocolate"><span><i style="background:#412728"></i>Chocolate</span></label>
+            <label class="chip chip--sw"><input type="radio" name="colour" value="nude" checked><span><i style="background:#dca5a1"></i>Nude</span></label>
+            <label class="chip chip--sw"><input type="radio" name="colour" value="orange"><span><i style="background:#fe4913"></i>Orange</span></label>
+            <label class="chip chip--sw"><input type="radio" name="colour" value="burgundy"><span><i style="background:#64071a"></i>Burgundy</span></label>
+            <label class="chip chip--sw"><input type="radio" name="colour" value="milky"><span><i style="background:#efeaec"></i>Milky</span></label>
+            <label class="chip chip--sw"><input type="radio" name="colour" value="pink"><span><i style="background:#f1aecb"></i>Pink</span></label>
+<!--colours:end-->
+          </fieldset>
+          <fieldset>
+            <legend>Finish</legend>
+            <label class="chip"><input type="radio" name="finish" value="plain"><span>Plain</span></label>
+            <label class="chip"><input type="radio" name="finish" value="french"><span>French tip</span></label>
+            <label class="chip"><input type="radio" name="finish" value="dots" checked><span>Dots</span></label>
+            <label class="chip"><input type="radio" name="finish" value="leopard"><span>Leopard</span></label>
+            <label class="chip"><input type="radio" name="finish" value="line"><span>Line art</span></label>
+          </fieldset>
+        </form>
+        <p class="tryon__end">Show this at the desk, or call <a href="tel:+447726776666" class="tel">07726 776666</a>.</p>
+        <button type="button" class="btn js-only" id="desk-open">Show at the desk</button>
+      </div>
+    </div>
+    <dialog id="desk" class="desk" aria-labelledby="desk-h">
+      <div class="desk__inner">
+        <button type="button" class="desk__close" id="desk-close" aria-label="Close">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <h2 id="desk-h" class="desk__h">The set I would like</h2>
+        <p class="desk__words" id="desk-words"></p>
+        <div class="desk__pair">
+          <svg id="desk-hand" class="hand" viewBox="20 0 400 520" role="img" aria-label=""></svg>
+          <figure class="desk__photo" id="desk-photo">
+            <figcaption id="desk-cap"></figcaption>
+          </figure>
+        </div>
+        <p class="desk__foot">Dunblane Nails, 15 High Street · 07726 776666</p>
+      </div>
+    </dialog>
+  </section>
+
+  <!-- 4. Their work. Nine prints drop onto the rug one at a time as the pinned
+       act runs. Reduced motion or no JS: a plain grid. -->
+  <section id="work" class="act act-work" data-sc-act="pin" data-sc-span="1.6" data-dn-ground="2" tabindex="-1" aria-labelledby="work-h">
+    <div class="sc-stage work__stage">
+      <h2 id="work-h" class="h-label work__h">Their work</h2>
+      <div class="prints">
+<!--prints:start-->
+        <figure class="print print--drop" style="--i:0">
+          <picture><source type="image/webp" srcset="assets/img/dn-09-480.webp 480w, assets/img/dn-09-800.webp 800w, assets/img/dn-09-1200.webp 1200w" sizes="(min-width: 900px) 260px, 45vw"><img src="assets/img/dn-09-800.jpg" width="800" height="1066" alt="Almond, nude with blue dotted French tips, a set done at the salon" loading="lazy" decoding="async"></picture>
+          <figcaption>Almond, nude with blue dotted French tips</figcaption>
+        </figure>
+        <figure class="print print--drop" style="--i:1">
+          <picture><source type="image/webp" srcset="assets/img/dn-01-480.webp 480w, assets/img/dn-01-800.webp 800w, assets/img/dn-01-1200.webp 1200w" sizes="(min-width: 900px) 260px, 45vw"><img src="assets/img/dn-01-800.jpg" width="800" height="1066" alt="Almond, deep plum with white dots and stars, a set done at the salon" loading="lazy" decoding="async"></picture>
+          <figcaption>Almond, deep plum with white dots and stars</figcaption>
+        </figure>
+        <figure class="print print--drop" style="--i:2">
+          <picture><source type="image/webp" srcset="assets/img/dn-04-480.webp 480w, assets/img/dn-04-800.webp 800w, assets/img/dn-04-1200.webp 1200w" sizes="(min-width: 900px) 260px, 45vw"><img src="assets/img/dn-04-800.jpg" width="800" height="1066" alt="Almond, bright orange with orange-slice accents, a set done at the salon" loading="lazy" decoding="async"></picture>
+          <figcaption>Almond, bright orange with orange-slice accents</figcaption>
+        </figure>
+        <figure class="print print--drop" style="--i:3">
+          <picture><source type="image/webp" srcset="assets/img/dn-06-480.webp 480w, assets/img/dn-06-800.webp 800w, assets/img/dn-06-1200.webp 1200w" sizes="(min-width: 900px) 260px, 45vw"><img src="assets/img/dn-06-800.jpg" width="800" height="1066" alt="Almond, burgundy with leopard accents, a set done at the salon" loading="lazy" decoding="async"></picture>
+          <figcaption>Almond, burgundy with leopard accents</figcaption>
+        </figure>
+        <figure class="print print--drop" style="--i:4">
+          <picture><source type="image/webp" srcset="assets/img/dn-02-480.webp 480w, assets/img/dn-02-800.webp 800w, assets/img/dn-02-1200.webp 1200w" sizes="(min-width: 900px) 260px, 45vw"><img src="assets/img/dn-02-800.jpg" width="800" height="1066" alt="Coffin, chocolate brown with pink polka-dot accents, a set done at the salon" loading="lazy" decoding="async"></picture>
+          <figcaption>Coffin, chocolate brown with pink polka-dot accents</figcaption>
+        </figure>
+        <figure class="print print--drop" style="--i:5">
+          <picture><source type="image/webp" srcset="assets/img/dn-17-480.webp 480w, assets/img/dn-17-800.webp 800w, assets/img/dn-17-1200.webp 1200w" sizes="(min-width: 900px) 260px, 45vw"><img src="assets/img/dn-17-800.jpg" width="800" height="1066" alt="Almond, pink with white French tips and pink flowers, a set done at the salon" loading="lazy" decoding="async"></picture>
+          <figcaption>Almond, pink with white French tips and pink flowers</figcaption>
+        </figure>
+        <figure class="print print--drop" style="--i:6">
+          <picture><source type="image/webp" srcset="assets/img/dn-07-480.webp 480w, assets/img/dn-07-800.webp 800w, assets/img/dn-07-1200.webp 1200w" sizes="(min-width: 900px) 260px, 45vw"><img src="assets/img/dn-07-800.jpg" width="800" height="1066" alt="Almond, nude with black line art, a set done at the salon" loading="lazy" decoding="async"></picture>
+          <figcaption>Almond, nude with black line art</figcaption>
+        </figure>
+        <figure class="print print--drop" style="--i:7">
+          <picture><source type="image/webp" srcset="assets/img/dn-19-480.webp 480w, assets/img/dn-19-800.webp 800w, assets/img/dn-19-1200.webp 1200w" sizes="(min-width: 900px) 260px, 45vw"><img src="assets/img/dn-19-800.jpg" width="800" height="1066" alt="Almond, nude with green French tips and a leaf, a set done at the salon" loading="lazy" decoding="async"></picture>
+          <figcaption>Almond, nude with green French tips and a leaf</figcaption>
+        </figure>
+        <figure class="print print--drop" style="--i:8">
+          <picture><source type="image/webp" srcset="assets/img/dn-11-480.webp 480w, assets/img/dn-11-800.webp 800w, assets/img/dn-11-1200.webp 1200w" sizes="(min-width: 900px) 260px, 45vw"><img src="assets/img/dn-11-800.jpg" width="800" height="1066" alt="Short oval, natural gloss, a set done at the salon" loading="lazy" decoding="async"></picture>
+          <figcaption>Short oval, natural gloss</figcaption>
+        </figure>
+<!--prints:end-->
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Silence. One line, nothing moves. -->
+  <section id="quiet" class="act act-quiet" data-sc-act="flow" data-dn-ground="3" aria-label="A note on the photographs">
+    <p class="quiet">Every photo here is theirs, taken on this rug.</p>
+  </section>
+
+  <!-- 6. Questions, as folded notes. Facts from their own listings only;
+       anything not confirmed carries a gap tag. -->
+  <section id="questions" class="act act-faq" data-sc-act="flow" data-dn-ground="1" tabindex="-1" aria-labelledby="faq-h">
+    <h2 id="faq-h" class="h-label">Questions</h2>
+    <div class="notes">
+      <details class="note"><summary>Can I just walk in?</summary><p>Yes. Walk-ins are welcome Monday to Saturday, <span class="num">9am</span> to <span class="num">6pm</span>.</p></details>
+      <details class="note"><summary>How do I book a time?</summary><p>Call <a href="tel:+447726776666">07726 776666</a>, or message them on <a href="https://www.facebook.com/profile.php?id=100092354306720" rel="noopener" target="_blank">Facebook</a> or <a href="https://www.instagram.com/dunblanenails_uk/" rel="noopener" target="_blank">Instagram (@dunblanenails_uk)</a>.</p></details>
+      <details class="note"><summary>When are you open?</summary><p>Monday to Saturday, <span class="num">9am</span> to <span class="num">6pm</span>. Closed on Sunday.</p></details>
+      <details class="note"><summary>How much is a set?</summary><p>Prices are not online yet. Ask when you call or at the desk. <span class="gap gap--note">Price list to come from the salon</span></p></details>
+      <details class="note"><summary>What do you do?</summary><p>Acrylic nails, dip powder, manicures (men's too), manicure and pedicure, spa and waterless pedicures, nail art, nail decals, nail polish and polish changes.</p></details>
+      <details class="note"><summary>Do you do men's nails?</summary><p>Yes, men's manicures.</p></details>
+      <details class="note"><summary>Is there a student discount?</summary><p>Yes, <span class="num">10%</span> off for students.</p></details>
+      <details class="note"><summary>Is there a loyalty card?</summary><p>Yes. Six stamps, and your sixth visit comes with a discount; ask at the desk how much. <span class="gap gap--note">Amount to confirm with the salon</span></p></details>
+      <details class="note"><summary>Where are you?</summary><p>15 High Street, Dunblane FK15 0EE. <a href="https://www.google.com/maps/search/?api=1&amp;query=Dunblane+Nails+15+High+Street+Dunblane+FK15+0EE" rel="noopener" target="_blank">Open in Google Maps</a>.</p></details>
+      <details class="note"><summary>Anything while I wait?</summary><p>Their Google listing mentions drinks and free wi-fi.</p></details>
+      <details class="note"><summary>How do I pay?</summary><p>Ask when you call. <span class="gap gap--note">To confirm with the salon</span></p></details>
+    </div>
+  </section>
+
+  <!-- 7. Walk in. The full card again with every box stamped, and a note to
+       the salon tucked beside it. -->
+  <section id="walkin" class="act act-walkin" data-sc-act="flow" data-dn-ground="0" tabindex="-1" aria-labelledby="walkin-h">
+    <h2 id="walkin-h" class="h-label">Walk in</h2>
+    <div class="walkin">
+      <article class="card card--stamped" aria-label="The loyalty card, all six stamped">
+        <div class="card__band"><p class="card__name">Dunblane Nails</p></div>
+        <div class="card__body card__body--close">
+          <ol class="stamps stamps--done" aria-label="All six boxes stamped">
+            <li><span>1</span></li><li><span>2</span></li><li><span>3</span></li>
+            <li><span>4</span></li><li><span>5</span></li>
+            <li class="stamps__six"><span>6</span><small>treat</small></li>
+          </ol>
+          <table class="hours">
+            <caption>Opening times</caption>
+            <tbody>
+              <tr><th scope="row">Monday</th><td>9am to 6pm</td></tr>
+              <tr><th scope="row">Tuesday</th><td>9am to 6pm</td></tr>
+              <tr><th scope="row">Wednesday</th><td>9am to 6pm</td></tr>
+              <tr><th scope="row">Thursday</th><td>9am to 6pm</td></tr>
+              <tr><th scope="row">Friday</th><td>9am to 6pm</td></tr>
+              <tr><th scope="row">Saturday</th><td>9am to 6pm</td></tr>
+              <tr><th scope="row">Sunday</th><td>Closed</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="card__phone"><a href="tel:+447726776666">07726 776666</a></p>
+        <p class="card__line">15 High Street, Dunblane FK15 0EE</p>
+        <ul class="card__links">
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Dunblane+Nails+15+High+Street+Dunblane+FK15+0EE" rel="noopener" target="_blank">Open in Google Maps</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=100092354306720" rel="noopener" target="_blank">Facebook</a></li>
+          <li><a href="https://www.instagram.com/dunblanenails_uk/" rel="noopener" target="_blank">Instagram</a></li>
+        </ul>
+      </article>
+
+      <form class="note-form" id="note" action="https://api.web3forms.com/submit" method="POST" aria-labelledby="note-h">
+        <h3 id="note-h" class="note-form__h">Leave a note for the salon</h3>
+        <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_KEY">
+        <input type="hidden" name="subject" value="Note from the Dunblane Nails concept">
+        <input type="hidden" name="from_name" value="Dunblane Nails website">
+        <input type="hidden" name="redirect" value="https://tempanywebstudios.co.uk/concepts/dunblane-nails/#walkin">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80" aria-describedby="e-name">
+          <p class="field__err" id="e-name" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-reach">Phone or email</label>
+          <input id="f-reach" name="contact" type="text" autocomplete="tel" required maxlength="120" aria-describedby="h-reach e-reach">
+          <p class="field__hint" id="h-reach">So they can get back to you.</p>
+          <p class="field__err" id="e-reach" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-about">What is it about?</label>
+          <select id="f-about" name="about">
+            <option>A question</option>
+            <option>A time I would like</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-msg">Your note</label>
+          <textarea id="f-msg" name="message" rows="4" required maxlength="1000" aria-describedby="e-msg"></textarea>
+          <p class="field__err" id="e-msg" hidden></p>
+        </div>
+        <button type="submit" class="btn btn--send" id="send">Send the note</button>
+        <!-- Concept wording while access_key is the placeholder. When the salon's
+             key is in, swap for: This goes to the salon by email. Calling is
+             quicker: 07726 776666. -->
+        <p class="note-form__foot" id="note-status">This first version is not connected to the salon yet, so a note sent here will not reach them. To book or ask, call <a href="tel:+447726776666">07726 776666</a>.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="edge">
+  <p class="edge__name">Dunblane Nails · 15 High Street, Dunblane FK15 0EE · <a href="tel:+447726776666">07726 776666</a></p>
+  <p class="edge__small">DUNBLANE NAILS LTD, registered in Scotland, company number SC768180.</p>
+  <ul class="edge__links">
+    <li><a href="privacy">Privacy policy</a></li>
+    <li><a href="terms">Terms and conditions</a></li>
+    <li><a href="privacy#cookies" data-cookie-settings>Cookie settings</a></li>
+    <li><a href="https://tempanywebstudios.co.uk/privacy/#previews">How visits here are handled</a></li>
+  </ul>
+  <p class="edge__small">Photographs: Dunblane Nails, from their own Facebook page, used here for this concept only.</p>
+  <p class="edge__small">A first version made by <a href="https://tempanywebstudios.co.uk/">Tempany Web Studios</a> to show the salon. It is not yet the salon's own site.</p>
+</footer>
+
+<script src="scrollcraft.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script src="hand.js"></script>
+<script src="chrome.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

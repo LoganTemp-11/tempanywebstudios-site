@@ -1,0 +1,32 @@
+/* Shared by privacy, terms and 404. Same tokens, rug and chrome as the page:
+   style.css is pulled in whole, then a plain reading sheet lies on the rug. */
+@import url("scrollcraft.css");
+@import url("style.css");
+
+.legal .chrome { flex-direction: row-reverse; align-items: center; }
+.home {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 10px;
+  background: var(--violet-ink); color: #fff; text-decoration: none;
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 800; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+}
+:root[data-theme="light"] .home { background: var(--violet-ink); }
+.legal main { padding: 72px 16px 64px; min-height: 70vh; }
+.sheet {
+  width: min(760px, 100%); margin-inline: auto; background: var(--paper); color: var(--paper-ink);
+  border-radius: 6px; padding: clamp(24px, 5vw, 56px) clamp(18px, 5vw, 56px);
+  box-shadow: 0 18px 40px -18px hsl(var(--sc-shadow-color) / .45);
+}
+.sheet h1 { font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 800; text-transform: uppercase; letter-spacing: .02em; font-size: clamp(1.6rem, 1.1rem + 2.4vw, 2.8rem); line-height: 1.05; margin-bottom: 10px; }
+.sheet h2 { font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: 1rem; letter-spacing: .06em; text-transform: uppercase; margin: 30px 0 8px; }
+.sheet p { margin: 0 0 12px; max-width: 64ch; }
+.sheet .updated { color: var(--paper-soft); font-size: .95rem; }
+.sheet .short { padding: 14px 16px; background: var(--gap-bg); border-radius: 8px; }
+.sheet .back { display: inline-flex; align-items: center; min-height: 44px; margin-top: 18px; font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; }
+.lost { list-style: none; margin: 18px 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.lost a {
+  display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 8px 12px; border-radius: 10px; text-decoration: none;
+  background: #e6c3cc linear-gradient(160deg, var(--pink-1), var(--pink-2)); color: var(--card-ink);
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: .85rem;
+}
+.lost__n { display: grid; place-items: center; width: 34px; height: 34px; flex: none; background: #fff; border-radius: 6px; color: var(--violet-ink); }
+@media (max-width: 560px) { .lost { grid-template-columns: 1fr 1fr; } }

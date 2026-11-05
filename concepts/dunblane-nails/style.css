@@ -1,0 +1,499 @@
+/* Dunblane Nails, first version by Tempany Web Studios, Nov 2026.
+   Grammar: continuous world. The whole page is one white sheepskin, seen from
+   above and scrolled across; every section is an object lying on it. Colours
+   sampled from the salon's own loyalty card and photos (see PLAN.md). */
+
+/* ---------------------------------------------------------------- tokens -- */
+:root {
+  --sc-font-display: "Archivo", system-ui, sans-serif;
+  --sc-font-text: "Newsreader", Georgia, serif;
+  --sc-font-mono: "Archivo", system-ui, sans-serif;
+  --pink-1: #f0d9df; --pink-2: #e6c3cc;
+  --violet-band: #7c72aa; --violet-ink: #5d5291;
+  --card-ink: #2b2326; --card-red: #8e3447;
+  --skin: #e9c9b5;
+  --print: #fbfaf7; --print-ink: #2b2326;
+  --r-obj: 14px;
+  --chrome-top: 10px;
+}
+:root, :root[data-theme="light"] {
+  --sc-canvas: #f5f2eb;
+  --sc-surface: #fbf9f5;
+  --sc-ink: #2b2326;
+  --sc-ink-soft: #5b5155;
+  --sc-accent: #5d5291;
+  --sc-accent-ink: #ffffff;
+  --sc-shadow-color: 340 18% 28%;
+  --violet: #5d5291;
+  --red: #8e3447;
+  --paper: #fdfcf9;
+  --paper-ink: #2b2326;
+  --paper-soft: #5b5155;
+  --paper-rule: #e6dfe3;
+  --gap-ink: #5d5291; --gap-bg: #ece4f0;
+  --field: #ffffff; --field-line: #9b8f96;
+  --btn-bg: #5d5291; --btn-ink: #ffffff;
+  --rug-op: .2;
+  --strip-bg: #e9e3ec; --edge-line: #ddd5e3;
+  --rug-fibre: 120,108,96;
+  color-scheme: light;
+}
+:root[data-theme="light"] body { color: var(--sc-ink); }
+:root[data-theme="dark"] {
+  --sc-canvas: #1f1b24;
+  --sc-surface: #2a2531;
+  --sc-ink: #efe9e4;
+  --sc-ink-soft: #a39ab0;
+  --sc-accent: #b6aedb;
+  --sc-accent-ink: #1f1b24;
+  --sc-shadow-color: 270 30% 2%;
+  --violet: #b6aedb;
+  --red: #e594a6;
+  --paper: #2a2531;
+  --paper-ink: #efe9e4;
+  --paper-soft: #b3aabf;
+  --paper-rule: #3c3546;
+  --gap-ink: #c9c2e8; --gap-bg: #3a3346;
+  --field: #1f1b24; --field-line: #7d7389;
+  --btn-bg: #b6aedb; --btn-ink: #1f1b24;
+  --rug-op: .12;
+  --strip-bg: #2c2634; --edge-line: #3a3346;
+  --rug-fibre: 230,220,235;
+  color-scheme: dark;
+}
+:root[data-theme="dark"] body { color: var(--sc-ink); }
+
+/* ------------------------------------------------------------------ base -- */
+html { scroll-padding-top: 72px; }
+@media (max-width: 387px) { html { scroll-padding-top: 122px; } }
+body {
+  background: var(--sc-canvas);
+  font-family: var(--sc-font-text);
+  font-size: clamp(1.0625rem, 1rem + .25vw, 1.1875rem);
+  font-optical-sizing: auto;
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+p, li, dd, figcaption, summary { text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+.num, time, table, .tel, .card__phone, .stamps, .mini__boxes { font-variant-numeric: tabular-nums lining-nums; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
+.card :focus-visible, .print :focus-visible { outline-color: var(--violet-ink); }
+
+.strip {
+  margin: 0; padding: 12px 72px 12px 16px;
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600;
+  font-size: .72rem; letter-spacing: .06em; line-height: 1.5;
+  color: var(--sc-ink); background: var(--strip-bg);
+  position: relative; z-index: 2;
+}
+.strip a { text-underline-offset: .2em; }
+.skip {
+  position: absolute; left: 12px; top: -90px; z-index: 300;
+  padding: 12px 18px; background: var(--btn-bg); color: var(--btn-ink);
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; text-decoration: none; border-radius: 10px;
+}
+.skip:focus { top: 12px; }
+
+/* ------------------------------------------------------------- the rug --
+   Long fibres in a seamless tile drawn by tools/rug.py (an SVG noise filter
+   rasterised differently per compositor layer and showed seams). It scrolls with the page. No photo is tiled. Body text never sits on
+   the bare rug except the section labels and the one quiet line. */
+main {
+  position: relative;
+  background-image: var(--rug);
+  background-size: 480px 480px;
+  background-attachment: scroll;
+}
+:root, :root[data-theme="light"] { --rug: url("assets/rug-light.webp"); }
+:root[data-theme="dark"] { --rug: url("assets/rug-dark.webp"); }
+
+/* Objects on the rug: their own colour, a soft shadow, a small turn. */
+.obj-shadow, .card, .slip, .slip-sheet, .note, .print, .note-form, .match {
+  box-shadow: 0 18px 40px -18px hsl(var(--sc-shadow-color) / .45), 0 2px 6px -2px hsl(var(--sc-shadow-color) / .2);
+}
+
+.act { position: relative; padding-inline: 16px; }
+/* Room either side for the small card, so it never lies on an object. */
+@media (min-width: 1000px) { .act:not(.act-card) { padding-inline: 200px; } }
+/* 1000 to 1279: the small card sits top right only, so the left margin can give
+   the try-on hand back the width it needs (it halved at the breakpoint). */
+@media (min-width: 1000px) and (max-width: 1279px) { .act.act-tryon { padding-left: clamp(48px, calc((100vw - 1000px) * .55 + 48px), 200px); } }
+.h-label {
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 800;
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.4rem);
+  letter-spacing: .02em; line-height: 1.05; text-transform: uppercase;
+  color: var(--sc-ink);
+}
+
+/* ------------------------------------------------------------ the chrome -- */
+.chrome {
+  position: fixed; top: var(--chrome-top); right: 16px; z-index: 60;
+  display: flex; align-items: flex-start; gap: 8px; flex-direction: row-reverse;
+}
+.lamp {
+  width: 44px; height: 44px; border-radius: 12px; border: 0; cursor: pointer;
+  display: grid; place-items: center;
+  background: var(--paper); color: var(--paper-ink);
+  box-shadow: 0 8px 20px -10px hsl(var(--sc-shadow-color) / .5), 0 0 0 1px var(--paper-rule);
+}
+:root[data-theme="light"] .lamp svg path { fill: #f6d77c; }
+.mini {
+  background: #e6c3cc linear-gradient(160deg, var(--pink-1), var(--pink-2));
+  border-radius: 10px; padding: 0 6px 6px; color: var(--card-ink);
+  box-shadow: 0 10px 24px -12px hsl(var(--sc-shadow-color) / .55), 0 1px 2px hsl(var(--sc-shadow-color) / .2);
+  transform: rotate(-2deg);
+  transition: opacity 220ms var(--sc-ease-out), transform 220ms var(--sc-ease-out), visibility 0s;
+}
+.mini[data-hidden] { opacity: 0; visibility: hidden; pointer-events: none; transform: rotate(-2deg) translateY(-8px); transition: opacity 180ms, transform 180ms, visibility 0s 180ms; }
+.mini__band {
+  margin: 0 -6px 6px; padding: 5px 8px; border-radius: 10px 10px 0 0;
+  background: var(--violet-ink); color: #fff;
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 800;
+  font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; line-height: 1.2;
+}
+.mini__boxes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 44px); gap: 5px; }
+.mini__boxes a {
+  position: relative; display: grid; place-items: center; width: 44px; height: 44px;
+  background: #fff; border-radius: 7px; text-decoration: none;
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: .8rem; color: var(--violet-ink);
+}
+.mini__boxes a[aria-current="true"] { box-shadow: inset 0 0 0 2px var(--violet-ink); }
+.mini__boxes a::after, .stamps--done li::after {
+  content: ""; position: absolute; inset: 4px; pointer-events: none; opacity: 0; transform: scale(.9) rotate(-12deg);
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><g fill='none' stroke='%237c72aa' stroke-width='2.4'><circle cx='20' cy='20' r='16' stroke-dasharray='3 2'/><circle cx='20' cy='20' r='11.5'/></g><path d='M14 20.5l4.2 4.2L27 15.5' fill='none' stroke='%237c72aa' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>") center / contain no-repeat;
+  mix-blend-mode: multiply;
+}
+.mini__boxes a[data-stamped]::after, .stamps--done li::after { opacity: .9; transform: scale(1) rotate(-12deg); transition: opacity 180ms var(--sc-ease-out), transform 180ms var(--sc-ease-out); }
+.rm .mini__boxes a::after { transition: none !important; }
+.mini__boxes a span { position: relative; z-index: 1; }
+/* JS off: nothing tucks the card away or stamps it, so it is a plain row of
+   section links under the strip, in the flow, never over the disclaimer. */
+html:not(.js) .chrome { position: static; justify-content: flex-start; padding: 10px 16px 0; }
+html:not(.js) .mini[data-hidden] { opacity: 1; visibility: visible; pointer-events: auto; transform: rotate(-2deg); }
+
+@media (max-width: 999px) {
+  /* On a phone or tablet the small card lies flat across the top: one row of six. */
+  .mini { display: flex; align-items: center; padding: 4px; transform: none; }
+  .mini[data-hidden] { transform: translateY(-8px); }
+  .mini__band { font-size: 0; width: 8px; height: 44px; margin: 0 4px 0 0; padding: 0; border-radius: 4px; background: var(--violet-ink); }
+  .mini__boxes { grid-template-columns: repeat(6, 44px); gap: 4px; }
+  html:not(.js) .mini[data-hidden] { transform: none; }
+}
+@media (max-width: 387px) {
+  :root { --stage-top: 114px; }
+  /* Six in a row (band, six boxes, lamp: 356px) needs 388px with 16px gutters: below that, two rows of three. */
+  .mini__band { height: 92px; }
+  .mini__boxes { grid-template-columns: repeat(3, 44px); }
+}
+
+/* ------------------------------------------------------- cookie choice -- */
+.consent {
+  position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 70; max-width: 560px; margin-inline: auto;
+  display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center;
+  padding: 14px 16px; border-radius: var(--r-obj);
+  background: var(--paper); color: var(--paper-ink);
+  box-shadow: 0 18px 40px -16px hsl(var(--sc-shadow-color) / .6), 0 0 0 1px var(--paper-rule);
+  font-size: .95rem;
+}
+.consent[hidden] { display: none; }
+.consent p { margin: 0; flex: 1 1 260px; }
+.consent__actions { display: flex; gap: 8px; }
+.consent__btn {
+  min-height: 44px; min-width: 96px; padding: 0 16px; border-radius: 10px; cursor: pointer;
+  border: 1.5px solid var(--paper-ink); background: transparent; color: var(--paper-ink);
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: .85rem; letter-spacing: .04em;
+}
+
+/* -------------------------------------------------------------- the card --
+   Their loyalty card, reset in type. The same object in both themes. */
+.card {
+  container-type: inline-size;
+  position: relative; width: min(560px, 100%);
+  background: #e6c3cc linear-gradient(165deg, var(--pink-1) 0%, #ebd0d7 55%, var(--pink-2) 100%);
+  color: var(--card-ink); border-radius: 16px; overflow: hidden;
+  padding: 0 0 18px;
+}
+.card::before { /* the marbling, faint */
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .35;
+  background:
+    radial-gradient(120% 60% at 85% 30%, rgba(255,255,255,.55), transparent 60%),
+    radial-gradient(80% 50% at 10% 90%, rgba(190,120,150,.25), transparent 70%);
+}
+.card > * { position: relative; }
+.card__band { background: var(--violet-band); padding: 4.2cqi 5cqi 3.6cqi; }
+.card__name {
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 800;
+  font-size: max(24px, 6.6cqi); line-height: 1; letter-spacing: .02em;
+  text-transform: uppercase; color: #fff; white-space: nowrap; margin: 0;
+}
+.card__body { display: grid; grid-template-columns: auto 1fr; gap: 4cqi; align-items: center; padding: 4.5cqi 5cqi 2cqi; }
+.stamps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 10cqi); gap: 2cqi; }
+.stamps li {
+  position: relative; aspect-ratio: 1; background: #fff; border-radius: 1.6cqi;
+  display: grid; place-content: center; text-align: center;
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; color: var(--violet-ink);
+  font-size: max(13px, 3.2cqi); line-height: 1;
+  box-shadow: inset 0 0 0 1px rgba(93,82,145,.12);
+}
+.stamps small { display: block; font-size: max(8px, 1.4cqi); letter-spacing: 0; margin-top: .3em; font-weight: 600; text-transform: uppercase; }
+.stamps--done li::after { inset: 8%; }
+.card__panel img { width: 100%; height: auto; border-radius: 1.2cqi; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(80,40,60,.18); }
+.card__phone { margin: 1cqi 5cqi 0; }
+.card__phone a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 800;
+  font-size: max(24px, 6.4cqi); letter-spacing: .01em; color: var(--card-red); text-decoration: none; line-height: 1.2;
+  padding-block: 0;
+}
+.card__phone a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+.card__line { margin: .4em 5cqi 0; font-size: max(15px, 3.1cqi); line-height: 1.35; color: var(--card-ink); }
+.card__k { font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: .78em; letter-spacing: .08em; text-transform: uppercase; margin-right: .3em; }
+.card__soft { white-space: nowrap; }
+.card__socials, .card__links { list-style: none; margin: 3cqi 5cqi 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 4cqi; font-size: max(14px, 2.6cqi); }
+.card__socials a, .card__links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0; color: var(--card-ink); text-underline-offset: .22em; }
+
+/* ------------------------------------------------- 1. card on the rug -- */
+.act-card { min-height: calc(100svh - 44px); display: grid; place-items: center; padding-block: 56px 48px; }
+.card-lie { position: relative; width: min(1040px, 100%); display: grid; grid-template-columns: minmax(0, 560px) auto; gap: 40px; align-items: center; justify-content: center; }
+.act-card .card { transform: rotate(-3deg); }
+.slip {
+  font-family: var(--sc-font-text); font-style: italic; font-size: clamp(1.15rem, 1rem + .6vw, 1.5rem); line-height: 1.35;
+  background: var(--paper); color: var(--paper-ink);
+  padding: 18px 22px 20px; border-radius: 4px; margin: 0;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 calc(1.35em - 1px), var(--paper-rule) calc(1.35em - 1px) 1.35em);
+  background-position: 0 19px;
+}
+.slip--hello { transform: rotate(4deg); justify-self: start; white-space: nowrap; }
+
+@media (max-width: 799px) {
+  .act-card { min-height: auto; padding-block: 64px 40px; place-items: start center; }
+  .card-lie { grid-template-columns: 1fr; gap: 0; justify-items: center; }
+  .act-card .card { width: min(352px, 100%); transform: rotate(-2deg); }
+  .slip--hello { justify-self: end; margin: -6px 6px 0 0; transform: rotate(4deg); font-size: 1.1rem; padding: 12px 16px 14px; }
+}
+
+/* --------------------------------------------- 2. what they do (slip) -- */
+.act-menu { padding-block: clamp(64px, 10vh, 120px); }
+.slip-sheet {
+  width: min(680px, 100%); margin-inline: auto; transform: rotate(1.4deg);
+  background: var(--paper); color: var(--paper-ink); border-radius: 6px;
+  padding: clamp(24px, 4vw, 44px) clamp(18px, 4vw, 48px) clamp(24px, 4vw, 40px);
+}
+.slip-sheet .h-label { color: var(--paper-ink); margin-bottom: 18px; }
+.services { list-style: none; margin: 0; padding: 0; }
+.services li {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px;
+  padding: 11px 0; border-bottom: 1px solid var(--paper-rule);
+}
+.services__n { font-size: 1.12em; }
+.gap {
+  display: inline-block; font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600;
+  font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; line-height: 1.3;
+  color: var(--gap-ink); background: var(--gap-bg); padding: 5px 8px; border-radius: 5px;
+  border: 1px dashed var(--gap-ink);
+}
+.gap--note { margin-left: .3em; vertical-align: .1em; }
+.slip-sheet__foot { margin: 16px 0 0; color: var(--paper-soft); }
+.slip-sheet__foot + .slip-sheet__foot { margin-top: 6px; }
+html:not(.js) [data-sc-stagger] > * { opacity: 1; transform: none; }
+
+/* ----------------------------------------------------------- 3. try-on -- */
+.act-tryon { padding-block: clamp(56px, 9vh, 110px); }
+.tryon { width: min(1120px, 100%); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+.tryon__stage { position: sticky; top: 80px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 8px; }
+.hand { width: min(380px, 100%); height: auto; justify-self: center; overflow: hidden; filter: drop-shadow(0 16px 22px hsl(var(--sc-shadow-color) / .28)); }
+.nail { stroke: rgba(40, 20, 25, .14); stroke-width: .8; transition: fill 240ms var(--sc-ease-out), d 240ms var(--sc-ease-out); }
+.rm .nail { transition: none; }
+.nail__shine { fill: none; stroke: #fff; stroke-opacity: .55; stroke-width: 2.4; stroke-linecap: round; }
+.match {
+  /* its own column beside the hand, lifted a little, so it never lies on a nail */
+  width: clamp(130px, 13vw, 180px); align-self: end; margin: 0 0 18px;
+  background: var(--print); padding: 8px 8px 0; border-radius: 3px; transform: rotate(5deg);
+}
+.match img { width: 100%; height: auto; display: block; }
+.match::after { content: ""; display: block; height: 22px; }
+.match.is-landing { animation: land 320ms var(--sc-ease-out); }
+@keyframes land { from { transform: rotate(9deg) translate(10px, -16px) scale(1.04); opacity: .4; } to { transform: rotate(5deg); opacity: 1; } }
+.match__cap { grid-column: 1 / -1; justify-self: center; margin: 10px 0 0; max-width: 34ch; text-align: center; color: var(--sc-ink); font-size: 1rem; }
+.match__k { font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; display: block; color: var(--sc-ink-soft); }
+.match__none { display: block; font-style: italic; }
+.match__none[hidden] { display: none; }
+
+.tryon__side { background: var(--paper); color: var(--paper-ink); border-radius: 8px; padding: clamp(20px, 3vw, 36px); transform: rotate(-.8deg); box-shadow: 0 18px 40px -18px hsl(var(--sc-shadow-color) / .45); }
+.tryon__side .h-label { color: var(--paper-ink); }
+.tryon__lede { margin: 10px 0 18px; color: var(--paper-soft); }
+.chips fieldset { border: 0; margin: 0 0 16px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips legend { padding: 0; margin-bottom: 8px; font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--paper-soft); }
+.chip { position: relative; display: inline-flex; }
+.chip input { scroll-margin-top: calc(48svh + 72px); scroll-margin-bottom: 24px; position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.chip span {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 22px;
+  border: 1.5px solid var(--paper-rule); background: var(--sc-canvas); color: var(--paper-ink);
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: .8rem; letter-spacing: .03em;
+  transition: border-color 160ms, background-color 160ms;
+}
+.chip i { width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.18); }
+:root[data-theme="dark"] .chip i { box-shadow: 0 0 0 1.5px rgba(255,255,255,.55); }
+.chip input:checked + span { border-color: var(--violet); background: var(--gap-bg); box-shadow: inset 0 0 0 1px var(--violet); }
+.chip input:focus-visible + span { outline: 2px solid var(--violet); outline-offset: 2px; }
+.tryon__end { margin: 6px 0 14px; }
+.tryon__end a { color: var(--red); font-weight: 500; }
+.btn {
+  min-height: 48px; padding: 0 22px; border: 0; border-radius: 12px; cursor: pointer;
+  background: var(--btn-bg); color: var(--btn-ink);
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: .9rem; letter-spacing: .04em;
+}
+.btn:hover { filter: brightness(1.08); }
+html:not(.js) .js-only { display: none; }
+
+@media (max-width: 799px) {
+  .tryon { grid-template-columns: 1fr; gap: 16px; }
+  /* The hand and its match stay in view at the top while the chips scroll. */
+  .tryon__stage {
+    top: var(--stage-top, 64px); z-index: 5; margin-inline: -16px; padding: 4px 16px 10px;
+    grid-template-columns: 1fr auto; align-items: end; justify-items: start; column-gap: 10px;
+    background: var(--sc-canvas);
+    box-shadow: 0 14px 14px -14px hsl(var(--sc-shadow-color) / .5);
+  }
+  /* The stage holds the hand, the print and the caption with no max-height,
+     so the caption always sits on the stage's own background. */
+  .hand { width: auto; height: clamp(200px, 34svh, 300px); }
+  .match { width: 34vw; max-width: 150px; align-self: center; margin: 0; }
+  .match::after { height: 14px; }
+  .match__cap { justify-self: start; text-align: left; font-size: .92rem; margin-top: 4px; max-width: none; }
+  .tryon__side { transform: none; }
+}
+
+/* the desk view */
+.desk { width: min(760px, calc(100vw - 24px)); max-height: calc(100svh - 24px); border: 0; border-radius: 14px; padding: 0; background: var(--paper); color: var(--paper-ink); box-shadow: 0 30px 80px -20px rgba(0,0,0,.5); }
+.desk::backdrop { background: rgba(30, 22, 30, .6); }
+.desk__inner { position: relative; padding: 28px clamp(16px, 4vw, 36px) 24px; }
+.desk__close { position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; border-radius: 10px; border: 1.5px solid var(--paper-rule); background: transparent; color: var(--paper-ink); cursor: pointer; display: grid; place-items: center; }
+.desk__h { font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 800; font-size: clamp(1.3rem, 1rem + 1.4vw, 2rem); text-transform: uppercase; letter-spacing: .02em; padding-right: 48px; }
+.desk__words { font-size: clamp(1.3rem, 1rem + 1.2vw, 1.8rem); margin: 8px 0 12px; }
+.desk__pair { display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; align-items: center; }
+.desk__pair .hand { width: 100%; filter: none; }
+.desk__photo { margin: 0; background: var(--print); padding: 8px; border-radius: 3px; color: var(--print-ink); }
+.desk__photo img { width: 100%; height: auto; }
+.desk__photo figcaption { font-size: .9rem; padding: 6px 2px 0; }
+.desk__foot { margin: 14px 0 0; color: var(--paper-soft); font-size: .95rem; }
+
+/* ---------------------------------------------------------- 4. prints -- */
+.print { background: var(--print); color: var(--print-ink); margin: 0; padding: 8px 8px 0; border-radius: 3px; }
+.print img { width: 100%; height: auto; display: block; }
+.print figcaption { font-size: .88rem; line-height: 1.3; padding: 8px 2px 10px; }
+.work__h { margin-bottom: 18px; }
+.prints { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (min-width: 800px) { .prints { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .prints { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.act-work { padding-block: 40px; overflow-x: clip; }
+.work__stage { width: min(1240px, 100%); margin-inline: auto; }
+/* No JS or reduced motion: a plain grid; the act is as tall as its prints. */
+html:not(.drops) .act-work { height: auto !important; }
+html:not(.drops) .work__stage { position: static; height: auto; }
+.rm .act-work { height: auto !important; }
+.rm .act-work .sc-stage { position: static; height: auto; }
+
+/* With motion: the prints drop onto the rug in turn while the act is pinned. */
+.drops .act-work { padding-block: 0; }
+.drops .work__stage { display: flex; flex-direction: column; justify-content: center; padding: 76px 0 20px; }
+.drops .print--drop {
+  --d: 0;
+  opacity: calc(min(1, var(--d) * 3));
+  transform: translate3d(calc((1 - var(--d)) * 6vw), calc((1 - var(--d)) * -70vh), 0) rotate(calc(var(--r) + (1 - var(--d)) * 14deg)) scale(calc(1 + (1 - var(--d)) * .08));
+  will-change: transform, opacity;
+}
+.print--drop { --r: 0deg; }
+.print--drop:nth-child(1) { --r: -3deg; } .print--drop:nth-child(2) { --r: 2deg; }
+.print--drop:nth-child(3) { --r: -1.5deg; } .print--drop:nth-child(4) { --r: 3.5deg; }
+.print--drop:nth-child(5) { --r: -2.5deg; } .print--drop:nth-child(6) { --r: 1.5deg; }
+.print--drop:nth-child(7) { --r: -4deg; } .print--drop:nth-child(8) { --r: 2.5deg; }
+.print--drop:nth-child(9) { --r: -1deg; }
+@media (min-width: 1100px) {
+  /* a loose spread that fits one screen: five over four */
+  .drops .prints { grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 14px 20px; width: min(1100px, calc((100svh - 190px) * 1.3)); margin-inline: auto; }
+  .drops .print--drop { grid-column: span 2; }
+  .drops .print--drop:nth-child(6) { grid-column: 2 / span 2; }
+  .drops .print--drop:nth-child(n+6) { margin-top: 0; }
+}
+@media (max-width: 799px) {
+  /* a pile: each lands on the last, a little offset; the top one reads */
+  .drops .prints { display: grid; grid-template-columns: 1fr; justify-items: center; }
+  .drops .print--drop { grid-area: 1 / 1; width: min(66vw, 280px); }
+  .drops .print--drop { translate: calc((var(--i) - 4) * 5px) calc((var(--i) - 4) * 4px); }
+  .drops .work__stage { padding-top: 70px; }
+}
+
+/* ------------------------------------------------------------ 5. quiet -- */
+.act-quiet { min-height: 60vh; display: grid; place-items: center; text-align: center; }
+.quiet { margin: 0; font-style: italic; font-size: clamp(1.4rem, 1rem + 2vw, 2.4rem); max-width: 22ch; line-height: 1.25; color: var(--sc-ink); }
+@media (max-width: 799px) { .act-quiet { min-height: 70vh; } }
+
+/* -------------------------------------------------------- 6. questions -- */
+.act-faq { padding-block: clamp(56px, 9vh, 110px); }
+.act-faq > .h-label { width: min(1040px, 100%); margin: 0 auto 22px; }
+.notes { width: min(1040px, 100%); margin-inline: auto; columns: 2 320px; column-gap: 22px; }
+.note {
+  break-inside: avoid; margin: 0 0 16px; background: var(--paper); color: var(--paper-ink);
+  border-radius: 4px; transform: rotate(var(--t, 0deg));
+}
+.note:nth-child(3n+1) { --t: -.8deg; } .note:nth-child(3n+2) { --t: .6deg; } .note:nth-child(3n) { --t: -.3deg; }
+.note summary {
+  list-style: none; cursor: pointer; min-height: 52px; padding: 14px 48px 14px 18px; position: relative;
+  font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: .92rem; letter-spacing: .02em; line-height: 1.35;
+}
+.note summary::-webkit-details-marker { display: none; }
+.note summary::after { /* the fold corner */
+  content: ""; position: absolute; right: 16px; top: 50%; width: 10px; height: 10px; margin-top: -7px;
+  border-right: 2px solid var(--violet); border-bottom: 2px solid var(--violet); transform: rotate(45deg);
+  transition: transform 180ms;
+}
+.note[open] summary::after { transform: rotate(-135deg); margin-top: -2px; }
+.note p { margin: 0; padding: 0 18px 16px; }
+
+/* ---------------------------------------------------------- 7. walk in -- */
+.act-walkin { padding-block: clamp(56px, 9vh, 110px) 48px; }
+.act-walkin > .h-label { width: min(1080px, 100%); margin: 0 auto 26px; }
+.walkin { width: min(1080px, 100%); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.card--stamped { transform: rotate(-2deg); }
+.card__body--close { align-items: start; }
+.hours { border-collapse: collapse; font-size: max(14px, 2.9cqi); width: 100%; }
+.hours caption { text-align: left; font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: .78em; letter-spacing: .08em; text-transform: uppercase; padding-bottom: 4px; }
+.hours th { text-align: left; font-weight: 400; padding: 2px 10px 2px 0; }
+.hours td { text-align: right; padding: 2px 0; white-space: nowrap; }
+.note-form { background: var(--paper); color: var(--paper-ink); border-radius: 6px; padding: clamp(20px, 3vw, 34px); transform: rotate(1.2deg); }
+.note-form__h { font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 800; font-size: clamp(1.1rem, 1rem + .6vw, 1.45rem); text-transform: uppercase; letter-spacing: .02em; margin-bottom: 14px; }
+.hp { display: none; }
+.field { margin-bottom: 14px; }
+.field label { display: block; font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; }
+.field input, .field select, .field textarea {
+  width: 100%; min-height: 48px; padding: 10px 12px; border-radius: 8px;
+  border: 1.5px solid var(--field-line); background: var(--field); color: var(--paper-ink); font-size: 1.05rem;
+}
+.field textarea { min-height: 120px; resize: vertical; }
+.field [aria-invalid="true"] { border-color: var(--red); box-shadow: 0 0 0 1px var(--red); }
+.field__hint { margin: 4px 0 0; font-size: .9rem; color: var(--paper-soft); }
+.field__err { margin: 6px 0 0; font-size: .92rem; color: var(--red); font-weight: 500; }
+.field__err[hidden] { display: none; }
+.btn--send { width: 100%; }
+.note-form__foot { margin: 12px 0 0; font-size: .95rem; color: var(--paper-soft); }
+.note-form__foot a { color: var(--red); }
+@media (max-width: 799px) {
+  .walkin { grid-template-columns: 1fr; }
+  .card--stamped { width: min(380px, 100%); justify-self: center; transform: rotate(-1.5deg); }
+  .note-form { transform: none; }
+}
+
+/* ------------------------------------------------- the rug's bound edge -- */
+.edge {
+  background: var(--sc-canvas); color: var(--sc-ink);
+  border-top: 10px solid var(--edge-line);
+  padding: 28px 16px calc(32px + var(--consent-h, 0px)); text-align: center;
+}
+.edge p { margin: 0 auto 8px; max-width: 70ch; }
+.edge__name { font-family: var(--sc-font-display); font-stretch: 125%; font-weight: 600; font-size: .85rem; letter-spacing: .04em; }
+.edge__small { font-size: .92rem; color: var(--sc-ink-soft); }
+.edge__links { list-style: none; margin: 10px 0 12px; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0 18px; }
+.edge__links a { display: inline-block; padding: 10px 0; }
