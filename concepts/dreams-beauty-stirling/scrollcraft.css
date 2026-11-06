@@ -350,7 +350,7 @@ video[data-sc-scrub] { opacity: 0; transition: opacity 380ms var(--sc-ease-out);
 video[data-sc-scrub].sc-has-clip { opacity: 1; }
 
 /* The copy layer is fixed too, and inert by default: the engine hands
-   pointer-events back to a block only while it is actually legible. */
+   pointer-events back to a block only while it is legible. */
 .sc-world__copy {
   position: fixed; inset: 0;
   z-index: var(--sc-z-copy);

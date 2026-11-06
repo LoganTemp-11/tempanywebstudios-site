@@ -229,50 +229,14 @@
    "id": "wellgreen",
    "label": "Wellgreen car park",
    "chip": "Wellgreen car park",
-   "source": "Wellgreen Car park (multi-storey), Nominatim (OSM way 42856583)",
-   "metres": 577,
-   "minutes": 8,
+   "source": "Wellgreen car park (OSM way 42856583, multi-storey): the walk starts where Wellgreen Lane meets the footway up to Upper Craigs beside the car park (OSM node 1625571088, footway way 537964749). OSM tags no pedestrian door on the car park itself; from its Nominatim centroid OSRM looped 100 m through the building first.",
+   "metres": 434,
+   "minutes": 6,
    "origin": [
-    56.11526,
-    -3.93576
+    56.1154109,
+    -3.9353799
    ],
    "geometry": [
-    [
-     597.7,
-     576.8
-    ],
-    [
-     642.2,
-     587.7
-    ],
-    [
-     638.2,
-     604.1
-    ],
-    [
-     636.7,
-     603.8
-    ],
-    [
-     635.0,
-     610.5
-    ],
-    [
-     631.0,
-     609.5
-    ],
-    [
-     628.9,
-     618.3
-    ],
-    [
-     613.4,
-     614.5
-    ],
-    [
-     622.5,
-     582.6
-    ],
     [
      617.6,
      575.3
@@ -336,24 +300,16 @@
    ],
    "streets": [
     {
-     "name": "Wellgreen Car park",
-     "at": 0.0
-    },
-    {
-     "name": "Wellgreen Lane",
-     "at": 0.171
-    },
-    {
      "name": "Upper Craigs",
-     "at": 0.322
+     "at": 0.105
     },
     {
      "name": "Port Street",
-     "at": 0.572
+     "at": 0.435
     },
     {
      "name": "Murray Place",
-     "at": 0.819
+     "at": 0.762
     }
    ]
   },

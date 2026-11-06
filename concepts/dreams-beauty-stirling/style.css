@@ -96,6 +96,7 @@ figure { margin: 0; }
   color: var(--sc-ink); background: var(--strip-bg);
   position: relative; z-index: 2;
 }
+.strip a { display: inline-flex; align-items: center; min-height: 44px; margin-block: -12px; }
 .skip {
   position: absolute; left: 12px; top: -90px; z-index: 300;
   padding: 12px 18px; background: var(--chip-on); color: var(--chip-on-ink);
@@ -176,7 +177,16 @@ html:not(.js) .stops { position: static; width: auto; display: flex; flex-wrap: 
 }
 .consent[hidden] { display: none; }
 .consent p { margin: 0; flex: 1 1 260px; }
+.consent__more { display: inline-flex; align-items: center; min-height: 44px; margin-block: -12px; padding-inline: 4px; }
 .consent__actions { display: flex; gap: 8px; }
+@media (max-width: 899px) {
+  /* compact on a phone: one short line and the two buttons, so the walk's
+     answer has room above it */
+  .consent { left: 8px; right: 8px; bottom: 8px; padding: 8px 10px; gap: 6px 10px; font-size: .84rem; line-height: 1.35; }
+  .consent p { flex-basis: 100%; }
+  .consent__actions { flex: 1; }
+  .consent__btn { flex: 1; min-width: 0; }
+}
 .consent__btn {
   min-height: 44px; min-width: 96px; padding: 0 16px; border-radius: 10px; cursor: pointer;
   border: 1.5px solid var(--sc-ink); background: transparent; color: var(--sc-ink);
@@ -242,6 +252,14 @@ html:not(.js) .stops { position: static; width: auto; display: flex; flex-wrap: 
 }
 .walk--old { opacity: .25; }
 .walk__from { fill: var(--sheet); stroke: var(--mag-g); stroke-width: 3.5; }
+/* the close-up for a walk too short to see at plan scale (The Thistles) */
+.lens__bg { fill: var(--p-paper); }
+.lens__rim { fill: none; stroke: var(--sheet-line); stroke-width: 2.5; }
+.lens__lead { stroke: var(--sheet-line); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.lens__walk { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
+.lens__door { fill: var(--p-paper); stroke: var(--gold); }
+.lens__t { font: 700 14px/1 var(--sc-font-text); fill: var(--gold-text); text-anchor: middle; paint-order: stroke; stroke: var(--p-paper); stroke-width: 4px; }
+.lens .p-st, .lens .p-lmk { display: none; }
 .plan__osm {
   position: absolute; right: 8px; bottom: 6px; margin: 0; z-index: 2;
   font-size: .72rem; font-weight: 500; color: var(--sc-ink-soft);
@@ -314,27 +332,27 @@ html.js .walk-text { display: none; }
   .plan__art .p-p { display: inline; }
   .walk { stroke-width: 11; }
   .walk__from { stroke-width: 6; }
+  .lens__rim { stroke-width: 4; } .lens__t { font-size: 24px; stroke-width: 6px; }
   .mark { font-size: clamp(2.3rem, 8.4cqw, 3.2rem); }
   .ring__o { stroke-width: 7; }
   .legend { margin-top: 8px; padding: 9px 11px; }
   .legend__k { display: none; }
   .legend__line { font-size: .93rem; }
-  .legend__tel { min-height: 40px; }
 }
 
 /* ===================================================== 2. THE WINDOW ===== */
 .act-window { padding-top: 64px; padding-bottom: 72px; }
 .act-window > .h2, .menu { width: min(1100px, 100%); margin-inline: auto; }
-.window { width: min(1100px, 100%); margin: 24px auto 0; display: grid; gap: 20px; align-items: stretch; }
+.window { width: min(1100px, 100%); margin: 24px auto 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: stretch; }
 @media (min-width: 900px) { .window { grid-template-columns: 1fr 1.15fr; } }
 .glass {
   background: var(--glass); color: var(--glass-ink); border-radius: 4px;
   border: 10px solid var(--frame);
-  padding: 28px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; align-content: center;
+  padding: 28px clamp(10px, 4vw, 24px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px clamp(8px, 3vw, 18px); align-content: center;
   box-shadow: inset 0 0 0 1px #000, inset 30px 0 60px -30px rgba(255,255,255,.08);
 }
 .vinyl { list-style: none; margin: 0; padding: 0; text-align: center; }
-.vinyl li { font-weight: 700; font-size: clamp(1.05rem, .9rem + .8vw, 1.5rem); letter-spacing: .08em; text-transform: uppercase; line-height: 1.6; }
+.vinyl li { font-weight: 700; font-size: clamp(.95rem, .8rem + .9vw, 1.5rem); letter-spacing: clamp(.03em, .5vw, .08em); text-transform: uppercase; line-height: 1.6; }
 .vinyl:first-child li:first-child, .vinyl:nth-child(2) li:first-child { letter-spacing: .1em; }
 .vinyl--welcome { grid-column: 1 / -1; margin: 14px 0 0; text-align: center; font-weight: 500; font-size: 1.05rem; letter-spacing: .06em; text-transform: uppercase; }
 .shopfront img { width: 100%; border-radius: 4px; }
@@ -360,8 +378,7 @@ html.js .walk-text { display: none; }
 }
 .themes li::before { content: ""; position: absolute; left: 4px; top: .85em; width: 12px; height: 12px; border-radius: 50%; background: var(--mag-g); }
 .brows__svc { margin: 14px 0 0; }
-.brows__band { margin-top: 14px; }
-.brows__band img { width: 100%; border-radius: 4px; }
+.brows__wall { margin: 16px 0 0; padding-top: 12px; border-top: 1px dashed var(--sheet-soft); font-size: .95rem; color: var(--sc-ink-soft); }
 @media (min-width: 900px) {
   .brows__stage { grid-template-columns: 1fr 1fr; gap: 48px; padding: 88px max(32px, calc((100vw - 1100px) / 2)) 48px; }
   .brows__room { height: 100%; min-height: 0; }
@@ -372,7 +389,6 @@ html.js .walk-text { display: none; }
   .sc-act--pinned .brows__room { min-height: 0; }
   .sc-act--pinned .themes li { padding-block: 5px; font-size: 1.02rem; }
   .sc-act--pinned .brows__svc { font-size: .95rem; margin-top: 8px; }
-  .sc-act--pinned .brows__band { margin-top: 8px; }
   .sc-act--pinned .brows__k { margin: 4px 0 4px; }
   .brows__room img { aspect-ratio: 4 / 3; }
   .sc-act--pinned .brows__room img { aspect-ratio: auto; }
@@ -508,6 +524,9 @@ html:not(.js) .act-brows, .rm .act-brows { padding-block: 40px; }
   background: var(--chip-on); color: var(--chip-on-ink); font: 700 1rem/1 var(--sc-font-text);
 }
 .letterbox__foot { margin: 12px 0 0; font-size: .92rem; color: var(--sc-ink-soft); }
+.letterbox__status { margin: 12px 0 0; padding: 12px 14px; border-radius: 8px; background: var(--gap-bg); color: var(--sc-ink); font-weight: 500; }
+.letterbox__status a { color: var(--mag); font-weight: 700; }
+.btn[disabled] { opacity: .55; cursor: not-allowed; }
 
 /* ======================================================== footer ======== */
 .edge {

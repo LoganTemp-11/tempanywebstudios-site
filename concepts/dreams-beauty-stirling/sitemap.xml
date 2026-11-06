@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- The sitemap for this site once it moves to the salon's own domain. It is
+     not linked from the root sitemap, and every page listed carries noindex
+     while this is a concept, so nothing here is submitted or indexed now.
+     Same arrangement as concepts/cathy-swan and concepts/dunblane-nails. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tempanywebstudios.co.uk/concepts/dreams-beauty-stirling/</loc><lastmod>2026-11-06</lastmod></url>
   <url><loc>https://tempanywebstudios.co.uk/concepts/dreams-beauty-stirling/privacy</loc><lastmod>2026-11-06</lastmod></url>
