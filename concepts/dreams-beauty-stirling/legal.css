@@ -1,0 +1,33 @@
+/* Shared by privacy, terms and 404. Same tokens, paper and chrome as the
+   page: style.css is pulled in whole, then a plain reading sheet with the
+   plan's border lies on the blush ground. */
+@import url("scrollcraft.css");
+@import url("style.css");
+
+.legal .chrome { align-items: center; }
+.legal .lamp { margin-top: 0; }
+.home {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 22px;
+  background: var(--chip-on); color: var(--chip-on-ink); text-decoration: none;
+  font: 700 .9rem/1 var(--sc-font-text);
+}
+.legal main { padding: 72px 16px 64px; min-height: 70vh; }
+.legal .sheet {
+  width: min(760px, 100%); margin-inline: auto;
+  padding: clamp(24px, 5vw, 56px) clamp(18px, 5vw, 56px);
+}
+.legal .sheet::before { display: none; }
+.legal .sheet h1 { font-weight: 700; font-size: clamp(1.8rem, 1.2rem + 2.4vw, 2.8rem); letter-spacing: -.02em; line-height: 1.05; margin-bottom: 10px; }
+.legal .sheet h1.script { font-family: var(--f-script); font-weight: 400; font-size: clamp(3rem, 2rem + 4vw, 4.6rem); letter-spacing: 0; color: var(--script); }
+.legal .sheet h2 { font-weight: 700; font-size: 1.15rem; margin: 30px 0 8px; }
+.legal .sheet p { margin: 0 0 12px; max-width: 64ch; }
+.legal .updated { color: var(--sc-ink-soft); font-size: .95rem; }
+.legal .short { padding: 14px 16px; background: var(--gap-bg); color: var(--sc-ink); border-radius: 8px; }
+.legal .back { display: inline-flex; align-items: center; min-height: 44px; margin-top: 18px; font-weight: 700; color: var(--mag); }
+.lost { list-style: none; margin: 18px 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.lost a {
+  display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 6px 12px; border-radius: 8px; text-decoration: none;
+  border: 1.5px solid var(--mag); color: var(--mag); font-weight: 600;
+}
+.lost__n { width: 1.2em; font-variant-numeric: tabular-nums; color: var(--sc-ink-soft); }
+@media (min-width: 640px) { .lost { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
