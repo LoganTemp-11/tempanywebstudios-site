@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="tws-storage-prefix" content="qc">
+<script>
+/* Theme before first paint. Light ("shop open") is the default for this
+   concept; the visitor's own choice wins once made. To follow the device
+   instead, swap the fallback for:
+   matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light' */
+(function () {
+  var d = document.documentElement, t = null;
+  try { t = localStorage.getItem('qc-theme'); } catch (e) {}
+  if (t !== 'dark' && t !== 'light') t = 'light';
+  d.setAttribute('data-theme', t);
+  d.classList.add('js');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('rm');
+})();
+</script>
+<title>Quick Cut Barbers, 83a Stirling Street, Alva | Text Stephen</title>
+<meta name="description" content="Quick Cut Barbers, S. Miller &amp; Son, 83a Stirling Street, Alva. Barbers in Alva since 1982. Walk ins and appointments welcome. Text Stephen on 07776 237491.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/concepts/quick-cut-barbers/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quick Cut Barbers, a first version by Tempany Web Studios">
+<meta property="og:title" content="Quick Cut Barbers, 83a Stirling Street, Alva">
+<meta property="og:description" content="Quick Cut Barbers, S. Miller &amp; Son, 83a Stirling Street, Alva. Barbers in Alva since 1982. Walk ins and appointments welcome. Text Stephen on 07776 237491.">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/concepts/quick-cut-barbers/">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/concepts/quick-cut-barbers/assets/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Quick Cut Barbers sign reset in type, red caps either side of black scissors, with the red-and-white pole beside it">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quick Cut Barbers, 83a Stirling Street, Alva">
+<meta name="twitter:description" content="Walk ins and appointments welcome. Text Stephen on 07776 237491.">
+<meta name="twitter:image" content="https://tempanywebstudios.co.uk/concepts/quick-cut-barbers/assets/share.png">
+<meta name="twitter:image:alt" content="The Quick Cut Barbers sign reset in type, red caps either side of black scissors, with the red-and-white pole beside it">
+<meta name="theme-color" content="#f6f3ec">
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/big-shoulders-display-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/literata-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip" href="#top">Skip to the page</a>
+<p class="strip" id="strip">First version for Quick Cut Barbers&nbsp;· A concept by Tempany Web Studios, not yet the shop's site&nbsp;· <a href="https://tempanywebstudios.co.uk/">tempanywebstudios.co.uk</a></p>
+<script>/* the strip's height, so the door unit below fits the rest of the first screen */
+document.documentElement.style.setProperty('--strip-h', document.getElementById('strip').offsetHeight + 'px');</script>
+
+<!-- The chrome: their red-and-white pole, fixed at the right edge. Its six
+     bands are the six sections; the stripes turn as you scroll; the band you
+     are in letters its name. The lights are the pole's top cap. -->
+<nav class="pole" data-chrome aria-label="Sections">
+  <button type="button" id="lights" class="pole__cap" aria-pressed="true" aria-label="Turn the shop lights off">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <ol class="pole__bands">
+    <li><a href="#sign" data-band="1" aria-label="1, The sign"><span class="pole__n">1</span></a></li>
+    <li><a href="#years" data-band="2" aria-label="2, 44 years"><span class="pole__n">2</span></a></li>
+    <li><a href="#text" data-band="3" aria-label="3, Text Stephen"><span class="pole__n">3</span></a></li>
+    <li><a href="#shop" data-band="4" aria-label="4, The shop"><span class="pole__n">4</span></a></li>
+    <li><a href="#questions" data-band="5" aria-label="5, Questions"><span class="pole__n">5</span></a></li>
+    <li><a href="#door" data-band="6" aria-label="6, The door"><span class="pole__n">6</span></a></li>
+  </ol>
+  <span class="pole__foot" aria-hidden="true"></span>
+  <span class="pole__now js-only" id="pole-now" aria-hidden="true">The sign</span>
+</nav>
+
+<div id="consent" class="consent" role="region" aria-label="Cookie choice" hidden>
+  <p>This page remembers your lights choice. Analytics stays off unless you accept, and this concept loads none either way. <a href="privacy#cookies">More</a></p>
+  <div class="consent__actions">
+    <button type="button" class="consent__btn" data-consent="reject">Reject</button>
+    <button type="button" class="consent__btn" data-consent="accept">Accept</button>
+  </div>
+</div>
+
+<main id="top" tabindex="-1">
+
+  <!-- 1. The sign. The shop's door unit seen straight on, fitted to the
+       screen: their fascia as the transom panel in the same frame, and the
+       door glass below with the lettering painted on it, as door vinyl is.
+       No entrance device: it is already there on arrival. -->
+  <section id="sign" class="act act-sign" data-sc-act="flow" data-qc-ground="0" tabindex="-1" aria-label="The sign">
+    <div class="unit">
+      <div class="board">
+        <span class="board__fix" aria-hidden="true"></span><span class="board__fix" aria-hidden="true"></span><span class="board__fix" aria-hidden="true"></span><span class="board__fix" aria-hidden="true"></span>
+        <p class="board__by">S. Miller &amp; Son</p>
+        <h1 class="board__name"><span class="board__w">Quick</span><svg class="scissors" viewBox="0 0 120 64" aria-hidden="true" focusable="false"><g class="scissors__ink"><ellipse cx="22" cy="16" rx="12" ry="8.5" fill="none" stroke-width="5"/><ellipse cx="22" cy="44" rx="12" ry="8.5" fill="none" stroke-width="5"/><path d="M33 17l5-3 24 13 56 10-58-4-29-12z"/><path d="M33 43l5 3 24-13 56-10-58 4-29 12z"/><path d="M4 58C30 66 80 64 112 52" fill="none" stroke-width="2.4" stroke-linecap="round"/></g><circle cx="60" cy="30" r="3.6" class="scissors__pin"/></svg> <span class="board__w">Cut</span><span class="vh"> Barbers</span></h1>
+        <p class="board__trade" aria-hidden="true">Barbers</p>
+      </div>
+      <div class="glass">
+        <div class="vinyl">
+          <p class="vinyl__l vinyl__l--walk" data-landing>Walk ins and appointments welcome</p>
+          <p class="vinyl__l vinyl__l--text" data-landing><span class="vinyl__k">Text Stephen</span> <a class="vinyl__tel num" href="sms:+447776237491">07776 237491</a></p>
+          <p class="vinyl__l vinyl__l--hours num" data-landing><span class="vinyl__row"><span class="vinyl__d">Mon Tue Thu Fri</span> 9&nbsp;to&nbsp;5</span> <span class="vinyl__row"><span class="vinyl__d">Wed</span> 9&nbsp;to&nbsp;12</span> <span class="vinyl__row"><span class="vinyl__d">Sat</span> 8&nbsp;to&nbsp;12</span> <span class="vinyl__row"><span class="vinyl__d">Sun</span> closed</span></p>
+          <p class="vinyl__l vinyl__l--addr" data-landing>83a Stirling Street, Alva</p>
+        </div>
+        <span class="glass__sticker" aria-hidden="true">Barber Shop</span>
+      </div>
+      <div class="unit__rail" aria-hidden="true"><span class="unit__bar"></span></div>
+      <div class="unit__panel" aria-hidden="true"></div>
+      <div class="unit__kick" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- 2. 44 years. Pinned: one numeral runs from 1982 to 2026 and each line
+       letters on at its year. Reduced motion, a short screen or JS off: a
+       plain list with the years in the margin. -->
+  <section id="years" class="act act-years" data-sc-act="pin" data-sc-span="2.4" data-qc-ground="1" tabindex="-1" aria-labelledby="years-h">
+    <div class="sc-stage years__stage">
+      <h2 id="years-h" class="label"><span class="label__num">44</span> years</h2>
+      <div class="years__body">
+        <p class="years__num num" id="yr-num" aria-hidden="true">1982</p>
+        <ol class="years__list" id="yr-list">
+          <li data-y="1982"><span class="years__y num">1982</span> <span class="years__t">Opened on Cobden Street, Alva, 26 November 1982. Stephen Miller trained as a barber in Alloa.</span></li>
+          <li data-y="1990"><span class="years__y num">1990</span> <span class="years__t">Moved to 83a Stirling Street.</span></li>
+          <li data-y="2020"><span class="years__y num">2020</span> <span class="years__t">June 2020: Stephen and his son Steven were both awarded the Barbicide COVID-19 certification.</span></li>
+          <li data-y="2022"><span class="years__y num">2022</span> <span class="years__t">Forty years. The Alloa Advertiser ran the story, with Steven working alongside his dad.</span></li>
+          <li data-y="2026"><span class="years__y num">2026</span> <span class="years__t">44 years on 26 November.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. The text to Stephen. Clip a guard on, pick the rest, and a text in
+       plain words writes itself and opens in the visitor's own Messages. The
+       page sends nothing and stores nothing. The default text ships in the
+       HTML, so the link works with JS off. -->
+  <section id="text" class="act act-text" data-sc-act="flow" data-qc-ground="1" tabindex="-1" aria-labelledby="text-h">
+    <div class="text">
+      <div class="text__head">
+        <h2 id="text-h" class="label">Text Stephen</h2>
+        <p class="lede">Clip a guard on for the back and sides, say what you want on top, and the text writes itself. It opens in your own Messages; nothing is sent from this page.</p>
+        <p class="lede nojs-note">With JavaScript off the guards cannot be picked here, so the text below is the plain version: open it in Messages and change the grade there.</p>
+      </div>
+      <figure class="clipper">
+        <svg id="clipper" class="clipper__svg" viewBox="0 0 220 280" role="img" aria-label="Clipper with a number 2 guard, about 6mm">
+          <path class="clipper__body" d="M78 12Q110 0 142 12L156 176Q110 190 64 176Z"/>
+          <path class="clipper__line" d="M82 34L72 168" fill="none" stroke-width="4" stroke-linecap="round"/>
+          <rect class="clipper__switch" x="100" y="58" width="20" height="36" rx="6"/>
+          <path class="clipper__blade" d="M62 176H158L156 194H64Z"/>
+          <path class="clipper__teeth" d="M70 186v8M78 186v8M86 186v8M94 186v8M102 186v8M110 186v8M118 186v8M126 186v8M134 186v8M142 186v8M150 186v8" fill="none" stroke-width="1.6"/>
+          <g id="guard" class="guard" transform="translate(0 194)"><rect class="guard__plate" x="56" y="0" width="108" height="16" rx="3"/><g class="guard__teeth"><rect x="62" y="14" width="4" height="14.4" rx="2"/><rect x="70" y="14" width="4" height="14.4" rx="2"/><rect x="78" y="14" width="4" height="14.4" rx="2"/><rect x="86" y="14" width="4" height="14.4" rx="2"/><rect x="94" y="14" width="4" height="14.4" rx="2"/><rect x="102" y="14" width="4" height="14.4" rx="2"/><rect x="110" y="14" width="4" height="14.4" rx="2"/><rect x="118" y="14" width="4" height="14.4" rx="2"/><rect x="126" y="14" width="4" height="14.4" rx="2"/><rect x="134" y="14" width="4" height="14.4" rx="2"/><rect x="142" y="14" width="4" height="14.4" rx="2"/><rect x="150" y="14" width="4" height="14.4" rx="2"/></g><text class="guard__no" x="110" y="12" text-anchor="middle">No. 2</text></g>
+          <g class="gauge-svg"><path class="gauge__ticks" d="M184 208h10M184 220h6M184 232h10M184 244h6M184 256h10M184 268h6" fill="none" stroke-width="1.4"/><rect id="gauge-bar" class="gauge__bar" x="198" y="208" width="8" height="14.4" rx="1"/></g>
+        </svg>
+        <figcaption>
+          <p class="gauge num" id="gauge" aria-live="polite"><span class="gauge__no">No. 2</span><span class="gauge__dot"> · </span><span class="gauge__mm">about 6mm</span></p>
+          <p class="small">Standard guard lengths, roughly. Say it how you like in the chair.</p>
+        </figcaption>
+      </figure>
+      <form id="composer" class="composer" onsubmit="return false" aria-label="Write a text to Stephen">
+        <fieldset class="rack">
+          <legend>Back and sides: pick a guard</legend>
+          <div class="rack__row">
+          <label class="guard-pick"><input type="radio" name="sides" value="1"><span class="guard-pick__face"><svg viewBox="0 0 40 50" aria-hidden="true"><rect x="4" y="4" width="32" height="8" rx="2"/><rect x="7.7" y="11" width="2.6" height="4.2" rx="1.3"/><rect x="13.7" y="11" width="2.6" height="4.2" rx="1.3"/><rect x="19.7" y="11" width="2.6" height="4.2" rx="1.3"/><rect x="25.7" y="11" width="2.6" height="4.2" rx="1.3"/><rect x="31.7" y="11" width="2.6" height="4.2" rx="1.3"/></svg><b>1</b><span class="vh">, about 3mm</span></span></label>
+          <label class="guard-pick"><input type="radio" name="sides" value="2" checked><span class="guard-pick__face"><svg viewBox="0 0 40 50" aria-hidden="true"><rect x="4" y="4" width="32" height="8" rx="2"/><rect x="7.7" y="11" width="2.6" height="8.4" rx="1.3"/><rect x="13.7" y="11" width="2.6" height="8.4" rx="1.3"/><rect x="19.7" y="11" width="2.6" height="8.4" rx="1.3"/><rect x="25.7" y="11" width="2.6" height="8.4" rx="1.3"/><rect x="31.7" y="11" width="2.6" height="8.4" rx="1.3"/></svg><b>2</b><span class="vh">, about 6mm</span></span></label>
+          <label class="guard-pick"><input type="radio" name="sides" value="3"><span class="guard-pick__face"><svg viewBox="0 0 40 50" aria-hidden="true"><rect x="4" y="4" width="32" height="8" rx="2"/><rect x="7.7" y="11" width="2.6" height="14" rx="1.3"/><rect x="13.7" y="11" width="2.6" height="14" rx="1.3"/><rect x="19.7" y="11" width="2.6" height="14" rx="1.3"/><rect x="25.7" y="11" width="2.6" height="14" rx="1.3"/><rect x="31.7" y="11" width="2.6" height="14" rx="1.3"/></svg><b>3</b><span class="vh">, about 10mm</span></span></label>
+          <label class="guard-pick"><input type="radio" name="sides" value="4"><span class="guard-pick__face"><svg viewBox="0 0 40 50" aria-hidden="true"><rect x="4" y="4" width="32" height="8" rx="2"/><rect x="7.7" y="11" width="2.6" height="18.2" rx="1.3"/><rect x="13.7" y="11" width="2.6" height="18.2" rx="1.3"/><rect x="19.7" y="11" width="2.6" height="18.2" rx="1.3"/><rect x="25.7" y="11" width="2.6" height="18.2" rx="1.3"/><rect x="31.7" y="11" width="2.6" height="18.2" rx="1.3"/></svg><b>4</b><span class="vh">, about 13mm</span></span></label>
+          </div>
+          <div class="rack__row">
+          <label class="guard-pick"><input type="radio" name="sides" value="5"><span class="guard-pick__face"><svg viewBox="0 0 40 50" aria-hidden="true"><rect x="4" y="4" width="32" height="8" rx="2"/><rect x="7.7" y="11" width="2.6" height="22.4" rx="1.3"/><rect x="13.7" y="11" width="2.6" height="22.4" rx="1.3"/><rect x="19.7" y="11" width="2.6" height="22.4" rx="1.3"/><rect x="25.7" y="11" width="2.6" height="22.4" rx="1.3"/><rect x="31.7" y="11" width="2.6" height="22.4" rx="1.3"/></svg><b>5</b><span class="vh">, about 16mm</span></span></label>
+          <label class="guard-pick"><input type="radio" name="sides" value="6"><span class="guard-pick__face"><svg viewBox="0 0 40 50" aria-hidden="true"><rect x="4" y="4" width="32" height="8" rx="2"/><rect x="7.7" y="11" width="2.6" height="26.6" rx="1.3"/><rect x="13.7" y="11" width="2.6" height="26.6" rx="1.3"/><rect x="19.7" y="11" width="2.6" height="26.6" rx="1.3"/><rect x="25.7" y="11" width="2.6" height="26.6" rx="1.3"/><rect x="31.7" y="11" width="2.6" height="26.6" rx="1.3"/></svg><b>6</b><span class="vh">, about 19mm</span></span></label>
+          <label class="guard-pick"><input type="radio" name="sides" value="7"><span class="guard-pick__face"><svg viewBox="0 0 40 50" aria-hidden="true"><rect x="4" y="4" width="32" height="8" rx="2"/><rect x="7.7" y="11" width="2.6" height="30.8" rx="1.3"/><rect x="13.7" y="11" width="2.6" height="30.8" rx="1.3"/><rect x="19.7" y="11" width="2.6" height="30.8" rx="1.3"/><rect x="25.7" y="11" width="2.6" height="30.8" rx="1.3"/><rect x="31.7" y="11" width="2.6" height="30.8" rx="1.3"/></svg><b>7</b><span class="vh">, about 22mm</span></span></label>
+          <label class="guard-pick"><input type="radio" name="sides" value="8"><span class="guard-pick__face"><svg viewBox="0 0 40 50" aria-hidden="true"><rect x="4" y="4" width="32" height="8" rx="2"/><rect x="7.7" y="11" width="2.6" height="35" rx="1.3"/><rect x="13.7" y="11" width="2.6" height="35" rx="1.3"/><rect x="19.7" y="11" width="2.6" height="35" rx="1.3"/><rect x="25.7" y="11" width="2.6" height="35" rx="1.3"/><rect x="31.7" y="11" width="2.6" height="35" rx="1.3"/></svg><b>8</b><span class="vh">, about 25mm</span></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="opts">
+          <legend>On top</legend>
+          <label class="opt"><input type="radio" name="top" value="same" checked><span>Same all over</span></label>
+          <label class="opt"><input type="radio" name="top" value="up1"><span>A number longer</span></label>
+          <label class="opt"><input type="radio" name="top" value="up2"><span>Two longer</span></label>
+          <label class="opt"><input type="radio" name="top" value="tidy"><span>Just a tidy on top</span></label>
+        </fieldset>
+        <fieldset class="opts">
+          <legend>Beard</legend>
+          <label class="opt"><input type="radio" name="beard" value="no" checked><span>No beard trim</span></label>
+          <label class="opt"><input type="radio" name="beard" value="yes"><span>Beard trim too</span></label>
+        </fieldset>
+        <div class="field">
+          <label for="who">Your name, so Stephen knows who it is (optional)</label>
+          <input id="who" name="who" type="text" maxlength="30" autocomplete="given-name" spellcheck="false">
+        </div>
+      </form>
+      <div class="msg-col">
+        <div class="msg" id="msg">
+          <p class="msg__to num">To: Stephen, Quick Cut · 07776 237491</p>
+          <p class="msg__bubble" id="bubble" aria-live="polite">Hi Stephen. I&#39;d like a number 2 all over. When suits?</p>
+          <div class="msg__actions">
+            <a id="send" class="send" href="sms:+447776237491?&amp;body=Hi%20Stephen.%20I'd%20like%20a%20number%202%20all%20over.%20When%20suits%3F">Open in Messages</a>
+            <button id="copy" class="copy js-only" type="button">Copy the text</button>
+          </div>
+          <p class="msg__status" id="copy-status" role="status" aria-live="polite"></p>
+          <p class="msg__foot">On a computer? Text <span class="num">07776 237491</span> from your phone. Prefer to call? <a class="num" href="tel:+447776237491">07776 237491</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Silence. One line, nothing moves. -->
+  <section id="quiet" class="act act-quiet" data-sc-act="flow" data-qc-ground="2" aria-label="A quiet line">
+    <p class="quiet">On Stirling Street since <span class="num">1990</span>.</p>
+  </section>
+
+  <!-- 5. The shop. Two photo slots with drawn stand-ins until the shop says
+       yes to its photos; what they do, with the prices left for the shop;
+       what reviewers say, paraphrased; then the questions. -->
+  <section id="shop" class="act act-shop" data-sc-act="flow" data-qc-ground="2" tabindex="-1" aria-labelledby="shop-h">
+    <h2 id="shop-h" class="label">The shop</h2>
+    <div class="shop">
+      <div class="slots">
+<!--slot:interior-1:start-->
+        <figure class="slot" data-slot="interior-1">
+          <div class="slot__card">
+            <svg class="slot__art" viewBox="0 0 120 64" role="img" aria-label="Drawing standing in for a photo of inside the shop: the scissors from the sign"><g class="scissors__ink scissors__ink--red"><ellipse cx="22" cy="16" rx="12" ry="8.5" fill="none" stroke-width="5"/><ellipse cx="22" cy="44" rx="12" ry="8.5" fill="none" stroke-width="5"/><path d="M33 17l5-3 24 13 56 10-58-4-29-12z"/><path d="M33 43l5 3 24-13 56-10-58 4-29 12z"/><path d="M4 58C30 66 80 64 112 52" fill="none" stroke-width="2.4" stroke-linecap="round"/></g><circle cx="60" cy="30" r="3.6" class="scissors__pin"/></svg>
+            <p class="slot__t">Inside the shop</p>
+            <p class="slot__s">Photo to come, with the shop's OK</p>
+          </div>
+        </figure>
+<!--slot:interior-1:end-->
+<!--slot:interior-2:start-->
+        <figure class="slot" data-slot="interior-2">
+          <div class="slot__card">
+            <svg class="slot__art slot__art--pole" viewBox="0 0 60 200" role="img" aria-label="Drawing standing in for a photo of the chair: the red-and-white barber pole"><defs><pattern id="pole-st" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(-40)"><rect width="24" height="24" fill="#fbfaf7"/><rect width="24" height="11" fill="#c1272d"/></pattern></defs><rect x="14" y="0" width="32" height="18" rx="7" class="slot__chrome"/><rect x="18" y="16" width="24" height="168" rx="4" fill="url(#pole-st)"/><rect x="18" y="16" width="24" height="168" rx="4" class="slot__glass"/><rect x="14" y="182" width="32" height="18" rx="7" class="slot__chrome"/></svg>
+            <p class="slot__t">The chair</p>
+            <p class="slot__s">Photo to come, with the shop's OK</p>
+          </div>
+        </figure>
+<!--slot:interior-2:end-->
+      </div>
+      <div class="does">
+        <h3 class="does__h">What they do</h3>
+        <ul class="does__list">
+          <li><span class="does__n">Haircuts by clipper grade</span> <span class="gap">Price from the shop</span></li>
+          <li><span class="does__n">Beard trims</span> <span class="gap">Price from the shop</span></li>
+        </ul>
+        <p class="does__rev"><span class="num">4.9</span> from <span class="num">88</span> Google reviews.</p>
+        <p class="does__said">People mention quick, traditional cuts, friendly staff, a clean shop, good beard trims, and the two Stephens. <span class="gap">Wording to agree with the shop</span></p>
+      </div>
+    </div>
+
+    <section id="questions" class="questions" tabindex="-1" aria-labelledby="faq-h">
+      <h2 id="faq-h" class="label">Questions</h2>
+      <div class="faq">
+        <details class="q"><summary>Do I need to book?</summary><p>No. Walk ins and appointments are both welcome.</p></details>
+        <details class="q"><summary>How do I book a time?</summary><p>Text Stephen on <a class="num" href="sms:+447776237491">07776 237491</a>, or call the same number.</p></details>
+        <details class="q"><summary>When are you open?</summary><p>Monday, Tuesday, Thursday and Friday <span class="num">9am</span> to <span class="num">5pm</span>. Wednesday <span class="num">9am</span> to <span class="num">12</span> noon. Saturday <span class="num">8am</span> to <span class="num">12</span> noon. Closed Sunday.</p></details>
+        <details class="q"><summary>How much is a haircut?</summary><p>Prices are not online yet; ask in the shop or when you text. <span class="gap">Price from the shop</span></p></details>
+        <details class="q"><summary>Do you do beard trims?</summary><p>Yes.</p></details>
+        <details class="q"><summary>Do you cut children's hair?</summary><p>Ask Stephen when you text. <span class="gap">To confirm with the shop</span></p></details>
+        <details class="q"><summary>Where are you?</summary><p>83a Stirling Street, Alva FK12 5ED. <a href="https://www.google.com/maps/search/?api=1&amp;query=Quick+Cut+Barbers+83a+Stirling+Street+Alva+FK12+5ED" rel="noopener" target="_blank">Open in Google Maps</a>.</p></details>
+        <details class="q"><summary>How long have you been going?</summary><p>Since 26 November <span class="num">1982</span>: first on Cobden Street, on Stirling Street since <span class="num">1990</span>.</p></details>
+      </div>
+    </section>
+  </section>
+
+  <!-- 6. The door. The shop door's glass, lettered with the full hours, the
+       address and the two ways to reach Stephen. The shopfront photo slot is
+       the door's window. -->
+  <section id="door" class="act act-door" data-sc-act="flow" data-qc-ground="0" tabindex="-1" aria-labelledby="door-h">
+    <h2 id="door-h" class="label">The door</h2>
+    <div class="door">
+      <div class="door__glass">
+<!--slot:shopfront:start-->
+        <figure class="door__window" data-slot="shopfront">
+          <svg class="door__reflect" viewBox="0 0 300 120" role="img" aria-label="The shop sign, reflected in the door glass"><rect x="4" y="4" width="292" height="112" class="refl__frame"/><rect x="10" y="10" width="280" height="100" class="refl__board"/><text x="150" y="30" text-anchor="middle" class="refl__by">S. MILLER &amp; SON</text><text x="78" y="78" text-anchor="middle" class="refl__w">QUICK</text><g transform="translate(126 48) scale(.42)" class="scissors__ink"><ellipse cx="22" cy="16" rx="12" ry="8.5" fill="none" stroke-width="5"/><ellipse cx="22" cy="44" rx="12" ry="8.5" fill="none" stroke-width="5"/><path d="M33 17l5-3 24 13 56 10-58-4-29-12z"/><path d="M33 43l5 3 24-13 56-10-58 4-29 12z"/></g><text x="222" y="78" text-anchor="middle" class="refl__w">CUT</text><text x="150" y="100" text-anchor="middle" class="refl__by">BARBERS</text></svg>
+        </figure>
+<!--slot:shopfront:end-->
+        <p class="door__name">Quick Cut Barbers</p>
+        <table class="hours">
+          <caption>Opening hours</caption>
+          <tbody>
+            <tr><th scope="row">Monday</th><td>9am to 5pm</td></tr>
+            <tr><th scope="row">Tuesday</th><td>9am to 5pm</td></tr>
+            <tr><th scope="row">Wednesday</th><td>9am to 12 noon</td></tr>
+            <tr><th scope="row">Thursday</th><td>9am to 5pm</td></tr>
+            <tr><th scope="row">Friday</th><td>9am to 5pm</td></tr>
+            <tr><th scope="row">Saturday</th><td>8am to 12 noon</td></tr>
+            <tr><th scope="row">Sunday</th><td>Closed</td></tr>
+          </tbody>
+        </table>
+        <p class="door__addr">83a Stirling Street, Alva FK12 5ED</p>
+        <ul class="door__links">
+          <li><a href="sms:+447776237491"><span class="door__k">Text Stephen</span> <span class="num">07776 237491</span></a></li>
+          <li><a href="tel:+447776237491"><span class="door__k">Call</span> <span class="num">07776 237491</span></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Quick+Cut+Barbers+83a+Stirling+Street+Alva+FK12+5ED" rel="noopener" target="_blank">Open in Google Maps</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=100051851485280" rel="noopener" target="_blank">Facebook</a></li>
+        </ul>
+      </div>
+      <div class="door__kick" aria-hidden="true"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="edge">
+  <p class="edge__name">Quick Cut Barbers&nbsp;· S.&nbsp;Miller &amp;&nbsp;Son&nbsp;· 83a Stirling Street, Alva FK12&nbsp;5ED&nbsp;· <a class="num" href="tel:+447776237491">07776 237491</a></p>
+  <ul class="edge__links">
+    <li><a href="privacy">Privacy policy</a></li>
+    <li><a href="terms">Terms and conditions</a></li>
+    <li><a href="privacy#cookies" data-cookie-settings>Cookie settings</a></li>
+    <li><a href="https://tempanywebstudios.co.uk/privacy/#previews">How visits here are handled</a></li>
+    <li><a href="https://www.facebook.com/profile.php?id=100051851485280" rel="noopener" target="_blank">Facebook</a></li>
+  </ul>
+  <p class="edge__small">A first version made by <a href="https://tempanywebstudios.co.uk/">Tempany Web Studios</a> to show the shop. It is not yet the shop's own site.</p>
+</footer>
+
+<script src="scrollcraft.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script src="chrome.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+/* Shared by privacy, terms and 404. Same tokens and ground as the page:
+   style.css is pulled in whole, then a plain reading sheet, like a notice
+   pinned up in the shop. */
+@import url("scrollcraft.css");
+@import url("style.css");
+
+.lbar { display: flex; align-items: center; justify-content: flex-end; gap: 8px; padding: 12px 16px 0; }
+.lbar__lights { border-radius: 22px; }
+.home {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 4px;
+  background: var(--board-ink); color: var(--board); text-decoration: none;
+  font-family: var(--sc-font-display); font-weight: 900; font-size: 1.05rem; letter-spacing: .08em; text-transform: uppercase;
+}
+:root[data-theme="dark"] .home { background: var(--board); color: var(--board-ink); }
+.legal main { padding: 32px 16px 64px; min-height: 70vh; }
+.sheet {
+  width: min(760px, 100%); margin-inline: auto; background: var(--card); color: var(--sc-ink);
+  border-top: 6px solid var(--board-red); border-radius: 0 0 4px 4px;
+  padding: clamp(24px, 5vw, 56px) clamp(18px, 5vw, 56px);
+  box-shadow: 0 18px 40px -22px hsl(var(--sc-shadow-color) / .5), 0 0 0 1px var(--card-line);
+}
+.sheet h1 { font-family: var(--sc-font-display); font-weight: 900; text-transform: uppercase; letter-spacing: .02em; font-size: clamp(2rem, 1.4rem + 3vw, 3.4rem); line-height: .95; margin-bottom: 12px; }
+.sheet h2 { font-family: var(--sc-font-display); font-weight: 700; font-size: 1.3rem; letter-spacing: .06em; text-transform: uppercase; margin: 30px 0 8px; }
+.sheet p { margin: 0 0 12px; max-width: 64ch; }
+.sheet .updated { color: var(--ink-soft); font-size: .95rem; }
+.sheet .short { padding: 14px 16px; background: var(--chip-on); border-radius: 4px; }
+.sheet .back { display: inline-flex; align-items: center; min-height: 44px; margin-top: 18px; font-weight: 600; }
+.lost { list-style: none; margin: 18px 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.lost a {
+  display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 8px 12px; border-radius: 4px; text-decoration: none;
+  background: var(--board); color: var(--board-ink); box-shadow: 0 0 0 1.5px var(--card-line);
+  font-family: var(--sc-font-display); font-weight: 700; font-size: 1.1rem; letter-spacing: .04em; text-transform: uppercase;
+}
+.lost__n { display: grid; place-items: center; width: 32px; height: 32px; flex: none; border-radius: 50%; background: var(--board-red); color: #fff; }
+@media (max-width: 560px) { .lost { grid-template-columns: 1fr 1fr; } }
