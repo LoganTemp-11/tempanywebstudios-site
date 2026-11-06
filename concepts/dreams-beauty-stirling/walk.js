@@ -61,26 +61,30 @@
     if (ring && !reduce) {
       ring.classList.remove('is-pulse'); void ring.getBoundingClientRect(); ring.classList.add('is-pulse');
     }
-    note(r);
-    reveal(r);
   }
 
-  // Manager ruling (fix round 3): the answer lives in one line in the page
-  // flow directly under the plan, inside the sheet and above the legend.
-  // After a choice, focus moves to it, and the page scrolls so its bottom
-  // sits 8px above the top of the cookie bar (or the bottom of the screen
-  // once the cookie question is answered). Nothing is laid over the map.
-  function reveal(r) {
-    if (!planNote) return;
-    var html = document.documentElement;
+  // Amended manager ruling (fix round 4). Nothing ever moves focus: it stays
+  // on the chip, so the radio group keeps working with the arrow keys. The
+  // scroll runs once, synchronously, in the same change event that chose the
+  // chip, and only if focus and scroll position are still what they were
+  // when the choice was made. It brings the one-line answer under the plan
+  // to 8px above the cookie bar (or the bottom of the screen once the cookie
+  // question is answered), but never lifts the top of the sheet above the
+  // top of the screen, so the chips never move out of view. If the answer
+  // cannot clear the bar within that limit, it is left where it is.
+  function reveal() {
+    if (!planNote || planNote.hidden || !narrow.matches) return;
+    var focus0 = document.activeElement, y0 = scrollY;
+    var sheet = form.closest('.sheet') || form;
     var consent = document.getElementById('consent');
-    var ch = parseFloat(getComputedStyle(html).getPropertyValue('--consent-h')) || 0;
-    var barTop = innerHeight;
-    if (ch > 0 && consent && !consent.hidden) barTop = consent.getBoundingClientRect().top;
-    var by = planNote.getBoundingClientRect().bottom - (barTop - 8);
-    var target = Math.max(0, Math.round(scrollY + by));
-    planNote.focus({ preventScroll: true });
-    if (target !== Math.round(scrollY)) window.scrollTo({ top: target, behavior: 'instant' });
+    var ch = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--consent-h')) || 0;
+    var barTop = (ch > 0 && consent && !consent.hidden) ? consent.getBoundingClientRect().top : innerHeight;
+    var want = planNote.getBoundingClientRect().bottom - (barTop - 8);   // > 0: the line is under the bar
+    var room = sheet.getBoundingClientRect().top;                        // how far the sheet may rise
+    var by = Math.min(want, room);
+    if (by <= 0) return;
+    if (document.activeElement !== focus0 || scrollY !== y0) return;     // something else moved: cancel
+    window.scrollTo({ top: Math.round(y0 + by), behavior: 'instant' });
   }
 
   function inset(r) {
@@ -134,23 +138,29 @@
   // announced: role=status, and focus lands on it after a choice. The panel
   // in the legend keeps the same facts on screen but is no longer a live
   // region, so nothing is read out twice.
+  // The answer line under the plan, phones only (CSS hides it at 900px and
+  // wider). One live region at a time: below 900px this line (role=status);
+  // at 900px and wider the panel in the legend (aria-live=polite), where the
+  // full answer is. The Pitt Terrace note and the hours stay in that panel.
   var planNote = document.getElementById('plan-note');
+  var liveOld = document.getElementById('walk-live');
+  var narrow = matchMedia('(max-width: 899px)');
+  function liveRegions() {
+    if (liveOld) { if (narrow.matches) liveOld.removeAttribute('aria-live'); else liveOld.setAttribute('aria-live', 'polite'); }
+  }
   if (planNote) {
     var planBox = document.getElementById('plan-box');
     var paper = planBox && planBox.querySelector('.plan__paper');
     if (paper) paper.parentNode.insertBefore(planNote, paper.nextSibling);   // under the plan, above the legend
     planNote.removeAttribute('aria-hidden');
+    planNote.removeAttribute('tabindex');
     planNote.setAttribute('role', 'status');
-    planNote.setAttribute('tabindex', '-1');
-    var liveOld = document.getElementById('walk-live');
-    if (liveOld) liveOld.removeAttribute('aria-live');
   }
+  liveRegions();
+  if (narrow.addEventListener) narrow.addEventListener('change', liveRegions);
   function note(r) {
     if (!planNote) return;
-    planNote.textContent = (r.note ? r.note + ' ' : '') +
-      'From ' + r.label + ': about ' + r.minutes + ' min, ' + r.metres + ' m, by ' +
-      r.streets.map(function (x) { return x.name; }).join(', ') +
-      '. You\'re at the door: walk in, Tuesday to Saturday, 10 to 5.';
+    planNote.textContent = 'About ' + r.minutes + ' min to the door at No. 39.';
     planNote.hidden = false;
   }
 
@@ -188,7 +198,6 @@
 
     // the panel
     lead.hidden = true;
-    if (planNote) planNote.hidden = true;
     if (r.note) { noteEl.textContent = r.note; noteEl.hidden = false; } else { noteEl.hidden = true; noteEl.textContent = ''; }
     streetsEl.textContent = ''; streetsEl.hidden = false;
     countEl.hidden = false; endEl.hidden = true;
@@ -214,7 +223,10 @@
   }
 
   form.addEventListener('change', function (e) {
-    if (e.target && e.target.name === 'from') walk(e.target.value);
+    if (!e.target || e.target.name !== 'from') return;
+    walk(e.target.value);
+    note(byId[e.target.value]);
+    reveal();
   });
   // A choice already made (back/forward cache, a restored form) is drawn.
   var pre = form.querySelector('input[name="from"]:checked');
