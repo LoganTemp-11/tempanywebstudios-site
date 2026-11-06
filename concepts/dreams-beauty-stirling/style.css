@@ -292,7 +292,6 @@ html:not(.js) .stops { position: static; width: auto; display: flex; flex-wrap: 
 .panel__note { font-size: .92rem; color: var(--gold-text); margin-bottom: 4px !important; }
 .panel__count { font-weight: 700; font-size: 1.05rem; color: var(--mag); }
 .panel__streets { font-size: .92rem; color: var(--sc-ink); }
-.panel__streets span + span::before { content: ", "; }
 .panel__end { margin-top: 2px !important; font-weight: 700; font-size: .98rem; }
 .walk-text { margin: 8px 0 0; padding: 0; list-style: none; font-size: .88rem; color: var(--sc-ink-soft); }
 .walk-text li + li { margin-top: 2px; }
@@ -536,3 +535,4 @@ html:not(.js) [data-sc-cue], html:not(.js) [data-sc-in], html:not(.js) [data-sc-
   .from__chips { gap: 4px; }
   .legend__line { font-size: .88rem; }
 }
+@media (max-width: 899px) { .door__glass { min-height: 0; } .door__plate { margin-top: 28px; } }

@@ -45,7 +45,7 @@
     var have = streetsEl.children.length;
     for (var i = have; i < r.streets.length && r.streets[i].at <= upto + 1e-6; i++) {
       var s = document.createElement('span');
-      s.textContent = r.streets[i].name;
+      s.textContent = (i ? ', ' : '') + r.streets[i].name + (i === r.streets.length - 1 ? '.' : '');
       streetsEl.appendChild(s);
     }
   }
