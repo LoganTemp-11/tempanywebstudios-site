@@ -830,6 +830,7 @@ html:not(.js) .stops { position: static; width: auto; display: flex; flex-wrap: 
   container-type: inline-size; --door-x: 50%; --door-y: 32.609%; --ring: 5.4545cqw;
 }
 .plan__world > svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
+.plan__world > .plan__walks { z-index: 2; }
 .plan__art .p-p { display: none; }
 .walk {
   fill: none; stroke: var(--mag-g); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round;
@@ -845,14 +846,14 @@ html:not(.js) .stops { position: static; width: auto; display: flex; flex-wrap: 
 .lens__door { fill: var(--p-paper); stroke: var(--gold); }
 .lens__t { font: 700 14px/1 var(--sc-font-text); fill: var(--gold-text); text-anchor: middle; paint-order: stroke; stroke: var(--p-paper); stroke-width: 4px; }
 .lens .p-st, .lens .p-lmk { display: none; }
-.plan__note { display: none; }
-@media (max-width: 899px) {
-  .plan__note:not([hidden]) {
-    display: block; position: absolute; left: 6px; right: 6px; bottom: 26px; z-index: 2; margin: 0;
-    padding: 6px 10px; border-radius: 6px; border: 1.5px solid var(--sheet-line);
-    background: var(--legend); color: var(--mag); font-weight: 700; font-size: .86rem; line-height: 1.3;
-  }
+/* The answer line, in the flow under the plan (manager ruling): never over
+   the map, so it can cover no walk and no label. */
+.plan__note {
+  margin: 8px 0 0; padding: 8px 12px; border-radius: 6px; border: 1.5px solid var(--sheet-line);
+  background: var(--legend); color: var(--sc-ink); font-weight: 600; font-size: .95rem; line-height: 1.4;
 }
+.plan__note[hidden] { display: none; }
+.plan__note:focus { outline: 2px solid var(--mag); outline-offset: 2px; }
 .plan__osm {
   position: absolute; right: 8px; bottom: 6px; margin: 0; z-index: 2;
   font-size: .72rem; font-weight: 500; color: var(--sc-ink-soft);
@@ -909,7 +910,10 @@ html:not(.js) .stops { position: static; width: auto; display: flex; flex-wrap: 
 html.js .walk-text { display: none; }
 
 @media (min-width: 900px) {
-  .legend { position: absolute; left: 12px; bottom: 12px; width: 410px; z-index: 2; box-shadow: 0 10px 24px -14px hsl(var(--sc-shadow-color) / .5); }
+  .plan { display: grid; }
+  .plan__paper, .legend { grid-area: 1 / 1; }
+  .plan__note { grid-area: 2 / 1; }
+  .legend { align-self: end; justify-self: start; margin: 0 0 12px 12px; width: 410px; z-index: 2; box-shadow: 0 10px 24px -14px hsl(var(--sc-shadow-color) / .5); }
 }
 @media (max-width: 899px) {
   .act-plan { padding-inline: 16px; padding-top: 10px; min-height: calc(100svh - 72px); }
@@ -920,6 +924,10 @@ html.js .walk-text { display: none; }
   .plan { margin-top: 8px; }
   /* the phone framing: window F of the drawing (see route.json "phone") */
   .plan__paper { aspect-ratio: 771.4 / 642.9; }
+  /* The credit runs up the right edge on a phone: every walk lies in the
+     left two thirds of this frame, so the credit covers none of them (at
+     320 it sat across the start of the Pitt Terrace walk). */
+  .plan__osm { right: 2px; bottom: 6px; writing-mode: vertical-rl; transform: rotate(180deg); padding: 6px 1px; font-size: .68rem; }
   .plan__world { width: 142.5979%; left: -21.2989%; top: -6.4551%; }
   .plan__art .p-d { display: none; }
   .plan__art .p-p { display: inline; }

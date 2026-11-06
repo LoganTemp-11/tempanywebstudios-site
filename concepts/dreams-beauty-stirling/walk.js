@@ -65,28 +65,22 @@
     reveal(r);
   }
 
-  // On a phone the answer can land under the fold or under the cookie bar.
-  // Two rules, in this order:
-  // 1. The chosen chip (the focused control, for a keyboard user) never
-  //    leaves the screen and never sits under the fixed lamp and tab.
-  // 2. Within that, scroll just far enough that the whole answer clears the
-  //    cookie bar. On a screen too short for both, the plan's own note line
-  //    (.plan__note, printed on the plan right under the chips) carries the
-  //    answer, so nothing has to scroll the focus away.
+  // Manager ruling (fix round 3): the answer lives in one line in the page
+  // flow directly under the plan, inside the sheet and above the legend.
+  // After a choice, focus moves to it, and the page scrolls so its bottom
+  // sits 8px above the top of the cookie bar (or the bottom of the screen
+  // once the cookie question is answered). Nothing is laid over the map.
   function reveal(r) {
-    var live = document.getElementById('walk-live');
+    if (!planNote) return;
+    var html = document.documentElement;
     var consent = document.getElementById('consent');
-    var floor = innerHeight - (consent && !consent.hidden ? consent.getBoundingClientRect().height + 12 : 0) - 8;
-    var box = live.getBoundingClientRect();
-    if (box.top >= 0 && box.bottom <= floor) return;
-    var chip = form.querySelector('input[name="from"]:checked');
-    chip = chip ? chip.parentNode.getBoundingClientRect() : form.getBoundingClientRect();
-    // The fixed lamp and tab sit over the top right of the screen. Keep the
-    // chosen chip's whole row below them, so no chip in it hides underneath.
-    var chrome = document.querySelector('[data-chrome]');
-    var minTop = chrome ? chrome.getBoundingClientRect().bottom + 8 : 8;
-    var by = Math.min(box.bottom - floor, chip.top - minTop);
-    if (by > 0) window.scrollTo({ top: scrollY + by, behavior: 'instant' });
+    var ch = parseFloat(getComputedStyle(html).getPropertyValue('--consent-h')) || 0;
+    var barTop = innerHeight;
+    if (ch > 0 && consent && !consent.hidden) barTop = consent.getBoundingClientRect().top;
+    var by = planNote.getBoundingClientRect().bottom - (barTop - 8);
+    var target = Math.max(0, Math.round(scrollY + by));
+    planNote.focus({ preventScroll: true });
+    if (target !== Math.round(scrollY)) window.scrollTo({ top: target, behavior: 'instant' });
   }
 
   function inset(r) {
@@ -136,13 +130,27 @@
     return gi;
   }
 
-  // The plan's note line: the answer in one line on the plan itself, just
-  // under the chips, for phones (CSS shows it under 900px only). The live
-  // region below already announces it, so this copy is hidden from AT.
+  // The answer line under the plan. It is the one place the answer is
+  // announced: role=status, and focus lands on it after a choice. The panel
+  // in the legend keeps the same facts on screen but is no longer a live
+  // region, so nothing is read out twice.
   var planNote = document.getElementById('plan-note');
+  if (planNote) {
+    var planBox = document.getElementById('plan-box');
+    var paper = planBox && planBox.querySelector('.plan__paper');
+    if (paper) paper.parentNode.insertBefore(planNote, paper.nextSibling);   // under the plan, above the legend
+    planNote.removeAttribute('aria-hidden');
+    planNote.setAttribute('role', 'status');
+    planNote.setAttribute('tabindex', '-1');
+    var liveOld = document.getElementById('walk-live');
+    if (liveOld) liveOld.removeAttribute('aria-live');
+  }
   function note(r) {
     if (!planNote) return;
-    planNote.textContent = 'About ' + r.minutes + ' min to the door at No. 39. Walk in, Tue to Sat, 10 to 5.';
+    planNote.textContent = (r.note ? r.note + ' ' : '') +
+      'From ' + r.label + ': about ' + r.minutes + ' min, ' + r.metres + ' m, by ' +
+      r.streets.map(function (x) { return x.name; }).join(', ') +
+      '. You\'re at the door: walk in, Tuesday to Saturday, 10 to 5.';
     planNote.hidden = false;
   }
 
