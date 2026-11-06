@@ -501,7 +501,7 @@ video[data-sc-scrub] { opacity: 0; transition: opacity 380ms var(--sc-ease-out);
 video[data-sc-scrub].sc-has-clip { opacity: 1; }
 
 /* The copy layer is fixed too, and inert by default: the engine hands
-   pointer-events back to a block only while it is legible. */
+   pointer-events back to a block only while it is actually legible. */
 .sc-world__copy {
   position: fixed; inset: 0;
   z-index: var(--sc-z-copy);
@@ -845,6 +845,14 @@ html:not(.js) .stops { position: static; width: auto; display: flex; flex-wrap: 
 .lens__door { fill: var(--p-paper); stroke: var(--gold); }
 .lens__t { font: 700 14px/1 var(--sc-font-text); fill: var(--gold-text); text-anchor: middle; paint-order: stroke; stroke: var(--p-paper); stroke-width: 4px; }
 .lens .p-st, .lens .p-lmk { display: none; }
+.plan__note { display: none; }
+@media (max-width: 899px) {
+  .plan__note:not([hidden]) {
+    display: block; position: absolute; left: 6px; right: 6px; bottom: 26px; z-index: 2; margin: 0;
+    padding: 6px 10px; border-radius: 6px; border: 1.5px solid var(--sheet-line);
+    background: var(--legend); color: var(--mag); font-weight: 700; font-size: .86rem; line-height: 1.3;
+  }
+}
 .plan__osm {
   position: absolute; right: 8px; bottom: 6px; margin: 0; z-index: 2;
   font-size: .72rem; font-weight: 500; color: var(--sc-ink-soft);
@@ -953,7 +961,7 @@ html.js .walk-text { display: none; }
 .act-brows { padding-inline: 0; }
 .brows__stage { display: grid; gap: 18px; padding: 72px 16px 24px; }
 .sc-act--pinned .brows__stage { height: 100svh; box-sizing: border-box; }
-.brows__room img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+.brows__room img { width: 100%; height: 100%; object-fit: cover; object-position: 20% 50%; border-radius: 4px; }  /* keeps the Lashes and Brows wall drawing in a portrait crop */
 .brows__side { align-self: center; }
 .brows__k { margin: 10px 0 8px; font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-text); }
 .themes { list-style: none; margin: 0; padding: 0; counter-reset: t; }

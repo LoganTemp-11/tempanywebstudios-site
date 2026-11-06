@@ -61,21 +61,32 @@
     if (ring && !reduce) {
       ring.classList.remove('is-pulse'); void ring.getBoundingClientRect(); ring.classList.add('is-pulse');
     }
-    reveal();
+    note(r);
+    reveal(r);
   }
 
   // On a phone the answer can land under the fold or under the cookie bar.
-  // Scroll just far enough that the whole answer (note, minutes, streets and
-  // "You're at the door") sits above the bar, never pushing its first line
-  // off the top. Most of the plan and the drawn walk stay in view.
-  function reveal() {
+  // Two rules, in this order:
+  // 1. The chosen chip (the focused control, for a keyboard user) never
+  //    leaves the screen and never sits under the fixed lamp and tab.
+  // 2. Within that, scroll just far enough that the whole answer clears the
+  //    cookie bar. On a screen too short for both, the plan's own note line
+  //    (.plan__note, printed on the plan right under the chips) carries the
+  //    answer, so nothing has to scroll the focus away.
+  function reveal(r) {
     var live = document.getElementById('walk-live');
     var consent = document.getElementById('consent');
-    var floor = innerHeight - (consent && !consent.hidden ? consent.getBoundingClientRect().height + 20 : 0) - 8;
-    var r = live.getBoundingClientRect();
-    if (r.top >= 0 && r.bottom <= floor) return;
-    var by = Math.min(r.bottom - floor, r.top - 70);   // 70: clear of the fixed lamp and tab
-    if (by > 0) window.scrollTo({ top: scrollY + by, behavior: reduce ? 'instant' : 'smooth' });
+    var floor = innerHeight - (consent && !consent.hidden ? consent.getBoundingClientRect().height + 12 : 0) - 8;
+    var box = live.getBoundingClientRect();
+    if (box.top >= 0 && box.bottom <= floor) return;
+    var chip = form.querySelector('input[name="from"]:checked');
+    chip = chip ? chip.parentNode.getBoundingClientRect() : form.getBoundingClientRect();
+    // The fixed lamp and tab sit over the top right of the screen. Keep the
+    // chosen chip's whole row below them, so no chip in it hides underneath.
+    var chrome = document.querySelector('[data-chrome]');
+    var minTop = chrome ? chrome.getBoundingClientRect().bottom + 8 : 8;
+    var by = Math.min(box.bottom - floor, chip.top - minTop);
+    if (by > 0) window.scrollTo({ top: scrollY + by, behavior: 'instant' });
   }
 
   function inset(r) {
@@ -125,6 +136,16 @@
     return gi;
   }
 
+  // The plan's note line: the answer in one line on the plan itself, just
+  // under the chips, for phones (CSS shows it under 900px only). The live
+  // region below already announces it, so this copy is hidden from AT.
+  var planNote = document.getElementById('plan-note');
+  function note(r) {
+    if (!planNote) return;
+    planNote.textContent = 'About ' + r.minutes + ' min to the door at No. 39. Walk in, Tue to Sat, 10 to 5.';
+    planNote.hidden = false;
+  }
+
   function walk(id) {
     var r = byId[id];
     if (!r) return;
@@ -159,6 +180,7 @@
 
     // the panel
     lead.hidden = true;
+    if (planNote) planNote.hidden = true;
     if (r.note) { noteEl.textContent = r.note; noteEl.hidden = false; } else { noteEl.hidden = true; noteEl.textContent = ''; }
     streetsEl.textContent = ''; streetsEl.hidden = false;
     countEl.hidden = false; endEl.hidden = true;
