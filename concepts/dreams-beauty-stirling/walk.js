@@ -61,6 +61,7 @@
     if (ring && !reduce) {
       ring.classList.remove('is-pulse'); void ring.getBoundingClientRect(); ring.classList.add('is-pulse');
     }
+    announce(r);
   }
 
   // Amended manager ruling (fix round 4). Nothing ever moves focus: it stays
@@ -143,10 +144,29 @@
   // at 900px and wider the panel in the legend (aria-live=polite), where the
   // full answer is. The Pitt Terrace note and the hours stay in that panel.
   var planNote = document.getElementById('plan-note');
-  var liveOld = document.getElementById('walk-live');
+  var liveOld = document.getElementById('walk-live');   // visible panel: never a live region
+  if (liveOld) liveOld.removeAttribute('aria-live');
   var narrow = matchMedia('(max-width: 899px)');
+  // At 900px and wider the answer is announced by a visually hidden status
+  // line that receives the finished answer once, when the walk ends. The
+  // counting text in the panel stays out of every live region. Below 900px
+  // the on-plan note is the one live region.
+  var say = document.createElement('p');
+  say.className = 'sr-only'; say.id = 'walk-say';
+  if (liveOld) liveOld.parentNode.insertBefore(say, liveOld);
   function liveRegions() {
-    if (liveOld) { if (narrow.matches) liveOld.removeAttribute('aria-live'); else liveOld.setAttribute('aria-live', 'polite'); }
+    if (narrow.matches) {
+      say.removeAttribute('role'); say.removeAttribute('aria-live'); say.textContent = '';
+      if (planNote) planNote.setAttribute('role', 'status');
+    } else {
+      say.setAttribute('role', 'status'); say.setAttribute('aria-live', 'polite');
+      if (planNote) planNote.removeAttribute('role');      // hidden at this width: not a live region
+    }
+  }
+  function announce(r) {
+    if (narrow.matches) return;
+    say.textContent = (r.note ? r.note + ' ' : '') + 'From ' + r.label + ': about ' + r.minutes + ' min, ' + r.metres + ' m, by ' +
+      r.streets.map(function (x) { return x.name; }).join(', ') + '. You\'re at the door. Walk in, Tuesday to Saturday, 10 to 5.';
   }
   if (planNote) {
     var planBox = document.getElementById('plan-box');
@@ -154,13 +174,14 @@
     if (paper) paper.parentNode.insertBefore(planNote, paper.nextSibling);   // under the plan, above the legend
     planNote.removeAttribute('aria-hidden');
     planNote.removeAttribute('tabindex');
-    planNote.setAttribute('role', 'status');
   }
   liveRegions();
   if (narrow.addEventListener) narrow.addEventListener('change', liveRegions);
   function note(r) {
-    if (!planNote) return;
-    planNote.textContent = 'About ' + r.minutes + ' min to the door at No. 39.';
+    if (!planNote || !narrow.matches) return;
+    // Names the origin so two walks of the same length still change the
+    // text, and so each one is announced.
+    planNote.textContent = 'From ' + r.label + ': about ' + r.minutes + ' min to the door at No. 39.';
     planNote.hidden = false;
   }
 

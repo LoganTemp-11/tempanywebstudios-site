@@ -1156,6 +1156,9 @@ html:not(.js) [data-sc-cue], html:not(.js) [data-sc-in], html:not(.js) [data-sc-
 }
 @media (max-width: 899px) { .door__glass { min-height: 0; } .door__plate { margin-top: 28px; } }
 
+/* visually hidden, still read: the one announcement per walk at 900px and wider */
+.sr-only { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+
 /* legal.css */
 /* Shared by privacy, terms and 404. Same tokens, paper and chrome as the
    page: style.css is pulled in whole, then a plain reading sheet with the
