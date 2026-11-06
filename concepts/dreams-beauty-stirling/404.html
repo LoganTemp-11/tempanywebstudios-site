@@ -650,7 +650,9 @@ video[data-sc-scrub].sc-has-clip { opacity: 1; }
 :root[data-theme="dark"] body { color: var(--sc-ink); }
 
 /* ------------------------------------------------------------------ base -- */
-html { scroll-padding-top: 80px; }
+/* Jumps are instant (the plan, and a smooth glide still running from a focus
+   move would land after the jump and override it). */
+html { scroll-padding-top: 80px; scroll-behavior: auto; }
 body {
   background: var(--sc-canvas);
   font-family: var(--sc-font-text);
@@ -759,7 +761,7 @@ html:not(.js) .stops { position: static; width: auto; display: flex; flex-wrap: 
 }
 
 /* ======================================================== 1. THE PLAN ===== */
-.act-plan { padding-top: 12px; padding-bottom: 40px; }
+.act-plan { padding-top: 12px; padding-bottom: 40px; min-height: calc(100svh - 44px); box-sizing: border-box; }
 .sheet {
   position: relative; margin-inline: auto;
   width: min(1100px, 100%, calc((100svh - 236px) * 1100 / 690 + 26px));
@@ -830,7 +832,7 @@ html:not(.js) .stops { position: static; width: auto; display: flex; flex-wrap: 
    above, and the walk is allowed to cross it, as a route crosses a printed
    label. --ring is the ring's diameter as a share of the plan's width. */
 .mark {
-  position: absolute; left: var(--door-x); top: var(--door-y); width: 0; height: 0; z-index: 1;
+  position: absolute; left: var(--door-x); top: var(--door-y); width: 2px; height: 2px; margin: -1px 0 0 -1px; z-index: 1;
   font-family: var(--f-script); font-weight: 400;
   font-size: clamp(2.6rem, 8cqw, 5.5rem); line-height: 1; letter-spacing: 0;
   color: var(--script); white-space: nowrap; pointer-events: none;
@@ -877,7 +879,7 @@ html.js .walk-text { display: none; }
   .legend { position: absolute; left: 12px; bottom: 12px; width: 410px; z-index: 2; box-shadow: 0 10px 24px -14px hsl(var(--sc-shadow-color) / .5); }
 }
 @media (max-width: 899px) {
-  .act-plan { padding-inline: 16px; padding-top: 10px; }
+  .act-plan { padding-inline: 16px; padding-top: 10px; min-height: calc(100svh - 72px); }
   .sheet { width: 100%; padding: 8px 8px 10px; }
   .from legend { line-height: 1.3; margin-bottom: 6px; width: 100%; font-size: .74rem; }
   .from__chips { gap: 6px 5px; }
@@ -1105,6 +1107,12 @@ html:not(.js) .act-brows, .rm .act-brows { padding-block: 40px; }
 /* JS off: the engine never runs, so nothing it would reveal may stay hidden.
    (scrollcraft.css hides cues and entrance items until it mounts.) */
 html:not(.js) [data-sc-cue], html:not(.js) [data-sc-in], html:not(.js) [data-sc-stagger] > * { opacity: 1 !important; transform: none !important; }
+
+@media (max-width: 359px) {
+  .chip span { padding: 0 9px; font-size: .8rem; }
+  .from__chips { gap: 4px; }
+  .legend__line { font-size: .88rem; }
+}
 
 /* legal.css */
 /* Shared by privacy, terms and 404. Same tokens, paper and chrome as the

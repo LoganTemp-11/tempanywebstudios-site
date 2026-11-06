@@ -100,11 +100,15 @@
   function jump(t) {
     var prev = html.style.scrollBehavior;
     html.style.scrollBehavior = 'auto';
+    // Stop any smooth scroll still running (scrollcraft.css sets smooth, and a
+    // focus move just before the jump can start one): an instant scroll issued
+    // mid-glide is otherwise overridden by the glide's own target.
+    window.scrollTo({ top: scrollY, behavior: 'instant' });
     // Land the heading 12px below the tab, not under it.
     var off = tab ? tab.getBoundingClientRect().bottom + 12 : 0;
     var h = t.querySelector('h2'), lift = 0;
     if (h) lift = Math.max(0, off - (h.getBoundingClientRect().top - t.getBoundingClientRect().top));
-    window.scrollTo(0, Math.round(t.getBoundingClientRect().top + scrollY - lift));
+    window.scrollTo({ top: Math.round(t.getBoundingClientRect().top + scrollY - lift), behavior: 'instant' });
     html.style.scrollBehavior = prev;
     (h || t).setAttribute('tabindex', '-1');
     (h || t).focus({ preventScroll: true });
