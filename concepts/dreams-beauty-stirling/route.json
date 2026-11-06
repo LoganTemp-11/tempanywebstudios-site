@@ -1,0 +1,454 @@
+{
+ "about": "Walking routes to Dreams Beauty, 39 Murray Place. OSRM foot, routing.openstreetmap.de (FOSSGIS), checked 2026-11-06. Geometry in plan units (metres) on the street plan; the last segment runs from the pavement to the door (OSM node 13375886108). Map data (c) OpenStreetMap contributors, ODbL.",
+ "door": [
+  550.0,
+  225.0
+ ],
+ "viewBox": [
+  0,
+  0,
+  1100,
+  690
+ ],
+ "phone": [
+  164.3,
+  41.5,
+  771.4,
+  642.9
+ ],
+ "routes": [
+  {
+   "id": "station",
+   "label": "Stirling station",
+   "chip": "Stirling station",
+   "source": "Stirling station main entrance, OSM node 544256187 (entrance=main on the station building, way 85958146). The Nominatim point 56.11965, -3.93430 snaps to platform 3 and routes along the platform and over the footbridge, so the front door is used instead.",
+   "metres": 192,
+   "minutes": 3,
+   "origin": [
+    56.1197616,
+    -3.9356196
+   ],
+   "geometry": [
+    [
+     602.7,
+     91.5
+    ],
+    [
+     596.4,
+     94.6
+    ],
+    [
+     594.6,
+     98.9
+    ],
+    [
+     587.8,
+     102.2
+    ],
+    [
+     584.2,
+     97.1
+    ],
+    [
+     572.8,
+     104.8
+    ],
+    [
+     554.3,
+     135.5
+    ],
+    [
+     562.2,
+     144.3
+    ],
+    [
+     543.2,
+     159.1
+    ],
+    [
+     535.8,
+     161.8
+    ],
+    [
+     537.4,
+     172.5
+    ],
+    [
+     555.9,
+     201.2
+    ],
+    [
+     563.1,
+     215.3
+    ],
+    [
+     561.5,
+     227.1
+    ],
+    [
+     550.0,
+     225.0
+    ]
+   ],
+   "streets": [
+    {
+     "name": "Goosecroft Road",
+     "at": 0.094
+    },
+    {
+     "name": "Station Road",
+     "at": 0.427
+    },
+    {
+     "name": "Murray Place",
+     "at": 0.583
+    }
+   ]
+  },
+  {
+   "id": "bus",
+   "label": "the bus station",
+   "chip": "Bus station",
+   "source": "Stirling Bus Station, Nominatim (OSM way 1118396154)",
+   "metres": 288,
+   "minutes": 4,
+   "origin": [
+    56.11843,
+    -3.93446
+   ],
+   "geometry": [
+    [
+     677.5,
+     237.6
+    ],
+    [
+     664.5,
+     219.0
+    ],
+    [
+     658.5,
+     215.3
+    ],
+    [
+     640.4,
+     214.9
+    ],
+    [
+     600.0,
+     128.8
+    ],
+    [
+     582.9,
+     137.8
+    ],
+    [
+     575.9,
+     138.2
+    ],
+    [
+     549.0,
+     160.6
+    ],
+    [
+     536.2,
+     165.0
+    ],
+    [
+     537.4,
+     172.5
+    ],
+    [
+     555.9,
+     201.2
+    ],
+    [
+     563.1,
+     215.3
+    ],
+    [
+     561.5,
+     227.1
+    ],
+    [
+     550.0,
+     225.0
+    ]
+   ],
+   "streets": [
+    {
+     "name": "Goosecroft Road",
+     "at": 0.16
+    },
+    {
+     "name": "Murray Place",
+     "at": 0.728
+    }
+   ]
+  },
+  {
+   "id": "thistles",
+   "label": "The Thistles",
+   "chip": "The Thistles",
+   "source": "The Thistles: the Nominatim centroid 56.11763, -3.93558 is inside the building, so the Orchardcroft entrance onto Murray Place is used (OSM node 1119836790).",
+   "metres": 45,
+   "minutes": 1,
+   "origin": [
+    56.1184937,
+    -3.9357992
+   ],
+   "geometry": [
+    [
+     591.6,
+     232.5
+    ],
+    [
+     563.1,
+     215.3
+    ],
+    [
+     561.5,
+     227.1
+    ],
+    [
+     550.0,
+     225.0
+    ]
+   ],
+   "streets": [
+    {
+     "name": "Orchardcroft",
+     "at": 0.0
+    },
+    {
+     "name": "Murray Place",
+     "at": 0.586
+    }
+   ]
+  },
+  {
+   "id": "wellgreen",
+   "label": "Wellgreen car park",
+   "chip": "Wellgreen car park",
+   "source": "Wellgreen Car park (multi-storey), Nominatim (OSM way 42856583)",
+   "metres": 577,
+   "minutes": 8,
+   "origin": [
+    56.11526,
+    -3.93576
+   ],
+   "geometry": [
+    [
+     597.7,
+     576.8
+    ],
+    [
+     642.2,
+     587.7
+    ],
+    [
+     638.2,
+     604.1
+    ],
+    [
+     636.7,
+     603.8
+    ],
+    [
+     635.0,
+     610.5
+    ],
+    [
+     631.0,
+     609.5
+    ],
+    [
+     628.9,
+     618.3
+    ],
+    [
+     613.4,
+     614.5
+    ],
+    [
+     622.5,
+     582.6
+    ],
+    [
+     617.6,
+     575.3
+    ],
+    [
+     623.6,
+     574.7
+    ],
+    [
+     633.9,
+     552.0
+    ],
+    [
+     643.7,
+     539.6
+    ],
+    [
+     603.4,
+     508.1
+    ],
+    [
+     525.1,
+     452.7
+    ],
+    [
+     531.2,
+     421.8
+    ],
+    [
+     533.0,
+     395.7
+    ],
+    [
+     529.6,
+     361.3
+    ],
+    [
+     529.5,
+     343.1
+    ],
+    [
+     540.9,
+     319.5
+    ],
+    [
+     533.0,
+     316.8
+    ],
+    [
+     552.9,
+     272.7
+    ],
+    [
+     561.5,
+     227.1
+    ],
+    [
+     550.0,
+     225.0
+    ]
+   ],
+   "streets": [
+    {
+     "name": "Wellgreen Car park",
+     "at": 0.0
+    },
+    {
+     "name": "Wellgreen Lane",
+     "at": 0.171
+    },
+    {
+     "name": "Upper Craigs",
+     "at": 0.322
+    },
+    {
+     "name": "Port Street",
+     "at": 0.572
+    },
+    {
+     "name": "Murray Place",
+     "at": 0.819
+    }
+   ]
+  },
+  {
+   "id": "pitt",
+   "label": "Pitt Terrace",
+   "chip": "My card says Pitt Terrace",
+   "source": "Postcode FK8 2EZ centroid, postcodes.io. The street, not a verified shop position.",
+   "metres": 445,
+   "minutes": 6,
+   "origin": [
+    56.11478,
+    -3.93736
+   ],
+   "geometry": [
+    [
+     473.1,
+     639.3
+    ],
+    [
+     485.2,
+     599.9
+    ],
+    [
+     475.2,
+     597.2
+    ],
+    [
+     493.3,
+     540.0
+    ],
+    [
+     525.1,
+     452.7
+    ],
+    [
+     531.2,
+     421.8
+    ],
+    [
+     533.0,
+     395.7
+    ],
+    [
+     529.6,
+     361.3
+    ],
+    [
+     529.5,
+     343.1
+    ],
+    [
+     540.9,
+     319.5
+    ],
+    [
+     533.0,
+     316.8
+    ],
+    [
+     552.9,
+     272.7
+    ],
+    [
+     561.5,
+     227.1
+    ],
+    [
+     550.0,
+     225.0
+    ]
+   ],
+   "streets": [
+    {
+     "name": "Pitt Terrace",
+     "at": 0.0
+    },
+    {
+     "name": "Wellgreen Road",
+     "at": 0.091
+    },
+    {
+     "name": "St Ninians Road",
+     "at": 0.113
+    },
+    {
+     "name": "Port Street",
+     "at": 0.448
+    },
+    {
+     "name": "Murray Place",
+     "at": 0.767
+    }
+   ],
+   "note": "Older loyalty cards and the stirling.co.uk listing say 1B Pitt Terrace. Dreams Beauty is at 39 Murray Place now."
+  }
+ ]
+}
