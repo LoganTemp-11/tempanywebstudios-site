@@ -1,0 +1,8 @@
+# Stirling Nail Art, a first version by Tempany Web Studios. It is not yet the
+# salon's own site, so it must not be found in search: everything is
+# disallowed, and every page carries noindex as well. This stays until the
+# salon approves the site and it moves to its own domain.
+User-agent: *
+Disallow: /
+
+Sitemap: https://tempanywebstudios.co.uk/concepts/stirling-nail-art/sitemap.xml

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="tws-storage-prefix" content="sna">
+<script>
+/* Theme before first paint. Light is the default for this concept; the
+   visitor's own choice wins once made. To follow the device instead, swap the
+   fallback for: matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light' */
+(function () {
+  var d = document.documentElement, t = null;
+  try { t = localStorage.getItem('sna-theme'); } catch (e) {}
+  if (t !== 'dark' && t !== 'light') t = 'light';
+  d.setAttribute('data-theme', t);
+  d.classList.add('js');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('rm');
+})();
+</script>
+<title>Stirling Nail Art | Gel and BIAB, 21 Upper Craigs</title>
+<meta name="description" content="Gel, BIAB, extensions and pedicures at 21 Upper Craigs, Stirling FK8 2DG. Open Tue, Wed, Fri and Sat 10 to 6, Thu 12 to 8. Walk in, or book online on Fresha.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/concepts/stirling-nail-art/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stirling Nail Art, a first version by Tempany Web Studios">
+<meta property="og:title" content="Stirling Nail Art, 21 Upper Craigs, Stirling">
+<meta property="og:description" content="Gel, BIAB, extensions and pedicures in Stirling city centre. Open Tue, Wed, Fri and Sat 10 to 6, Thu 12 to 8. Walk in or book on Fresha.">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/concepts/stirling-nail-art/">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/concepts/stirling-nail-art/assets/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stirling Nail Art in black script on a cream wall, above a plaque with the address, hours and phone number">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stirling Nail Art, 21 Upper Craigs, Stirling">
+<meta name="twitter:description" content="Open Tue, Wed, Fri and Sat 10 to 6, Thu 12 to 8. Walk in or book on Fresha.">
+<meta name="twitter:image" content="https://tempanywebstudios.co.uk/concepts/stirling-nail-art/assets/share.png">
+<meta name="twitter:image:alt" content="Stirling Nail Art in black script on a cream wall, above a plaque with the address, hours and phone number">
+<meta name="theme-color" content="#efe6d6">
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/yellowtail-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/hanken-grotesk-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/palette.css">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="style.css">
+<!--jsonld:start-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NailSalon",
+  "name": "Stirling Nail Art",
+  "url": "https://tempanywebstudios.co.uk/concepts/stirling-nail-art/",
+  "telephone": "+447347199692",
+  "email": "stirlingnailart@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "21 Upper Craigs",
+    "addressLocality": "Stirling",
+    "postalCode": "FK8 2DG",
+    "addressCountry": "GB"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Tuesday",
+        "Wednesday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "10:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Thursday"
+      ],
+      "opens": "12:00",
+      "closes": "20:00"
+    }
+  ],
+  "paymentAccepted": "Credit card, debit card, contactless",
+  "sameAs": [
+    "https://www.fresha.com/a/stirling-nail-art-stirling-21-upper-craigs-tau3hbuc",
+    "https://www.instagram.com/stirlingnailart/"
+  ]
+}
+</script>
+<!--jsonld:end-->
+</head>
+<body>
+
+<a class="skip" href="#top">Skip to the page</a>
+<p class="strip" id="strip">First version for Stirling Nail Art · A concept by Tempany Web Studios, not yet the salon's site · <a href="https://tempanywebstudios.co.uk/">tempanywebstudios.co.uk</a></p>
+
+<!-- The chrome: the swatch fan, a riveted stick of six display tips. Closed,
+     it is a small stack on a rivet; opened, the tips fan down, one per
+     section, and the current section's tip is painted. The lights sit by the
+     rivet. With JS off the tips are a plain list of links. -->
+<nav class="chrome" data-chrome aria-label="Sections">
+  <button type="button" class="fan__btn" id="fan-btn" aria-expanded="false" aria-controls="fan">
+    <span class="fan__stack" aria-hidden="true"><i></i><i></i><i></i><b></b></span>
+    <span class="vh">Sections</span>
+  </button>
+  <button type="button" id="lights" class="lights" aria-pressed="true" aria-label="Lights off in the salon">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 3h8l-1.5 7h-5zM12 10v4M9 21h6M12 14a3.5 3.5 0 0 1 0 7a3.5 3.5 0 0 1 0-7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <ol class="fan" id="fan">
+    <li style="--i:0;--a:-3deg"><a href="#wall" data-tip>The wall</a></li>
+    <li style="--i:1;--a:2deg"><a href="#club" data-tip>The club</a></li>
+    <li style="--i:2;--a:-2deg"><a href="#buildup" data-tip>The build-up</a></li>
+    <li style="--i:3;--a:3deg"><a href="#menu" data-tip>The menu</a></li>
+    <li style="--i:4;--a:-2deg"><a href="#questions" data-tip>Questions</a></li>
+    <li style="--i:5;--a:2deg"><a href="#visit" data-tip>Visit</a></li>
+  </ol>
+</nav>
+
+<div id="consent" class="consent" role="region" aria-label="Cookie choice" hidden>
+  <p>This page keeps your lights choice in your browser. No analytics are loaded either way. <a href="privacy#cookies">More</a></p>
+  <div class="consent__actions">
+    <button type="button" class="consent__btn" data-consent="reject">Reject</button>
+    <button type="button" class="consent__btn" data-consent="accept">Accept</button>
+  </div>
+</div>
+
+<main id="top" tabindex="-1">
+
+  <!-- The backdrop. Their Nail Wall, sticky behind the whole page: it never
+       moves, and every act is something held up to it and taken away. -->
+  <div class="wall">
+    <div class="wall__plaster" aria-hidden="true"></div>
+    <h1 class="wall__script" id="name">Stirling <span>Nail Art</span></h1>
+  </div>
+
+  <!-- 1. The wall. No entrance device: the plaque is already screwed on. -->
+  <section id="wall" class="act act-wall" data-sc-act="flow" data-sna-ground="0" tabindex="-1" aria-label="The wall">
+    <div class="plaque plaque--first">
+      <i class="screw screw--tl" aria-hidden="true"></i><i class="screw screw--tr" aria-hidden="true"></i><i class="screw screw--bl" aria-hidden="true"></i><i class="screw screw--br" aria-hidden="true"></i>
+      <p class="plaque__line" data-landing>21 Upper Craigs, Stirling FK8 2DG</p>
+      <p class="plaque__line num" data-landing>Tue, Wed, Fri, Sat 10 to 6 · Thu 12 to 8 · Closed Sun, Mon</p>
+      <p class="plaque__line plaque__tel" data-landing><a href="tel:+447347199692" class="num">07347 199692</a></p>
+    </div>
+    <div class="floor">
+      <p class="floor__line">Walk-ins welcome · <a href="https://www.fresha.com/a/stirling-nail-art-stirling-21-upper-craigs-tau3hbuc" rel="noopener" target="_blank">Book on Fresha</a></p>
+    </div>
+  </section>
+
+  <!-- 2. #NailWallClub. One spot on the wall at hand height; the sets swap
+       in place there as the act runs. Reduced motion and JS off: a grid. -->
+  <section id="club" class="act act-club" data-sc-act="pin" data-sc-span="2.2" data-sna-ground="0" tabindex="-1" aria-labelledby="club-h">
+    <div class="club__stage" data-sc-stage>
+      <div class="club__head">
+        <h2 id="club-h" class="tag">#NailWallClub</h2>
+        <p class="card-line">Clients hold their finished nails up to this wall before they leave.</p>
+      </div>
+      <div class="club__spot" id="club-spot">
+<!--club:start-->
+        <figure class="shot" style="--i:0" data-on data-cap="">
+          <div class="ph" data-todo-photo="sna-wall-hand-a.jpg" style="aspect-ratio:3 / 4" role="img" aria-label="A photo from the salon goes here"><span>A photo from the salon goes here</span></div>
+
+        </figure>
+        <figure class="shot" style="--i:1" data-cap="">
+          <div class="ph" data-todo-photo="sna-wallclub-hand-a.jpg" style="aspect-ratio:3 / 4" role="img" aria-label="A photo from the salon goes here"><span>A photo from the salon goes here</span></div>
+
+        </figure>
+        <figure class="shot" style="--i:2" data-cap="">
+          <div class="ph" data-todo-photo="sna-ombre-lace-a.jpg" style="aspect-ratio:3 / 4" role="img" aria-label="A photo from the salon goes here"><span>A photo from the salon goes here</span></div>
+
+        </figure>
+        <figure class="shot" style="--i:3" data-cap="">
+          <div class="ph" data-todo-photo="sna-wall-hand-b.jpg" style="aspect-ratio:3 / 4" role="img" aria-label="A photo from the salon goes here"><span>A photo from the salon goes here</span></div>
+
+        </figure>
+        <figure class="shot" style="--i:4" data-cap="">
+          <div class="ph" data-todo-photo="sna-chrome-nude.jpg" style="aspect-ratio:3 / 4" role="img" aria-label="A photo from the salon goes here"><span>A photo from the salon goes here</span></div>
+
+        </figure>
+        <figure class="shot" style="--i:5" data-cap="">
+          <div class="ph" data-todo-photo="sna-wallclub-hand-b.jpg" style="aspect-ratio:3 / 4" role="img" aria-label="A photo from the salon goes here"><span>A photo from the salon goes here</span></div>
+
+        </figure>
+        <figure class="shot" style="--i:6" data-cap="">
+          <div class="ph" data-todo-photo="sna-red-gel.jpg" style="aspect-ratio:3 / 4" role="img" aria-label="A photo from the salon goes here"><span>A photo from the salon goes here</span></div>
+
+        </figure>
+        <figure class="shot" style="--i:7" data-cap="">
+          <div class="ph" data-todo-photo="sna-nude-ring.jpg" style="aspect-ratio:3 / 4" role="img" aria-label="A photo from the salon goes here"><span>A photo from the salon goes here</span></div>
+
+        </figure>
+        <figure class="shot" style="--i:8" data-cap="">
+          <div class="ph" data-todo-photo="sna-saltire-thumb.jpg" style="aspect-ratio:3 / 4" role="img" aria-label="A photo from the salon goes here"><span>A photo from the salon goes here</span></div>
+
+        </figure>
+<!--club:end-->
+      </div>
+      <div class="club__read" hidden aria-hidden="true">
+        <p class="club__count num"><span id="club-n">1</span> / <span id="club-of">9</span></p>
+        <p class="club__cap" id="club-cap"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Silence, between the two pins. Nothing moves and nothing is held
+       up: the bare wall, and one true line. -->
+  <section id="quiet" class="act act-quiet" data-sc-act="flow" data-sna-ground="0" aria-label="Opening days">
+    <p class="quiet-card">Open Wednesday, Friday and Saturday, ten till six.</p>
+  </section>
+
+  <!-- 4. The build-up. One nail in cross-section gains its coats rung by rung
+       up the salon's own menu. Scroll position is the one source of truth:
+       a tap on a rung scrolls to that rung's band. Nothing typed, stored or
+       sent; the end of the move is the salon's own Fresha page. -->
+  <section id="buildup" class="act act-build" data-sc-act="pin" data-sc-span="2.8" data-sna-ground="0" tabindex="-1" aria-labelledby="build-h" data-rung="3" data-menu="main">
+    <div class="build__stage" data-sc-stage>
+      <div class="build">
+        <figure class="build__nail">
+<!--nail:start-->
+          <svg class="nail" viewBox="166 50 296 228" role="img" aria-labelledby="nail-t" data-d3="M176 150L180.6 146.7L185.1 143.4L189.7 140.5L194.3 139.7L198.8 139L203.3 138.3L207.9 137.7L212.4 137.2L216.9 136.6L221.4 136.2L225.9 135.8L230.4 135.4L234.8 135L239.3 134.8L243.8 134.5L248.2 134.3L252.7 134.2L257.1 134.1L261.5 134L265.9 134L270.3 134.1L274.7 134.2L279.1 134.3L283.5 134.5L287.9 134.7L292.2 135L296.6 135.3L300.9 135.7L305.3 136.1L309.6 136.6L313.9 137.1L318.2 137.7L322.5 138.3L326.8 138.9L331.1 139.6L335.4 140.4L339.6 141.2L343.9 142L348.1 142.9L352.4 143.8L356.6 144.8L360.8 145.8L365.1 146.9L369.3 148L373.5 149.2L377.6 150.4L381.8 151.7L386 153L386 160L381.8 158.7L377.6 157.4L373.5 156.2L369.3 155L365.1 153.9L360.8 152.8L356.6 151.8L352.4 150.8L348.1 149.9L343.9 149L339.6 148.2L335.4 147.4L331.1 146.6L326.8 145.9L322.5 145.3L318.2 144.7L313.9 144.1L309.6 143.6L305.3 143.1L300.9 142.7L296.6 142.3L292.2 142L287.9 141.7L283.5 141.5L279.1 141.3L274.7 141.2L270.3 141.1L265.9 141L261.5 141L257.1 141.1L252.7 141.2L248.2 141.3L243.8 141.5L239.3 141.8L234.8 142L230.4 142.4L225.9 142.8L221.4 143.2L216.9 143.6L212.4 144.2L207.9 144.7L203.3 145.3L198.8 146L194.3 146.7L189.7 147.5L185.1 148.3L180.6 149.1L176 150Z" >
+            <title id="nail-t">A fingernail drawn from the side, built up coat by coat</title>
+            <defs>
+              <linearGradient id="g-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#efcfbf"/><stop offset="1" stop-color="#ddb29e"/></linearGradient>
+              <linearGradient id="g-gel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c8478a"/><stop offset="1" stop-color="#9e2c62"/></linearGradient>
+            </defs>
+            <path class="nail__skin" d="M40 158L176 156C230 156 300 150 352 158C392 166 404 196 396 226C386 262 340 276 290 276L40 276Z" fill="url(#g-skin)"/>
+            <path class="nail__crease" d="M150 210C200 214 260 214 318 206" />
+            <path class="nail__plate" d="M176 150L180.6 149.1L185.1 148.3L189.7 147.5L194.3 146.7L198.8 146L203.3 145.3L207.9 144.7L212.4 144.2L216.9 143.6L221.4 143.2L225.9 142.8L230.4 142.4L234.8 142L239.3 141.8L243.8 141.5L248.2 141.3L252.7 141.2L257.1 141.1L261.5 141L265.9 141L270.3 141.1L274.7 141.2L279.1 141.3L283.5 141.5L287.9 141.7L292.2 142L296.6 142.3L300.9 142.7L305.3 143.1L309.6 143.6L313.9 144.1L318.2 144.7L322.5 145.3L326.8 145.9L331.1 146.6L335.4 147.4L339.6 148.2L343.9 149L348.1 149.9L352.4 150.8L356.6 151.8L360.8 152.8L365.1 153.9L369.3 155L373.5 156.2L377.6 157.4L381.8 158.7L386 160L386 167L381.8 165.7L377.6 164.4L373.5 163.2L369.3 162L365.1 160.9L360.8 159.8L356.6 158.8L352.4 157.8L348.1 156.9L343.9 156L339.6 155.2L335.4 154.4L331.1 153.6L326.8 152.9L322.5 152.3L318.2 151.7L313.9 151.1L309.6 150.6L305.3 150.1L300.9 149.7L296.6 149.3L292.2 149L287.9 148.7L283.5 148.5L279.1 148.3L274.7 148.2L270.3 148.1L265.9 148L261.5 148L257.1 148.1L252.7 148.2L248.2 148.3L243.8 148.5L239.3 148.8L234.8 149L230.4 149.4L225.9 149.8L221.4 150.2L216.9 150.6L212.4 151.2L207.9 151.7L203.3 152.3L198.8 153L194.3 153.7L189.7 154.5L185.1 155.3L180.6 156.1L176 157Z"/>
+            <path data-layer="tip" d="M322.5 145.3L326.8 145.2L331.1 145.3L335.4 145.3L339.6 145.4L343.9 145.6L348.1 145.8L352.4 146L356.6 146.3L360.8 146.8L365.1 147.9L369.3 149L373.5 150.2L377.6 151.4L381.8 152.7L386 154L390.8 154.9L395.5 156L400.3 157.2L405.1 158.7L409.8 160.3L414.6 162.1L419.4 164.1L424.2 166.2L428.9 168.6L433.7 171.1L438.5 173.8L443.2 176.7L448 179.8L448 185.8L443.2 182.7L438.5 179.8L433.7 177.1L428.9 174.6L424.2 172.2L419.4 170.1L414.6 168.1L409.8 166.3L405.1 164.7L400.3 163.2L395.5 162L390.8 160.9L386 160L381.8 158.7L377.6 157.4L373.5 156.2L369.3 155L365.1 153.9L360.8 152.8L356.6 151.8L352.4 150.8L348.1 149.9L343.9 149L339.6 148.2L335.4 147.4L331.1 146.6L326.8 145.9L322.5 145.3Z"/>
+            <path data-layer="polish" d="M176 150L180.6 147.7L185.1 145.5L189.7 143.5L194.3 142.7L198.8 142L203.3 141.3L207.9 140.7L212.4 140.2L216.9 139.6L221.4 139.2L225.9 138.8L230.4 138.4L234.8 138L239.3 137.8L243.8 137.5L248.2 137.3L252.7 137.2L257.1 137.1L261.5 137L265.9 137L270.3 137.1L274.7 137.2L279.1 137.3L283.5 137.5L287.9 137.7L292.2 138L296.6 138.3L300.9 138.7L305.3 139.1L309.6 139.6L313.9 140.1L318.2 140.7L322.5 141.3L326.8 141.9L331.1 142.6L335.4 143.4L339.6 144.2L343.9 145L348.1 145.9L352.4 146.8L356.6 147.8L360.8 148.8L365.1 149.9L369.3 151L373.5 152.2L377.6 153.4L381.8 154.7L386 156L386 160L381.8 158.7L377.6 157.4L373.5 156.2L369.3 155L365.1 153.9L360.8 152.8L356.6 151.8L352.4 150.8L348.1 149.9L343.9 149L339.6 148.2L335.4 147.4L331.1 146.6L326.8 145.9L322.5 145.3L318.2 144.7L313.9 144.1L309.6 143.6L305.3 143.1L300.9 142.7L296.6 142.3L292.2 142L287.9 141.7L283.5 141.5L279.1 141.3L274.7 141.2L270.3 141.1L265.9 141L261.5 141L257.1 141.1L252.7 141.2L248.2 141.3L243.8 141.5L239.3 141.8L234.8 142L230.4 142.4L225.9 142.8L221.4 143.2L216.9 143.6L212.4 144.2L207.9 144.7L203.3 145.3L198.8 146L194.3 146.7L189.7 147.5L185.1 148.3L180.6 149.1L176 150Z"/>
+            <path data-layer="builder" d="M176 150L180.6 148.3L185.1 146.5L189.7 144.4L194.3 143L198.8 141.6L203.3 140.2L207.9 138.7L212.4 137.3L216.9 135.9L221.4 134.6L225.9 133.3L230.4 132.1L234.8 131L239.3 129.9L243.8 129L248.2 128.2L252.7 127.5L257.1 127L261.5 126.5L265.9 126.3L270.3 126.1L274.7 126.2L279.1 126.4L283.5 126.7L287.9 127.2L292.2 127.8L296.6 128.6L300.9 129.5L305.3 130.5L309.6 131.7L313.9 132.9L318.2 134.3L322.5 135.7L326.8 137.2L331.1 138.8L335.4 140.4L339.6 142L343.9 143.7L348.1 145.4L352.4 147L356.6 148.6L360.8 150.2L365.1 151.7L369.3 153L373.5 154.2L377.6 155.4L381.8 156.7L386 158L386 160L381.8 158.7L377.6 157.4L373.5 156.2L369.3 155L365.1 153.9L360.8 152.8L356.6 151.8L352.4 150.8L348.1 149.9L343.9 149L339.6 148.2L335.4 147.4L331.1 146.6L326.8 145.9L322.5 145.3L318.2 144.7L313.9 144.1L309.6 143.6L305.3 143.1L300.9 142.7L296.6 142.3L292.2 142L287.9 141.7L283.5 141.5L279.1 141.3L274.7 141.2L270.3 141.1L265.9 141L261.5 141L257.1 141.1L252.7 141.2L248.2 141.3L243.8 141.5L239.3 141.8L234.8 142L230.4 142.4L225.9 142.8L221.4 143.2L216.9 143.6L212.4 144.2L207.9 144.7L203.3 145.3L198.8 146L194.3 146.7L189.7 147.5L185.1 148.3L180.6 149.1L176 150Z" data-d4="M176 150L180.6 148.3L185.1 146.5L189.7 144.4L194.3 143L198.8 141.6L203.3 140.2L207.9 138.7L212.4 137.3L216.9 135.9L221.4 134.6L225.9 133.3L230.4 132.1L234.8 131L239.3 129.9L243.8 129L248.2 128.2L252.7 127.5L257.1 127L261.5 126.5L265.9 126.3L270.3 126.1L274.7 126.2L279.1 126.4L283.5 126.7L287.9 127.2L292.2 127.8L296.6 128.6L300.9 129.5L305.3 130.5L309.6 131.7L313.9 132.9L318.2 134.3L322.5 135.7L326.8 137.2L331.1 138.8L335.4 140.4L339.6 142L343.9 143.7L348.1 145.4L352.4 147L356.6 148.6L360.8 150.2L365.1 151.7L369.3 153L373.5 154.2L377.6 155.4L381.8 156.7L386 158L386 160L381.8 158.7L377.6 157.4L373.5 156.2L369.3 155L365.1 153.9L360.8 152.8L356.6 151.8L352.4 150.8L348.1 149.9L343.9 149L339.6 148.2L335.4 147.4L331.1 146.6L326.8 145.9L322.5 145.3L318.2 144.7L313.9 144.1L309.6 143.6L305.3 143.1L300.9 142.7L296.6 142.3L292.2 142L287.9 141.7L283.5 141.5L279.1 141.3L274.7 141.2L270.3 141.1L265.9 141L261.5 141L257.1 141.1L252.7 141.2L248.2 141.3L243.8 141.5L239.3 141.8L234.8 142L230.4 142.4L225.9 142.8L221.4 143.2L216.9 143.6L212.4 144.2L207.9 144.7L203.3 145.3L198.8 146L194.3 146.7L189.7 147.5L185.1 148.3L180.6 149.1L176 150Z" data-d5="M176 150L180.6 148.5L185.1 147L189.7 145.4L194.3 143.9L198.8 142.8L203.3 141.7L207.9 140.7L212.4 139.6L216.9 138.6L221.4 137.6L225.9 136.7L230.4 135.8L234.8 134.9L239.3 134L243.8 133.2L248.2 132.5L252.7 131.8L257.1 131.1L261.5 130.6L265.9 130L270.3 129.6L274.7 129.2L279.1 128.9L283.5 128.7L287.9 128.5L292.2 128.4L296.6 128.4L300.9 128.5L305.3 128.7L309.6 129L313.9 129.3L318.2 129.8L322.5 130.3L326.8 130.2L331.1 130.3L335.4 130.4L339.6 130.6L343.9 130.9L348.1 131.3L352.4 131.8L356.6 132.3L360.8 133.1L365.1 134.5L369.3 136L373.5 137.6L377.6 139.3L381.8 141L386 142.8L390.8 144.2L395.5 145.8L400.3 147.6L405.1 149.6L409.8 151.7L414.6 154.1L419.4 156.6L424.2 159.4L428.9 162.3L433.7 165.3L438.5 168.6L443.2 172L448 175.5L448 179.8L443.2 176.7L438.5 173.8L433.7 171.1L428.9 168.6L424.2 166.2L419.4 164.1L414.6 162.1L409.8 160.3L405.1 158.7L400.3 157.2L395.5 156L390.8 154.9L386 154L381.8 152.7L377.6 151.4L373.5 150.2L369.3 149L365.1 147.9L360.8 146.8L356.6 146.3L352.4 146L348.1 145.8L343.9 145.6L339.6 145.4L335.4 145.3L331.1 145.3L326.8 145.2L322.5 145.3L318.2 144.7L313.9 144.1L309.6 143.6L305.3 143.1L300.9 142.7L296.6 142.3L292.2 142L287.9 141.7L283.5 141.5L279.1 141.3L274.7 141.2L270.3 141.1L265.9 141L261.5 141L257.1 141.1L252.7 141.2L248.2 141.3L243.8 141.5L239.3 141.8L234.8 142L230.4 142.4L225.9 142.8L221.4 143.2L216.9 143.6L212.4 144.2L207.9 144.7L203.3 145.3L198.8 146L194.3 146.7L189.7 147.5L185.1 148.3L180.6 149.1L176 150Z"/>
+            <path data-layer="gel" d="M176 150L180.6 146.7L185.1 143.4L189.7 140.5L194.3 139.7L198.8 139L203.3 138.3L207.9 137.7L212.4 137.2L216.9 136.6L221.4 136.2L225.9 135.8L230.4 135.4L234.8 135L239.3 134.8L243.8 134.5L248.2 134.3L252.7 134.2L257.1 134.1L261.5 134L265.9 134L270.3 134.1L274.7 134.2L279.1 134.3L283.5 134.5L287.9 134.7L292.2 135L296.6 135.3L300.9 135.7L305.3 136.1L309.6 136.6L313.9 137.1L318.2 137.7L322.5 138.3L326.8 138.9L331.1 139.6L335.4 140.4L339.6 141.2L343.9 142L348.1 142.9L352.4 143.8L356.6 144.8L360.8 145.8L365.1 146.9L369.3 148L373.5 149.2L377.6 150.4L381.8 151.7L386 153L386 160L381.8 158.7L377.6 157.4L373.5 156.2L369.3 155L365.1 153.9L360.8 152.8L356.6 151.8L352.4 150.8L348.1 149.9L343.9 149L339.6 148.2L335.4 147.4L331.1 146.6L326.8 145.9L322.5 145.3L318.2 144.7L313.9 144.1L309.6 143.6L305.3 143.1L300.9 142.7L296.6 142.3L292.2 142L287.9 141.7L283.5 141.5L279.1 141.3L274.7 141.2L270.3 141.1L265.9 141L261.5 141L257.1 141.1L252.7 141.2L248.2 141.3L243.8 141.5L239.3 141.8L234.8 142L230.4 142.4L225.9 142.8L221.4 143.2L216.9 143.6L212.4 144.2L207.9 144.7L203.3 145.3L198.8 146L194.3 146.7L189.7 147.5L185.1 148.3L180.6 149.1L176 150Z" data-d3="M176 150L180.6 146.7L185.1 143.4L189.7 140.5L194.3 139.7L198.8 139L203.3 138.3L207.9 137.7L212.4 137.2L216.9 136.6L221.4 136.2L225.9 135.8L230.4 135.4L234.8 135L239.3 134.8L243.8 134.5L248.2 134.3L252.7 134.2L257.1 134.1L261.5 134L265.9 134L270.3 134.1L274.7 134.2L279.1 134.3L283.5 134.5L287.9 134.7L292.2 135L296.6 135.3L300.9 135.7L305.3 136.1L309.6 136.6L313.9 137.1L318.2 137.7L322.5 138.3L326.8 138.9L331.1 139.6L335.4 140.4L339.6 141.2L343.9 142L348.1 142.9L352.4 143.8L356.6 144.8L360.8 145.8L365.1 146.9L369.3 148L373.5 149.2L377.6 150.4L381.8 151.7L386 153L386 160L381.8 158.7L377.6 157.4L373.5 156.2L369.3 155L365.1 153.9L360.8 152.8L356.6 151.8L352.4 150.8L348.1 149.9L343.9 149L339.6 148.2L335.4 147.4L331.1 146.6L326.8 145.9L322.5 145.3L318.2 144.7L313.9 144.1L309.6 143.6L305.3 143.1L300.9 142.7L296.6 142.3L292.2 142L287.9 141.7L283.5 141.5L279.1 141.3L274.7 141.2L270.3 141.1L265.9 141L261.5 141L257.1 141.1L252.7 141.2L248.2 141.3L243.8 141.5L239.3 141.8L234.8 142L230.4 142.4L225.9 142.8L221.4 143.2L216.9 143.6L212.4 144.2L207.9 144.7L203.3 145.3L198.8 146L194.3 146.7L189.7 147.5L185.1 148.3L180.6 149.1L176 150Z" data-d4="M176 150L180.6 146.3L185.1 142.3L189.7 138.4L194.3 137L198.8 135.6L203.3 134.2L207.9 132.7L212.4 131.3L216.9 129.9L221.4 128.6L225.9 127.3L230.4 126.1L234.8 125L239.3 123.9L243.8 123L248.2 122.2L252.7 121.5L257.1 121L261.5 120.5L265.9 120.3L270.3 120.1L274.7 120.2L279.1 120.4L283.5 120.7L287.9 121.2L292.2 121.8L296.6 122.6L300.9 123.5L305.3 124.5L309.6 125.7L313.9 126.9L318.2 128.3L322.5 129.7L326.8 131.2L331.1 132.8L335.4 134.4L339.6 136L343.9 137.7L348.1 139.4L352.4 141L356.6 142.6L360.8 144.2L365.1 145.7L369.3 147L373.5 148.2L377.6 149.4L381.8 150.7L386 152L386 158L381.8 156.7L377.6 155.4L373.5 154.2L369.3 153L365.1 151.7L360.8 150.2L356.6 148.6L352.4 147L348.1 145.4L343.9 143.7L339.6 142L335.4 140.4L331.1 138.8L326.8 137.2L322.5 135.7L318.2 134.3L313.9 132.9L309.6 131.7L305.3 130.5L300.9 129.5L296.6 128.6L292.2 127.8L287.9 127.2L283.5 126.7L279.1 126.4L274.7 126.2L270.3 126.1L265.9 126.3L261.5 126.5L257.1 127L252.7 127.5L248.2 128.2L243.8 129L239.3 129.9L234.8 131L230.4 132.1L225.9 133.3L221.4 134.6L216.9 135.9L212.4 137.3L207.9 138.7L203.3 140.2L198.8 141.6L194.3 143L189.7 144.4L185.1 146.5L180.6 148.3L176 150Z" data-d5="M176 150L180.6 146.9L185.1 143.7L189.7 140.5L194.3 137.9L198.8 136.8L203.3 135.7L207.9 134.7L212.4 133.6L216.9 132.6L221.4 131.6L225.9 130.7L230.4 129.8L234.8 128.9L239.3 128L243.8 127.2L248.2 126.5L252.7 125.8L257.1 125.1L261.5 124.6L265.9 124L270.3 123.6L274.7 123.2L279.1 122.9L283.5 122.7L287.9 122.5L292.2 122.4L296.6 122.4L300.9 122.5L305.3 122.7L309.6 123L313.9 123.3L318.2 123.8L322.5 124.3L326.8 124.2L331.1 124.3L335.4 124.4L339.6 124.6L343.9 124.9L348.1 125.3L352.4 125.8L356.6 126.3L360.8 127.1L365.1 128.5L369.3 130L373.5 131.6L377.6 133.3L381.8 135L386 136.8L390.8 138.2L395.5 139.8L400.3 141.6L405.1 143.6L409.8 145.7L414.6 148.1L419.4 150.6L424.2 153.4L428.9 156.3L433.7 159.3L438.5 162.6L443.2 166L448 169.5L448 175.5L443.2 172L438.5 168.6L433.7 165.3L428.9 162.3L424.2 159.4L419.4 156.6L414.6 154.1L409.8 151.7L405.1 149.6L400.3 147.6L395.5 145.8L390.8 144.2L386 142.8L381.8 141L377.6 139.3L373.5 137.6L369.3 136L365.1 134.5L360.8 133.1L356.6 132.3L352.4 131.8L348.1 131.3L343.9 130.9L339.6 130.6L335.4 130.4L331.1 130.3L326.8 130.2L322.5 130.3L318.2 129.8L313.9 129.3L309.6 129L305.3 128.7L300.9 128.5L296.6 128.4L292.2 128.4L287.9 128.5L283.5 128.7L279.1 128.9L274.7 129.2L270.3 129.6L265.9 130L261.5 130.6L257.1 131.1L252.7 131.8L248.2 132.5L243.8 133.2L239.3 134L234.8 134.9L230.4 135.8L225.9 136.7L221.4 137.6L216.9 138.6L212.4 139.6L207.9 140.7L203.3 141.7L198.8 142.8L194.3 143.9L189.7 145.4L185.1 147L180.6 148.5L176 150Z"/>
+            <path class="nail__gloss" d="M216.9 138.2L221.4 137.8L225.9 137.4L230.4 137L234.8 136.6L239.3 136.4L243.8 136.1L248.2 135.9L252.7 135.8L257.1 135.7L261.5 135.6L265.9 135.6L270.3 135.7L274.7 135.8L279.1 135.9L283.5 136.1L287.9 136.3L292.2 136.6L296.6 136.9L300.9 137.3L305.3 137.7" data-d3="M216.9 138.2L221.4 137.8L225.9 137.4L230.4 137L234.8 136.6L239.3 136.4L243.8 136.1L248.2 135.9L252.7 135.8L257.1 135.7L261.5 135.6L265.9 135.6L270.3 135.7L274.7 135.8L279.1 135.9L283.5 136.1L287.9 136.3L292.2 136.6L296.6 136.9L300.9 137.3L305.3 137.7" data-d4="M216.9 131.5L221.4 130.2L225.9 128.9L230.4 127.7L234.8 126.6L239.3 125.5L243.8 124.6L248.2 123.8L252.7 123.1L257.1 122.6L261.5 122.1L265.9 121.9L270.3 121.7L274.7 121.8L279.1 122L283.5 122.3L287.9 122.8L292.2 123.4L296.6 124.2L300.9 125.1L305.3 126.1" data-d5="M225.9 132.3L230.4 131.4L234.8 130.5L239.3 129.6L243.8 128.8L248.2 128.1L252.7 127.4L257.1 126.7L261.5 126.2L265.9 125.6L270.3 125.2L274.7 124.8L279.1 124.5L283.5 124.3L287.9 124.1L292.2 124L296.6 124L300.9 124.1L305.3 124.3L309.6 124.6L313.9 124.9L318.2 125.4L322.5 125.9L326.8 125.8L331.1 125.9L335.4 126L339.6 126.2"/>
+            <path class="nail__fold" d="M138 150C156 146 170 144 182 146C186 150 186 156 182 160L138 162Z" fill="url(#g-skin)"/>
+            <path data-layer="prep" d="M181 146C185 150 186 155 183 160M385 154C390 157 390 164 387 168"/>
+            <g class="lead" data-lead="prep"><path d="M182 152L182 86L174 86"/><circle cx="182" cy="152" r="2.2"/><text x="174" y="80" text-anchor="start">Prep: cuticle tidied, edge shaped</text></g>
+            <g class="lead" data-lead="polish"><path d="M283.5 137.5L283.5 86L258 86"/><circle cx="283.5" cy="137.5" r="2.2"/><text x="258" y="80" text-anchor="start">Regular polish</text></g>
+            <g class="lead" data-lead="gel"><path d="M265.9 134L265.9 86L258 86"/><circle cx="265.9" cy="134" r="2.2"/><text x="258" y="80" text-anchor="start">Gel colour</text></g>
+            <g class="lead" data-lead="builder"><path d="M270.3 126.1L270.3 86L456 86"/><circle cx="270.3" cy="126.1" r="2.2"/><text x="456" y="80" text-anchor="end">Builder gel (BIAB), at the apex</text></g>
+            <g class="lead" data-lead="tip"><path d="M428.9 168.6L428.9 86L456 86"/><circle cx="428.9" cy="168.6" r="2.2"/><text x="456" y="80" text-anchor="end">Extension past the free edge</text></g>
+          </svg>
+          <figcaption class="vh">The drawing shows the coats, not the salon's method.</figcaption>
+<!--nail:end-->
+        </figure>
+        <div class="build__side">
+          <h2 id="build-h" class="tag">The build-up</h2>
+          <p class="build__lede">One nail, coat by coat, up the salon's own menu. Scroll, or pick a rung.</p>
+          <fieldset class="seg js-only">
+            <legend class="vh">Which menu</legend>
+            <label class="seg__opt"><input type="radio" name="menu" value="main" checked><span>Main menu</span></label>
+            <label class="seg__opt"><input type="radio" name="menu" value="junior"><span>Junior menu with Yuliia</span></label>
+          </fieldset>
+          <fieldset class="ladder">
+            <legend class="vh">Service, from the first coat to the last</legend>
+<!--rungs:start-->
+            <label class="rung" data-rung-n="1">
+              <input type="radio" name="rung" value="1">
+              <span class="rung__n num" aria-hidden="true">1</span>
+              <span class="rung__name" data-main="Hygienic Manicure" data-junior="Hygienic Manicure">Hygienic Manicure</span>
+              <span class="rung__price num" data-main="£20" data-junior="£15">£20</span>
+              <span class="rung__time num" data-main="40m" data-junior="time on Fresha">40m</span>
+            </label>
+            <label class="rung" data-rung-n="2" data-main-only>
+              <input type="radio" name="rung" value="2">
+              <span class="rung__n num" aria-hidden="true">2</span>
+              <span class="rung__name" data-main="Hygienic Manicure + Regular Polish" data-junior="Hygienic Manicure + Regular Polish">Hygienic Manicure + Regular Polish</span>
+              <span class="rung__price num" data-main="£25" data-junior="Main menu only">£25</span>
+              <span class="rung__time num" data-main="1h" data-junior="">1h</span>
+            </label>
+            <label class="rung" data-rung-n="3">
+              <input type="radio" name="rung" value="3" checked>
+              <span class="rung__n num" aria-hidden="true">3</span>
+              <span class="rung__name" data-main="Hygienic Manicure + Gel Polish" data-junior="Hygienic Manicure + Gel Polish">Hygienic Manicure + Gel Polish</span>
+              <span class="rung__price num" data-main="£35" data-junior="£25">£35</span>
+              <span class="rung__time num" data-main="1h 20m" data-junior="time on Fresha">1h 20m</span>
+            </label>
+            <label class="rung" data-rung-n="4">
+              <input type="radio" name="rung" value="4">
+              <span class="rung__n num" aria-hidden="true">4</span>
+              <span class="rung__name" data-main="Hygienic Manicure + BIAB + Gel Polish" data-junior="Manicure, BIAB and gel">Hygienic Manicure + BIAB + Gel Polish</span>
+              <span class="rung__price num" data-main="£40" data-junior="£30">£40</span>
+              <span class="rung__time num" data-main="1h 30m" data-junior="time on Fresha">1h 30m</span>
+            </label>
+            <label class="rung" data-rung-n="5" data-main-only>
+              <input type="radio" name="rung" value="5">
+              <span class="rung__n num" aria-hidden="true">5</span>
+              <span class="rung__name" data-main="Nail extension and Gel Polish" data-junior="Nail extension and Gel Polish">Nail extension and Gel Polish</span>
+              <span class="rung__price num" data-main="£50" data-junior="Main menu only">£50</span>
+              <span class="rung__time num" data-main="2h" data-junior="">2h</span>
+            </label>
+<!--rungs:end-->
+          </fieldset>
+          <p class="build__readout" id="readout" aria-live="polite">The drawing shows Hygienic Manicure + Gel Polish: £35, 1 hour 20 minutes.</p>
+          <div class="build__go">
+          <a class="btn btn--fresha" id="fresha-btn" href="https://www.fresha.com/a/stirling-nail-art-stirling-21-upper-craigs-tau3hbuc" rel="noopener" target="_blank" aria-label="Book Hygienic Manicure + Gel Polish on Fresha">Book this on Fresha</a>
+          <p class="build__or">Or walk in, or text <a href="sms:+447347199692" class="num">07347 199692</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- 5. The board. The whole price list painted on one board screwed to
+       the wall, then the questions under it. One flow act, nothing moves.
+       Every price from menu.json (Fresha, 6 Nov 2026). -->
+  <section id="menu" class="act act-board" data-sc-act="flow" data-sna-ground="0" tabindex="-1" aria-labelledby="menu-h">
+    <div class="board">
+      <i class="screw screw--tl" aria-hidden="true"></i><i class="screw screw--tr" aria-hidden="true"></i><i class="screw screw--bl" aria-hidden="true"></i><i class="screw screw--br" aria-hidden="true"></i>
+      <div class="board__head">
+        <h2 id="menu-h" class="board__h">The menu</h2>
+        <p class="board__src">Prices from Fresha, <span class="num">6&nbsp;Nov&nbsp;2026</span>.</p>
+      </div>
+      <div class="board__cols">
+<!--menu:start-->
+        <div class="board__col">
+        <table class="menu-t" id="menu-fingers">
+          <caption>Fingers</caption>
+          <thead><tr><th scope="col">Service</th><th scope="col">Time</th><th scope="col">Price</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Hygienic Manicure</th><td class="t">40m</td><td class="p">£20</td></tr>
+            <tr><th scope="row">Hygienic Manicure + Regular Polish</th><td class="t">1h</td><td class="p">£25</td></tr>
+            <tr><th scope="row">Hygienic Manicure + Gel Polish</th><td class="t">1h 20m</td><td class="p">£35</td></tr>
+            <tr><th scope="row">Hygienic Manicure + BIAB + Gel Polish</th><td class="t">1h 30m</td><td class="p">£40</td></tr>
+            <tr><th scope="row">Nail extension and Gel Polish</th><td class="t">2h</td><td class="p">£50</td></tr>
+            <tr><th scope="row">Gel removal</th><td class="t">15m</td><td class="p">£5</td></tr>
+          </tbody>
+        </table>
+        <table class="menu-t" id="menu-both">
+          <caption>Fingers and toes</caption>
+          <thead><tr><th scope="col">Service</th><th scope="col">Time</th><th scope="col">Price</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Mani-Pedi fingers and toes gel</th><td class="t"><span class="soft">time on Fresha</span></td><td class="p"><s aria-label="was £70">£70</s> £65</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="board__col">
+        <table class="menu-t" id="menu-toes">
+          <caption>Toes</caption>
+          <thead><tr><th scope="col">Service</th><th scope="col">Time</th><th scope="col">Price</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Pedicure Hygienic Toes Only</th><td class="t">1h</td><td class="p">£25</td></tr>
+            <tr><th scope="row">Pedicure Toes Only + Gel Polish</th><td class="t">1h</td><td class="p">£35</td></tr>
+            <tr><th scope="row">Pedicure with Foot Callus Cleaning</th><td class="t">1h</td><td class="p">£35</td></tr>
+            <tr><th scope="row">Pedicure + Foot Callus Cleaning + Gel Polish</th><td class="t">1h 30m</td><td class="p">£45</td></tr>
+            <tr><th scope="row">Nail only pedicure with regular polish</th><td class="t">1h</td><td class="p">£30</td></tr>
+          </tbody>
+        </table>
+        <table class="menu-t" id="menu-junior">
+          <caption>Junior menu with Yuliia</caption>
+          <thead><tr><th scope="col">Service</th><th scope="col">Time</th><th scope="col">Price</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Hygienic Manicure</th><td class="t"><span class="soft">time on Fresha</span></td><td class="p">£15</td></tr>
+            <tr><th scope="row">Hygienic Manicure + Gel Polish</th><td class="t"><span class="soft">time on Fresha</span></td><td class="p">£25</td></tr>
+            <tr><th scope="row">Manicure, BIAB and gel</th><td class="t"><span class="soft">time on Fresha</span></td><td class="p">£30</td></tr>
+            <tr><th scope="row">Varnish pedicure</th><td class="t"><span class="soft">time on Fresha</span></td><td class="p">£25</td></tr>
+            <tr><th scope="row">Gel pedicure</th><td class="t"><span class="soft">time on Fresha</span></td><td class="p">£30</td></tr>
+            <tr><th scope="row">Gel removal</th><td class="t"><span class="soft">time on Fresha</span></td><td class="p">£5</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="board__foot">Reviews name Lesia most often, and talk about BIAB that lasts, getting it right first time, a calm salon and a good cuppa. <span class="num"><strong>5.0</strong> from 139 reviews on Fresha, <strong>5.0</strong> from 25 on Google</span> <span class="soft">(both as at 6 Nov 2026)</span>.</p>
+<!--menu:end-->
+      </div>
+    </div>
+
+    <!-- The questions sit under the board in the same act: cards hung on
+         the wall below the prices. Verified facts only; anything
+         unconfirmed carries a gap tag. -->
+    <div class="faq-wrap" id="questions" tabindex="-1">
+      <h2 id="faq-h" class="tag">Questions</h2>
+      <div class="faq">
+        <details class="q"><summary>Can I just walk in?</summary><p>Walk-in appointments are available. Booking on <a href="https://www.fresha.com/a/stirling-nail-art-stirling-21-upper-craigs-tau3hbuc" rel="noopener" target="_blank">Fresha</a> holds a time.</p></details>
+        <details class="q"><summary>How do I book?</summary><p>On <a href="https://www.fresha.com/a/stirling-nail-art-stirling-21-upper-craigs-tau3hbuc" rel="noopener" target="_blank">Fresha</a>, or call, text or WhatsApp <a href="tel:+447347199692" class="num">07347 199692</a>.</p></details>
+        <details class="q"><summary>When are you open?</summary><p class="num">Tuesday, Wednesday, Friday and Saturday 10am to 6pm; Thursday 12pm to 8pm; closed Sunday and Monday.</p></details>
+        <details class="q"><summary>Where are you?</summary><p>21 Upper Craigs, Stirling FK8 2DG, in the city centre, near public transport. <a href="https://www.google.com/maps/search/?api=1&amp;query=Stirling+Nail+Art+21+Upper+Craigs+Stirling+FK8+2DG" rel="noopener" target="_blank">Open in Google Maps</a>.</p></details>
+        <details class="q"><summary>What is BIAB?</summary><p>A builder gel layer under the gel colour. It is on the menu with gel polish at <span class="num">£40</span> (<span class="num">1h 30m</span>), or <span class="num">£30</span> on the junior menu. Reviews often mention how long it lasts.</p></details>
+        <details class="q"><summary>Is there a cheaper option?</summary><p>Yes, the junior menu with Yuliia: a manicure from <span class="num">£15</span>.</p></details>
+        <details class="q"><summary>Can you take my old gel off?</summary><p>Yes. Gel removal is <span class="num">£5</span> and takes <span class="num">15</span> minutes.</p></details>
+        <details class="q"><summary>Do you do pedicures?</summary><p>Yes, five pedicures from <span class="num">£25</span>, and a gel mani-pedi for <span class="num">£65</span>.</p></details>
+        <details class="q"><summary>Can I bring my dog or my kids?</summary><p>Their Fresha page lists the salon as pet-friendly and kid-friendly.</p></details>
+        <details class="q"><summary>Anything while I wait?</summary><p>Free tea, coffee and Wi-Fi.</p></details>
+        <details class="q"><summary>How do I pay?</summary><p>Card, debit or contactless.</p></details>
+        <details class="q"><summary>Is there a student discount?</summary><p>A Tuesday student offer was posted on their Facebook. Ask in salon. <span class="gap">Seen on Facebook, to confirm with the salon</span></p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Back to the wall. The empty frame at the club spot is the close:
+       the next #NailWallClub photo goes there. The visit plaque is screwed
+       on under it and the note is folded away behind one line. Last act, so
+       not pinned. -->
+  <section id="visit" class="act act-visit" data-sc-act="flow" data-sna-ground="0" tabindex="-1" aria-labelledby="visit-h">
+    <div class="visit">
+      <div class="visit__frame">
+        <div class="frame" aria-hidden="true"><span>Your set goes here.</span></div>
+        <p class="club__cap club__cap--static">#NailWallClub</p>
+      </div>
+<!--close:start-->
+      <!-- waiting for: sna-cover-shopfront-full.jpg, sna-walkin-sign.jpg -->
+<!--close:end-->
+      <div class="visit__under">
+        <div class="plaque plaque--full">
+          <i class="screw screw--tl" aria-hidden="true"></i><i class="screw screw--tr" aria-hidden="true"></i><i class="screw screw--bl" aria-hidden="true"></i><i class="screw screw--br" aria-hidden="true"></i>
+          <h2 id="visit-h" class="plaque__h">Visit</h2>
+          <p class="plaque__addr">21 Upper Craigs, Stirling FK8 2DG</p>
+          <p class="plaque__map"><a href="https://www.google.com/maps/search/?api=1&amp;query=Stirling+Nail+Art+21+Upper+Craigs+Stirling+FK8+2DG" rel="noopener" target="_blank">Open in Google Maps</a></p>
+          <table class="hours num">
+            <caption>Opening hours</caption>
+            <tbody>
+              <tr><th scope="row">Monday</th><td>Closed</td></tr>
+              <tr><th scope="row">Tuesday</th><td>10:00 to 18:00</td></tr>
+              <tr><th scope="row">Wednesday</th><td>10:00 to 18:00</td></tr>
+              <tr><th scope="row">Thursday</th><td>12:00 to 20:00</td></tr>
+              <tr><th scope="row">Friday</th><td>10:00 to 18:00</td></tr>
+              <tr><th scope="row">Saturday</th><td>10:00 to 18:00</td></tr>
+              <tr><th scope="row">Sunday</th><td>Closed</td></tr>
+            </tbody>
+          </table>
+          <a class="btn btn--fresha btn--wide" href="https://www.fresha.com/a/stirling-nail-art-stirling-21-upper-craigs-tau3hbuc" rel="noopener" target="_blank">Book on Fresha</a>
+          <ul class="reach">
+            <li><a href="tel:+447347199692"><span>Call</span> <span class="num">07347 199692</span></a></li>
+            <li><a href="sms:+447347199692"><span>Text</span> <span class="num">07347 199692</span></a></li>
+            <li><a href="https://wa.me/447347199692" rel="noopener" target="_blank"><span>WhatsApp</span> <span class="num">07347 199692</span></a></li>
+            <li><a href="mailto:stirlingnailart@gmail.com"><span>Email</span> stirlingnailart@gmail.com</a></li>
+            <li><a href="https://www.instagram.com/stirlingnailart/" rel="noopener" target="_blank"><span>Instagram</span> @stirlingnailart</a></li>
+          </ul>
+          <ul class="extras">
+            <li>Walk-ins welcome</li>
+            <li>Free tea, coffee and Wi-Fi</li>
+            <li>Pet-friendly and kid-friendly</li>
+            <li>Near public transport</li>
+            <li>Card, debit and contactless</li>
+            <li class="num">5.0 from 139 reviews on Fresha, 5.0 from 25 on Google, as at 6 Nov 2026</li>
+          </ul>
+        </div>
+        <details class="note" id="note-wrap">
+          <summary>Leave a note for the salon</summary>
+          <form class="note-form" id="note" action="https://api.web3forms.com/submit" method="POST" aria-label="Leave a note for the salon">
+            <!-- PLACEHOLDER: not connected. Swap in the salon's Web3Forms key. -->
+            <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_KEY">
+            <input type="hidden" name="subject" value="Note from the Stirling Nail Art concept">
+            <input type="hidden" name="from_name" value="Stirling Nail Art website">
+            <input type="hidden" name="redirect" value="https://tempanywebstudios.co.uk/concepts/stirling-nail-art/#visit">
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="field">
+              <label for="f-name">Your name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80" aria-describedby="e-name">
+              <p class="field__err" id="e-name" hidden></p>
+            </div>
+            <div class="field">
+              <label for="f-reach">Phone or email</label>
+              <input id="f-reach" name="contact" type="text" autocomplete="tel" required maxlength="120" aria-describedby="h-reach e-reach">
+              <p class="field__hint" id="h-reach">So they can get back to you.</p>
+              <p class="field__err" id="e-reach" hidden></p>
+            </div>
+            <div class="field">
+              <label for="f-about">What is it about?</label>
+              <select id="f-about" name="about">
+                <option>A question</option>
+                <option>A time I'd like</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-msg">Your note</label>
+              <textarea id="f-msg" name="message" rows="4" required maxlength="1000" aria-describedby="e-msg"></textarea>
+              <p class="field__err" id="e-msg" hidden></p>
+            </div>
+            <button type="submit" class="btn btn--send" id="send">Send the note</button>
+            <!-- Concept wording while access_key is the placeholder. When the
+                 salon's key is in, swap for: This goes to the salon by email.
+                 Texting 07347 199692 is quicker. -->
+            <p class="note-form__foot">This first version is not connected to the salon yet, so a note sent here will not reach them. Texting <a href="sms:+447347199692" class="num">07347 199692</a> is quicker.</p>
+          </form>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="edge">
+  <p class="edge__name">Stirling Nail Art · 21 Upper Craigs, Stirling FK8 2DG · <a href="tel:+447347199692" class="num">07347 199692</a></p>
+  <ul class="edge__links">
+    <li><a href="privacy">Privacy policy</a></li>
+    <li><a href="terms">Terms and conditions</a></li>
+    <li><a href="privacy#cookies" data-cookie-settings>Cookie settings</a></li>
+    <li><a href="https://tempanywebstudios.co.uk/privacy/#previews">How visits here are handled</a></li>
+  </ul>
+<!--credit:start-->
+
+<!--credit:end-->
+  <p class="edge__small">A first version made by <a href="https://tempanywebstudios.co.uk/">Tempany Web Studios</a> to show the salon. It is not yet the salon's own site.</p>
+</footer>
+
+<script src="scrollcraft.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script src="chrome.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

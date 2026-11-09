@@ -1,0 +1,15 @@
+/* Written by tools/images.py from tools/palette.txt. Do not hand-edit. */
+:root {
+  --p-wall-l: #efe6d6;
+  --p-script-l: #211c1b;
+  --p-ink-l: #292322;
+  --p-soft-l: #5a4f4a;
+  --p-mag-l: #b0336e;
+  --p-mag-fill: #d9789f;
+  --p-wall-d: #3d3e40;
+  --p-card-d: #2c2c2e;
+  --p-script-d: #f2eadd;
+  --p-ink-d: #f2eadd;
+  --p-soft-d: #c4b9ae;
+  --p-mag-d: #e194b3;
+}
