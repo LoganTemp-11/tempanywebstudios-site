@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dog Grooming By Jade</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Dog grooming in Stirling by Jade Barr: full grooms, bath and blow dry, nail trims and ear cleans at 3A Forrest Road. Fully insured, iPet Level 3 qualified. Call 07753 641699.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/concepts/dog-grooming-by-jade/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dog Grooming By Jade, Stirling">
+<meta property="og:description" content="Full grooms, bath and blow dry, nails and ears at 3A Forrest Road, Stirling. 1st Place, Beginners Class, Cambridge 2026.">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/concepts/dog-grooming-by-jade/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%234fa9dc'/%3E%3Ccircle cx='32' cy='38' r='12' fill='%23fff'/%3E%3Ccircle cx='18' cy='24' r='6' fill='%23fff'/%3E%3Ccircle cx='28' cy='16' r='6' fill='%23fff'/%3E%3Ccircle cx='40' cy='16' r='6' fill='%23fff'/%3E%3Ccircle cx='48' cy='26' r='6' fill='%23fff'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"PetGroomer","name":"Dog Grooming By Jade","telephone":"+447753641699","email":"doggroomingbyjade25@gmail.com","address":{"@type":"PostalAddress","streetAddress":"3A Forrest Rd","addressLocality":"Stirling","postalCode":"FK8 1UH","addressCountry":"GB"},"geo":{"@type":"GeoCoordinates","latitude":56.1245,"longitude":-3.9332},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"09:00","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"09:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"16:00"}],"sameAs":["https://www.facebook.com/p/Dog-Grooming-By-Jade-61573699083869/","https://www.instagram.com/dog.groomingbyjade/"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;700&display=swap">
+<style>
+/* Layout: a grooming salon told through its own objects. The table (instrument) opens, then the rosette, groom cards, the price board, the appointment slip. */
+:root{
+  --bg:#f7f4f8; --paper:#ffffff; --ink:#1d1a22; --muted:#625b6b; --line:#e4dde8;
+  --pink:#d93d75; --pink-soft:#fde3ee; --sky:#3b97cc; --sky-soft:#dcf0fb; --rosette:#2f8a57;
+  --table:#2a2630; --card-shadow:0 1px 0 rgba(29,26,34,.06),0 10px 30px -18px rgba(29,26,34,.35);
+  --f-display:"Bricolage Grotesque",ui-rounded,"Arial Rounded MT Bold",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-hand:"Caveat","Bradley Hand","Segoe Print",cursive;
+  --step-0:1.0625rem; --step-1:1.3rem; --step-2:1.75rem; --step-3:clamp(2.1rem,5vw,3.4rem); --step-4:clamp(2.6rem,7vw,5rem);
+  --wrap:1120px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141219; --paper:#1e1b24; --ink:#f3eef6; --muted:#b0a7ba; --line:#332e3b;
+  --pink:#ff6fa0; --pink-soft:#3a1f2c; --sky:#77c1ec; --sky-soft:#17303f; --rosette:#5cc28a;
+  --table:#0b0a0e; --card-shadow:0 1px 0 rgba(0,0,0,.4),0 12px 30px -18px rgba(0,0,0,.8); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141219; --paper:#1e1b24; --ink:#f3eef6; --muted:#b0a7ba; --line:#332e3b;
+  --pink:#ff6fa0; --pink-soft:#3a1f2c; --sky:#77c1ec; --sky-soft:#17303f; --rosette:#5cc28a;
+  --table:#0b0a0e; --card-shadow:0 1px 0 rgba(0,0,0,.4),0 12px 30px -18px rgba(0,0,0,.8); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.05;letter-spacing:-.02em;text-wrap:balance;margin:0}
+p{margin:0}
+.band{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:var(--wrap);margin-inline:auto}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;z-index:20;background:var(--paper);padding:8px 12px}
+.eyebrow{font-family:var(--f-display);font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.hand{font-family:var(--f-hand);font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:600 1rem/1 var(--f-display);padding:.85em 1.25em;border-radius:999px;border:2px solid var(--ink);background:var(--ink);color:var(--bg);text-decoration:none;cursor:pointer;transition:transform .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.pink{background:var(--pink);border-color:var(--pink);color:#fff}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.05rem/1 var(--f-display);letter-spacing:-.01em}
+.mark i{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--sky-soft),var(--sky));display:grid;place-items:center;font-style:normal;color:#fff;font-size:.95rem}
+.top nav{display:flex;gap:18px;align-items:center;font-size:.95rem}
+.top nav a{text-decoration:none;color:var(--muted)}
+.top nav a:hover{color:var(--ink)}
+@media (max-width:720px){.top nav .hide-s{display:none}}
+
+/* the table */
+.table-scene{padding-block:28px 56px}
+.scene{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:28px;align-items:stretch}
+@media (max-width:860px){.scene{grid-template-columns:1fr}}
+.stage{position:relative;border-radius:28px;background:
+  radial-gradient(120% 80% at 70% 0%,var(--sky-soft),transparent 60%),
+  linear-gradient(var(--paper),var(--paper));border:1px solid var(--line);overflow:hidden;min-width:0}
+.stage canvas{display:block;width:100%;height:auto;aspect-ratio:4/3;touch-action:none;cursor:none}
+.stage .tag{position:absolute;left:18px;top:16px;font:600 .78rem/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--paper);border:1px solid var(--line);padding:7px 10px;border-radius:999px}
+.stage .hint{position:absolute;right:18px;bottom:16px;font-family:var(--f-hand);font-size:1.5rem;color:var(--pink);transform:rotate(-4deg);pointer-events:none;transition:opacity .4s}
+.groomcard{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:18px;box-shadow:var(--card-shadow);min-width:0}
+.groomcard h1{font-size:var(--step-3);font-weight:800}
+.groomcard h1 span{color:var(--pink)}
+.fields{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.95rem;border-top:1px dashed var(--line);padding-top:14px}
+.fields dt{color:var(--muted);font-family:var(--f-display);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;padding-top:3px}
+.fields dd{margin:0;font-family:var(--f-hand);font-size:1.45rem;line-height:1.1}
+.meter{height:12px;border-radius:999px;background:var(--pink-soft);overflow:hidden}
+.meter b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--sky));border-radius:inherit;transition:width .2s}
+.meter-row{display:flex;justify-content:space-between;font:600 .85rem/1 var(--f-display);color:var(--muted);font-variant-numeric:tabular-nums}
+.card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.status{font-size:.98rem;color:var(--muted);min-height:3.2em}
+.status strong{color:var(--ink)}
+
+/* section heads */
+section{padding-block:64px}
+.head{display:flex;flex-direction:column;gap:10px;margin-bottom:32px;max-width:40rem}
+.head h2{font-size:var(--step-3);font-weight:800}
+.head p{color:var(--muted)}
+
+/* rosette */
+.win{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:center}
+@media (max-width:860px){.win{grid-template-columns:1fr}}
+.rosette{position:relative;width:min(320px,80%);aspect-ratio:1;margin-inline:auto}
+.rosette svg{width:100%;height:auto;display:block}
+.win blockquote{margin:0;font-family:var(--f-display);font-size:var(--step-2);font-weight:600;line-height:1.2;letter-spacing:-.01em}
+.win cite{display:block;margin-top:12px;font-style:normal;color:var(--muted);font-size:.95rem}
+.win .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{font:600 .85rem/1 var(--f-display);padding:8px 12px;border-radius:999px;background:var(--sky-soft);color:var(--ink)}
+.chip.g{background:color-mix(in srgb,var(--rosette) 18%,transparent)}
+
+/* groom cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+.gc{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--card-shadow);display:flex;flex-direction:column}
+.gc:nth-child(3n+1){transform:rotate(-.6deg)}.gc:nth-child(3n+2){transform:rotate(.5deg)}
+.photo{aspect-ratio:4/5;max-width:100%;position:relative;display:grid;place-items:center;text-align:center;padding:16px;
+  background:repeating-linear-gradient(135deg,var(--sky-soft) 0 14px,color-mix(in srgb,var(--sky-soft) 60%,var(--paper)) 14px 28px);color:var(--muted);font-size:.85rem}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo .slot{font-family:var(--f-display);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.72rem}
+.gc .meta{padding:16px 18px 18px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:baseline}
+.gc .meta dt{font:600 .7rem/1.4 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.gc .meta dd{margin:0;font-family:var(--f-hand);font-size:1.4rem;line-height:1.1}
+.gc .meta dd.name{font-family:var(--f-display);font-weight:800;font-size:1.3rem}
+
+/* services board */
+.board{background:var(--table);color:#f3eef6;border-radius:28px;padding:clamp(22px,4vw,44px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 48px}
+@media (max-width:720px){.board{grid-template-columns:1fr}}
+.svc{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding-block:18px;border-bottom:1px dashed rgba(255,255,255,.18)}
+.svc h3{font-size:1.35rem;font-weight:800;color:#fff}
+.svc p{grid-column:1/-1;color:#c9c1d2;font-size:.98rem}
+.svc .price{font-family:var(--f-hand);font-size:1.4rem;color:#ffb3cd;white-space:nowrap}
+.board-note{grid-column:1/-1;padding-top:18px;color:#c9c1d2;font-size:.95rem}
+
+/* visit steps */
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;counter-reset:s}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+.steps li{counter-increment:s;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.steps li::before{content:counter(s);font:800 2rem/1 var(--f-display);color:var(--pink)}
+.steps h3{font-size:1.15rem;font-weight:800}
+.steps p{color:var(--muted);font-size:.97rem}
+
+/* creds */
+.creds{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.cred{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:10px 16px 10px 10px;font-weight:700}
+.cred i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--pink);color:#fff;font-style:normal;font-size:.8rem}
+
+/* reviews */
+.reviews{columns:3 280px;column-gap:22px}
+.rv{break-inside:avoid;margin:0 0 22px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}
+.rv p{font-size:1.06rem}
+.rv footer{margin-top:12px;font:600 .9rem/1.3 var(--f-display);color:var(--muted)}
+.rv footer b{color:var(--ink)}
+.score{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+.score .chip{font-size:.95rem;padding:10px 14px}
+
+/* visit */
+.visit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+@media (max-width:820px){.visit{grid-template-columns:1fr}}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px;min-width:0}
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours td{padding:9px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;font-weight:700}
+.hours tr.today td{color:var(--pink)}
+.hours tr.closed td:last-child{color:var(--muted);font-weight:400}
+.contact{display:grid;gap:14px;margin-top:6px}
+.contact .row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.contact .row span{color:var(--muted);font:600 .75rem/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;width:100%}
+.contact .row a,.contact .row strong{font-size:1.1rem;word-break:break-word}
+.copy{font:600 .8rem/1 var(--f-display);border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:7px 11px;cursor:pointer}
+
+/* faq */
+.faq{display:grid;gap:12px;max-width:52rem}
+.faq details{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:4px 20px}
+.faq summary{cursor:pointer;font:700 1.1rem/1.3 var(--f-display);padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--pink);font-size:1.4rem;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding-bottom:18px;color:var(--muted)}
+
+/* booking slip */
+.slip{background:var(--paper);border:2px dashed var(--pink);border-radius:26px;padding:clamp(20px,4vw,40px);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:36px}
+@media (max-width:860px){.slip{grid-template-columns:1fr}}
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:520px){form{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+label{font:600 .8rem/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--sky);outline:none;box-shadow:0 0 0 3px var(--sky-soft)}
+.err{color:var(--pink);font-size:.85rem;min-height:1em}
+.consent{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--muted)}
+.consent input{width:auto;margin-top:4px}
+.result{grid-column:1/-1;background:var(--sky-soft);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.result pre{white-space:pre-wrap;font:inherit;margin:0}
+
+footer.site{padding-block:40px 60px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem}
+footer.site .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+footer.site nav{display:flex;flex-wrap:wrap;gap:16px}
+
+.cookie{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:14px max(16px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -10px 30px -20px rgba(0,0,0,.4)}
+.cookie .wrap{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;font-size:.95rem}
+.cookie .btns{display:flex;gap:8px}
+.cookie .btn{padding:.65em 1em;font-size:.9rem}
+
+.concept{background:var(--pink-soft);font-size:.85rem;text-align:center;padding-block:8px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.gc{transform:none!important}}
+</style>
+</head>
+<body>
+
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="concept band">A concept built for Dog Grooming By Jade by <a href="https://tempanywebstudios.co.uk/">Tempany Web Studios</a>. Your own photos go in the empty frames.</div>
+
+<header class="top band">
+  <div class="wrap">
+    <a class="mark" href="#main" aria-label="Dog Grooming By Jade, top of page"><i aria-hidden="true">✦</i>Dog Grooming By Jade</a>
+    <nav aria-label="Main">
+      <a class="hide-s" href="#services">Services</a>
+      <a class="hide-s" href="#reviews">Reviews</a>
+      <a class="hide-s" href="#visit">Find us</a>
+      <a class="btn pink" href="#book">Book a pamper</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- 1. The table: an instrument, not a hero -->
+  <div class="table-scene band">
+    <div class="wrap scene">
+      <div class="stage">
+        <span class="tag">The table · 3A Forrest Rd</span>
+        <canvas id="table" width="1280" height="960" role="img" aria-label="A scruffy apricot dog on Jade's grooming table. Drag the brush across the coat to groom it, or use the Finish the groom button."></canvas>
+        <span class="hint" id="hint" aria-hidden="true">brush me →</span>
+      </div>
+      <aside class="groomcard" aria-labelledby="gc-title">
+        <span class="eyebrow">Stirling dog groomer</span>
+        <h1 id="gc-title">Before Jade, <span>after Jade.</span></h1>
+        <dl class="fields">
+          <dt>Groomer</dt><dd>Jade Barr</dd>
+          <dt>Today's dog</dt><dd>scruffy teddy, needs a pamper</dd>
+          <dt>Tool</dt><dd>slicker brush (your cursor)</dd>
+        </dl>
+        <div>
+          <div class="meter-row"><span>Coat groomed</span><span id="pct">0%</span></div>
+          <div class="meter" role="progressbar" aria-labelledby="pct" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="meter"><b id="bar"></b></div>
+        </div>
+        <p class="status" id="status" aria-live="polite">Drag across the dog to brush the tangles out. Jade does the real thing six days a week.</p>
+        <div class="card-actions">
+          <a class="btn pink" href="#book">Book a pamper</a>
+          <button class="btn ghost" type="button" id="finish">Finish the groom</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- 2. The rosette -->
+  <section class="band" id="win" aria-labelledby="win-h">
+    <div class="wrap win">
+      <div class="rosette" aria-hidden="true">
+        <svg viewBox="0 0 200 260">
+          <path d="M70 120 L52 250 L78 232 L92 256 L100 132Z" fill="var(--rosette)"/>
+          <path d="M130 120 L148 250 L122 232 L108 256 L100 132Z" fill="color-mix(in srgb,var(--rosette) 70%,#fff)"/>
+          <g id="petals"></g>
+          <circle cx="100" cy="100" r="58" fill="color-mix(in srgb,var(--rosette) 55%,#fff)"/>
+          <circle cx="100" cy="100" r="44" fill="var(--paper)" stroke="var(--rosette)" stroke-width="3"/>
+          <text x="100" y="94" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="26" fill="var(--rosette)">1ST</text>
+          <text x="100" y="116" text-anchor="middle" font-family="Caveat, cursive" font-weight="700" font-size="17" fill="var(--ink)">Beginners</text>
+        </svg>
+      </div>
+      <div>
+        <span class="eyebrow">October 2026 · Cambridge</span>
+        <h2 id="win-h" style="font-size:var(--step-3);font-weight:800;margin:10px 0 18px">First place, with Molly.</h2>
+        <blockquote>“It’s moments like this that remind me why I love what I do.”</blockquote>
+        <cite>Jade, after winning the Beginners Class at I’m a Groomer, Get Me Out of Hair</cite>
+        <div class="facts">
+          <span class="chip g">1st Place · Beginners Class</span>
+          <span class="chip">Competition-standard finish</span>
+          <span class="chip">Same hands on your dog</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Groom cards -->
+  <section class="band" id="dogs" aria-labelledby="dogs-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Off the table this season</span>
+        <h2 id="dogs-h">Every dog gets a card.</h2>
+        <p>Jade names every dog she posts. These are a few regulars from her Facebook page.</p>
+      </div>
+      <div class="cards">
+        <article class="gc"><div class="photo" data-photo="marlowe"><span class="slot">Photo slot · Marlowe</span></div><dl class="meta"><dt>Name</dt><dd class="name">Marlowe</dd><dt>Finish</dt><dd>real-life teddy bear</dd></dl></article>
+        <article class="gc"><div class="photo" data-photo="molly"><span class="slot">Photo slot · Molly</span></div><dl class="meta"><dt>Name</dt><dd class="name">Molly</dd><dt>Finish</dt><dd>1st place, Cambridge</dd></dl></article>
+        <article class="gc"><div class="photo" data-photo="reo"><span class="slot">Photo slot · Reo</span></div><dl class="meta"><dt>Name</dt><dd class="name">Reo</dd><dt>Finish</dt><dd>sweetest wee teddy, tongue out</dd></dl></article>
+        <article class="gc"><div class="photo" data-photo="stanlee"><span class="slot">Photo slot · Stanlee</span></div><dl class="meta"><dt>Name</dt><dd class="name">Stanlee</dd><dt>Finish</dt><dd>a smile that says it all</dd></dl></article>
+        <article class="gc"><div class="photo" data-photo="lottie"><span class="slot">Photo slot · Lottie</span></div><dl class="meta"><dt>Name</dt><dd class="name">Lottie</dd><dt>Finish</dt><dd>black &amp; white themed day</dd></dl></article>
+        <article class="gc"><div class="photo" data-photo="oreo"><span class="slot">Photo slot · Oreo</span></div><dl class="meta"><dt>Name</dt><dd class="name">Oreo</dd><dt>Finish</dt><dd>first groom, now a regular</dd></dl></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Price board -->
+  <section class="band" id="services" aria-labelledby="svc-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">The board</span>
+        <h2 id="svc-h">What Jade does.</h2>
+        <p>Every groom is priced to your dog's size and coat, so Jade quotes when you book.</p>
+      </div>
+      <div class="board">
+        <div class="svc"><h3>Full groom &amp; style</h3><span class="price">ask Jade</span><p>Bath, blow dry, clip or scissor to the style you want, nails and ears done.</p></div>
+        <div class="svc"><h3>Bath &amp; blow dry</h3><span class="price">ask Jade</span><p>A proper wash and dry for between full grooms or for short coats.</p></div>
+        <div class="svc"><h3>Nail trim</h3><span class="price">ask Jade</span><p>Nails taken back neatly and safely.</p></div>
+        <div class="svc"><h3>Ear clean</h3><span class="price">ask Jade</span><p>Ears checked and cleaned gently.</p></div>
+        <p class="board-note">Prices go here once Jade confirms them. Small, medium and large is the usual split.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. How a visit works -->
+  <section class="band" aria-labelledby="visit-steps-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Your dog's day</span>
+        <h2 id="visit-steps-h">How a pamper works.</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Book</h3><p>Call or message Jade on 07753 641699, or send the slip below.</p></li>
+        <li><h3>Drop off</h3><p>Bring your dog to 3A Forrest Road, Stirling FK8 1UH.</p></li>
+        <li><h3>The groom</h3><p>One-to-one with Jade, styled the way you asked.</p></li>
+        <li><h3>Collect</h3><p>Pick up a fresh, fluffy dog. Book the next one while you're there.</p></li>
+      </ol>
+      <div class="creds" aria-label="Jade's qualifications">
+        <span class="cred"><i aria-hidden="true">✓</i>4 years' experience</span>
+        <span class="cred"><i aria-hidden="true">✓</i>Fully insured</span>
+        <span class="cred"><i aria-hidden="true">✓</i>HND in Animal Care</span>
+        <span class="cred"><i aria-hidden="true">✓</i>iPet Level 3 Diploma in Professional Dog Grooming</span>
+        <span class="cred"><i aria-hidden="true">✓</i>Canine first aid qualified</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Reviews -->
+  <section class="band" id="reviews" aria-labelledby="rv-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">From the owners</span>
+        <h2 id="rv-h">Every review recommends her.</h2>
+      </div>
+      <div class="score">
+        <span class="chip">100% recommend · 15 Facebook reviews</span>
+        <span class="chip">5.0 on Google · 12 reviews</span>
+      </div>
+      <div class="reviews">
+        <figure class="rv"><p>“Jade does a great job with our cockapoo, Biscuit. He always looks amazing after his visit!”</p><footer><b>Andrew</b> · Biscuit’s owner</footer></figure>
+        <figure class="rv"><p>“I know Rupert is in good hands and getting well looked after when he’s dropped off for his groom. He always comes out looking great and smelling amazing.”</p><footer><b>Claire</b> · Rupert’s owner</footer></figure>
+        <figure class="rv"><p>“A fantastic groomer who loves her clients like they were her own.”</p><footer><b>Lisa</b></footer></figure>
+        <figure class="rv"><p>“Jade done an amazing job with Oreo with her 1st groom. Highly recommended and will definitely be booking in as a regular.”</p><footer><b>Lexi</b> · Oreo’s owner</footer></figure>
+        <figure class="rv"><p>“Jade did a lovely job on Skye, the girl looked fresh and fluffy.”</p><footer><b>Nadia</b> · Skye’s owner</footer></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Find us -->
+  <section class="band" id="visit" aria-labelledby="find-h">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Find us</span>
+        <h2 id="find-h">3A Forrest Road, Stirling.</h2>
+      </div>
+      <div class="visit">
+        <div class="panel">
+          <h3 style="font-size:1.25rem;margin-bottom:10px">Opening hours</h3>
+          <table class="hours" id="hours">
+            <tbody>
+              <tr data-d="1" class="closed"><td>Monday</td><td>Closed</td></tr>
+              <tr data-d="2"><td>Tuesday</td><td>9am – 6pm</td></tr>
+              <tr data-d="3"><td>Wednesday</td><td>9am – 6pm</td></tr>
+              <tr data-d="4"><td>Thursday</td><td>9am – 6pm</td></tr>
+              <tr data-d="5"><td>Friday</td><td>9am – 5pm</td></tr>
+              <tr data-d="6"><td>Saturday</td><td>9am – 4pm</td></tr>
+              <tr data-d="0" class="closed"><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:14px;color:var(--muted);font-size:.95rem">Accessible parking on site. <a href="https://maps.google.com/maps?cid=5638894676908693723" target="_blank" rel="noopener">Open in Google Maps</a></p>
+        </div>
+        <div class="panel">
+          <h3 style="font-size:1.25rem;margin-bottom:10px">Get in touch</h3>
+          <div class="contact">
+            <div class="row"><span>Call or WhatsApp</span><a href="tel:+447753641699" id="phone">07753 641699</a><button class="copy" type="button" data-copy="07753 641699">Copy number</button></div>
+            <div class="row"><span>Email</span><a href="mailto:doggroomingbyjade25@gmail.com">doggroomingbyjade25@gmail.com</a><button class="copy" type="button" data-copy="doggroomingbyjade25@gmail.com">Copy email</button></div>
+            <div class="row"><span>Follow the dogs</span><a href="https://www.instagram.com/dog.groomingbyjade/" target="_blank" rel="noopener">Instagram @dog.groomingbyjade</a><a href="https://www.facebook.com/p/Dog-Grooming-By-Jade-61573699083869/" target="_blank" rel="noopener">Facebook</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section class="band" id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="head"><span class="eyebrow">Questions</span><h2 id="faq-h">Before you book.</h2></div>
+      <div class="faq">
+        <details><summary>How much does a groom cost?</summary><p>It depends on your dog's size and coat. Call or message Jade with the breed and she'll give you a price before you book.</p></details>
+        <details><summary>Is Jade qualified and insured?</summary><p>Yes. Jade holds an iPet Level 3 Diploma in Professional Dog Grooming and an HND in Animal Care, is canine first aid qualified and fully insured.</p></details>
+        <details><summary>Can my puppy come for a first groom?</summary><p>Yes, first grooms are welcome. Tell Jade it's their first visit when you book so she can plan around them.</p></details>
+        <details><summary>My dog's coat is matted. Can Jade help?</summary><p>Tell Jade when you book. She'll look at the coat and talk you through the safest option for your dog.</p></details>
+        <details><summary>Where do I drop off?</summary><p>3A Forrest Road, Stirling FK8 1UH. There is accessible parking.</p></details>
+        <details><summary>When is Jade open?</summary><p>Tuesday to Thursday 9am to 6pm, Friday 9am to 5pm and Saturday 9am to 4pm.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Appointment slip -->
+  <section class="band" id="book" aria-labelledby="book-h">
+    <div class="wrap slip">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span class="eyebrow">Appointment slip</span>
+        <h2 id="book-h" style="font-size:var(--step-3);font-weight:800">Book your dog in.</h2>
+        <p style="color:var(--muted)">Fill this in and Jade will get back to you with a time and a price. Prefer to talk? Call 07753 641699.</p>
+        <p class="hand" style="font-size:1.6rem;color:var(--pink);transform:rotate(-2deg)">See you on the table x</p>
+      </div>
+      <form id="bookform" novalidate>
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required><span class="err" id="e-name"></span></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required><span class="err" id="e-phone"></span></div>
+        <div class="field"><label for="f-dog">Dog's name</label><input id="f-dog" name="dog" required><span class="err" id="e-dog"></span></div>
+        <div class="field"><label for="f-breed">Breed or cross</label><input id="f-breed" name="breed" placeholder="e.g. cockapoo"><span class="err"></span></div>
+        <div class="field"><label for="f-svc">Service</label><select id="f-svc" name="service"><option>Full groom &amp; style</option><option>Bath &amp; blow dry</option><option>Nail trim</option><option>Ear clean</option><option>Not sure, advise me</option></select></div>
+        <div class="field"><label for="f-day">Preferred day</label><select id="f-day" name="day"><option>Any day</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option></select></div>
+        <div class="field full"><label for="f-notes">Anything Jade should know?</label><textarea id="f-notes" name="notes" rows="3" placeholder="First groom, matting, nervous with dryers…"></textarea></div>
+        <label class="consent" for="f-consent"><input type="checkbox" id="f-consent" required> <span style="text-transform:none;letter-spacing:0;font:inherit">I'm happy for Jade to contact me about this booking. See the <a href="privacy.html">privacy policy</a>.</span></label>
+        <span class="err full" id="e-consent" style="grid-column:1/-1"></span>
+        <div class="field full"><button class="btn pink" type="submit" style="justify-self:start">Send booking request</button></div>
+        <div class="result" id="result" hidden aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site band">
+  <div class="wrap">
+    <p>© 2026 Dog Grooming By Jade · 3A Forrest Rd, Stirling FK8 1UH · 07753 641699</p>
+    <nav aria-label="Legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><button class="copy" type="button" id="cookie-open">Cookie settings</button></nav>
+  </div>
+</footer>
+
+<div class="cookie" id="cookie" hidden role="region" aria-label="Cookie choice">
+  <div class="wrap">
+    <p>We use privacy-friendly analytics to count visits. No ads, no tracking across sites.</p>
+    <div class="btns"><button class="btn ghost" type="button" id="ck-no">Decline</button><button class="btn" type="button" id="ck-yes">Accept</button></div>
+  </div>
+</div>
+
+<script>
+(()=>{
+/* ---------- The grooming table ---------- */
+const cv=document.getElementById('table'), ctx=cv.getContext('2d');
+const W=640,H=480, S=cv.width/W;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const COAT='#dca56a', COAT_D='#b97e45', COAT_L='#efc995', DARK='#2a1d16';
+let done=false, pointer=null;
+
+function dogShapes(c,fill){
+  const e=(x,y,rx,ry)=>{c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);c.fill();};
+  const r=(x,y,w,h,rad)=>{c.beginPath();c.roundRect(x,y,w,h,rad);c.fill();};
+  c.fillStyle=fill||COAT_D;
+  r(262,330,40,78,18); r(410,330,40,78,18);            // back legs (far)
+  c.fillStyle=fill||COAT;
+  e(470,250,26,26);                                     // tail pom
+  e(360,300,125,72);                                    // body
+  r(290,330,42,80,18); r(440,330,40,80,18);            // front legs
+  c.fillStyle=fill||COAT_D;
+  e(186,222,30,52); e(294,222,30,52);                  // ears
+  c.fillStyle=fill||COAT;
+  e(240,196,70,68);                                     // head
+  c.fillStyle=fill||COAT_L;
+  e(240,236,40,30);                                     // muzzle
+}
+function drawFace(){
+  ctx.fillStyle=DARK;
+  [[216,192],[264,192]].forEach(([x,y])=>{ctx.beginPath();ctx.arc(x,y,7.5,0,7);ctx.fill();});
+  ctx.fillStyle='#fff';[[218,189],[266,189]].forEach(([x,y])=>{ctx.beginPath();ctx.arc(x,y,2.2,0,7);ctx.fill();});
+  ctx.fillStyle=DARK;ctx.beginPath();ctx.ellipse(240,224,11,8,0,0,7);ctx.fill();
+  ctx.strokeStyle=DARK;ctx.lineWidth=2.5;ctx.lineCap='round';
+  ctx.beginPath();ctx.moveTo(240,232);ctx.lineTo(240,240);ctx.quadraticCurveTo(232,248,224,242);ctx.moveTo(240,240);ctx.quadraticCurveTo(248,248,256,242);ctx.stroke();
+  ctx.fillStyle='#f07a9b';ctx.beginPath();ctx.ellipse(240,252,7,9,0,0,7);ctx.fill();
+}
+function drawScene(){
+  ctx.setTransform(S,0,0,S,0,0); ctx.clearRect(0,0,W,H);
+  const table=css('--table'), pink=css('--pink');
+  // grooming arm + loop
+  ctx.fillStyle=table; ctx.fillRect(84,96,10,312); ctx.fillRect(84,92,190,10);
+  ctx.strokeStyle=pink; ctx.lineWidth=4; ctx.beginPath(); ctx.moveTo(262,102); ctx.lineTo(262,150); ctx.stroke();
+  // table
+  ctx.fillStyle=table; ctx.beginPath(); ctx.roundRect(60,404,500,22,8); ctx.fill();
+  ctx.fillRect(110,426,14,40); ctx.fillRect(496,426,14,40);
+  dogShapes(ctx);
+  // collar
+  ctx.strokeStyle=pink; ctx.lineWidth=7; ctx.beginPath(); ctx.ellipse(250,262,52,14,0,0.15,Math.PI-0.15); ctx.stroke();
+  drawFace();
+  if(done){ // bow
+    ctx.fillStyle=pink;
+    ctx.beginPath();ctx.moveTo(240,128);ctx.lineTo(214,112);ctx.lineTo(216,146);ctx.closePath();ctx.fill();
+    ctx.beginPath();ctx.moveTo(240,128);ctx.lineTo(266,112);ctx.lineTo(264,146);ctx.closePath();ctx.fill();
+    ctx.beginPath();ctx.arc(240,129,7,0,7);ctx.fill();
+  }
+  // tufts
+  ctx.lineCap='round';
+  for(const t of tufts){
+    if(t.gone) continue;
+    ctx.globalAlpha=t.a; ctx.strokeStyle=t.c; ctx.lineWidth=t.w;
+    const ca=Math.cos(t.r), sa=Math.sin(t.r);
+    ctx.beginPath(); ctx.moveTo(t.x,t.y);
+    ctx.quadraticCurveTo(t.x+ca*t.l*.5-sa*t.k, t.y+sa*t.l*.5+ca*t.k, t.x+ca*t.l, t.y+sa*t.l); ctx.stroke();
+  }
+  ctx.globalAlpha=1;
+  // brush cursor
+  if(pointer && !done){
+    ctx.strokeStyle=pink; ctx.lineWidth=2; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.arc(pointer.x,pointer.y,R,0,7); ctx.stroke(); ctx.setLineDash([]);
+  }
+}
+// build tufts inside an inflated silhouette
+const R=30; let tufts=[], total=0;
+function makeTufts(){
+  const m=document.createElement('canvas'); m.width=W; m.height=H; const mc=m.getContext('2d');
+  dogShapes(mc,'#000'); mc.filter='blur(0px)';
+  const d=mc.getImageData(0,0,W,H).data;
+  const inside=(x,y)=>{x|=0;y|=0;if(x<0||y<0||x>=W||y>=H)return false;return d[(y*W+x)*4+3]>0;};
+  const near=(x,y)=>inside(x,y)||inside(x+14,y)||inside(x-14,y)||inside(x,y+14)||inside(x,y-14);
+  const cols=['#b07440','#c88c52','#9d6533','#d09a5f','#a8703c'];
+  tufts=[]; let tries=0;
+  while(tufts.length<1300 && tries<60000){ tries++;
+    const x=150+Math.random()*350, y=120+Math.random()*290;
+    if(!near(x,y)) continue;
+    tufts.push({x,y,r:Math.random()*Math.PI*2,l:12+Math.random()*16,k:(Math.random()-.5)*14,w:3+Math.random()*2.5,c:cols[(Math.random()*cols.length)|0],a:1,f:false,gone:false,vx:0,vy:0,vr:0});
+  }
+  total=tufts.length;
+}
+let removed=0, raf=0, lastAnnounce=-1;
+function knock(t){ if(t.f||t.gone) return; t.f=true; removed++; t.vx=(Math.random()-.5)*3; t.vy=-Math.random()*2; t.vr=(Math.random()-.5)*.3; if(reduce){t.gone=true;} }
+function brush(x,y){ for(const t of tufts){ if(!t.f && (t.x-x)**2+(t.y-y)**2<R*R) knock(t); } progress(); loop(); }
+function progress(){
+  const p=Math.min(100,Math.round(removed/total*100));
+  document.getElementById('pct').textContent=p+'%';
+  document.getElementById('bar').style.width=p+'%';
+  document.getElementById('meter').setAttribute('aria-valuenow',p);
+  if(p>3) document.getElementById('hint').style.opacity=0;
+  const step=Math.floor(p/25);
+  if(!done && step!==lastAnnounce && p<92){ lastAnnounce=step;
+    const msgs=['Drag across the dog to brush the tangles out. Jade does the real thing six days a week.','Getting there. Mind the ears.','Halfway. You can see the face now.','Nearly a teddy bear.'];
+    setStatus(msgs[step]||msgs[3]); }
+  if(!done && p>=92) finish(true);
+}
+function setStatus(h){ document.getElementById('status').innerHTML=h; }
+function finish(auto){
+  if(done) return;
+  const rest=tufts.filter(t=>!t.f).sort((a,b)=>a.x-b.x);
+  if(reduce||auto){ rest.forEach(knock); complete(); return; }
+  let i=0; const per=Math.ceil(rest.length/40);
+  (function sweep(){ for(let k=0;k<per&&i<rest.length;k++,i++) knock(rest[i]); progress(); loop(); if(i<rest.length) setTimeout(sweep,25); else complete(); })();
+}
+function complete(){
+  done=true; progress();
+  document.getElementById('pct').textContent='100%'; document.getElementById('bar').style.width='100%';
+  setStatus('<strong>Groomed. Bow on.</strong> That’s the finish that won Jade first place in Cambridge. Your dog’s next.');
+  const b=document.getElementById('finish'); b.textContent='Scruff him up again';
+  loop();
+}
+function reset(){ done=false; removed=0; lastAnnounce=-1; makeTufts(); progress(); document.getElementById('finish').textContent='Finish the groom'; drawScene(); }
+function loop(){ if(raf) return; raf=requestAnimationFrame(tick); }
+function tick(){
+  raf=0; let moving=false;
+  for(const t of tufts){ if(t.f&&!t.gone){ t.vy+=.35; t.x+=t.vx; t.y+=t.vy; t.r+=t.vr; t.a-=.025; if(t.a<=0||t.y>H) t.gone=true; else moving=true; } }
+  drawScene(); if(moving) loop();
+}
+const pos=e=>{const b=cv.getBoundingClientRect();return{x:(e.clientX-b.left)/b.width*W,y:(e.clientY-b.top)/b.height*H};};
+let down=false;
+cv.addEventListener('pointerdown',e=>{down=true;cv.setPointerCapture(e.pointerId);pointer=pos(e);brush(pointer.x,pointer.y);});
+cv.addEventListener('pointermove',e=>{pointer=pos(e); if(down||e.pointerType==='mouse') brush(pointer.x,pointer.y); else loop();});
+cv.addEventListener('pointerup',()=>{down=false;});
+cv.addEventListener('pointerleave',()=>{pointer=null;loop();});
+document.getElementById('finish').addEventListener('click',()=>{ done?reset():finish(false); });
+makeTufts(); drawScene();
+document.fonts&&document.fonts.ready.then(drawScene);
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',drawScene);
+new MutationObserver(drawScene).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+/* ---------- Rosette petals ---------- */
+const g=document.getElementById('petals'); let s='';
+for(let i=0;i<24;i++){const a=i/24*Math.PI*2, x=100+Math.cos(a)*70, y=100+Math.sin(a)*70;
+  s+=`<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="16" ry="9" transform="rotate(${(a*180/Math.PI).toFixed(1)} ${x.toFixed(1)} ${y.toFixed(1)})" fill="${i%2?'var(--rosette)':'color-mix(in srgb,var(--rosette) 75%,#fff)'}"/>`;}
+g.innerHTML=s;
+
+/* ---------- Today's hours ---------- */
+const today=new Date().getDay();
+document.querySelectorAll('#hours tr').forEach(r=>{ if(+r.dataset.d===today) r.classList.add('today'); });
+
+/* ---------- Copy buttons ---------- */
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{
+  const v=b.dataset.copy, old=b.textContent;
+  navigator.clipboard?.writeText(v).then(()=>{b.textContent='Copied';setTimeout(()=>b.textContent=old,1500);})
+  .catch(()=>{const sel=getSelection(),rg=document.createRange();rg.selectNodeContents(b.previousElementSibling);sel.removeAllRanges();sel.addRange(rg);b.textContent='Selected, press copy';});
+}));
+
+/* ---------- Booking slip ---------- */
+const f=document.getElementById('bookform');
+f.addEventListener('submit',e=>{
+  e.preventDefault();
+  const val=id=>document.getElementById(id).value.trim();
+  const errs={};
+  if(!val('f-name')) errs.name='Add your name so Jade knows who to reply to.';
+  if(!/^[+\d][\d\s()-]{9,}$/.test(val('f-phone'))) errs.phone='Add a phone number Jade can call or text, like 07700 900123.';
+  if(!val('f-dog')) errs.dog='Add your dog’s name.';
+  if(!document.getElementById('f-consent').checked) errs.consent='Tick the box so Jade can contact you.';
+  ['name','phone','dog','consent'].forEach(k=>{document.getElementById('e-'+k).textContent=errs[k]||'';});
+  const first=Object.keys(errs)[0];
+  if(first){ document.getElementById(first==='consent'?'f-consent':'f-'+first).focus(); return; }
+  const msg=`Hi Jade, I'd like to book ${val('f-dog')}${val('f-breed')?' ('+val('f-breed')+')':''} in for: ${val('f-svc')}.\nPreferred day: ${val('f-day')}.\n${val('f-notes')?'Notes: '+val('f-notes')+'\n':''}${val('f-name')}, ${val('f-phone')}`;
+  const r=document.getElementById('result');
+  r.innerHTML='<strong>Request ready.</strong><span>On the live site this goes straight to Jade. In this concept, copy it and text it to 07753 641699.</span><pre></pre><button class="copy" type="button" style="align-self:flex-start">Copy message</button>';
+  r.querySelector('pre').textContent=msg; r.hidden=false;
+  r.querySelector('button').onclick=ev=>navigator.clipboard?.writeText(msg).then(()=>ev.target.textContent='Copied').catch(()=>{});
+});
+
+/* ---------- Cookie consent (analytics loads only after Accept) ---------- */
+const ck=document.getElementById('cookie');
+let choice=null; try{choice=localStorage.getItem('dgbj-consent');}catch(_){}
+if(!choice) ck.hidden=false;
+const set=v=>{try{localStorage.setItem('dgbj-consent',v);}catch(_){} ck.hidden=true; if(v==='yes') loadAnalytics();};
+document.getElementById('ck-yes').onclick=()=>set('yes');
+document.getElementById('ck-no').onclick=()=>set('no');
+document.getElementById('cookie-open').onclick=()=>{ck.hidden=false;};
+function loadAnalytics(){ /* Live site: Plausible for doggroomingbyjade.co.uk goes here. Off in the concept. */ }
+if(choice==='yes') loadAnalytics();
+})();
+</script>
+
+</body>
+</html>
