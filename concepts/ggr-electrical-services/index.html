@@ -237,8 +237,27 @@ h1,h2,h3{margin:0;text-wrap:balance}p{margin:0;text-wrap:pretty}a{color:var(--ne
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 html.rm *{transition:none!important;animation:none!important}
+
+/* The opening: the answer in type. Name, what he does, proof, the number. */
+.intro{padding-block:clamp(28px,6vh,64px) 28px}
+.intro__k{font-family:var(--fd);font-weight:600;font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:#4a4f57;margin:0 0 14px}
+.intro h1{font-family:var(--fd);font-weight:700;text-transform:uppercase;font-size:clamp(2.7rem,1.4rem + 6.4vw,6.2rem);line-height:.88;letter-spacing:-.005em;margin:0;max-width:11ch}
+.intro__lede{font-size:clamp(1.15rem,1rem + .7vw,1.5rem);line-height:1.4;max-width:34ch;margin:22px 0 26px}
+.intro__facts{list-style:none;margin:0 0 26px;padding:14px 0 0;border-top:1.5px solid var(--ink);display:flex;flex-wrap:wrap;gap:10px 30px;font-family:var(--fd);font-weight:600;font-size:1.15rem}
+.intro__facts span{display:block;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#4a4f57;font-weight:600}
+.intro__call{display:inline-flex;align-items:center;gap:12px;min-height:var(--tap);font-family:var(--fd);font-weight:700;font-size:clamp(1.9rem,1.4rem + 2vw,2.8rem);letter-spacing:.01em;color:var(--live);text-decoration:none;border-bottom:3px solid var(--live);line-height:1.05}
+.intro__call small{font-size:.42em;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.intro__call:focus-visible{outline:3px solid var(--neutral);outline-offset:4px}
+.intro__or{display:block;margin-top:16px;font-size:1.02rem}
+.intro__or a{color:var(--neutral)}
+.intro__fig{margin:40px 0 0}
+.intro__fig img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:50% 42%;border-radius:3px}
+.intro__fig figcaption{font-size:.92rem;color:#4a4f57;margin-top:8px}
+@media(min-width:900px){.intro__grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}.intro__fig{margin:0}.intro__fig img{aspect-ratio:4/5;max-height:72vh}}
+.plate__name{font-family:var(--fd);font-weight:700;text-transform:uppercase;font-size:clamp(1.9rem,1.2rem + 3.4vw,3.4rem);line-height:.92;letter-spacing:.005em;margin:0}
+.plate__name small{display:block;font-weight:500;font-size:.42em;letter-spacing:.14em;margin-top:6px;color:#4a4f57}
 </style></head>
-<body><a class="skip" href="#board">Skip to the board</a>
+<body><a class="skip" href="#main">Skip to the content</a>
 
 <!-- The live conductor: one brass terminal per Part, energised to where you are -->
 <nav class="cond" id="cond" aria-label="Parts of the page">
@@ -260,16 +279,37 @@ html.rm *{transition:none!important;animation:none!important}
 
 <main id="main">
 
+<!-- The opening: the answer in type, the number to tap, one real photo. The
+     board comes after this as the way to ask for a quote. -->
+<section class="wrap intro" id="top" aria-labelledby="h1">
+ <div class="intro__grid">
+  <div>
+   <p class="intro__k">GGR Electrical Services Ltd</p>
+   <h1 id="h1">Your electrician in Linwood</h1>
+   <p class="intro__lede">Lighting, sockets, boards and faults. Gary comes out, gives you a quote first, sets a date and keeps you up to date until it is done.</p>
+   <ul class="intro__facts">
+    <li><span>Google</span>★ 5.0 from 56 reviews</li>
+    <li><span>Hours</span>Mon to Fri, 9 to 5</li>
+    <li><span>Based</span>Linwood, Paisley <i class="pencil" style="font-style:normal">areas covered: Gary to confirm</i></li>
+   </ul>
+   <a class="intro__call" href="tel:+447533981907"><small>Call Gary</small>07533 981907</a>
+   <span class="intro__or">Or <a href="#board">tell Gary what needs doing</a> and send him a job sheet.</span>
+  </div>
+  <figure class="intro__fig"><img src="img/photo-1.jpg" alt="Outside downlights Gary fitted on a brick semi, lit at dusk" width="1400" height="1050" fetchpriority="high"><figcaption>Outside downlights, one of Gary's own jobs.</figcaption></figure>
+ </div>
+</section>
+
 <!-- Part 1. The board. The consumer unit is the first screen: lid up, rating
      plate, and nine ways under a handwritten circuit chart. No photo, no
      headline block, no buttons. -->
-<section class="wrap first" id="board" data-part="0" data-name="The board" aria-labelledby="h1">
- <div class="first__k"><span class="fl">Part 1 · Distribution board</span><span class="pencil">Flip on what needs doing</span></div>
+<section class="wrap first" id="board" data-part="0" data-name="The board" aria-labelledby="h-board">
+ <h2 class="part__h" id="h-board"><span class="part__no">Part 1</span><span class="part__t">What needs doing?</span></h2>
+ <p class="board__how" style="margin:-8px 0 16px">Flip on each job you need. Each one writes a line on Gary's job sheet, ready to email him.</p>
  <div class="unit">
   <div class="lid" aria-hidden="true"></div>
   <div class="enc">
    <div class="plate">
-    <h1 id="h1">GGR Electrical Services <small>Ltd · Electrician · Linwood, Paisley</small></h1>
+    <p class="plate__name">GGR Electrical Services <small>Ltd · Electrician · Linwood, Paisley</small></p>
     <dl>
      <div><dt>Google</dt><dd class="num">★ 5.0 from 56 reviews</dd></div>
      <div><dt>Call Gary</dt><dd class="num"><a href="tel:+447533981907">07533 981907</a></dd></div>
