@@ -55,6 +55,11 @@ html { scroll-padding-top: 5.5rem; }
 .tw-soon { color: var(--sc-ink-soft) !important; }
 .tw-soon::after { content: "soon"; margin-left: auto; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: 0; color: var(--tw-ink-quiet); }
 @media (max-width: 720px) { .tw-index__list li.tw-where { display: none; } }
+/* With The Home and The Build in the bar, the wordmark gives up its words until there is room for one row. */
+@media (min-width: 721px) and (max-width: 1239px) { .tw-index__mark span { display: none; } .tw-index__list { gap: var(--sc-3); margin-left: var(--sc-3); } }
+.tw-index__list a, .tw-where__btn { white-space: nowrap; }
+/* Under 1000px the row scrolls sideways, as on a phone, rather than pushing the page; the town list sits in the footer there. */
+@media (min-width: 721px) and (max-width: 999px) { .tw-index__list { flex: 1 1 auto; min-width: 0; overflow-x: auto; scrollbar-width: none; } .tw-index__list::-webkit-scrollbar { display: none; } .tw-index__list li.tw-where { display: none; } }
 
 /* ---------- the label schema, borrowed from the salon: name, facts, who ---------- */
 .tw-label__eyebrow { font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-size: var(--sc-t-xs); letter-spacing: 0; margin: 0 0 var(--sc-3); }

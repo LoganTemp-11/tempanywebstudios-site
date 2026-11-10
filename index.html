@@ -97,10 +97,11 @@
   :root:not(.js) .te .tw-lights { display: none; }
   /* PLAN 4.2: from 720px the links and the full number; the written name joins at 880px
      (the whole set is about 860px wide), and the long form at 1180px. */
-  @media (min-width: 1000px) { .te__tel-long { display:inline; } .te__tel-short { display:none; } }
+  @media (min-width: 1100px) { .te__tel-long { display:inline; } .te__tel-short { display:none; } }
   /* With The Build in the bar the set runs wider: tighter type and gaps until it fits on one row. */
+  @media (min-width: 720px) and (max-width: 1099px) { .te__write { display: none; } }
   @media (min-width: 720px) and (max-width: 999px) { .te__nav ul { column-gap: .7rem; } .te__nav a, .te__where summary { font-size: .9375rem; } .te__mark { min-width: 36px; } }
-  @media (max-width: 1259px) { .te__who { position:absolute !important; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; } }
+  @media (max-width: 1499px) { .te__who { position:absolute !important; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; } }
   @media (max-width: 1399px) { .te__who-n, .te__who-x { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; } }
   @media (max-width: 719px) {
     .te__nav { display:none; }
@@ -404,6 +405,7 @@ addEventListener('pagereveal', function (e) {
   <p class="te__who"><span class="te__who-n">Logan Tempany</span><span class="te__who-x"> · </span>Tempany Web Studios<span class="te__who-x">, Dollar</span></p>
   <nav class="te__nav" aria-label="Sections of this page">
     <ul>
+      <li><a href="#top">The Home</a></li>
       <li><a href="#work">The Work</a></li>
       <li><a href="/library/">The Library</a></li>
       <li><a href="/build/">The Build</a></li>
@@ -423,7 +425,7 @@ addEventListener('pagereveal', function (e) {
           </ul>
         </details>
       </li>
-      <li><a href="#reply">Write to Me</a></li>
+      <li class="te__write"><a href="#reply">Write to Me</a></li>
     </ul>
   </nav>
   <a class="te__tel" href="tel:+447487536649"><span class="te__tel-long">07487 536649</span><span class="te__tel-short">Call</span></a>
