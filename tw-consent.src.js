@@ -154,7 +154,7 @@
 
   // The lead (C10): once per successful enquiry, for what is allowed now; only the form's name goes.
   window.twLead = function (name) {
-    if (typeof name !== 'string' || !/^(home|audit|stirling)$/.test(name) || !wanted(state)) return;
+    if (typeof name !== 'string' || !/^(home|build|audit|stirling)$/.test(name) || !wanted(state)) return;
     if (!loaded) setup();   // sent before load: the yes is already given
     if (state.analytics) gtag('event', 'generate_lead', { send_to: GA4, form_name: name });
     if (state.ads && adsOK) gtag('event', 'conversion', { send_to: ADS + '/' + LABEL });
@@ -216,9 +216,9 @@
     + '@media print{#consent{display:none!important}}';
 
   var slip, now, pick, ticks, save, live, bar, skip, where = 'bottom', kb = false, vw = innerWidth, turned = 0;
-  // Lines a first-time visitor must still see: the homepage's bar, question, facts, proof, chips, name line and send button,
+  // Lines a first-time visitor must still see: the homepage's bar, headline, offer line, reviews, buttons and phone bar,
   // the town pages' proof line, and the opening h1 and price line where a page has them.
-  var KEEP = '.te,#skH1,.sk-facts,.sk-live,#skPick,#skNameRow,.sk-send,.tw-live,.tw-opening h1,.tw-sheet__head,.tw-sheet__foot,.tw-card__town,.tw-card__foot', FOCUS = 'a[href],button,input:not([type=hidden]),select,textarea,summary,[tabindex]:not([tabindex="-1"])';
+  var KEEP = '.te,.pf h1,.pf__line,.pf__said,.pf__act,.pf-bar,#skH1,.sk-facts,.sk-live,#skPick,#skNameRow,.sk-send,.tw-live,.tw-opening h1,.tw-sheet__head,.tw-sheet__foot,.tw-card__town,.tw-card__foot', FOCUS = 'a[href],button,input:not([type=hidden]),select,textarea,summary,[tabindex]:not([tabindex="-1"])';
   function build() {
     document.head.appendChild(h('style', { text: CSS }));
     var tick = function (name, words) { return h('label', { class: 'tw-cc__tick' }, [h('input', { type: 'checkbox', name: name }), h('span', { class: 'tw-cc__box', 'aria-hidden': 'true' }), words]); };
@@ -305,7 +305,7 @@
   // the homepage's sketchpad (there it goes after the first block).
   function spot() {
     var el = document.querySelector('main > *'), i, r, k;
-    while (el && el.matches('section,.tw-page,.tw-open-act,.tw-open-act>div') && !el.querySelector('#sk')) {
+    while (el && el.matches('section,.tw-page,.tw-open-act,.tw-open-act>div') && !el.querySelector('#sk,.pf')) {
       for (i = 0; (k = el.children[i]); i++) if (k !== slip && (r = k.getBoundingClientRect()).height && r.bottom > innerHeight) break;
       if (!k) break;
       if (r.top >= innerHeight) return [el, k];

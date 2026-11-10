@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Build Your Website Quote | Tempany Web Studios</title>
+<meta name="description" content="Pick your trade, pages and how customers book, and watch the price add up: £599 for five pages, £649 with my own booking system. Send it when it looks right.">
+<meta name="author" content="Logan Tempany">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/build/">
+<link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" href="/favicon-32x32.png?v=2" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#f5f5f2">
+<meta property="og:title" content="Build Your Website Quote | Tempany Web Studios">
+<meta property="og:description" content="Pick your trade, pages and how customers book, and watch the price add up: £599 for five pages, £649 with my own booking system. Send it when it looks right.">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/build/">
+<meta property="og:site_name" content="Tempany Web Studios">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/images/share/tempany-graphite.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A black ink rough of a homepage on white paper, lettered Tempany Web Studios, under the pencilled words: Tell me what you do and I'll rough out the top of your homepage, for nothing. £599 fixed, up to five pages, 10 to 14 days.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/alegreya-var-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/alegreya-sans-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css?v=2">
+<script>
+/* Paper for everyone: only a stored 'dark' (set by pressing the switch) gives
+   the dark desk. The device's own preference is not read. Also marks the page
+   as scripted (class js). */
+(function () {
+  var d = document.documentElement, t = null;
+  try { t = localStorage.getItem('tws-theme'); } catch (e) {}
+  d.setAttribute('data-theme', t === 'dark' ? 'dark' : 'light');
+  d.className += (d.className ? ' ' : '') + 'js';
+  // Firefox does not start a fallback face while the web font ahead of it is still
+  // loading (it draws its default face instead), so ask for the size-matched ones now.
+  var F = document.fonts, S = 'Alegreya Sans Fallback ', A = 'Alegreya Fallback ';
+  if (F && F.load) [S + 'Segoe', S + 'Helvetica', S + 'Arial', S + 'Roboto', S + 'DejaVu', A + 'Georgia', A + 'Noto'].forEach(function (n) {
+    ['400', '700'].forEach(function (w) { F.load(w + ' 1em "' + n + '"').catch(function () {}); });
+  });
+})();
+</script>
+<link rel="stylesheet" href="/scrollcraft.min.css?v=4">
+<link rel="stylesheet" href="/tw-base.css?v=12">
+<link rel="stylesheet" href="/tw-pages.css?v=12">
+<style>
+  /* The Build: pick the parts, the price adds up beside them, and the whole thing goes as the enquiry. */
+  .bd { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sc-6) var(--sc-7); align-items: start; }
+  @media (min-width: 960px) { .bd { grid-template-columns: minmax(0, 1fr) minmax(0, 360px); } .bd__sum { position: sticky; top: 5.5rem; } }
+  .bd__step { border: 0; margin: 0 0 var(--sc-6); padding: 0; min-width: 0; }
+  .bd__step legend { padding: 0; margin: 0 0 var(--sc-3); font: 700 var(--sc-t-base)/1.2 var(--sc-font-text); color: var(--sc-ink); }
+  .bd__n { display: inline-block; min-width: 2.2em; font-family: var(--sc-font-mono); color: var(--sc-ink-soft); font-weight: 500; }
+  .bd__opts { display: grid; gap: .5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); }
+  .bd__opt { position: relative; display: flex; flex-direction: column; justify-content: center; gap: .15rem; min-height: 56px; padding: .7rem 1rem; border: 1px solid var(--tw-line-strong); border-radius: 3px; background: var(--tw-glass); cursor: pointer; color: var(--sc-ink); }
+  .bd__opt input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+  .bd__opt b { font-weight: 700; }
+  .bd__opt small { color: var(--sc-ink-soft); font-size: var(--sc-t-xs); }
+  .bd__opt:has(input:checked) { border: 2px solid var(--sc-ink); padding: calc(.7rem - 1px) calc(1rem - 1px); background: var(--sc-surface); }
+  .bd__opt:has(input:checked) b::before { content: ""; display: inline-block; width: .6em; height: .6em; margin-right: .45em; border-radius: 50%; background: var(--sc-accent); box-shadow: 0 0 0 1.5px var(--sc-ink); vertical-align: .05em; }
+  .bd__opt:has(input:focus-visible) { outline: 3px solid var(--sc-ink); outline-offset: 3px; }
+  .bd__opt:has(input:disabled) { opacity: .5; cursor: not-allowed; }
+  .bd__pages { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+  .bd__pages button { width: 48px; height: 48px; border: 1px solid var(--tw-line-strong); border-radius: 3px; background: var(--tw-glass); color: var(--sc-ink); font: 700 1.5rem/1 var(--sc-font-text); cursor: pointer; }
+  .bd__pages button:disabled { opacity: .4; cursor: not-allowed; }
+  .bd__pages output { min-width: 7.5rem; font: 700 var(--sc-t-base)/1.2 var(--sc-font-text); text-align: center; }
+  .bd__hint { margin: .5rem 0 0; color: var(--sc-ink-soft); font-size: var(--sc-t-xs); }
+  .bd__sum { border: 1px solid var(--tw-line-strong); border-radius: 3px; background: var(--tw-glass); box-shadow: var(--sc-e3); padding: var(--sc-5); }
+  .bd__sum h2 { margin: 0 0 var(--sc-3); font: 700 var(--sc-t-base)/1.2 var(--sc-font-text); }
+  .bd__lines { list-style: none; margin: 0; padding: 0; }
+  .bd__lines li { display: flex; justify-content: space-between; gap: var(--sc-4); padding: .5rem 0; border-bottom: 1px dashed var(--tw-line); font-size: var(--sc-t-sm); color: var(--sc-ink-soft); }
+  .bd__lines li strong { color: var(--sc-ink); font-family: var(--sc-font-mono); font-weight: 500; white-space: nowrap; }
+  .bd__total { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sc-4); margin: var(--sc-4) 0 0; }
+  .bd__total span { font-weight: 700; }
+  .bd__total output { font: 800 clamp(2.4rem, 2rem + 1.6vw, 3.2rem)/1 var(--sc-font-display); color: var(--sc-ink); }
+  .bd__month { margin: .35rem 0 0; color: var(--sc-ink-soft); font-size: var(--sc-t-sm); text-align: right; }
+  .bd__fine { margin: var(--sc-4) 0 0; color: var(--sc-ink-soft); font-size: var(--sc-t-xs); }
+  .bd__go { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 52px; margin-top: var(--sc-4); border-radius: 3px; background: var(--sc-accent); color: var(--sc-accent-ink); font: 700 1.125rem/1.1 var(--sc-font-text); text-decoration: none; }
+  .bd__send { margin-top: var(--sc-7); max-width: 46rem; }
+  .bd__send h2 { margin: 0 0 var(--sc-3); }
+  :root:not(.js) [data-live] { display: none !important; }
+  .bd__mini { display: none; }
+  @media (max-width: 959px) { .bd__mini { display: flex; justify-content: space-between; align-items: baseline; position: sticky; top: 0; z-index: 5; margin: 0 calc(-1 * var(--sc-gutter)) var(--sc-4); padding: .7rem var(--sc-gutter); background: var(--sc-canvas); border-bottom: 1px solid var(--tw-line-strong); font-weight: 700; } .bd__mini strong { font: 800 1.6rem/1 var(--sc-font-display); } }
+  .bd__nojs { display: none; }
+  :root:not(.js) .bd__nojs { display: block; }
+</style>
+<noscript><style>[data-sc-in],[data-sc-stagger]>*{opacity:1!important;transform:none!important}</style></noscript>
+<script>
+/* The tear-off going back: a back or forward step lays the sheet down again instead of tearing it off. */
+addEventListener('pagereveal', function (e) {
+  var a = window.navigation && navigation.activation;
+  if (e.viewTransition && e.viewTransition.types && a && a.navigationType === 'traverse') e.viewTransition.types.add('back');
+});
+</script>
+<script src="/tw-consent.js" defer></script>
+<script src="/tw-page.js?v=4" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="sc-grain" aria-hidden="true"></div>
+<!-- tw:index -->
+<nav class="tw-index" aria-label="Site">
+  <a class="tw-index__mark" href="/" aria-label="Tempany Web Studios, back to the homepage">
+    <svg viewBox="0 0 44 44" aria-hidden="true">
+      <circle cx="22" cy="22" r="18.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      <circle cx="22" cy="22" r="14.5" fill="none" stroke="currentColor" stroke-width=".7" opacity=".45"/>
+      <g stroke="#a1462a" stroke-width="1.4" stroke-linecap="round">
+        <line x1="22" y1="1.5" x2="22" y2="5"/><line x1="22" y1="39" x2="22" y2="42.5"/>
+        <line x1="1.5" y1="22" x2="5" y2="22"/><line x1="39" y1="22" x2="42.5" y2="22"/>
+      </g>
+      <path transform="translate(15.52 30) scale(0.0100 -0.0100)" fill="currentColor" d="M1376 1238H388L505 1266L268 959L208 975L378 1426H417L511 1333L430 1352H1411L1310 1333L1468 1426H1506L1409 960H1351L1308 1266ZM800 1283H1008L646 96L787 50L772 0H260L275 50L439 99Z"/>
+    </svg>
+    <span>Tempany Web Studios</span>
+  </a>
+  <button class="tw-lights" id="twLights" type="button" aria-pressed="false" aria-label="Turn the lights up">
+    <svg class="tw-lights__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="tw-lights__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>
+  </button>
+  <ul class="tw-index__list">
+    <li><a href="/#work">The Work</a></li>
+    <li><a href="/library/">The Library</a></li>
+    <li><a href="/build/">The Build</a></li>
+    <li><a href="/#quote">The Quote</a></li>
+    <li><a href="/#me">The Maker</a></li>
+    <li class="tw-where">
+      <button class="tw-where__btn" type="button" aria-expanded="false" aria-controls="twWhere">The Towns</button>
+      <ul class="tw-where__list" id="twWhere" hidden>
+        <li><a href="/web-design-falkirk/">Falkirk</a></li>
+        <li><a href="/web-design-stirling/">Stirling</a></li>
+        <li><span class="tw-soon" title="Page on its way">Alloa</span></li>
+        <li><span class="tw-soon" title="Page on its way">Grangemouth</span></li>
+        <li><span class="tw-soon" title="Page on its way">Dollar</span></li>
+        <li><span class="tw-soon" title="Page on its way">Tillicoultry</span></li>
+      </ul>
+    </li>
+    <li><a class="tw-index__ask" href="/#reply">Reply</a></li>
+  </ul>
+</nav>
+<!-- /tw:index -->
+
+<main id="main">
+
+  <!-- 1 · The Build. Each choice is a real form field; the summary only adds them up. -->
+  <section class="tw-page tw-opening" aria-labelledby="h1" style="min-height:0;display:block">
+    <p class="tw-eyebrow">The Build</p>
+    <h1 id="h1" style="margin:0 0 var(--sc-3)">Build your website, and see the price as you go</h1>
+    <p style="max-width:40rem;color:var(--sc-ink-soft);margin:0 0 var(--sc-6)">Four choices. The total adds up as you pick, and it's what you'd pay, in writing, before anything starts. Send it and I'll reply within one working day with an honest recommendation.</p>
+
+    <form id="build-form" class="bd" method="post" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="7148c950-d9f1-4d33-b78e-a411c89cb1e3">
+      <input type="hidden" name="subject" value="A build from the no-script Build page">
+      <input type="hidden" name="redirect" value="https://tempanywebstudios.co.uk/thanks/">
+      <p class="bd__mini" data-live aria-hidden="true">Your build <strong id="bdMini">&pound;599</strong></p>
+      <div class="bd__parts">
+        <fieldset class="bd__step">
+          <legend><span class="bd__n">01</span>What do you do?</legend>
+          <div class="bd__opts">
+            <label class="bd__opt"><input type="radio" name="trade" value="Hair or beauty" required><b>Hair &amp; beauty</b></label>
+            <label class="bd__opt"><input type="radio" name="trade" value="Trades"><b>Trades</b></label>
+            <label class="bd__opt"><input type="radio" name="trade" value="Clinic or therapy"><b>Clinic or therapy</b></label>
+            <label class="bd__opt"><input type="radio" name="trade" value="Classes or coaching"><b>Classes or coaching</b></label>
+            <label class="bd__opt"><input type="radio" name="trade" value="Shop or café"><b>Shop or caf&eacute;</b></label>
+            <label class="bd__opt"><input type="radio" name="trade" value="Professional services"><b>Professional services</b></label>
+            <label class="bd__opt"><input type="radio" name="trade" value="Something else"><b>Something else</b></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="bd__step">
+          <legend><span class="bd__n">02</span>How many pages?</legend>
+          <div class="bd__pages" data-live>
+            <button type="button" id="bdLess" aria-label="One page fewer">&minus;</button>
+            <output id="bdPagesOut" for="bdPages" aria-live="polite">5 pages</output>
+            <button type="button" id="bdMore" aria-label="One page more">+</button>
+            <input type="hidden" name="pages" id="bdPages" value="5">
+          </div>
+          <p class="bd__nojs">Five pages are included. If you need more, say so in the message at the end.</p>
+          <p class="bd__hint">Up to five are in the &pound;599: usually home, services, about, prices and contact. Each one after that is &pound;45.</p>
+        </fieldset>
+
+        <fieldset class="bd__step">
+          <legend><span class="bd__n">03</span>How do customers book?</legend>
+          <div class="bd__opts">
+            <label class="bd__opt"><input type="radio" name="booking" value="No bookings" data-add="0" checked><b>They call or message</b><small>No booking system</small></label>
+            <label class="bd__opt"><input type="radio" name="booking" value="Fresha" data-add="0"><b>Through Fresha</b><small>Set up and built in, in the &pound;599</small></label>
+            <label class="bd__opt"><input type="radio" name="booking" value="Own booking system" data-add="50" data-month="1"><b>My own booking system</b><small>&pound;649, with the care plan for 12 months</small></label>
+          </div>
+          <p class="bd__hint"><a href="/booking/">How the booking system works, and the three-year sum against renting one.</a></p>
+        </fieldset>
+
+        <fieldset class="bd__step">
+          <legend><span class="bd__n">04</span>Anything on top?</legend>
+          <div class="bd__opts">
+            <label class="bd__opt"><input type="checkbox" name="card_payment" value="Yes" id="bdCard" data-add="120"><b>Card payment at booking</b><small>From &pound;120, needs my booking system</small></label>
+            <label class="bd__opt"><input type="checkbox" name="care_plan" value="Yes" id="bdCare"><b>The care plan</b><small>&pound;20 a month, cancel any time</small></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <aside class="bd__sum" aria-labelledby="sum-h">
+        <h2 id="sum-h">Your build</h2>
+        <ul class="bd__lines" id="bdLines" data-live>
+          <li><span>Five-page website</span><strong>&pound;599</strong></li>
+        </ul>
+        <p class="bd__total" data-live><span>Total</span><output id="bdTotal" aria-live="polite">&pound;599</output></p>
+        <p class="bd__month" id="bdMonth" data-live hidden></p>
+        <p class="bd__nojs">&pound;599 for five pages. &pound;649 with my own booking system. Extra pages &pound;45 each, card payment from &pound;120, the care plan &pound;20 a month.</p>
+        <p class="bd__fine">&pound;200 to start, the rest when you approve it. No VAT. Your domain, hosting and code are in your name from day one; the domain's yearly fee goes to the registrar.</p>
+        <a class="bd__go" href="#send">Send this build</a>
+      </aside>
+
+      <div class="bd__send tw-form" id="send" style="grid-column:1/-1">
+        <h2>Send it to me</h2>
+        <div class="tw-row">
+          <label class="tw-field"><span>Your name</span><input type="text" name="name" autocomplete="name" maxlength="80" required></label>
+          <label class="tw-field"><span>Business name</span><input type="text" name="business" autocomplete="organization" maxlength="80" required></label>
+        </div>
+        <div class="tw-row">
+          <label class="tw-field"><span>Email address</span><input type="email" name="email" autocomplete="email" required></label>
+          <label class="tw-field"><span>Phone <em>optional</em></span><input type="tel" name="phone" autocomplete="tel" inputmode="tel"></label>
+        </div>
+        <label class="tw-field"><span>Anything I should know <em>optional</em></span><textarea name="message" rows="3" placeholder="Where you work, what you'd like the site to do, your Facebook or Google page"></textarea></label>
+        <input type="checkbox" name="botcheck" class="tw-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+        <button class="tw-submit" type="submit">Send my build</button>
+        <p class="tw-status" role="status"></p>
+        <p class="tw-fine">Your details are sent securely to Tempany Web Studios. Nothing is agreed until you say yes in writing. <a href="/privacy/">Read the privacy notice.</a></p>
+      </div>
+    </form>
+  </section>
+
+</main>
+
+<!-- tw:foot -->
+<footer class="tw-foot">
+  <p>Logan Tempany trading as Tempany Web Studios&nbsp;&middot; Dollar, Scotland&nbsp;&middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a>&nbsp;&middot; <a href="tel:+447487536649">07487 536649</a></p>
+  <p><a href="/library/">The library</a>&nbsp;&middot; <a href="/build/">The Build</a>&nbsp;&middot; <a href="/how-much-does-a-website-cost/">What a website costs</a>&nbsp;&middot; <a href="/booking/">The booking system</a>&nbsp;&middot; <a href="/web-design-falkirk/">Web design in Falkirk</a>&nbsp;&middot; <a href="/web-design-stirling/">Web design in Stirling</a>&nbsp;&middot; <a href="/privacy/">Privacy notice</a>&nbsp;&middot; <a href="/privacy/#complaints">Complaints</a>&nbsp;&middot; <a href="/terms/">Service terms</a>&nbsp;&middot; <a href="/privacy/#cookies" data-cookie-choice>Cookie choice</a></p>
+  <p class="tw-foot__last">Jennifer Ellis Yoga and Rayney Day Pet Services are real client sites, shown with their owners' permission. The demonstration sites aren't: the businesses, people, addresses and phone numbers in them are invented. &copy; 2026 Tempany Web Studios.</p>
+</footer>
+<!-- /tw:foot -->
+
+<script src="/scrollcraft.min.js?v=4"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script>
+/* The Build: adds up the choices, keeps card payment tied to the booking system,
+   and posts the whole build as JSON. Without this script the form posts its fields. */
+(function () {
+  var form = document.getElementById('build-form');
+  if (!form) return;
+  var pagesIn = document.getElementById('bdPages'), out = document.getElementById('bdPagesOut');
+  var less = document.getElementById('bdLess'), more = document.getElementById('bdMore');
+  var card = document.getElementById('bdCard'), care = document.getElementById('bdCare');
+  var lines = document.getElementById('bdLines'), total = document.getElementById('bdTotal'), month = document.getElementById('bdMonth');
+  var status = form.querySelector('.tw-status');
+  var MIN = 1, MAX = 15;
+  function gbp(n) { return '£' + n.toLocaleString('en-GB'); }
+  function pages() { return Math.max(MIN, Math.min(MAX, parseInt(pagesIn.value, 10) || 5)); }
+  function booking() { var b = form.querySelector('input[name="booking"]:checked'); return b ? b : null; }
+  function state() {
+    var p = pages(), b = booking(), own = !!(b && b.value === 'Own booking system');
+    if (!own && card.checked) card.checked = false;
+    card.disabled = !own;
+    var rows = [[p <= 5 ? (p === 5 ? 'Five-page website' : p + '-page website') : 'Five-page website', 599]];
+    if (p > 5) rows.push([(p - 5) + ' extra page' + (p - 5 > 1 ? 's' : '') + ' at £45', (p - 5) * 45]);
+    if (b && b.value === 'Fresha') rows.push(['Fresha bookings, built in', 0]);
+    if (own) rows.push(['My own booking system', 50]);
+    if (card.checked) rows.push(['Card payment at booking (from)', 120]);
+    var sum = rows.reduce(function (a, r) { return a + r[1]; }, 0);
+    var monthly = own ? 'Care plan £20 a month for the first 12 months' : (care.checked ? 'Care plan £20 a month, cancel any time' : '');
+    return { p: p, b: b ? b.value : 'No bookings', own: own, card: card.checked, care: own || care.checked, rows: rows, sum: sum, from: card.checked, monthly: monthly };
+  }
+  function render() {
+    var bk = booking(), ownNow = !!(bk && bk.value === 'Own booking system');
+    if (ownNow) { if (!care.disabled) care.dataset.was = care.checked ? '1' : ''; care.checked = true; care.disabled = true; }
+    else if (care.disabled) { care.disabled = false; care.checked = care.dataset.was === '1'; }
+    var s = state();
+    out.textContent = s.p + (s.p === 1 ? ' page' : ' pages');
+    less.disabled = s.p <= MIN; more.disabled = s.p >= MAX;
+    lines.textContent = '';
+    s.rows.forEach(function (r) {
+      var li = document.createElement('li'), a = document.createElement('span'), b = document.createElement('strong');
+      a.textContent = r[0]; b.textContent = r[1] ? gbp(r[1]) : 'included'; li.appendChild(a); li.appendChild(b); lines.appendChild(li);
+    });
+    total.textContent = (s.from ? 'from ' : '') + gbp(s.sum);
+    var mini = document.getElementById('bdMini'); if (mini) mini.textContent = total.textContent + (s.monthly ? ' + £20/mo' : '');
+    month.hidden = !s.monthly; month.textContent = s.monthly ? '+ ' + s.monthly : '';
+    return s;
+  }
+  less.addEventListener('click', function () { pagesIn.value = pages() - 1; render(); });
+  more.addEventListener('click', function () { pagesIn.value = pages() + 1; render(); });
+  form.addEventListener('change', render);
+  render();
+
+  form.noValidate = true;
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var data = new FormData(form);
+    if (data.get('botcheck')) return;
+    if (!form.reportValidity()) {
+      status.textContent = 'Please pick what you do and fill in the highlighted field, then send it again.';
+      status.className = 'tw-status is-error';
+      return;
+    }
+    var s = state();
+    var summary = [String(data.get('trade') || 'Not picked'), s.p + ' pages', s.b, s.card ? 'card payment' : '', s.care ? 'care plan' : ''].filter(Boolean).join(' · ');
+    var payload = {
+      access_key: String(data.get('access_key')),
+      subject: 'A build from ' + String(data.get('name') || 'a visitor') + ': ' + (s.from ? 'from ' : '') + gbp(s.sum),
+      from_name: 'Tempany Web Studios website',
+      name: String(data.get('name') || ''),
+      business: String(data.get('business') || ''),
+      email: String(data.get('email') || ''),
+      phone: String(data.get('phone') || 'Not supplied'),
+      this_is_about: 'The Build',
+      started_from: 'The Build · ' + summary,
+      build_total: (s.from ? 'from ' : '') + gbp(s.sum) + (s.monthly ? ' + ' + s.monthly : ''),
+      message: String(data.get('message') || '')
+    };
+    try { if (typeof window.twArrivedFrom === 'function') payload.arrived_from = window.twArrivedFrom(); } catch (e) {}
+    var button = form.querySelector('.tw-submit');
+    button.disabled = true;
+    status.textContent = 'Sending…'; status.className = 'tw-status';
+    try {
+      var res = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
+      var result = await res.json();
+      if (!result.success) throw new Error(result.message || 'Submission failed');
+      try { if (typeof window.twLead === 'function') window.twLead('build'); } catch (e) {}
+      status.textContent = 'Sent. You will get a straight answer within one working day.';
+      status.className = 'tw-status is-ok';
+      form.reset(); pagesIn.value = 5; care.dataset.was = ''; care.disabled = false; render();
+    } catch (err) {
+      status.textContent = 'That did not send. Please email logan@tempanywebstudios.co.uk directly.';
+      status.className = 'tw-status is-error';
+    } finally {
+      button.disabled = false;
+      status.setAttribute('tabindex', '-1');
+      status.focus();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
