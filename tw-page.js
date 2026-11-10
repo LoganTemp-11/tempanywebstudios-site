@@ -71,53 +71,12 @@
     });
   })();
 
-  /* The tear-off for jumps within a page: a link to a section on this page tears the sheet
-     off and lands you on the section underneath, the same 420ms as moving between pages
-     (the animation is the one in tw-base.css). Links whose own handlers already took the
-     click are left alone; reduced motion or no View Transitions means a plain jump. */
+  /* Flags the body once scrolled, so the bar on top can draw its rule. */
   (function () {
-    if (!document.startViewTransition) return;
-    var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)');
-    document.addEventListener('click', function (e) {
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      if (calm && calm.matches) return;
-      var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
-      if (!a || a.target || a.hasAttribute('download') || a.classList.contains('skip')) return;
-      var url = new URL(a.href, location.href);
-      if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search || !url.hash) return;
-      var id = decodeURIComponent(url.hash.slice(1));
-      var el = id === 'top' ? (document.getElementById('top') || document.body) : document.getElementById(id);
-      if (!el) return;
-      e.preventDefault();
-      document.startViewTransition(function () {
-        if (location.hash !== url.hash) history.pushState(null, '', url.hash);
-        if (id === 'top' && !document.getElementById('top')) window.scrollTo(0, 0);
-        else el.scrollIntoView({ behavior: 'instant', block: 'start' });
-        if (!el.hasAttribute('tabindex') && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(el.tagName)) el.setAttribute('tabindex', '-1');
-        try { el.focus({ preventScroll: true }); } catch (err) {}
-      });
-    });
-  })();
-
-  /* Back to the top: appears a screen down. On the homepage it goes to the top of this page
-     (the tear-off above plays it); on every other page it goes to the front page. Also flags
-     the body once scrolled, so the bar on top can draw its rule. */
-  (function () {
-    var home = location.pathname === '/' || location.pathname === '/index.html';
-    var a = document.createElement('a');
-    a.className = 'tw-totop';
-    a.href = home ? '#top' : '/';
-    a.innerHTML = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13.4V3M3.6 7.2L8 2.8L12.4 7.2"/></svg>Back to the top';
-    a.setAttribute('tabindex', '-1');
-    document.body.appendChild(a);
     var ticking = false;
     function check() {
       ticking = false;
-      var y = window.scrollY || document.documentElement.scrollTop;
-      var on = y > window.innerHeight * 0.9;
-      a.classList.toggle('is-on', on);
-      if (on) a.removeAttribute('tabindex'); else a.setAttribute('tabindex', '-1');
-      document.body.classList.toggle('tw-scrolled', y > 8);
+      document.body.classList.toggle('tw-scrolled', (window.scrollY || document.documentElement.scrollTop) > 8);
     }
     addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(check); } }, { passive: true });
     check();

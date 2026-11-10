@@ -1,7 +1,7 @@
 /* tempanywebstudios.co.uk: the one base stylesheet, loaded by every page, the homepage
    included, straight after scrollcraft.min.css. Tokens for both themes, the body type
    settings, the skip link and focus ring, the light switch, the quote-document components,
-   the form components, the footer and the tear-off page transition. The values here are
+   the form components and the footer. The values here are
    the homepage's (28 Oct 2026); where the old sub-page copy disagreed, the homepage won.
    Sub-page layouts (the index bar, prose, cards, tables) live in tw-pages.css. */
 
@@ -123,23 +123,6 @@ form[data-posts-here] .tw-fine__here { display: inline; }
 .tw-foot a[data-cookie-choice] { padding: 0 0 30px; }
 .tw-foot__last { margin-top: 1rem !important; }
 
-/* ---------- the tear-off ---------- */
-/* Each page a sheet on one pad, torn off along a perforated edge (a gradient mask: 6px holes every 14px, no image),
-   tug then drop, 420ms. CSS only; off under reduced motion. Back or forward lays the sheet down (pagereveal sets 'back'). */
-@media (prefers-reduced-motion: no-preference) {
-  @view-transition { navigation: auto; }
-  ::view-transition-new(root) { animation: none; }
-  ::view-transition-old(root), :root:active-view-transition-type(back)::view-transition-new(root) {
-    --m: radial-gradient(circle at 7px 7px, #0000 3px, #000 3.5px) 0 0 / 14px 14px repeat-x, linear-gradient(#000 0 0) -60px 14px / calc(100% + 120px) calc(100% + 60px) no-repeat;
-    z-index: 1; mix-blend-mode: normal; transform-origin: 0 100%; -webkit-mask: var(--m); mask: var(--m); -webkit-mask-clip: no-clip; mask-clip: no-clip;
-    filter: drop-shadow(0 18px 22px rgba(40,30,14,.32)); animation: tw-tear .42s both;
-  }
-  :root:active-view-transition-type(back)::view-transition-old(root) { z-index: 0; animation: none; }
-  :root:active-view-transition-type(back)::view-transition-new(root) { animation-name: tw-lay; }
-  @keyframes tw-tear { 26% { transform: rotate(1.5deg); animation-timing-function: cubic-bezier(.55,0,.9,.45); } to { transform: translateY(105vh) rotate(-4deg); } }
-  @keyframes tw-lay { from { transform: translateY(105vh) rotate(-4deg); animation-timing-function: cubic-bezier(.1,.55,.45,1); } 74% { transform: rotate(1.5deg); } }
-}
-
 /* ---------- Graphite and highlighter (4 Nov 2026) ----------
    Black ink on white for the sketchpad, graphite spreads for the work and the reply,
    highlighter yellow under whatever sells. Big Shoulders, Work Sans, Azeret Mono. */
@@ -177,9 +160,10 @@ html body .sk-facts span{background:none!important;color:inherit!important}
 html body .act h2,.tw-quote>h2{font-weight:800;text-transform:uppercase;letter-spacing:0;line-height:.92;font-size:clamp(2.2rem,1.5rem + 2.6vw,3.6rem)}
 html body .act h3,.tw-clause h3{font-weight:700;text-transform:uppercase;letter-spacing:.01em}
 html body .tw-figure{font-weight:800}
-html body .tw-clause__num{font-family:var(--sc-font-mono);color:#141516;background:#f5d547;font-weight:500;padding:.3rem .35rem;align-self:start;justify-self:start;line-height:1}
+html body .tw-clause{grid-template-columns:minmax(0,1fr)}
+html body .tw-clause__num{display:none}
 html body .tw-clause{border-top-color:var(--sc-ink)}
-html body .tw-submit,.sk-send button,.sk-send a{border-radius:999px}
+html body .tw-submit,.sk-send button,.sk-send a{border-radius:3px}
 /* espresso spreads */
 html body .act--work,.act--demos,.act--reply{
   --sc-canvas:var(--tw-slab); --sc-surface:var(--tw-slab-2); --tw-plate:var(--tw-slab-2); --tw-glass:var(--tw-slab-2);
@@ -210,10 +194,10 @@ html body .act--work a,html body .act--demos a,html body .act--reply a{text-deco
 
 /* ---------- The bar on top, Back to the top, and the sketchbook (4 Nov 2026) ----------
    The homepage's top edge stays pinned to the top as you scroll (sub-pages pin their index bar
-   the same way, in tw-pages.css). Once you are a screen down, a Back to the top tab appears
-   (made by tw-page.js): the homepage's top here, the front page from anywhere else. On the
-   homepage each act after the sketchpad is a sheet of a sketchbook, ring-bound along its top
-   edge, that swings down flat onto the pad as you scroll to it. */
+   the same way, in tw-pages.css). The Back to the top tab that used to float bottom left
+   was removed on 10 Nov 2026 (it covered links), as were the tear-off between pages and the
+   sheets swinging down on scroll (they skewed the text and left blank screens mid-render).
+   Each act keeps its ring binding along the top edge, drawn still. */
 html body .te { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--sc-canvas) 90%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .2s; }
 html body.tw-scrolled .te { border-bottom-color: var(--tw-line); }
 html { scroll-padding-top: 4.5rem; }
@@ -226,13 +210,6 @@ html { scroll-padding-top: 4.5rem; }
   html { scroll-padding-top: 7.5rem; }
 }
 
-.tw-totop { position: fixed; left: max(16px, env(safe-area-inset-left)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 35; display: inline-flex; align-items: center; gap: .45rem; min-height: 44px; padding: 0 1rem 0 .85rem; border-radius: 999px; background: var(--sc-ink); color: var(--sc-canvas) !important; font: 700 1rem/1 var(--sc-font-text); text-decoration: none !important; box-shadow: 0 8px 22px -10px rgba(0,0,0,.5); opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .22s, transform .22s; }
-.tw-totop svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.tw-totop.is-on { opacity: 1; transform: none; pointer-events: auto; }
-.tw-totop:hover { filter: brightness(1.15); }
-.tw-totop:focus-visible { outline: 2px solid #f5d547; outline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) { .tw-totop { transition: none; } }
-@media print { .tw-totop { display: none; } }
 
 #work, #quote, #me, #reply { position: relative; z-index: 1; }
 :where(#quote, #me) { background-color: var(--sc-canvas); }
@@ -240,17 +217,4 @@ html { scroll-padding-top: 4.5rem; }
   content: ""; position: absolute; top: 7px; left: 50%; width: min(100% - 32px, 1180px); height: 16px; transform: translateX(-50%); pointer-events: none;
   background: radial-gradient(circle at 50% 50%, #0000 3.2px, var(--sc-ink) 3.6px, var(--sc-ink) 5.2px, #0000 5.6px) 0 0 / 26px 16px repeat-x;
   opacity: .55;
-}
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    #work, #quote, #me, #reply {
-      transform-origin: 50% 0;
-      animation: tw-sheet linear both; animation-timeline: view(); animation-range: entry 0% entry 70%;
-    }
-    @keyframes tw-sheet {
-      from { transform: perspective(1300px) rotateX(-58deg); filter: drop-shadow(0 -26px 26px rgba(20,21,22,.35)); }
-      70%  { transform: perspective(1300px) rotateX(-6deg); filter: drop-shadow(0 -10px 14px rgba(20,21,22,.2)); }
-      to   { transform: none; filter: none; }
-    }
-  }
 }

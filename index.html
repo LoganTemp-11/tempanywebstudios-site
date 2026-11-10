@@ -45,7 +45,7 @@
 })();
 </script>
 <link rel="stylesheet" href="/scrollcraft.min.css?v=4">
-<link rel="stylesheet" href="/tw-base.css?v=12">
+<link rel="stylesheet" href="/tw-base.css?v=13">
 <style>
   /* Tokens, body type, the skip link, the light switch, the quote and form components and the footer: /tw-base.css. */
   /* ---------- tokens kept from the sketchpad (header type, the signature, the plates) ---------- */
@@ -146,11 +146,12 @@
   .pf__site { margin: 0; }
   .pf__site > a { display: block; }
   .pf__site picture { display: block; }
-  .pf__site img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; border: 1.5px solid var(--sc-ink); border-radius: 3px; }
+  .pf__site > a { padding: 9% 0 0; background: var(--tw-plate); border: 1px solid var(--tw-line); border-radius: 4px; overflow: hidden; }
+  .pf__site img { display: block; width: 72%; margin-inline: auto; height: auto; aspect-ratio: 390 / 600; object-fit: cover; object-position: top; border: 1px solid var(--tw-line-strong); border-bottom: 0; border-radius: 22px 22px 0 0; box-shadow: 0 16px 30px -18px hsl(var(--sc-shadow-color) / .8); }
   .pf__site > a:focus-visible { outline: 3px solid var(--sc-ink); outline-offset: 4px; }
   .pf__site figcaption { margin-top: .75rem; font-size: 1rem; color: var(--sc-ink-soft); max-width: 30rem; }
   .pf__site figcaption a { color: var(--sc-ink); font-weight: 700; text-underline-offset: .2em; }
-  @media (min-width: 900px) { .pf__site { width: 100%; max-width: 460px; justify-self: end; } }
+  @media (min-width: 900px) { .pf__site { width: 100%; max-width: 400px; justify-self: end; } }
   .pf__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
   .pf__grid a { display: block; color: var(--sc-ink); text-decoration: none; }
   .pf__grid picture { display: block; padding: 8% 12% 0; background: var(--tw-plate); border: 1px solid var(--tw-line); border-radius: 4px; overflow: hidden; aspect-ratio: 4 / 4.6; }
@@ -210,13 +211,11 @@
   .flag--demo::before { background: none; border: 1.5px solid currentColor; box-sizing: border-box; }
   .card .flag { margin-top: .9rem; }
   .flag + .card__name { margin-top: .2rem; }
-  @media (min-width: 700px) { .card--yours .card__name { margin-top: 2.8rem; } }
   .said { margin: 0; max-width: 40rem; }
   .said h3 { font: 700 1.125rem/1.2 var(--sc-font-text); margin: 0 0 .75rem; color: var(--sc-ink-soft); letter-spacing: 0; }
   .said blockquote { margin: 0; }
   .said blockquote p { margin: 0; font: 500 clamp(1.25rem, 1.05rem + .75vw, 1.6rem)/1.38 var(--sc-font-display); color: var(--sc-ink); letter-spacing: -.004em; }
   .said figcaption { margin: 1rem 0 0; color: var(--sc-ink-soft); font-size: 1.0625rem; }
-  .said--fiona { margin: 0 0 clamp(2rem, 1.5rem + 2vw, 3rem); }
   .said figcaption a { display: inline-flex; align-items: center; min-height: 44px; vertical-align: middle; }
 
   /* the plates */
@@ -235,22 +234,8 @@
   .again::before { content: ""; width: 18px; height: 18px; background: currentColor; -webkit-mask: var(--again) center / contain no-repeat; mask: var(--again) center / contain no-repeat; }
   .again { --again: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15.6 7.4A6.2 6.2 0 1 0 16.2 12M16 3.6v4.1h-4.1'/%3E%3C/svg%3E"); }
   .again:hover { border-width: 2px; }
-  .plate--yours { display: grid; align-content: end; gap: .5rem; padding: 1rem; background: var(--sk-paper); color: var(--sk-graphite); border-radius: 3px; }
-  .plate--yours::after { border: 1.6px dashed var(--sk-faint); inset: 5px; border-radius: 3px; }
-  .plate__eyebrow { margin: 0; font-weight: 700; font-size: 1rem; word-spacing: .065em; color: var(--sk-faint); }
-  .plate__pitch { margin: 0; font: 600 1.125rem/1.22 var(--sc-font-display); color: var(--sk-graphite); }
 
   /* act 3: the cards */
-  .cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 2rem 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .card--yours { grid-column: 1 / -1; }
-  /* The second live client heads the row: full width like Jennifer's on a phone, one of six from 1100px. */
-  @media (max-width: 699px) {
-    .card--live { grid-column: 1 / -1; width: min(100%, 320px); justify-self: center; }
-    .card--live .plate--phone :is(img, video) { width: 70%; border-radius: 20px 20px 0 0; }
-  }
-  .card--yours .plate--yours { aspect-ratio: auto; min-height: 9rem; }
-  @media (min-width: 700px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.25rem 1.5rem; } .card--yours { grid-column: auto; } .card--yours .plate--yours { aspect-ratio: 4 / 5; } }
-  @media (min-width: 1100px) { .cards { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
   .card { min-width: 0; display: flex; flex-direction: column; }
   .card > .open { margin-top: auto; align-self: flex-start; }
   .card__who { margin-bottom: .35rem !important; }
@@ -261,6 +246,26 @@
   .open { display: inline-flex; align-items: center; gap: .35rem; min-height: 44px; margin-top: .25rem; font-weight: 700; font-size: 1.0625rem; color: var(--sc-ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .22em; }
   .open svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }
   .open:hover { text-decoration-thickness: 2px; }
+
+  /* act 3: Rayney Day mirrored against Jennifer, then the demonstrations as a plain list */
+  @media (min-width: 820px) {
+    .jen--flip { grid-template-columns: minmax(0, 1fr) minmax(0, 320px); }
+    .jen--flip > .jen__site { grid-column: 2; grid-row: 1; }
+    .jen--flip > .said { grid-column: 1; grid-row: 1; }
+  }
+  .demos-head { max-width: 46rem; margin: clamp(3rem, 2rem + 4vw, 5rem) 0 1rem; }
+  .demos-head h3 { font-size: clamp(1.4rem, 1.2rem + .6vw, 1.75rem); margin: 0 0 .4rem; }
+  .demos-head p { margin: 0; color: var(--sc-ink-soft); }
+  .demos { list-style: none; margin: 0; padding: 0; max-width: 52rem; }
+  .demo { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 1.1rem; align-items: start; padding: 1.1rem 0; border-top: 1px solid var(--tw-line-strong); }
+  .demo:last-child { border-bottom: 1px solid var(--tw-line-strong); }
+  .demo img { display: block; width: 64px; height: 88px; object-fit: cover; object-position: top; border: 1px solid var(--tw-line-strong); border-radius: 8px 8px 0 0; }
+  .demo__name { margin: 0; font: 700 clamp(1.15rem, 1.05rem + .35vw, 1.35rem)/1.15 var(--sc-font-display); }
+  .demo__name a { display: inline-flex; align-items: center; min-height: 44px; margin-block: -10px; text-decoration: underline; text-underline-offset: .2em; }
+  .demo__trade { margin: .15rem 0 0; font-weight: 600; color: var(--sc-ink); }
+  .demo__what { margin: .15rem 0 0; color: var(--sc-ink-soft); }
+  .demos-yours { margin: 1.5rem 0 0; max-width: 46rem; color: var(--sc-ink-soft); }
+  .demos-yours a { display: inline-block; padding-block: 10px; margin-block: -10px; }
 
   /* act 4: the quote. The components are in tw-base.css; this is the act's own layout, and two pins
      that keep the act's generic rules (.act h2, .act a) from reaching into the shared components. */
@@ -348,6 +353,7 @@
       "name": "New website, up to five pages",
       "price": "599",
       "priceCurrency": "GBP",
+      "priceValidUntil": "2027-02-28",
       "url": "https://tempanywebstudios.co.uk/#quote"
     },
     {
@@ -391,7 +397,7 @@ addEventListener('pagereveal', function (e) {
 });
 </script>
 <script src="/tw-consent.js" defer></script>
-<script src="/tw-page.js?v=4" defer></script>
+<script src="/tw-page.js?v=5" defer></script>
 </head>
 <body>
 
@@ -413,27 +419,10 @@ addEventListener('pagereveal', function (e) {
   <p class="te__who"><span class="te__who-n">Logan Tempany</span><span class="te__who-x"> · </span>Tempany Web Studios<span class="te__who-x">, Dollar</span></p>
   <nav class="te__nav" aria-label="Sections of this page">
     <ul>
-      <li><a href="#top">The Home</a></li>
-      <li><a href="#work">The Work</a></li>
-      <li><a href="/library/">The Library</a></li>
-      <li><a href="/build/">The Build</a></li>
-      <li><a href="#quote">The Quote</a></li>
-      <li><a href="#me">The Maker</a></li>
-      <li>
-        
-        <details class="te__where">
-          <summary>The Towns</summary>
-          <ul>
-            <li><a href="/web-design-falkirk/">Falkirk</a></li>
-            <li><a href="/web-design-stirling/">Stirling</a></li>
-            <li><span title="Page on its way">Alloa</span> <span class="te__soon">soon</span></li>
-            <li><span title="Page on its way">Grangemouth</span> <span class="te__soon">soon</span></li>
-            <li><span title="Page on its way">Dollar</span> <span class="te__soon">soon</span></li>
-            <li><span title="Page on its way">Tillicoultry</span> <span class="te__soon">soon</span></li>
-          </ul>
-        </details>
-      </li>
-      <li class="te__write"><a href="#reply">Write to Me</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#quote">Price</a></li>
+      <li><a href="#me">About</a></li>
+      <li><a href="#reply">Contact</a></li>
     </ul>
   </nav>
   <a class="te__tel" href="tel:+447487536649"><span class="te__tel-long">07487 536649</span><span class="te__tel-short">Call</span></a>
@@ -448,7 +437,7 @@ addEventListener('pagereveal', function (e) {
   <div class="wrap pf__in">
     <div class="pf__text">
       <h1 id="pfH1">Websites for small businesses in Clackmannanshire, Stirling and Falkirk</h1>
-      <p class="pf__line"><strong>&pound;599 fixed</strong> for up to five pages, live in 10 to 14 days. Written from your own words and built for phones first.</p>
+      <p class="pf__line"><strong>&pound;599 fixed</strong> for up to five pages, live in 10 to 14 days. That&rsquo;s the founding price, open until 28 February 2027; from 1 March it&rsquo;s &pound;749.</p>
       <div class="pf__said">
         <figure class="pf__q">
           <blockquote cite="https://jenniferelliscelebrant.co.uk/"><p>&ldquo;My friends and other celebrants keep telling me the site is just me.&rdquo;</p></blockquote>
@@ -469,8 +458,8 @@ addEventListener('pagereveal', function (e) {
       </div>
     </div>
     <figure class="pf__site">
-      <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer"><picture><source type="image/webp" srcset="/images/home/phone-rayney-v2-390.webp 390w, /images/home/phone-rayney-v2.webp 780w" sizes="(min-width: 900px) 460px, 92vw"><img src="/images/home/phone-rayney-v2-390.jpg" alt="The Rayney Day Pet Services website on a phone: the opening screen" width="390" height="844" fetchpriority="high" decoding="async"></picture></a>
-      <figcaption><a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a>, live since September. Also live: <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Jennifer Ellis Yoga</a>. More in <a href="/library/">the library</a>.</figcaption>
+      <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer"><picture><source type="image/webp" srcset="/images/home/phone-jennifer-390.webp 390w, /images/home/phone-jennifer.webp 780w" sizes="(min-width: 900px) 360px, 80vw"><img src="/images/home/phone-jennifer-390.jpg" srcset="/images/home/phone-jennifer-390.jpg 390w, /images/home/phone-jennifer.jpg 780w" sizes="(min-width: 900px) 360px, 80vw" alt="Jennifer Ellis Yoga, a client site I built, on a phone" width="390" height="844" fetchpriority="high" decoding="async"></picture></a>
+      <figcaption>A client site, shown on a phone: <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Jennifer Ellis Yoga</a>, live and taking bookings. Also live: <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a>.</figcaption>
     </figure>
   </div>
 </section>
@@ -517,19 +506,12 @@ addEventListener('pagereveal', function (e) {
   <!-- 3 · RAYNEY DAY, THEN THE DEMONSTRATIONS. The second live client at the head of the row, one demonstration per trade, and a card for everyone else. -->
   <section id="work-demos" class="act act--demos">
     <div class="wrap">
-      <figure class="said said--fiona" aria-labelledby="said-fiona-h">
-        <h3 id="said-fiona-h">What Fiona said</h3>
-        <blockquote cite="https://rayneydaypets.co.uk/">
-          <p>&ldquo;Working with Logan has been smooth and professional from the get go. No query was too much and always answered with enthusiasm. His in-depth knowledge and calm nature meant I always felt at ease through the whole process.&rdquo;</p>
-        </blockquote>
-        <figcaption>Fiona Stewart, <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a></figcaption>
-      </figure>
-      <ul class="cards">
-        <li class="card card--live" id="work-rayney">
-          <div class="plate plate--phone" data-clip="rayney">
+      <div class="jen jen--flip">
+        <article class="jen__site" aria-labelledby="card-rayney">
+          <div class="plate plate--phone plate--big" data-clip="rayney">
             <picture>
-              <source type="image/webp" srcset="/images/home/phone-rayney-v2-390.webp 390w, /images/home/phone-rayney-v2.webp 780w" sizes="(min-width: 1100px) 120px, (min-width: 700px) 18vw, 224px">
-              <img src="/images/home/phone-rayney-v2.jpg" srcset="/images/home/phone-rayney-v2-390.jpg 390w, /images/home/phone-rayney-v2.jpg 780w" sizes="(min-width: 1100px) 120px, (min-width: 700px) 18vw, 224px" alt="Rayney Day Pet Services, a live client site, shown on a phone" width="780" height="1688" loading="lazy" decoding="async">
+              <source type="image/webp" srcset="/images/home/phone-rayney-v2-390.webp 390w, /images/home/phone-rayney-v2.webp 780w" sizes="(min-width: 720px) 224px, 60vw">
+              <img src="/images/home/phone-rayney-v2.jpg" srcset="/images/home/phone-rayney-v2-390.jpg 390w, /images/home/phone-rayney-v2.jpg 780w" sizes="(min-width: 720px) 224px, 60vw" alt="Rayney Day Pet Services, a live client site, shown on a phone" width="780" height="1688" loading="lazy" decoding="async">
             </picture>
           </div>
           <p class="flag">Live client site</p>
@@ -537,71 +519,55 @@ addEventListener('pagereveal', function (e) {
           <p class="card__facts">Dog walking and pet home checks&nbsp;&middot; Dollar and surrounding area</p>
           <p class="card__who">Enquiries handled directly by Fiona</p>
           <a class="open" href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer" aria-describedby="card-rayney">Open it<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11.2L11.1 5.1M6.2 4.8H11.3V9.9"/></svg></a>
-        </li>
-        <li class="card" id="work-salon">
-          <div class="plate plate--phone" data-clip="salon">
-            <picture>
-              <source type="image/webp" srcset="/images/home/phone-salon-v2-390.webp 390w, /images/home/phone-salon-v2.webp 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw">
-              <img src="/images/home/phone-salon-v2.jpg" srcset="/images/home/phone-salon-v2-390.jpg 390w, /images/home/phone-salon-v2.jpg 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw" alt="Brackenwynd Hair Studio demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
-            </picture>
+        </article>
+        <figure class="said" aria-labelledby="said-fiona-h">
+          <h3 id="said-fiona-h">What Fiona said</h3>
+          <blockquote cite="https://rayneydaypets.co.uk/">
+            <p>&ldquo;Working with Logan has been smooth and professional from the get go. No query was too much and always answered with enthusiasm. His in-depth knowledge and calm nature meant I always felt at ease through the whole process.&rdquo;</p>
+          </blockquote>
+          <figcaption>Fiona Stewart, <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a></figcaption>
+        </figure>
+      </div>
+
+      <div class="demos-head">
+        <h3 id="demos-h">Demonstrations, one per trade</h3>
+        <p>These businesses are invented. Each one shows what a site for that trade can do, so you can judge the work before you commit anything.</p>
+      </div>
+      <ul class="demos" aria-labelledby="demos-h">
+        <li class="demo">
+          <img src="/images/home/phone-salon-v2-390.jpg" alt="" width="390" height="844" loading="lazy" decoding="async">
+          <div>
+            <h4 class="demo__name"><a href="/demos/salon-v2/">Brackenwynd Hair Studio</a></h4>
+            <p class="demo__trade">Salon</p>
+            <p class="demo__what">Every look priced and every stylist named; you book by pointing at the hair you want.</p>
           </div>
-          <p class="flag flag--demo">Demonstration</p>
-          <h3 class="card__name" id="card-salon">Brackenwynd Hair Studio</h3>
-          <p class="card__facts">Salon&nbsp;&middot; every look priced, every stylist named</p>
-          <p class="card__who">Book by pointing at the hair you want</p>
-          <a class="open" href="/demos/salon-v2/" aria-describedby="card-salon">Open it<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11.2L11.1 5.1M6.2 4.8H11.3V9.9"/></svg></a>
         </li>
-        <li class="card" id="work-trades">
-          <div class="plate plate--phone" data-clip="trades">
-            <picture>
-              <source type="image/webp" srcset="/images/home/phone-trades-v2-390.webp 390w, /images/home/phone-trades-v2.webp 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw">
-              <img src="/images/home/phone-trades-v2.jpg" srcset="/images/home/phone-trades-v2-390.jpg 390w, /images/home/phone-trades-v2.jpg 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw" alt="Whinstone Joinery demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
-            </picture>
+        <li class="demo">
+          <img src="/images/home/phone-trades-v2-390.jpg" alt="" width="390" height="844" loading="lazy" decoding="async">
+          <div>
+            <h4 class="demo__name"><a href="/demos/trades/">Whinstone Joinery</a></h4>
+            <p class="demo__trade">Joinery</p>
+            <p class="demo__what">The job drawn to scale, dimensioned and priced, then a fast route to a quote.</p>
           </div>
-          <p class="flag flag--demo">Demonstration</p>
-          <h3 class="card__name" id="card-trades">Whinstone Joinery</h3>
-          <p class="card__facts">Trades&nbsp;&middot; the job drawn to scale, dimensioned and priced</p>
-          <p class="card__who">Then a fast route to a quote</p>
-          <a class="open" href="/demos/trades/" aria-describedby="card-trades">Open it<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11.2L11.1 5.1M6.2 4.8H11.3V9.9"/></svg></a>
         </li>
-        <li class="card" id="work-clinic">
-          <div class="plate plate--phone" data-clip="clinic">
-            <picture>
-              <source type="image/webp" srcset="/images/home/phone-clinic-v2-390.webp 390w, /images/home/phone-clinic-v2.webp 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw">
-              <img src="/images/home/phone-clinic-v2.jpg" srcset="/images/home/phone-clinic-v2-390.jpg 390w, /images/home/phone-clinic-v2.jpg 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw" alt="Rowanbank Physiotherapy demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
-            </picture>
+        <li class="demo">
+          <img src="/images/home/phone-clinic-v2-390.jpg" alt="" width="390" height="844" loading="lazy" decoding="async">
+          <div>
+            <h4 class="demo__name"><a href="/demos/clinic/">Rowanbank Physiotherapy</a></h4>
+            <p class="demo__trade">Physiotherapy</p>
+            <p class="demo__what">Session prices in the open and what happens at a first visit.</p>
           </div>
-          <p class="flag flag--demo">Demonstration</p>
-          <h3 class="card__name" id="card-clinic">Rowanbank Physiotherapy</h3>
-          <p class="card__facts">Clinic&nbsp;&middot; session pricing in the open</p>
-          <p class="card__who">What happens at a first visit</p>
-          <a class="open" href="/demos/clinic/" aria-describedby="card-clinic">Open it<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11.2L11.1 5.1M6.2 4.8H11.3V9.9"/></svg></a>
         </li>
-        <li class="card" id="work-professional">
-          <div class="plate plate--phone" data-clip="professional">
-            <picture>
-              <source type="image/webp" srcset="/images/home/phone-professional-v2-390.webp 390w, /images/home/phone-professional-v2.webp 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw">
-              <img src="/images/home/phone-professional-v2.jpg" srcset="/images/home/phone-professional-v2-390.jpg 390w, /images/home/phone-professional-v2.jpg 780w" sizes="(min-width: 1100px) 140px, (min-width: 700px) 18vw, 28vw" alt="Ochil Ledger accountancy demonstration site on a phone" width="780" height="1688" loading="lazy" decoding="async">
-            </picture>
+        <li class="demo">
+          <img src="/images/home/phone-professional-v2-390.jpg" alt="" width="390" height="844" loading="lazy" decoding="async">
+          <div>
+            <h4 class="demo__name"><a href="/demos/professional/">Ochil Ledger</a></h4>
+            <p class="demo__trade">Accountancy</p>
+            <p class="demo__what">A full fee table, no hidden numbers.</p>
           </div>
-          <p class="flag flag--demo">Demonstration</p>
-          <h3 class="card__name" id="card-professional">Ochil Ledger</h3>
-          <p class="card__facts">Accountancy&nbsp;&middot; a full fee table</p>
-          <p class="card__who">No hidden numbers</p>
-          <a class="open" href="/demos/professional/" aria-describedby="card-professional">Open it<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11.2L11.1 5.1M6.2 4.8H11.3V9.9"/></svg></a>
-        </li>
-        <li class="card card--yours" id="work-yours">
-          <div class="plate plate--yours">
-            <p class="plate__eyebrow">Not your trade?</p>
-            <p class="plate__pitch">Pick your trade, your pages and how people book, and see the price add up before you send it.</p>
-          </div>
-          <h3 class="card__name">Your business</h3>
-          <p class="card__facts">Any trade&nbsp;&middot; priced as you go</p>
-          <p class="card__who">Nothing is agreed until you say yes</p>
-          <a class="open" href="/library/">See the whole library<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8H13M9 4L13 8L9 12"/></svg></a>
-          <a class="open" href="/build/">Build yours<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8H13M9 4L13 8L9 12"/></svg></a>
         </li>
       </ul>
+      <p class="demos-yours">Not your trade? <a href="/build/">Pick your pages and see the price add up</a>, or see <a href="/library/">everything I&rsquo;ve built in the library</a>.</p>
     </div>
   </section>
 
@@ -632,16 +598,14 @@ addEventListener('pagereveal', function (e) {
       <p class="tw-quote__intro">Most studios want a call before they'll give you a number. I think that's backwards. If a price isn't confident enough to put in writing, something is wrong with the price, so here's the whole thing: the price, the time, what you own and the sites to judge it by.</p>
 
       <div class="tw-clause">
-        <span class="tw-clause__num">01</span>
         <div>
           <h3>The price</h3>
           <p class="tw-figure">&pound;599<small>fixed</small></p>
-          <p><strong>&pound;200 to start, &pound;399 when you approve it.</strong> Nothing else added afterwards unless you ask for it. No VAT, because I'm not registered for it.</p>
+          <p><strong>&pound;200 to start, &pound;399 when you approve it.</strong> That's the founding price for anyone who books by 28 February 2027; from 1 March 2027 it's &pound;749. Nothing else added afterwards unless you ask for it. No VAT, because I'm not registered for it.</p>
         </div>
       </div>
 
       <div class="tw-clause">
-        <span class="tw-clause__num">02</span>
         <div>
           <h3>The time</h3>
           <p class="tw-figure">10&ndash;14<small>days</small></p>
@@ -650,16 +614,14 @@ addEventListener('pagereveal', function (e) {
       </div>
 
       <div class="tw-clause">
-        <span class="tw-clause__num">03</span>
         <div>
           <h3>The site</h3>
           <p>Up to five pages, written from your own words and coded by hand. Built for phones first and tested on a real one. An enquiry form and click-to-call, a Google Business Profile set up properly, and the basic local search groundwork done. Two rounds of changes before it goes live.</p>
-          <p class="tw-small">Not included unless written into the quote: domain registration, hosting, e-commerce, professional photography and full brand design.</p>
+          <p class="tw-small">Two small bills come to you, not me: your domain, about &pound;8 to &pound;19 a year to the registrar, and hosting, which is free for a site this size. Not included unless written into the quote: e-commerce, professional photography and full brand design.</p>
         </div>
       </div>
 
       <div class="tw-clause">
-        <span class="tw-clause__num">04</span>
         <div>
           <h3>What you own</h3>
           <p>Your domain, your hosting, your code, in your name from day one. Leave whenever you like, for me or for anyone else, and the site keeps working exactly as it did the day before. I don't build anything that only I can maintain, so if I'm ever ill, busy, or stop doing this altogether, you lose nothing, because none of it depends on me.</p>
@@ -667,15 +629,13 @@ addEventListener('pagereveal', function (e) {
       </div>
 
       <div class="tw-clause">
-        <span class="tw-clause__num">05</span>
         <div>
           <h3>After launch</h3>
-          <p>Small text and photo changes are free for 30 days. After that it's <strong>&pound;25 an hour</strong>, billed in half-hour steps, nothing rounded up. Or there's the <strong>care plan at &pound;20 a month</strong>: I look after your renewals (the registrar's fee stays yours), check the site every month and make up to an hour of small changes, and you can cancel any time. The one exception is my own booking system in 06: that comes with the care plan for its first 12 months, because software that takes your bookings needs someone checking it. Without it there's no monthly fee and no obligation to ever come back.</p>
+          <p>Small text and photo changes are free for 30 days. After that it's <strong>&pound;25 an hour</strong>, billed in half-hour steps, nothing rounded up. Or there's the <strong>care plan at &pound;20 a month</strong>: I look after your renewals (the registrar's fee stays yours), check the site every month and make up to an hour of small changes, and you can cancel any time. The one exception is my own booking system, below: that comes with the care plan for its first 12 months, because software that takes your bookings needs someone checking it. Without it there's no monthly fee and no obligation to ever come back.</p>
         </div>
       </div>
 
       <div class="tw-clause">
-        <span class="tw-clause__num">06</span>
         <details class="tw-more">
           <summary><h3>When five pages isn't the job</h3><span class="tw-more__hint">Bookings, card payments and extra pages</span></summary>
           <p>Some businesses need more than five pages, or a site that takes bookings or payments. I build those on the same hand-coded stack. Bookings come two ways; everything else is its own line on top of the &pound;599. <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Jennifer Ellis Yoga</a> is the first one in practice: a booking calendar that holds the slot, and an admin page she updates herself.</p>
@@ -689,14 +649,13 @@ addEventListener('pagereveal', function (e) {
       </div>
 
       <div class="tw-clause tw-clause--wide">
-        <span class="tw-clause__num">07</span>
         <div>
           <h3>Questions you might have</h3>
           <dl class="tw-qa">
             <dt>What happens after I get in touch?</dt>
             <dd>I look at your business, and your current site if you have one, then reply with an honest recommendation and the real scope, before anything is agreed.</dd>
-            <dt>Is &pound;599 really the price for every project?</dt>
-            <dd>For the five-page site, yes. You pay me more only if you ask for more: an add-on in 06 (my own booking system, card payment or extra pages), the care plan in 05, or changes after the free 30 days, at &pound;25 an hour. All of it is optional and quoted before anything starts; the only tie is that my booking system comes with the care plan for its first 12 months. Domain registration and hosting aren't included (03): they're in your name, and the domain's yearly fee goes to the registrar, not to me. If your business needs something bigger than that, I'll say so and give you the real number before any work starts. <a href="/how-much-does-a-website-cost/">The full arithmetic, against builders and agencies, is on its own page.</a></dd>
+            <dt>Is &pound;599 really the price?</dt>
+            <dd>Yes, for a five-page site booked by 28 February 2027 (&pound;749 from 1 March). The only other costs are in your name, paid to them, not me: the domain at about &pound;8 to &pound;19 a year, and hosting, which is free for a five-page site. You pay me more only if you ask for more, such as extra pages, bookings or the care plan, and every one of those is priced on this page before any work starts. <a href="/how-much-does-a-website-cost/">The full sums, against builders and agencies.</a></dd>
             <dt>Who else has bought one?</dt>
             <dd><a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Jennifer Ellis Yoga</a> was the first: paid for, live on her own domain, and taking bookings through the site. <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a>, dog walking and pet home checks in Dollar, is the second. Ex-ceptional Engineering Services, a Falkirk electrical contractor, has a new site in progress with me now.</dd>
           </dl>
