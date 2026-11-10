@@ -118,11 +118,15 @@
     .pf__in { display: flex; flex-direction: column; gap: 0; }
     .pf__text { display: contents; }
     .pf__in > * , .pf__text > * { order: 9; }
-    .pf h1 { order: 1; } .pf__line { order: 2; } .pf__act { order: 3; } .pf__site { order: 4; margin-top: 1.75rem; } .pf__said { order: 5; } .pf__own { order: 6; } .pf__me { order: 7; }
+    .pf h1 { order: 1; } .pf__line, .pf__rate { order: 2; } .pf__act { order: 3; } .pf__site { order: 4; margin-top: 1.75rem; } .pf__said { order: 5; } .pf__own { order: 6; } .pf__me { order: 7; }
   }
   .pf h1 { font: 800 clamp(1.95rem, 1.3rem + 2.6vw, 3.4rem)/.98 var(--sc-font-display); letter-spacing: -.01em; margin: 0; color: var(--sc-ink); text-wrap: balance; text-transform: none; }
   .pf__line { margin: .9rem 0 0; font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); color: var(--sc-ink-soft); max-width: 34rem; }
   .pf__line strong { color: var(--sc-ink); }
+  .pf__rate { margin: 1rem 0 0; font-size: 1.0625rem; }
+  .pf__rate a { display: inline-flex; align-items: center; gap: .45rem; min-height: 44px; color: var(--sc-ink); text-decoration: none; }
+  .pf__rate-t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .25em; }
+  .pf__stars { letter-spacing: .08em; font-size: 1.1rem; }
   .pf__said { display: grid; gap: .9rem; margin: 1.4rem 0 0; }
   @media (min-width: 600px) { .pf__said { grid-template-columns: 1fr 1fr; } }
   .pf__q { margin: 0; }
@@ -438,6 +442,7 @@ addEventListener('pagereveal', function (e) {
     <div class="pf__text">
       <h1 id="pfH1">Websites for small businesses in Clackmannanshire, Stirling and Falkirk</h1>
       <p class="pf__line"><strong>&pound;599 fixed</strong> for up to five pages, live in 10 to 14 days. That&rsquo;s the founding price, open until 28 February 2027; from 1 March it&rsquo;s &pound;749.</p>
+      <p class="pf__rate"><a href="https://share.google/ZBnZVEuyqWCGcK8Ie" target="_blank" rel="noopener noreferrer"><span class="pf__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span class="pf__rate-t"><strong>5.0 on Google</strong> from 2 reviews</span></a></p>
       <div class="pf__said">
         <figure class="pf__q">
           <blockquote cite="https://jenniferelliscelebrant.co.uk/"><p>&ldquo;My friends and other celebrants keep telling me the site is just me.&rdquo;</p></blockquote>
