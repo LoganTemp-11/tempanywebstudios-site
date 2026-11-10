@@ -118,31 +118,39 @@
     .pf__in { display: flex; flex-direction: column; gap: 0; }
     .pf__text { display: contents; }
     .pf__in > * , .pf__text > * { order: 9; }
-    .pf h1 { order: 1; } .pf__line { order: 2; } .pf__act { order: 3; } .pf__grid { order: 4; margin-top: 1.5rem; } .pf__said { order: 5; } .pf__own { order: 6; } .pf__me { order: 7; }
+    .pf h1 { order: 1; } .pf__line { order: 2; } .pf__act { order: 3; } .pf__site { order: 4; margin-top: 1.75rem; } .pf__said { order: 5; } .pf__own { order: 6; } .pf__me { order: 7; }
   }
   .pf h1 { font: 800 clamp(1.95rem, 1.3rem + 2.6vw, 3.4rem)/.98 var(--sc-font-display); letter-spacing: -.01em; margin: 0; color: var(--sc-ink); text-wrap: balance; text-transform: none; }
   .pf__line { margin: .9rem 0 0; font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); color: var(--sc-ink-soft); max-width: 34rem; }
   .pf__line strong { color: var(--sc-ink); }
   .pf__said { display: grid; gap: .9rem; margin: 1.4rem 0 0; }
   @media (min-width: 600px) { .pf__said { grid-template-columns: 1fr 1fr; } }
-  .pf__q { margin: 0; padding: .1rem 0 .1rem 1rem; border-left: 4px solid var(--sc-accent); }
+  .pf__q { margin: 0; }
   .pf__q blockquote { margin: 0; }
-  .pf__q blockquote p { margin: 0; font: 500 1.0625rem/1.4 var(--sc-font-text); color: var(--sc-ink); }
+  .pf__q blockquote p { margin: 0; font: 600 1.1875rem/1.35 var(--sc-font-text); color: var(--sc-ink); text-indent: -.42em; }
   .pf__q figcaption { margin: .35rem 0 0; font-size: .9375rem; color: var(--sc-ink-soft); }
   .pf__q figcaption a { color: var(--sc-ink-soft); display: inline-flex; align-items: center; min-height: 44px; margin-block: -12px; }
   .pf__own { margin: 1.1rem 0 0; font-size: 1rem; color: var(--sc-ink-soft); max-width: 34rem; }
-  .pf__act { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.4rem 0 0; }
+  .pf__act { display: grid; gap: .5rem; justify-items: start; margin: 1.4rem 0 0; max-width: 26rem; }
+  .pf__act .pf__btn { width: 100%; }
+  .pf__quote { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--sc-ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .25em; }
   .pf__btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 1.4rem; border-radius: 3px; font: 700 1.125rem/1.1 var(--sc-font-text); text-decoration: none; }
   .act a.pf__btn, .pf a.pf__btn { text-decoration: none; }
   .pf__btn--call { background: var(--sc-accent); color: var(--sc-accent-ink); }
-  .pf__btn--quote { border: 2px solid var(--sc-ink); color: var(--sc-ink); }
   .pf__btn:hover { filter: brightness(1.05); }
-  .pf__btn--quote:hover { background: var(--sc-ink); color: var(--sc-canvas); }
   .pf__me { display: flex; align-items: center; gap: .75rem; margin: 1.4rem 0 0; }
   .pf__me picture { display: block; flex: none; width: 56px; height: 56px; }
   .pf__me img { display: block; width: 56px; height: 56px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1px var(--tw-line-strong); }
   .pf__me p { margin: 0; font-size: 1rem; color: var(--sc-ink-soft); }
   .pf__me a { color: var(--sc-ink); font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+  .pf__site { margin: 0; }
+  .pf__site > a { display: block; }
+  .pf__site picture { display: block; }
+  .pf__site img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; border: 1.5px solid var(--sc-ink); border-radius: 3px; }
+  .pf__site > a:focus-visible { outline: 3px solid var(--sc-ink); outline-offset: 4px; }
+  .pf__site figcaption { margin-top: .75rem; font-size: 1rem; color: var(--sc-ink-soft); max-width: 30rem; }
+  .pf__site figcaption a { color: var(--sc-ink); font-weight: 700; text-underline-offset: .2em; }
+  @media (min-width: 900px) { .pf__site { width: 100%; max-width: 460px; justify-self: end; } }
   .pf__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
   .pf__grid a { display: block; color: var(--sc-ink); text-decoration: none; }
   .pf__grid picture { display: block; padding: 8% 12% 0; background: var(--tw-plate); border: 1px solid var(--tw-line); border-radius: 4px; overflow: hidden; aspect-ratio: 4 / 4.6; }
@@ -157,10 +165,10 @@
   /* the sticky bar, phones only */
   .pf-bar { display: none; }
   @media (max-width: 719px) {
-    .pf-bar { position: fixed; z-index: 30; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px max(10px, env(safe-area-inset-left, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(10px, env(safe-area-inset-right, 0px)); background: var(--sc-canvas); border-top: 1px solid var(--tw-line-strong); }
+    .pf-bar { position: fixed; z-index: 30; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1.6fr 1fr; gap: 8px; padding: 8px max(10px, env(safe-area-inset-left, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(10px, env(safe-area-inset-right, 0px)); background: var(--sc-canvas); border-top: 1px solid var(--tw-line-strong); }
     .pf-bar a { display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 3px; font: 700 1.0625rem/1 var(--sc-font-text); text-decoration: none; }
     .pf-bar a:first-child { background: var(--sc-accent); color: var(--sc-accent-ink); }
-    .pf-bar a:last-child { border: 2px solid var(--sc-ink); color: var(--sc-ink); }
+    .pf-bar a:last-child { color: var(--sc-ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .25em; }
     body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
     html { scroll-padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
   }
@@ -444,38 +452,32 @@ addEventListener('pagereveal', function (e) {
       <div class="pf__said">
         <figure class="pf__q">
           <blockquote cite="https://yogawithjenniferellis.co.uk/"><p>&ldquo;He managed to capture the tone and vibe that was important to me, and I am so impressed by that.&rdquo;</p></blockquote>
-          <figcaption>Jennifer Ellis&nbsp;&middot; <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Yoga with Jennifer Ellis</a></figcaption>
+          <figcaption>Jennifer Ellis, <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Yoga with Jennifer Ellis</a></figcaption>
         </figure>
         <figure class="pf__q">
           <blockquote cite="https://rayneydaypets.co.uk/"><p>&ldquo;Working with Logan has been smooth and professional from the get go.&rdquo;</p></blockquote>
-          <figcaption>Fiona Stewart&nbsp;&middot; <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a></figcaption>
+          <figcaption>Fiona Stewart, <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a></figcaption>
         </figure>
       </div>
       <p class="pf__own">Your domain, hosting and code are in your name from day one. If I ever stop, your site keeps working.</p>
       <div class="pf__act">
-        <a class="pf__btn pf__btn--call" href="tel:+447487536649" data-track="call">Call 07487 536649</a>
-        <a class="pf__btn pf__btn--quote" href="/build/" data-track="quote">Get a quote</a>
+        <a class="pf__btn pf__btn--call" href="tel:+447487536649" data-track="call">Call Logan: 07487 536649</a>
+        <a class="pf__quote" href="/build/" data-track="quote">Build yours and see the price</a>
       </div>
       <div class="pf__me">
-        <picture>
-          <source type="image/webp" srcset="/images/home/logan-160.webp?v=5 160w, /images/home/logan-280.webp?v=5 280w" sizes="56px">
-          <img src="/images/home/logan-160.jpg?v=5" alt="" width="56" height="56" decoding="async">
-        </picture>
         <p>Built by <a href="#me">Logan, 17, in Dollar</a>. Just me, start to finish.</p>
       </div>
     </div>
-    <ul class="pf__grid" aria-label="Sites I've built, on a phone">
-      <li><a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer"><picture><source type="image/webp" srcset="/images/home/phone-jennifer-390.webp 390w, /images/home/phone-jennifer.webp 780w" sizes="(min-width: 900px) 200px, 42vw"><img src="/images/home/phone-jennifer-390.jpg" alt="Jennifer Ellis Yoga, a live client site, on a phone" width="390" height="844" fetchpriority="high" decoding="async"></picture><span class="pf__tag pf__tag--live">Live client</span><span class="pf__name">Jennifer Ellis Yoga</span></a></li>
-      <li><a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer"><picture><source type="image/webp" srcset="/images/home/phone-rayney-v2-390.webp 390w, /images/home/phone-rayney-v2.webp 780w" sizes="(min-width: 900px) 200px, 42vw"><img src="/images/home/phone-rayney-v2-390.jpg" alt="Rayney Day Pet Services, a live client site, on a phone" width="390" height="844" decoding="async"></picture><span class="pf__tag pf__tag--live">Live client</span><span class="pf__name">Rayney Day Pet Services</span></a></li>
-      <li><a href="/demos/salon-v2/"><picture><source type="image/webp" srcset="/images/home/phone-salon-v2-390.webp 390w, /images/home/phone-salon-v2.webp 780w" sizes="(min-width: 900px) 200px, 42vw"><img src="/images/home/phone-salon-v2-390.jpg" alt="Brackenwynd Hair Studio demonstration site on a phone" width="390" height="844" loading="lazy" decoding="async"></picture><span class="pf__tag">Demonstration</span><span class="pf__name">Brackenwynd Hair Studio</span></a></li>
-      <li><a href="/demos/trades/"><picture><source type="image/webp" srcset="/images/home/phone-trades-v2-390.webp 390w, /images/home/phone-trades-v2.webp 780w" sizes="(min-width: 900px) 200px, 42vw"><img src="/images/home/phone-trades-v2-390.jpg" alt="Whinstone Joinery demonstration site on a phone" width="390" height="844" loading="lazy" decoding="async"></picture><span class="pf__tag">Demonstration</span><span class="pf__name">Whinstone Joinery</span></a></li>
-    </ul>
+    <figure class="pf__site">
+      <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer"><picture><source type="image/webp" srcset="/images/home/phone-rayney-v2-390.webp 390w, /images/home/phone-rayney-v2.webp 780w" sizes="(min-width: 900px) 460px, 92vw"><img src="/images/home/phone-rayney-v2-390.jpg" alt="The Rayney Day Pet Services website on a phone: the opening screen" width="390" height="844" fetchpriority="high" decoding="async"></picture></a>
+      <figcaption><a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a>, live since September. Also live: <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Jennifer Ellis Yoga</a>. More in <a href="/library/">the library</a>.</figcaption>
+    </figure>
   </div>
 </section>
 <!-- the mobile bar: call and quote always one tap away under 720px -->
 <nav class="pf-bar" aria-label="Call or get a quote">
-  <a href="tel:+447487536649" data-track="call">Call</a>
-  <a href="/build/" data-track="quote">Get a quote</a>
+  <a href="tel:+447487536649" data-track="call">Call Logan</a>
+  <a href="/build/" data-track="quote">See the price</a>
 </nav>
 
 
@@ -506,7 +508,7 @@ addEventListener('pagereveal', function (e) {
           <blockquote cite="https://yogawithjenniferellis.co.uk/">
             <p>&ldquo;I had a sense of what I wanted for my website and, from our first meeting, Logan listened carefully, confirming via email his understanding of what I wanted. He then created a site with the functionality I needed, while also patiently explaining what wasn't possible to a website novice like me. He managed to capture the tone and vibe that was important to me, and I am so impressed by that. He replied quickly to emails and made any changes that I requested. I recommend Logan and Tempany Web Studios highly.&rdquo;</p>
           </blockquote>
-          <figcaption>Jennifer Ellis&nbsp;&middot; <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Yoga with Jennifer Ellis</a></figcaption>
+          <figcaption>Jennifer Ellis, <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Yoga with Jennifer Ellis</a></figcaption>
         </figure>
       </div>
     </div>
@@ -520,7 +522,7 @@ addEventListener('pagereveal', function (e) {
         <blockquote cite="https://rayneydaypets.co.uk/">
           <p>&ldquo;Working with Logan has been smooth and professional from the get go. No query was too much and always answered with enthusiasm. His in-depth knowledge and calm nature meant I always felt at ease through the whole process.&rdquo;</p>
         </blockquote>
-        <figcaption>Fiona Stewart&nbsp;&middot; <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a></figcaption>
+        <figcaption>Fiona Stewart, <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a></figcaption>
       </figure>
       <ul class="cards">
         <li class="card card--live" id="work-rayney">
