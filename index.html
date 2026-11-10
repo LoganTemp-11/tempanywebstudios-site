@@ -97,9 +97,11 @@
   :root:not(.js) .te .tw-lights { display: none; }
   /* PLAN 4.2: from 720px the links and the full number; the written name joins at 880px
      (the whole set is about 860px wide), and the long form at 1180px. */
-  @media (min-width: 720px) { .te__tel-long { display:inline; } .te__tel-short { display:none; } }
-  @media (max-width: 879px) { .te__who { position:absolute !important; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; } }
-  @media (max-width: 1179px) { .te__who-n, .te__who-x { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; } }
+  @media (min-width: 1000px) { .te__tel-long { display:inline; } .te__tel-short { display:none; } }
+  /* With The Build in the bar the set runs wider: tighter type and gaps until it fits on one row. */
+  @media (min-width: 720px) and (max-width: 999px) { .te__nav ul { column-gap: .7rem; } .te__nav a, .te__where summary { font-size: .9375rem; } .te__mark { min-width: 36px; } }
+  @media (max-width: 1259px) { .te__who { position:absolute !important; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; } }
+  @media (max-width: 1399px) { .te__who-n, .te__who-x { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; } }
   @media (max-width: 719px) {
     .te__nav { display:none; }
     .te__tel { margin-left:auto; padding: 0 .9rem; border: 1px solid var(--tw-line-strong); border-radius: 3px; }
@@ -110,6 +112,13 @@
   .pf { padding-block: clamp(1.25rem, 3vw, 3rem) clamp(2.5rem, 4.6vw, 4.25rem); }
   .pf__in { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem 3.5rem; align-items: start; }
   @media (min-width: 900px) { .pf__in { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; } }
+  /* On a phone the work breaks the fold: headline, offer, buttons, then the phones, then the reviews. */
+  @media (max-width: 899px) {
+    .pf__in { display: flex; flex-direction: column; gap: 0; }
+    .pf__text { display: contents; }
+    .pf__in > * , .pf__text > * { order: 9; }
+    .pf h1 { order: 1; } .pf__line { order: 2; } .pf__act { order: 3; } .pf__grid { order: 4; margin-top: 1.5rem; } .pf__said { order: 5; } .pf__own { order: 6; } .pf__me { order: 7; }
+  }
   .pf h1 { font: 800 clamp(1.95rem, 1.3rem + 2.6vw, 3.4rem)/.98 var(--sc-font-display); letter-spacing: -.01em; margin: 0; color: var(--sc-ink); text-wrap: balance; text-transform: none; }
   .pf__line { margin: .9rem 0 0; font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); color: var(--sc-ink-soft); max-width: 34rem; }
   .pf__line strong { color: var(--sc-ink); }
@@ -152,6 +161,7 @@
     .pf-bar a:first-child { background: var(--sc-accent); color: var(--sc-accent-ink); }
     .pf-bar a:last-child { border: 2px solid var(--sc-ink); color: var(--sc-ink); }
     body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+    html { scroll-padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
   }
   /* quote 06, folded */
   .tw-more > summary { list-style: none; cursor: pointer; }
@@ -706,8 +716,8 @@ addEventListener('pagereveal', function (e) {
         <input type="hidden" name="subject" value="Reply to your quote from the no-script form">
         <input type="hidden" name="redirect" value="https://tempanywebstudios.co.uk/thanks/">
         <div class="tw-row">
-          <label class="tw-field"><span>Your name</span><input type="text" name="name" autocomplete="name" required></label>
-          <label class="tw-field"><span>Business name</span><input type="text" name="business" autocomplete="organization" required></label>
+          <label class="tw-field"><span>Your name</span><input type="text" name="name" autocomplete="name" maxlength="80" required></label>
+          <label class="tw-field"><span>Business name</span><input type="text" name="business" autocomplete="organization" maxlength="80" required></label>
         </div>
         <div class="tw-row">
           <label class="tw-field"><span>Email address</span><input type="email" name="email" autocomplete="email" required></label>
@@ -789,8 +799,7 @@ near.observe(el); seen.observe(el);
 <script>
 /* The enquiry. Posts JSON to Web3Forms without leaving the page; method and
    action stay as the no-JS fallback. The hidden "picked" field (no name, so the
-   no-script post leaves it out) is kept by the sketchpad script; if that script
-   never ran, the chips and the name line are read here instead. The payload
+   no-script post leaves it out) can carry where the enquiry started. The payload
    keys are fixed. */
 (function () {
   var form = document.getElementById('enquiry-form');

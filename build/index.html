@@ -81,7 +81,9 @@
   .bd__go { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 52px; margin-top: var(--sc-4); border-radius: 3px; background: var(--sc-accent); color: var(--sc-accent-ink); font: 700 1.125rem/1.1 var(--sc-font-text); text-decoration: none; }
   .bd__send { margin-top: var(--sc-7); max-width: 46rem; }
   .bd__send h2 { margin: 0 0 var(--sc-3); }
-  :root:not(.js) .bd__sum [data-live] { display: none; }
+  :root:not(.js) [data-live] { display: none !important; }
+  .bd__mini { display: none; }
+  @media (max-width: 959px) { .bd__mini { display: flex; justify-content: space-between; align-items: baseline; position: sticky; top: 0; z-index: 5; margin: 0 calc(-1 * var(--sc-gutter)) var(--sc-4); padding: .7rem var(--sc-gutter); background: var(--sc-canvas); border-bottom: 1px solid var(--tw-line-strong); font-weight: 700; } .bd__mini strong { font: 800 1.6rem/1 var(--sc-font-display); } }
   .bd__nojs { display: none; }
   :root:not(.js) .bd__nojs { display: block; }
 </style>
@@ -122,7 +124,6 @@ addEventListener('pagereveal', function (e) {
     <li><a href="/#work">The Work</a></li>
     <li><a href="/library/">The Library</a></li>
     <li><a href="/build/">The Build</a></li>
-    <li><a href="/#said">The Reviews</a></li>
     <li><a href="/#quote">The Quote</a></li>
     <li><a href="/#me">The Maker</a></li>
     <li class="tw-where">
@@ -147,12 +148,13 @@ addEventListener('pagereveal', function (e) {
   <section class="tw-page tw-opening" aria-labelledby="h1" style="min-height:0;display:block">
     <p class="tw-eyebrow">The Build</p>
     <h1 id="h1" style="margin:0 0 var(--sc-3)">Build your website, and see the price as you go</h1>
-    <p style="max-width:40rem;color:var(--sc-ink-soft);margin:0 0 var(--sc-6)">Four choices. The number on the right is what you'd pay, in writing, before anything starts. Send it and I'll reply within one working day with an honest recommendation.</p>
+    <p style="max-width:40rem;color:var(--sc-ink-soft);margin:0 0 var(--sc-6)">Four choices. The total adds up as you pick, and it's what you'd pay, in writing, before anything starts. Send it and I'll reply within one working day with an honest recommendation.</p>
 
     <form id="build-form" class="bd" method="post" action="https://api.web3forms.com/submit">
       <input type="hidden" name="access_key" value="7148c950-d9f1-4d33-b78e-a411c89cb1e3">
       <input type="hidden" name="subject" value="A build from the no-script Build page">
       <input type="hidden" name="redirect" value="https://tempanywebstudios.co.uk/thanks/">
+      <p class="bd__mini" data-live aria-hidden="true">Your build <strong id="bdMini">&pound;599</strong></p>
       <div class="bd__parts">
         <fieldset class="bd__step">
           <legend><span class="bd__n">01</span>What do you do?</legend>
@@ -169,12 +171,13 @@ addEventListener('pagereveal', function (e) {
 
         <fieldset class="bd__step">
           <legend><span class="bd__n">02</span>How many pages?</legend>
-          <div class="bd__pages">
+          <div class="bd__pages" data-live>
             <button type="button" id="bdLess" aria-label="One page fewer">&minus;</button>
             <output id="bdPagesOut" for="bdPages" aria-live="polite">5 pages</output>
             <button type="button" id="bdMore" aria-label="One page more">+</button>
             <input type="hidden" name="pages" id="bdPages" value="5">
           </div>
+          <p class="bd__nojs">Five pages are included. If you need more, say so in the message at the end.</p>
           <p class="bd__hint">Up to five are in the &pound;599: usually home, services, about, prices and contact. Each one after that is &pound;45.</p>
         </fieldset>
 
@@ -202,7 +205,7 @@ addEventListener('pagereveal', function (e) {
         <ul class="bd__lines" id="bdLines" data-live>
           <li><span>Five-page website</span><strong>&pound;599</strong></li>
         </ul>
-        <p class="bd__total"><span>Total</span><output id="bdTotal" aria-live="polite">&pound;599</output></p>
+        <p class="bd__total" data-live><span>Total</span><output id="bdTotal" aria-live="polite">&pound;599</output></p>
         <p class="bd__month" id="bdMonth" data-live hidden></p>
         <p class="bd__nojs">&pound;599 for five pages. &pound;649 with my own booking system. Extra pages &pound;45 each, card payment from &pound;120, the care plan &pound;20 a month.</p>
         <p class="bd__fine">&pound;200 to start, the rest when you approve it. No VAT. Your domain, hosting and code are in your name from day one; the domain's yearly fee goes to the registrar.</p>
@@ -212,8 +215,8 @@ addEventListener('pagereveal', function (e) {
       <div class="bd__send tw-form" id="send" style="grid-column:1/-1">
         <h2>Send it to me</h2>
         <div class="tw-row">
-          <label class="tw-field"><span>Your name</span><input type="text" name="name" autocomplete="name" required></label>
-          <label class="tw-field"><span>Business name</span><input type="text" name="business" autocomplete="organization" required></label>
+          <label class="tw-field"><span>Your name</span><input type="text" name="name" autocomplete="name" maxlength="80" required></label>
+          <label class="tw-field"><span>Business name</span><input type="text" name="business" autocomplete="organization" maxlength="80" required></label>
         </div>
         <div class="tw-row">
           <label class="tw-field"><span>Email address</span><input type="email" name="email" autocomplete="email" required></label>
@@ -281,6 +284,7 @@ addEventListener('pagereveal', function (e) {
       a.textContent = r[0]; b.textContent = r[1] ? gbp(r[1]) : 'included'; li.appendChild(a); li.appendChild(b); lines.appendChild(li);
     });
     total.textContent = (s.from ? 'from ' : '') + gbp(s.sum);
+    var mini = document.getElementById('bdMini'); if (mini) mini.textContent = total.textContent + (s.monthly ? ' + £20/mo' : '');
     month.hidden = !s.monthly; month.textContent = s.monthly ? '+ ' + s.monthly : '';
     return s;
   }
@@ -303,7 +307,7 @@ addEventListener('pagereveal', function (e) {
     var summary = [String(data.get('trade') || 'Not picked'), s.p + ' pages', s.b, s.card ? 'card payment' : '', s.care ? 'care plan' : ''].filter(Boolean).join(' · ');
     var payload = {
       access_key: String(data.get('access_key')),
-      subject: 'A build from ' + String(data.get('name') || 'a visitor') + ': ' + (s.from ? 'from ' : '') + '£' + s.sum,
+      subject: 'A build from ' + String(data.get('name') || 'a visitor') + ': ' + (s.from ? 'from ' : '') + gbp(s.sum),
       from_name: 'Tempany Web Studios website',
       name: String(data.get('name') || ''),
       business: String(data.get('business') || ''),
@@ -311,7 +315,7 @@ addEventListener('pagereveal', function (e) {
       phone: String(data.get('phone') || 'Not supplied'),
       this_is_about: 'The Build',
       started_from: 'The Build · ' + summary,
-      build_total: (s.from ? 'from ' : '') + '£' + s.sum + (s.monthly ? ' + ' + s.monthly : ''),
+      build_total: (s.from ? 'from ' : '') + gbp(s.sum) + (s.monthly ? ' + ' + s.monthly : ''),
       message: String(data.get('message') || '')
     };
     try { if (typeof window.twArrivedFrom === 'function') payload.arrived_from = window.twArrivedFrom(); } catch (e) {}
@@ -322,9 +326,10 @@ addEventListener('pagereveal', function (e) {
       var res = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
       var result = await res.json();
       if (!result.success) throw new Error(result.message || 'Submission failed');
-      try { if (typeof window.twLead === 'function') window.twLead('home'); } catch (e) {}
+      try { if (typeof window.twLead === 'function') window.twLead('build'); } catch (e) {}
       status.textContent = 'Sent. You will get a straight answer within one working day.';
       status.className = 'tw-status is-ok';
+      form.reset(); pagesIn.value = 5; care.dataset.was = ''; care.disabled = false; render();
     } catch (err) {
       status.textContent = 'That did not send. Please email logan@tempanywebstudios.co.uk directly.';
       status.className = 'tw-status is-error';
