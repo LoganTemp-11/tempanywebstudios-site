@@ -1,0 +1,15 @@
+# robots.txt for the Superior Trade Frames concept
+#
+# A robots.txt only carries weight at the root of a domain. This copy sits in a
+# subfolder, so no crawler reads it here; the root robots.txt of
+# tempanywebstudios.co.uk is the one that counts. It ships so the same shape
+# exists when the site moves to Superior's own domain.
+#
+# This concept is kept out of the index by the noindex, nofollow meta tag on
+# every page. Do NOT add a Disallow for this folder to the root robots.txt: a
+# Disallow stops crawlers reading that meta tag at all.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://tempanywebstudios.co.uk/concepts/superior-trade-frames/sitemap.xml
