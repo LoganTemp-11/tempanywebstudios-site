@@ -14,14 +14,14 @@
   /* spacing scale 4/8/16/24/32/48/64/96 */
   --s1: 4px; --s2: 8px; --s3: 16px; --s4: 24px; --s5: 32px; --s6: 48px; --s7: 64px; --s8: 96px;
 
-  /* seven type sizes (README section 9 caps it at eight), fluid, tracking tightens as size grows */
-  --t-h1: clamp(2.25rem, 1.55rem + 3vw, 4rem);
-  --t-h2: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+  /* six type sizes at any one width: strip, small, body, h3, h2, h1 (the wordmark and the
+   drawing's lettering reuse h3 and body), fluid, tracking tightens as size grows */
+  --t-h1: clamp(2rem, 1rem + 3.75vw, 4rem);
+  --t-h2: clamp(1.75rem, 1.3rem + 1.5vw, 2.5rem);
   --t-h3: 1.375rem;
-  --t-mark: 1.75rem;
   --t-body: 1.125rem;
   --t-small: 1rem;
-  --t-strip: 0.875rem; /* the concept strip only, so it stays one line at 375px */
+  --t-strip: 0.875rem; /* the concept strip and the consent line only */
 
   --bar-h: 0px;          /* sticky call bar height, set under 900px */
   --consent-h: 0px;      /* written by site.js while the consent bar shows */
@@ -39,7 +39,7 @@ body {
   line-height: 1.5;
   padding-bottom: calc(var(--bar-h) + var(--consent-h));
 }
-@media (max-width: 899px) { :root { --bar-h: 72px; } }
+@media (max-width: 899px) { :root { --bar-h: 62px; } }
 
 h1, h2, h3 { color: var(--blue); font-weight: 700; line-height: 1.1; margin: 0 0 var(--s3); text-wrap: balance; }
 h1 { font-size: var(--t-h1); letter-spacing: -0.02em; }
@@ -69,11 +69,12 @@ img { display: block; max-width: 100%; height: auto; }
 .head { padding: var(--s2) 0 0; }
 .head .wrap { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 0 var(--s4); }
 .mark { color: var(--blue); text-decoration: none; font-weight: 700; line-height: 1; display: inline-flex; align-items: baseline; gap: var(--s2); min-height: 44px; padding: var(--s2) 0; }
-.mark b { font-size: var(--t-mark); letter-spacing: -0.015em; }
+.mark b { font-size: var(--t-h3); letter-spacing: -0.015em; }
 .mark span { font-size: var(--t-small); }
 .mark:hover { color: var(--blue-deep); }
 .nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0 var(--s3); margin: 0; padding: 0; font-size: var(--t-small); }
 @media (min-width: 900px) { .nav ul { font-size: var(--t-body); gap: 0 var(--s4); } }
+@media (max-width: 359px) { .nav ul { gap: 0 var(--s1); font-size: var(--t-strip); } }
 .nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; color: var(--ink); text-decoration: none; border-bottom: 2px solid transparent; }
 .nav a:hover { color: var(--blue); border-bottom-color: var(--wall); }
 .nav a[aria-current="page"] { border-bottom-color: var(--ink); }
@@ -121,7 +122,7 @@ section.first { border-top: 0; padding-top: var(--s4); }
      above the sticky bar; the email line follows it. Source order is unchanged. */
   .hero .wrap { gap: 0; }
   .hero .text { display: contents; }
-  .hero h1 { font-size: 2rem; margin-bottom: var(--s2); order: 1; }
+  .hero h1 { margin-bottom: var(--s2); order: 1; }
   .hero .line { font-size: var(--t-body); margin-bottom: var(--s2); order: 2; }
   .hero .proof { font-size: var(--t-small); margin-bottom: var(--s3); order: 3; }
   .hero .call { margin: 0 0 var(--s2); order: 4; }
@@ -252,10 +253,13 @@ legend { font-weight: 700; padding: 0; margin-bottom: var(--s2); }
 }
 
 /* Consent bar: above the sticky bar, never over it */
-#consent { position: fixed; left: 0; right: 0; bottom: var(--bar-h); z-index: 40; background: var(--white); border-top: 1px solid var(--ink); padding: var(--s3) 0; }
+#consent { position: fixed; left: 0; right: 0; bottom: var(--bar-h); z-index: 40; background: var(--white); border-top: 1px solid var(--ink); padding: var(--s2) 0; }
 #consent[hidden] { display: none; }
-#consent .wrap { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); align-items: center; justify-content: space-between; }
-#consent p { margin: 0; font-size: var(--t-small); }
-#consent .btns { display: flex; gap: var(--s2); }
+/* One compact row, so the first screen's Call button and some of the van show while it is up */
+#consent .wrap { display: flex; flex-wrap: nowrap; gap: var(--s2); align-items: center; justify-content: space-between; }
+#consent p { margin: 0; font-size: var(--t-strip); line-height: 1.3; }
+#consent .btns { display: flex; gap: var(--s2); flex: none; }
+#consent .btn { min-height: 44px; padding: var(--s1) var(--s3); font-size: var(--t-small); }
+@media (max-width: 899px) { #consent .btn { padding: var(--s1) var(--s2); } }
 
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }

@@ -157,7 +157,7 @@
     d.appendChild(el('line', { x1: rx, y1: y0, x2: rx, y2: y0 + fh }));
     d.appendChild(el('line', { x1: rx - 8, y1: y0, x2: rx + 8, y2: y0 }));
     d.appendChild(el('line', { x1: rx - 8, y1: y0 + fh, x2: rx + 8, y2: y0 + fh }));
-    var font = { 'font-family': 'Carlito, Calibri, sans-serif', 'font-size': '20', 'font-weight': '700', fill: INK, style: 'font-variant-numeric: tabular-nums' };
+    var font = { 'font-family': 'Carlito, Calibri, sans-serif', 'font-size': '18', 'font-weight': '700', fill: INK, style: 'font-variant-numeric: tabular-nums' };
     var top = el('text', Object.assign({ x: (x0 + fw / 2).toFixed(1), y: (ty - 8).toFixed(1), 'text-anchor': 'middle', 'data-dim': 'width' }, font), st.dw + ' mm');
     var cy = y0 + fh / 2;
     var right = el('text', Object.assign({ x: (rx + 22).toFixed(1), y: cy.toFixed(1), 'text-anchor': 'middle', transform: 'rotate(-90 ' + (rx + 22).toFixed(1) + ' ' + cy.toFixed(1) + ')', 'data-dim': 'height' }, font), st.dh + ' mm');
@@ -231,11 +231,22 @@
     syncMaterials();
     var st = state();
     render(st);
-    var label = (st.example ? 'Example: ' : '') + name({ type: st.dt, material: st.type ? st.material : (st.example ? EX.material : st.material) }) + ', ' + st.dw + ' mm wide by ' + st.dh + ' mm high, ' + st.dc;
-    svg.setAttribute('aria-label', label);
-    cap.textContent = st.example
-      ? 'Example: a composite door, 830 by 2050 mm. Type your sizes and it redraws to them.'
-      : 'Drawn to your sizes: ' + st.dw + ' mm wide by ' + st.dh + ' mm high.';
+    // caption and label always describe what is drawn, and say which parts are still the example
+    var nothing = !st.type && !st.material && !st.colour && !good.w && !good.h;
+    var drawnMat = st.material || (st.type ? null : EX.material);
+    var desc = name({ type: st.dt, material: drawnMat }) + ', ' + st.dw + ' mm wide by ' + st.dh + ' mm high, ' + st.dc;
+    var ex = [];
+    if (!st.type) ex.push('type');
+    if (!good.w) ex.push('width');
+    if (!good.h) ex.push('height');
+    if (!st.colour) ex.push('colour');
+    var exList = ex.length > 1 ? ex.slice(0, -1).join(', ') + ' and ' + ex[ex.length - 1] : ex[0];
+    svg.setAttribute('aria-label', (ex.length ? 'Example: ' : '') + desc);
+    cap.textContent = nothing
+      ? 'Example: ' + desc + '. Type your sizes and it redraws to them.'
+      : ex.length
+        ? desc + '. The ' + exList + (ex.length > 1 ? ' are' : ' is') + ' the example until you choose yours.'
+        : 'Drawn to your sizes: ' + desc + '.';
 
     var c = compose(st);
     msg.textContent = '';
