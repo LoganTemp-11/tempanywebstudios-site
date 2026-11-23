@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Write a post | Dannika Bernadette</title>
+<meta name="description" content="The blog editor for Dannika Bernadette, shown as a working preview.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://tempanywebstudios.co.uk/concepts/dannika-bernadette/admin/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Write a post | Dannika Bernadette">
+<meta property="og:description" content="The blog editor for Dannika Bernadette, shown as a working preview.">
+<meta property="og:url" content="https://tempanywebstudios.co.uk/concepts/dannika-bernadette/admin/">
+<meta property="og:image" content="https://tempanywebstudios.co.uk/concepts/dannika-bernadette/images/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#000000">
+<link rel="preload" href="../fonts/libre-baskerville-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/almarai-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css?v=4">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<p class="concept">A concept for Dannika Bernadette, made by <a href="https://tempanywebstudios.co.uk/">Tempany Web Studios</a>. It is not her live website.</p>
+<header class="top">
+  <a class="brand" href=".././"><img src="../images/logo.png" width="915" height="619" alt="Dannika Bernadette, Nail Artist"></a>
+  <nav class="nav" aria-label="Main">
+    <a href="../nails/"><span class="w">Nails and </span>prices</a>
+    <a href="../education/">Education</a>
+    <a href="../blog/" aria-current="page">Blog</a>
+    <a href="../about/">About<span class="w"> and contact</span></a>
+    <a class="book" href="https://www.fresha.com/a/dannika-bernadette-nail-artist-dunfermline-29-chapel-street-pa4xx3mi/booking">Book on Fresha</a>
+  </nav>
+</header>
+<main id="main">
+
+<section style="padding-top:16px">
+  <div class="wrap narrow">
+    <h1>Write a post</h1>
+    <p class="note">This is the editor Dannika would use, working as a preview. Drafts save in this browser only. On the live site it sits behind her own login and Publish puts the post on the blog.</p>
+    <form id="ed" onsubmit="return false">
+      <label for="t">Title</label><input type="text" id="t" autocomplete="off">
+      <label for="dt">Date</label><input type="date" id="dt">
+      <label for="img">Cover photo</label><input type="file" id="img" accept="image/*">
+      <label id="bl" for="b">Post</label>
+      <div class="tools" role="toolbar" aria-label="Formatting">
+        <button type="button" data-c="formatBlock" data-v="h2">Heading</button>
+        <button type="button" data-c="formatBlock" data-v="p">Paragraph</button>
+        <button type="button" data-c="bold">Bold</button>
+        <button type="button" data-c="italic">Italic</button>
+        <button type="button" data-c="insertUnorderedList">List</button>
+        <button type="button" data-c="createLink">Link</button>
+      </div>
+      <div class="ed-body" id="b" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="bl"></div>
+      <div class="ed-actions">
+        <button type="button" class="btn" id="save">Save draft</button>
+        <button type="button" class="quiet" id="clear">Start again</button>
+        <span class="status" id="st" role="status"></span>
+      </div>
+    </form>
+    <div class="preview post">
+      <p style="margin:0 0 16px">How it will look on the blog</p>
+      <time id="pd"></time>
+      <h2 id="pt" style="margin:8px 0 24px"></h2>
+      <img id="pi" alt="" hidden>
+      <div id="pb"></div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var K='db-concept-draft',$=function(i){return document.getElementById(i)};
+  var t=$('t'),dt=$('dt'),b=$('b'),img=$('img'),st=$('st'),cover='';
+  function fmt(v){if(!v)return'';var d=new Date(v+'T12:00:00');return d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}
+  function draw(){
+    $('pt').textContent=t.value||'Your title';
+    $('pd').textContent=fmt(dt.value);
+    $('pb').innerHTML=b.innerHTML||'<p>Your post appears here as you type.</p>';
+    if(cover){$('pi').src=cover;$('pi').hidden=false}else{$('pi').hidden=true}
+  }
+  function load(){try{var d=JSON.parse(localStorage.getItem(K)||'null');if(d){t.value=d.t||'';dt.value=d.dt||'';b.innerHTML=d.b||'';st.textContent='Draft restored.'}}catch(err){}
+    if(!dt.value)dt.value=new Date().toISOString().slice(0,10);draw()}
+  $('save').onclick=function(){try{localStorage.setItem(K,JSON.stringify({t:t.value,dt:dt.value,b:b.innerHTML}));st.textContent='Draft saved in this browser.'}catch(err){st.textContent='This browser would not save the draft.'}};
+  $('clear').onclick=function(){try{localStorage.removeItem(K)}catch(err){}t.value='';b.innerHTML='';cover='';img.value='';st.textContent='Cleared.';draw()};
+  document.querySelectorAll('.tools button').forEach(function(x){x.onclick=function(){b.focus();var c=x.dataset.c,v=x.dataset.v||null;
+    if(c==='createLink'){v=prompt('Paste the web address');if(!v)return;if(!/^https?:/i.test(v))v='https://'+v}
+    document.execCommand(c,false,v);draw()}});
+  b.addEventListener('paste',function(ev){ev.preventDefault();document.execCommand('insertText',false,(ev.clipboardData||window.clipboardData).getData('text/plain'))});
+  img.onchange=function(){var f=img.files[0];if(!f)return;var fr=new FileReader();fr.onload=function(){cover=fr.result;draw()};fr.readAsDataURL(f)};
+  [t,dt].forEach(function(x){x.oninput=draw});b.addEventListener('input',draw);load();
+})();
+</script>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h2>Dannika Bernadette, Nail Artist</h2>
+        <p>Inside Ghost, 29 Chapel Street, Dunfermline KY12 7AW. By appointment, adults only.</p>
+        <p><a href="https://www.fresha.com/a/dannika-bernadette-nail-artist-dunfermline-29-chapel-street-pa4xx3mi/booking">Book on Fresha</a></p>
+      </div>
+      <ul>
+        <li><a href="../nails/">Nails and prices</a></li>
+        <li><a href="../education/">Education</a></li>
+        <li><a href="../blog/">Blog</a></li>
+        <li><a href="../about/">About and contact</a></li>
+        <li><a href="../privacy/">Privacy</a></li>
+        <li><a href="../terms/">Terms</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://www.instagram.com/dannika.bernadette">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@dannika.bernadette">TikTok</a></li>
+        <li><a href="https://www.facebook.com/CUTEiclesByDannika/">Facebook</a></li>
+        <li><a href="https://glitterplanetuk.com/DANNIKA10">Glitter Planet, code DANNIKA10</a></li>
+        <li><a href="https://buymeacoffee.com/DannikaBernadette">Buy me a coffee</a></li>
+      </ul>
+    </div>
+    <p class="small">Photos are Dannika's own, used here for this concept only.</p>
+  </div>
+</footer>
+<div class="bookbar"><a href="https://www.fresha.com/a/dannika-bernadette-nail-artist-dunfermline-29-chapel-street-pa4xx3mi/booking">Book on Fresha</a></div>
+</body>
+</html>

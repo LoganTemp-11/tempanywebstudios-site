@@ -1,0 +1,177 @@
+/* Dannika Bernadette - Nail Artist, concept. Every value comes from
+   TWS-main/dannika-bernadette/BRIEF-CARD.md. Black and white from her own
+   policy cards, grey from her photo mat and logo ring, olive from her site. */
+@font-face{font-family:"Libre Baskerville";src:url(fonts/libre-baskerville-400-latin.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Libre Baskerville";src:url(fonts/libre-baskerville-400-italic-latin.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Almarai";src:url(fonts/almarai-400-latin.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Almarai";src:url(fonts/almarai-700-latin.woff2) format("woff2");font-weight:700;font-style:normal;font-display:swap}
+:root{
+  --card-black:#000;
+  --label-white:#fff;
+  --mat-grey:#c9cdce;   /* the mat her sets are photographed on */
+  --ring-grey:#a7a6a7;  /* the ring round her logo */
+  --site-olive:#535b43; /* her own site's ground and buttons */
+  --serif:"Libre Baskerville",Baskerville,Georgia,serif;
+  --sans:"Almarai","Gill Sans","Trebuchet MS",sans-serif;
+  --r:8px; --pad:24px; --max:1180px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--label-white);color:var(--card-black);font-family:var(--sans);font-size:17px;line-height:1.6;padding-bottom:64px}
+img{display:block;width:100%;height:auto}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--site-olive)}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible,[contenteditable]:focus-visible{outline:3px solid var(--site-olive);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.14;margin:0;letter-spacing:-0.01em}
+h1{font-size:28px}
+h2{font-size:24px}
+h3{font-size:20px}
+p{margin:0 0 16px}
+figure{margin:0}
+figcaption{font-size:14px;line-height:1.45;padding-top:8px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.narrow{max-width:760px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--label-white);padding:8px 16px;z-index:30}
+.concept{margin:0;padding:8px var(--pad);background:var(--mat-grey);font-size:14px;line-height:1.4}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;padding:8px var(--pad);max-width:var(--max);margin:0 auto}
+.brand{display:block;width:76px;flex:none}
+.nav{display:flex;gap:4px 8px;font-size:16px}
+.nav .w{display:none}
+.nav a{text-transform:capitalize}
+.nav a{text-decoration:none;padding:8px 0}
+.nav a:hover,.nav a[aria-current]{text-decoration:underline}
+.nav .book{display:none}
+
+/* first screen */
+.first-text{padding-top:8px;padding-bottom:24px}
+.first h1{max-width:21em}
+.where{margin:16px 0 8px;max-width:38em}
+.proof{font-weight:700;margin-bottom:24px}
+.btn{display:block;background:var(--site-olive);color:var(--label-white);font-family:var(--sans);font-weight:700;font-size:20px;text-align:center;text-decoration:none;padding:16px 32px;border-radius:var(--r);border:0;cursor:pointer}
+.btn:hover{background:var(--card-black);color:var(--label-white)}
+.second{margin:16px 0 0}
+.band img{aspect-ratio:1/1;object-fit:cover;object-position:50% 30%;border-radius:var(--r)}
+
+/* the label box: white boxes of serif type on black, from her policy cards */
+.lb{background:var(--card-black);padding:16px;margin:0 0 8px}
+.lb span{display:inline-block;background:var(--label-white);color:var(--card-black);padding:8px 16px}
+.policy{background:var(--card-black);padding:24px 16px;display:grid;gap:16px;justify-items:center}
+.policy p{margin:0;background:var(--label-white);color:var(--card-black);font-family:var(--serif);font-size:18px;line-height:1.4;padding:8px 16px;text-align:center;max-width:30em}
+
+section{padding:48px 0}
+.sec-intro{max-width:40em;margin:16px 0 24px}
+
+/* prices */
+.menu{list-style:none;margin:0 0 32px;padding:0}
+.menu li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:16px 0;border-bottom:1px solid var(--ring-grey)}
+.menu .n{font-weight:700}
+.menu .d{grid-column:1;font-size:16px;line-height:1.45}
+.menu .p{grid-row:1;grid-column:2;font-weight:700;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.menu .t{font-weight:400}
+.menu .b{grid-column:2;text-align:right;font-size:16px}
+.sum{font-family:var(--serif);font-size:18px;margin:0 0 8px}
+
+/* work: a column flow, each photo keeps its own shape */
+.work{columns:2;column-gap:16px}
+.work figure{break-inside:avoid;margin:0 0 24px}
+.work img{border-radius:var(--r)}
+
+/* reviews */
+.reviews{display:grid;gap:32px}
+.reviews blockquote{margin:0}
+.reviews p{font-family:var(--serif);font-size:20px;line-height:1.4;margin:0 0 8px}
+.reviews cite{font-style:normal;font-size:16px}
+
+.grey{background:var(--mat-grey)}
+.two{display:grid;gap:32px}
+.two img{border-radius:var(--r)}
+.plain{list-style:none;margin:0;padding:0}
+.plain li{padding:16px 0;border-bottom:1px solid var(--card-black)}
+.plain li span{display:block;font-size:16px}
+.hours{border-collapse:collapse;margin:0 0 16px}
+.hours th{text-align:left;font-weight:400;padding:4px 32px 4px 0}
+.hours td{padding:4px 0;font-variant-numeric:tabular-nums}
+
+/* blog */
+.posts{list-style:none;margin:0;padding:0}
+.posts li{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:24px 0;border-bottom:1px solid var(--ring-grey)}
+.posts img{border-radius:var(--r)}
+.posts time{font-size:16px}
+.posts h2{font-size:20px;margin:4px 0 8px}
+.posts h2 a{text-decoration:none}
+.posts h2 a:hover{text-decoration:underline}
+.posts p{margin:0;font-size:16px}
+.post h1{margin:8px 0 24px}
+.post img{border-radius:var(--r);margin:0 0 24px}
+.post h2{margin:32px 0 16px}
+.note{border-left:4px solid var(--card-black);padding:4px 0 4px 16px;font-size:16px}
+
+/* forms and the editor */
+label{display:block;font-weight:700;margin:16px 0 4px}
+input[type=text],input[type=email],input[type=date],textarea,.ed-body{width:100%;font:inherit;padding:16px;border:1px solid var(--card-black);border-radius:var(--r);background:var(--label-white);color:var(--card-black)}
+textarea{min-height:160px}
+.ed-body{min-height:260px}
+.ed-body h2{margin:16px 0 8px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}
+.tools button{font:inherit;font-size:16px;background:var(--label-white);color:var(--card-black);border:1px solid var(--card-black);border-radius:var(--r);padding:8px 16px;cursor:pointer}
+.tools button:hover{background:var(--card-black);color:var(--label-white)}
+.ed-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin:24px 0}
+.ed-actions .btn{display:inline-block}
+.status{font-size:16px;min-height:24px}
+.preview{border-top:4px solid var(--card-black);margin-top:48px;padding-top:24px}
+
+details{border-bottom:1px solid var(--ring-grey);padding:16px 0}
+summary{font-family:var(--serif);font-size:20px;cursor:pointer}
+details p{margin:16px 0 0;max-width:40em}
+
+/* footer and the booking bar */
+.foot{background:var(--card-black);color:var(--label-white);padding:48px 0 32px;font-size:16px}
+.foot a:hover{color:var(--mat-grey)}
+.foot a:focus-visible{outline-color:var(--label-white)}
+.foot .cols{display:grid;gap:32px}
+.foot h2{font-size:20px;margin-bottom:8px}
+.foot ul{list-style:none;margin:0;padding:0}
+.foot li{padding:4px 0}
+.small{font-size:14px;margin:32px 0 0}
+.bookbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--card-black);padding:8px 16px}
+.bookbar a{display:block;background:var(--label-white);color:var(--card-black);font-family:var(--serif);font-size:20px;text-align:center;text-decoration:none;padding:8px 16px}
+.bookbar a:focus-visible{outline-color:var(--mat-grey)}
+
+@media (min-width:800px){
+  body{font-size:18px;padding-bottom:0}
+  h1{font-size:50px}
+  h2{font-size:34px}
+  .brand{width:168px}
+  .top{padding:16px var(--pad)}
+  .nav{gap:4px 24px;font-size:16px}
+  .nav .w{display:inline}
+  .nav a{text-transform:none}
+  .nav .book{display:block;font-weight:700}
+  .btn{display:inline-block}
+  .first-text{padding-bottom:32px}
+  .band img{aspect-ratio:16/8;object-position:50% 34%}
+  section{padding:64px 0}
+  .menu li{grid-template-columns:1fr 88px 64px;align-items:baseline}
+  .menu .n,.menu .d{grid-column:1}
+  .menu .p{grid-row:1;grid-column:2}
+  .menu .b{grid-row:1;grid-column:3}
+  .work{columns:3;column-gap:24px}
+  .reviews{grid-template-columns:1fr 1fr;gap:48px 64px}
+  .reviews p{font-size:26px}
+  .two{grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .posts li{grid-template-columns:160px 1fr;gap:32px}
+  .posts h2{font-size:24px}
+  .foot .cols{grid-template-columns:2fr 1fr 1fr}
+  .bookbar{display:none}
+  .policy{padding:32px}
+  .policy p{font-size:20px}
+}
+@media print{.bookbar,.concept{display:none}}
+
+h1+.note{margin-top:24px}
+.two figure img,.two picture img{border-radius:var(--r)}
+
+.quiet{font:inherit;font-size:16px;background:none;border:0;padding:8px 0;text-decoration:underline;text-underline-offset:3px;cursor:pointer;color:inherit}
