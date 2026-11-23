@@ -19,7 +19,8 @@
 <meta name="theme-color" content="#000000">
 <link rel="preload" href="fonts/libre-baskerville-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/almarai-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
+<script>document.documentElement.className="js"</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -70,5 +71,11 @@
   </div>
 </footer>
 <div class="bookbar"><a href="https://www.fresha.com/a/dannika-bernadette-nail-artist-dunfermline-29-chapel-street-pa4xx3mi/booking">Book on Fresha</a></div>
+<script>
+(function(){var els=document.querySelectorAll('.rv');
+if(!('IntersectionObserver' in window)){els.forEach(function(x){x.classList.add('in')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:0.18});
+els.forEach(function(x){io.observe(x)})})();
+</script>
 </body>
 </html>

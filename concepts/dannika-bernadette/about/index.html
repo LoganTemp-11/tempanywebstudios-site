@@ -19,7 +19,8 @@
 <meta name="theme-color" content="#000000">
 <link rel="preload" href="../fonts/libre-baskerville-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/almarai-400-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../style.css?v=4">
+<link rel="stylesheet" href="../style.css?v=5">
+<script>document.documentElement.className="js"</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -45,7 +46,7 @@
       <p>The winning set told the story of the Moon landings, Apollo on one hand and Artemis on the other, painted from memory in an hour. She calls herself a bit of a space nerd.</p>
       <p>Behind the desk she does freehand, detailed nail art and careful structure. Behind the keyboard she writes for other techs.</p>
     </div>
-    <figure><picture><source type="image/webp" srcset="../images/dannika-480.webp 480w, ../images/dannika-900.webp 900w" sizes="(min-width:800px) 45vw, 100vw"><img src="../images/dannika-480.jpg" srcset="../images/dannika-480.jpg 480w, ../images/dannika-900.jpg 900w" sizes="(min-width:800px) 45vw, 100vw" width="900" height="1350" alt="Dannika in glasses and a black apron, holding up a nail stamping plate." loading="lazy" decoding="async"></picture></figure>
+    <figure class="rv"><picture><source type="image/webp" srcset="../images/dannika-480.webp 480w, ../images/dannika-900.webp 900w" sizes="(min-width:800px) 45vw, 100vw"><img src="../images/dannika-480.jpg" srcset="../images/dannika-480.jpg 480w, ../images/dannika-900.jpg 900w" sizes="(min-width:800px) 45vw, 100vw" width="900" height="1350" alt="Dannika in glasses and a black apron, holding up a nail stamping plate." loading="lazy" decoding="async"></picture></figure>
   </div>
 </section>
 <section class="grey">
@@ -116,5 +117,11 @@ document.getElementById('cf').addEventListener('submit',function(ev){ev.preventD
   </div>
 </footer>
 <div class="bookbar"><a href="https://www.fresha.com/a/dannika-bernadette-nail-artist-dunfermline-29-chapel-street-pa4xx3mi/booking">Book on Fresha</a></div>
+<script>
+(function(){var els=document.querySelectorAll('.rv');
+if(!('IntersectionObserver' in window)){els.forEach(function(x){x.classList.add('in')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:0.18});
+els.forEach(function(x){io.observe(x)})})();
+</script>
 </body>
 </html>
