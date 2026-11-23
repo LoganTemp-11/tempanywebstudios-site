@@ -1,0 +1,143 @@
+/* Perfect Brows & Beauty concept. Every value below comes from BRIEF-CARD.md.
+   Colours sampled from the salon's own March 2024 shopfront photo. */
+@font-face{font-family:"Cabin";src:url(fonts/cabin-normal-400-700.woff2) format("woff2");font-weight:400 700;font-style:normal;font-display:swap}
+@font-face{font-family:"Libre Caslon Text";src:url(fonts/libre-caslon-text-normal-400.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Libre Caslon Text";src:url(fonts/libre-caslon-text-normal-700.woff2) format("woff2");font-weight:700;font-style:normal;font-display:swap}
+
+:root{
+  --fascia-pink:#e06dc3;
+  --strip-black:#16191e;
+  --script-slate:#343b43;
+  --frame-white:#ffffff;
+  --frosted-grey:#8b8d92;
+  --frosted-light:#e9eaeb; /* the frosted band where the daylight hits it */
+  --granite:#9b8b7f;
+  --sans:"Cabin","Gill Sans","Gill Sans MT",Calibri,sans-serif;
+  --serif:"Libre Caslon Text",Georgia,serif;
+  --pad:24px;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--frame-white);color:var(--strip-black);font-family:var(--serif);font-size:18px;line-height:1.55;padding-bottom:64px}
+img{display:block;width:100%;height:auto}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--strip-black);outline-offset:3px}
+.strip a:focus-visible,.callbar:focus-visible,.btn:focus-visible{outline-color:var(--fascia-pink)}
+h1,h2,h3{font-family:var(--sans);font-weight:700;line-height:1.1;margin:0}
+p{margin:0 0 16px}
+figure{margin:0}
+figcaption{font-size:14px;color:var(--script-slate);padding:8px var(--pad) 0}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--frame-white);padding:8px 16px;z-index:20}
+
+/* the rule, text, rule line from the sign ("—— 10 MANOR ST ——") */
+.ruled{display:flex;align-items:center;gap:16px;text-transform:uppercase}
+.ruled::before,.ruled::after{content:"";flex:1;height:2px;background:currentColor}
+
+.concept{margin:0;padding:8px var(--pad);background:var(--frosted-light);font-family:var(--sans);font-size:14px;line-height:1.4}
+
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px var(--pad);max-width:var(--max);margin:0 auto}
+.brand{font-family:var(--sans);font-weight:700;font-size:16px;text-transform:uppercase;text-decoration:none}
+.nav{display:flex;gap:24px;font-family:var(--sans);font-size:16px}
+.nav a{text-decoration:none;padding:8px 0}
+.nav a:hover{text-decoration:underline}
+.nav a:not(:first-child){display:none}
+
+/* first screen */
+.first{max-width:var(--max);margin:0 auto}
+.first-text{padding:8px var(--pad) 24px}
+h1{font-size:34px;letter-spacing:-0.01em}
+.where{margin:16px 0 8px}
+.proof{font-family:var(--sans);font-size:16px;margin-bottom:24px}
+.stars{color:var(--strip-black);letter-spacing:1px;margin-right:4px}
+.stars .half{color:var(--frosted-grey)}
+.btn{display:block;background:var(--strip-black);color:var(--frame-white);font-family:var(--sans);font-weight:700;font-size:22px;text-align:center;text-decoration:none;padding:16px 24px;border-radius:2px}
+.btn:hover{background:var(--script-slate)}
+.second{font-family:var(--sans);font-size:16px;margin:16px 0 0}
+
+/* the shop */
+.shop{max-width:var(--max);margin:64px auto 0}
+.shop-text{padding:24px var(--pad) 0}
+h2{font-size:28px;margin-bottom:16px}
+address{font-style:normal;font-family:var(--sans);font-weight:700;font-size:22px;line-height:1.25;margin:0 0 8px}
+.hours{border-collapse:collapse;width:100%;margin:24px 0 16px;font-family:var(--sans)}
+.hours caption{text-align:left;font-weight:700;padding-bottom:8px}
+.hours th,.hours td{text-align:left;font-weight:400;padding:8px 0;border-top:1px solid var(--frosted-grey)}
+.hours td{text-align:right}
+.note{font-family:var(--sans);font-size:16px}
+
+/* prices: the fascia set as type */
+.prices{margin-top:96px}
+.band{background:var(--fascia-pink);padding:32px var(--pad)}
+.band h2{max-width:var(--max);margin:0 auto;font-size:28px}
+.strip{position:sticky;top:0;z-index:5;background:var(--strip-black);color:var(--frame-white);font-family:var(--sans);font-size:16px;text-transform:uppercase}
+.strip ul{list-style:none;margin:0 auto;padding:0 var(--pad);max-width:var(--max);display:flex;overflow-x:auto;scrollbar-width:none}
+.strip ul::-webkit-scrollbar{display:none}
+.strip li{flex:none;display:flex;align-items:center}
+.strip li+li::before{content:"";width:2px;height:16px;background:var(--frame-white);margin:0 16px}
+.strip a{display:block;padding:16px 0;text-decoration:none;white-space:nowrap}
+.strip a:hover{text-decoration:underline}
+.menu{max-width:760px;margin:0 auto;padding:32px var(--pad) 0}
+.owner{background:var(--frosted-light);padding:16px;margin-bottom:0}
+.menu section{padding-top:48px;scroll-margin-top:56px}
+.menu h3{font-size:22px;margin-bottom:16px}
+dl{margin:0}
+dl div{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:16px 0;border-bottom:1px solid var(--frosted-grey)}
+dl div:last-child{border-bottom:0}
+dt span{display:block;font-family:var(--sans);font-size:14px;color:var(--script-slate)}
+dd{margin:0;font-family:var(--sans);font-weight:700;font-size:22px;white-space:nowrap}
+
+/* reviews, on the frosted band */
+.reviews{margin-top:96px;background:var(--frosted-light)}
+.reviews-text{padding:64px var(--pad) 32px;max-width:640px}
+blockquote{margin:0 0 32px;padding:0}
+blockquote p{font-size:22px;line-height:1.35;margin-bottom:8px}
+blockquote.lead p{font-size:28px;line-height:1.25}
+blockquote footer{font-family:var(--sans);font-size:16px;color:var(--script-slate)}
+.reviews figcaption{padding-bottom:24px}
+
+/* visit */
+.visit{max-width:var(--max);margin:96px auto 0}
+.visit-text{padding:24px var(--pad) 0}
+
+/* faq */
+.faq{max-width:760px;margin:96px auto 0;padding:0 var(--pad)}
+details{border-top:1px solid var(--frosted-grey)}
+details:last-child{border-bottom:1px solid var(--frosted-grey)}
+summary{font-family:var(--sans);font-weight:700;font-size:18px;padding:16px 0;cursor:pointer}
+details p{margin:0 0 16px}
+
+/* footer on the granite */
+.foot{margin-top:96px;background:var(--granite);color:var(--strip-black);padding:48px var(--pad) 32px;font-family:var(--sans);font-size:16px}
+.foot>*{max-width:760px;margin-left:auto;margin-right:auto}
+.foot-name{font-weight:700;font-size:22px;margin-bottom:24px}
+.small{font-size:14px;margin-top:32px}
+
+/* mobile call bar: their black strip, with the sign's rule either side */
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:10;background:var(--strip-black);color:var(--frame-white);font-family:var(--sans);font-weight:700;font-size:18px;text-decoration:none;padding:16px var(--pad);border-top:4px solid var(--fascia-pink)}
+.callbar .ruled::before,.callbar .ruled::after{background:var(--fascia-pink)}
+
+@media (min-width:900px){
+  body{padding-bottom:0;font-size:18px}
+  .callbar{display:none}
+  .nav a:not(:first-child){display:block}
+  .nav-tel{font-weight:700}
+  .first{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:48px;align-items:start;padding:32px var(--pad) 0}
+  .first-text{padding:32px 0 0}
+  h1{font-size:56px}
+  .where{font-size:22px;margin-top:24px}
+  .btn{display:inline-block;padding:16px 32px}
+  figcaption{padding-left:0;padding-right:0}
+  .shop{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:end;padding:0 var(--pad);margin-top:96px}
+  .shop-text{padding:0}
+  h2{font-size:40px}
+  .band h2{font-size:40px}
+  .reviews{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:start}
+  .reviews-text{padding:96px 48px 64px max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));max-width:none}
+  .reviews-photo{position:sticky;top:56px}
+  .reviews figcaption{padding-left:16px}
+  .visit{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:48px;align-items:center;padding:0 var(--pad)}
+  .visit-text{padding:0}
+}
