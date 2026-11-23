@@ -1,143 +1,245 @@
-/* Perfect Brows & Beauty concept. Every value below comes from BRIEF-CARD.md.
-   Colours sampled from the salon's own March 2024 shopfront photo. */
+/* Perfect Brows & Beauty concept, version 2.
+   Every surface is hers: glitter and pink from the fascia, black from the treatment strip,
+   teal and pale wash from her logo, granite from the stone under the window.
+   Sizes: 13 15 17 20 24 32 44 60. Spacing: 4 8 16 24 32 48 64 96. Radii: 0, and 2px on the call button. */
 @font-face{font-family:"Cabin";src:url(fonts/cabin-normal-400-700.woff2) format("woff2");font-weight:400 700;font-style:normal;font-display:swap}
 @font-face{font-family:"Libre Caslon Text";src:url(fonts/libre-caslon-text-normal-400.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Libre Caslon Text";src:url(fonts/libre-caslon-text-italic-400.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
 @font-face{font-family:"Libre Caslon Text";src:url(fonts/libre-caslon-text-normal-700.woff2) format("woff2");font-weight:700;font-style:normal;font-display:swap}
 
 :root{
-  --fascia-pink:#e06dc3;
-  --strip-black:#16191e;
-  --script-slate:#343b43;
-  --frame-white:#ffffff;
-  --frosted-grey:#8b8d92;
-  --frosted-light:#e9eaeb; /* the frosted band where the daylight hits it */
+  --pink:#e06dc3;      /* fascia pink */
+  --black:#16191e;     /* strip black */
+  --teal:#1d3b4e;      /* logo teal, ground only */
+  --wash:#fad0da;      /* wash pale, from the logo */
+  --white:#ffffff;     /* frame white */
+  --slate:#343b43;     /* script slate */
+  --grey:#8b8d92;      /* frosted grey, hairlines only */
   --granite:#9b8b7f;
+  --glitter:#e06dc3 url(images/glitter.jpg) 0 0/480px 144px;
   --sans:"Cabin","Gill Sans","Gill Sans MT",Calibri,sans-serif;
   --serif:"Libre Caslon Text",Georgia,serif;
   --pad:24px;
-  --max:1180px;
+  --sec:64px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--frame-white);color:var(--strip-black);font-family:var(--serif);font-size:18px;line-height:1.55;padding-bottom:64px}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--black);font-family:var(--serif);font-size:17px;line-height:1.5;padding-bottom:calc(64px + env(safe-area-inset-bottom))}
 img{display:block;width:100%;height:auto}
-a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
-a:focus-visible,summary:focus-visible{outline:3px solid var(--strip-black);outline-offset:3px}
-.strip a:focus-visible,.callbar:focus-visible,.btn:focus-visible{outline-color:var(--fascia-pink)}
-h1,h2,h3{font-family:var(--sans);font-weight:700;line-height:1.1;margin:0}
+picture{display:block}
+a{color:inherit;text-underline-offset:4px;text-decoration-thickness:1px}
+h1,h2{font-family:var(--sans);font-weight:700;margin:0}
+h1{font-size:32px;line-height:1.1}
+h2{font-size:32px;line-height:1.1}
 p{margin:0 0 16px}
 figure{margin:0}
-figcaption{font-size:14px;color:var(--script-slate);padding:8px var(--pad) 0}
-.skip{position:absolute;left:-9999px}
-.skip:focus{left:8px;top:8px;background:var(--frame-white);padding:8px 16px;z-index:20}
+ul{margin:0;padding:0;list-style:none}
+table{border-collapse:collapse;width:100%}
+[hidden]{display:none!important}
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.wrap{max-width:calc(1136px + 2*var(--pad));margin:0 auto;padding:0 var(--pad)}
+.lead{font-size:20px;line-height:1.4}
+.meta{font-family:var(--sans);font-size:15px;line-height:1.4}
 
-/* the rule, text, rule line from the sign ("—— 10 MANOR ST ——") */
-.ruled{display:flex;align-items:center;gap:16px;text-transform:uppercase}
-.ruled::before,.ruled::after{content:"";flex:1;height:2px;background:currentColor}
+/* focus: black ring on light grounds, fascia pink on dark grounds */
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--black);outline-offset:3px}
+.concept a:focus-visible,.ba a:focus-visible,.ba button:focus-visible,.treatments a:focus-visible,.reviews a:focus-visible{outline-color:var(--pink)}
+.callbar:focus-visible{outline-color:var(--pink);outline-offset:-8px}
+.skip{position:absolute;left:-9999px;font-family:var(--sans);font-size:15px}
+.skip:focus{left:8px;top:8px;background:var(--white);color:var(--black);padding:8px 16px;z-index:30}
 
-.concept{margin:0;padding:8px var(--pad);background:var(--frosted-light);font-family:var(--sans);font-size:14px;line-height:1.4}
+/* her sign's device: capitals held between two rules */
+.ruled{display:flex;align-items:center;gap:16px;text-transform:uppercase;letter-spacing:.01em;font-family:var(--sans);font-weight:700;font-size:20px;line-height:1.1;white-space:nowrap}
+.ruled::before,.ruled::after{content:"";flex:1;height:1px;background:currentColor}
 
-.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px var(--pad);max-width:var(--max);margin:0 auto}
-.brand{font-family:var(--sans);font-weight:700;font-size:16px;text-transform:uppercase;text-decoration:none}
-.nav{display:flex;gap:24px;font-family:var(--sans);font-size:16px}
-.nav a{text-decoration:none;padding:8px 0}
-.nav a:hover{text-decoration:underline}
-.nav a:not(:first-child){display:none}
+/* 5.0 concept strip */
+.concept{margin:0;min-height:28px;line-height:16px;text-align:center;padding:6px 8px;background:var(--black);color:var(--white);font-family:var(--sans);font-size:13px}
 
-/* first screen */
-.first{max-width:var(--max);margin:0 auto}
-.first-text{padding:8px var(--pad) 24px}
-h1{font-size:34px;letter-spacing:-0.01em}
-.where{margin:16px 0 8px}
-.proof{font-family:var(--sans);font-size:16px;margin-bottom:24px}
-.stars{color:var(--strip-black);letter-spacing:1px;margin-right:4px}
-.stars .half{color:var(--frosted-grey)}
-.btn{display:block;background:var(--strip-black);color:var(--frame-white);font-family:var(--sans);font-weight:700;font-size:22px;text-align:center;text-decoration:none;padding:16px 24px;border-radius:2px}
-.btn:hover{background:var(--script-slate)}
-.second{font-family:var(--sans);font-size:16px;margin:16px 0 0}
+/* 5.1 header */
+.top{display:flex;justify-content:space-between;align-items:center;height:72px;padding:0 var(--pad);background:var(--white)}
+.brand{display:block;align-self:flex-start;width:108px}
+.nav{display:flex;align-items:center;gap:32px;font-family:var(--sans);font-size:15px;line-height:1}
+.nav a{display:flex;align-items:center;min-height:44px}
+.nav-d{display:none!important}
+.nav-tel{font-weight:600}
 
-/* the shop */
-.shop{max-width:var(--max);margin:64px auto 0}
-.shop-text{padding:24px var(--pad) 0}
-h2{font-size:28px;margin-bottom:16px}
-address{font-style:normal;font-family:var(--sans);font-weight:700;font-size:22px;line-height:1.25;margin:0 0 8px}
-.hours{border-collapse:collapse;width:100%;margin:24px 0 16px;font-family:var(--sans)}
-.hours caption{text-align:left;font-weight:700;padding-bottom:8px}
-.hours th,.hours td{text-align:left;font-weight:400;padding:8px 0;border-top:1px solid var(--frosted-grey)}
+/* 5.2 first screen */
+.band{display:grid;grid-template-columns:165fr 206fr;gap:4px;height:136px;background:var(--white)}
+.band picture{min-width:0;height:136px;overflow:hidden}
+.band img{width:100%;height:100%;object-fit:cover}
+.band picture:last-child img{object-position:50% 0}
+.band picture:has(.band-d){display:none}
+.first-grid{padding-top:16px;padding-bottom:32px}
+.where{margin:8px 0 0}
+.proof{margin:8px 0 0;font-family:var(--sans);font-size:15px;line-height:1.4}
+.stars{letter-spacing:.01em}
+.half{opacity:.4}
+.proof-d{display:none}
+.btn{display:flex;align-items:center;justify-content:center;height:56px;margin-top:16px;padding:0 32px;background:var(--glitter);color:var(--black);font-family:var(--sans);font-weight:700;font-size:20px;line-height:1;text-decoration:none;border-radius:2px}
+.second{margin:8px 0 0;font-family:var(--sans);font-size:15px;line-height:1.4}
+
+/* 5.3 before and after */
+.ba{background:var(--black);color:var(--white);padding:var(--sec) 0}
+.ba .lead{margin:16px 0 0;max-width:640px}
+.ba-grid{display:grid;gap:48px;margin-top:32px}
+.ba-frames{display:grid;gap:4px}
+.ba-lash .ba-frames{grid-template-columns:1fr 1fr}
+.ba-frame{position:relative}
+.ba-word{display:block;padding:8px 0 16px;font-family:var(--sans);font-weight:700;font-size:15px;line-height:1}
+.ba figcaption{margin-top:8px;font-family:var(--sans);font-size:13px;line-height:1.4;color:var(--wash)}
+/* with ba.js: one frame at a time, both in the same box */
+.ba-on .ba-switch{position:sticky;top:0;z-index:5;display:flex;justify-content:center;align-items:center;gap:16px;margin-top:24px;padding:4px var(--pad);background:var(--black)}
+.ba-switch button{appearance:none;background:none;border:0;border-radius:0;margin:0;padding:0 24px;min-height:48px;cursor:pointer;color:var(--white);font-family:var(--sans);font-weight:700;font-size:20px;line-height:1;letter-spacing:.01em;text-transform:uppercase}
+.ba-switch button[aria-pressed="true"]{background:var(--pink);color:var(--black)}
+.ba-switch .bar{width:2px;height:24px;background:var(--pink)}
+.ba-on .ba-grid{margin-top:24px}
+.ba-on .ba-word{display:none}
+.ba-on .ba-frames,.ba-on .ba-lash .ba-frames{grid-template-columns:1fr;gap:0}
+.ba-on .ba-frame{grid-area:1/1;transition:opacity .2s linear,visibility 0s linear}
+.ba-on[data-show="after"] .ba-before,.ba-on[data-show="before"] .ba-after{opacity:0;visibility:hidden;transition:opacity .2s linear,visibility 0s linear .2s}
+@media (prefers-reduced-motion:reduce){
+  .ba-on .ba-frame,.ba-on[data-show="after"] .ba-before,.ba-on[data-show="before"] .ba-after{transition:none}
+}
+
+/* 5.4 offer prices */
+.glitter-band{background:var(--glitter);color:var(--black)}
+.glitter-band .wrap{height:64px;display:flex;align-items:center}
+.glitter-band h2{flex:1;font-size:20px}
+.glitter-band .ruled::before,.glitter-band .ruled::after{height:2px;background:var(--white)}
+.offers-body{background:var(--wash);padding:48px 0 var(--sec)}
+.offers-body .lead{max-width:640px;margin:0}
+.boards{display:grid;gap:24px;margin-top:32px}
+.board{background:var(--white);border:2px solid var(--black)}
+.board caption{height:48px;line-height:48px;padding:0 16px;background:var(--glitter);color:var(--black);font-family:var(--sans);font-weight:700;font-size:20px;letter-spacing:.01em;text-transform:uppercase;text-align:left;border-bottom:2px solid var(--black)}
+.board th,.board td{padding:16px;vertical-align:baseline;border-bottom:1px solid var(--grey)}
+.board th{font-family:var(--serif);font-weight:400;font-size:20px;line-height:1.4;text-align:left}
+.board td{font-family:var(--sans);font-weight:700;font-size:32px;line-height:1;text-align:right;white-space:nowrap}
+.board-foot{margin:0;padding:16px;font-family:var(--sans);font-size:13px;line-height:1.4;color:var(--slate)}
+.owner{max-width:640px;margin:48px 0 0;padding-top:16px;border-top:1px solid var(--black);font-family:var(--sans);font-size:15px;line-height:1.4;color:var(--slate)}
+
+/* 5.5 treatments: her black strip, then the menu */
+.strip{background:var(--black);color:var(--white);padding:16px var(--pad)}
+.strip ul{display:grid;grid-template-columns:auto auto;justify-content:center}
+.strip li{display:flex;justify-content:flex-end}
+.strip li:nth-child(even){justify-content:flex-start;border-left:2px solid var(--pink)}
+.strip li:last-child{grid-column:1/-1;justify-content:center}
+.strip a{display:flex;align-items:center;min-height:44px;padding:0 16px;font-family:var(--sans);font-weight:700;font-size:20px;line-height:1;letter-spacing:.01em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
+.treatments{background:var(--black);color:var(--white)}
+.strip{border-bottom:1px solid var(--grey)}
+.treatments>.wrap{padding-top:var(--sec);padding-bottom:var(--sec)}
+.menu{margin:32px 0 0}
+.group{padding:24px 0;border-top:1px solid var(--grey);break-inside:avoid}
+.menu dt{font-family:var(--sans);font-weight:700;font-size:20px;line-height:1.1;letter-spacing:.01em;text-transform:uppercase;color:var(--wash);scroll-margin-top:16px}
+.menu dd{margin:8px 0 0;font-size:20px;line-height:1.4}
+.menu li{padding:4px 0;scroll-margin-top:16px}
+.find figcaption{margin-top:8px;font-family:var(--sans);font-size:13px;line-height:1.4;color:var(--slate)}
+.menu-close{margin:32px 0 0;max-width:640px}
+
+/* 5.6 reviews */
+.reviews{background:var(--teal);color:var(--white);padding:var(--sec) 0}
+.reviews h2+.meta{margin:16px 0 0}
+blockquote{margin:0}
+blockquote p{margin:0;font-style:italic;font-size:20px;line-height:1.4}
+blockquote footer{margin-top:8px;font-family:var(--sans);font-size:15px;line-height:1.4;color:var(--wash)}
+.first-quote{margin-top:48px}
+.first-quote p{font-size:24px;line-height:1.3}
+.quotes{display:grid;gap:32px;margin:32px 0 48px}
+.reviews .wrap>.meta:last-child{margin:0}
+
+/* 5.7 find us */
+.find{padding:var(--sec) 0}
+.find-grid{display:grid;gap:32px}
+.find-text h2{margin-bottom:16px}
+address{font-family:var(--sans);font-weight:700;font-size:20px;line-height:1.4;font-style:normal;margin:0 0 8px}
+.hours{margin:24px 0;border-top:1px solid var(--grey);font-family:var(--sans);font-size:17px;line-height:1.4}
+.hours th,.hours td{padding:8px 0;border-bottom:1px solid var(--grey);text-align:left;font-weight:400}
+.hours th{font-weight:700}
 .hours td{text-align:right}
-.note{font-family:var(--sans);font-size:16px}
+.loyalty{margin-top:32px}
+.find .loyalty figcaption{font-family:var(--serif);font-size:17px;line-height:1.5;color:var(--black)}
 
-/* prices: the fascia set as type */
-.prices{margin-top:96px}
-.band{background:var(--fascia-pink);padding:32px var(--pad)}
-.band h2{max-width:var(--max);margin:0 auto;font-size:28px}
-.strip{position:sticky;top:0;z-index:5;background:var(--strip-black);color:var(--frame-white);font-family:var(--sans);font-size:16px;text-transform:uppercase}
-.strip ul{list-style:none;margin:0 auto;padding:0 var(--pad);max-width:var(--max);display:flex;overflow-x:auto;scrollbar-width:none}
-.strip ul::-webkit-scrollbar{display:none}
-.strip li{flex:none;display:flex;align-items:center}
-.strip li+li::before{content:"";width:2px;height:16px;background:var(--frame-white);margin:0 16px}
-.strip a{display:block;padding:16px 0;text-decoration:none;white-space:nowrap}
-.strip a:hover{text-decoration:underline}
-.menu{max-width:760px;margin:0 auto;padding:32px var(--pad) 0}
-.owner{background:var(--frosted-light);padding:16px;margin-bottom:0}
-.menu section{padding-top:48px;scroll-margin-top:56px}
-.menu h3{font-size:22px;margin-bottom:16px}
-dl{margin:0}
-dl div{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:16px 0;border-bottom:1px solid var(--frosted-grey)}
-dl div:last-child{border-bottom:0}
-dt span{display:block;font-family:var(--sans);font-size:14px;color:var(--script-slate)}
-dd{margin:0;font-family:var(--sans);font-weight:700;font-size:22px;white-space:nowrap}
+/* 5.8 questions */
+.questions{background:var(--wash);padding:var(--sec) 0}
+.questions h2{margin-bottom:24px}
+details{border-top:1px solid var(--black)}
+details:last-child{border-bottom:1px solid var(--black)}
+summary{padding:16px 0;cursor:pointer;font-family:var(--sans);font-weight:700;font-size:20px;line-height:1.4}
+details p{margin:0 0 16px;max-width:640px}
 
-/* reviews, on the frosted band */
-.reviews{margin-top:96px;background:var(--frosted-light)}
-.reviews-text{padding:64px var(--pad) 32px;max-width:640px}
-blockquote{margin:0 0 32px;padding:0}
-blockquote p{font-size:22px;line-height:1.35;margin-bottom:8px}
-blockquote.lead p{font-size:28px;line-height:1.25}
-blockquote footer{font-family:var(--sans);font-size:16px;color:var(--script-slate)}
-.reviews figcaption{padding-bottom:24px}
+/* 5.9 footer */
+.foot{background:var(--granite);color:var(--black);padding:48px 0}
+.foot-sign{margin:0 0 24px}
+.foot p:not(.ruled){max-width:760px}
+.foot .small{margin:24px 0 0;font-family:var(--sans);font-size:13px;line-height:1.4}
 
-/* visit */
-.visit{max-width:var(--max);margin:96px auto 0}
-.visit-text{padding:24px var(--pad) 0}
+/* sticky call bar, phone only: her black strip with the sign's pink rules */
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;align-items:center;height:calc(64px + env(safe-area-inset-bottom));padding:0 var(--pad) env(safe-area-inset-bottom);background:var(--black);border-top:4px solid var(--pink);color:var(--white);text-decoration:none}
+.callbar .ruled{flex:1}
+.callbar .ruled::before,.callbar .ruled::after{background:var(--pink)}
 
-/* faq */
-.faq{max-width:760px;margin:96px auto 0;padding:0 var(--pad)}
-details{border-top:1px solid var(--frosted-grey)}
-details:last-child{border-bottom:1px solid var(--frosted-grey)}
-summary{font-family:var(--sans);font-weight:700;font-size:18px;padding:16px 0;cursor:pointer}
-details p{margin:0 0 16px}
+/* small or short phones: all the first-screen text sits above the call bar, the photo band follows it */
+@media (max-width:374px),(max-height:650px){
+  .top{height:56px}
+  .brand{width:84px}
+  .first{display:flex;flex-direction:column}
+  .band{order:2}
+  .first-grid{padding-top:8px;padding-bottom:16px}
+}
 
-/* footer on the granite */
-.foot{margin-top:96px;background:var(--granite);color:var(--strip-black);padding:48px var(--pad) 32px;font-family:var(--sans);font-size:16px}
-.foot>*{max-width:760px;margin-left:auto;margin-right:auto}
-.foot-name{font-weight:700;font-size:22px;margin-bottom:24px}
-.small{font-size:14px;margin-top:32px}
-
-/* mobile call bar: their black strip, with the sign's rule either side */
-.callbar{position:fixed;left:0;right:0;bottom:0;z-index:10;background:var(--strip-black);color:var(--frame-white);font-family:var(--sans);font-weight:700;font-size:18px;text-decoration:none;padding:16px var(--pad);border-top:4px solid var(--fascia-pink)}
-.callbar .ruled::before,.callbar .ruled::after{background:var(--fascia-pink)}
+@media (min-width:600px){
+  .boards{grid-template-columns:1fr 1fr}
+}
 
 @media (min-width:900px){
-  body{padding-bottom:0;font-size:18px}
+  :root{--pad:64px;--sec:96px}
+  body{padding-bottom:0}
+  h1{font-size:60px;line-height:1.05}
+  h2{font-size:44px}
+  .lead{font-size:24px}
   .callbar{display:none}
-  .nav a:not(:first-child){display:block}
-  .nav-tel{font-weight:700}
-  .first{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:48px;align-items:start;padding:32px var(--pad) 0}
-  .first-text{padding:32px 0 0}
-  h1{font-size:56px}
-  .where{font-size:22px;margin-top:24px}
-  .btn{display:inline-block;padding:16px 32px}
-  figcaption{padding-left:0;padding-right:0}
-  .shop{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:end;padding:0 var(--pad);margin-top:96px}
-  .shop-text{padding:0}
-  h2{font-size:40px}
-  .band h2{font-size:40px}
-  .reviews{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:start}
-  .reviews-text{padding:96px 48px 64px max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));max-width:none}
-  .reviews-photo{position:sticky;top:56px}
-  .reviews figcaption{padding-left:16px}
-  .visit{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:48px;align-items:center;padding:0 var(--pad)}
-  .visit-text{padding:0}
+  .top{height:112px}
+  .brand{width:169px}
+  .first{display:block}
+  .nav-d{display:flex!important}
+  .band{grid-template-columns:min(420px,28.85%) minmax(0,1fr) 416px;height:280px} /* 3 : 4 : 3.4 at 1280; the sign cell keeps its width so the whole sign always shows */
+  .band picture{height:280px}
+  .band picture:has(.band-d){display:block}
+  .first-grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;padding-top:48px;padding-bottom:48px}
+  .first-grid h1{grid-column:1/8}
+  .first-side{grid-column:9/13}
+  .where{margin:0;font-size:20px;line-height:1.4}
+  .proof{margin-top:16px}
+  .proof-d{display:inline}
+  .btn{margin-top:24px;min-width:min(320px,100%);width:max-content;max-width:100%}
+  .ba-grid{grid-template-columns:repeat(12,1fr);column-gap:24px;row-gap:48px;align-items:start}
+  .ba-brows1{grid-column:1/9;grid-row:1}
+  .ba-lash{grid-column:9/13;grid-row:1}
+  .ba-lash .ba-frames{grid-template-columns:1fr}
+  .glitter-band .wrap{height:96px}
+  .glitter-band h2{font-size:24px}
+  .menu{columns:3;column-gap:24px;margin-top:48px}
+  .menu dd{font-size:24px}
+  .group:nth-child(3),.group:nth-child(5){break-before:column}
+  .menu-close{margin-top:48px}
+  .first-quote{max-width:750px}
+  .first-quote p{font-size:32px}
+  .quotes{grid-template-columns:repeat(6,1fr);column-gap:24px;row-gap:48px;margin-top:48px}
+  .quotes blockquote{grid-column:span 2}
+  .quotes blockquote:nth-child(n+4){grid-column:span 3}
+  blockquote p{font-size:24px}
+  .find-grid{grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:start}
+  .find-photo{grid-column:1/8}
+  .find-text{grid-column:8/13}
+  .band picture:nth-child(2) img{object-position:50% 100%}
+  .questions .wrap{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:start}
+  .questions h2{grid-column:1/5}
+  .questions-in{grid-column:5/13}
+  .loyalty{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;align-items:end}
+}
+
+/* her seven strip words need about 1040px to sit on one line as they do on the sign */
+@media (min-width:1100px){
+  .strip ul{display:flex;justify-content:center}
+  .strip li,.strip li:nth-child(even){border-left:2px solid var(--pink)}
+  .strip li:first-child{border-left:0}
 }
