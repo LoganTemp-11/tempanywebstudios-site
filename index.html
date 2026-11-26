@@ -185,38 +185,37 @@
   .rough__hand .rn { opacity: clamp(0, calc((var(--ink) * var(--nt) * 1.15 - var(--i)) * (1 - var(--wash) * 3)), 1); }
   .rough__hand .rd { fill: #141516; }
   .rough__wash > * { opacity: clamp(0, calc(var(--wash) * 4.6 - var(--i)), 1); }
-  /* the opening: one phone held in the back of the screen while four screens of big words scroll over it.
-     Nothing is pinned in front; the words keep moving. Each line of type carries its own strip of paper,
-     so it stays readable over pencil, colour and the live site alike. */
+  /* the opening: the client's site is built large in the back of the screen while four screens of big,
+     centred words scroll over it. Nothing is pinned in front; the words keep moving. The big type is ink
+     with a wide paper edge, so the site shows all round the letters and they still read over pencil,
+     colour and the live site. The small print sits on strips of paper. */
   .vis { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); }
   .vis__stage { grid-area: 1 / 1; align-self: start; position: sticky; top: 0; height: 100svh; display: grid; place-items: center; z-index: 0; pointer-events: none; }
-  .vis__stage .rough__phone { width: auto; height: min(78svh, 760px); aspect-ratio: 390 / 844; margin: 0; }
+  .vis__stage .rough__phone { width: auto; height: min(90svh, 940px); aspect-ratio: 390 / 844; margin: 0; }
   .vis__stage .rough__phone picture, .vis__stage .rough__phone img { display: block; width: 100%; height: 100%; }
-  .vis__stage .rough__phone img { object-fit: cover; object-position: top; border: 1px solid var(--tw-line-strong); border-bottom: 0; border-radius: 22px 22px 0 0; box-shadow: 0 16px 30px -18px hsl(var(--sc-shadow-color) / .8); }
+  .vis__stage .rough__phone img { object-fit: cover; object-position: top; border: 1px solid var(--tw-line-strong); border-radius: 22px; box-shadow: 0 16px 30px -18px hsl(var(--sc-shadow-color) / .8); }
+  .vis__stage .rough__sheet { border-radius: 22px; clip-path: inset(calc(var(--live) * 100%) 0 0 0 round 22px); }
   .vis__panels { grid-area: 1 / 1; position: relative; z-index: 1; }
-  .vis__panel { min-height: 96svh; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; padding: clamp(1rem, 3vw, 2.5rem) max(16px, 5vw) clamp(5.5rem, 12svh, 8rem); }
-  .vis__panel--first { min-height: calc(100svh - var(--te-h, 3.5rem)); padding-bottom: clamp(1.25rem, 4svh, 2.5rem); }
-  .vis__panel--last { min-height: 118svh; justify-content: flex-start; gap: 34svh; }
-  .vis__big { margin: 0; font: 800 clamp(3.4rem, min(1rem + 9.4vw, 15.5svh), 9.75rem)/.94 var(--sc-font-display); letter-spacing: -.015em; color: var(--sc-ink); text-transform: none; max-width: 11ch; }
-  .vis__big span { display: table; background: var(--sc-canvas); padding: .02em .12em .06em; margin-left: -.12em; }
-  .vis__foot { max-width: 30rem; }
-  .vis__foot > * { background: var(--sc-canvas); padding: .5rem .75rem; margin: 0 0 0 -.75rem; }
+  .vis__panel { min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(1.25rem, 3svh, 2.25rem); text-align: center; padding: clamp(1rem, 3vw, 2.5rem) max(16px, 5vw); }
+  .vis__panel--first { min-height: calc(100svh - var(--te-h, 3.5rem)); }
+  .vis__panel--last { min-height: 112svh; }
+  .vis__big { margin: 0; font: 800 clamp(3.4rem, min(1rem + 10.5vw, 19svh), 11.5rem)/.92 var(--sc-font-display); letter-spacing: -.015em; color: var(--sc-ink); text-transform: none; }
+  /* a ring of paper-coloured shadows: it sits behind every letter, so no letter's edge bites its neighbour */
+  .vis__big span { display: block; background: none; padding: 0; text-shadow: 0.075em 0.000em .012em var(--sc-canvas), 0.069em 0.029em .012em var(--sc-canvas), 0.053em 0.053em .012em var(--sc-canvas), 0.029em 0.069em .012em var(--sc-canvas), 0.000em 0.075em .012em var(--sc-canvas), -0.029em 0.069em .012em var(--sc-canvas), -0.053em 0.053em .012em var(--sc-canvas), -0.069em 0.029em .012em var(--sc-canvas), -0.075em 0.000em .012em var(--sc-canvas), -0.069em -0.029em .012em var(--sc-canvas), -0.053em -0.053em .012em var(--sc-canvas), -0.029em -0.069em .012em var(--sc-canvas), -0.000em -0.075em .012em var(--sc-canvas), 0.029em -0.069em .012em var(--sc-canvas), 0.053em -0.053em .012em var(--sc-canvas), 0.069em -0.029em .012em var(--sc-canvas), 0.040em 0.000em .012em var(--sc-canvas), 0.037em 0.015em .012em var(--sc-canvas), 0.028em 0.028em .012em var(--sc-canvas), 0.015em 0.037em .012em var(--sc-canvas), 0.000em 0.040em .012em var(--sc-canvas), -0.015em 0.037em .012em var(--sc-canvas), -0.028em 0.028em .012em var(--sc-canvas), -0.037em 0.015em .012em var(--sc-canvas), -0.040em 0.000em .012em var(--sc-canvas), -0.037em -0.015em .012em var(--sc-canvas), -0.028em -0.028em .012em var(--sc-canvas), -0.015em -0.037em .012em var(--sc-canvas), -0.000em -0.040em .012em var(--sc-canvas), 0.015em -0.037em .012em var(--sc-canvas), 0.028em -0.028em .012em var(--sc-canvas), 0.037em -0.015em .012em var(--sc-canvas); }
+  .vis__foot { max-width: 31rem; display: flex; flex-direction: column; align-items: center; }
+  .vis__foot > * { background: var(--sc-canvas); padding: .5rem .9rem; margin: 0; }
   .vis__foot > * + * { padding-top: .25rem; }
   .vis__line { font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); color: var(--sc-ink-soft); }
   .vis__line strong { color: var(--sc-ink); }
   .vis__line a { color: var(--sc-ink); font-weight: 700; text-underline-offset: .2em; }
   .vis .pf__rate, .vis .pf__act { margin-top: 0; }
-  .vis .pf__act { max-width: none; padding-bottom: .75rem; }
+  .vis .pf__act { max-width: none; justify-items: center; padding-bottom: .75rem; }
   .vis .pf__act .pf__btn { width: auto; }
-  @media (min-width: 900px) {
-    .vis__stage { justify-items: end; padding-right: max(24px, 9vw); }
-    .vis__panel { max-width: min(62vw, 60rem); }
-  }
+  .vis__q blockquote p { text-indent: 0; }
   @media (max-width: 899px) {
-    .vis__stage .rough__phone { height: min(62svh, 620px); }
-    .vis__panel, .vis__panel--first { padding-bottom: clamp(6.5rem, 16svh, 9rem); }
-    .vis__big { font-size: clamp(3.1rem, 15.5vw, 5.5rem); }
-    .vis__panel--last { gap: 26svh; }
+    .vis__stage .rough__phone { height: min(84svh, 760px); }
+    .vis__panel { padding-bottom: clamp(5rem, 12svh, 7rem); }
+    .vis__big { font-size: clamp(3.1rem, 17vw, 6rem); }
   }
   /* the sticky bar, phones only */
   .pf-bar { display: none; }
@@ -803,21 +802,21 @@ addEventListener('pagereveal', function (e) {
 <!-- /tw:foot -->
 
 <script>
-/* The opening. One number per layer of the sheet over the phone, set from where the panels are:
+/* The opening. One number per layer of the sheet over the phone, set from how far the opening has scrolled:
    --draw pencils the strokes in, --ink letters them, --wash lays the colour, --live lifts the
    sheet off the real site. The phone is held by CSS; the words never stop. */
 (function () {
   var fig = document.getElementById('rough'), sheet = fig && fig.querySelector('.rough__sheet');
   if (!sheet || !window.CSS || !CSS.supports('color', 'color-mix(in srgb, red, blue)') || !matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
-  var panels = [].slice.call(document.querySelectorAll('.vis__panel')), queued = false;
+  var top = document.getElementById('top'), queued = false;
   var c = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
   fig.classList.add('rough-on');
   function set() {
     queued = false;
-    var vh = innerHeight;
-    // how far each panel's top has come up the screen: 0 as it enters at the bottom, 1 once it reaches the top
-    var at = panels.map(function (p) { return c(1 - p.getBoundingClientRect().top / vh); });
-    var d = 0.45 + 0.55 * c(at[1] * 2.2), i = c((at[1] - 0.4) * 2.2), w = c((at[2] - 0.25) * 1.9), l = c((at[3] - 0.25) * 1.9);
+    // one steady run from the top of the opening to its end, so something is being drawn,
+    // lettered, coloured or lifted at every point of the scroll
+    var r = top.getBoundingClientRect(), p = c(-r.top / Math.max(1, r.height - innerHeight));
+    var d = 0.16 + 0.84 * c(p / 0.3), i = c((p - 0.26) / 0.2), w = c((p - 0.46) / 0.22), l = c((p - 0.7) / 0.24);
     sheet.style.setProperty('--draw', d.toFixed(3)); sheet.style.setProperty('--ink', i.toFixed(3));
     sheet.style.setProperty('--wash', w.toFixed(3)); sheet.style.setProperty('--live', l.toFixed(3));
   }
