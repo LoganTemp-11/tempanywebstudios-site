@@ -185,19 +185,38 @@
   .rough__hand .rn { opacity: clamp(0, calc((var(--ink) * var(--nt) * 1.15 - var(--i)) * (1 - var(--wash) * 3)), 1); }
   .rough__hand .rd { fill: #141516; }
   .rough__wash > * { opacity: clamp(0, calc(var(--wash) * 4.6 - var(--i)), 1); }
-  .rough-steps { list-style: none; margin: 0; padding: 0; }
-  .rough-steps h2 { font: 800 clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem)/1.02 var(--sc-font-display); margin: 0; color: var(--sc-ink); text-transform: none; letter-spacing: -.005em; }
-  .rough-steps p { margin: .5rem 0 0; font-size: 1.0625rem; color: var(--sc-ink-soft); max-width: 30rem; }
-  .rough-steps a { color: var(--sc-ink); font-weight: 700; text-underline-offset: .2em; }
-  .rough-steps li + li { margin-top: 1.75rem; }
-  @media (max-width: 899px) { .rough-steps { order: 4; margin-top: 2rem; } }
+  /* the opening: one phone held in the back of the screen while four screens of big words scroll over it.
+     Nothing is pinned in front; the words keep moving. Each line of type carries its own strip of paper,
+     so it stays readable over pencil, colour and the live site alike. */
+  .vis { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); }
+  .vis__stage { grid-area: 1 / 1; align-self: start; position: sticky; top: 0; height: 100svh; display: grid; place-items: center; z-index: 0; pointer-events: none; }
+  .vis__stage .rough__phone { width: auto; height: min(78svh, 760px); aspect-ratio: 390 / 844; margin: 0; }
+  .vis__stage .rough__phone picture, .vis__stage .rough__phone img { display: block; width: 100%; height: 100%; }
+  .vis__stage .rough__phone img { object-fit: cover; object-position: top; border: 1px solid var(--tw-line-strong); border-bottom: 0; border-radius: 22px 22px 0 0; box-shadow: 0 16px 30px -18px hsl(var(--sc-shadow-color) / .8); }
+  .vis__panels { grid-area: 1 / 1; position: relative; z-index: 1; }
+  .vis__panel { min-height: 96svh; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; padding: clamp(1rem, 3vw, 2.5rem) max(16px, 5vw) clamp(5.5rem, 12svh, 8rem); }
+  .vis__panel--first { min-height: calc(100svh - var(--te-h, 3.5rem)); padding-bottom: clamp(1.25rem, 4svh, 2.5rem); }
+  .vis__panel--last { min-height: 118svh; justify-content: flex-start; gap: 34svh; }
+  .vis__big { margin: 0; font: 800 clamp(3.4rem, min(1rem + 9.4vw, 15.5svh), 9.75rem)/.94 var(--sc-font-display); letter-spacing: -.015em; color: var(--sc-ink); text-transform: none; max-width: 11ch; }
+  .vis__big span { display: table; background: var(--sc-canvas); padding: .02em .12em .06em; margin-left: -.12em; }
+  .vis__foot { max-width: 30rem; }
+  .vis__foot > * { background: var(--sc-canvas); padding: .5rem .75rem; margin: 0 0 0 -.75rem; }
+  .vis__foot > * + * { padding-top: .25rem; }
+  .vis__line { font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); color: var(--sc-ink-soft); }
+  .vis__line strong { color: var(--sc-ink); }
+  .vis__line a { color: var(--sc-ink); font-weight: 700; text-underline-offset: .2em; }
+  .vis .pf__rate, .vis .pf__act { margin-top: 0; }
+  .vis .pf__act { max-width: none; padding-bottom: .75rem; }
+  .vis .pf__act .pf__btn { width: auto; }
   @media (min-width: 900px) {
-    .pf__in.has-rough { align-items: start; }
-    .has-rough .pf__text { min-height: calc(100svh - 9rem); display: flex; flex-direction: column; justify-content: center; }
-    .has-rough .pf__site { grid-column: 2; grid-row: 1 / span 2; position: sticky; top: 5.5rem; align-self: start; max-width: min(400px, calc((100svh - 13.5rem) / 1.66)); }
-    .has-rough .rough-steps { grid-column: 1; }
-    .has-rough .rough-steps li { min-height: 62svh; display: flex; flex-direction: column; justify-content: center; margin: 0; }
-    .has-rough .rough-steps li:last-child { min-height: 46svh; }
+    .vis__stage { justify-items: end; padding-right: max(24px, 9vw); }
+    .vis__panel { max-width: min(62vw, 60rem); }
+  }
+  @media (max-width: 899px) {
+    .vis__stage .rough__phone { height: min(62svh, 620px); }
+    .vis__panel, .vis__panel--first { padding-bottom: clamp(6.5rem, 16svh, 9rem); }
+    .vis__big { font-size: clamp(3.1rem, 15.5vw, 5.5rem); }
+    .vis__panel--last { gap: 26svh; }
   }
   /* the sticky bar, phones only */
   .pf-bar { display: none; }
@@ -486,41 +505,50 @@ addEventListener('pagereveal', function (e) {
 </header>
 
 <main id="main">
-<section id="top" class="pf" aria-labelledby="pfH1">
-  <div class="wrap pf__in has-rough">
-    <div class="pf__text">
-      <h1 id="pfH1">Websites for small businesses in Clackmannanshire, Stirling and Falkirk</h1>
-      <p class="pf__line"><strong>&pound;599 fixed</strong> for up to five pages, live in 10 to 14 days. That&rsquo;s the founding price, open until 28 February 2027; from 1 March it&rsquo;s &pound;749.</p>
-      <p class="pf__rate"><a href="https://share.google/ZBnZVEuyqWCGcK8Ie" target="_blank" rel="noopener noreferrer"><span class="pf__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span class="pf__rate-t"><strong>5.0 on Google</strong> from 2 reviews</span></a></p>
-      <div class="pf__said">
-        <figure class="pf__q">
+<section id="top" class="vis" aria-labelledby="pfH1">
+  <div class="vis__panels">
+    <div class="vis__panel vis__panel--first">
+      <h1 id="pfH1" class="vis__big"><span>Websites</span> <span>for local</span> <span>businesses</span></h1>
+      <div class="vis__foot">
+        <p class="vis__line"><span>In Clackmannanshire, Stirling and Falkirk. <strong>&pound;599 fixed</strong> for up to five pages, live in 10 to 14 days.</span></p>
+        <p class="pf__rate"><a href="https://share.google/ZBnZVEuyqWCGcK8Ie" target="_blank" rel="noopener noreferrer"><span class="pf__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span class="pf__rate-t"><strong>5.0 on Google</strong> from 2 reviews</span></a></p>
+        <div class="pf__act">
+          <a class="pf__btn pf__btn--call" href="tel:+447487536649" data-track="call">Call Logan: 07487 536649</a>
+          <a class="pf__quote" href="/build/" data-track="quote">Build yours and see the price</a>
+        </div>
+      </div>
+    </div>
+    <div class="vis__panel">
+      <p class="vis__big"><span>Built</span> <span>from start</span></p>
+      <div class="vis__foot">
+        <p class="vis__line"><span>It starts as a pencil rough of the top of your homepage, drawn for nothing before you commit to anything.</span></p>
+        <figure class="pf__q vis__q">
           <blockquote cite="https://jenniferelliscelebrant.co.uk/"><p>&ldquo;My friends and other celebrants keep telling me the site is just me.&rdquo;</p></blockquote>
           <figcaption>Jennifer Ellis, <a href="https://jenniferelliscelebrant.co.uk/" target="_blank" rel="noopener noreferrer">Jennifer Ellis Celebrant</a></figcaption>
         </figure>
-        <figure class="pf__q">
+      </div>
+    </div>
+    <div class="vis__panel">
+      <p class="vis__big"><span>to finish</span></p>
+      <div class="vis__foot">
+        <p class="vis__line"><span>Then your words, your colours and your pictures go on it, and it goes live on your own domain.</span></p>
+        <figure class="pf__q vis__q">
           <blockquote cite="https://rayneydaypets.co.uk/"><p>&ldquo;Working with Logan has been smooth and professional from the get go.&rdquo;</p></blockquote>
           <figcaption>Fiona Stewart, <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a></figcaption>
         </figure>
       </div>
-      <p class="pf__own">Your domain, hosting and code are in your name from day one. If I ever stop, your site keeps working.</p>
-      <div class="pf__act">
-        <a class="pf__btn pf__btn--call" href="tel:+447487536649" data-track="call">Call Logan: 07487 536649</a>
-        <a class="pf__quote" href="/build/" data-track="quote">Build yours and see the price</a>
-      </div>
-      <div class="pf__me">
-        <p>Built by <a href="#me">Logan, 17, in Dollar</a>. Just me, start to finish.</p>
+    </div>
+    <div class="vis__panel vis__panel--last">
+      <p class="vis__big"><span>by me.</span></p>
+      <div class="vis__foot">
+        <p class="vis__line"><span>That is <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a>, live since September. Your domain, hosting and code are in your name from day one. If I ever stop, your site keeps working.</span></p>
+        <!-- Third review goes here when it arrives: copy a <figure class="pf__q vis__q"> block from the panels above. -->
       </div>
     </div>
-    <figure class="pf__site rough" id="rough">
-      <a class="rough__shot" href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer"><span class="rough__phone"><picture><source type="image/webp" srcset="/images/home/phone-rayney-v3-390.webp 390w, /images/home/phone-rayney-v3.webp 780w" sizes="(min-width: 900px) 360px, 80vw"><img src="/images/home/phone-rayney-v3-390.jpg" srcset="/images/home/phone-rayney-v3-390.jpg 390w, /images/home/phone-rayney-v3.jpg 780w" sizes="(min-width: 900px) 360px, 80vw" alt="Rayney Day Pet Services, a client site I built, on a phone" width="390" height="844" fetchpriority="high" decoding="async"></picture><svg class="rough__sheet" viewBox="0 0 390 844" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false" style="--n:48;--nt:17"><rect class="rough__paper" width="390" height="844"/><g class="rough__wash"><rect x="0" y="0" width="390" height="844" fill="#17392f" style="--i:0"/><path d="M383 96C330 78 262 96 215 150C172 205 152 320 152 430L150 640L383 640Z" fill="#7fa9c9" style="--i:1"/><path d="M150 430C210 400 300 395 383 420L383 640L150 640Z" fill="#4f7a3c" style="--i:2"/><rect x="168" y="652" width="206" height="48" rx="24" fill="#f2ece0" style="--i:3"/><rect x="0" y="782" width="158" height="62" fill="#f2ece0" style="--i:3"/></g><clipPath id="roughArch"><path d="M383 96C330 78 262 96 215 150C172 205 152 320 152 430L150 640L383 640Z"/></clipPath><g class="rough__pencil"><path d="M7.5 7.4Q195.1 7.2 384.5 7.2" pathLength="1" style="--i:0;stroke-width:1.8"/><path d="M7.5 6.8Q192.2 7.2 382.9 8.5" pathLength="1" style="--i:1;stroke-width:1.26"/><path d="M383.8 5.5Q382.5 423.1 381.6 836.0" pathLength="1" style="--i:2;stroke-width:1.8"/><path d="M383.4 5.4Q382.3 421.2 383.4 837.3" pathLength="1" style="--i:3;stroke-width:1.26"/><path d="M384.3 838.2Q194.5 839.3 6.2 837.5" pathLength="1" style="--i:4;stroke-width:1.8"/><path d="M384.1 839.1Q193.4 834.1 6.1 835.4" pathLength="1" style="--i:5;stroke-width:1.26"/><path d="M7.2 837.3Q8.6 421.0 8.5 5.4" pathLength="1" style="--i:6;stroke-width:1.8"/><path d="M6.5 834.9Q9.3 424.1 5.1 8.5" pathLength="1" style="--i:7;stroke-width:1.26"/><path d="M19.1 44.8Q21.0 37.6 23.4 34.3Q25.8 31.1 29.8 29.5Q33.8 27.9 38.7 29.3Q43.6 30.8 46.6 32.9Q49.6 35.0 51.1 38.5Q52.5 42.0 52.4 46.7Q52.3 51.3 49.7 54.6Q47.2 57.8 43.0 59.6Q38.9 61.4 35.0 60.8Q31.1 60.2 26.7 58.3Q22.3 56.5 21.0 52.1Q19.7 47.6 19.6 43.7Q19.4 39.7 22.4 36.6L25.3 33.6" pathLength="1" style="--i:8;stroke-width:1.4"/><path d="M67.3 46.3Q112.6 45.1 157.8 44.4" pathLength="1" style="--i:9;stroke-width:1.5" class="rs"/><path d="M285.2 47.4Q328.1 46.1 371.7 47.8" pathLength="1" style="--i:10;stroke-width:1.5" class="rs"/><path d="M282.1 66.0Q326.0 66.7 372.7 65.2" pathLength="1" style="--i:11;stroke-width:1.1"/><path d="M17.5 90.3Q195.6 91.3 374.3 89.2" pathLength="1" style="--i:12;stroke-width:1.2"/><path d="M16.5 90.5Q194.9 87.6 375.6 89.7" pathLength="1" style="--i:13;stroke-width:0.84"/><path d="M382.1 95.1Q330.4 83.1 301.0 90.1Q271.6 97.0 246.7 118.8Q221.7 140.6 203.0 173.8Q184.4 207.0 171.9 253.7Q159.5 300.4 155.7 360.4Q152.0 420.3 152.7 490.4Q153.3 560.5 151.4 599.8L149.6 639.0" pathLength="1" style="--i:14;stroke-width:1.7"/><path d="M382.5 -93.5Q218.1 70.7 53.7 236.4" pathLength="1" style="--i:15;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.6 -59.9Q216.8 104.8 53.3 270.2" pathLength="1" style="--i:16;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.0 -26.5Q216.8 139.0 53.5 303.3" pathLength="1" style="--i:17;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.2 8.3Q217.0 174.2 53.5 338.7" pathLength="1" style="--i:18;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M382.5 42.2Q219.2 205.9 52.8 371.9" pathLength="1" style="--i:19;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M382.3 75.9Q218.1 239.9 52.6 405.9" pathLength="1" style="--i:20;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M382.7 110.1Q218.5 274.8 52.8 440.8" pathLength="1" style="--i:21;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M382.6 144.3Q217.5 308.9 52.7 474.1" pathLength="1" style="--i:22;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M382.4 177.5Q218.3 341.8 53.5 507.4" pathLength="1" style="--i:23;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.2 212.5Q218.8 376.3 53.4 542.5" pathLength="1" style="--i:24;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.4 245.5Q217.0 410.0 52.4 575.7" pathLength="1" style="--i:25;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.2 280.4Q217.0 445.9 53.1 610.4" pathLength="1" style="--i:26;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.4 313.6Q218.5 478.7 52.5 643.4" pathLength="1" style="--i:27;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.1 348.7Q218.3 511.8 53.6 678.0" pathLength="1" style="--i:28;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.0 382.4Q218.9 545.9 52.6 712.8" pathLength="1" style="--i:29;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.0 416.7Q217.1 581.9 53.8 745.8" pathLength="1" style="--i:30;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M382.4 449.5Q217.9 614.8 52.4 779.3" pathLength="1" style="--i:31;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M17.4 157.5Q142.4 156.8 265.4 157.3" pathLength="1" style="--i:32;stroke-width:1.1" class="rs"/><path d="M17.7 176.6Q100.7 177.3 186.3 176.6" pathLength="1" style="--i:33;stroke-width:1.1" class="rs"/><path d="M17.9 353.6Q175.9 351.4 329.5 350.2" pathLength="1" style="--i:34;stroke-width:1.2"/><path d="M18.0 353.4Q174.2 349.8 329.4 349.9" pathLength="1" style="--i:35;stroke-width:0.84"/><path d="M17.2 424.4Q169.6 421.7 320.5 421.7" pathLength="1" style="--i:36;stroke-width:1.2"/><path d="M17.1 423.8Q171.2 421.9 322.9 423.3" pathLength="1" style="--i:37;stroke-width:0.84"/><path d="M18.6 585.0Q124.3 583.6 228.9 584.5" pathLength="1" style="--i:38;stroke-width:1.1" class="rs"/><path d="M18.4 607.0Q86.7 608.1 159.1 609.0" pathLength="1" style="--i:39;stroke-width:1.1" class="rs"/><path d="M191.1 701.0Q179.7 697.3 175.6 693.0Q171.4 688.7 170.3 682.3Q169.1 675.9 169.8 669.7Q170.6 663.6 175.5 659.6Q180.5 655.7 185.7 654.1Q190.9 652.5 270.0 652.2Q349.1 651.8 355.9 653.4Q362.6 655.0 367.2 659.8Q371.9 664.6 372.5 669.8Q373.1 675.0 371.5 680.9Q370.0 686.8 366.5 691.5Q363.1 696.2 356.7 697.8Q350.4 699.5 271.0 700.0Q191.6 700.5 186.1 698.8L180.6 697.0" pathLength="1" style="--i:40;stroke-width:1.6"/><path d="M193.1 762.1Q180.7 758.9 175.8 754.2Q171.0 749.5 170.0 743.3Q169.0 737.0 170.1 731.4Q171.3 725.9 175.9 721.6Q180.4 717.3 185.8 715.8Q191.3 714.4 270.4 714.0Q349.5 713.5 355.3 715.8Q361.0 718.1 365.8 721.6Q370.5 725.0 372.4 731.5Q374.2 737.9 372.1 743.4Q370.1 749.0 365.5 753.7Q360.9 758.5 356.0 760.2Q351.0 761.8 272.0 761.7Q193.0 761.6 186.3 760.3L179.6 759.0" pathLength="1" style="--i:41;stroke-width:1.6"/><path d="M8.2 782.9Q192.6 780.9 382.7 781.4" pathLength="1" style="--i:42;stroke-width:1.4"/><path d="M6.9 780.7Q197.2 782.1 380.8 780.1" pathLength="1" style="--i:43;stroke-width:0.9799999999999999"/><path d="M156.8 781.6Q159.2 807.8 158.1 836.8" pathLength="1" style="--i:44;stroke-width:1.3"/><path d="M156.4 782.1Q155.2 808.9 158.0 835.9" pathLength="1" style="--i:45;stroke-width:0.9099999999999999"/><path d="M126.8 740.9Q138.9 734.7 145.4 735.8Q152.0 736.8 157.9 737.9L163.9 739.0" pathLength="1" style="--i:46;stroke-width:1.2"/><path d="M154.4 730.6Q163.1 737.2 158.5 741.0L153.9 744.8" pathLength="1" style="--i:47;stroke-width:1.2"/></g><g class="rough__hand"><text x="36" y="51" font-size="13" text-anchor="middle" style="--i:0">RD</text><text x="68" y="40" font-size="13" text-anchor="start" style="--i:1">pet services</text><text x="372" y="60" font-size="14" text-anchor="end" style="--i:2">email Fiona</text><text x="18" y="158" font-size="15" text-anchor="start" style="--i:3">dog walking + home checks</text><text x="18" y="182" font-size="15" text-anchor="start" style="--i:4">Dollar and round about</text><text x="16" y="344" font-size="46" text-anchor="start" style="--i:5">Rayney Day</text><text x="16" y="416" font-size="46" text-anchor="start" style="--i:6">Pet Services</text><text x="18" y="588" font-size="17" text-anchor="start" style="--i:7">good days for pets,</text><text x="18" y="612" font-size="17" text-anchor="start" style="--i:8">peace of mind for people</text><text x="271" y="683" font-size="18" text-anchor="middle" style="--i:9" class="rd">Email Fiona</text><text x="271" y="745" font-size="18" text-anchor="middle" style="--i:10">Call Fiona</text><text x="82" y="818" font-size="15" text-anchor="middle" style="--i:11" class="rd">call</text><text x="270" y="818" font-size="15" text-anchor="middle" style="--i:12">email</text><text x="286" y="232" font-size="17" text-anchor="middle" style="--i:13" class="rn">her photo</text><text x="286" y="254" font-size="17" text-anchor="middle" style="--i:14" class="rn">goes here</text><text x="16" y="736" font-size="14" text-anchor="start" style="--i:15">the one thing</text><text x="16" y="753" font-size="14" text-anchor="start" style="--i:16">people do</text></g></svg></span></a>
-      <figcaption>A client site on a phone, starting from its pencil rough: <a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a>, live since September. Also live: <a href="https://yogawithjenniferellis.co.uk/" target="_blank" rel="noopener noreferrer">Jennifer Ellis Yoga</a>.</figcaption>
-    </figure>
-    <ol class="rough-steps" aria-label="How a site gets made, in four steps">
-      <li><h2>It starts as a rough</h2><p>Tell me what you do and I&rsquo;ll pencil the top of your homepage first, for nothing. If it&rsquo;s wrong, it has cost you nothing.</p></li>
-      <li><h2>Your words go on it</h2><p>Who you are, what you do, where, and the one thing you want people to do next. Here it was email or call Fiona.</p></li>
-      <li><h2>Then your colours and your photographs</h2><p>Colour and pictures come from the business itself, not from a template or a stock library.</p></li>
-      <li><h2>Then it&rsquo;s live</h2><p><a href="https://rayneydaypets.co.uk/" target="_blank" rel="noopener noreferrer">Rayney Day Pet Services</a> has been live on its own domain since September. Yours takes 10 to 14 days and costs &pound;599 fixed.</p></li>
-    </ol>
+  </div>
+  <!-- The phone stays in the back for the whole opening: pencil rough, then lettered, then coloured, then the live site. -->
+  <div class="vis__stage" id="rough" aria-hidden="true">
+    <span class="rough__phone"><picture><source type="image/webp" srcset="/images/home/phone-rayney-v3-390.webp 390w, /images/home/phone-rayney-v3.webp 780w" sizes="(min-width: 900px) 360px, 80vw"><img src="/images/home/phone-rayney-v3-390.jpg" srcset="/images/home/phone-rayney-v3-390.jpg 390w, /images/home/phone-rayney-v3.jpg 780w" sizes="(min-width: 900px) 360px, 80vw" alt="" width="390" height="844" fetchpriority="high" decoding="async"></picture><svg class="rough__sheet" viewBox="0 0 390 844" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false" style="--n:48;--nt:17"><rect class="rough__paper" width="390" height="844"/><g class="rough__wash"><rect x="0" y="0" width="390" height="844" fill="#17392f" style="--i:0"/><path d="M383 96C330 78 262 96 215 150C172 205 152 320 152 430L150 640L383 640Z" fill="#7fa9c9" style="--i:1"/><path d="M150 430C210 400 300 395 383 420L383 640L150 640Z" fill="#4f7a3c" style="--i:2"/><rect x="168" y="652" width="206" height="48" rx="24" fill="#f2ece0" style="--i:3"/><rect x="0" y="782" width="158" height="62" fill="#f2ece0" style="--i:3"/></g><clipPath id="roughArch"><path d="M383 96C330 78 262 96 215 150C172 205 152 320 152 430L150 640L383 640Z"/></clipPath><g class="rough__pencil"><path d="M7.5 7.4Q195.1 7.2 384.5 7.2" pathLength="1" style="--i:0;stroke-width:1.8"/><path d="M7.5 6.8Q192.2 7.2 382.9 8.5" pathLength="1" style="--i:1;stroke-width:1.26"/><path d="M383.8 5.5Q382.5 423.1 381.6 836.0" pathLength="1" style="--i:2;stroke-width:1.8"/><path d="M383.4 5.4Q382.3 421.2 383.4 837.3" pathLength="1" style="--i:3;stroke-width:1.26"/><path d="M384.3 838.2Q194.5 839.3 6.2 837.5" pathLength="1" style="--i:4;stroke-width:1.8"/><path d="M384.1 839.1Q193.4 834.1 6.1 835.4" pathLength="1" style="--i:5;stroke-width:1.26"/><path d="M7.2 837.3Q8.6 421.0 8.5 5.4" pathLength="1" style="--i:6;stroke-width:1.8"/><path d="M6.5 834.9Q9.3 424.1 5.1 8.5" pathLength="1" style="--i:7;stroke-width:1.26"/><path d="M19.1 44.8Q21.0 37.6 23.4 34.3Q25.8 31.1 29.8 29.5Q33.8 27.9 38.7 29.3Q43.6 30.8 46.6 32.9Q49.6 35.0 51.1 38.5Q52.5 42.0 52.4 46.7Q52.3 51.3 49.7 54.6Q47.2 57.8 43.0 59.6Q38.9 61.4 35.0 60.8Q31.1 60.2 26.7 58.3Q22.3 56.5 21.0 52.1Q19.7 47.6 19.6 43.7Q19.4 39.7 22.4 36.6L25.3 33.6" pathLength="1" style="--i:8;stroke-width:1.4"/><path d="M67.3 46.3Q112.6 45.1 157.8 44.4" pathLength="1" style="--i:9;stroke-width:1.5" class="rs"/><path d="M285.2 47.4Q328.1 46.1 371.7 47.8" pathLength="1" style="--i:10;stroke-width:1.5" class="rs"/><path d="M282.1 66.0Q326.0 66.7 372.7 65.2" pathLength="1" style="--i:11;stroke-width:1.1"/><path d="M17.5 90.3Q195.6 91.3 374.3 89.2" pathLength="1" style="--i:12;stroke-width:1.2"/><path d="M16.5 90.5Q194.9 87.6 375.6 89.7" pathLength="1" style="--i:13;stroke-width:0.84"/><path d="M382.1 95.1Q330.4 83.1 301.0 90.1Q271.6 97.0 246.7 118.8Q221.7 140.6 203.0 173.8Q184.4 207.0 171.9 253.7Q159.5 300.4 155.7 360.4Q152.0 420.3 152.7 490.4Q153.3 560.5 151.4 599.8L149.6 639.0" pathLength="1" style="--i:14;stroke-width:1.7"/><path d="M382.5 -93.5Q218.1 70.7 53.7 236.4" pathLength="1" style="--i:15;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.6 -59.9Q216.8 104.8 53.3 270.2" pathLength="1" style="--i:16;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.0 -26.5Q216.8 139.0 53.5 303.3" pathLength="1" style="--i:17;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.2 8.3Q217.0 174.2 53.5 338.7" pathLength="1" style="--i:18;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M382.5 42.2Q219.2 205.9 52.8 371.9" pathLength="1" style="--i:19;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M382.3 75.9Q218.1 239.9 52.6 405.9" pathLength="1" style="--i:20;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M382.7 110.1Q218.5 274.8 52.8 440.8" pathLength="1" style="--i:21;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M382.6 144.3Q217.5 308.9 52.7 474.1" pathLength="1" style="--i:22;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M382.4 177.5Q218.3 341.8 53.5 507.4" pathLength="1" style="--i:23;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.2 212.5Q218.8 376.3 53.4 542.5" pathLength="1" style="--i:24;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.4 245.5Q217.0 410.0 52.4 575.7" pathLength="1" style="--i:25;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.2 280.4Q217.0 445.9 53.1 610.4" pathLength="1" style="--i:26;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.4 313.6Q218.5 478.7 52.5 643.4" pathLength="1" style="--i:27;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.1 348.7Q218.3 511.8 53.6 678.0" pathLength="1" style="--i:28;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.0 382.4Q218.9 545.9 52.6 712.8" pathLength="1" style="--i:29;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M383.0 416.7Q217.1 581.9 53.8 745.8" pathLength="1" style="--i:30;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M382.4 449.5Q217.9 614.8 52.4 779.3" pathLength="1" style="--i:31;stroke-width:0.9" class="rh" clip-path="url(#roughArch)"/><path d="M17.4 157.5Q142.4 156.8 265.4 157.3" pathLength="1" style="--i:32;stroke-width:1.1" class="rs"/><path d="M17.7 176.6Q100.7 177.3 186.3 176.6" pathLength="1" style="--i:33;stroke-width:1.1" class="rs"/><path d="M17.9 353.6Q175.9 351.4 329.5 350.2" pathLength="1" style="--i:34;stroke-width:1.2"/><path d="M18.0 353.4Q174.2 349.8 329.4 349.9" pathLength="1" style="--i:35;stroke-width:0.84"/><path d="M17.2 424.4Q169.6 421.7 320.5 421.7" pathLength="1" style="--i:36;stroke-width:1.2"/><path d="M17.1 423.8Q171.2 421.9 322.9 423.3" pathLength="1" style="--i:37;stroke-width:0.84"/><path d="M18.6 585.0Q124.3 583.6 228.9 584.5" pathLength="1" style="--i:38;stroke-width:1.1" class="rs"/><path d="M18.4 607.0Q86.7 608.1 159.1 609.0" pathLength="1" style="--i:39;stroke-width:1.1" class="rs"/><path d="M191.1 701.0Q179.7 697.3 175.6 693.0Q171.4 688.7 170.3 682.3Q169.1 675.9 169.8 669.7Q170.6 663.6 175.5 659.6Q180.5 655.7 185.7 654.1Q190.9 652.5 270.0 652.2Q349.1 651.8 355.9 653.4Q362.6 655.0 367.2 659.8Q371.9 664.6 372.5 669.8Q373.1 675.0 371.5 680.9Q370.0 686.8 366.5 691.5Q363.1 696.2 356.7 697.8Q350.4 699.5 271.0 700.0Q191.6 700.5 186.1 698.8L180.6 697.0" pathLength="1" style="--i:40;stroke-width:1.6"/><path d="M193.1 762.1Q180.7 758.9 175.8 754.2Q171.0 749.5 170.0 743.3Q169.0 737.0 170.1 731.4Q171.3 725.9 175.9 721.6Q180.4 717.3 185.8 715.8Q191.3 714.4 270.4 714.0Q349.5 713.5 355.3 715.8Q361.0 718.1 365.8 721.6Q370.5 725.0 372.4 731.5Q374.2 737.9 372.1 743.4Q370.1 749.0 365.5 753.7Q360.9 758.5 356.0 760.2Q351.0 761.8 272.0 761.7Q193.0 761.6 186.3 760.3L179.6 759.0" pathLength="1" style="--i:41;stroke-width:1.6"/><path d="M8.2 782.9Q192.6 780.9 382.7 781.4" pathLength="1" style="--i:42;stroke-width:1.4"/><path d="M6.9 780.7Q197.2 782.1 380.8 780.1" pathLength="1" style="--i:43;stroke-width:0.9799999999999999"/><path d="M156.8 781.6Q159.2 807.8 158.1 836.8" pathLength="1" style="--i:44;stroke-width:1.3"/><path d="M156.4 782.1Q155.2 808.9 158.0 835.9" pathLength="1" style="--i:45;stroke-width:0.9099999999999999"/><path d="M126.8 740.9Q138.9 734.7 145.4 735.8Q152.0 736.8 157.9 737.9L163.9 739.0" pathLength="1" style="--i:46;stroke-width:1.2"/><path d="M154.4 730.6Q163.1 737.2 158.5 741.0L153.9 744.8" pathLength="1" style="--i:47;stroke-width:1.2"/></g><g class="rough__hand"><text x="36" y="51" font-size="13" text-anchor="middle" style="--i:0">RD</text><text x="68" y="40" font-size="13" text-anchor="start" style="--i:1">pet services</text><text x="372" y="60" font-size="14" text-anchor="end" style="--i:2">email Fiona</text><text x="18" y="158" font-size="15" text-anchor="start" style="--i:3">dog walking + home checks</text><text x="18" y="182" font-size="15" text-anchor="start" style="--i:4">Dollar and round about</text><text x="16" y="344" font-size="46" text-anchor="start" style="--i:5">Rayney Day</text><text x="16" y="416" font-size="46" text-anchor="start" style="--i:6">Pet Services</text><text x="18" y="588" font-size="17" text-anchor="start" style="--i:7">good days for pets,</text><text x="18" y="612" font-size="17" text-anchor="start" style="--i:8">peace of mind for people</text><text x="271" y="683" font-size="18" text-anchor="middle" style="--i:9" class="rd">Email Fiona</text><text x="271" y="745" font-size="18" text-anchor="middle" style="--i:10">Call Fiona</text><text x="82" y="818" font-size="15" text-anchor="middle" style="--i:11" class="rd">call</text><text x="270" y="818" font-size="15" text-anchor="middle" style="--i:12">email</text><text x="286" y="232" font-size="17" text-anchor="middle" style="--i:13" class="rn">her photo</text><text x="286" y="254" font-size="17" text-anchor="middle" style="--i:14" class="rn">goes here</text><text x="16" y="736" font-size="14" text-anchor="start" style="--i:15">the one thing</text><text x="16" y="753" font-size="14" text-anchor="start" style="--i:16">people do</text></g></svg></span>
   </div>
 </section>
 <!-- the mobile bar: call and quote always one tap away under 720px -->
@@ -529,6 +557,26 @@ addEventListener('pagereveal', function (e) {
   <a href="/build/" data-track="quote">See the price</a>
 </nav>
 
+
+  <!-- 2 · JUST ME. Who is behind it, before the terms. -->
+  <section id="me" class="act act--me" aria-labelledby="me-h">
+    <div class="wrap me">
+      <picture class="me__photo">
+        <source type="image/webp" srcset="/images/home/logan-280.webp?v=5 280w, /images/home/logan-480.webp?v=5 480w" sizes="(min-width: 720px) 200px, 140px">
+        <img src="/images/home/logan-280.jpg?v=5" srcset="/images/home/logan-280.jpg?v=5 280w, /images/home/logan-480.jpg?v=5 480w" sizes="(min-width: 720px) 200px, 140px" alt="Logan Tempany, who builds every site." width="200" height="200" loading="lazy" decoding="async">
+      </picture>
+      <div class="me__text">
+        <h2 id="me-h">It's just me.</h2>
+        <p>I'm Logan Tempany. I build every site on this page myself, from Dollar, and I'm 17.</p>
+        <p>The first site I built was for me. It tracked every apprenticeship in Scotland I wanted to apply for: the skills each one needs, where to learn them, when applications open and close, what they pay and where they're based. When Fiona was starting her pet services business and needed a website, I knew I could build hers too. Since then I've worked with three more businesses.</p>
+        <p>Most of the small businesses I talk to run on word of mouth and a Facebook page. That works until someone Googles you and finds nothing, or finds a site that won't load on their phone. I build something you'd send a customer to without apologising for it.</p>
+        <p>This isn't a summer job for me. I like helping people get something they're proud to show, and every business I take on gets me properly. You deal with me from the first call to launch, and after it. If something breaks, you phone me and I fix it.</p>
+        <p><a href="tel:+447487536649" data-track="call">07487 536649</a> &middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a></p>
+        <p class="tw-sign">Logan Tempany</p>
+        <p class="tw-sign__sub">Tempany Web Studios</p>
+      </div>
+    </div>
+  </section>
 
   <!-- 2 · THE WORK. Jennifer's live site first, with her own words beside it. -->
   <section id="work" class="act act--work" aria-labelledby="work-h">
@@ -628,26 +676,6 @@ addEventListener('pagereveal', function (e) {
         </li>
       </ul>
       <p class="demos-yours">Not your trade? <a href="/build/">Pick your pages and see the price add up</a>, or see <a href="/library/">everything I&rsquo;ve built in the library</a>.</p>
-    </div>
-  </section>
-
-  <!-- 3 · JUST ME. Who is behind it, before the terms. -->
-  <section id="me" class="act act--me" aria-labelledby="me-h">
-    <div class="wrap me">
-      <picture class="me__photo">
-        <source type="image/webp" srcset="/images/home/logan-280.webp?v=5 280w, /images/home/logan-480.webp?v=5 480w" sizes="(min-width: 720px) 200px, 140px">
-        <img src="/images/home/logan-280.jpg?v=5" srcset="/images/home/logan-280.jpg?v=5 280w, /images/home/logan-480.jpg?v=5 480w" sizes="(min-width: 720px) 200px, 140px" alt="Logan Tempany, who builds every site." width="200" height="200" loading="lazy" decoding="async">
-      </picture>
-      <div class="me__text">
-        <h2 id="me-h">It's just me.</h2>
-        <p>I'm Logan Tempany. I build every site on this page myself, from Dollar, and I'm 17.</p>
-        <p>The first site I built was for me. It tracked every apprenticeship in Scotland I wanted to apply for: the skills each one needs, where to learn them, when applications open and close, what they pay and where they're based. When Fiona was starting her pet services business and needed a website, I knew I could build hers too. Since then I've worked with three more businesses.</p>
-        <p>Most of the small businesses I talk to run on word of mouth and a Facebook page. That works until someone Googles you and finds nothing, or finds a site that won't load on their phone. I build something you'd send a customer to without apologising for it.</p>
-        <p>This isn't a summer job for me. I like helping people get something they're proud to show, and every business I take on gets me properly. You deal with me from the first call to launch, and after it. If something breaks, you phone me and I fix it.</p>
-        <p><a href="tel:+447487536649" data-track="call">07487 536649</a> &middot; <a href="mailto:logan@tempanywebstudios.co.uk">logan@tempanywebstudios.co.uk</a></p>
-        <p class="tw-sign">Logan Tempany</p>
-        <p class="tw-sign__sub">Tempany Web Studios</p>
-      </div>
     </div>
   </section>
 
@@ -775,32 +803,26 @@ addEventListener('pagereveal', function (e) {
 <!-- /tw:foot -->
 
 <script>
-/* The rough. One number per layer, set from the scroll: --draw pencils the strokes in,
-   --ink letters them, --wash lays the colour, --live lifts the sheet off the real site.
-   On a wide screen the phone stays put while the four steps scroll past it; on a narrow
-   one it changes as it travels up the screen. Nothing is pinned and nothing waits. */
+/* The opening. One number per layer of the sheet over the phone, set from where the panels are:
+   --draw pencils the strokes in, --ink letters them, --wash lays the colour, --live lifts the
+   sheet off the real site. The phone is held by CSS; the words never stop. */
 (function () {
   var fig = document.getElementById('rough'), sheet = fig && fig.querySelector('.rough__sheet');
   if (!sheet || !window.CSS || !CSS.supports('color', 'color-mix(in srgb, red, blue)') || !matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
-  var steps = [].slice.call(document.querySelectorAll('.rough-steps li')), wide = matchMedia('(min-width: 900px)'), queued = false;
+  var panels = [].slice.call(document.querySelectorAll('.vis__panel')), queued = false;
   var c = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
   fig.classList.add('rough-on');
   function set() {
     queued = false;
-    var vh = innerHeight, d, i, w, l;
-    if (wide.matches) {
-      // where each step's middle sits against the middle of the screen: 0 before it, 1 once it has arrived
-      var at = steps.map(function (li) { var r = li.getBoundingClientRect(); return c(1 - (r.top + r.height / 2 - vh * 0.55) / (vh * 0.55)); });
-      d = 0.42 + 0.58 * at[0]; i = c(at[1] * 1.15); w = at[2]; l = c(at[3] * 1.1);
-    } else {
-      var r = fig.getBoundingClientRect(), f = c((vh * 0.92 - r.top) / (vh * 0.92 - 70));
-      d = c(f / 0.3); i = c((f - 0.3) / 0.2); w = c((f - 0.5) / 0.22); l = c((f - 0.72) / 0.26);
-    }
+    var vh = innerHeight;
+    // how far each panel's top has come up the screen: 0 as it enters at the bottom, 1 once it reaches the top
+    var at = panels.map(function (p) { return c(1 - p.getBoundingClientRect().top / vh); });
+    var d = 0.45 + 0.55 * c(at[1] * 2.2), i = c((at[1] - 0.4) * 2.2), w = c((at[2] - 0.25) * 1.9), l = c((at[3] - 0.25) * 1.9);
     sheet.style.setProperty('--draw', d.toFixed(3)); sheet.style.setProperty('--ink', i.toFixed(3));
     sheet.style.setProperty('--wash', w.toFixed(3)); sheet.style.setProperty('--live', l.toFixed(3));
   }
   function ask() { if (!queued) { queued = true; requestAnimationFrame(set); } }
-  addEventListener('scroll', ask, { passive: true }); addEventListener('resize', ask); (wide.addEventListener || wide.addListener).call(wide, 'change', ask);
+  addEventListener('scroll', ask, { passive: true }); addEventListener('resize', ask);
   set();
 })();
 </script>
