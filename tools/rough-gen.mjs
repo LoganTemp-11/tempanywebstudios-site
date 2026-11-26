@@ -71,7 +71,7 @@ const phone = sheet('p', 390, 844, (P) => {
     words: [
       [36, 51, 13, 'middle', 'RD'], [68, 40, 13, 'start', 'pet services'], [372, 60, 14, 'end', 'email Fiona'],
       [18, 158, 15, 'start', 'dog walking + home checks'], [18, 182, 15, 'start', 'Dollar and round about'],
-      [16, 344, 46, 'start', 'Rayney Day'], [16, 416, 46, 'start', 'Pet Services'],
+      [16, 344, 46, 'start', 'Rayney Day', 'rt'], [16, 416, 46, 'start', 'Pet Services', 'rt'],
       [18, 588, 17, 'start', 'good days for pets,'], [18, 612, 17, 'start', 'peace of mind for people'],
       [271, 683, 18, 'middle', 'Email Fiona', 'rd'], [271, 745, 18, 'middle', 'Call Fiona'],
       [82, 818, 15, 'middle', 'call', 'rd'], [270, 818, 15, 'middle', 'email'],
@@ -108,7 +108,7 @@ const wide = sheet('w', 1440, 900, (P) => {
       [43, 51, 14, 'middle', 'RD'], [76, 51, 16, 'start', 'pet services'],
       [630, 51, 16, 'middle', 'services'], [722, 51, 16, 'middle', 'about'], [811, 51, 16, 'middle', 'contact'], [1414, 58, 17, 'end', 'email Fiona'],
       [24, 198, 20, 'start', 'dog walking + pet home checks, Dollar and round about'],
-      [22, 462, 156, 'start', 'Rayney Day'], [166, 590, 156, 'start', 'Pet Services'],
+      [22, 462, 156, 'start', 'Rayney Day', 'rt'], [166, 590, 156, 'start', 'Pet Services', 'rt'],
       [24, 822, 26, 'start', 'good days for pets,'], [24, 854, 26, 'start', 'peace of mind for their people'],
       [985, 842, 21, 'middle', 'Email Fiona', 'rd'], [1170, 842, 21, 'middle', 'Call Fiona'], [1360, 828, 17, 'middle', 'email'],
       [1008, 250, 26, 'middle', 'her photo', 'rn'], [1008, 282, 26, 'middle', 'goes here', 'rn'],
