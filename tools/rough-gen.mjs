@@ -10,7 +10,7 @@ function sheet(id, W, H, draw) {
   const k = W / 390 > 2 ? 1.7 : 1;                       // the wide sheet is drawn with a slightly heavier hand
   const j = (a) => (rnd() - 0.5) * 2 * a * k;
   const f = (n) => n.toFixed(1);
-  const strokes = []; let cls = '';
+  const strokes = []; let cls = '', first = 0;
   const pencil = (d, w = 1.5) => strokes.push({ d, w: w * (k > 1 ? 1.35 : 1), cls });
   const P = {
     line(x1, y1, x2, y2, { w = 1.5, twice = true, wob = 1.6 } = {}) {
@@ -36,12 +36,13 @@ function sheet(id, W, H, draw) {
     scribble(x, y, w, h, n, o = {}) { for (let i = 0; i < n; i++) { const yy = y + (i + 0.5) * h / n; P.line(x, yy, x + w * (i === n - 1 && n > 1 ? 0.62 + rnd() * 0.2 : 0.9 + rnd() * 0.1), yy, { twice: false, wob: 1.2, ...o }); } },
     standIn(fn) { cls = 'rs'; fn(); cls = ''; },          // strokes that stand in for words, rubbed out once lettered
     hatch(fn) { cls = 'rh'; fn(); cls = ''; },
+    hold() { first = strokes.length; },                    // everything before this is on the sheet at rest; the rest is drawn on scroll
   };
   const { words, wash, arch } = draw(P);
   const N = strokes.length;
   const paths = strokes.map((s, i) => `<path d="${s.d}" pathLength="1" style="--i:${i};stroke-width:${s.w.toFixed(2)}"${s.cls === 'rh' ? ` class="rh" clip-path="url(#ra-${id})"` : s.cls ? ` class="${s.cls}"` : ''}/>`).join('');
   const text = words.map(([x, y, s, a, t, c], i) => `<text x="${x}" y="${y}" font-size="${s}" text-anchor="${a}" style="--i:${i}"${c ? ` class="${c}"` : ''}>${t}</text>`).join('');
-  return `<svg class="rough__sheet" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false" style="--n:${N};--nt:${words.length}">`
+  return `<svg class="rough__sheet" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMin slice" aria-hidden="true" focusable="false" style="--n:${N};--n0:${first};--nt:${words.length}">`
     + `<rect class="rough__paper" width="${W}" height="${H}"/>`
     + `<clipPath id="ra-${id}"><path d="${arch}"/></clipPath>`
     + `<clipPath id="rw-${id}"><rect class="rough__wipe" width="${W}" height="${H}"/></clipPath>`
@@ -57,6 +58,7 @@ const phone = sheet('p', 390, 844, (P) => {
   P.standIn(() => { P.line(66, 46, 158, 45, { twice: false }); P.line(284, 48, 372, 49, { twice: false }); });
   P.line(282, 66, 374, 65, { w: 1.1, twice: false });
   P.line(16, 90, 374, 89, { w: 1.2 });
+  P.hold();
   P.poly([[383, 96], [330, 82], [272, 96], [222, 140], [184, 208], [160, 300], [152, 420], [154, 560], [150, 640]], { w: 1.7 });
   const arch = 'M383 96C330 78 262 96 215 150C172 205 152 320 152 430L150 640L383 640Z';
   P.hatch(() => { for (let i = 0; i < 17; i++) { const o = 60 + i * 34; P.line(383, 96 + o - 250, 53, 96 + o + 80, { w: 0.9, twice: false, wob: 0.8 }); } });
@@ -91,6 +93,7 @@ const wide = sheet('w', 1440, 900, (P) => {
   P.line(1322, 67, 1416, 66, { w: 1, twice: false });
   P.line(24, 90, 1416, 89, { w: 1 });
   // the photograph: a tall arch, right of centre
+  P.hold();
   const arch = 'M677 737L677 394A331 331 0 0 1 1339 394L1339 737Q1339 837 1239 837L777 837Q677 837 677 737Z';
   const top = []; for (let i = 0; i <= 12; i++) { const a = Math.PI + (i / 12) * Math.PI; top.push([1008 + Math.cos(a) * 331, 394 + Math.sin(a) * 331]); }
   P.poly([[777, 837], [700, 818], [677, 737], [676, 560], ...top, [1340, 560], [1339, 737], [1316, 818], [1239, 837], [1000, 838], [777, 837], [740, 832]], { w: 1.6, wob: 1.6 });
