@@ -1,0 +1,6 @@
+# Cairnfold Construction: a demonstration site by Tempany Web Studios, not a business.
+# The pages carry noindex, so crawling is allowed and indexing is refused.
+User-agent: *
+Allow: /
+
+Sitemap: https://tempanywebstudios.co.uk/demos/cairnfold/sitemap.xml
