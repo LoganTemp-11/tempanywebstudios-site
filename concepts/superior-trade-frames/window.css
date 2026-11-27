@@ -1,15 +1,12 @@
-/* Windows page only, on top of style.css. Colours are the brief card's (section 3) through
-   style.css's tokens; the two swatch hexes are the only ones written here. Nothing animates.
-   Static mode (no class on <html>) is the whole page for JS off, reduced motion and no WebGL.
-   .explode-ok reserves the scroll sequence; .explode-live is set on the first rendered frame. */
+/* Windows page. Card colours only; nothing animates. No class on <html> is static mode. */
 
-:root { --use: calc(100svh - var(--bar-h) - var(--consent-h)); --cut: calc(var(--use) * .54); }
+:root { --use: calc(100svh - var(--bar-h) - var(--consent-h)); --cut: calc(var(--use) * .54); --pt: var(--s7); }
 
-/* First screen: the Home hero, with their stock in VEKA's film */
+/* First screen */
 .hero .alt a { display: inline-flex; align-items: center; min-height: 44px; }
 @media (max-width: 899px) { .hero .photo img { object-position: 50% 38%; } }
 
-/* The window taken apart: the van-blue field, every word on it van white (7.8:1) */
+/* The window taken apart: van white on van blue */
 .apart { background: var(--blue); color: var(--ground); border-top: 0; }
 .apart + section { border-top: 0; }
 .apart :is(h2, p, li, a, strong, span) { color: var(--ground); }
@@ -23,7 +20,7 @@
 .count { font-size: var(--t-h2); font-weight: 700; line-height: 1.1; letter-spacing: -0.015em; margin-bottom: var(--s2); font-variant-numeric: tabular-nums; }
 .source p:first-child { font-size: var(--t-small); }
 
-/* Labels: each sits under a dimension line with square end ticks, as on the sizes drawing */
+/* Labels: a dimension line with end ticks */
 .labels { list-style: none; margin: 0 0 var(--s4); padding: 0; }
 .labels li { position: relative; padding: var(--s3) 0; border-top: 1px solid var(--wall); }
 .labels li::before, .labels li::after { content: ""; position: absolute; top: -4px; left: 0; width: 1px; height: 7px; background: var(--wall); }
@@ -33,55 +30,74 @@
 
 html:not(.explode-ok) .step + .step { margin-top: var(--s5); }
 html:not(.explode-ok) .still { margin: var(--s4) 0 0; }
-html:not(.explode-ok) [data-step="apart"] .still { margin: 0 0 var(--s4); }
+html:not(.explode-ok) [data-step=apart] .still { margin: 0 0 var(--s4); }
 html:not(.explode-ok) :is(.panel, .source) > :last-child { margin-bottom: 0; }
 @media (min-width: 900px) {
-  /* Static only, every row as tall as its content. The window in film beside the words, the
-     film line at the foot of that pair (the still is at least 300px tall and never sets a gap
-     of its own); the window apart across the field; the labels, with the count and the line
-     after it straight under one another beside them. The last row, the only flexible one, takes the labels' extra height. */
+  /* Static: rows as tall as their content; only the last row flexes */
   html:not(.explode-ok) .steps { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--s6);
     grid-template-areas: "a f" "b f" "x x" "c d" "c e" "c ."; grid-template-rows: auto auto auto auto auto 1fr; }
   html:not(.explode-ok) .step { display: contents; }
   html:not(.explode-ok) .still { margin: 0; }
-  html:not(.explode-ok) [data-step="film"] .panel { grid-area: a; }
-  html:not(.explode-ok) [data-step="film"] .still { grid-area: f; position: relative; min-height: 300px; }
-  html:not(.explode-ok) [data-step="film"] .still img { position: absolute; inset: 0; height: 100%; object-fit: contain; }
-  html:not(.explode-ok) [data-step="peel"] .panel { grid-area: b; align-self: end; }
-  html:not(.explode-ok) [data-step="apart"] .still { grid-area: x; margin: var(--s4) 0 var(--s6); }
-  html:not(.explode-ok) [data-step="apart"] .panel { grid-area: c; }
-  html:not(.explode-ok) [data-step="count"] .panel { grid-area: d; }
-  html:not(.explode-ok) [data-step="together"] .panel { grid-area: e; margin-top: var(--s4); }
+  html:not(.explode-ok) [data-step=film] .panel { grid-area: a; }
+  html:not(.explode-ok) [data-step=film] .still { grid-area: f; position: relative; min-height: 300px; }
+  html:not(.explode-ok) [data-step=film] .still img { position: absolute; inset: 0; height: 100%; object-fit: contain; }
+  html:not(.explode-ok) [data-step=peel] .panel { grid-area: b; align-self: end; }
+  html:not(.explode-ok) [data-step=apart] .still { grid-area: x; margin: var(--s4) 0 var(--s6); }
+  html:not(.explode-ok) [data-step=apart] .panel { grid-area: c; }
+  html:not(.explode-ok) [data-step=count] .panel { grid-area: d; }
+  html:not(.explode-ok) [data-step=together] .panel { grid-area: e; margin-top: var(--s4); }
 }
 
-/* explode-ok: the sequence's height is reserved from first paint, and the stage sticks for all
-   of it. Phones stack: model in the top 54% of the usable height, panels sticky under it. */
+/* explode-ok: the stage sticks to the last step's end; phones put the model in the top 54% */
 .explode-ok .apart { display: grid; padding: 0; }
 .explode-ok .apart > * { grid-area: 1 / 1; }
-.explode-ok .steps { width: 100%; }
+.explode-ok .steps { width: 100%; padding-bottom: calc(var(--use) - var(--cut) - var(--s3)); }
 .explode-ok .stage { display: block; position: sticky; top: 0; align-self: start; height: var(--use); z-index: 1; pointer-events: none; }
-.explode-ok .model { position: absolute; left: 0; right: 0; top: 0; height: var(--cut); background: var(--blue); }
-.explode-ok .poster img, .explode-ok .model > canvas { display: block; width: 100%; height: 100%; object-fit: contain; }
+.model { position: absolute; left: 0; right: 0; top: 0; height: var(--cut); background: var(--blue); }
+.poster img, .model > canvas { display: block; width: 100%; height: 100%; object-fit: contain; }
+.model > canvas { position: absolute; top: 0; left: 0; }
 .explode-live [data-poster], .explode-ok .still { display: none; }
 .explode-ok .step { position: relative; }
 .explode-ok .panel { position: sticky; top: calc(var(--cut) + var(--s3)); padding-bottom: var(--s4); }
-.explode-ok [data-step="film"] { height: 70svh; padding-top: calc(var(--cut) + var(--s3)); box-sizing: content-box; }
-.explode-ok [data-step="peel"] { height: 55svh; }
-.explode-ok [data-step="apart"] { height: 90svh; }
-.explode-ok [data-step="count"] { height: 65svh; }
-.explode-ok [data-step="together"] { height: 80svh; }
+.explode-ok [data-step=film] { height: 70svh; padding-top: calc(var(--cut) + var(--s3)); box-sizing: content-box; }
+.explode-ok [data-step=peel] { height: 55svh; }
+.explode-ok [data-step=apart] { height: 90svh; }
+.explode-ok [data-step=count] { height: max(65svh, 30rem); }
+.explode-ok [data-step=together] { height: 80svh; }
+.rail { position: absolute; left: var(--s3); right: var(--s3); top: 0; height: var(--cut); }
+.rail ul { position: absolute; left: 0; right: 0; bottom: var(--s3); margin: 0; display: flex; flex-wrap: wrap; justify-content: space-between; }
+.rail li { padding: 0; border: 0; }
+.rail li::before, .rail li::after { content: none; }
+.rail li:not(.on), .rail:not(.on) .source { visibility: hidden; }
+.rail a { pointer-events: auto; }
+.compact strong { font-size: var(--t-small); margin: 0; }
+.compact span, .compact .source { display: none; }
+.leads { position: absolute; top: 0; left: 0; width: 100%; height: 100%; fill: none; stroke: var(--wall); }
 @media (min-width: 900px), (orientation: landscape) and (min-width: 640px) {
-  .explode-ok .stage-in { position: relative; height: 100%; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--s6); }
-  .explode-ok .model { position: relative; grid-column: 2; height: 100%; }
-  .explode-ok .panel { top: var(--s7); width: calc((100% - var(--s6)) * 5 / 12); }
-  .explode-ok [data-step="film"] { height: 70vh; padding-top: var(--s7); box-sizing: border-box; }
-  .explode-ok [data-step="peel"] { height: 60vh; }
-  .explode-ok [data-step="apart"] { height: 100vh; }
-  .explode-ok [data-step="count"] { height: 70vh; }
-  .explode-ok [data-step="together"] { height: 80vh; }
+  .stage-in { position: relative; height: 100%; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--s6); }
+  .model { position: relative; grid-column: 2; height: 100%; }
+  .explode-ok .panel { top: var(--pt); width: calc((100% - var(--s6)) * 5 / 12); }
+  .explode-ok [data-step=film] { height: 70vh; padding-top: var(--pt); box-sizing: border-box; }
+  .explode-ok [data-step=peel] { height: 60vh; }
+  .explode-ok [data-step=apart] { height: 100vh; }
+  .explode-ok [data-step=count] { height: 70vh; }
+  .explode-ok [data-step=together] { height: 80vh; }
+  .explode-ok .steps { padding-bottom: calc(var(--use) - var(--pt)); }
+  .rail { position: relative; left: auto; right: auto; height: auto; grid-area: 1 / 1; }
+  .rail.on { background: var(--blue); }
+  .rail ul { top: 0; bottom: 0; display: block; }
+  .rail li { position: absolute; left: 0; max-width: 100%; }
+  .rail .source { position: absolute; left: 0; right: 0; bottom: var(--s4); }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  :root { --pt: var(--s3); }
+  .explode-ok .apart :is(p, li) { font-size: var(--t-small); }
+  .explode-ok .apart .peel { font-size: var(--t-body); }
+  .explode-ok .apart .count { font-size: var(--t-h3); }
+  .explode-ok :is([data-step=film], [data-step=count]) { height: 120vh; }
 }
 
-/* What's in the frame: VEKA's figures beside the model's, and the cut through the opener */
+/* What's in the frame */
 .lede { font-size: var(--t-h3); line-height: 1.35; }
 .spec { display: grid; gap: var(--s6); margin-top: var(--s5); }
 @media (min-width: 900px) { .spec { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; } }
@@ -104,7 +120,7 @@ html:not(.explode-ok) :is(.panel, .source) > :last-child { margin-bottom: 0; }
 @media (max-width: 599px) { .cut svg { font-size: 9px; } }
 .cut figcaption { font-size: var(--t-small); padding-top: var(--s3); border-top: 1px solid var(--wall); }
 
-/* Their photos: the gable crop keeps its apex on phones; captions sit under their own photo */
+/* Their photos */
 .gable img { object-position: 50% 0; }
 .wall .w img { object-position: 30% 50%; }
 @media (min-width: 900px) { .wall .photo { grid-template-rows: auto auto; align-content: start; } }

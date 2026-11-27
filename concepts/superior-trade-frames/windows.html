@@ -29,7 +29,7 @@
    motion is allowed, WebGL2 exists, Save-Data is off and the address has no ?nowebgl. Otherwise,
    and with JS off, the page stays static: the two stills, the labels as a list, the count. */
 (function (w, d) {
-  var B = '', r = '', c = navigator.connection;
+  var B = 'assets/window-explode.js', r = '', c = navigator.connection;
   if (w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches) r = 'reduced-motion';
   else if (/[?&]nowebgl(?:[=&]|$)/.test(location.search)) r = 'nowebgl';
   else if (c && c.saveData) r = 'save-data';
