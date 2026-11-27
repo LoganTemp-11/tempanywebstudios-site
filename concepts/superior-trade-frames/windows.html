@@ -27,7 +27,7 @@
 <script>
 /* Mode, before first paint. The window comes apart in WebGL only when the bundle is in place (B),
    motion is allowed, WebGL2 exists, Save-Data is off and the address has no ?nowebgl. Otherwise,
-   and with JS off, the page stays static: the two stills, the labels as a list, the count. */
+   and with JS off, the page stays static: the stills, the labels as a list, the count. */
 (function (w, d) {
   var B = 'assets/window-explode.js', r = '', c = navigator.connection;
   if (w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches) r = 'reduced-motion';
@@ -98,10 +98,6 @@
 <li data-target="frame_reinforcement" data-target-alt="sash_reinforcement"><strong>Reinforcement</strong> <span>Steel or aluminium inside the profile, where required.</span></li>
 <li data-target="opener_unit"><strong>The sealed unit</strong> <span>Double or triple glazed. As low as 1.2 W/m²K for the whole window, double glazed.</span></li>
 </ul>
-<div class="source" data-source>
-<p><a href="https://source.thenbs.com/product/m70-casement-window/2vwVhJd8NKFbmEs41e46n7/6BKTqVNJCPHVXrcEQN6gP6">Figures: VEKA M70, as published by VEKA on NBS Source</a>, read 27 November 2026.</p>
-<p class="gap">To confirm with Donna: which VEKA system Superior stocks.</p>
-</div>
 </div>
 </div>
 <div class="step" data-step="count">
@@ -113,6 +109,10 @@
 <div class="step" data-step="together">
 <div class="panel"><p class="peel">Shut again, every gasket in its place. VEKA lists M70 as tested to PAS 24.</p>
 <figure class="still"><picture><source media="(min-width: 900px)" srcset="img/window-together-1600.webp" width="1600" height="1000"><img src="img/window-together-800.webp" width="800" height="880" alt="The same window back together with its film off: white frames, glass and handle." loading="lazy" decoding="async"></picture></figure>
+<div class="source" data-source>
+<p><a href="https://source.thenbs.com/product/m70-casement-window/2vwVhJd8NKFbmEs41e46n7/6BKTqVNJCPHVXrcEQN6gP6">Figures: VEKA M70, as published by VEKA on NBS Source</a>, read 27 November 2026.</p>
+<p class="gap">To confirm with Donna: which VEKA system Superior stocks.</p>
+</div>
 </div>
 </div>
 </div>
@@ -252,18 +252,20 @@
    { section, stage, model, poster, ready, fail }: it calls ready() straight after its first render
    (the poster goes in the same frame) and fail(reason) if anything breaks. A failed import, or no
    first frame within 10 s of the import starting, puts the page back to static and records why
-   in __stf.reason. */
+   in __stf.reason. In explode mode #apart holds nothing focusable: its source line is plain text,
+   and the spec section's NBS link is the link; static mode gets the link back. */
 (function () {
   var d = document, h = d.documentElement, S = window.__stf, t;
   if (!S || S.mode !== 'loading') return;
   var sec = d.getElementById('apart'), stage = sec.querySelector('[data-stage]');
-  var homes = [].map.call(sec.querySelectorAll('[data-labels], [data-source]'), function (el) { return [el, el.parentNode, el.nextSibling]; }).reverse();
+  var ul = sec.querySelector('[data-labels]'), src = sec.querySelector('[data-source] p'), link = src.innerHTML;
+  src.textContent += ' The link is in the spec table below.';
   function toStatic(why) {
     if (S.mode === 'static') return;
     clearTimeout(t); S.mode = 'static'; S.reason = why || 'failed';
     h.classList.remove('explode-ok', 'explode-live');
-    [].forEach.call(stage.querySelectorAll('canvas'), function (c) { c.remove(); });
-    homes.forEach(function (x) { if (x[0].parentNode !== x[1]) x[1].insertBefore(x[0], x[2] && x[2].parentNode === x[1] ? x[2] : null); });
+    [].forEach.call(stage.querySelectorAll('canvas, .rail, .leads'), function (c) { c.remove(); });
+    ul.setAttribute('data-labels', ''); src.innerHTML = link;
   }
   function ready() {
     if (S.mode !== 'loading') return;
