@@ -34,21 +34,24 @@
 html:not(.explode-ok) .step + .step { margin-top: var(--s5); }
 html:not(.explode-ok) .still { margin: var(--s4) 0 0; }
 html:not(.explode-ok) [data-step="apart"] .still { margin: 0 0 var(--s4); }
+html:not(.explode-ok) :is(.panel, .source) > :last-child { margin-bottom: 0; }
 @media (min-width: 900px) {
-  /* Two plates: the window in film beside the words, then the window apart across the field */
+  /* Static only, every row as tall as its content. The window in film beside the words, the
+     film line at the foot of that pair (the still is at least 300px tall and never sets a gap
+     of its own); the window apart across the field; the labels, with the count and the line
+     after it straight under one another beside them. The last row, the only flexible one, takes the labels' extra height. */
   html:not(.explode-ok) .steps { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--s6);
-    grid-template-areas: "a f" "b f" "x x" "c d" "c e"; grid-template-rows: auto 1fr auto auto auto; }
+    grid-template-areas: "a f" "b f" "x x" "c d" "c e" "c ."; grid-template-rows: auto auto auto auto auto 1fr; }
   html:not(.explode-ok) .step { display: contents; }
   html:not(.explode-ok) .still { margin: 0; }
-  [data-step="film"] .panel { grid-area: a; }
-  [data-step="film"] .still { grid-area: f; }
-  [data-step="film"] .still img { aspect-ratio: 1; object-fit: cover; }
-  [data-step="peel"] .panel { grid-area: b; align-self: end; padding-bottom: var(--s5); }
-  [data-step="apart"] .still { grid-area: x; }
-  [data-step="apart"] .panel { grid-area: c; }
-  [data-step="count"] .panel { grid-area: d; }
-  [data-step="together"] .panel { grid-area: e; align-self: end; }
-  html:not(.explode-ok) [data-step="apart"] .still { margin: var(--s4) 0 var(--s6); }
+  html:not(.explode-ok) [data-step="film"] .panel { grid-area: a; }
+  html:not(.explode-ok) [data-step="film"] .still { grid-area: f; position: relative; min-height: 300px; }
+  html:not(.explode-ok) [data-step="film"] .still img { position: absolute; inset: 0; height: 100%; object-fit: contain; }
+  html:not(.explode-ok) [data-step="peel"] .panel { grid-area: b; align-self: end; }
+  html:not(.explode-ok) [data-step="apart"] .still { grid-area: x; margin: var(--s4) 0 var(--s6); }
+  html:not(.explode-ok) [data-step="apart"] .panel { grid-area: c; }
+  html:not(.explode-ok) [data-step="count"] .panel { grid-area: d; }
+  html:not(.explode-ok) [data-step="together"] .panel { grid-area: e; margin-top: var(--s4); }
 }
 
 /* explode-ok: the sequence's height is reserved from first paint, and the stage sticks for all
