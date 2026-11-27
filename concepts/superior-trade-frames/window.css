@@ -1,4 +1,4 @@
-/* Windows page. Card colours only; nothing animates. No class on <html> is static mode. */
+/* Windows page. No class on <html> is static mode. */
 
 :root { --use: calc(100svh - var(--bar-h) - var(--consent-h)); --cut: calc(var(--use) * .54); --pt: var(--s7); }
 
@@ -6,7 +6,7 @@
 .hero .alt a { display: inline-flex; align-items: center; min-height: 44px; }
 @media (max-width: 899px) { .hero .photo img { object-position: 50% 38%; } }
 
-/* The window taken apart: van white on van blue */
+/* The window taken apart */
 .apart { background: var(--blue); color: var(--ground); border-top: 0; }
 .apart + section { border-top: 0; }
 .apart :is(h2, p, li, a, strong, span) { color: var(--ground); }
@@ -20,7 +20,7 @@
 .count { font-size: var(--t-h2); font-weight: 700; line-height: 1.1; letter-spacing: -0.015em; margin-bottom: var(--s2); font-variant-numeric: tabular-nums; }
 .source p:first-child { font-size: var(--t-small); }
 
-/* Labels: a dimension line with end ticks */
+/* Labels: dimension lines */
 .labels { list-style: none; margin: 0 0 var(--s4); padding: 0; }
 .labels li { position: relative; padding: var(--s3) 0; border-top: 1px solid var(--wall); }
 .labels li::before, .labels li::after { content: ""; position: absolute; top: -4px; left: 0; width: 1px; height: 7px; background: var(--wall); }
@@ -33,9 +33,9 @@ html:not(.explode-ok) .still { margin: var(--s4) 0 0; }
 html:not(.explode-ok) [data-step=apart] .still { margin: 0 0 var(--s4); }
 html:not(.explode-ok) :is(.panel, .source) > :last-child { margin-bottom: 0; }
 @media (min-width: 900px) {
-  /* Static: rows as tall as their content; only the last row flexes */
+  /* Static: rows fit their content; the last row flexes */
   html:not(.explode-ok) .steps { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--s6);
-    grid-template-areas: "a f" "b f" "x x" "c d" "c e" "c ."; grid-template-rows: auto auto auto auto auto 1fr; }
+    grid-template-areas: "a f" "b f" "x x" "c d" "c e" "c ."; grid-template-rows: repeat(5, auto) 1fr; }
   html:not(.explode-ok) .step { display: contents; }
   html:not(.explode-ok) .still { margin: 0; }
   html:not(.explode-ok) [data-step=film] .panel { grid-area: a; }
@@ -48,7 +48,7 @@ html:not(.explode-ok) :is(.panel, .source) > :last-child { margin-bottom: 0; }
   html:not(.explode-ok) [data-step=together] .panel { grid-area: e; margin-top: var(--s4); }
 }
 
-/* explode-ok: the stage sticks to the last step's end; phones put the model in the top 54% */
+/* explode-ok: sticky stage; phones put the model in the top 54% */
 .explode-ok .apart { display: grid; padding: 0; }
 .explode-ok .apart > * { grid-area: 1 / 1; }
 .explode-ok .steps { width: 100%; padding-bottom: calc(var(--use) - var(--cut) - var(--s3)); }
@@ -77,6 +77,8 @@ html:not(.explode-ok) :is(.panel, .source) > :last-child { margin-bottom: 0; }
   .stage-in { position: relative; height: 100%; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--s6); }
   .model { position: relative; grid-column: 2; height: 100%; }
   .explode-ok .panel { top: var(--pt); width: calc((100% - var(--s6)) * 5 / 12); }
+  .explode-live .panel { height: 0; padding: 0; }
+  .explode-live :not(.now) > .panel { visibility: hidden; }
   .explode-ok [data-step=film] { height: 70vh; padding-top: var(--pt); box-sizing: border-box; }
   .explode-ok [data-step=peel] { height: 60vh; }
   .explode-ok [data-step=apart] { height: 100vh; }
