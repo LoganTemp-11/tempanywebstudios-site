@@ -26,13 +26,16 @@
 <meta name="tws-storage-prefix" content="stf">
 <script>
 /* Mode, before first paint. The window comes apart in WebGL only when the bundle is in place (B),
-   motion is allowed, WebGL2 exists, Save-Data is off and the address has no ?nowebgl. Otherwise,
-   and with JS off, the page stays static: the stills, the labels as a list, the count. */
+   motion is allowed, WebGL2 exists, Save-Data is off, the address has no ?nowebgl, and the screen is
+   not both stacked (S does not match) and under 480 px tall (a phone held sideways under 640 px wide,
+   or a laptop zoomed to 400%). Otherwise, and with JS off, the page stays static: the stills, the
+   labels as a list, the count. */
 (function (w, d) {
-  var B = 'assets/window-explode.js', r = '', c = navigator.connection;
+  var B = 'assets/window-explode.js', r = '', c = navigator.connection, S = '(min-width: 900px), (orientation: landscape) and (min-width: 640px)';
   if (w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches) r = 'reduced-motion';
   else if (/[?&]nowebgl(?:[=&]|$)/.test(location.search)) r = 'nowebgl';
   else if (c && c.saveData) r = 'save-data';
+  else if (w.innerHeight < 480 && w.matchMedia && !w.matchMedia(S).matches) r = 'short-viewport';
   else if (!w.WebGL2RenderingContext) r = 'no-webgl2';
   else if (!B) r = 'no-bundle';
   w.__stf = { mode: r ? 'static' : 'loading', reason: r, bundle: B };
@@ -94,7 +97,7 @@
 <figure class="still"><picture><source media="(min-width: 900px)" srcset="img/window-apart-1600.webp" width="1600" height="1000"><img src="img/window-apart-800.webp" width="800" height="880" alt="The same window taken apart front to back: handle, glazing beads, glass layers, sash, hardware, gaskets, frame, reinforcement and cill, spaced out in a row." loading="lazy" decoding="async"></picture></figure>
 <div class="panel">
 <ul class="labels" data-labels>
-<li data-target="outer_frame"><strong>The frame</strong> <span>70 mm deep and multi-chamber: VEKA's M70 PVC-U profile.</span></li>
+<li data-target="outer_frame"><strong>The frame</strong> <span>70 mm deep and multi-chamber: VEKA's M70 <span class="nw">PVC-U</span> profile.</span></li>
 <li data-target="frame_reinforcement" data-target-alt="sash_reinforcement"><strong>Reinforcement</strong> <span>Steel or aluminium inside the profile, where required.</span></li>
 <li data-target="opener_unit"><strong>The sealed unit</strong> <span>Double or triple glazed. As low as 1.2 W/m²K for the whole window, double glazed.</span></li>
 </ul>
@@ -128,7 +131,7 @@
 <caption>VEKA M70 as published by VEKA, and this page's model</caption>
 <thead><tr><td></td><th scope="col">VEKA M70</th><th scope="col">The model above</th></tr></thead>
 <tbody>
-<tr><th scope="row">Profile</th><td>70 mm deep, multi-chamber PVC-U</td><td>70 mm deep</td></tr>
+<tr><th scope="row">Profile</th><td>70 mm deep, multi-chamber <span class="nw">PVC-U</span></td><td>70 mm deep</td></tr>
 <tr><th scope="row">Outer frame</th><td>55, 67 or 80 mm</td><td>67 mm</td></tr>
 <tr><th scope="row">Mullion</th><td>68 or 82 mm</td><td>82 mm</td></tr>
 <tr><th scope="row">Casement sash</th><td>76 mm</td><td>76 mm</td></tr>
@@ -252,24 +255,38 @@
    { section, stage, model, poster, ready, fail }: it calls ready() straight after its first render
    (the poster goes in the same frame) and fail(reason) if anything breaks. A failed import, or no
    first frame within 10 s of the import starting, puts the page back to static and records why
-   in __stf.reason. In explode mode #apart holds nothing focusable: its source line is plain text,
-   and the spec section's NBS link is the link; static mode gets the link back. */
+   in __stf.reason. A resize that leaves the screen stacked and under 480 px tall (zooming in) does the
+   same, one way. At the first frame the model area becomes an image named for what it draws. In
+   explode mode #apart holds nothing focusable: its source line is plain text, and the spec section's
+   NBS link is the link; static mode gets the link back, and a reader who was in the sequence is put
+   at the top of the step they were on (an instant jump). */
 (function () {
   var d = document, h = d.documentElement, S = window.__stf, t;
   if (!S || S.mode !== 'loading') return;
   var sec = d.getElementById('apart'), stage = sec.querySelector('[data-stage]');
   var ul = sec.querySelector('[data-labels]'), src = sec.querySelector('[data-source] p'), link = src.innerHTML;
-  src.textContent += ' The link is in the spec table below.';
+  src.textContent += ' The link is under the spec table below.';
   function toStatic(why) {
     if (S.mode === 'static') return;
+    var now = S.mode === 'webgl' && sec.querySelector('.step.now'), r = sec.getBoundingClientRect(), m = stage.querySelector('[data-model-area]');
     clearTimeout(t); S.mode = 'static'; S.reason = why || 'failed';
     h.classList.remove('explode-ok', 'explode-live');
-    [].forEach.call(stage.querySelectorAll('canvas, .rail, .leads'), function (c) { c.remove(); });
+    [].forEach.call(stage.querySelectorAll('canvas, .rail, .leads, .mfoot'), function (c) { c.remove(); });
     ul.setAttribute('data-labels', ''); src.innerHTML = link;
+    stage.setAttribute('aria-hidden', 'true'); m.removeAttribute('role'); m.removeAttribute('aria-label');
+    if (!now || r.top > 0 || r.bottom <= 0) return;
+    var y = 1e9; [].forEach.call(now.children, function (c) { var b = c.getBoundingClientRect(); if (b.height) y = Math.min(y, b.top); });
+    if (y < 1e9) scrollTo(0, y + scrollY - 24);
   }
+  addEventListener('resize', function () {
+    if (innerHeight < 480 && !matchMedia('(min-width: 900px), (orientation: landscape) and (min-width: 640px)').matches) toStatic('short-viewport');
+  });
   function ready() {
     if (S.mode !== 'loading') return;
     clearTimeout(t); S.mode = 'webgl'; h.classList.add('explode-live');
+    var m = stage.querySelector('[data-model-area]');
+    m.setAttribute('role', 'img');
+    m.setAttribute('aria-label', 'Model of a 1200 x 1200 mm casement window in ' + S.count + ' parts. The film peels off, the parts separate front to back, then go back together.');
   }
   function go() {
     t = setTimeout(function () { toStatic('timeout'); }, 10000);
