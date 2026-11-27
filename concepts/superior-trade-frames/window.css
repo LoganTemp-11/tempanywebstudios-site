@@ -1,7 +1,8 @@
 /* Windows page. No class on <html> is static mode; explode-ok resets the static rules. */
 :root{--use:calc(100svh - var(--bar-h) - var(--consent-h));--cut:calc(var(--use) * .54);--pt:var(--s7)}
 .hero .alt a{display:inline-flex;align-items:center;min-height:44px}
-@media (max-width:899px){.hero .photo img{object-position:50% 38%}}
+@media (max-width:899px){.hero .photo img{object-position:50% 38%}.hero .proof{line-height:1.35}}
+@media (max-width:899px) and (max-height:600px){.hero .proof{margin-bottom:var(--s2)}}
 .apart{background:var(--blue);color:var(--ground);border-top:0}
 .apart + section{border-top:0}
 .apart :is(h2, p, li, a, strong, span){color:var(--ground)}
@@ -120,7 +121,6 @@
 .cut #dimensions{color:var(--blue)}
 @media (max-width:599px){.cut svg{font-size:9px}}
 .cut figcaption{font-size:var(--t-small);padding-top:var(--s3);border-top:1px solid var(--wall)}
-.gable img{object-position:50% 0}
 .wall .w img{object-position:30% 50%}
 @media (min-width:900px){.wall .photo{grid-template-rows:auto auto;align-content:start}}
 .price .line{font-size:var(--t-h3);line-height:1.35}
