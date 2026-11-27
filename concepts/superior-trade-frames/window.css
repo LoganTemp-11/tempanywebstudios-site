@@ -1,0 +1,111 @@
+/* Windows page only, on top of style.css. Colours are the brief card's (section 3) through
+   style.css's tokens; the two swatch hexes are the only ones written here. Nothing animates.
+   Static mode (no class on <html>) is the whole page for JS off, reduced motion and no WebGL.
+   .explode-ok reserves the scroll sequence; .explode-live is set on the first rendered frame. */
+
+:root { --use: calc(100svh - var(--bar-h) - var(--consent-h)); --cut: calc(var(--use) * .54); }
+
+/* First screen: the Home hero, with their stock in VEKA's film */
+.hero .alt a { display: inline-flex; align-items: center; min-height: 44px; }
+@media (max-width: 899px) { .hero .photo img { object-position: 50% 38%; } }
+
+/* The window taken apart: the van-blue field, every word on it van white (7.8:1) */
+.apart { background: var(--blue); color: var(--ground); border-top: 0; }
+.apart + section { border-top: 0; }
+.apart :is(h2, p, li, a, strong, span) { color: var(--ground); }
+.apart a:hover { color: var(--ground); }
+.apart :focus-visible { outline-color: var(--ground); }
+.apart .gap { border-color: var(--ground); }
+.stage { display: none; }
+.still { margin: 0; }
+.still img { width: 100%; }
+.peel { font-size: var(--t-h3); line-height: 1.35; }
+.count { font-size: var(--t-h2); font-weight: 700; line-height: 1.1; letter-spacing: -0.015em; margin-bottom: var(--s2); font-variant-numeric: tabular-nums; }
+.source p:first-child { font-size: var(--t-small); }
+
+/* Labels: each sits under a dimension line with square end ticks, as on the sizes drawing */
+.labels { list-style: none; margin: 0 0 var(--s4); padding: 0; }
+.labels li { position: relative; padding: var(--s3) 0; border-top: 1px solid var(--wall); }
+.labels li::before, .labels li::after { content: ""; position: absolute; top: -4px; left: 0; width: 1px; height: 7px; background: var(--wall); }
+.labels li::after { left: auto; right: 0; }
+.labels strong { display: block; font-size: var(--t-h3); line-height: 1.25; margin-bottom: var(--s1); }
+.labels span { display: block; }
+
+html:not(.explode-ok) .step + .step { margin-top: var(--s5); }
+html:not(.explode-ok) .still { margin: var(--s4) 0 0; }
+html:not(.explode-ok) [data-step="apart"] .still { margin: 0 0 var(--s4); }
+@media (min-width: 900px) {
+  /* Two plates: the window in film beside the words, then the window apart across the field */
+  html:not(.explode-ok) .steps { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--s6);
+    grid-template-areas: "a f" "b f" "x x" "c d" "c e"; grid-template-rows: auto 1fr auto auto auto; }
+  html:not(.explode-ok) .step { display: contents; }
+  html:not(.explode-ok) .still { margin: 0; }
+  [data-step="film"] .panel { grid-area: a; }
+  [data-step="film"] .still { grid-area: f; }
+  [data-step="film"] .still img { aspect-ratio: 1; object-fit: cover; }
+  [data-step="peel"] .panel { grid-area: b; align-self: end; padding-bottom: var(--s5); }
+  [data-step="apart"] .still { grid-area: x; }
+  [data-step="apart"] .panel { grid-area: c; }
+  [data-step="count"] .panel { grid-area: d; }
+  [data-step="together"] .panel { grid-area: e; align-self: end; }
+  html:not(.explode-ok) [data-step="apart"] .still { margin: var(--s4) 0 var(--s6); }
+}
+
+/* explode-ok: the sequence's height is reserved from first paint, and the stage sticks for all
+   of it. Phones stack: model in the top 54% of the usable height, panels sticky under it. */
+.explode-ok .apart { display: grid; padding: 0; }
+.explode-ok .apart > * { grid-area: 1 / 1; }
+.explode-ok .steps { width: 100%; }
+.explode-ok .stage { display: block; position: sticky; top: 0; align-self: start; height: var(--use); z-index: 1; pointer-events: none; }
+.explode-ok .model { position: absolute; left: 0; right: 0; top: 0; height: var(--cut); background: var(--blue); }
+.explode-ok .poster img, .explode-ok .model > canvas { display: block; width: 100%; height: 100%; object-fit: contain; }
+.explode-live [data-poster], .explode-ok .still { display: none; }
+.explode-ok .step { position: relative; }
+.explode-ok .panel { position: sticky; top: calc(var(--cut) + var(--s3)); padding-bottom: var(--s4); }
+.explode-ok [data-step="film"] { height: 70svh; padding-top: calc(var(--cut) + var(--s3)); box-sizing: content-box; }
+.explode-ok [data-step="peel"] { height: 55svh; }
+.explode-ok [data-step="apart"] { height: 90svh; }
+.explode-ok [data-step="count"] { height: 65svh; }
+.explode-ok [data-step="together"] { height: 80svh; }
+@media (min-width: 900px), (orientation: landscape) and (min-width: 640px) {
+  .explode-ok .stage-in { position: relative; height: 100%; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--s6); }
+  .explode-ok .model { position: relative; grid-column: 2; height: 100%; }
+  .explode-ok .panel { top: var(--s7); width: calc((100% - var(--s6)) * 5 / 12); }
+  .explode-ok [data-step="film"] { height: 70vh; padding-top: var(--s7); box-sizing: border-box; }
+  .explode-ok [data-step="peel"] { height: 60vh; }
+  .explode-ok [data-step="apart"] { height: 100vh; }
+  .explode-ok [data-step="count"] { height: 70vh; }
+  .explode-ok [data-step="together"] { height: 80vh; }
+}
+
+/* What's in the frame: VEKA's figures beside the model's, and the cut through the opener */
+.lede { font-size: var(--t-h3); line-height: 1.35; }
+.spec { display: grid; gap: var(--s6); margin-top: var(--s5); }
+@media (min-width: 900px) { .spec { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; } }
+.figs { border-collapse: collapse; width: 100%; margin: 0 0 var(--s5); font-variant-numeric: tabular-nums; }
+.figs caption { text-align: left; font-weight: 700; padding-bottom: var(--s2); }
+.figs th, .figs td { text-align: left; vertical-align: top; padding: var(--s2) var(--s3) var(--s2) 0; border-bottom: 1px solid var(--wall); font-weight: 400; }
+.figs thead th { font-weight: 700; color: var(--blue); border-bottom-color: var(--ink); }
+.figs thead td { border-bottom-color: var(--ink); }
+.figs tbody th { font-weight: 700; width: 31%; }
+.figs thead th:last-child { width: 34%; }
+@media (max-width: 599px) { .figs { font-size: var(--t-small); } }
+.swatches { list-style: none; padding: 0; margin: 0 0 var(--s4); display: flex; gap: var(--s4); }
+.swatches li { display: flex; align-items: center; gap: var(--s2); }
+.swatches .sw { width: 24px; height: 24px; }
+.sw-rack { background: #E8ECEC; }
+.sw-rosewood { background: #614C32; }
+.cut { margin: 0; }
+.cut svg { display: block; width: 100%; height: auto; color: var(--ink); font-variant-numeric: tabular-nums; }
+.cut #dimensions { color: var(--blue); }
+@media (max-width: 599px) { .cut svg { font-size: 9px; } }
+.cut figcaption { font-size: var(--t-small); padding-top: var(--s3); border-top: 1px solid var(--wall); }
+
+/* Their photos: the gable crop keeps its apex on phones; captions sit under their own photo */
+.gable img { object-position: 50% 0; }
+.wall .w img { object-position: 30% 50%; }
+@media (min-width: 900px) { .wall .photo { grid-template-rows: auto auto; align-content: start; } }
+
+/* Get a price */
+.price .line { font-size: var(--t-h3); line-height: 1.35; }
+.price .go { display: inline-flex; align-items: center; min-height: 44px; }
