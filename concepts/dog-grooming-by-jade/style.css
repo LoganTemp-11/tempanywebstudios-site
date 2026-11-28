@@ -55,6 +55,11 @@
 @media (width >= 45em) and (height < 48.75em) {
   :root { --logo-h: 64px; --head-pad: 16px; --nav-gap: 8px; }
 }
+/* A short phone (under 660px tall, such as 360x640): a 48px logo, so her photo
+   still shows under Call on the first screen. 375x667 and taller keep 64px. */
+@media (width < 45em) and (height < 41.25em) {
+  :root { --logo-h: 48px; }
+}
 /* Touch screens get 48px nav links at every width (iPads in landscape included):
    over the 44px minimum, and never under it at a small text size. */
 @media (pointer: coarse) {
@@ -524,7 +529,10 @@ a.call {
 .box-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); column-gap: 16px; }
 .box { display: flex; align-items: center; gap: 16px; min-height: 44px; cursor: pointer; }
 .box input { width: 24px; height: 24px; margin: 0; flex: none; accent-color: var(--ink); }
-.status:empty { display: none; }
+/* Empty, the status line takes no room (out of the grid, so no gap under Send) but stays
+   rendered, so it is in the accessibility tree before form.js writes to it: a screen
+   reader then hears each line as a change to a live region that already exists. */
+.status:empty { position: absolute; }
 .form .send { justify-self: start; }
 
 .qa + .qa { margin-top: 24px; }
@@ -602,9 +610,7 @@ a.call {
   }
   .bar-call { text-decoration: none; }
 }
-/* Home, with scripting on: the bar stays out of sight until site.js has seen the
-   first screen's Call leave the window (data-show), so it never flashes up over
-   her photo on load. With scripting off this rule does not apply and the bar shows. */
-@media (scripting: enabled) {
-  .p-index .bar:not([data-show]) { display: none; }
-}
+/* Home: site.js sets data-hide while the first screen's Call is in the window, where
+   the bar would only repeat it over her photo. The bar shows by default, so if
+   site.js never runs (JavaScript off, a lost or blocked request) Home still has it. */
+.bar[data-hide] { display: none; }

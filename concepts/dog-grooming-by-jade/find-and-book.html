@@ -26,9 +26,9 @@
 <link rel="preload" href="assets/fonts/m-plus-rounded-1c-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/m-plus-rounded-1c-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts.css">
-<link rel="stylesheet" href="style.css?v=4">
-<script src="site.js?v=3" defer></script>
-<script src="form.js?v=3" defer></script>
+<link rel="stylesheet" href="style.css?v=5">
+<script src="site.js?v=4" defer></script>
+<script src="form.js?v=4" defer></script>
 </head>
 <body class="p-find-and-book">
 <div class="strip"><a class="skip" href="#top">Skip to the page</a><p>A <a href="https://tempanywebstudios.co.uk/" data-target-skip>Tempany Web Studios</a> concept. Not Jade’s live site.</p></div>
@@ -68,7 +68,7 @@
 <p class="form-note"><span class="ph">This form is not switched on yet.</span> <span class="ph">Nothing you type here is sent.</span> <span class="ph">To book, call or WhatsApp Jade on <a href="tel:+447753641699" data-track="call" data-target-skip>07753 641699</a>.</span></p>
 <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required>
 <p class="err" id="f-name-err" hidden>Add your name.</p></div>
-<div class="field"><label for="f-phone">Phone number</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required pattern="\s*(0|\+44)(\s*\d){9,10}\s*">
+<div class="field"><label for="f-phone">Phone number</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required pattern="[\s\(\)\.\-]*(?:0|(?:\+|0[\s\(\)\.\-]*0)[\s\(\)\.\-]*4[\s\(\)\.\-]*4[\s\(\)\.\-]*(?:0[\s\(\)\.\-]*)?)(?:\d[\s\(\)\.\-]*){9,10}" title="Add a phone number starting 0 or +44.">
 <p class="err" id="f-phone-err" hidden>Add a phone number starting 0 or +44.</p></div>
 <div class="field"><label for="f-email">Email (optional)</label><input id="f-email" name="email" type="email" autocomplete="email">
 <p class="err" id="f-email-err" hidden>Check the email address, or leave it empty.</p></div>
@@ -81,7 +81,7 @@
 <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" hidden>
 <input type="hidden" name="from_name" value="Dog Grooming By Jade website">
 <input type="hidden" name="subject" value="Grooming request">
-<button type="submit" class="send">Send to Jade</button>
+<button type="submit" class="send" data-track="form">Send to Jade</button>
 <p id="f-status" class="status" role="status"></p>
 <template id="f-says"><span data-say="invalid-one"><span class="ph">Check the 1 marked field.</span></span><span data-say="invalid-many"><span class="ph">Check the N marked fields.</span></span><span data-say="concept"><span class="ph">Not sent.</span> <span class="ph"><span class="ph">This form is not switched on yet,</span> <span class="ph">so nothing left this page.</span></span> <span class="ph">Call or WhatsApp Jade on <a href="tel:+447753641699" data-track="call" data-target-skip>07753 641699</a>.</span></span><span data-say="sent"><span class="ph">Sent to Jade.</span> <span class="ph">If it’s urgent, call her on <a href="tel:+447753641699" data-track="call" data-target-skip>07753 641699</a>.</span></span><span data-say="failed"><span class="ph">That didn’t send.</span> <span class="ph"><span class="ph">Call or WhatsApp Jade on <a href="tel:+447753641699" data-track="call" data-target-skip>07753 641699</a>,</span> <span class="ph">or try again.</span></span></span><span data-say="sending"><span class="ph">Sending</span></span></template>
 </form>

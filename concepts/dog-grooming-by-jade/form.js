@@ -38,7 +38,9 @@
   // Checked in this order, so focus goes to the first one wrong.
   var rules = {
     'f-name': function (v) { return v !== ''; },
-    'f-phone': function (v) { return /^(0\d{9,10}|\+44\d{9,10})$/.test(v.replace(/\s+/g, '')); },
+    // Spaces, hyphens, dots and brackets go first, so 07753-641699, (01786) 123456,
+    // +44 (0)7753 641699 and 0044 7753 641699 all pass. The pattern in the page does the same.
+    'f-phone': function (v) { return /^(0|(\+|00)440?)\d{9,10}$/.test(v.replace(/[\s().-]/g, '')); },
     'f-email': function (v) { return v === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); },
     'f-dog': function (v) { return v !== ''; }
   };
