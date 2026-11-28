@@ -614,3 +614,11 @@ a.call {
    the bar would only repeat it over her photo. The bar shows by default, so if
    site.js never runs (JavaScript off, a lost or blocked request) Home still has it. */
 .bar[data-hide] { display: none; }
+/* Until site.js has run (it sets data-watched), Home's bar waits out of sight for 3s,
+   so a late site.js cannot flash it up over the first screen, and nothing holds up
+   the first paint. If site.js is lost or stalled, the bar shows after the 3s. With
+   JavaScript off this does not apply and the bar shows at once. */
+@media (scripting: enabled) {
+  .p-index .bar:not([data-watched]) { animation: bar-wait 3s; }
+}
+@keyframes bar-wait { from, to { visibility: hidden; } }

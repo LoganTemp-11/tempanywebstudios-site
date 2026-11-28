@@ -10,8 +10,8 @@
    screen under 500px tall). On Home, while the first screen's Call button is in
    the window, the bar would only repeat it and cover her photo, so this script
    hides it (data-hide) until that button has left the window. The bar shows by
-   default, so with JavaScript off, or if this file never arrives, Home keeps it.
-   Every other page shows it all the time. */
+   default, so with JavaScript off Home keeps it, and if this file never arrives
+   it shows after style.css's 3s hold. Every other page shows it all the time. */
 (function () {
   var KEY = 'dgj-consent';
 
@@ -52,17 +52,21 @@
   }
 
   // ---- phone call bar, Home only
-  // Hidden at once if Call is on screen, before the first paint (site.js is
-  // render-blocking where the browser allows it), then kept in step as Call
-  // enters and leaves the window. Without IntersectionObserver the bar just shows.
+  // style.css holds Home's bar out of sight for its first 3s, until data-watched
+  // says this script has taken over. Then it is hidden at once if Call is on
+  // screen, and kept in step as Call enters and leaves the window. Without
+  // IntersectionObserver the bar just shows.
   var call = document.querySelector('.first a.call');
   var callBar = document.querySelector('.bar');
-  if (call && callBar && 'IntersectionObserver' in window) {
-    var r = call.getBoundingClientRect();
-    callBar.toggleAttribute('data-hide', r.bottom > 0 && r.top < innerHeight);
-    new IntersectionObserver(function (entries) {
-      callBar.toggleAttribute('data-hide', entries[entries.length - 1].isIntersecting);
-    }).observe(call);
+  if (call && callBar) {
+    if ('IntersectionObserver' in window) {
+      var r = call.getBoundingClientRect();
+      callBar.toggleAttribute('data-hide', r.bottom > 0 && r.top < innerHeight);
+      new IntersectionObserver(function (entries) {
+        callBar.toggleAttribute('data-hide', entries[entries.length - 1].isIntersecting);
+      }).observe(call);
+    }
+    callBar.setAttribute('data-watched', '');
   }
 
   // ---- menu: Escape from Menu or one of its links closes it and hands focus back
