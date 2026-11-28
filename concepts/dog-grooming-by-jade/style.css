@@ -3,7 +3,11 @@
    each named after where it was sampled in her own photos. Spacing keeps to
    4, 8, 16, 24, 32, 48, 64 and 96px. Nothing on the page moves.
    Breakpoints: the menu and the phone bar below 720px; the first screen in
-   two columns, and the table in one row, from 1024px. */
+   two columns, and the table in one row, from 1024px. They are written in em
+   (45em, 64em, 80em; heights 48.75em and 56.25em), which is those px at the
+   browser's default text size and grows with it: with Chrome's text set to
+   Large (20px) the first screen goes to two columns from 1280px, so the nav
+   still has room for one line. */
 
 :root {
   --white: #fdfefe;  /* card white: the ground her logo sits on */
@@ -24,35 +28,37 @@
   --t-nav: 1rem;
   --t-small: 0.875rem;
 
-  /* The row: page width less the gutters, never wider than 1232px.
+  /* The row: page width less the gutters, never wider than 1232px (77rem, so
+     a larger browser text size widens it with the text and lines keep their length).
      100% is the body's width wherever these are used. */
-  --row: min(100% - 32px, 1232px);
+  --row: min(100% - 32px, 77rem);
   --gut: calc((100% - var(--row)) / 2);
 
   /* The logo slot. Phase 3 sets the aspect from the cropped file. */
   --logo-h: 64px;
   --logo-ar: 1;
   /* Header at 720px and wider: padding, logo, gap, one line of nav links.
-     Its height is fixed (--hh), so Home's photo reaches the strip with no script. */
+     Its height (--hh) is set here, so Home's photo reaches the strip with no
+     script. The nav line is type, so it is in rem (24px at the default text
+     size) and the header grows with the browser's text size. */
   --head-pad: 24px;
   --nav-gap: 16px;
-  --nav-h: 24px;
+  --nav-h: 1.5rem;
   --hh: calc(var(--head-pad) + var(--logo-h) + var(--nav-gap) + var(--nav-h));
 }
 
-@media (width >= 720px) {
-  :root { --row: min(100% - 48px, 1232px); --logo-h: 96px; }
+@media (width >= 45em) {
+  :root { --row: min(100% - 48px, 77rem); --logo-h: 96px; }
 }
 /* A short window (a 1366x768 laptop less its browser bars is about 1366x657):
    a smaller logo, so the first screen still ends on the Call button. */
-@media (width >= 720px) and (height < 780px) {
+@media (width >= 45em) and (height < 48.75em) {
   :root { --logo-h: 64px; --head-pad: 16px; --nav-gap: 8px; }
 }
 /* Touch screens get 48px nav links at every width (iPads in landscape included):
-   over the 44px minimum, and a step of the spacing scale, as the header's height
-   (--hh) is built from those steps. */
+   over the 44px minimum, and never under it at a small text size. */
 @media (pointer: coarse) {
-  :root { --nav-h: 48px; --nav-gap: 8px; }
+  :root { --nav-h: max(48px, 3rem); --nav-gap: 8px; }
 }
 
 /* ------------------------------------------------------------ base */
@@ -188,8 +194,11 @@ a {
 }
 .nav a:hover, .nav a[aria-current="page"] { text-decoration-line: underline; }
 
-@media (width >= 720px) {
-  .head { display: block; height: var(--hh); padding-block: var(--head-pad) 0; }
+@media (width >= 45em) {
+  /* At least --hh, never cut to it: if the links ever take two lines (a text
+     size the em breakpoints do not see, such as a user style sheet), the
+     header grows and the headline moves down; nothing runs into it. */
+  .head { display: block; min-height: var(--hh); padding-block: var(--head-pad) 0; }
   .menu { display: none; }
   .nav { display: block; margin-top: var(--nav-gap); }
   .nav ul { display: flex; flex-wrap: wrap; column-gap: 32px; }
@@ -249,7 +258,7 @@ a.call {
 .first .photo { width: 100%; aspect-ratio: var(--ar-phone); }
 .first .band { height: 32px; background: var(--mint); }
 
-@media (width < 720px) {
+@media (width < 45em) {
   .first .text { padding-top: 8px; }
   .first .line, .first .proof { margin-top: 8px; }
   .first .act { padding-block: 16px; row-gap: 4px; }
@@ -263,11 +272,19 @@ a.call {
 
 /* 1024px and wider: text left 45%, the photo right 55% from the strip down to
    the band, the band under both, Call on the band as if on the table. The
-   headline sits one step of the spacing scale under the nav and the band one
-   step under the proof, so the first screen is as tall as its words, whatever
-   the window's height: no empty block above the headline on a tall screen,
-   and the Call button above the fold on a short one. */
-@media (width >= 1024px) {
+   headline hangs one step of the spacing scale under the nav (32, 48 or 64px
+   as the window grows taller), so there is never an empty block above it.
+
+   The photo's box is as tall as the text column, and taller where the window
+   has room: up to 4 wide to 5 tall (1.25), but never so tall that the band
+   leaves the window. So one desktop crop of her photo (cut at 1.14, the box at
+   1280x800) shows nearly whole on wide screens: 1.25 at 1920x1080 and
+   2560x1440, 1.30 at 1920x950. Short windows keep the box their words need
+   (1.41 at 1366x657), so Call stays above the fold. Any height the column
+   gains goes under the proof, the wall above the table.
+   In the sum: the strip (8 + 8 + 1.4 x 14px) and the band (the Call's 16 + 16
+   + 1.2 x its type, plus the band's padding above and below). */
+@media (width >= 64em) {
   .p-index .head {
     width: 45%;
     margin-inline: 0;
@@ -275,25 +292,31 @@ a.call {
     padding-right: 48px;
   }
   .first {
+    --act-pad: 24px;
     display: grid;
     grid-template-columns: var(--gut) 1fr 55%;
   }
   .first .text, .first .act { width: auto; margin-inline: 0; }
-  .first .text { grid-column: 2; grid-row: 1; padding: 48px 48px 48px 0; }
+  .first .text {
+    grid-column: 2;
+    grid-row: 1;
+    min-height: calc(min(55vw / 1.25, 100svh - 16px - 1.225rem - 2 * var(--act-pad) - 32px - 1.2 * var(--t-name)) - var(--hh));
+    padding: 48px 48px 48px 0;
+  }
   .first .photo { grid-column: 3; grid-row: 1; aspect-ratio: auto; margin-top: calc(-1 * var(--hh)); }
-  .first .act { grid-column: 2 / 4; grid-row: 2; z-index: 1; padding: 24px 48px 24px 0; }
+  .first .act { grid-column: 2 / 4; grid-row: 2; z-index: 1; padding: var(--act-pad) 48px var(--act-pad) 0; }
   .first .band { grid-column: 1 / -1; grid-row: 2; height: auto; }
 }
-@media (width >= 1024px) and (height >= 900px) {
+@media (width >= 64em) and (height >= 56.25em) {
   .first .text { padding-block: 64px; }
 }
-@media (width >= 1024px) and (height < 780px) {
+@media (width >= 64em) and (height < 48.75em) {
+  .first { --act-pad: 16px; }
   .first .text { padding-block: 32px 24px; }
-  .first .act { padding-block: 16px; }
 }
 
 /* Four links fit one line in the left 45% only with the tighter gap below 1280. */
-@media (1024px <= width < 1280px) {
+@media (64em <= width < 80em) {
   .p-index .head { padding-right: 24px; }
   .p-index .nav ul { column-gap: 24px; }
 }
@@ -315,8 +338,8 @@ a.call {
 .wall-head p { margin-top: 8px; }
 
 .frames {
-  --gx: calc((100cqw - min(100cqw - 32px, 1232px)) / 2);
-  width: min(100% - 32px, 1232px);
+  --gx: calc((100cqw - min(100cqw - 32px, 77rem)) / 2);
+  width: min(100% - 32px, 77rem);
   margin-inline: auto;
   display: flex;
   flex-wrap: wrap;
@@ -359,7 +382,7 @@ a.call {
 .edge .said blockquote p { text-wrap: balance; }
 
 /* Below 720px: tables of two. */
-@media (width < 720px) {
+@media (width < 45em) {
   .frame:nth-child(-n+2) > .wall { display: none; }
   .frame:nth-child(n+3) { margin-top: 32px; }
   .frame:nth-child(odd)::before, .frame:nth-child(odd) > .edge::before,
@@ -369,8 +392,8 @@ a.call {
 }
 
 /* 720 to 1023px: tables of three. */
-@media (720px <= width < 1024px) {
-  .frames { --gx: calc((100cqw - min(100cqw - 48px, 1232px)) / 2); width: min(100% - 48px, 1232px); }
+@media (45em <= width < 64em) {
+  .frames { --gx: calc((100cqw - min(100cqw - 48px, 77rem)) / 2); width: min(100% - 48px, 77rem); }
   .frame { flex-basis: calc(100% * var(--a) / var(--t) - 0.02px); }
   .frame:nth-child(-n+3) > .wall { display: none; }
   .frame:nth-child(n+4) { margin-top: 32px; }
@@ -381,8 +404,8 @@ a.call {
 }
 
 /* 1024px and wider: one table. */
-@media (width >= 1024px) {
-  .frames { --gx: calc((100cqw - min(100cqw - 48px, 1232px)) / 2); width: min(100% - 48px, 1232px); }
+@media (width >= 64em) {
+  .frames { --gx: calc((100cqw - min(100cqw - 48px, 77rem)) / 2); width: min(100% - 48px, 77rem); }
   .frame { flex-basis: calc(100% * var(--a) / var(--all) - 0.02px); }
   .frame > .wall { display: none; }
   .frame:first-child::before, .frame:first-child > .edge::before,
@@ -412,7 +435,7 @@ a.call {
 .jade .shot { aspect-ratio: var(--ar); border-radius: var(--r); }
 .said-jade blockquote p { font-size: var(--t-line); line-height: 1.4; }
 
-@media (width >= 1024px) {
+@media (width >= 64em) {
   .jade { grid-template-columns: 5fr 7fr; column-gap: 64px; align-items: center; }
   .jade .shot { grid-column: 1; grid-row: 1; }
   .jade-text { grid-column: 2; grid-row: 1; }
@@ -428,17 +451,17 @@ a.call {
 .sec-body > * + * { margin-top: 16px; }
 .sec-body > .said + .said { margin-top: 24px; }
 
-@media (width >= 720px) {
+@media (width >= 45em) {
   .page-head { margin-top: 48px; }
 }
 
-@media (width >= 1024px) {
+@media (width >= 64em) {
   .sec { display: grid; grid-template-columns: 4fr 8fr; column-gap: 48px; align-items: baseline; }
   .sec-body { margin-top: 0; }
 }
 
 .cta { display: flex; width: var(--row); max-width: none; margin: 64px auto 0; }
-@media (width >= 1024px) {
+@media (width >= 64em) {
   /* The page's closing Call sits in the same column as the words above it. */
   .cta { display: grid; grid-template-columns: 4fr 8fr; column-gap: 48px; }
   .cta > a { grid-column: 2; justify-self: start; }
@@ -459,11 +482,16 @@ a.call {
 .cam-row .shot:first-child { border-radius: 0 0 0 var(--r); }
 .cam-row .shot:last-child { border-radius: 0 0 var(--r) 0; }
 
-@media (width >= 1024px) {
-  /* The list takes the wider share, so "May 2026: the Great British Grooming Show," holds one line from 1100px. */
-  .sec-comps .sec-body { display: grid; grid-template-columns: 3fr 2fr; column-gap: 48px; align-items: start; }
-  .sec-comps .sec-body > * + * { margin-top: 0; }
-  .sec-comps .cambridge { margin-top: 0; }
+/* 1024px and wider: the Cambridge photos stand in the left column, under the
+   heading, where the other sections leave white; the list and her words take
+   the whole right column. Each photo is larger than when the two shared the
+   right column, and the list's lines run long enough that no competition
+   name breaks. (.sec-body is a plain div: display: contents only lets its
+   two children join the section's grid.) */
+@media (width >= 64em) {
+  .sec-comps .sec-body { display: contents; }
+  .sec-comps .comps-text { grid-column: 2; grid-row: 1 / span 2; max-width: 66ch; }
+  .sec-comps .cambridge { grid-column: 1; grid-row: 2; }
 }
 
 /* Find and book */
@@ -513,16 +541,16 @@ a.call {
 .foot-list a { display: inline-flex; align-items: center; min-height: 44px; }
 .foot-small > * + * { margin-top: 4px; }
 
-@media (width >= 720px) {
+@media (width >= 45em) {
   .foot-in { grid-template-columns: 1fr 1fr; column-gap: 48px; }
   .foot-small { grid-column: 1 / -1; }
 }
-@media (width >= 1024px) {
+@media (width >= 64em) {
   .foot-in { grid-template-columns: 5fr 3fr 4fr; }
   .foot-hours li + li { margin-top: 4px; }
 }
 /* With a mouse the footer links close up; on a touch screen they stay 44px tall. */
-@media (width >= 1024px) and (pointer: fine) {
+@media (width >= 64em) and (pointer: fine) {
   .foot-list a { min-height: 0; }
   .foot-list li + li { margin-top: 4px; }
 }
@@ -531,7 +559,10 @@ a.call {
 
 .bar { display: none; }
 
-@media (width < 720px) {
+/* Phones: below 720px, and a phone held sideways (a touch screen under 500px
+   tall: 844x390, 932x430, 740x360), where the header and headline fill the
+   window and Call is below it. Phase 2's script uses this same query. */
+@media (width < 45em), (pointer: coarse) and (height < 31.25em) {
   body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
   /* The bar is 60px tall: a focused link or field scrolls to 12px above it, never under it. */
   html { scroll-padding-bottom: calc(64px + 8px + env(safe-area-inset-bottom)); }
