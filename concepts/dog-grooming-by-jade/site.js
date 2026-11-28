@@ -22,8 +22,10 @@
   });
 
   // "Change your answer" on the privacy page (privacy#cookies) reopens the bar.
+  // Its line is hidden in the markup: with JavaScript off there is no bar to reopen.
   var reopen = document.getElementById('cookie-reopen');
   if (reopen) {
+    if (reopen.parentNode.hidden) reopen.parentNode.hidden = false;
     reopen.addEventListener('click', function () {
       try { localStorage.removeItem(KEY); } catch (e) {}
       bar.hidden = false;

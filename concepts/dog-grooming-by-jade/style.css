@@ -32,12 +32,27 @@
   /* The logo slot. Phase 3 sets the aspect from the cropped file. */
   --logo-h: 64px;
   --logo-ar: 1;
-  /* Header height at 720px and wider: 24 + logo 96 + 16 + nav line 24. */
-  --hh: calc(96px + 64px);
+  /* Header at 720px and wider: padding, logo, gap, one line of nav links.
+     Its height is fixed (--hh), so Home's photo reaches the strip with no script. */
+  --head-pad: 24px;
+  --nav-gap: 16px;
+  --nav-h: 24px;
+  --hh: calc(var(--head-pad) + var(--logo-h) + var(--nav-gap) + var(--nav-h));
 }
 
 @media (width >= 720px) {
   :root { --row: min(100% - 48px, 1232px); --logo-h: 96px; }
+}
+/* A short window (a 1366x768 laptop less its browser bars is about 1366x657):
+   a smaller logo, so the first screen still ends on the Call button. */
+@media (width >= 720px) and (height < 780px) {
+  :root { --logo-h: 64px; --head-pad: 16px; --nav-gap: 8px; }
+}
+/* Touch screens get 48px nav links at every width (iPads in landscape included):
+   over the 44px minimum, and a step of the spacing scale, as the header's height
+   (--hh) is built from those steps. */
+@media (pointer: coarse) {
+  :root { --nav-h: 48px; --nav-gap: 8px; }
 }
 
 /* ------------------------------------------------------------ base */
@@ -46,6 +61,9 @@
 
 /* No browser-blue tap flash: the only colours are the card's. */
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+/* When the keyboard moves focus, the browser scrolls the element clear of the
+   window's edges by this much, so the 5px focus ring always shows in full. */
+html { scroll-padding-block: 16px; }
 
 body {
   margin: 0;
@@ -86,9 +104,10 @@ a {
 /* Photo slots until her files are cropped (Phases 3 and 5). */
 [data-placeholder] { background: var(--blush); }
 
-/* A phrase (first-screen line and proof, the table's line): it moves down whole, and wraps
-   inside itself only when it is wider than the column. */
-.ph { display: inline-block; }
+/* A phrase (first-screen line and proof, the table's line, an attribution's person and
+   source): it moves down whole, and wraps inside itself, balanced, only when it is wider
+   than the column. */
+.ph { display: inline-block; text-wrap: balance; }
 
 .line { font-size: var(--t-line); line-height: 1.4; }
 .proof, .gap { font-size: var(--t-body); line-height: 1.55; }
@@ -170,11 +189,11 @@ a {
 .nav a:hover, .nav a[aria-current="page"] { text-decoration-line: underline; }
 
 @media (width >= 720px) {
-  .head { display: block; height: var(--hh); padding-block: 24px 0; }
+  .head { display: block; height: var(--hh); padding-block: var(--head-pad) 0; }
   .menu { display: none; }
-  .nav { display: block; margin-top: 16px; }
+  .nav { display: block; margin-top: var(--nav-gap); }
   .nav ul { display: flex; flex-wrap: wrap; column-gap: 32px; }
-  .nav a { min-height: 24px; }
+  .nav a { min-height: var(--nav-h); }
 }
 
 /* ------------------------------------------------------------ buttons */
@@ -237,9 +256,17 @@ a.call {
   a.call { width: 100%; justify-content: center; }
 }
 
+/* The headline breaks before "by Jade Barr" at every width, so trade and place
+   stay together: "Dog grooming in Stirling, / by Jade Barr" where one line holds
+   them, "Dog grooming / in Stirling, / by Jade Barr" where it does not. */
+.first h1 .by { display: block; }
+
 /* 1024px and wider: text left 45%, the photo right 55% from the strip down to
    the band, the band under both, Call on the band as if on the table. The
-   header's height is fixed (--hh), so the photo reaches the strip with no script. */
+   headline sits one step of the spacing scale under the nav and the band one
+   step under the proof, so the first screen is as tall as its words, whatever
+   the window's height: no empty block above the headline on a tall screen,
+   and the Call button above the fold on a short one. */
 @media (width >= 1024px) {
   .p-index .head {
     width: 45%;
@@ -250,19 +277,19 @@ a.call {
   .first {
     display: grid;
     grid-template-columns: var(--gut) 1fr 55%;
-    grid-template-rows: 1fr auto;
-    min-height: calc(100svh - 36px - var(--hh));
   }
   .first .text, .first .act { width: auto; margin-inline: 0; }
-  .first .text { grid-column: 2; grid-row: 1; align-self: end; padding: 48px 48px 48px 0; }
+  .first .text { grid-column: 2; grid-row: 1; padding: 48px 48px 48px 0; }
   .first .photo { grid-column: 3; grid-row: 1; aspect-ratio: auto; margin-top: calc(-1 * var(--hh)); }
   .first .act { grid-column: 2 / 4; grid-row: 2; z-index: 1; padding: 24px 48px 24px 0; }
   .first .band { grid-column: 1 / -1; grid-row: 2; height: auto; }
 }
-
-/* Tablet: one line holds trade and place, so the headline breaks only before "by Jade Barr". */
-@media (720px <= width < 1024px) {
-  .first h1 .tp { white-space: nowrap; }
+@media (width >= 1024px) and (height >= 900px) {
+  .first .text { padding-block: 64px; }
+}
+@media (width >= 1024px) and (height < 780px) {
+  .first .text { padding-block: 32px 24px; }
+  .first .act { padding-block: 16px; }
 }
 
 /* Four links fit one line in the left 45% only with the tighter gap below 1280. */
@@ -277,7 +304,10 @@ a.call {
    The wall (.wall) and the table's front edge (.edge) run the full width; the
    frames between them touch, with one height per table and rounded outer
    corners only. Each frame carries its own slice of wall and edge, so a table
-   of two or three on a narrow screen gets its own wall and edge too. */
+   of two or three on a narrow screen gets its own wall and edge too.
+   Each frame is itself a slice of the wall (li.frame.wall): the wall shows
+   behind a photo's rounded outer corners and beside the row out to the page
+   edges, so no white ground shows anywhere between the wall and the edge. */
 .table { container-type: inline-size; margin-top: 64px; }
 
 .wall { background: var(--blush); }
@@ -293,41 +323,47 @@ a.call {
 }
 
 .frame {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
   flex: 1 0 calc(100% * var(--a) / var(--p) - 0.02px);
 }
-.frame > .wall { position: relative; height: 24px; }
+.frame > .wall { height: 24px; }
 .frame .shot { width: 100%; aspect-ratio: var(--a); }
 
 .edge {
   position: relative;
+  z-index: 1;  /* its bands past the row paint over the wall's, which run the frame's full height */
   flex: 1 0 auto;
   background: var(--mint);
   padding: 8px 8px 16px;
 }
 
-/* The bands past the row's ends, out to the page edges. */
-.frame > .wall::before, .frame > .wall::after, .edge::before, .edge::after {
+/* The bands past a table's ends, out to the page edges: the wall beside the
+   frames (the frame's own, its full height) and the front edge under them
+   (the edge's, painted over the wall's lower end). */
+.frame::before, .frame::after, .edge::before, .edge::after {
   position: absolute;
   top: 0;
   bottom: 0;
   width: var(--gx);
   background: inherit;
 }
-.frame > .wall::before, .edge::before { right: 100%; }
-.frame > .wall::after, .edge::after { left: 100%; }
+.frame::before, .edge::before { right: 100%; }
+.frame::after, .edge::after { left: 100%; }
 
 .name { min-height: 1.2em; font-size: var(--t-name); font-weight: 800; line-height: 1.2; }
 .edge .said { margin-top: 8px; }
+/* Under a frame the column is narrow (about 130px at 1024): even lines, never one word alone. */
+.edge .said blockquote p { text-wrap: balance; }
 
 /* Below 720px: tables of two. */
 @media (width < 720px) {
   .frame:nth-child(-n+2) > .wall { display: none; }
   .frame:nth-child(n+3) { margin-top: 32px; }
-  .frame:nth-child(odd) > .wall::before, .frame:nth-child(odd) > .edge::before,
-  .frame:nth-child(even) > .wall::after, .frame:nth-child(even) > .edge::after { content: ""; }
+  .frame:nth-child(odd)::before, .frame:nth-child(odd) > .edge::before,
+  .frame:nth-child(even)::after, .frame:nth-child(even) > .edge::after { content: ""; }
   .frame:nth-child(odd) .shot { border-radius: var(--r) 0 0 var(--r); }
   .frame:nth-child(even) .shot { border-radius: 0 var(--r) var(--r) 0; }
 }
@@ -338,8 +374,8 @@ a.call {
   .frame { flex-basis: calc(100% * var(--a) / var(--t) - 0.02px); }
   .frame:nth-child(-n+3) > .wall { display: none; }
   .frame:nth-child(n+4) { margin-top: 32px; }
-  .frame:nth-child(3n+1) > .wall::before, .frame:nth-child(3n+1) > .edge::before,
-  .frame:nth-child(3n) > .wall::after, .frame:nth-child(3n) > .edge::after { content: ""; }
+  .frame:nth-child(3n+1)::before, .frame:nth-child(3n+1) > .edge::before,
+  .frame:nth-child(3n)::after, .frame:nth-child(3n) > .edge::after { content: ""; }
   .frame:nth-child(3n+1) .shot { border-radius: var(--r) 0 0 var(--r); }
   .frame:nth-child(3n) .shot { border-radius: 0 var(--r) var(--r) 0; }
 }
@@ -349,7 +385,8 @@ a.call {
   .frames { --gx: calc((100cqw - min(100cqw - 48px, 1232px)) / 2); width: min(100% - 48px, 1232px); }
   .frame { flex-basis: calc(100% * var(--a) / var(--all) - 0.02px); }
   .frame > .wall { display: none; }
-  .frame:first-child > .edge::before, .frame:last-child > .edge::after { content: ""; }
+  .frame:first-child::before, .frame:first-child > .edge::before,
+  .frame:last-child::after, .frame:last-child > .edge::after { content: ""; }
   .frame:first-child .shot { border-radius: var(--r) 0 0 var(--r); }
   .frame:last-child .shot { border-radius: 0 var(--r) var(--r) 0; }
   .edge { padding: 16px 16px 24px; }
@@ -423,7 +460,8 @@ a.call {
 .cam-row .shot:last-child { border-radius: 0 0 var(--r) 0; }
 
 @media (width >= 1024px) {
-  .sec-comps .sec-body { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; align-items: start; }
+  /* The list takes the wider share, so "May 2026: the Great British Grooming Show," holds one line from 1100px. */
+  .sec-comps .sec-body { display: grid; grid-template-columns: 3fr 2fr; column-gap: 48px; align-items: start; }
   .sec-comps .sec-body > * + * { margin-top: 0; }
   .sec-comps .cambridge { margin-top: 0; }
 }
@@ -481,8 +519,12 @@ a.call {
 }
 @media (width >= 1024px) {
   .foot-in { grid-template-columns: 5fr 3fr 4fr; }
+  .foot-hours li + li { margin-top: 4px; }
+}
+/* With a mouse the footer links close up; on a touch screen they stay 44px tall. */
+@media (width >= 1024px) and (pointer: fine) {
   .foot-list a { min-height: 0; }
-  .foot-list li + li, .foot-hours li + li { margin-top: 4px; }
+  .foot-list li + li { margin-top: 4px; }
 }
 
 /* ------------------------------------------------------------ phone bar */
@@ -491,6 +533,8 @@ a.call {
 
 @media (width < 720px) {
   body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+  /* The bar is 60px tall: a focused link or field scrolls to 12px above it, never under it. */
+  html { scroll-padding-bottom: calc(64px + 8px + env(safe-area-inset-bottom)); }
   .bar {
     position: fixed;
     left: 0;

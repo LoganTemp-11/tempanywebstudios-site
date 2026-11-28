@@ -11,3 +11,13 @@
    5. Jade gives the retention line for the privacy page.
    6. Remove the not-live note (.form-note) and the concept status line.
    7. Send one real request end to end and check it reaches her inbox. */
+
+(function () {
+  // A text box takes focus at its caret, so the browser scrolls only its first
+  // line into view, and the rest of the box and its focus ring can sit under the
+  // phone bar or past the window's edge. Bring the whole box into view instead;
+  // scroll-padding in style.css keeps it clear of the bar.
+  var notes = document.getElementById('f-notes');
+  if (!notes) return;
+  notes.addEventListener('focus', function () { notes.scrollIntoView({ block: 'nearest' }); });
+})();
