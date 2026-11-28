@@ -514,6 +514,11 @@ a.call {
   font: inherit;
 }
 .field textarea { resize: vertical; }
+/* A field that needs fixing: a 4px ink border, its padding 2px less so the text
+   does not move, and its message directly under it. No red and no pink: the card
+   keeps pink for the focus ring, and ink on white reads 15.7 to 1. */
+.field [aria-invalid="true"] { border-width: 4px; border-color: var(--ink); padding: 6px 14px; }
+.err { margin-top: 8px; }
 .err[hidden] { display: none; }
 .boxes { margin: 0; padding: 0; border: 0; min-width: 0; }
 .box-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); column-gap: 16px; }
@@ -533,7 +538,13 @@ a.call {
 /* In the page flow, just above the footer: it never covers the first screen. */
 .consent { width: var(--row); margin: 64px auto 0; display: grid; gap: 16px; }
 .consent[hidden] { display: none; }
-.consent-act { display: flex; gap: 8px; }
+/* Two buttons of one size, so neither answer looks like the expected one:
+   halves of the column on a phone, 160px each from 720px. */
+.consent-act { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.consent button { justify-content: center; }
+@media (width >= 45em) {
+  .consent-act { grid-template-columns: repeat(2, 10rem); }
+}
 
 .foot { margin-top: 64px; padding-block: 48px; background: var(--mint); }
 .foot-in { width: var(--row); margin-inline: auto; display: grid; gap: 32px; }
@@ -561,10 +572,13 @@ a.call {
 
 /* Phones: below 720px, and a phone held sideways (a touch screen under 500px
    tall: 844x390, 932x430, 740x360), where the header and headline fill the
-   window and Call is below it. Phase 2's script uses this same query. */
+   window and Call is below it.
+   The bar is 64px tall (8 + a 48px link + 8), the same as the room the body
+   leaves under the footer, so at the foot of a page the cyan meets the mint
+   with no white line between them. */
 @media (width < 45em), (pointer: coarse) and (height < 31.25em) {
   body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
-  /* The bar is 60px tall: a focused link or field scrolls to 12px above it, never under it. */
+  /* A focused link or field scrolls to 8px above the bar, so its 5px focus ring shows whole. */
   html { scroll-padding-bottom: calc(64px + 8px + env(safe-area-inset-bottom)); }
   .bar {
     position: fixed;
@@ -574,16 +588,23 @@ a.call {
     z-index: 5;
     display: flex;
     justify-content: space-between;
-    padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
+    /* 8px here plus each link's own 8px puts "Call Jade" on the page's 16px gutter. */
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
     background: var(--cyan);
   }
   .bar a {
     display: inline-flex;
     align-items: center;
-    min-height: 44px;
+    min-height: 48px;
     padding-inline: 8px;
     font-size: var(--t-name);
     line-height: 1.2;
   }
   .bar-call { text-decoration: none; }
+}
+/* Home, with scripting on: the bar stays out of sight until site.js has seen the
+   first screen's Call leave the window (data-show), so it never flashes up over
+   her photo on load. With scripting off this rule does not apply and the bar shows. */
+@media (scripting: enabled) {
+  .p-index .bar:not([data-show]) { display: none; }
 }

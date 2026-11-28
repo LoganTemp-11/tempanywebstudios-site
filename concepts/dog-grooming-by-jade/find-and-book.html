@@ -26,9 +26,9 @@
 <link rel="preload" href="assets/fonts/m-plus-rounded-1c-800-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/m-plus-rounded-1c-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts.css">
-<link rel="stylesheet" href="style.css?v=3">
-<script src="site.js?v=2" defer></script>
-<script src="form.js?v=2" defer></script>
+<link rel="stylesheet" href="style.css?v=4">
+<script src="site.js?v=3" defer></script>
+<script src="form.js?v=3" defer></script>
 </head>
 <body class="p-find-and-book">
 <div class="strip"><a class="skip" href="#top">Skip to the page</a><p>A <a href="https://tempanywebstudios.co.uk/" data-target-skip>Tempany Web Studios</a> concept. Not Jade’s live site.</p></div>
@@ -61,24 +61,29 @@
 <p class="more"><a href="https://www.google.com/maps/search/?api=1&amp;query=Dog+Grooming+By+Jade%2C+3a+Forrest+Road%2C+Stirling+FK8+1UH" data-track="map">Open in Google Maps</a></p>
 </div>
 </section>
-<section class="sec" id="request" aria-labelledby="request-h">
-<h2 id="request-h">Send Jade a request</h2>
+<section class="sec" id="send" aria-labelledby="send-h">
+<h2 id="send-h">Send Jade a request</h2>
 <div class="sec-body">
-<form id="request" class="form" method="dialog" data-access-key="" aria-labelledby="request-h">
-<p class="form-note">This form is not switched on yet. Nothing you type here is sent. To book, call or WhatsApp Jade on 07753 641699.</p>
-<div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required><p class="err" id="f-name-err" hidden></p></div>
-<div class="field"><label for="f-phone">Phone number</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required pattern="\s*(0|\+44)(\s*\d){9,10}\s*"><p class="err" id="f-phone-err" hidden></p></div>
-<div class="field"><label for="f-email">Email (optional)</label><input id="f-email" name="email" type="email" autocomplete="email"><p class="err" id="f-email-err" hidden></p></div>
-<div class="field"><label for="f-dog">Your dog’s name</label><input id="f-dog" name="dog" type="text" required><p class="err" id="f-dog-err" hidden></p></div>
-<div class="field"><label for="f-breed">Breed (optional)</label><input id="f-breed" name="breed" type="text"><p class="err" id="f-breed-err" hidden></p></div>
+<form id="request" class="form" method="dialog" data-access-key="" aria-labelledby="send-h">
+<p class="form-note"><span class="ph">This form is not switched on yet.</span> <span class="ph">Nothing you type here is sent.</span> <span class="ph">To book, call or WhatsApp Jade on <a href="tel:+447753641699" data-track="call" data-target-skip>07753 641699</a>.</span></p>
+<div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required>
+<p class="err" id="f-name-err" hidden>Add your name.</p></div>
+<div class="field"><label for="f-phone">Phone number</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required pattern="\s*(0|\+44)(\s*\d){9,10}\s*">
+<p class="err" id="f-phone-err" hidden>Add a phone number starting 0 or +44.</p></div>
+<div class="field"><label for="f-email">Email (optional)</label><input id="f-email" name="email" type="email" autocomplete="email">
+<p class="err" id="f-email-err" hidden>Check the email address, or leave it empty.</p></div>
+<div class="field"><label for="f-dog">Your dog’s name</label><input id="f-dog" name="dog" type="text" required>
+<p class="err" id="f-dog-err" hidden>Add your dog’s name.</p></div>
+<div class="field"><label for="f-breed">Breed (optional)</label><input id="f-breed" name="breed" type="text"></div>
 <fieldset id="f-what" class="boxes"><legend>What would you like? (optional)</legend><div class="box-list"><label class="box" data-target-skip><input type="checkbox" name="what" value="Full groom and styling"><span>Full groom and styling</span></label><label class="box" data-target-skip><input type="checkbox" name="what" value="Bath and blow dry"><span>Bath and blow dry</span></label><label class="box" data-target-skip><input type="checkbox" name="what" value="Nail trim"><span>Nail trim</span></label><label class="box" data-target-skip><input type="checkbox" name="what" value="Ear cleaning"><span>Ear cleaning</span></label><label class="box" data-target-skip><input type="checkbox" name="what" value="Puppy first groom"><span>Puppy first groom</span></label><label class="box" data-target-skip><input type="checkbox" name="what" value="Not sure yet"><span>Not sure yet</span></label></div></fieldset>
 <fieldset id="f-days" class="boxes"><legend>Which days suit you? (optional)</legend><div class="box-list"><label class="box" data-target-skip><input type="checkbox" name="days" value="Tuesday"><span>Tuesday</span></label><label class="box" data-target-skip><input type="checkbox" name="days" value="Wednesday"><span>Wednesday</span></label><label class="box" data-target-skip><input type="checkbox" name="days" value="Thursday"><span>Thursday</span></label><label class="box" data-target-skip><input type="checkbox" name="days" value="Friday"><span>Friday</span></label><label class="box" data-target-skip><input type="checkbox" name="days" value="Saturday"><span>Saturday</span></label></div></fieldset>
-<div class="field"><label for="f-notes">Anything Jade should know? (optional)</label><textarea id="f-notes" name="notes" rows="4"></textarea><p class="err" id="f-notes-err" hidden></p></div>
+<div class="field"><label for="f-notes">Anything Jade should know? (optional)</label><textarea id="f-notes" name="notes" rows="4"></textarea></div>
 <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" hidden>
 <input type="hidden" name="from_name" value="Dog Grooming By Jade website">
 <input type="hidden" name="subject" value="Grooming request">
 <button type="submit" class="send">Send to Jade</button>
 <p id="f-status" class="status" role="status"></p>
+<template id="f-says"><span data-say="invalid-one"><span class="ph">Check the 1 marked field.</span></span><span data-say="invalid-many"><span class="ph">Check the N marked fields.</span></span><span data-say="concept"><span class="ph">Not sent.</span> <span class="ph"><span class="ph">This form is not switched on yet,</span> <span class="ph">so nothing left this page.</span></span> <span class="ph">Call or WhatsApp Jade on <a href="tel:+447753641699" data-track="call" data-target-skip>07753 641699</a>.</span></span><span data-say="sent"><span class="ph">Sent to Jade.</span> <span class="ph">If it’s urgent, call her on <a href="tel:+447753641699" data-track="call" data-target-skip>07753 641699</a>.</span></span><span data-say="failed"><span class="ph">That didn’t send.</span> <span class="ph"><span class="ph">Call or WhatsApp Jade on <a href="tel:+447753641699" data-track="call" data-target-skip>07753 641699</a>,</span> <span class="ph">or try again.</span></span></span><span data-say="sending"><span class="ph">Sending</span></span></template>
 </form>
 </div>
 </section>
