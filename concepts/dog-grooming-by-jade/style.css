@@ -1,0 +1,514 @@
+/* Dog Grooming By Jade, concept. The only stylesheet.
+   Colours, radius and type come from the approved brief card (27 Nov 2026),
+   each named after where it was sampled in her own photos. Spacing keeps to
+   4, 8, 16, 24, 32, 48, 64 and 96px. Nothing on the page moves.
+   Breakpoints: the menu and the phone bar below 720px; the first screen in
+   two columns, and the table in one row, from 1024px. */
+
+:root {
+  --white: #fdfefe;  /* card white: the ground her logo sits on */
+  --mint: #a6d8c5;   /* table mint: her grooming table top */
+  --blush: #d3b5b2;  /* wall blush: the wall behind the table */
+  --cyan: #3cd8f6;   /* splash cyan: the watercolour behind the logo dog */
+  --ink: #24221f;    /* tunic black */
+  --pink: #f7405e;   /* tunic piping: the focus ring, never text */
+  --muted: #55524b;
+
+  --r: 10px;         /* the corners of her grooming table top */
+
+  --t-h1: clamp(2rem, 1.378rem + 2.652vw, 3.5rem);
+  --t-h2: clamp(1.5rem, 1.293rem + 0.884vw, 2rem);
+  --t-line: clamp(1.125rem, 1.021rem + 0.442vw, 1.375rem);
+  --t-name: clamp(1.125rem, 1.073rem + 0.221vw, 1.25rem);
+  --t-body: clamp(1rem, 0.948rem + 0.221vw, 1.125rem);
+  --t-nav: 1rem;
+  --t-small: 0.875rem;
+
+  /* The row: page width less the gutters, never wider than 1232px.
+     100% is the body's width wherever these are used. */
+  --row: min(100% - 32px, 1232px);
+  --gut: calc((100% - var(--row)) / 2);
+
+  /* The logo slot. Phase 3 sets the aspect from the cropped file. */
+  --logo-h: 64px;
+  --logo-ar: 1;
+  /* Header height at 720px and wider: 24 + logo 96 + 16 + nav line 24. */
+  --hh: calc(96px + 64px);
+}
+
+@media (width >= 720px) {
+  :root { --row: min(100% - 48px, 1232px); --logo-h: 96px; }
+}
+
+/* ------------------------------------------------------------ base */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* No browser-blue tap flash: the only colours are the card's. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: var(--t-body);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+h1, h2, h3 { margin: 0; font-weight: 800; text-wrap: balance; }
+h1 { font-size: var(--t-h1); line-height: 1.1; letter-spacing: -0.02em; }
+h2 { font-size: var(--t-h2); line-height: 1.2; letter-spacing: -0.01em; }
+h3 { font-size: var(--t-body); line-height: 1.4; }
+
+p, li, figcaption, td, th, legend, label { text-wrap: pretty; }
+p { margin: 0; max-width: 66ch; }
+figure, blockquote { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+/* Her black tunic with its pink piping: 3px of pink inside 2px of black,
+   so the ring clears 3 to 1 on white, mint, blush and cyan alike. */
+:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 0;
+  box-shadow: 0 0 0 5px var(--ink);
+}
+
+/* Photo slots until her files are cropped (Phases 3 and 5). */
+[data-placeholder] { background: var(--blush); }
+
+/* A phrase (first-screen line and proof, the table's line): it moves down whole, and wraps
+   inside itself only when it is wider than the column. */
+.ph { display: inline-block; }
+
+.line { font-size: var(--t-line); line-height: 1.4; }
+.proof, .gap { font-size: var(--t-body); line-height: 1.55; }
+/* A marked gap ("Jade to confirm", "Jade's 2027 list goes here") reads as a note, not as a fact. */
+.gap { color: var(--muted); }
+
+/* ------------------------------------------------------------ strip and header */
+
+.strip {
+  width: var(--row);
+  margin-inline: auto;
+  padding-block: 8px;
+  color: var(--muted);
+  font-size: var(--t-small);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.skip {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.skip:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  clip-path: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.head {
+  width: var(--row);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 8px;
+}
+
+.logo { display: block; text-decoration: none; }
+.logo-img { display: block; height: var(--logo-h); aspect-ratio: var(--logo-ar); }
+
+.menu summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 16px 0;
+  font-size: var(--t-nav);
+  line-height: 1.3;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+  list-style: none;
+  cursor: pointer;
+}
+.menu summary::-webkit-details-marker { display: none; }
+
+/* The four links sit outside the details, so "Menu" opens them with no script:
+   the browser toggles [open] and this rule follows it. */
+.nav { display: none; flex-basis: 100%; }
+.menu[open] + .nav { display: block; padding-block: 8px 16px; }
+.nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--t-nav);
+  line-height: 1.3;
+  text-decoration: none;
+}
+.nav a:hover, .nav a[aria-current="page"] { text-decoration-line: underline; }
+
+@media (width >= 720px) {
+  .head { display: block; height: var(--hh); padding-block: 24px 0; }
+  .menu { display: none; }
+  .nav { display: block; margin-top: 16px; }
+  .nav ul { display: flex; flex-wrap: wrap; column-gap: 32px; }
+  .nav a { min-height: 24px; }
+}
+
+/* ------------------------------------------------------------ buttons */
+
+a.call {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 16px 24px;
+  border-radius: var(--r);
+  background: var(--cyan);
+  color: var(--ink);
+  font-size: var(--t-name);
+  font-weight: 400;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.send,
+.consent button,
+#cookie-reopen {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 8px 24px;
+  border: 0;
+  border-radius: var(--r);
+  background: var(--ink);
+  color: var(--white);
+  font: inherit;
+  cursor: pointer;
+}
+
+.more a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* ------------------------------------------------------------ Home: first screen */
+
+.first .text, .first .act { width: var(--row); margin-inline: auto; }
+.first .text { padding-top: 16px; }
+.first .line { margin-top: 16px; }
+.first .proof { margin-top: 16px; }
+.first .proof > span { display: block; }
+
+.first .act {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 24px;
+  padding-block: 24px;
+}
+.first .or { min-height: 44px; }
+.first .wa { display: inline-flex; align-items: center; min-height: 44px; }
+.first .photo { width: 100%; aspect-ratio: var(--ar-phone); }
+.first .band { height: 32px; background: var(--mint); }
+
+@media (width < 720px) {
+  .first .text { padding-top: 8px; }
+  .first .line, .first .proof { margin-top: 8px; }
+  .first .act { padding-block: 16px; row-gap: 4px; }
+  a.call { width: 100%; justify-content: center; }
+}
+
+/* 1024px and wider: text left 45%, the photo right 55% from the strip down to
+   the band, the band under both, Call on the band as if on the table. The
+   header's height is fixed (--hh), so the photo reaches the strip with no script. */
+@media (width >= 1024px) {
+  .p-index .head {
+    width: 45%;
+    margin-inline: 0;
+    padding-left: var(--gut);
+    padding-right: 48px;
+  }
+  .first {
+    display: grid;
+    grid-template-columns: var(--gut) 1fr 55%;
+    grid-template-rows: 1fr auto;
+    min-height: calc(100svh - 36px - var(--hh));
+  }
+  .first .text, .first .act { width: auto; margin-inline: 0; }
+  .first .text { grid-column: 2; grid-row: 1; align-self: end; padding: 48px 48px 48px 0; }
+  .first .photo { grid-column: 3; grid-row: 1; aspect-ratio: auto; margin-top: calc(-1 * var(--hh)); }
+  .first .act { grid-column: 2 / 4; grid-row: 2; z-index: 1; padding: 24px 48px 24px 0; }
+  .first .band { grid-column: 1 / -1; grid-row: 2; height: auto; }
+}
+
+/* Tablet: one line holds trade and place, so the headline breaks only before "by Jade Barr". */
+@media (720px <= width < 1024px) {
+  .first h1 .tp { white-space: nowrap; }
+}
+
+/* Four links fit one line in the left 45% only with the tighter gap below 1280. */
+@media (1024px <= width < 1280px) {
+  .p-index .head { padding-right: 24px; }
+  .p-index .nav ul { column-gap: 24px; }
+}
+
+/* ------------------------------------------------------------ the table */
+
+/* Her habit: every dog on the same mint table, against the same pink wall.
+   The wall (.wall) and the table's front edge (.edge) run the full width; the
+   frames between them touch, with one height per table and rounded outer
+   corners only. Each frame carries its own slice of wall and edge, so a table
+   of two or three on a narrow screen gets its own wall and edge too. */
+.table { container-type: inline-size; margin-top: 64px; }
+
+.wall { background: var(--blush); }
+.wall-head .in { width: var(--row); margin-inline: auto; padding-block: 48px 32px; }
+.wall-head p { margin-top: 8px; }
+
+.frames {
+  --gx: calc((100cqw - min(100cqw - 32px, 1232px)) / 2);
+  width: min(100% - 32px, 1232px);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1 0 calc(100% * var(--a) / var(--p) - 0.02px);
+}
+.frame > .wall { position: relative; height: 24px; }
+.frame .shot { width: 100%; aspect-ratio: var(--a); }
+
+.edge {
+  position: relative;
+  flex: 1 0 auto;
+  background: var(--mint);
+  padding: 8px 8px 16px;
+}
+
+/* The bands past the row's ends, out to the page edges. */
+.frame > .wall::before, .frame > .wall::after, .edge::before, .edge::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--gx);
+  background: inherit;
+}
+.frame > .wall::before, .edge::before { right: 100%; }
+.frame > .wall::after, .edge::after { left: 100%; }
+
+.name { min-height: 1.2em; font-size: var(--t-name); font-weight: 800; line-height: 1.2; }
+.edge .said { margin-top: 8px; }
+
+/* Below 720px: tables of two. */
+@media (width < 720px) {
+  .frame:nth-child(-n+2) > .wall { display: none; }
+  .frame:nth-child(n+3) { margin-top: 32px; }
+  .frame:nth-child(odd) > .wall::before, .frame:nth-child(odd) > .edge::before,
+  .frame:nth-child(even) > .wall::after, .frame:nth-child(even) > .edge::after { content: ""; }
+  .frame:nth-child(odd) .shot { border-radius: var(--r) 0 0 var(--r); }
+  .frame:nth-child(even) .shot { border-radius: 0 var(--r) var(--r) 0; }
+}
+
+/* 720 to 1023px: tables of three. */
+@media (720px <= width < 1024px) {
+  .frames { --gx: calc((100cqw - min(100cqw - 48px, 1232px)) / 2); width: min(100% - 48px, 1232px); }
+  .frame { flex-basis: calc(100% * var(--a) / var(--t) - 0.02px); }
+  .frame:nth-child(-n+3) > .wall { display: none; }
+  .frame:nth-child(n+4) { margin-top: 32px; }
+  .frame:nth-child(3n+1) > .wall::before, .frame:nth-child(3n+1) > .edge::before,
+  .frame:nth-child(3n) > .wall::after, .frame:nth-child(3n) > .edge::after { content: ""; }
+  .frame:nth-child(3n+1) .shot { border-radius: var(--r) 0 0 var(--r); }
+  .frame:nth-child(3n) .shot { border-radius: 0 var(--r) var(--r) 0; }
+}
+
+/* 1024px and wider: one table. */
+@media (width >= 1024px) {
+  .frames { --gx: calc((100cqw - min(100cqw - 48px, 1232px)) / 2); width: min(100% - 48px, 1232px); }
+  .frame { flex-basis: calc(100% * var(--a) / var(--all) - 0.02px); }
+  .frame > .wall { display: none; }
+  .frame:first-child > .edge::before, .frame:last-child > .edge::after { content: ""; }
+  .frame:first-child .shot { border-radius: var(--r) 0 0 var(--r); }
+  .frame:last-child .shot { border-radius: 0 var(--r) var(--r) 0; }
+  .edge { padding: 16px 16px 24px; }
+}
+
+.table .more { margin: 16px 0 0 var(--gut); }
+
+/* ------------------------------------------------------------ quotes */
+
+.said blockquote p { line-height: 1.45; text-indent: -0.4em; }
+.said figcaption, .attr, .foot-small {
+  color: var(--muted);
+  font-size: var(--t-small);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+.said figcaption, .attr { margin-top: 4px; }
+
+/* ------------------------------------------------------------ Home: Jade */
+
+.jade { width: var(--row); margin: 64px auto 0; display: grid; gap: 24px; }
+.jade-text > * + * { margin-top: 16px; }
+.jade .shot { aspect-ratio: var(--ar); border-radius: var(--r); }
+.said-jade blockquote p { font-size: var(--t-line); line-height: 1.4; }
+
+@media (width >= 1024px) {
+  .jade { grid-template-columns: 5fr 7fr; column-gap: 64px; align-items: center; }
+  .jade .shot { grid-column: 1; grid-row: 1; }
+  .jade-text { grid-column: 2; grid-row: 1; }
+}
+
+/* ------------------------------------------------------------ inside pages */
+
+.page-head { width: var(--row); margin: 32px auto 0; }
+.page-head > * + * { margin-top: 16px; }
+
+.sec { width: var(--row); margin: 64px auto 0; }
+.sec-body { margin-top: 16px; }
+.sec-body > * + * { margin-top: 16px; }
+.sec-body > .said + .said { margin-top: 24px; }
+
+@media (width >= 720px) {
+  .page-head { margin-top: 48px; }
+}
+
+@media (width >= 1024px) {
+  .sec { display: grid; grid-template-columns: 4fr 8fr; column-gap: 48px; align-items: baseline; }
+  .sec-body { margin-top: 0; }
+}
+
+.cta { display: flex; width: var(--row); max-width: none; margin: 64px auto 0; }
+@media (width >= 1024px) {
+  /* The page's closing Call sits in the same column as the words above it. */
+  .cta { display: grid; grid-template-columns: 4fr 8fr; column-gap: 48px; }
+  .cta > a { grid-column: 2; justify-self: start; }
+}
+.call-line { padding-top: 8px; }
+
+.plain li + li { margin-top: 4px; }
+
+.reviews > li + li { margin-top: 32px; }
+
+/* About: the Cambridge photos, one large with three joined edge to edge under it. */
+.comps-text > * + * { margin-top: 32px; }
+.comps li + li { margin-top: 8px; }
+.cambridge { margin-top: 32px; }
+.cam-large { aspect-ratio: var(--ar); border-radius: var(--r) var(--r) 0 0; }
+.cam-row { display: flex; }
+.cam-row .shot { flex: 1 0 calc(100% * var(--ar) / var(--sum) - 0.02px); aspect-ratio: var(--ar); }
+.cam-row .shot:first-child { border-radius: 0 0 0 var(--r); }
+.cam-row .shot:last-child { border-radius: 0 0 var(--r) 0; }
+
+@media (width >= 1024px) {
+  .sec-comps .sec-body { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; align-items: start; }
+  .sec-comps .sec-body > * + * { margin-top: 0; }
+  .sec-comps .cambridge { margin-top: 0; }
+}
+
+/* Find and book */
+.hours { border-collapse: collapse; }
+.hours th { padding: 4px 32px 4px 0; font-weight: 400; text-align: left; }
+.hours td { padding: 4px 0; }
+
+.form { display: grid; gap: 24px; max-width: 40rem; }
+.form-note { max-width: 66ch; }
+.field label, .boxes legend { display: block; margin-bottom: 8px; padding: 0; }
+.field input, .field textarea {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 16px;
+  border: 2px solid var(--muted);
+  border-radius: var(--r);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+.field textarea { resize: vertical; }
+.err[hidden] { display: none; }
+.boxes { margin: 0; padding: 0; border: 0; min-width: 0; }
+.box-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); column-gap: 16px; }
+.box { display: flex; align-items: center; gap: 16px; min-height: 44px; cursor: pointer; }
+.box input { width: 24px; height: 24px; margin: 0; flex: none; accent-color: var(--ink); }
+.status:empty { display: none; }
+.form .send { justify-self: start; }
+
+.qa + .qa { margin-top: 24px; }
+.qa p { margin-top: 4px; }
+
+/* 404 */
+.go a { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; }
+
+/* ------------------------------------------------------------ consent and footer */
+
+/* In the page flow, just above the footer: it never covers the first screen. */
+.consent { width: var(--row); margin: 64px auto 0; display: grid; gap: 16px; }
+.consent[hidden] { display: none; }
+.consent-act { display: flex; gap: 8px; }
+
+.foot { margin-top: 64px; padding-block: 48px; background: var(--mint); }
+.foot-in { width: var(--row); margin-inline: auto; display: grid; gap: 32px; }
+.foot-who > * + * { margin-top: 8px; }
+.foot-list a { display: inline-flex; align-items: center; min-height: 44px; }
+.foot-small > * + * { margin-top: 4px; }
+
+@media (width >= 720px) {
+  .foot-in { grid-template-columns: 1fr 1fr; column-gap: 48px; }
+  .foot-small { grid-column: 1 / -1; }
+}
+@media (width >= 1024px) {
+  .foot-in { grid-template-columns: 5fr 3fr 4fr; }
+  .foot-list a { min-height: 0; }
+  .foot-list li + li, .foot-hours li + li { margin-top: 4px; }
+}
+
+/* ------------------------------------------------------------ phone bar */
+
+.bar { display: none; }
+
+@media (width < 720px) {
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+  .bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
+    background: var(--cyan);
+  }
+  .bar a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 8px;
+    font-size: var(--t-name);
+    line-height: 1.2;
+  }
+  .bar-call { text-decoration: none; }
+}
