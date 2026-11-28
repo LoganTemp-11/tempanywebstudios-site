@@ -1,0 +1,624 @@
+/* Dog Grooming By Jade, concept. The only stylesheet.
+   Colours, radius and type come from the approved brief card (27 Nov 2026),
+   each named after where it was sampled in her own photos. Spacing keeps to
+   4, 8, 16, 24, 32, 48, 64 and 96px. Nothing on the page moves.
+   Breakpoints: the menu and the phone bar below 720px; the first screen in
+   two columns, and the table in one row, from 1024px. They are written in em
+   (45em, 64em, 80em; heights 48.75em and 56.25em), which is those px at the
+   browser's default text size and grows with it: with Chrome's text set to
+   Large (20px) the first screen goes to two columns from 1280px, so the nav
+   still has room for one line. */
+
+:root {
+  --white: #fdfefe;  /* card white: the ground her logo sits on */
+  --mint: #a6d8c5;   /* table mint: her grooming table top */
+  --blush: #d3b5b2;  /* wall blush: the wall behind the table */
+  --cyan: #3cd8f6;   /* splash cyan: the watercolour behind the logo dog */
+  --ink: #24221f;    /* tunic black */
+  --pink: #f7405e;   /* tunic piping: the focus ring, never text */
+  --muted: #55524b;
+
+  --r: 10px;         /* the corners of her grooming table top */
+
+  --t-h1: clamp(2rem, 1.378rem + 2.652vw, 3.5rem);
+  --t-h2: clamp(1.5rem, 1.293rem + 0.884vw, 2rem);
+  --t-line: clamp(1.125rem, 1.021rem + 0.442vw, 1.375rem);
+  --t-name: clamp(1.125rem, 1.073rem + 0.221vw, 1.25rem);
+  --t-body: clamp(1rem, 0.948rem + 0.221vw, 1.125rem);
+  --t-nav: 1rem;
+  --t-small: 0.875rem;
+
+  /* The row: page width less the gutters, never wider than 1232px (77rem, so
+     a larger browser text size widens it with the text and lines keep their length).
+     100% is the body's width wherever these are used. */
+  --row: min(100% - 32px, 77rem);
+  --gut: calc((100% - var(--row)) / 2);
+
+  /* The logo slot. Phase 3 sets the aspect from the cropped file. */
+  --logo-h: 64px;
+  --logo-ar: 1;
+  /* Header at 720px and wider: padding, logo, gap, one line of nav links.
+     Its height (--hh) is set here, so Home's photo reaches the strip with no
+     script. The nav line is type, so it is in rem (24px at the default text
+     size) and the header grows with the browser's text size. */
+  --head-pad: 24px;
+  --nav-gap: 16px;
+  --nav-h: 1.5rem;
+  --hh: calc(var(--head-pad) + var(--logo-h) + var(--nav-gap) + var(--nav-h));
+}
+
+@media (width >= 45em) {
+  :root { --row: min(100% - 48px, 77rem); --logo-h: 96px; }
+}
+/* A short window (a 1366x768 laptop less its browser bars is about 1366x657):
+   a smaller logo, so the first screen still ends on the Call button. */
+@media (width >= 45em) and (height < 48.75em) {
+  :root { --logo-h: 64px; --head-pad: 16px; --nav-gap: 8px; }
+}
+/* A short phone (under 660px tall, such as 360x640): a 48px logo, so her photo
+   still shows under Call on the first screen. 375x667 and taller keep 64px. */
+@media (width < 45em) and (height < 41.25em) {
+  :root { --logo-h: 48px; }
+}
+/* Touch screens get 48px nav links at every width (iPads in landscape included):
+   over the 44px minimum, and never under it at a small text size. */
+@media (pointer: coarse) {
+  :root { --nav-h: max(48px, 3rem); --nav-gap: 8px; }
+}
+
+/* ------------------------------------------------------------ base */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* No browser-blue tap flash: the only colours are the card's. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+/* When the keyboard moves focus, the browser scrolls the element clear of the
+   window's edges by this much, so the 5px focus ring always shows in full. */
+html { scroll-padding-block: 16px; }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: var(--t-body);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+h1, h2, h3 { margin: 0; font-weight: 800; text-wrap: balance; }
+h1 { font-size: var(--t-h1); line-height: 1.1; letter-spacing: -0.02em; }
+h2 { font-size: var(--t-h2); line-height: 1.2; letter-spacing: -0.01em; }
+h3 { font-size: var(--t-body); line-height: 1.4; }
+
+p, li, figcaption, td, th, legend, label { text-wrap: pretty; }
+p { margin: 0; max-width: 66ch; }
+figure, blockquote { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+/* Her black tunic with its pink piping: 3px of pink inside 2px of black,
+   so the ring clears 3 to 1 on white, mint, blush and cyan alike. */
+:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 0;
+  box-shadow: 0 0 0 5px var(--ink);
+}
+
+/* Photo slots until her files are cropped (Phases 3 and 5). */
+[data-placeholder] { background: var(--blush); }
+
+/* A phrase (first-screen line and proof, the table's line, an attribution's person and
+   source): it moves down whole, and wraps inside itself, balanced, only when it is wider
+   than the column. */
+.ph { display: inline-block; text-wrap: balance; }
+
+.line { font-size: var(--t-line); line-height: 1.4; }
+.proof, .gap { font-size: var(--t-body); line-height: 1.55; }
+/* A marked gap ("Jade to confirm", "Jade's 2027 list goes here") reads as a note, not as a fact. */
+.gap { color: var(--muted); }
+
+/* ------------------------------------------------------------ strip and header */
+
+.strip {
+  width: var(--row);
+  margin-inline: auto;
+  padding-block: 8px;
+  color: var(--muted);
+  font-size: var(--t-small);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.skip {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.skip:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  clip-path: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.head {
+  width: var(--row);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 8px;
+}
+
+.logo { display: block; text-decoration: none; }
+.logo-img { display: block; height: var(--logo-h); aspect-ratio: var(--logo-ar); }
+
+.menu summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 16px 0;
+  font-size: var(--t-nav);
+  line-height: 1.3;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+  list-style: none;
+  cursor: pointer;
+}
+.menu summary::-webkit-details-marker { display: none; }
+
+/* The four links sit outside the details, so "Menu" opens them with no script:
+   the browser toggles [open] and this rule follows it. */
+.nav { display: none; flex-basis: 100%; }
+.menu[open] + .nav { display: block; padding-block: 8px 16px; }
+.nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--t-nav);
+  line-height: 1.3;
+  text-decoration: none;
+}
+.nav a:hover, .nav a[aria-current="page"] { text-decoration-line: underline; }
+
+@media (width >= 45em) {
+  /* At least --hh, never cut to it: if the links ever take two lines (a text
+     size the em breakpoints do not see, such as a user style sheet), the
+     header grows and the headline moves down; nothing runs into it. */
+  .head { display: block; min-height: var(--hh); padding-block: var(--head-pad) 0; }
+  .menu { display: none; }
+  .nav { display: block; margin-top: var(--nav-gap); }
+  .nav ul { display: flex; flex-wrap: wrap; column-gap: 32px; }
+  .nav a { min-height: var(--nav-h); }
+}
+
+/* ------------------------------------------------------------ buttons */
+
+a.call {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 16px 24px;
+  border-radius: var(--r);
+  background: var(--cyan);
+  color: var(--ink);
+  font-size: var(--t-name);
+  font-weight: 400;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.send,
+.consent button,
+#cookie-reopen {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 8px 24px;
+  border: 0;
+  border-radius: var(--r);
+  background: var(--ink);
+  color: var(--white);
+  font: inherit;
+  cursor: pointer;
+}
+
+.more a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* ------------------------------------------------------------ Home: first screen */
+
+.first .text, .first .act { width: var(--row); margin-inline: auto; }
+.first .text { padding-top: 16px; }
+.first .line { margin-top: 16px; }
+.first .proof { margin-top: 16px; }
+.first .proof > span { display: block; }
+
+.first .act {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 24px;
+  padding-block: 24px;
+}
+.first .or { min-height: 44px; }
+.first .wa { display: inline-flex; align-items: center; min-height: 44px; }
+.first .photo { width: 100%; aspect-ratio: var(--ar-phone); }
+.first .band { height: 32px; background: var(--mint); }
+
+@media (width < 45em) {
+  .first .text { padding-top: 8px; }
+  .first .line, .first .proof { margin-top: 8px; }
+  .first .act { padding-block: 16px; row-gap: 4px; }
+  a.call { width: 100%; justify-content: center; }
+}
+
+/* The headline breaks before "by Jade Barr" at every width, so trade and place
+   stay together: "Dog grooming in Stirling, / by Jade Barr" where one line holds
+   them, "Dog grooming / in Stirling, / by Jade Barr" where it does not. */
+.first h1 .by { display: block; }
+
+/* 1024px and wider: text left 45%, the photo right 55% from the strip down to
+   the band, the band under both, Call on the band as if on the table. The
+   headline hangs one step of the spacing scale under the nav (32, 48 or 64px
+   as the window grows taller), so there is never an empty block above it.
+
+   The photo's box is as tall as the text column, and taller where the window
+   has room: up to 4 wide to 5 tall (1.25), but never so tall that the band
+   leaves the window. So one desktop crop of her photo (cut at 1.14, the box at
+   1280x800) shows nearly whole on wide screens: 1.25 at 1920x1080 and
+   2560x1440, 1.30 at 1920x950. Short windows keep the box their words need
+   (1.41 at 1366x657), so Call stays above the fold. Any height the column
+   gains goes under the proof, the wall above the table.
+   In the sum: the strip (8 + 8 + 1.4 x 14px) and the band (the Call's 16 + 16
+   + 1.2 x its type, plus the band's padding above and below). */
+@media (width >= 64em) {
+  .p-index .head {
+    width: 45%;
+    margin-inline: 0;
+    padding-left: var(--gut);
+    padding-right: 48px;
+  }
+  .first {
+    --act-pad: 24px;
+    display: grid;
+    grid-template-columns: var(--gut) 1fr 55%;
+  }
+  .first .text, .first .act { width: auto; margin-inline: 0; }
+  .first .text {
+    grid-column: 2;
+    grid-row: 1;
+    min-height: calc(min(55vw / 1.25, 100svh - 16px - 1.225rem - 2 * var(--act-pad) - 32px - 1.2 * var(--t-name)) - var(--hh));
+    padding: 48px 48px 48px 0;
+  }
+  .first .photo { grid-column: 3; grid-row: 1; aspect-ratio: auto; margin-top: calc(-1 * var(--hh)); }
+  .first .act { grid-column: 2 / 4; grid-row: 2; z-index: 1; padding: var(--act-pad) 48px var(--act-pad) 0; }
+  .first .band { grid-column: 1 / -1; grid-row: 2; height: auto; }
+}
+@media (width >= 64em) and (height >= 56.25em) {
+  .first .text { padding-block: 64px; }
+}
+@media (width >= 64em) and (height < 48.75em) {
+  .first { --act-pad: 16px; }
+  .first .text { padding-block: 32px 24px; }
+}
+
+/* Four links fit one line in the left 45% only with the tighter gap below 1280. */
+@media (64em <= width < 80em) {
+  .p-index .head { padding-right: 24px; }
+  .p-index .nav ul { column-gap: 24px; }
+}
+
+/* ------------------------------------------------------------ the table */
+
+/* Her habit: every dog on the same mint table, against the same pink wall.
+   The wall (.wall) and the table's front edge (.edge) run the full width; the
+   frames between them touch, with one height per table and rounded outer
+   corners only. Each frame carries its own slice of wall and edge, so a table
+   of two or three on a narrow screen gets its own wall and edge too.
+   Each frame is itself a slice of the wall (li.frame.wall): the wall shows
+   behind a photo's rounded outer corners and beside the row out to the page
+   edges, so no white ground shows anywhere between the wall and the edge. */
+.table { container-type: inline-size; margin-top: 64px; }
+
+.wall { background: var(--blush); }
+.wall-head .in { width: var(--row); margin-inline: auto; padding-block: 48px 32px; }
+.wall-head p { margin-top: 8px; }
+
+.frames {
+  --gx: calc((100cqw - min(100cqw - 32px, 77rem)) / 2);
+  width: min(100% - 32px, 77rem);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1 0 calc(100% * var(--a) / var(--p) - 0.02px);
+}
+.frame > .wall { height: 24px; }
+.frame .shot { width: 100%; aspect-ratio: var(--a); }
+
+.edge {
+  position: relative;
+  z-index: 1;  /* its bands past the row paint over the wall's, which run the frame's full height */
+  flex: 1 0 auto;
+  background: var(--mint);
+  padding: 8px 8px 16px;
+}
+
+/* The bands past a table's ends, out to the page edges: the wall beside the
+   frames (the frame's own, its full height) and the front edge under them
+   (the edge's, painted over the wall's lower end). */
+.frame::before, .frame::after, .edge::before, .edge::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--gx);
+  background: inherit;
+}
+.frame::before, .edge::before { right: 100%; }
+.frame::after, .edge::after { left: 100%; }
+
+.name { min-height: 1.2em; font-size: var(--t-name); font-weight: 800; line-height: 1.2; }
+.edge .said { margin-top: 8px; }
+/* Under a frame the column is narrow (about 130px at 1024): even lines, never one word alone. */
+.edge .said blockquote p { text-wrap: balance; }
+
+/* Below 720px: tables of two. */
+@media (width < 45em) {
+  .frame:nth-child(-n+2) > .wall { display: none; }
+  .frame:nth-child(n+3) { margin-top: 32px; }
+  .frame:nth-child(odd)::before, .frame:nth-child(odd) > .edge::before,
+  .frame:nth-child(even)::after, .frame:nth-child(even) > .edge::after { content: ""; }
+  .frame:nth-child(odd) .shot { border-radius: var(--r) 0 0 var(--r); }
+  .frame:nth-child(even) .shot { border-radius: 0 var(--r) var(--r) 0; }
+}
+
+/* 720 to 1023px: tables of three. */
+@media (45em <= width < 64em) {
+  .frames { --gx: calc((100cqw - min(100cqw - 48px, 77rem)) / 2); width: min(100% - 48px, 77rem); }
+  .frame { flex-basis: calc(100% * var(--a) / var(--t) - 0.02px); }
+  .frame:nth-child(-n+3) > .wall { display: none; }
+  .frame:nth-child(n+4) { margin-top: 32px; }
+  .frame:nth-child(3n+1)::before, .frame:nth-child(3n+1) > .edge::before,
+  .frame:nth-child(3n)::after, .frame:nth-child(3n) > .edge::after { content: ""; }
+  .frame:nth-child(3n+1) .shot { border-radius: var(--r) 0 0 var(--r); }
+  .frame:nth-child(3n) .shot { border-radius: 0 var(--r) var(--r) 0; }
+}
+
+/* 1024px and wider: one table. */
+@media (width >= 64em) {
+  .frames { --gx: calc((100cqw - min(100cqw - 48px, 77rem)) / 2); width: min(100% - 48px, 77rem); }
+  .frame { flex-basis: calc(100% * var(--a) / var(--all) - 0.02px); }
+  .frame > .wall { display: none; }
+  .frame:first-child::before, .frame:first-child > .edge::before,
+  .frame:last-child::after, .frame:last-child > .edge::after { content: ""; }
+  .frame:first-child .shot { border-radius: var(--r) 0 0 var(--r); }
+  .frame:last-child .shot { border-radius: 0 var(--r) var(--r) 0; }
+  .edge { padding: 16px 16px 24px; }
+}
+
+.table .more { margin: 16px 0 0 var(--gut); }
+
+/* ------------------------------------------------------------ quotes */
+
+.said blockquote p { line-height: 1.45; text-indent: -0.4em; }
+.said figcaption, .attr, .foot-small {
+  color: var(--muted);
+  font-size: var(--t-small);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+.said figcaption, .attr { margin-top: 4px; }
+
+/* ------------------------------------------------------------ Home: Jade */
+
+.jade { width: var(--row); margin: 64px auto 0; display: grid; gap: 24px; }
+.jade-text > * + * { margin-top: 16px; }
+.jade .shot { aspect-ratio: var(--ar); border-radius: var(--r); }
+.said-jade blockquote p { font-size: var(--t-line); line-height: 1.4; }
+
+@media (width >= 64em) {
+  .jade { grid-template-columns: 5fr 7fr; column-gap: 64px; align-items: center; }
+  .jade .shot { grid-column: 1; grid-row: 1; }
+  .jade-text { grid-column: 2; grid-row: 1; }
+}
+
+/* ------------------------------------------------------------ inside pages */
+
+.page-head { width: var(--row); margin: 32px auto 0; }
+.page-head > * + * { margin-top: 16px; }
+
+.sec { width: var(--row); margin: 64px auto 0; }
+.sec-body { margin-top: 16px; }
+.sec-body > * + * { margin-top: 16px; }
+.sec-body > .said + .said { margin-top: 24px; }
+
+@media (width >= 45em) {
+  .page-head { margin-top: 48px; }
+}
+
+@media (width >= 64em) {
+  .sec { display: grid; grid-template-columns: 4fr 8fr; column-gap: 48px; align-items: baseline; }
+  .sec-body { margin-top: 0; }
+}
+
+.cta { display: flex; width: var(--row); max-width: none; margin: 64px auto 0; }
+@media (width >= 64em) {
+  /* The page's closing Call sits in the same column as the words above it. */
+  .cta { display: grid; grid-template-columns: 4fr 8fr; column-gap: 48px; }
+  .cta > a { grid-column: 2; justify-self: start; }
+}
+.call-line { padding-top: 8px; }
+
+.plain li + li { margin-top: 4px; }
+
+.reviews > li + li { margin-top: 32px; }
+
+/* About: the Cambridge photos, one large with three joined edge to edge under it. */
+.comps-text > * + * { margin-top: 32px; }
+.comps li + li { margin-top: 8px; }
+.cambridge { margin-top: 32px; }
+.cam-large { aspect-ratio: var(--ar); border-radius: var(--r) var(--r) 0 0; }
+.cam-row { display: flex; }
+.cam-row .shot { flex: 1 0 calc(100% * var(--ar) / var(--sum) - 0.02px); aspect-ratio: var(--ar); }
+.cam-row .shot:first-child { border-radius: 0 0 0 var(--r); }
+.cam-row .shot:last-child { border-radius: 0 0 var(--r) 0; }
+
+/* 1024px and wider: the Cambridge photos stand in the left column, under the
+   heading, where the other sections leave white; the list and her words take
+   the whole right column. Each photo is larger than when the two shared the
+   right column, and the list's lines run long enough that no competition
+   name breaks. (.sec-body is a plain div: display: contents only lets its
+   two children join the section's grid.) */
+@media (width >= 64em) {
+  .sec-comps .sec-body { display: contents; }
+  .sec-comps .comps-text { grid-column: 2; grid-row: 1 / span 2; max-width: 66ch; }
+  .sec-comps .cambridge { grid-column: 1; grid-row: 2; }
+}
+
+/* Find and book */
+.hours { border-collapse: collapse; }
+.hours th { padding: 4px 32px 4px 0; font-weight: 400; text-align: left; }
+.hours td { padding: 4px 0; }
+
+.form { display: grid; gap: 24px; max-width: 40rem; }
+.form-note { max-width: 66ch; }
+.field label, .boxes legend { display: block; margin-bottom: 8px; padding: 0; }
+.field input, .field textarea {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 16px;
+  border: 2px solid var(--muted);
+  border-radius: var(--r);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+.field textarea { resize: vertical; }
+/* A field that needs fixing: a 4px ink border, its padding 2px less so the text
+   does not move, and its message directly under it. No red and no pink: the card
+   keeps pink for the focus ring, and ink on white reads 15.7 to 1. */
+.field [aria-invalid="true"] { border-width: 4px; border-color: var(--ink); padding: 6px 14px; }
+.err { margin-top: 8px; }
+.err[hidden] { display: none; }
+.boxes { margin: 0; padding: 0; border: 0; min-width: 0; }
+.box-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); column-gap: 16px; }
+.box { display: flex; align-items: center; gap: 16px; min-height: 44px; cursor: pointer; }
+.box input { width: 24px; height: 24px; margin: 0; flex: none; accent-color: var(--ink); }
+/* Empty, the status line takes no room (out of the grid, so no gap under Send) but stays
+   rendered, so it is in the accessibility tree before form.js writes to it: a screen
+   reader then hears each line as a change to a live region that already exists. */
+.status:empty { position: absolute; }
+.form .send { justify-self: start; }
+
+.qa + .qa { margin-top: 24px; }
+.qa p { margin-top: 4px; }
+
+/* 404 */
+.go a { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; }
+
+/* ------------------------------------------------------------ consent and footer */
+
+/* In the page flow, just above the footer: it never covers the first screen. */
+.consent { width: var(--row); margin: 64px auto 0; display: grid; gap: 16px; }
+.consent[hidden] { display: none; }
+/* Two buttons of one size, so neither answer looks like the expected one:
+   halves of the column on a phone, 160px each from 720px. */
+.consent-act { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.consent button { justify-content: center; }
+@media (width >= 45em) {
+  .consent-act { grid-template-columns: repeat(2, 10rem); }
+}
+
+.foot { margin-top: 64px; padding-block: 48px; background: var(--mint); }
+.foot-in { width: var(--row); margin-inline: auto; display: grid; gap: 32px; }
+.foot-who > * + * { margin-top: 8px; }
+.foot-list a { display: inline-flex; align-items: center; min-height: 44px; }
+.foot-small > * + * { margin-top: 4px; }
+
+@media (width >= 45em) {
+  .foot-in { grid-template-columns: 1fr 1fr; column-gap: 48px; }
+  .foot-small { grid-column: 1 / -1; }
+}
+@media (width >= 64em) {
+  .foot-in { grid-template-columns: 5fr 3fr 4fr; }
+  .foot-hours li + li { margin-top: 4px; }
+}
+/* With a mouse the footer links close up; on a touch screen they stay 44px tall. */
+@media (width >= 64em) and (pointer: fine) {
+  .foot-list a { min-height: 0; }
+  .foot-list li + li { margin-top: 4px; }
+}
+
+/* ------------------------------------------------------------ phone bar */
+
+.bar { display: none; }
+
+/* Phones: below 720px, and a phone held sideways (a touch screen under 500px
+   tall: 844x390, 932x430, 740x360), where the header and headline fill the
+   window and Call is below it.
+   The bar is 64px tall (8 + a 48px link + 8), the same as the room the body
+   leaves under the footer, so at the foot of a page the cyan meets the mint
+   with no white line between them. */
+@media (width < 45em), (pointer: coarse) and (height < 31.25em) {
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+  /* A focused link or field scrolls to 8px above the bar, so its 5px focus ring shows whole. */
+  html { scroll-padding-bottom: calc(64px + 8px + env(safe-area-inset-bottom)); }
+  .bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: space-between;
+    /* 8px here plus each link's own 8px puts "Call Jade" on the page's 16px gutter. */
+    padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+    background: var(--cyan);
+  }
+  .bar a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding-inline: 8px;
+    font-size: var(--t-name);
+    line-height: 1.2;
+  }
+  .bar-call { text-decoration: none; }
+}
+/* Home: site.js sets data-hide while the first screen's Call is in the window, where
+   the bar would only repeat it over her photo. The bar shows by default, so if
+   site.js never runs (JavaScript off, a lost or blocked request) Home still has it. */
+.bar[data-hide] { display: none; }
+/* Until site.js has run (it sets data-watched), Home's bar waits out of sight for 3s,
+   so a late site.js cannot flash it up over the first screen, and nothing holds up
+   the first paint. If site.js is lost or stalled, the bar shows after the 3s. With
+   JavaScript off this does not apply and the bar shows at once. */
+@media (scripting: enabled) {
+  .p-index .bar:not([data-watched]) { animation: bar-wait 3s; }
+}
+@keyframes bar-wait { from, to { visibility: hidden; } }
